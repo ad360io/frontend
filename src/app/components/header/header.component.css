@@ -1,0 +1,40 @@
+body {
+    padding-top: 105px;
+    background-color:#f5f5f5; 
+}
+
+.fixed-top-2 {
+    margin-top: 82px;
+}
+
+#nav1 li a {
+    line-height: 58px;
+}
+#nav2 li a {
+    line-height: 30px;
+}
+@media (max-width: 768px){
+
+}
+
+#mobileMenu1 {
+  margin-top:10px;
+}
+.container {
+  margin-left:40px;
+}
+
+ .navbar.navbar-toggleable-sm.navbar-inverse.fixed-top  {
+   background-color: #304F76;
+ }
+
+ .navbar.navbar-toggleable-sm.navbar-inverse.fixed-top.fixed-top-2{
+   background-color: #fff;
+
+ }
+#navbar1 li a {
+  color:black;
+}
+ body{
+   background-color:#f5f5f5;
+ }

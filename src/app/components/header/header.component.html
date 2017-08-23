@@ -1,0 +1,65 @@
+
+<nav class="navbar navbar-toggleable-sm navbar-inverse fixed-top fixed-top-2" >
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar1" id="mobileMenu2">
+        <!-- <span class="navbar-toggler-icon"></span> -->
+        <i class="fa fa-bars" style="color:black" aria-hidden="true"></i>
+    </button>
+
+    <div class="navbar-collapse collapse" id="navbar1">
+        <ul class="navbar-nav" id="nav2">
+            <li class="nav-item active">
+                <a class="nav-link" routerLink="/dashboard" routerLinkActive="active"><i class="zmdi zmdi-home"></i>  Dashboard </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/marketplace" routerLinkActive="active"><i class="zmdi zmdi-globe-alt"></i>  Marketplace </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/adspaces" routerLinkActive="active"><i class="zmdi zmdi-collection-text"></i>  Adspaces </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!--
+dark
+-->
+
+<nav class="navbar navbar-toggleable-sm navbar-inverse fixed-top" >
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar2" id="mobileMenu1">
+        <i class="fa fa-bars" aria-hidden="true"></i>
+    </button>
+    <a href="/" class="navbar-brand">
+        <img src="assets/images/Qchain_logo.png" alt="Qchain logo" width="122px" height="58px">
+    </a>
+    <div class="navbar-collapse collapse" id="navbar2">
+        <ul class="navbar-nav" id="nav1">
+            <li class="list-inline-item notification-list">
+                  <a class="nav-link">
+                      <span class="noti-icon"></span>
+                  </a>
+              </li>
+            <li class="list-inline-item notification-list">
+
+                            <div class="btn-group" role="group" >
+                                <button type="button" class="btn btn-sm btn-secondary" [ngStyle]="{backgroundColor:checkEthereumActive()}" (click)="ethereumActivated()"><img src="assets/images/Ethereum_logo.png" alt="Ethereum logo" width="22px" height="25px"><span style="font-family: 'Lato'; font-size: 15px; vertical-align: middle">EQC</span></button>
+                                <button type="button" class="btn btn-sm btn-secondary" [ngStyle]="{backgroundColor:checkNemActive()}" (click)="nemActivated()"><img src="assets/images/NEM_logo.png" alt="NEM logo" width="30px" height="25px"><span style="font-family: 'Lato'; font-size: 15px; vertical-align: middle">XQC</span></button>
+                            </div>
+
+                    </li>
+                    <li class="list-inline-item notification-list" style="margin-left:12px">
+                    </li>
+
+                    <li class="list-inline-item notification-list">
+                      <div class="dropdown">
+                      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      {{ dropdownElement }}  &#9660;
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <button class="dropdown-item" type="button" (click)="setPublisher()">Publisher</button>
+                        <button class="dropdown-item" type="button" (click)="setAdvertiser()">Advertiser</button>
+                      </div>
+                    </div>
+                    </li>
+        </ul>
+    </div>
+</nav>
