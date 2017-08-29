@@ -10,7 +10,8 @@ export class PublisherCharts {
   monthlyData : Array<any>;
 
   constructor(jsonData?:any){
-    console.log("in publisher charts constructor");
+    if(jsonData)
+      console.log(jsonData["c1_x"]);
     this.lineChartLabels = jsonData && jsonData["c1_x"] || [];
     this.revenueData =  jsonData &&  jsonData["c1_y_revenue"] || [];
     this.impressionsData = jsonData &&  jsonData["c1_y_impressions"] || [];
@@ -22,7 +23,8 @@ export class PublisherCharts {
     this.monthlyData = jsonData && jsonData["c2_y_alltimerevenue"] || [];
   }
   update(publisherCharts: PublisherCharts){
-    this.lineChartLabels = publisherCharts.lineChartLabels;
+    //his.lineChartLabels = publisherCharts.lineChartLabels;
+    this.convertDates(publisherCharts.lineChartLabels);
     this.revenueData = publisherCharts.revenueData;
     this.impressionsData = publisherCharts.impressionsData;
     this.clicksData = publisherCharts.clicksData;
@@ -31,12 +33,13 @@ export class PublisherCharts {
     this.dailyData = publisherCharts.dailyData;
     this.weeklyData = publisherCharts.weeklyData;
     this.monthlyData = publisherCharts.monthlyData;
-    this.convertDates();
+
+    //this.convertDates();
   }
-  convertDates(){
+  convertDates(chartLabels:Array<any>){
     var days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
-    for( var i=0; i<this.lineChartLabels.length;i++){
-      this.lineChartLabels[i]=days[new Date(this.lineChartLabels[i]).getDay()];
+    for( var i=0; i<chartLabels.length;i++){
+      this.lineChartLabels[i]=days[new Date(chartLabels[i]).getDay()];
     }
   }
 

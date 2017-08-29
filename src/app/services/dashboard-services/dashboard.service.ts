@@ -54,6 +54,7 @@ export class DashboardService {
       });
      this.dashboardHttpService.getDashboardCharts().subscribe(
        (response : Response) => {
+          console.log(response.json())
            this.publisherCharts = new PublisherCharts(response.json());
            this.publisherChartsSubject.next(this.publisherCharts);
       });
