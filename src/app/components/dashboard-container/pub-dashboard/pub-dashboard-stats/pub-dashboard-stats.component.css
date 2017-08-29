@@ -1,0 +1,217 @@
+@charset "UTF-8";
+
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,500,700,300");
+
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,500,700,300");
+
+.text-success {
+  color: #1bb99a !important;
+}
+
+.text-muted {
+  color: #818a91;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  font-family: 'Lato', 'Nunito Sans';
+  font-size: 0.9rem;
+  background-color: #f5f5f5;
+  padding-bottom: 60px;
+}
+
+a {
+  outline: none !important;
+  text-decoration: none !important;
+}
+
+.row {
+  margin-right: -10px;
+  margin-left: -10px;
+}
+
+.col,.col-1,.col-10,.col-11,.col-12,.col-2,.col-3,.col-4,.col-5,.col-6,.col-7,.col-8,.col-9,.col-sm,.col-sm-1,.col-sm-10,.col-sm-11,.col-sm-12,.col-sm-2,.col-sm-3,.col-sm-4,.col-sm-5,.col-sm-6,.col-sm-7,.col-sm-8,.col-sm-9 {
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+/*!
+ * Waves v0.6.0
+ * http://fian.my.id/Waves
+ *
+ * Copyright 2014 Alfiana E. Sibuea and other contributors
+ * Released under the MIT license
+ * https://github.com/fians/Waves/blob/master/LICENSE
+ */
+
+/* IE9, IE10, IE11 */
+
+.container {
+  width: 90%;
+}
+
+/*
+  Responsive Menu
+*/
+
+@media (max-width: 991px) {
+  .wrapper {
+    padding-top: 60px !important;
+  }
+
+  .container {
+    width: auto;
+  }
+}
+
+@-moz-keyframes pulse {
+  0% {
+    -moz-transform: scale(0);
+    opacity: 0.0;
+  }
+
+  25% {
+    -moz-transform: scale(0);
+    opacity: 0.1;
+  }
+
+  50% {
+    -moz-transform: scale(0.1);
+    opacity: 0.3;
+  }
+
+  75% {
+    -moz-transform: scale(0.5);
+    opacity: 0.5;
+  }
+
+  100% {
+    -moz-transform: scale(1);
+    opacity: 0.0;
+  }
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-transform: scale(0);
+    opacity: 0.0;
+  }
+
+  25% {
+    -webkit-transform: scale(0);
+    opacity: 0.1;
+  }
+
+  50% {
+    -webkit-transform: scale(0.1);
+    opacity: 0.3;
+  }
+
+  75% {
+    -webkit-transform: scale(0.5);
+    opacity: 0.5;
+  }
+
+  100% {
+    -webkit-transform: scale(1);
+    opacity: 0.0;
+  }
+}
+
+/* Footer */
+
+.wrapper {
+  padding-top: 130px;
+}
+
+/* Notification */
+
+.page-title {
+  font-size: 20px;
+  margin-bottom: 0;
+  margin-top: 0;
+  line-height: 70px;
+}
+
+/* =============
+   Print css
+============= */
+
+@media print {
+  .content-page {
+    margin-left: 0 !important;
+  }
+
+  .page-title {
+    display: none !important;
+    margin: 0px;
+    padding: 0px;
+  }
+
+  .content {
+    margin-top: 0px !important;
+    padding-top: 0px;
+  }
+}
+
+/* Carousel */
+
+.label {
+  display: inline-block;
+  padding: 0.4em 0.8em;
+  font-size: 90%;
+  /*font-weight: bold;*/
+  line-height: 1;
+  color: #ffffff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+}
+
+.card-format {
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  background-clip: padding-box;
+  background-color: #ffffff;
+  box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0 0 rgba(0, 0, 0, 0.02);
+}
+
+.flexrow {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+
+.flexrow > div {
+  display: flex;
+  padding: 10px;
+  //align-items: stretch;
+  width: 100%;
+}
+
+@media only screen and (max-width: 768px) {
+  .flexrow {
+    flex-wrap: wrap;
+  }
+}
+
+.label:empty {
+  display: none;
+}
+
+.label-success {
+  background-color: #22B26F;
+}
+
+/*background-color: #1bb99a; }*/
+.label {
+  font-weight: 500;
+}

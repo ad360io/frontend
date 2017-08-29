@@ -1,0 +1,35 @@
+<div class="row" style="margin: 18px"></div>
+<!-- Page-Title -->
+<div class="row" style="padding:10px">
+    <div class="col-sm-12">
+        <h5>Last 24 Hours</h5>
+    </div>
+</div>
+<div class="row flexrow" >
+    <div class="col" >
+        <div class="card-format">
+            <span id="labelContent2" class="float-right label label-success"> +13.46% </span>
+            <h6 class="text-muted text-uppercase m-b-20">Impressions</h6>
+            <h2 id="cardContent2" style="display: inline" >{{ advertiserStats?.impressions }}</h2>
+        </div>
+    </div>
+
+    <div class="col" >
+        <div class="card-format">
+            <span id="labelContent3" class="float-right label label-success"> +4.57% </span>
+            <h6 class="text-muted text-uppercase m-b-20">Clicks</h6>
+            <h2 id="cardContent3">{{ advertiserStats?.clicks }}</h2>
+        </div>
+    </div>
+
+
+    <div class="col">
+        <div class="card-format">
+            <h6 class="text-muted text-uppercase m-b-20">Balance</h6>
+            <h2 id="cardContent5" style="display: inline" *ngIf="isEqc()">{{ advertiserStats?.eqc_balance }}</h2>
+            <h2 id="cardContent6" style="display: inline" *ngIf="isXqc()">{{ advertiserStats?.xqc_balance }}</h2>
+            <h5 class="text-muted" style="display: inline">{{ currencyType }}</h5>
+        </div>
+    </div>
+</div>        <!-- end row -->
+<hr>

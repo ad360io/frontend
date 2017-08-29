@@ -1,0 +1,17 @@
+<canvas baseChart
+              [datasets]="chooseDataset()"
+              [labels]="publisherCharts.lineChartLabels"
+              [options]="lineChartOptions"
+              [colors]="lineChartColors"
+              [legend]="lineChartLegend"
+              [chartType]="lineChartType"
+              (chartHover)="chartHovered($event)"
+              (chartClick)="chartClicked($event)" *ngIf="isLoaded"></canvas>
+<div class="card-footer text-center">
+    <div class="btn-group" role="group" aria-label="Basic example">
+    <button type="button" class="btn btn-sm btn-secondary active" (click)="activeChart($event)" id="revenueChart">Revenue</button>
+    <button type="button" class="btn btn-sm btn-secondary" (click)="activeChart($event)" id="impressionsChart">Impressions</button>
+    <button type="button" class="btn btn-sm btn-secondary" (click)="activeChart($event)" id="clicksChart">Clicks</button>
+    <button type="button" class="btn btn-sm btn-secondary" (click)="activeChart($event)" id="rpmChart">RPM</button>
+  </div>
+</div>
