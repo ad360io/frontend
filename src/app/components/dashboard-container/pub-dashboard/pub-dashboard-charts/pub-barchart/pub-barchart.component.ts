@@ -42,7 +42,7 @@ export class PubBarchartComponent implements OnInit {
     this.dashboardService.getPublisherCharts().subscribe(
       response => {
         this.publisherCharts.update(response);
-        console.log(this.publisherCharts.dailyData);
+        //console.log(this.publisherCharts.dailyData);
         this.isLoaded=true;
       }
     )
@@ -52,7 +52,7 @@ export class PubBarchartComponent implements OnInit {
   public activeChart(event:any)  {
     var target = event.target || event.srcElement || event.currentTarget;
     this.chosenChart = target.attributes.id.value;
-    console.log(this.chosenChart);
+    //console.log(this.chosenChart);
   }
   public chooseChart(){
     if(this.chosenChart == "dailyChart"){

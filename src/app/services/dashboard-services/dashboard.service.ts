@@ -54,13 +54,12 @@ export class DashboardService {
       });
      this.dashboardHttpService.getDashboardCharts().subscribe(
        (response : Response) => {
-          console.log(response.json())
            this.publisherCharts = new PublisherCharts(response.json());
            this.publisherChartsSubject.next(this.publisherCharts);
       });
       this.dashboardHttpService.getDashboardTables().subscribe(
        (response : Response) => {
-           this.publisherTables = response.json();
+           this.publisherTables = new PublisherTables(response.json());
            this.publisherTablesSubject.next(this.publisherTables);
        });
   }
@@ -68,20 +67,19 @@ export class DashboardService {
   loadAdvertiserDashboard() {
       this.dashboardHttpService.getDashboardStats().subscribe(
       (response : Response) => {
-          console.log(response.json())
           this.advertiserStats = new AdvertiserStats(response.json());
           this.advertiserStatsSubject.next(this.advertiserStats);
       });
-    //  this.dashboardHttpService.getDashboardCharts().subscribe(
-    //    (response : Response) => {
-    //        this.advertiserCharts = response.json();
-    //        this.advertiserChartsSubject.next(this.advertiserCharts);
-    //   });
-    //   this.dashboardHttpService.getDashboardTables().subscribe(
-    //    (response : Response) => {
-    //        this.advertiserTables = response.json();
-    //        this.advertiserTablesSubject.next(this.advertiserTables);
-    //    });
+     this.dashboardHttpService.getDashboardCharts().subscribe(
+       (response : Response) => {
+           this.advertiserCharts = new AdvertiserCharts(response.json());
+           this.advertiserChartsSubject.next(this.advertiserCharts);
+      });
+      this.dashboardHttpService.getDashboardTables().subscribe(
+       (response : Response) => {
+           this.advertiserTables = new AdvertiserTables(response.json());
+           this.advertiserTablesSubject.next(this.advertiserTables);
+       });
   }
   //GETTERS FOR DASHBOARD COMPONENTS
   getPublisherStats(){

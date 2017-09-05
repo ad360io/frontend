@@ -71,7 +71,7 @@ export class PubLinechartComponent implements OnInit {
   ngOnInit(){
     this.dashboardService.getPublisherCharts().subscribe(
       response => {
-        console.log(response);
+        //console.log(response);
         this.publisherCharts.update(response);
         this.isLoaded=true;
       });

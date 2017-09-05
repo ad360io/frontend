@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { Routes, RouterModule } from '@angular/router';
 import { ChartsModule } from 'ng2-charts';
+import {SliderModule} from 'primeng/primeng';
 /*
 Components
 */
@@ -38,6 +39,9 @@ import { PubLinechartComponent } from './components/dashboard-container/pub-dash
 import { PubBarchartComponent } from './components/dashboard-container/pub-dashboard/pub-dashboard-charts/pub-barchart/pub-barchart.component';
 import { AdvBarchartComponent } from './components/dashboard-container/adv-dashboard/adv-dashboard-charts/adv-barchart/adv-barchart.component';
 import { AdvLinechartComponent } from './components/dashboard-container/adv-dashboard/adv-dashboard-charts/adv-linechart/adv-linechart.component';
+import { CreateAdspaceFormComponent } from './components/create-container/create-adspace-form/create-adspace-form.component';
+import { CreateAdFormComponent } from './components/create-container/create-ad-form/create-ad-form.component';
+import { CreateContainerComponent } from './components/create-container/create-container.component';
 
 
 
@@ -69,13 +73,17 @@ const appRoutes : Routes = [
     PubBarchartComponent,
     AdvBarchartComponent,
     AdvLinechartComponent,
+    CreateAdspaceFormComponent,
+    CreateAdFormComponent,
+    CreateContainerComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     RouterModule.forRoot(appRoutes),
-    ChartsModule
+    ChartsModule,
+    SliderModule
   ],
   providers: [LoginAuthenticationService, AuthGuard, TrackMode, TrackCurrency],
   bootstrap: [AppComponent]

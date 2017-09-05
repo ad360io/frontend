@@ -1,3 +1,15 @@
-<p>
-  adv-linechart works!
-</p>
+<canvas baseChart
+              [datasets]="chooseDataset()"
+              [labels]="advertiserCharts.lineChartLabels"
+              [options]="lineChartOptions"
+              [colors]="lineChartColors"
+              [legend]="lineChartLegend"
+              [chartType]="lineChartType"
+              (chartHover)="chartHovered($event)"
+              (chartClick)="chartClicked($event)" *ngIf="isLoaded"></canvas>
+<div class="card-footer text-center">
+    <div class="btn-group" role="group" aria-label="Basic example">
+    <button type="button" class="btn btn-sm btn-secondary" (click)="activeChart($event)" id="impressionsChart">Impressions</button>
+    <button type="button" class="btn btn-sm btn-secondary" (click)="activeChart($event)" id="clicksChart">Clicks</button>
+  </div>
+</div>

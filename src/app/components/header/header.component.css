@@ -26,13 +26,16 @@ body {
 
  .navbar.navbar-toggleable-sm.navbar-inverse.fixed-top  {
    background-color: #304F76;
+   padding-left:55px;
  }
 
  .navbar.navbar-toggleable-sm.navbar-inverse.fixed-top.fixed-top-2{
    background-color: #fff;
-
+    min-height: 60.38px;
  }
 #navbar1 li a {
+  padding-left:25px;
+  padding-right:25px;
   color:black;
 }
  body{

@@ -9,14 +9,14 @@ export class AdvertiserCharts {
 
   constructor(jsonData?:any){
     if(jsonData)
-      console.log(jsonData["c1_x"]);
+      console.log(jsonData);
     this.lineChartLabels = jsonData && jsonData["c1_x"] || [];
     this.impressionsData = jsonData &&  jsonData["c1_y_impressions"] || [];
     this.clicksData = jsonData &&  jsonData["c1_y_clicks"] || [];
     this.barChartLabels = jsonData && jsonData["c2_xdata"] || [];
-    this.dailyData = jsonData &&  jsonData["c2_y_day30revenue"] || [];
-    this.weeklyData =  jsonData && jsonData["c2_y_weekrevenue"] || [];
-    this.monthlyData = jsonData && jsonData["c2_y_alltimerevenue"] || [];
+    this.dailyData = jsonData &&  jsonData["c2_y_day30clicks"] || [];
+    this.weeklyData =  jsonData && jsonData["c2_y_weekclicks"] || [];
+    this.monthlyData = jsonData && jsonData["c2_y_alltimeclicks"] || [];
   }
   update(advertiserCharts: AdvertiserCharts){
     this.convertDates(advertiserCharts.lineChartLabels);
