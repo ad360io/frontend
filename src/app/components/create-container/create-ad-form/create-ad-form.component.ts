@@ -8,7 +8,7 @@ import { CreateHttpService } from '../../../services/create-services/createHttpS
   styleUrls: ['./create-ad-form.component.css']
 })
 export class CreateAdFormComponent implements OnInit {
-
+  
   submitted=false;
   constructor(private createHttpService : CreateHttpService) {
 

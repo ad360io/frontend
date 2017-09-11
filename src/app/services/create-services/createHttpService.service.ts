@@ -7,21 +7,29 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 
+@Injectable()
 
 export class CreateHttpService {
   BASE_URL:string='http://localhost:8000/';
   currentUser:any;
   constructor(private http : Http, private trackMode : TrackMode, private trackCurrency : TrackCurrency ){
   }
-  postAdspaceForm( data : any ){
-    let headers: Headers = new Headers();
+  postAdspaceForm( data : any ): Observable<boolean>{
+    console.log(data);
+    let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    this.http.post(this.BASE_URL+'create-adsp/',JSON.stringify(data.value),headers).map((res:Response) => console.log(res.json()));
+    let options = new RequestOptions({ headers: headers });
+    //this.http.post(this.BASE_URL+'create-adspace/',data,headers).map((res:Response) => console.log(res.json()));
+    return this.http.post('http://localhost:8000/create-adspace/',data,options).map((response: Response) => {
+      console.log(response)
+      return true;
+    });
   }
   postAdForm( data : any ){
+    console.log(data);
     let headers: Headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    this.http.post(this.BASE_URL+'create-adsp/',JSON.stringify(data.value),headers).map((res:Response) => console.log(res.json()));
+    //this.http.post(this.BASE_URL+'create-adspace/',data,headers).map((res:Response) => console.log(res.json()));
   }
 
 }

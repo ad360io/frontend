@@ -14,4 +14,7 @@ export class AppComponent {
   constructor(private loginAuthenticationService : LoginAuthenticationService){
     this.isLoggedIn = loginAuthenticationService.checkLoggedIn();
   }
+  checkLoginStatus(){
+    return this.loginAuthenticationService.checkLoggedIn();
+  }
 }

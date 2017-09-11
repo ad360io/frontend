@@ -1,7 +1,6 @@
-<div class="wrapper">
-  <div class="container">
+<div class="form-container">
     <div class="col-xs-12">
-    <h2 style="padding-top:15px">Create an Adspace</h2>
+    <h2 style="padding-top:15px">Create an Ad Listing</h2>
     <div *ngIf="submitted" class="alert alert-success">The ad was created successfully!</div>
     <form (ngSubmit)="onSubmit(f)" #f="ngForm">
       <div class="col-md-6">
@@ -38,7 +37,5 @@
       <button type="submit" class="btn btn-primary">Submit</button>
         </div>
     </form>
-
     </div>
-  </div>
 </div>

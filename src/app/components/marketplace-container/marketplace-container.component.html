@@ -1,3 +1,3 @@
-<app-header></app-header>
-<app-pub-marketplace *ngIf="checkMode()"></app-pub-marketplace>
-<app-adv-marketplace *ngIf="!checkMode()"></app-adv-marketplace>
+<!-- <app-header></app-header> -->
+<app-pub-marketplace *ngIf="isPublisher()"></app-pub-marketplace>
+<app-adv-marketplace *ngIf="isAdvertiser()"></app-adv-marketplace>

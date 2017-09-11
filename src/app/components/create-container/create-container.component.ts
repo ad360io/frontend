@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { TrackMode } from '../../services/trackMode.service';
 
 
 @Component({
@@ -9,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateContainerComponent implements OnInit {
 
-  constructor() { }
+  constructor( private trackMode : TrackMode) { }
 
   ngOnInit() {
+  }
+  isPublisher(){
+    if (this.trackMode.mode == "PUBLISHER")
+      return true;
+  }
+  isAdvertiser(){
+    if (this.trackMode.mode == "ADVERTISER")
+      return true;
   }
 
 }

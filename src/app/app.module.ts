@@ -49,6 +49,7 @@ const appRoutes : Routes = [
   { path: '', component: LoginComponent },
   { path: 'dashboard', component: DashboardContainerComponent, canActivate: [AuthGuard] },
   { path: 'marketplace', component: MarketplaceContainerComponent, canActivate: [AuthGuard] },
+  { path: 'create', component: CreateContainerComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: '' }
 ];
 

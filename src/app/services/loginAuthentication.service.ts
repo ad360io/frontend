@@ -50,6 +50,10 @@ export class LoginAuthenticationService {
       else
       return false;
     }
+    getToken() :string {
+      if(localStorage.getItem('currentUser'))
+        return localStorage.getItem('currentUser');
+    }
     logout(): void {
         // clear token remove user from local storage to log user out
         this.token = null;
