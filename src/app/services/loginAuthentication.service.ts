@@ -8,7 +8,7 @@ import 'rxjs/add/operator/do';
 @Injectable()
 export class LoginAuthenticationService {
     public token: string;
-
+    userInfo : any;
     constructor(private http: Http) {
         // set token if saved in local storage
         var currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -29,6 +29,7 @@ export class LoginAuthenticationService {
                     this.token = token;
                     // store username and jwt token in local storage to keep user logged in between page refreshes
                     localStorage.setItem('currentUser', JSON.stringify({ username: username, token: token }));
+                    this.userInfo = JSON.parse(localStorage.getItem('currentUser'));
                     // return true to indicate successful login
                     return true;
                 }
@@ -51,8 +52,12 @@ export class LoginAuthenticationService {
       return false;
     }
     getToken() :string {
-      if(localStorage.getItem('currentUser'))
-        return localStorage.getItem('currentUser');
+      if(this.userInfo)
+        return this.userInfo["token"];
+    }
+    getUser() :string {
+      if (this.userInfo)
+        return this.userInfo["username"];
     }
     logout(): void {
         // clear token remove user from local storage to log user out
