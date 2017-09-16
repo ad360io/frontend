@@ -20,7 +20,7 @@ export class LoginAuthenticationService {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       let options = new RequestOptions({ headers: headers });
-        return this.http.post('http://localhost:8000/login/',JSON.stringify({ username: username, password: password }),options)
+        return this.http.post('https://localhost:8000/login/',JSON.stringify({ username: username, password: password }),options)
             .map((response: Response) => {
                 // login successful if there's a jwt token in the response
                 let token = response.json() && response.json().token;
@@ -39,7 +39,6 @@ export class LoginAuthenticationService {
                     return false;
                 }
             });
-
 
     }
 

@@ -24,19 +24,21 @@ export class LoginComponent implements OnInit {
 
    login() {
        this.isLoading = true;
-       this.loginAuthenticationService.login(this.user.username, this.user.password)
-           .subscribe(result => {
-               if (result === true) {
-                   // login successful
-                  console.log(this.loginAuthenticationService.getToken())
-                  console.log(this.loginAuthenticationService.getUser())
-                  console.log("Login was successful!");
-                  this.router.navigate(['/dashboard']);
-               } else {
-                   this.isError=true;
-                   this.loginError = 'Incorrect login information';
-                   this.isLoading = false;
-               }
-           });
+      //  this.loginAuthenticationService.login(this.user.username, this.user.password)
+      //      .subscribe(result => {
+      //          if (result === true) {
+      //              // login successful
+      //             console.log(this.loginAuthenticationService.getToken())
+      //             console.log(this.loginAuthenticationService.getUser())
+      //             console.log("Login was successful!");
+      //             this.router.navigate(['/dashboard']);
+      //          } else {
+      //              this.isError=true;
+      //              this.loginError = 'Incorrect login information';
+      //              this.isLoading = false;
+      //          }
+      //      });
+      console.log("Login was successful!");
+      this.router.navigate(['/dashboard']);
    }
 }
