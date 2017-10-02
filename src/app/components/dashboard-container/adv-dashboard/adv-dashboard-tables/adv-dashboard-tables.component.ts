@@ -13,7 +13,7 @@ export class AdvDashboardTablesComponent implements OnInit {
   ngOnInit() {
     this.dashboardService.getAdvertiserTables().subscribe(
       response => {
-        //console.log("getadvertisertables result:"+response);
+        console.log("getadvertisertables result:"+response);
         this.advertiserTables.update(response);
         this.isLoaded=true;
       });

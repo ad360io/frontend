@@ -17,7 +17,7 @@ export class PubDashboardTablesComponent implements OnInit {
   ngOnInit() {
     this.dashboardService.getPublisherTables().subscribe(
       response => {
-        //console.log(response);
+        console.log(response);
         this.publisherTables.update(response);
         this.t1length = this.publisherTables.websiteName.length;
         this.isLoaded=true;

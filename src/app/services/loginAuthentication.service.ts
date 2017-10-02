@@ -16,7 +16,7 @@ export class LoginAuthenticationService {
     }
 
     login(username: string, password: string): Observable<boolean> {
-      ////console.log("the username is:"+username+"and the password is:"+password)
+      //console.log("the username is:"+username+"and the password is:"+password)
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       let options = new RequestOptions({ headers: headers });
@@ -35,7 +35,7 @@ export class LoginAuthenticationService {
                 }
                  else {
                     // return false to indicate failed login
-                    ////console.log(response)
+                    //console.log(response)
                     return false;
                 }
             });

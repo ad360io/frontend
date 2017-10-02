@@ -143,7 +143,7 @@ $(document).ready(function () {
             firstDay: 1
         }
     }, function (start, end, label) {
-        //console.log(start.toISOString(), end.toISOString(), label);
+        console.log(start.toISOString(), end.toISOString(), label);
         $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
     });
 

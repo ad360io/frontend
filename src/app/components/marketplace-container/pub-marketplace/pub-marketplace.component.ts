@@ -17,7 +17,7 @@ export class PubMarketplaceComponent implements OnInit {
     this.currencyType = this.trackCurrency.currency;
 }
   ngOnInit() {
-    //console.log("MarketPlace Component called");
+    console.log("MarketPlace Component called");
     this.trackCurrency.getCurrency().subscribe(
       returnedValue => {
         this.currencyType = returnedValue;

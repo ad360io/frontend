@@ -17,7 +17,7 @@ export class AdvertiserStats {
     this.xqc_balance=advertiserStats.xqc_balance;
   }
   display(){
-    //console.log("revenue is:"+this.impressions);
-    //console.log("revenue is:"+this.clicks);
+    console.log("revenue is:"+this.impressions);
+    console.log("revenue is:"+this.clicks);
   }
 }

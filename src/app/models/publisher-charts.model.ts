@@ -11,7 +11,7 @@ export class PublisherCharts {
 
   constructor(jsonData?:any){
     if(jsonData)
-      //console.log(jsonData["c1_x"]);
+      console.log(jsonData["c1_x"]);
     this.lineChartLabels = jsonData && jsonData["c1_x"] || [];
     this.revenueData =  jsonData &&  jsonData["c1_y_revenue"] || [];
     this.impressionsData = jsonData &&  jsonData["c1_y_impressions"] || [];

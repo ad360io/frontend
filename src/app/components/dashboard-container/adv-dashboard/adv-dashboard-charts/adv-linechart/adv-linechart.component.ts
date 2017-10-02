@@ -69,23 +69,23 @@ export class AdvLinechartComponent implements OnInit {
   ngOnInit(){
     this.dashboardService.getAdvertiserCharts().subscribe(
       response => {
-        ////console.log(response);
+        //console.log(response);
         this.advertiserCharts.update(response);
         this.isLoaded=true;
       });
   }
   // events
   public chartClicked(e:any):void {
-    //console.log(e);
+    console.log(e);
   }
   public activeChart(event:any)  {
     var target = event.target || event.srcElement || event.currentTarget;
     this.chosenChart = target.attributes.id.value;
-    ////console.log(this.chosenChart);
+    //console.log(this.chosenChart);
   }
 
   public chartHovered(e:any):void {
-    //console.log(e);
+    console.log(e);
   }
   public chooseDataset(){
 
@@ -96,7 +96,7 @@ export class AdvLinechartComponent implements OnInit {
       this.chartData = this.advertiserCharts.clicksData;
     }
 
-    ////console.log(this.chartData)
+    //console.log(this.chartData)
     return this.chartData;
   }
 }

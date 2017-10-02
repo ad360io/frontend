@@ -71,14 +71,14 @@ export class PubLinechartComponent implements OnInit {
   ngOnInit(){
     this.dashboardService.getPublisherCharts().subscribe(
       response => {
-        ////console.log(response);
+        //console.log(response);
         this.publisherCharts.update(response);
         this.isLoaded=true;
       });
   }
   // events
   public chartClicked(e:any):void {
-    //console.log(e);
+    console.log(e);
   }
   public activeChart(event:any)  {
     var target = event.target || event.srcElement || event.currentTarget;
@@ -86,7 +86,7 @@ export class PubLinechartComponent implements OnInit {
   }
 
   public chartHovered(e:any):void {
-    //console.log(e);
+    console.log(e);
   }
   public chooseDataset(){
     if(this.chosenChart == "revenueChart"){
@@ -101,7 +101,7 @@ export class PubLinechartComponent implements OnInit {
     if(this.chosenChart == "rpmChart"){
       this.chartData = this.publisherCharts.rpmData;
     }
-    ////console.log(this.chartData)
+    //console.log(this.chartData)
     return this.chartData;
   }
 

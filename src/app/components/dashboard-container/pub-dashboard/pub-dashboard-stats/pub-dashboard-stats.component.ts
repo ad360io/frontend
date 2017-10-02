@@ -19,7 +19,7 @@ export class PubDashboardStatsComponent implements OnInit {
     this.trackCurrency.getCurrency().subscribe(
       response =>{
         this.currencyType=response;
-        //console.log(response);
+        console.log(response);
     });
     this.dashboardService.getPublisherStats().subscribe(
       response => {
