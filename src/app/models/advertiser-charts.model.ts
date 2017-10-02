@@ -8,8 +8,7 @@ export class AdvertiserCharts {
   monthlyData : Array<any>;
 
   constructor(jsonData?:any){
-    if(jsonData)
-      //console.log(jsonData);
+
     this.lineChartLabels = jsonData && jsonData["c1_x"] || [];
     this.impressionsData = jsonData &&  jsonData["c1_y_impressions"] || [];
     this.clicksData = jsonData &&  jsonData["c1_y_clicks"] || [];
