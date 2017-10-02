@@ -47,12 +47,12 @@ import { CreateContainerComponent } from './components/create-container/create-c
 
 const appRoutes : Routes = [
   { path: '', component: LoginComponent },
-  // { path: 'dashboard', component: DashboardContainerComponent, canActivate: [AuthGuard] },
-  // { path: 'marketplace', component: MarketplaceContainerComponent, canActivate: [AuthGuard] },
-  // { path: 'create', component: CreateContainerComponent, canActivate: [AuthGuard] },
-  { path: 'dashboard', component: DashboardContainerComponent },
-  { path: 'marketplace', component: MarketplaceContainerComponent },
-  { path: 'create', component: CreateContainerComponent },
+  { path: 'dashboard', component: DashboardContainerComponent, canActivate: [AuthGuard] },
+  { path: 'marketplace', component: MarketplaceContainerComponent, canActivate: [AuthGuard] },
+  { path: 'create', component: CreateContainerComponent, canActivate: [AuthGuard] },
+  // { path: 'dashboard', component: DashboardContainerComponent },
+  // { path: 'marketplace', component: MarketplaceContainerComponent },
+  // { path: 'create', component: CreateContainerComponent },
   { path: '**', redirectTo: '' }
 ];
 
