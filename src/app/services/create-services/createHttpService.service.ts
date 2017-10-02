@@ -10,7 +10,7 @@ import 'rxjs/add/operator/do';
 @Injectable()
 
 export class CreateHttpService {
-  BASE_URL:string='http://api.qchaindemo.com/';
+  BASE_URL:string='https://still-gorge-60326.herokuapp.com/';
   currentUser:any;
   constructor(private http : Http, private trackMode : TrackMode, private trackCurrency : TrackCurrency ){
   }
@@ -20,7 +20,7 @@ export class CreateHttpService {
     headers.append('Content-Type', 'application/json');
     let options = new RequestOptions({ headers: headers });
     //this.http.post(this.BASE_URL+'create-adspace/',data,headers).map((res:Response) => console.log(res.json()));
-    return this.http.post('http://api.qchaindemo.com/create-adspace/',data,options).map((response: Response) => {
+    return this.http.post('https://still-gorge-60326.herokuapp.com/create-adspace/',data,options).map((response: Response) => {
       console.log(response)
       return true;
     });

@@ -11,7 +11,7 @@ import 'rxjs/add/operator/do';
 @Injectable()
 
 export class DashboardHttpService{
-    BASE_URL:string='http://api.qchaindemo.com/';
+    BASE_URL:string='https://still-gorge-60326.herokuapp.com/';
     currentUser:any;
     constructor(private http : Http, private trackMode : TrackMode, private trackCurrency : TrackCurrency, private loginAuthenticationService : LoginAuthenticationService ){
     }
