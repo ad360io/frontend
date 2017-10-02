@@ -46,29 +46,29 @@ export class AdvBarchartComponent implements OnInit {
   public activeChart(event:any)  {
     var target = event.target || event.srcElement || event.currentTarget;
     this.chosenChart = target.attributes.id.value;
-    //console.log(this.chosenChart);
+    ////console.log(this.chosenChart);
   }
   public chooseChart(){
     if(this.chosenChart == "dailyChart"){
       this.barChartData = [this.advertiserCharts.dailyData];
-      //console.log("daildata:"+this.advertiserCharts.dailyData);
+      ////console.log("daildata:"+this.advertiserCharts.dailyData);
     }
     if(this.chosenChart == "weeklyChart"){
         this.barChartData = [this.advertiserCharts.weeklyData];
-        //console.log("weekly:"+this.advertiserCharts.weeklyData);
+        ////console.log("weekly:"+this.advertiserCharts.weeklyData);
     }
     if(this.chosenChart == "monthlyChart"){
       this.barChartData = [this.advertiserCharts.monthlyData];
-      //console.log("monthly:"+this.advertiserCharts.monthlyData);
+      ////console.log("monthly:"+this.advertiserCharts.monthlyData);
     }
     return this.barChartData;
 
   }
   public chartClicked(e:any):void {
-    console.log(e);
+    //console.log(e);
   }
 
   public chartHovered(e:any):void {
-    console.log(e);
+    //console.log(e);
   }
 }

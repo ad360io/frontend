@@ -22,9 +22,9 @@ export class PublisherStats {
     this.xqc_balance=publisherStats.xqc_balance;
   }
   display(){
-    console.log("revenue is:"+this.revenue);
-    console.log("revenue is:"+this.impressions);
-    console.log("revenue is:"+this.clicks);
-    console.log("revenue is:"+this.rpm);
+    //console.log("revenue is:"+this.revenue);
+    //console.log("revenue is:"+this.impressions);
+    //console.log("revenue is:"+this.clicks);
+    //console.log("revenue is:"+this.rpm);
   }
 }

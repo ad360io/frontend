@@ -15,7 +15,7 @@ export class PubDashboardChartsComponent implements OnInit {
   ngOnInit() {
     this.dashboardService.getPublisherCharts().subscribe(
       response => {
-      //console.log(response);
+      ////console.log(response);
     });
   }
 

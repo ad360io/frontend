@@ -13,10 +13,10 @@ export class CreateAdspaceFormComponent implements OnInit {
   constructor(private createHttpService : CreateHttpService) { }
   onSubmit(form : NgForm) {
     this.submitted = true;
-    console.log(JSON.stringify(form.value));
+    //console.log(JSON.stringify(form.value));
     this.createHttpService.postAdspaceForm(JSON.stringify(form.value)).subscribe(result => {
       if (result === true) {
-        console.log("adspace request sent");
+        //console.log("adspace request sent");
     }
   });
  }
