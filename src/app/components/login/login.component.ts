@@ -28,9 +28,9 @@ export class LoginComponent implements OnInit {
            .subscribe(result => {
                if (result === true) {
                    // login successful
-                  console.log(this.loginAuthenticationService.getToken())
-                  console.log(this.loginAuthenticationService.getUser())
-                  console.log("Login was successful!");
+                  //console.log(this.loginAuthenticationService.getToken())
+                  //console.log(this.loginAuthenticationService.getUser())
+                  //console.log("Login was successful!");
                   this.router.navigate(['/dashboard']);
                } else {
                    this.isError=true;

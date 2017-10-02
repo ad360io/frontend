@@ -32,7 +32,7 @@ export class DashboardContainerComponent implements OnInit {
       this.trackCurrency.getCurrency().subscribe(
         returnedCurrency => {
           this.currencyType = returnedCurrency;
-          console.log(returnedCurrency);
+          //console.log(returnedCurrency);
         });
    }
   isAdvertiser(){

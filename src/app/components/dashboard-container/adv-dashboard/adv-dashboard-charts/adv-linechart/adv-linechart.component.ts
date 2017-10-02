@@ -76,7 +76,7 @@ export class AdvLinechartComponent implements OnInit {
   }
   // events
   public chartClicked(e:any):void {
-    console.log(e);
+    //console.log(e);
   }
   public activeChart(event:any)  {
     var target = event.target || event.srcElement || event.currentTarget;
@@ -85,7 +85,7 @@ export class AdvLinechartComponent implements OnInit {
   }
 
   public chartHovered(e:any):void {
-    console.log(e);
+    //console.log(e);
   }
   public chooseDataset(){
 

@@ -37,13 +37,13 @@ export class HeaderComponent implements OnInit {
     this.dropdownElement="Publisher";
     this.userMode = "PUBLISHER";
     this.trackMode.setMode("PUBLISHER");
-    console.log(this.userMode);
+    //console.log(this.userMode);
   }
   setAdvertiser(){
     this.dropdownElement="Advertiser";
     this.userMode = "ADVERTISER";
     this.trackMode.setMode("ADVERTISER");
-    console.log(this.userMode);
+    //console.log(this.userMode);
   }
 
   //Methods to set the currency type in the trackCurrency service.
@@ -52,7 +52,7 @@ export class HeaderComponent implements OnInit {
     this.isNem=true;
     this.currencyType="XQC";
     this.trackCurrency.setCurrency("XQC");
-    console.log(this.currencyType);
+    //console.log(this.currencyType);
 
   }
   ethereumActivated(){
@@ -60,7 +60,7 @@ export class HeaderComponent implements OnInit {
     this.isNem=false;
     this.currencyType="EQC";
     this.trackCurrency.setCurrency("EQC");
-    console.log(this.currencyType);
+    //console.log(this.currencyType);
   }
 
 }

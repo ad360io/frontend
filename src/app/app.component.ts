@@ -16,5 +16,6 @@ export class AppComponent {
   }
   checkLoginStatus(){
     return this.loginAuthenticationService.checkLoggedIn();
+    //return this.isLoggedIn;
   }
 }

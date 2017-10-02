@@ -68,7 +68,7 @@
             }
             else {
               value=value.replace(',','');
-              console.log("replaced integer value:"+value);
+              //console.log("replaced integer value:"+value);
               document.getElementById("cardContent"+(i+1)).innerHTML=truncatedInteger(parseInt(value));
             }
         }
