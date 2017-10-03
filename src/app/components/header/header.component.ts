@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { TrackMode } from '../../services/trackMode.service';
 import { TrackCurrency } from '../../services/trackCurrency.service';
+import { LoginAuthenticationService } from '../../services/loginAuthentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -14,7 +16,7 @@ export class HeaderComponent implements OnInit {
   isEthereum=true;
   isNem=false;
   dropdownElement="Publisher";
-  constructor(private trackMode : TrackMode, private trackCurrency : TrackCurrency) { }
+  constructor(private trackMode : TrackMode, private trackCurrency : TrackCurrency, private loginAuthenticationService: LoginAuthenticationService,private router: Router) { }
 
   ngOnInit() {
   }
@@ -61,6 +63,13 @@ export class HeaderComponent implements OnInit {
     this.currencyType="EQC";
     this.trackCurrency.setCurrency("EQC");
     //console.log(this.currencyType);
+  }
+  logout(){
+    this.loginAuthenticationService.logout();
+    this.router.navigate(['/']);
+  }
+  routeDashboard(){
+    this.router.navigate(['/dashboard']);
   }
 
 }

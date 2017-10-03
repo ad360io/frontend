@@ -13,6 +13,7 @@ export class PubBarchartComponent implements OnInit {
   isLoaded:boolean=false;
   //barChartSampleData:any[]=[{data: [58.42890899, 55.23969063, 63.13143881, 60.64657295, 59.68306015]}];
   public barChartOptions:any = {
+   tooltips: { enabled: false }, 
     scaleShowVerticalLines: false,
     responsive: true,
      legend: { display: false }

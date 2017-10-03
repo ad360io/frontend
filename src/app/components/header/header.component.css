@@ -23,6 +23,9 @@ body {
 .container {
   margin-left:40px;
 }
+.logout:hover {
+  color:#D3D3D3;
+}
 
  .navbar.navbar-toggleable-sm.navbar-inverse.fixed-top  {
    background-color: #304F76;

@@ -12,6 +12,7 @@ export class AdvBarchartComponent implements OnInit {
   chosenChart:any = "dailyChart";
   isLoaded:boolean=false;
   public barChartOptions:any = {
+    tooltips: { enabled: false },
     scaleShowVerticalLines: false,
     responsive: true,
      legend: { display: false }

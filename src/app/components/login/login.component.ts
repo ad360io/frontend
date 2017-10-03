@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   isLoading : boolean;
   isError:boolean=false;
   loginError : string;
-  constructor(private loginAuthenticationService: LoginAuthenticationService, private router: Router,) {
+  constructor(private loginAuthenticationService: LoginAuthenticationService, private router: Router) {
    }
    ngOnInit() {
        // reset login status
