@@ -25,6 +25,8 @@ export class MarketplaceService {
   constructor( private trackMode : TrackMode, private trackCurrency : TrackCurrency, private marketplaceHttpService : MarketplaceHttpService ){
 
   }
-
+ // filterListings(){
+ //   this.marketplaceHttpService.loadPublisherMarketplace();
+ // }
 
 }

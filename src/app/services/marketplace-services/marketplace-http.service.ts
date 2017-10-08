@@ -12,7 +12,7 @@ import 'rxjs/add/operator/do';
 
 
 export class MarketplaceHttpService {
-  BASE_URL:string='http://localhost:8000/';
+  BASE_URL:string='https://still-gorge-60326.herokuapp.com/';
   currentUser:any;
   constructor(private http : Http, private trackMode : TrackMode, private trackCurrency : TrackCurrency,private loginAuthenticationService : LoginAuthenticationService ){
   }
@@ -23,8 +23,10 @@ export class MarketplaceHttpService {
     params.set('currencyType', this.trackCurrency.currency);
     params.set('adType',data['adTypeList']);
     params.set('adGenre',data['adGenreList']);
-    params.set('minrate',data['minrate']);
-    params.set('maxrate',data['maxrate']);
+    params.set('cpi_minrate',data['cpi_minrate']);
+    params.set('cpi_maxrate',data['cpi_maxrate']);
+    params.set('cpm_minrate',data['cpm_minrate']);
+    params.set('cpm_maxrate',data['cpm_maxrate']);
     let requestOptions = new RequestOptions();
     requestOptions.params = params;
     return requestOptions;

@@ -8,6 +8,8 @@ import { HttpModule } from '@angular/http';
 import { Routes, RouterModule } from '@angular/router';
 import { ChartsModule } from 'ng2-charts';
 import {SliderModule} from 'primeng/primeng';
+import {CalendarModule} from 'primeng/primeng';
+
 /*
 Components
 */
@@ -80,6 +82,7 @@ const appRoutes : Routes = [
     CreateAdspaceFormComponent,
     CreateAdFormComponent,
     CreateContainerComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -87,7 +90,8 @@ const appRoutes : Routes = [
     HttpModule,
     RouterModule.forRoot(appRoutes),
     ChartsModule,
-    SliderModule
+    SliderModule,
+    CalendarModule
   ],
   providers: [LoginAuthenticationService, AuthGuard, TrackMode, TrackCurrency],
   bootstrap: [AppComponent]

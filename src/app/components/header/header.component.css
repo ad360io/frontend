@@ -23,7 +23,7 @@ body {
 .container {
   margin-left:40px;
 }
-.logout:hover {
+.:hover {
   color:#D3D3D3;
 }
 

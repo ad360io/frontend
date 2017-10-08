@@ -33793,9 +33793,9 @@
         assert.equal(moment.duration(1, 'second').asMilliseconds(),       1000,         '1 second as milliseconds');
 
         // milliseconds
-        assert.equal(moment.duration(1, 'millisecond').asYears().toFixed(13),  0.0000000000317, '1 millisecond as years');
-        assert.equal(moment.duration(1, 'millisecond').asMonths().toFixed(12), 0.000000000380,  '1 millisecond as months');
-        assert.equal(moment.duration(1, 'millisecond').asWeeks().toFixed(11),  0.00000000165,   '1 millisecond as weeks');
+        assert.equal(moment.duration(1, 'millisecond').asYears().toFixed(13),  000317, '1 millisecond as years');
+        assert.equal(moment.duration(1, 'millisecond').asMonths().toFixed(12), 00380,  '1 millisecond as months');
+        assert.equal(moment.duration(1, 'millisecond').asWeeks().toFixed(11),  0165,   '1 millisecond as weeks');
         assert.equal(moment.duration(1, 'millisecond').asDays().toFixed(10),   0.0000000116,    '1 millisecond as days');
         assert.equal(moment.duration(1, 'millisecond').asHours().toFixed(9),   0.000000278,     '1 millisecond as hours');
         assert.equal(moment.duration(1, 'millisecond').asMinutes().toFixed(7), 0.0000167,       '1 millisecond as minutes');

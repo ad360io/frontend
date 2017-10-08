@@ -25,7 +25,6 @@ export class AdvertiserCharts {
     this.dailyData = advertiserCharts.dailyData;
     this.weeklyData = advertiserCharts.weeklyData;
     this.monthlyData = advertiserCharts.monthlyData;
-
     //this.convertDates();
   }
   convertDates(chartLabels:Array<any>){

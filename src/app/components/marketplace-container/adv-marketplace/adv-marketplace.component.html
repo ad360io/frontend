@@ -7,8 +7,7 @@
           <li>
           <div class="container" style="margin-left:0px">
             <div class="cox-xs-12" style="padding:10px">
-                <form>
-                    <li>Adspace Type</li>
+                <form (ngSubmit)="onSubmit()">
                     <li><div class="form-group">
                       <select class="custom-select"  name="adtype"  (change)="updateAdtype($event.target.value)">
                       <option selected value="Banner Top">Banner Top</option>
@@ -17,7 +16,6 @@
                       <option value="Popup">Popup</option>
                       </select>
                   </div></li>
-                <li>Ad Genre</li>
                 <li><div class="form-group">
                       <select class="custom-select" name="genre" (change)="updateGenre($event.target.value)" >
                       <option selected value="Movies">Movies</option>
@@ -26,13 +24,35 @@
                       <option value="Other">Other</option>
                       </select>
                   </div></li>
-                    <li>
-                    <p-slider [(ngModel)]="rangeValues" [range]="true"name="slider"></p-slider>
-                    </li>
-                    <li>
-                     {{ currencyType }}: {{rangeValues[0] + ' - ' + rangeValues[1]}}
-                    </li>
-                    <li><button type="submit" class="btn btn-primary">Filter</button></li>
+                  <li>
+                  <p-slider class="form-group" [(ngModel)]="rangeValues2" [min]="10" [max]="50"  [range]="true"name="slider1" ></p-slider>
+                  </li>
+                  <li>
+                   CPI : {{rangeValues2[0] + ' - ' + rangeValues2[1]}}
+                  </li>
+                  <li>
+                 <p-slider class="form-group" [(ngModel)]="rangeValues3" [min]="5" [max]="50" [range]="true"name="slider2"></p-slider>
+                 </li>
+                  <li>
+                   CPM : {{rangeValues3[0] + ' - ' + rangeValues3[1]}}
+                  </li>
+                  <li>
+                    Start Date
+                  </li>
+                  <li>
+                    <div>
+                     <input class="form-group" type="date" [ngModel] ="dt1 | date:'yyyy-MM-dd'" (ngModelChange)="dt1 = $event" name="startDate" [value]="datee | date:'yyyy-MM-dd'">
+                   </div>
+                  </li>
+                  <li>
+                    End Date
+                  </li>
+                  <li>
+                  <div>
+                   <input type="date" class="form-group" [ngModel] ="dt2 | date:'yyyy-MM-dd'" (ngModelChange)="dt2 = $event" name="endDate" [value]="datee | date:'yyyy-MM-dd'">
+                 </div>
+               </li>
+                  <li style="margin-top:10px"><button type="submit" class="btn btn-primary">Filter</button></li>
                 </form>
              </div>
              </div>
@@ -50,7 +70,7 @@
                     <div class="card-block">
                       <h4 class="card-title"><span class="label label-default">{{ genre }}</span> <span class="label label-success">{{ Adtype }}</span> </h4>
                       <p class="card-text">New York Times has open adspaces on the front page!</p>
-                      <a href="#" class="btn btn-primary">Contact Publisher &gt; </a>
+                      <a  style="color:white" class="btn btn-primary disabled">Contact Publisher &gt; </a>
                     </div>
 
                 </div>
@@ -60,7 +80,7 @@
                       <div class="card-block">
                         <h4 class="card-title"><span class="label label-default">{{ genre }}</span> <span class="label label-success">{{ Adtype }}</span> </h4>
                           <p class="card-text">WorlWide Gaming has new adspaces on its platform!</p>
-                        <a href="#" class="btn btn-primary">Contact Publisher &gt; </a>
+                        <a  style="color:white" class="btn btn-primary disabled">Contact Publisher &gt; </a>
                       </div>
                   </div>
                   </div>
@@ -69,7 +89,7 @@
                         <div class="card-block">
                           <h4 class="card-title"><span class="label label-default">{{ genre }}</span> <span class="label label-success">{{ Adtype }}</span></h4>
                             <p class="card-text">The Star Wars Sabers Forum is offering new adspaces!</p>
-                          <a href="#" class="btn btn-primary">Contact Publisher &gt; </a>
+                          <a  style="color:white" class="btn btn-primary disabled">Contact Publisher &gt; </a>
                         </div>
 
                     </div>
@@ -78,7 +98,7 @@
                         <div class="card-format">
                           <div class="card-block">
                             <h4 class="card-title"><span class="label label-default">{{ genre }}</span> <span class="label label-success">{{ Adtype }}</span></h4>
-                            <a href="#" class="btn btn-primary">Contact Publisher &gt; </a>
+                            <a  style="color:white" class="btn btn-primary disabled">Contact Publisher &gt; </a>
                           </div>
 
                       </div>

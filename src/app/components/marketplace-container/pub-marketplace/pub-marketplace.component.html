@@ -2,37 +2,59 @@
   <div class="container">
     <div id="wrapper">
         <!-- Sidebar -->
-        <div id="sidebar-wrapper">
+        <div id="sidebar-wrapper" >
         <ul class="sidebar-nav">
           <li>
-          <div class="container" style="margin-left:0px">
+          <div class="container" style="margin-left:0px;">
             <div class="cox-xs-12" style="padding:10px">
-                <form>
-                    <li>Adspace Type</li>
-                    <li><div class="form-group">
-                      <select class="custom-select"  name="adtype"  (change)="updateAdtype($event.target.value)">
+                <form (ngSubmit)="onSubmit()">
+                  <!-- <li>
+                <div class="form-group">
+                      <select class="custom-select"  name="adtype" (change)="updateAdtype($event.target.value)">
                       <option selected value="Banner Top">Banner Top</option>
                       <option value="Banner Left">Banner Left</option>
                       <option value="Banner Right">Banner Right</option>
                       <option value="Popup">Popup</option>
                       </select>
-                  </div></li>
-                <li>Ad Genre</li>
+                  </div></li> -->
+                  <li>Ad Genre:</li>
                 <li><div class="form-group">
                       <select class="custom-select" name="genre" (change)="updateGenre($event.target.value)" >
                       <option selected value="Movies">Movies</option>
                       <option value="Gaming">Gaming</option>
-                      <option value="Forums">Forums</option>
-                      <option value="Other">Other</option>
+                      <option value="Auto">Auto</option>
+                      <option value="Porn">Porn</option>
                       </select>
                   </div></li>
-                    <li>
-                    <p-slider [(ngModel)]="rangeValues" [range]="true"name="slider"></p-slider>
-                    </li>
-                    <li>
-                     {{ currencyType }}: {{rangeValues[0] + ' - ' + rangeValues[1]}}
-                    </li>
-                    <li><button type="submit" class="btn btn-primary">Filter</button></li>
+                  <li>
+                  <p-slider class="form-group" [(ngModel)]="rangeValues2" [min]="10" [max]="50"  [range]="true" name="slider1" ></p-slider>
+                  </li>
+                  <li>
+                   CPI : {{rangeValues2[0] + ' - ' + rangeValues2[1]}}
+                  </li>
+                  <li>
+                 <p-slider class="form-group" [(ngModel)]="rangeValues3" [min]="5" [max]="50" [range]="true" name="slider2"></p-slider>
+                 </li>
+                  <li>
+                   CPM : {{rangeValues3[0] + ' - ' + rangeValues3[1]}}
+                  </li>
+                  <li>
+                    Start Date
+                  </li>
+                  <li>
+                    <div>
+                     <input class="form-group" type="date" [ngModel] ="dt1 | date:'yyyy-MM-dd'" (ngModelChange)="dt1 = $event" name="startDate" [value]="datee | date:'yyyy-MM-dd'">
+                   </div>
+                  </li>
+                  <li>
+                    End Date
+                  </li>
+                  <li>
+                  <div>
+                   <input type="date" class="form-group" [ngModel] ="dt2 | date:'yyyy-MM-dd'" (ngModelChange)="dt2 = $event" name="endDate" [value]="datee | date:'yyyy-MM-dd'">
+                 </div>
+               </li>
+                  <li style="margin-top:10px"><button type="submit" class="btn btn-primary">Filter</button></li>
                 </form>
              </div>
              </div>
@@ -45,12 +67,42 @@
         <div id="page-content-wrapper">
             <div class="container-fluid">
               <h3>Ad Listings</h3>
-              <div class="row">
+              <ng-container *ngIf="filterUsed">
+              <div class="row" *ngFor="let i of array">
+                <div class="card-format">
+                  <div class="card-block">
+                    <h4 class="card-title"><span class="label label-default">{{selectedList[i]["genre"]}}</span> <span class="label label-success">{{ selectedList[i]["adtype"] }}</span> {{selectedList[i]["name"]}} </h4>
+                    <p class="card-text">{{selectedList[i]["msg"]}}</p>
+                    <h5>CPI : {{selectedList[i]["cpi"]}}  {{selectedList[i]["currency"]}}</h5>
+                    <h5>CPM : {{selectedList[i]["cpm"]}}  {{selectedList[i]["currency"]}}</h5>
+                    <h6>Posted Date : {{selectedList[i]["ask_date_from"]}}</h6>
+                    <a style="color:white" class="btn btn-primary disabled">Contact {{selectedList[i]["username"]}} &gt; </a>
+                  </div>
+              </div>
+            </div>
+            </ng-container>
+            <ng-container *ngIf="!filterUsed">
+            <div class="row" *ngFor="let i of array2">
+              <div class="card-format">
+                <div class="card-block">
+                  <h4 class="card-title"><span class="label label-default">{{adlistings[i]["genre"]}}</span>  <span class="label label-success">{{ adlistings[i]["adtype"] }}</span> {{adlistings[i]["name"]}}</h4>
+                  <p class="card-text">{{adlistings[i]["msg"]}}</p>
+                  <h5>CPI : {{adlistings[i]["cpi"]}}  {{adlistings[i]["currency"]}}</h5>
+                  <h5>CPM : {{adlistings[i]["cpm"]}}  {{adlistings[i]["currency"]}}</h5>
+                  <h6>Posted Date : {{adlistings[i]["ask_date_from"]}}</h6>
+                  <a style="color:white" class="btn btn-primary disabled">Contact {{adlistings[i]["username"]}} &gt; </a>
+                </div>
+            </div>
+          </div>
+          </ng-container>
+        </div>
+    </div>
+              <!-- <div class="row">
                   <div class="card-format">
                     <div class="card-block">
                       <h4 class="card-title"><span class="label label-default">{{ genre }}</span> <span class="label label-success">{{ Adtype }}</span> </h4>
                       <p class="card-text">Sierra VR is looking to promote its new VR platform!</p>
-                      <a href="#" class="btn btn-primary">Contact Advertiser &gt; </a>
+                      <a style="color:white" class="btn btn-primary disabled">Contact Advertiser &gt; </a>
                     </div>
 
                 </div>
@@ -60,7 +112,7 @@
                       <div class="card-block">
                         <h4 class="card-title"><span class="label label-default">{{ genre }}</span> <span class="label label-success">{{ Adtype }}</span> </h4>
                           <p class="card-text">Valvia is on an ad blitz for Legend of Honors 3!</p>
-                        <a href="#" class="btn btn-primary">Contact Advertiser &gt; </a>
+                        <a style="color:white" class="btn btn-primary disabled">Contact Advertiser &gt; </a>
                       </div>
                   </div>
                   </div>
@@ -69,7 +121,7 @@
                         <div class="card-block">
                           <h4 class="card-title"><span class="label label-default">{{ genre }}</span> <span class="label label-success">{{ Adtype }}</span></h4>
                             <p class="card-text">New Adblitz from Sunshine Industries!</p>
-                          <a href="#" class="btn btn-primary">Contact Advertiser &gt; </a>
+                          <a class="btn btn-primary disabled">Contact Advertiser &gt; </a>
                         </div>
 
                     </div>
@@ -78,13 +130,12 @@
                         <div class="card-format">
                           <div class="card-block">
                             <h4 class="card-title"><span class="label label-default">{{ genre }}</span> <span class="label label-success">{{ Adtype }}</span></h4>
-                            <a href="#" class="btn btn-primary">Contact Advertiser &gt; </a>
+                            <a  style="color:white" class="btn btn-primary disabled">Contact Advertiser &gt; </a>
                           </div>
 
                       </div>
-                      </div>
-            </div>
-        </div>
+                      </div> -->
+
         <!-- /#page-content-wrapper -->
 
     </div>

@@ -18,7 +18,8 @@ export class DashboardHttpService{
     prepareRequestParameters(){
       let params: URLSearchParams = new URLSearchParams();
       params.set('userMode', this.trackMode.mode);
-      params.set('userName', this.loginAuthenticationService.getUser());
+      params.set('userName', 'demouser');
+      console.log(this.loginAuthenticationService.getUser());
       params.set('currencyType', this.trackCurrency.currency);
       let requestOptions = new RequestOptions();
       requestOptions.params = params;
