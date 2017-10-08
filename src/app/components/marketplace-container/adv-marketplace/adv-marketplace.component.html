@@ -8,20 +8,21 @@
           <div class="container" style="margin-left:0px">
             <div class="cox-xs-12" style="padding:10px">
                 <form (ngSubmit)="onSubmit()">
-                    <li><div class="form-group">
+                    <!-- <li><div class="form-group">
                       <select class="custom-select"  name="adtype"  (change)="updateAdtype($event.target.value)">
                       <option selected value="Banner Top">Banner Top</option>
                       <option value="Banner Left">Banner Left</option>
                       <option value="Banner Right">Banner Right</option>
                       <option value="Popup">Popup</option>
                       </select>
-                  </div></li>
+                  </div></li> -->
+                  <li> Ad Genre : </li>
                 <li><div class="form-group">
                       <select class="custom-select" name="genre" (change)="updateGenre($event.target.value)" >
                       <option selected value="Movies">Movies</option>
                       <option value="Gaming">Gaming</option>
-                      <option value="Forums">Forums</option>
-                      <option value="Other">Other</option>
+                      <option value="Auto">Auto</option>
+                      <option value="Porn">Porn</option>
                       </select>
                   </div></li>
                   <li>
@@ -65,44 +66,34 @@
         <div id="page-content-wrapper">
             <div class="container-fluid">
               <h3>Available Adspaces</h3>
-              <div class="row">
-                  <div class="card-format">
-                    <div class="card-block">
-                      <h4 class="card-title"><span class="label label-default">{{ genre }}</span> <span class="label label-success">{{ Adtype }}</span> </h4>
-                      <p class="card-text">New York Times has open adspaces on the front page!</p>
-                      <a  style="color:white" class="btn btn-primary disabled">Contact Publisher &gt; </a>
-                    </div>
-
-                </div>
-                </div>
-                <div class="row">
-                    <div class="card-format">
-                      <div class="card-block">
-                        <h4 class="card-title"><span class="label label-default">{{ genre }}</span> <span class="label label-success">{{ Adtype }}</span> </h4>
-                          <p class="card-text">WorlWide Gaming has new adspaces on its platform!</p>
-                        <a  style="color:white" class="btn btn-primary disabled">Contact Publisher &gt; </a>
-                      </div>
+              <ng-container *ngIf="filterUsed">
+              <div class="row" *ngFor="let i of array">
+                <div class="card-format">
+                  <div class="card-block">
+                    <h4 class="card-title"><span class="label label-default">{{selectedList[i]["genre"]}}</span> <span class="label label-success">{{ selectedList[i]["adtype"] }}</span> {{selectedList[i]["name"]}} </h4>
+                    <p class="card-text">{{selectedList[i]["msg"]}}</p>
+                    <h5>CPI : {{selectedList[i]["cpi"]}}  {{selectedList[i]["currency"]}}</h5>
+                    <h5>CPM : {{selectedList[i]["cpm"]}}  {{selectedList[i]["currency"]}}</h5>
+                    <h6>Posted Date : {{selectedList[i]["ask_date_from"]}}</h6>
+                    <a style="color:white" class="btn btn-primary disabled">Contact {{selectedList[i]["username"]}} &gt; </a>
                   </div>
-                  </div>
-                  <div class="row">
-                      <div class="card-format">
-                        <div class="card-block">
-                          <h4 class="card-title"><span class="label label-default">{{ genre }}</span> <span class="label label-success">{{ Adtype }}</span></h4>
-                            <p class="card-text">The Star Wars Sabers Forum is offering new adspaces!</p>
-                          <a  style="color:white" class="btn btn-primary disabled">Contact Publisher &gt; </a>
-                        </div>
-
-                    </div>
-                    </div>
-                    <div class="row">
-                        <div class="card-format">
-                          <div class="card-block">
-                            <h4 class="card-title"><span class="label label-default">{{ genre }}</span> <span class="label label-success">{{ Adtype }}</span></h4>
-                            <a  style="color:white" class="btn btn-primary disabled">Contact Publisher &gt; </a>
-                          </div>
-
-                      </div>
-                      </div>
+              </div>
+            </div>
+            </ng-container>
+            <ng-container *ngIf="!filterUsed">
+            <div class="row" *ngFor="let i of array2">
+              <div class="card-format">
+                <div class="card-block">
+                  <h4 class="card-title"><span class="label label-default">{{adspaceListings[i]["genre"]}}</span>  <span class="label label-success">{{ adspaceListings[i]["adtype"] }}</span> {{adspaceListings[i]["name"]}}</h4>
+                  <p class="card-text">{{adspaceListings[i]["msg"]}}</p>
+                  <h5>CPI : {{adspaceListings[i]["cpi"]}}  {{adspaceListings[i]["currency"]}}</h5>
+                  <h5>CPM : {{adspaceListings[i]["cpm"]}}  {{adspaceListings[i]["currency"]}}</h5>
+                  <h6>Posted Date : {{adspaceListings[i]["ask_date_from"]}}</h6>
+                  <a style="color:white" class="btn btn-primary disabled">Contact {{adspaceListings[i]["username"]}} &gt; </a>
+                </div>
+            </div>
+          </div>
+          </ng-container>
             </div>
         </div>
         <!-- /#page-content-wrapper -->
