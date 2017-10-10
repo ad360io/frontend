@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { TrackMode } from '../../../services/trackMode.service';
 import { TrackCurrency} from '../../../services/trackCurrency.service';
 import {CalendarModule} from 'primeng/primeng';
@@ -7,7 +7,8 @@ import { MarketplaceService } from '../../../services/marketplace-services/marke
 @Component({
   selector: 'app-pub-marketplace',
   templateUrl: './pub-marketplace.component.html',
-  styleUrls: ['./pub-marketplace.component.css']
+  styleUrls: ['./pub-marketplace.component.css'],
+  encapsulation : ViewEncapsulation.None
 })
 export class PubMarketplaceComponent implements OnInit {  rangeValues2= [10,50];
   rangeValues3= [5,50];
