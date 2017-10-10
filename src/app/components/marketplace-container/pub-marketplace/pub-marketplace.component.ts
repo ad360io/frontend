@@ -188,8 +188,10 @@ this.array[i] = i;
 
 }
   ngOnInit() {
+    this.onSubmit();
 this.trackCurrency.getCurrency().subscribe(
   returnedValue => {this.currencyType = returnedValue;
+    this.onSubmit();
   });
   }
   updateGenre(genre:any){
