@@ -8,13 +8,25 @@
     <div class="navbar-collapse collapse" id="navbar1">
         <ul class="navbar-nav" id="nav2">
             <li class="nav-item active">
-                <a class="nav-link" routerLink="/dashboard" routerLinkActive="active" style="padding-left:0px;"><i class="zmdi zmdi-home"></i> DASHBOARD  </a>
+                <a class="nav-link" style="padding-left: 10px; cursor: pointer" (click)="routeDashboard()" [ngStyle]="{color:checkActivePage('dashboard')}">
+                    <span class="zmdi zmdi-home"></span>
+                    <span>&nbsp;</span>
+                    DASHBOARD
+                </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" routerLink="/marketplace" routerLinkActive="active"><i class="zmdi zmdi-globe-alt"></i>  MARKETPLACE  </a>
+                <a class="nav-link" style="cursor: pointer" (click)="routeMarketplace()" [ngStyle]="{color:checkActivePage('marketplace')}">
+                    <span class="zmdi zmdi-globe-alt"></span>
+                    <span>&nbsp;</span>
+                    MARKETPLACE
+                </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" routerLink="/create" routerLinkActive="active"><i class="zmdi zmdi-collection-text"></i>  CREATE  </a>
+                <a class="nav-link" style="cursor: pointer" (click)="routeCreate()" [ngStyle]="{color:checkActivePage('create')}">
+                    <span class="zmdi zmdi-collection-text"></span>
+                    <span>&nbsp;</span>
+                    CREATE
+                </a>
             </li>
 
         </ul>
@@ -29,7 +41,7 @@ dark
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar2" id="mobileMenu1">
         <i class="fa fa-bars" aria-hidden="true"></i>
     </button>
-    <a (click)="routeDashboard()" class="navbar-brand">
+    <a (click)="routeDashboard()" class="navbar-brand" style="cursor: pointer">
         <img src="assets/images/Qchain_logo.png" alt="Qchain logo" width="122px" height="58px">
     </a>
     <div class="navbar-collapse collapse" id="navbar2">
@@ -39,11 +51,18 @@ dark
                       <span class="noti-icon"></span>
                   </a>
               </li>
-            <li class="list-inline-item notification-list">
+            <li class="list-inline-item notification-list" style="margin-top: 2px">
 
                             <div class="btn-group" role="group" >
-                                <button type="button" class="btn btn-sm btn-secondary" [ngStyle]="{backgroundColor:checkEthereumActive()}" (click)="ethereumActivated()"><img src="assets/images/Ethereum_logo.png" alt="Ethereum logo" width="22px" height="25px"><span style="font-family: 'Lato'; font-size: 15px; vertical-align: middle">EQC</span></button>
-                                <button type="button" class="btn btn-sm btn-secondary" [ngStyle]="{backgroundColor:checkNemActive()}" (click)="nemActivated()"><img src="assets/images/NEM_logo.png" alt="NEM logo" width="30px" height="25px"><span style="font-family: 'Lato'; font-size: 15px; vertical-align: middle">XQC</span></button>
+                                <button type="button" class="btn btn-sm btn-secondary" style="cursor: pointer" [ngStyle]="{backgroundColor:checkEthereumActive()}" (click)="ethereumActivated()">
+                                    <img src="assets/images/Ethereum_logo.png" alt="Ethereum logo" width="22px" height="25px">
+                                    <span style="font-family: 'Lato'; font-size: 15px; vertical-align: middle">EQC</span>
+                                </button>
+
+                                <button type="button" class="btn btn-sm btn-secondary" style="cursor: pointer" [ngStyle]="{backgroundColor:checkNemActive()}" (click)="nemActivated()">
+                                    <img src="assets/images/NEM_logo.png" alt="NEM logo" width="30px" height="25px">
+                                    <span style="font-family: 'Lato'; font-size: 15px; vertical-align: middle">XQC</span>
+                                </button>
                             </div>
 
                     </li>
@@ -52,18 +71,22 @@ dark
 
                     <li class="list-inline-item notification-list">
                       <div class="dropdown">
-                      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="cursor: pointer">
                       {{ dropdownElement }}
                       </button>
                       <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <button class="dropdown-item" type="button" (click)="setPublisher()">Publisher</button>
-                        <button class="dropdown-item" type="button" (click)="setAdvertiser()">Advertiser</button>
+                        <button class="dropdown-item" type="button" style="cursor: pointer" (click)="setPublisher()">Publisher</button>
+                        <button class="dropdown-item" type="button" style="cursor: pointer" (click)="setAdvertiser()">Advertiser</button>
                       </div>
                     </div>
                     </li>
         </ul>
     </div>
     <ul class="nav navbar-nav" style="float: right">
-    <li><div class="button" (click)="logout()"><i id="logout_icon" style="color:white;padding-left:4px;margin-top:4px" class="zmdi zmdi-power zmdi-hc-lg"></i> </div></li>
+        <li>
+            <div class="button" (click)="logout()" style="margin-right: 24px">
+                <span id="logout_icon" style="color:white;padding-left:4px;margin-top:4px;cursor: pointer" class="zmdi zmdi-power zmdi-hc-lg" title="Log out"></span>
+            </div>
+        </li>
     </ul>
 </nav>
