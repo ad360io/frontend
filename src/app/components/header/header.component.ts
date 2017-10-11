@@ -12,11 +12,11 @@ import { Router } from '@angular/router';
 })
 
 export class HeaderComponent implements OnInit {
-  userMode="PUBLISHER";
+  userMode="ADVERTISER";
   currencyType="EQC";
   isEthereum=true;
   isNem=false;
-  dropdownElement="Publisher";
+  dropdownElement="Advertiser";
   activePage='';
   constructor(private trackMode : TrackMode, private trackCurrency : TrackCurrency, private loginAuthenticationService: LoginAuthenticationService,private router: Router) { }
 

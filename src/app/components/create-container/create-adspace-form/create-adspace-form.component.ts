@@ -13,6 +13,8 @@ export class CreateAdspaceFormComponent implements OnInit {
 
   submitted=false;
   currencyType="EQC"
+  adtype ="Banner Top"
+  genre = "Movies"
   constructor(private createHttpService : CreateHttpService,
               private trackCurrency: TrackCurrency,
               private titleService: Title) {

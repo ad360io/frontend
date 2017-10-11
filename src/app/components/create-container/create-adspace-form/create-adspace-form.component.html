@@ -1,21 +1,23 @@
 <div class="form-container">
     <div class="col-xs-12">
     <h2 style="padding-top:15px">Create an Adspace</h2>
-    <!-- <div *ngIf="submitted" class="alert alert-success">The adspace was created successfully!</div> -->
-    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <div *ngIf="submitted" class="alert alert-info">This is temporarily disabled and will be re-enabled when we open account registrations.</div>
+    <form  (ngSubmit)="f.form.valid && onSubmit(f)" #f="ngForm" novalidate>
       <div class="col-lg-6">
       <div class="form-group">
-        <label for="website" >Website</label>
-        <input class="form-control" id="website" placeholder="Enter Website Name" ngModel name="website">
+        <label for="website" >Website:</label>
+        <input class="form-control" id="website" placeholder="Enter Website Name" ngModel name="website" >
       </div>
       <div class="form-group">
-        <label for="Name">Adspace Name</label>
-        <input class="form-control" id="adspaceName" placeholder="Enter Adspace Name" name="name" ngModel>
+        <label for="Name">Adspace Name:</label>
+        <input class="form-control" id="adspaceName" placeholder="Enter Adspace Name" name="adspace" ngModel >
+
       </div>
+
       <div class="form-group">
         <label for="exampleSelect2">Choose Adspace Types: </label>
           <select class="custom-select" name="adtype" ngModel>
-          <option selected value="Banner Top">Banner Top</option>
+          <option  value="Banner Top" selected>Banner Top</option>
           <option value="Banner Left">Banner Left</option>
           <option value="Banner Right">Banner Right</option>
           <option value="Popup">Popup</option>
@@ -24,9 +26,9 @@
       </div>
       <div class="col-lg-6">
       <div class="form-group">
-        <label for="genre"> Ad Genre </label>
+        <label for="genre"> Ad Genre: </label>
           <select class="custom-select" name="genre" ngModel>
-          <option selected value="Movies">Movies</option>
+          <option  value="Movies" selected>Movies</option>
           <option value="Gaming">Gaming</option>
           <option value="Forums">Forums</option>
           <option value="Forums">Dining</option>
@@ -43,7 +45,7 @@
         <div class="form-group">
           <label for="currency"> Currency: {{currencyType}} </label>
         </div>
-      <button type="submit" class="btn btn-primary disabled" title="This is temporarily disabled and will be re-enabled when we open account registrations.">Submit</button>
+      <button type="submit" class="btn btn-primary" title="This feature is temporarily disabled and will be re-enabled when we open account registrations.">Submit</button>
         </div>
     </form>
 

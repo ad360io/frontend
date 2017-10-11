@@ -21,13 +21,28 @@
             <h2 id="cardContent3">{{ advertiserStats?.clicks }}</h2>
         </div>
     </div>
-
+    <div class="col" >
+        <div class="card-format">
+            <span id="labelContent12" class="float-right label label-danger"> -1.57% </span>
+            <h6 class="text-muted text-uppercase m-b-20">CPM</h6>
+            <h2 id="cardContent12" style="display: inline" *ngIf="isEqc()">41.5653832</h2>
+            <h2 id="cardContent13" style="display: inline" *ngIf="isXqc()">33.9283134</h2>
+        </div>
+    </div>
 
     <div class="col">
         <div class="card-format">
             <h6 class="text-muted text-uppercase m-b-20">Balance</h6>
             <h2 id="cardContent5" style="display: inline" *ngIf="isEqc()">{{ advertiserStats?.eqc_balance }}</h2>
             <h2 id="cardContent6" style="display: inline" *ngIf="isXqc()">{{ advertiserStats?.xqc_balance }}</h2>
+            <h5 class="text-muted" style="display: inline">{{ currencyType }}</h5>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card-format">
+            <h6 class="text-muted text-uppercase m-b-20">Expenses</h6>
+            <h2 id="cardContent15" style="display: inline" *ngIf="isEqc()">13.8923392</h2>
+            <h2 id="cardContent16" style="display: inline" *ngIf="isXqc()">10.6288212</h2>
             <h5 class="text-muted" style="display: inline">{{ currencyType }}</h5>
         </div>
     </div>

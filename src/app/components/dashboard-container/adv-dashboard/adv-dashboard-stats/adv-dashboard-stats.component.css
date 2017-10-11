@@ -211,6 +211,10 @@ a {
   background-color: #22B26F;
 }
 
+.label-danger {
+  background-color: #d9534f;
+}
+
 /*background-color: #1bb99a; }*/
 .label {
   font-weight: 500;
