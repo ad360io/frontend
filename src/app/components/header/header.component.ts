@@ -10,15 +10,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css'],
   //encapsulation : ViewEncapsulation.None
 })
+
 export class HeaderComponent implements OnInit {
   userMode="PUBLISHER";
   currencyType="EQC";
   isEthereum=true;
   isNem=false;
   dropdownElement="Publisher";
+  activePage='';
   constructor(private trackMode : TrackMode, private trackCurrency : TrackCurrency, private loginAuthenticationService: LoginAuthenticationService,private router: Router) { }
 
   ngOnInit() {
+    this.activePage=window.location.pathname.substring(1, );
   }
 
   checkEthereumActive()
@@ -31,6 +34,12 @@ export class HeaderComponent implements OnInit {
   {
     if(this.isNem){
       return "#ADD3DF";
+    }
+  }
+
+  checkActivePage(pageName: string) {
+    if (pageName == this.activePage) {
+      return '#4b80c0';
     }
   }
 
@@ -70,6 +79,14 @@ export class HeaderComponent implements OnInit {
   }
   routeDashboard(){
     this.router.navigate(['/dashboard']);
+    this.activePage='dashboard';
   }
-
+  routeMarketplace(){
+    this.router.navigate(['/marketplace']);
+    this.activePage='marketplace';
+  }
+  routeCreate(){
+    this.router.navigate(['/create']);
+    this.activePage='create';
+  }
 }

@@ -1,7 +1,7 @@
 /*
 Modules
 */
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -44,6 +44,7 @@ import { AdvLinechartComponent } from './components/dashboard-container/adv-dash
 import { CreateAdspaceFormComponent } from './components/create-container/create-adspace-form/create-adspace-form.component';
 import { CreateAdFormComponent } from './components/create-container/create-ad-form/create-ad-form.component';
 import { CreateContainerComponent } from './components/create-container/create-container.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 
@@ -82,6 +83,7 @@ const appRoutes : Routes = [
     CreateAdspaceFormComponent,
     CreateAdFormComponent,
     CreateContainerComponent,
+    FooterComponent,
 
   ],
   imports: [
@@ -93,7 +95,7 @@ const appRoutes : Routes = [
     SliderModule,
     CalendarModule
   ],
-  providers: [LoginAuthenticationService, AuthGuard, TrackMode, TrackCurrency],
+  providers: [LoginAuthenticationService, AuthGuard, TrackMode, TrackCurrency, Title],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
