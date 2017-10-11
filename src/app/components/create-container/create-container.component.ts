@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { TrackMode } from '../../services/trackMode.service';
 
 
 @Component({
   selector: 'app-create-container',
   templateUrl: './create-container.component.html',
-  styleUrls: ['./create-container.component.css']
+  styleUrls: ['./create-container.component.css'],
+  encapsulation : ViewEncapsulation.None
 })
 export class CreateContainerComponent implements OnInit {
 

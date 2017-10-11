@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { DashboardService } from '../../../../services/dashboard-services/dashboard.service';
 import { PublisherStats } from '../../../../models/publisher-stats.model';
 import { TrackCurrency } from '../../../../services/trackCurrency.service';
@@ -6,7 +6,8 @@ import { TrackCurrency } from '../../../../services/trackCurrency.service';
 @Component({
   selector: 'app-pub-dashboard-stats',
   templateUrl: './pub-dashboard-stats.component.html',
-  styleUrls: ['./pub-dashboard-stats.component.css']
+  styleUrls: ['./pub-dashboard-stats.component.css'],
+  // encapsulation : ViewEncapsulation.None
 })
 export class PubDashboardStatsComponent implements OnInit {
   publisherStats : PublisherStats=new PublisherStats();

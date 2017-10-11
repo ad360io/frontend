@@ -9,7 +9,8 @@ import { DashboardHttpService } from '../../services/dashboard-services/dashboar
   selector: 'app-dashboard-container',
   templateUrl: './dashboard-container.component.html',
   styleUrls: ['./dashboard-container.component.css'],
-  providers:[DashboardService, DashboardHttpService]
+  providers:[DashboardService, DashboardHttpService],
+  encapsulation : ViewEncapsulation.None
 
 })
 export class DashboardContainerComponent implements OnInit {

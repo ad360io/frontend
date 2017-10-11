@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AdvertiserTables } from '../../../../models/advertiser-tables.model';
 import { DashboardService } from '../../../../services/dashboard-services/dashboard.service';
 @Component({
   selector: 'app-adv-dashboard-tables',
   templateUrl: './adv-dashboard-tables.component.html',
-  styleUrls: ['./adv-dashboard-tables.component.css']
+  styleUrls: ['./adv-dashboard-tables.component.css'],
+  // encapsulation : ViewEncapsulation.None
 })
 export class AdvDashboardTablesComponent implements OnInit {
   advertiserTables: AdvertiserTables = new AdvertiserTables();

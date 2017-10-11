@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AdvertiserStats } from '../../../../models/advertiser-stats.model';
 import { TrackCurrency } from '../../../../services/trackCurrency.service';
 import { DashboardService } from '../../../../services/dashboard-services/dashboard.service';
@@ -6,7 +6,8 @@ import { DashboardService } from '../../../../services/dashboard-services/dashbo
 @Component({
   selector: 'app-adv-dashboard-stats',
   templateUrl: './adv-dashboard-stats.component.html',
-  styleUrls: ['./adv-dashboard-stats.component.css']
+  styleUrls: ['./adv-dashboard-stats.component.css'],
+  // encapsulation : ViewEncapsulation.None
 })
 export class AdvDashboardStatsComponent implements OnInit {
   advertiserStats: AdvertiserStats = new AdvertiserStats();

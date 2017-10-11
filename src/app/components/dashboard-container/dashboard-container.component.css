@@ -3,3 +3,6 @@ body{
   font-family: 'Lato', 'Nunito Sans';
   font-size: 0.9rem;
 }
+.container{
+  width:auto;
+}
