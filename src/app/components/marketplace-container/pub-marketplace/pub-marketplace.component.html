@@ -17,7 +17,7 @@
                       <option value="Popup">Popup</option>
                       </select>
                   </div></li> -->
-                  <li>Ad Genre:</li>
+                  <li style="font-size: 15px; font-weight: bold">Ad Genre:</li>
                 <li><div class="form-group">
                       <select class="custom-select" name="genre" (change)="updateGenre($event.target.value)" >
                       <option selected value="Movies">Movies</option>
@@ -27,18 +27,18 @@
                       </select>
                   </div></li>
                   <li>
+                   <span style="font-size: 15px; font-weight: bold"><b>RPC:</b></span> {{rangeValues2[0] + ' - ' + rangeValues2[1]}}
+                  </li>
+                  <li style="margin: 0 0 24px 28px; width: 70%">
                   <p-slider class="form-group" [(ngModel)]="rangeValues2" [min]="10" [max]="50"  [range]="true" name="slider1" ></p-slider>
                   </li>
                   <li>
-                   CPC : {{rangeValues2[0] + ' - ' + rangeValues2[1]}}
+                   <span style="font-size: 15px; font-weight: bold"><b>RPM:</b></span> {{rangeValues3[0] + ' - ' + rangeValues3[1]}}
                   </li>
-                  <li>
+                  <li style="margin: 0 0 24px 28px; width: 70%">
                  <p-slider class="form-group" [(ngModel)]="rangeValues3" [min]="5" [max]="50" [range]="true" name="slider2"></p-slider>
                  </li>
-                  <li>
-                   CPM : {{rangeValues3[0] + ' - ' + rangeValues3[1]}}
-                  </li>
-                  <li>
+                  <li style="font-size: 15px; font-weight: bold">
                     Start Date
                   </li>
                   <li>
@@ -46,7 +46,7 @@
                      <input class="form-group" type="date" [ngModel] ="dt1 | date:'yyyy-MM-dd'" (ngModelChange)="dt1 = $event" name="startDate" [value]="dt1 | date:'yyyy-MM-dd'">
                    </div>
                   </li>
-                  <li>
+                  <li style="font-size: 15px; font-weight: bold">
                     End Date
                   </li>
                   <li>
@@ -66,7 +66,7 @@
         <!-- Page Content -->
         <div id="page-content-wrapper" style="padding-top:44px;padding-left:100px;">
             <div class="container-fluid">
-              <h3>Ad Listings</h3>
+              <h3 style="margin-top: 18px">Ad Listings</h3>
               <ng-container *ngIf="filterUsed">
               <div class="row" *ngFor="let i of array">
                 <div class="card-format">

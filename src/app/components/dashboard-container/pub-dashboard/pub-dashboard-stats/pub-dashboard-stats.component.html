@@ -1,16 +1,16 @@
 <div class="row" style="margin: 18px"></div>
 <!-- Page-Title -->
-<div class="row" style="padding:10px">
+<div class="row" style="margin: 42px 0 0 3px">
     <div class="col-sm-12">
-        <h5>Last 24 Hours</h5>
+        <h5 style="font-size: 24px">Last 24 Hours</h5>
     </div>
 </div>
-<div class="row flexrow" >
+<div class="row flexrow" style="margin-bottom: -10px">
     <div class="col">
         <div class="card-format">
             <span id="labelContent1" class="float-right label label-success"> +14.77% </span>
             <h6 class="text-muted text-uppercase m-b-20">Revenue</h6>
-            <h2 id="cardContent1" style="display: inline">{{ publisherStats?.revenue }}</h2>
+            <h2 id="cardContent1" style="display: inline; font-size: 27px">{{ publisherStats?.revenue }}</h2>
             <h5 class="text-muted" style="display: inline">{{ currencyType }}</h5>
         </div>
     </div>
@@ -19,7 +19,7 @@
         <div class="card-format">
             <span id="labelContent2" class="float-right label label-success"> +11.58% </span>
             <h6 class="text-muted text-uppercase m-b-20">Impressions</h6>
-            <h2 id="cardContent2" style="display: inline" >{{ publisherStats?.impressions }}</h2>
+            <h2 id="cardContent2" style="display: inline; font-size: 27px" >{{ publisherStats?.impressions }}</h2>
         </div>
     </div>
 
@@ -27,7 +27,7 @@
         <div class="card-format">
             <span id="labelContent3" class="float-right label label-success"> +3.71% </span>
             <h6 class="text-muted text-uppercase m-b-20">Clicks</h6>
-            <h2 id="cardContent3">{{ publisherStats?.clicks}}</h2>
+            <h2 id="cardContent3" style="font-size: 27px">{{ publisherStats?.clicks}}</h2>
         </div>
     </div>
 
@@ -35,16 +35,16 @@
         <div class="card-format">
             <span id="labelContent4" class="float-right label label-success"> +4.75% </span>
             <h6 class="text-muted text-uppercase m-b-20">RPM</h6>
-            <h2 id="cardContent4" style="display: inline">{{ publisherStats?.rpm }}</h2>
-
+            <h2 id="cardContent4" style="display: inline; font-size: 27px">{{ publisherStats?.rpm }}</h2>
+            <h5 class="text-muted" style="display: inline">{{ currencyType }}</h5>
         </div>
     </div>
 
     <div class="col">
         <div class="card-format">
             <h6 class="text-muted text-uppercase m-b-20">Balance</h6>
-             <h2 id="cardContent5" style="display: inline" *ngIf="isEqc()">{{ publisherStats?.eqc_balance }}</h2>
-             <h2 id="cardContent6" style="display: inline" *ngIf="isXqc()">{{ publisherStats?.xqc_balance }}</h2>
+             <h2 id="cardContent5" style="display: inline; font-size: 27px" *ngIf="isEqc()">{{ publisherStats?.eqc_balance }}</h2>
+             <h2 id="cardContent6" style="display: inline; font-size: 27px" *ngIf="isXqc()">{{ publisherStats?.xqc_balance }}</h2>
             <h5 class="text-muted" style="display: inline">{{ currencyType }}</h5>
         </div>
     </div>

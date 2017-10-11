@@ -1,21 +1,21 @@
 <div class="form-container">
     <div class="col-xs-12">
-    <h2 style="padding-top:15px">Create an Adspace</h2>
-    <div *ngIf="submitted" class="alert alert-info">This is temporarily disabled and will be re-enabled when we open account registrations.</div>
+    <h2 style="margin: 60px 0 36px 14px">Create an Adspace Listing</h2>
+    <div *ngIf="submitted" class="alert alert-info" style="margin-left: 14px">This is temporarily disabled and will be re-enabled when we open account registrations.</div>
     <form  (ngSubmit)="f.form.valid && onSubmit(f)" #f="ngForm" novalidate>
       <div class="col-lg-6">
       <div class="form-group">
-        <label for="website" >Website:</label>
-        <input class="form-control" id="website" placeholder="Enter Website Name" ngModel name="website" >
+        <label for="website" style="font-size: 15px; font-weight: bold">Website:</label>
+        <input class="form-control" id="website" placeholder="Enter the name of your website" ngModel name="website" >
       </div>
       <div class="form-group">
-        <label for="Name">Adspace Name:</label>
-        <input class="form-control" id="adspaceName" placeholder="Enter Adspace Name" name="adspace" ngModel >
+        <label for="Name" style="font-size: 15px; font-weight: bold">Adspace Name:</label>
+        <input class="form-control" id="adspaceName" placeholder="Enter the name of your adspace" name="adspace" ngModel >
 
       </div>
 
       <div class="form-group">
-        <label for="exampleSelect2">Choose Adspace Types: </label>
+        <label for="exampleSelect2" style="font-size: 15px; font-weight: bold">Choose Adspace Types: </label> <br>
           <select class="custom-select" name="adtype" ngModel>
           <option  value="Banner Top" selected>Banner Top</option>
           <option value="Banner Left">Banner Left</option>
@@ -26,7 +26,7 @@
       </div>
       <div class="col-lg-6">
       <div class="form-group">
-        <label for="genre"> Ad Genre: </label>
+        <label for="genre" style="font-size: 15px; font-weight: bold"> Ad Genre: </label> <br>
           <select class="custom-select" name="genre" ngModel>
           <option  value="Movies" selected>Movies</option>
           <option value="Gaming">Gaming</option>
@@ -37,13 +37,16 @@
       </div>
 
         <div class="form-group">
-          <label for="height"> Height: </label>
-          <input class="form-control" style="width:30%" id="adspace_height" placeholder="Enter Height" name="height" ngModel>
-          <label for="width"> Width: </label>
-          <input class="form-control" style="width:30%" id="adspace_width" placeholder="Enter Width" name="width" ngModel>
+          <label for="height" style="font-size: 15px; font-weight: bold"> Height: </label>
+          <input class="form-control" style="width:30%" id="adspace_height" placeholder="Enter the height in pixels" name="height" ngModel>
+
+          <br>
+
+          <label for="width" style="font-size: 15px; font-weight: bold"> Width: </label>
+          <input class="form-control" style="width:30%" id="adspace_width" placeholder="Enter the width in pixels" name="width" ngModel>
         </div>
         <div class="form-group">
-          <label for="currency"> Currency: {{currencyType}} </label>
+          <label for="currency" style="font-size: 15px; font-weight: bold">Token:</label> {{currencyType}}
         </div>
       <button type="submit" class="btn btn-primary" title="This feature is temporarily disabled and will be re-enabled when we open account registrations.">Submit</button>
         </div>
