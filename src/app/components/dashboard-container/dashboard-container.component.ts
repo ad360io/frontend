@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { LoginAuthenticationService } from '../../services/loginAuthentication.service';
 import { TrackMode } from '../../services/trackMode.service';
 import { TrackCurrency } from '../../services/trackCurrency.service';
@@ -19,7 +20,10 @@ export class DashboardContainerComponent implements OnInit {
   userMode : string ;
   currencyType : string ;
 
-  constructor(private loginAuthenticationService: LoginAuthenticationService, private trackMode : TrackMode, private trackCurrency : TrackCurrency) {
+  constructor(private loginAuthenticationService: LoginAuthenticationService,
+              private trackMode : TrackMode,
+              private trackCurrency : TrackCurrency,
+              private titleService: Title) {
       this.userMode = this.trackMode.mode;
       this.currencyType = this.trackCurrency.currency;
       //Check whether the user is logged in
@@ -49,6 +53,7 @@ export class DashboardContainerComponent implements OnInit {
       return false;
   }
   ngOnInit() {
+    this.titleService.setTitle('Qchain – Dashboard');
   }
 
 }

@@ -1,7 +1,7 @@
 /*
 Modules
 */
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -93,7 +93,7 @@ const appRoutes : Routes = [
     SliderModule,
     CalendarModule
   ],
-  providers: [LoginAuthenticationService, AuthGuard, TrackMode, TrackCurrency],
+  providers: [LoginAuthenticationService, AuthGuard, TrackMode, TrackCurrency, Title],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

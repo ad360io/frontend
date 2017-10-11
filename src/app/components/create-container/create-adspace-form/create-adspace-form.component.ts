@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { NgForm } from '@angular/forms';
 import { CreateHttpService } from '../../../services/create-services/createHttpService.service';
 import { TrackCurrency } from '../../../services/trackCurrency.service';
@@ -12,7 +13,9 @@ export class CreateAdspaceFormComponent implements OnInit {
 
   submitted=false;
   currencyType="EQC"
-  constructor(private createHttpService : CreateHttpService, private trackCurrency: TrackCurrency) {
+  constructor(private createHttpService : CreateHttpService,
+              private trackCurrency: TrackCurrency,
+              private titleService: Title) {
     this.currencyType = this.trackCurrency.currency;
     this.trackCurrency.getCurrency().subscribe(
       response => {
@@ -30,6 +33,6 @@ export class CreateAdspaceFormComponent implements OnInit {
   // });
  }
   ngOnInit() {
-
+    this.titleService.setTitle('Qchain – Create an Adspace Listing');
   }
 }

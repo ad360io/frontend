@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { User } from '../../models/user.model';
 import { LoginAuthenticationService } from '../../services/loginAuthentication.service';
 import { Router } from '@angular/router';
@@ -15,28 +16,33 @@ export class LoginComponent implements OnInit {
   isLoading : boolean;
   isError:boolean=false;
   loginError : string;
-  constructor(private loginAuthenticationService: LoginAuthenticationService, private router: Router) {
-   }
-   ngOnInit() {
-       // reset login status
-       this.loginAuthenticationService.logout();
-   }
+  constructor(private loginAuthenticationService: LoginAuthenticationService,
+              private router: Router,
+              private titleService: Title) {
+  }
 
-   login() {
-       this.isLoading = true;
-       this.loginAuthenticationService.login(this.user.username, this.user.password)
-           .subscribe(result => {
-               if (result === true) {
-                   // login successful
-                  //console.log(this.loginAuthenticationService.getToken())
-                  //console.log(this.loginAuthenticationService.getUser())
-                  //console.log("Login was successful!");
-                  this.router.navigate(['/dashboard']);
-               } else {
-                   this.isError=true;
-                   this.loginError = 'Incorrect login information';
-                   this.isLoading = false;
-               }
-           });
-   }
+  ngOnInit() {
+    // reset login status
+    this.loginAuthenticationService.logout();
+
+    this.titleService.setTitle('Qchain – Login');
+  }
+
+  login() {
+      this.isLoading = true;
+      this.loginAuthenticationService.login(this.user.username, this.user.password)
+          .subscribe(result => {
+              if (result === true) {
+                  // login successful
+                 //console.log(this.loginAuthenticationService.getToken())
+                 //console.log(this.loginAuthenticationService.getUser())
+                 //console.log("Login was successful!");
+                 this.router.navigate(['/dashboard']);
+              } else {
+                  this.isError=true;
+                  this.loginError = 'Incorrect login information';
+                  this.isLoading = false;
+              }
+          });
+  }
 }
