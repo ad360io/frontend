@@ -8,7 +8,7 @@ import { TrackCurrency } from '../../../services/trackCurrency.service';
   selector: 'app-pub-dashboard',
   templateUrl: './pub-dashboard.component.html',
   styleUrls: ['./pub-dashboard.component.css'],
-  encapsulation : ViewEncapsulation.None
+  //encapsulation : ViewEncapsulation.None
 })
 export class PubDashboardComponent implements OnInit {
 

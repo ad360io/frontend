@@ -8,7 +8,7 @@ import { MarketplaceService } from '../../../services/marketplace-services/marke
   selector: 'app-pub-marketplace',
   templateUrl: './pub-marketplace.component.html',
   styleUrls: ['./pub-marketplace.component.css'],
-  encapsulation : ViewEncapsulation.None
+  //encapsulation : ViewEncapsulation.None
 })
 export class PubMarketplaceComponent implements OnInit {  rangeValues2= [10,50];
   rangeValues3= [5,50];

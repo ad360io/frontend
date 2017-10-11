@@ -6,7 +6,7 @@ import { TrackMode } from '../../services/trackMode.service';
   selector: 'app-create-container',
   templateUrl: './create-container.component.html',
   styleUrls: ['./create-container.component.css'],
-  encapsulation : ViewEncapsulation.None
+  //encapsulation : ViewEncapsulation.None
 })
 export class CreateContainerComponent implements OnInit {
 

@@ -10,7 +10,7 @@ import { DashboardHttpService } from '../../services/dashboard-services/dashboar
   templateUrl: './dashboard-container.component.html',
   styleUrls: ['./dashboard-container.component.css'],
   providers:[DashboardService, DashboardHttpService],
-  encapsulation : ViewEncapsulation.None
+  //encapsulation : ViewEncapsulation.None
 
 })
 export class DashboardContainerComponent implements OnInit {

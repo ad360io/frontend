@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  // encapsulation: ViewEncapsulation.None
+  //encapsulation: ViewEncapsulation.None
 })
 
 export class LoginComponent implements OnInit {
@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
   isError:boolean=false;
   loginError : string;
   constructor(private loginAuthenticationService: LoginAuthenticationService, private router: Router) {
+
    }
    ngOnInit() {
        // reset login status

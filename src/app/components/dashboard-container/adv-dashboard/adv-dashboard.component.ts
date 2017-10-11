@@ -6,7 +6,7 @@ import { TrackCurrency } from '../../../services/trackCurrency.service';
   selector: 'app-adv-dashboard',
   templateUrl: './adv-dashboard.component.html',
   styleUrls: ['./adv-dashboard.component.css'],
-  encapsulation : ViewEncapsulation.None
+  //encapsulation : ViewEncapsulation.None
 })
 export class AdvDashboardComponent implements OnInit {
 
