@@ -64,6 +64,10 @@ export class PubLinechartComponent implements OnInit {
   public lineChartLegend:boolean = true;
   public lineChartType:string = 'line';
   isLoaded =false;
+  isRevenueActive=true;
+  isImpressionsActive = false;
+  isRpmActive = false;
+  isClicksActive = false;
   constructor(private dashboardService : DashboardService, private trackCurrency: TrackCurrency){
     this.publisherCharts = new PublisherCharts();
   }
@@ -84,6 +88,30 @@ export class PubLinechartComponent implements OnInit {
   public activeChart(event:any)  {
     var target = event.target || event.srcElement || event.currentTarget;
     this.chosenChart = target.attributes.id.value;
+    if(this.chosenChart=="impressionsChart"){
+      this.isImpressionsActive = true;
+      this.isClicksActive = false;
+      this.isRevenueActive = false;
+      this.isRpmActive =  false;
+      }
+      if(this.chosenChart=="clicksChart"){
+        this.isImpressionsActive = false;
+        this.isClicksActive = true;
+        this.isRevenueActive = false;
+        this.isRpmActive =  false;
+        }
+        if(this.chosenChart=="rpmChart"){
+          this.isImpressionsActive = false;
+          this.isClicksActive = false;
+          this.isRevenueActive = false;
+          this.isRpmActive =  true;
+          }
+          if(this.chosenChart=="revenueChart"){
+            this.isImpressionsActive = false;
+            this.isClicksActive = false;
+            this.isRevenueActive = true;
+            this.isRpmActive =  false;
+            }
   }
 
   public chartHovered(e:any):void {
@@ -105,5 +133,18 @@ export class PubLinechartComponent implements OnInit {
     //console.log(this.chartData)
     return this.chartData;
   }
+  // isRevenueActive(){
+  //   return this.revenueActive;
+  // }
+  // isImpressionskActive(){
+  //   return this.isWeeklyActive;
+  // }
+  // isRpmActive(){
+  //   return this.isMonthlyActive;
+  // }
+  // isClicksActive(){
+  //   return this.isWeeklyActive;
+  // }
+
 
 }

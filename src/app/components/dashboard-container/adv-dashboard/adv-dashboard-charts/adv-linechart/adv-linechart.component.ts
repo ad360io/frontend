@@ -63,6 +63,8 @@ export class AdvLinechartComponent implements OnInit {
   ];
   public lineChartLegend:boolean = true;
   public lineChartType:string = 'line';
+    isImpressionsActive = true;
+    isClicksActive= false;
   constructor(private dashboardService : DashboardService, private trackCurrency: TrackCurrency){
 
   }
@@ -82,6 +84,16 @@ export class AdvLinechartComponent implements OnInit {
   public activeChart(event:any)  {
     var target = event.target || event.srcElement || event.currentTarget;
     this.chosenChart = target.attributes.id.value;
+    if(this.chosenChart=="impressionsChart"){
+      this.isImpressionsActive = true;
+      this.isClicksActive = false;
+
+      }
+      if(this.chosenChart=="clicksChart"){
+        this.isImpressionsActive = false;
+        this.isClicksActive = true;
+
+        }
     //console.log(this.chosenChart);
   }
 

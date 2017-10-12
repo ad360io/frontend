@@ -36,6 +36,9 @@ export class AdvBarchartComponent implements OnInit {
   ];
   eqcCPM = 41.5653832;
   xqcCPM = 33.9283134;
+  isDailyActive = true;
+  isMonthlyActive = false;
+  isWeeklyActive = false;
   constructor(private dashboardService : DashboardService,private trackCurrency: TrackCurrency) {
   }
 
@@ -74,6 +77,21 @@ export class AdvBarchartComponent implements OnInit {
   public activeChart(event:any)  {
     var target = event.target || event.srcElement || event.currentTarget;
     this.chosenChart = target.attributes.id.value;
+    if(this.chosenChart=="dailyChart"){
+      this.isDailyActive = true;
+      this.isWeeklyActive = false;
+      this.isMonthlyActive = false;
+      }
+      if(this.chosenChart=="weeklyChart"){
+        this.isDailyActive = false;
+        this.isWeeklyActive = true;
+        this.isMonthlyActive = false;
+        }
+        if(this.chosenChart=="monthlyChart"){
+          this.isDailyActive = false;
+          this.isWeeklyActive = false;
+          this.isMonthlyActive = true;
+          }
     //console.log(this.chosenChart);
   }
   public chooseChart(){
@@ -98,5 +116,14 @@ export class AdvBarchartComponent implements OnInit {
 
   public chartHovered(e:any):void {
     //console.log(e);
+  }
+  isDayActive(){
+    return this.isDailyActive;
+  }
+  isWeekActive(){
+    return this.isWeeklyActive;
+  }
+  isTimeActive(){
+    return this.isMonthlyActive;
   }
 }
