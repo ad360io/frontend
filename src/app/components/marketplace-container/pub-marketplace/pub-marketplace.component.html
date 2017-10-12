@@ -39,7 +39,7 @@
                   <li style="margin: 0 0 24px 28px; width: 70%">
                  <p-slider class="form-group" [(ngModel)]="rangeValues3" [min]="5" [max]="50" [range]="true" name="slider2"></p-slider>
                  </li>
-                  <li style="font-size: 15px; font-weight: bold">
+                  <!-- <li style="font-size: 15px; font-weight: bold">
                     Start Date
                   </li>
                   <li>
@@ -52,10 +52,10 @@
                   </li>
                   <li>
                   <div>
-                    <!-- <p-calendar  [style]="{'width':'80%'}" [inputStyle]="{'width':'80%'}" class="form-group" name="startDate" [(ngModel)]="dateValue" [minDate]="minDateValue" [maxDate]="maxDateValue" readonlyInput="readonlyInput"></p-calendar> -->
+                    <p-calendar  [style]="{'width':'80%'}" [inputStyle]="{'width':'80%'}" class="form-group" name="startDate" [(ngModel)]="dateValue" [minDate]="minDateValue" [maxDate]="maxDateValue" readonlyInput="readonlyInput"></p-calendar>
                    <input type="date" class="form-group" [ngModel] ="dt2 | date:'yyyy-MM-dd'" (ngModelChange)="dt2 = $event" name="dt2" [value]="dt2 | date:'yyyy-MM-dd'">
                  </div>
-               </li>
+               </li> -->
                   <li style="margin-top:10px"><button type="submit" class="btn btn-primary">Filter</button></li>
                 </form>
              </div>
@@ -66,7 +66,7 @@
         <!-- sidebar-wrapper -->
 
         <!-- Page Content -->
-        <div id="page-content-wrapper" style="padding-top:44px;padding-left:100px;">
+        <div id="page-content-wrapper" style="padding-top:44px;padding-left:100px;height:100%">
             <div class="container-fluid">
               <h3 style="margin-top: 18px">Ad Listings</h3>
               <ng-container *ngIf="filterUsed">
@@ -83,7 +83,7 @@
               </div>
             </div>
             </ng-container>
-            <ng-container *ngIf="!filterUsed">
+            <ng-container *ngIf="!filterUsed && isNotEmpty">
             <div class="row" *ngFor="let i of array2">
               <div class="card-format">
                 <div class="card-block">
@@ -97,6 +97,13 @@
             </div>
           </div>
           </ng-container>
+          <ng-container *ngIf="!isNotEmpty">
+            <div class="card-format">
+              <div class="card-block">
+                <h4>No Adlistings match the filters provided</h4>
+              </div>
+          </div>
+        </ng-container>
         </div>
     </div>
               <!-- <div class="row">

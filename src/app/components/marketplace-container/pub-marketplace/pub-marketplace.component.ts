@@ -25,7 +25,7 @@ export class PubMarketplaceComponent implements OnInit {  rangeValues2= [10,50];
   displayedadType:any="";
   messageArray:any;
   selectedList:any =[];
-  notEmpty = true;
+  isNotEmpty = true;
   adlistings :any =[
     {"username": "User8", "cpi": "32.00000000", "name": "Native1listing", "ask_date_to": "2017-09-17", "currency": "eqc", "adname": "ToyStory1", "msg": "This is a product you will be thrilled to show your users .Feature us on your website.", "genre": "Native", "adtype": "FullScreen Takeover", "ask_date_from": "2017-08-16", "cpm": "50.00000000"},
     {"username": "User9", "cpi": "16.00000000", "name": "Nativelisting", "ask_date_to": "2017-09-22", "currency": "xqc", "adname": "left-for-dead2", "msg": "Your users will want to see these cool new services .Feature us on your website.", "genre": "Native", "adtype": "ban_left", "ask_date_from": "2017-08-12", "cpm": "42.00000000"},
@@ -228,13 +228,13 @@ this.filterUsed = true;
 this.selectedList = [];
 for (var i = 0; i < this.adlistings.length; i++) {
   var firstDate = new Date(this.adlistings[i]["ask_date_from"])
-  if((this.dt1 <= firstDate )&& (this.dt2>=firstDate)){
-    console.log("passed");
-  }
-  else{
-    console.log("failed");
-  }
-  if( (this.genre === this.adlistings[i]["genre"]) && ( (this.dt1 <= firstDate )&& (this.dt2>=firstDate) ) && ( (parseInt(this.adlistings[i]["cpi"]) >= this.rangeValues2[0]) && ( parseInt(this.adlistings[i]["cpi"]) <= this.rangeValues2[1]))) {
+  // if((this.dt1 <= firstDate )&& (this.dt2>=firstDate)){
+  //   console.log("passed");
+  // }
+  // else{
+  //   console.log("failed");
+  // }
+  if( (this.genre === this.adlistings[i]["genre"])  && ( (parseInt(this.adlistings[i]["cpi"]) >= this.rangeValues2[0]) && ( parseInt(this.adlistings[i]["cpi"]) <= this.rangeValues2[1]))) {
 if( (parseInt(this.adlistings[i]["cpm"]) >= this.rangeValues3[0]) && ( parseInt(this.adlistings[i]["cpm"]) <= this.rangeValues3[1]) && (this.trackCurrency.currency.toLowerCase() == this.adlistings[i]["currency"])){
   //if((this.adlistings[i]["adtype"] =='ban_left' && this.Adtype == 'Banner Left') || (this.adlistings[i]["adtype"] =='ban_top_wide' && this.Adtype == 'Banner Top') || (this.adlistings[i]["adtype"] =='ban_right' && this.Adtype == 'Banner Right') || (this.adlistings[i]["adtype"] =='FullScreen Takeover' && this.Adtype == 'FullScreen Takeover') ){
     this.selectedList.push(this.adlistings[i]);
@@ -243,9 +243,9 @@ if( (parseInt(this.adlistings[i]["cpm"]) >= this.rangeValues3[0]) && ( parseInt(
 
 }
 }
-
 this.size = this.selectedList.length;
-
+if(this.size==0)
+  this.isNotEmpty=false;
 
 this.array = new Array(this.size);
 for (var i = 0; i < this.size; i++) {

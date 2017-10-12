@@ -26,7 +26,7 @@ export class AdvMarketplaceComponent implements OnInit {
   displayedadType:any="";
   messageArray:any;
   selectedList:any =[];
-  notEmpty = true;
+  isNotEmpty = true;
   adspaceListings :any = [
     {"username": "User4", "cpi": "37.00000000", "cpm": "16.00000000", "ask_date_to": "2017-10-09", "currency": "eqc", "msg": "Want to get your ad the eyeballs from the right audience? We have just the right adspace for you from the publisher, User1.Our userbase is diverse and large!, get your product/service the attention it deserves!", "ask_date_from": "2017-09-07", "adtype": "Banner Left", "genre": "Native", "name": "www.nativefirefoodbluelisting.com"},
     {"username": "User6", "cpi": "25.00000000", "cpm": "44.00000000", "ask_date_to": "2017-08-12", "currency": "eqc", "msg": "Howdy mad men from the advertising world! new adspaces are available from User1.If you are interested in having you ad featured in a reputable website, contact us", "ask_date_from": "2017-07-10", "adtype": "Banner Left", "genre": "Native", "name": "www.nativefirefoodbluelisting.com"},
@@ -475,7 +475,7 @@ export class AdvMarketplaceComponent implements OnInit {
    for (var i = 0; i < this.adspaceListings.length; i++) {
      var firstDate = new Date(this.adspaceListings[i]["ask_date_from"])
      //console.log("Date Compare"+firstDate >= this.dt1);
-     if( (this.genre === this.adspaceListings[i]["genre"]) && (firstDate >= this.dt1) && ( (parseInt(this.adspaceListings[i]["cpi"]) >= this.rangeValues2[0]) && ( parseInt(this.adspaceListings[i]["cpi"]) <= this.rangeValues2[1]))) {
+     if( (this.genre === this.adspaceListings[i]["genre"])  && ( (parseInt(this.adspaceListings[i]["cpi"]) >= this.rangeValues2[0]) && ( parseInt(this.adspaceListings[i]["cpi"]) <= this.rangeValues2[1]))) {
    if( (parseInt(this.adspaceListings[i]["cpm"]) >= this.rangeValues3[0]) && ( parseInt(this.adspaceListings[i]["cpm"]) <= this.rangeValues3[1]) && (this.trackCurrency.currency.toLowerCase() == this.adspaceListings[i]["currency"])){
      //if((this.adlistings[i]["adtype"] =='ban_left' && this.Adtype == 'Banner Left') || (this.adlistings[i]["adtype"] =='ban_top_wide' && this.Adtype == 'Banner Top') || (this.adlistings[i]["adtype"] =='ban_right' && this.Adtype == 'Banner Right') || (this.adlistings[i]["adtype"] =='FullScreen Takeover' && this.Adtype == 'FullScreen Takeover') ){
        this.selectedList.push(this.adspaceListings[i]);
@@ -484,6 +484,8 @@ export class AdvMarketplaceComponent implements OnInit {
    }
    }
    this.size = this.selectedList.length;
+   if(this.size==0)
+     this.isNotEmpty=false;
    this.array = new Array(this.size);
    for (var i = 0; i < this.size; i++) {
      this.array[i] = i;

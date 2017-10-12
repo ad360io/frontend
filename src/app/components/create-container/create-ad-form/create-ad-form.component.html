@@ -1,7 +1,7 @@
 <div class="form-container">
     <div class="col-xs-12">
     <h2 style="margin: 60px 0 36px 14px">Create an Ad Listing</h2>
-    <div *ngIf="submitted" class="alert alert-info" style="margin-left: 14px">This is temporarily disabled and will be re-enabled when we open account registrations.</div>
+    <div *ngIf="submitted" class="alert alert-info" style="margin-left: 14px">This feature is temporarily disabled and will be re-enabled when we open account registrations.</div>
     <form  (ngSubmit)="f.form.valid && onSubmit(f)" #f="ngForm" novalidate>
       <div class="col-md-6">
       <div class="form-group">
@@ -41,7 +41,7 @@
         <div class="form-group">
           <label for="currency" style="font-size: 15px; font-weight: bold">Token:</label> {{currencyType}}
         </div>
-      <button type="submit" title="This feature is temporarily disabled and will be re-enabled when we open account registrations." class="btn btn-primary">Submit</button>
+      <button type="submit" title="This feature is temporarily disabled and will be re-enabled when we open account registrations." class="btn btn-primary disabled">Submit</button>
         </div>
     </form>
     </div>
