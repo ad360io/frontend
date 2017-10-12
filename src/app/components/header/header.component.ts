@@ -18,6 +18,7 @@ export class HeaderComponent implements OnInit {
   isNem=false;
   dropdownElement="Advertiser";
   activePage='';
+  demoUserString = "demouser@qchain.co";
   constructor(private trackMode : TrackMode, private trackCurrency : TrackCurrency, private loginAuthenticationService: LoginAuthenticationService,private router: Router) { }
 
   ngOnInit() {
