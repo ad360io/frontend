@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from '../../../../../services/dashboard-services/dashboard.service';
 import { AdvertiserCharts } from '../../../../../models/advertiser-charts.model';
+import { TrackCurrency } from '../../../../../services/trackCurrency.service';
 
 @Component({
   selector: 'app-adv-barchart',
@@ -33,14 +34,40 @@ export class AdvBarchartComponent implements OnInit {
     ]
   }
   ];
-  constructor(private dashboardService : DashboardService) {
+  eqcCPM = 41.5653832;
+  xqcCPM = 33.9283134;
+  constructor(private dashboardService : DashboardService,private trackCurrency: TrackCurrency) {
   }
 
   ngOnInit() {
+    var cpm:any;
     this.dashboardService.getAdvertiserCharts().subscribe(
       response => {
-        this.advertiserCharts.update(response);
-        this.isLoaded=true;
+        if(response){
+        if(this.trackCurrency.currency=="eqc" || "EQC"){
+          cpm = this.eqcCPM;
+        }
+        else{
+          cpm=this.xqcCPM;
+        }
+        //console.log(response.dailyData["data"]);
+        for(var i=0;i<response.dailyData["data"].length;i++)
+        {
+          //console.log( parseFloat(response.dailyData["data"][i])/5232.2);
+          response.dailyData["data"][i] = (parseFloat(response.dailyData["data"][i])/1000000)*cpm
+        }
+        for(var i=0;i<response.weeklyData["data"].length;i++)
+        {
+          //console.log( parseFloat(response.dailyData["data"][i])/5232.2);
+          response.weeklyData["data"][i] = (parseFloat(response.weeklyData["data"][i])/1000000)*cpm
+        }
+        for(var i=0;i<response.monthlyData["data"].length;i++)
+        {
+          //console.log( parseFloat(response.dailyData["data"][i])/5232.2);
+          response.monthlyData["data"][i] = (parseFloat(response.monthlyData["data"][i])/1000000)*cpm
+        }
+        this.advertiserCharts.update(response,this.trackCurrency.currency);
+        this.isLoaded=true;}
     });
   }
   // events

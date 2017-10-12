@@ -17,11 +17,11 @@ export class PublisherCharts {
     this.clicksData = jsonData &&  jsonData["c1_y_clicks"] || [];
     this.rpmData = jsonData &&  jsonData["c1_y_rpm"] || [];
     this.barChartLabels = jsonData && jsonData["c2_xdata"] || [];
-    this.dailyData = jsonData &&  jsonData["c2_y_day30revenue"] || [];
-    this.weeklyData =  jsonData && jsonData["c2_y_weekrevenue"] || [];
+    this.dailyData = jsonData &&  jsonData["c2_y_weekrevenue"] || [];
+    this.weeklyData =  jsonData && jsonData["c2_y_day30revenue"] || [];
     this.monthlyData = jsonData && jsonData["c2_y_alltimerevenue"] || [];
   }
-  update(publisherCharts: PublisherCharts){
+  update(publisherCharts: PublisherCharts,currency:string){
     //his.lineChartLabels = publisherCharts.lineChartLabels;
     this.convertDates(publisherCharts.lineChartLabels);
     this.revenueData = publisherCharts.revenueData;
@@ -33,7 +33,6 @@ export class PublisherCharts {
     this.weeklyData = publisherCharts.weeklyData;
     this.monthlyData = publisherCharts.monthlyData;
 
-    //this.convertDates();
   }
   convertDates(chartLabels:Array<any>){
     var days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
@@ -41,5 +40,6 @@ export class PublisherCharts {
       this.lineChartLabels[i]=days[new Date(chartLabels[i]).getDay()];
     }
   }
+
 
 }

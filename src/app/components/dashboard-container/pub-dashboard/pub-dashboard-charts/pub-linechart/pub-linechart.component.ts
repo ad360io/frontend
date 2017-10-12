@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from '../../../../../services/dashboard-services/dashboard.service';
 import { PublisherCharts } from '../../../../../models/publisher-charts.model';
+import { TrackCurrency } from '../../../../../services/trackCurrency.service';
 
 @Component({
   selector: 'app-pub-linechart',
@@ -63,7 +64,7 @@ export class PubLinechartComponent implements OnInit {
   public lineChartLegend:boolean = true;
   public lineChartType:string = 'line';
   isLoaded =false;
-  constructor(private dashboardService : DashboardService){
+  constructor(private dashboardService : DashboardService, private trackCurrency: TrackCurrency){
     this.publisherCharts = new PublisherCharts();
   }
 
@@ -72,7 +73,7 @@ export class PubLinechartComponent implements OnInit {
     this.dashboardService.getPublisherCharts().subscribe(
       response => {
         //console.log(response);
-        this.publisherCharts.update(response);
+        this.publisherCharts.update(response,this.trackCurrency.currency);
         this.isLoaded=true;
       });
   }

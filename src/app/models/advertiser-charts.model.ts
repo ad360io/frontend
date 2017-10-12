@@ -7,17 +7,17 @@ export class AdvertiserCharts {
   weeklyData : Array<any>;
   monthlyData : Array<any>;
 
-  constructor(jsonData?:any){
 
+  constructor(jsonData?:any){
     this.lineChartLabels = jsonData && jsonData["c1_x"] || [];
     this.impressionsData = jsonData &&  jsonData["c1_y_impressions"] || [];
     this.clicksData = jsonData &&  jsonData["c1_y_clicks"] || [];
     this.barChartLabels = jsonData && jsonData["c2_xdata"] || [];
-    this.dailyData = jsonData &&  jsonData["c2_y_day30clicks"] || [];
-    this.weeklyData =  jsonData && jsonData["c2_y_weekclicks"] || [];
+    this.dailyData = jsonData &&  jsonData["c2_y_weekclicks"] || [];
+    this.weeklyData =  jsonData && jsonData["c2_y_day30clicks"] || [];
     this.monthlyData = jsonData && jsonData["c2_y_alltimeclicks"] || [];
   }
-  update(advertiserCharts: AdvertiserCharts){
+  update(advertiserCharts: AdvertiserCharts,currency:string){
     this.convertDates(advertiserCharts.lineChartLabels);
     this.impressionsData = advertiserCharts.impressionsData;
     this.clicksData = advertiserCharts.clicksData;
@@ -25,7 +25,8 @@ export class AdvertiserCharts {
     this.dailyData = advertiserCharts.dailyData;
     this.weeklyData = advertiserCharts.weeklyData;
     this.monthlyData = advertiserCharts.monthlyData;
-    //this.convertDates();
+
+
   }
   convertDates(chartLabels:Array<any>){
     var days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
@@ -33,5 +34,6 @@ export class AdvertiserCharts {
       this.lineChartLabels[i]=days[new Date(chartLabels[i]).getDay()];
     }
   }
+
 
 }

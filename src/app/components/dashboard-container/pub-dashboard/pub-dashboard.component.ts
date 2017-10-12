@@ -4,6 +4,7 @@ import { PublisherStats } from '../../../models/publisher-stats.model';
 import { PublisherCharts } from '../../../models/publisher-charts.model';
 import { PublisherTables } from '../../../models/publisher-tables.model';
 import { TrackCurrency } from '../../../services/trackCurrency.service';
+import { TrackMode } from '../../../services/trackMode.service';
 @Component({
   selector: 'app-pub-dashboard',
   templateUrl: './pub-dashboard.component.html',
@@ -12,7 +13,7 @@ import { TrackCurrency } from '../../../services/trackCurrency.service';
 })
 export class PubDashboardComponent implements OnInit {
 
-  constructor(private dashboardService:DashboardService, private trackCurrency: TrackCurrency) {
+  constructor(private dashboardService:DashboardService, private trackCurrency: TrackCurrency, private trackMode: TrackMode) {
     this.dashboardService.loadPublisherDashboard();
    }
 
@@ -22,6 +23,12 @@ export class PubDashboardComponent implements OnInit {
         this.dashboardService.loadPublisherDashboard();
       }
     )
+    this.trackMode.getMode().subscribe(
+      response => {
+        this.dashboardService.loadPublisherDashboard();
+      }
+    )
+
   }
 
 }

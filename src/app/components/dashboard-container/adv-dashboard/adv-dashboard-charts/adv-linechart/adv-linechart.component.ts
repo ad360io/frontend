@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from '../../../../../services/dashboard-services/dashboard.service';
 import { AdvertiserCharts } from '../../../../../models/advertiser-charts.model';
+import { TrackCurrency } from '../../../../../services/trackCurrency.service';
 
 @Component({
   selector: 'app-adv-linechart',
@@ -62,7 +63,7 @@ export class AdvLinechartComponent implements OnInit {
   ];
   public lineChartLegend:boolean = true;
   public lineChartType:string = 'line';
-  constructor(private dashboardService : DashboardService){
+  constructor(private dashboardService : DashboardService, private trackCurrency: TrackCurrency){
 
   }
 
@@ -70,7 +71,7 @@ export class AdvLinechartComponent implements OnInit {
     this.dashboardService.getAdvertiserCharts().subscribe(
       response => {
         //console.log(response);
-        this.advertiserCharts.update(response);
+        this.advertiserCharts.update(response,this.trackCurrency.currency);
         this.isLoaded=true;
       });
   }

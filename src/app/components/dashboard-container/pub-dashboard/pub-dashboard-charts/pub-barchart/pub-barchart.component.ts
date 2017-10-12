@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PublisherCharts } from '../../../../../models/publisher-charts.model';
 import { DashboardService } from '../../../../../services/dashboard-services/dashboard.service';
+import { TrackCurrency } from '../../../../../services/trackCurrency.service';
 
 @Component({
   selector: 'app-pub-barchart',
@@ -34,17 +35,43 @@ export class PubBarchartComponent implements OnInit {
     ]
   }
   ];
-  constructor(private dashboardService : DashboardService) {
+  eqcCPM = 1.9708679;
+  xqcCPM = 2.3716234;
+  constructor(private dashboardService : DashboardService,private trackCurrency: TrackCurrency) {
     this.chosenChart = "dailyChart";
     this.publisherCharts = new PublisherCharts();
   }
 
   ngOnInit() {
+    var cpm:any;
     this.dashboardService.getPublisherCharts().subscribe(
       response => {
-        this.publisherCharts.update(response);
-        //console.log(this.publisherCharts.dailyData);
-        this.isLoaded=true;
+
+        if(response){
+        if(this.trackCurrency.currency=="eqc" || "EQC"){
+          cpm = this.eqcCPM;
+        }
+        else{
+          cpm=this.xqcCPM;
+        }
+        //console.log(response.dailyData["data"]);
+        for(var i=0;i<response.dailyData["data"].length;i++)
+        {
+          //console.log( parseFloat(response.dailyData["data"][i])/5232.2);
+          response.dailyData["data"][i] = (parseFloat(response.dailyData["data"][i])/1000000)*cpm
+        }
+        for(var i=0;i<response.weeklyData["data"].length;i++)
+        {
+          //console.log( parseFloat(response.dailyData["data"][i])/5232.2);
+          response.weeklyData["data"][i] = (parseFloat(response.weeklyData["data"][i])/1000000)*cpm
+        }
+        for(var i=0;i<response.monthlyData["data"].length;i++)
+        {
+          //console.log( parseFloat(response.dailyData["data"][i])/5232.2);
+          response.monthlyData["data"][i] = (parseFloat(response.monthlyData["data"][i])/1000000)*cpm
+        }
+        this.publisherCharts.update(response,this.trackCurrency.currency);
+        this.isLoaded=true;}
       }
     )
   }

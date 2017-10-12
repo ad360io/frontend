@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { DashboardService } from '../../../services/dashboard-services/dashboard.service';
 import { TrackCurrency } from '../../../services/trackCurrency.service';
+import { TrackMode } from '../../../services/trackMode.service';
 
 @Component({
   selector: 'app-adv-dashboard',
@@ -10,12 +11,17 @@ import { TrackCurrency } from '../../../services/trackCurrency.service';
 })
 export class AdvDashboardComponent implements OnInit {
 
-  constructor(private dashboardService: DashboardService,  private trackCurrency: TrackCurrency) {
+  constructor(private dashboardService: DashboardService,  private trackCurrency: TrackCurrency, private trackMode: TrackMode) {
   this.dashboardService.loadAdvertiserDashboard();
 }
 
   ngOnInit() {
     this.trackCurrency.getCurrency().subscribe(
+      response => {
+        this.dashboardService.loadAdvertiserDashboard();
+      }
+    )
+    this.trackMode.getMode().subscribe(
       response => {
         this.dashboardService.loadAdvertiserDashboard();
       }
