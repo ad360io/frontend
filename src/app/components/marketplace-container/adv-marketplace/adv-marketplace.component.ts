@@ -474,7 +474,7 @@ export class AdvMarketplaceComponent implements OnInit {
    console.log(this.dt2);
    for (var i = 0; i < this.adspaceListings.length; i++) {
      var firstDate = new Date(this.adspaceListings[i]["ask_date_from"])
-     console.log("Date Compare"+firstDate >= this.dt1);
+     //console.log("Date Compare"+firstDate >= this.dt1);
      if( (this.genre === this.adspaceListings[i]["genre"]) && (firstDate >= this.dt1) && ( (parseInt(this.adspaceListings[i]["cpi"]) >= this.rangeValues2[0]) && ( parseInt(this.adspaceListings[i]["cpi"]) <= this.rangeValues2[1]))) {
    if( (parseInt(this.adspaceListings[i]["cpm"]) >= this.rangeValues3[0]) && ( parseInt(this.adspaceListings[i]["cpm"]) <= this.rangeValues3[1]) && (this.trackCurrency.currency.toLowerCase() == this.adspaceListings[i]["currency"])){
      //if((this.adlistings[i]["adtype"] =='ban_left' && this.Adtype == 'Banner Left') || (this.adlistings[i]["adtype"] =='ban_top_wide' && this.Adtype == 'Banner Top') || (this.adlistings[i]["adtype"] =='ban_right' && this.Adtype == 'Banner Right') || (this.adlistings[i]["adtype"] =='FullScreen Takeover' && this.Adtype == 'FullScreen Takeover') ){

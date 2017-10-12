@@ -44,7 +44,7 @@
                   </li>
                   <li>
                     <div>
-                     <input class="form-group" type="date" [ngModel] ="dt1 | date:'yyyy-MM-dd'" (ngModelChange)="dt1 = $event" name="startDate" [value]="dt1 | date:'yyyy-MM-dd'">
+                     <input class="form-group" type="date" [ngModel] ="dt1 | date:'yyyy-MM-dd'" (ngModelChange)="dt1 = $event" name="dt1" [value]="dt1 | date:'yyyy-MM-dd'">
                    </div>
                   </li>
                   <li style="font-size: 15px; font-weight: bold">
@@ -52,7 +52,8 @@
                   </li>
                   <li>
                   <div>
-                   <input type="date" class="form-group" [ngModel] ="dt2 | date:'yyyy-MM-dd'" (ngModelChange)="dt2 = $event" name="endDate" [value]="dt2 | date:'yyyy-MM-dd'">
+                    <!-- <p-calendar  [style]="{'width':'80%'}" [inputStyle]="{'width':'80%'}" class="form-group" name="startDate" [(ngModel)]="dateValue" [minDate]="minDateValue" [maxDate]="maxDateValue" readonlyInput="readonlyInput"></p-calendar> -->
+                   <input type="date" class="form-group" [ngModel] ="dt2 | date:'yyyy-MM-dd'" (ngModelChange)="dt2 = $event" name="dt2" [value]="dt2 | date:'yyyy-MM-dd'">
                  </div>
                </li>
                   <li style="margin-top:10px"><button type="submit" class="btn btn-primary">Filter</button></li>
