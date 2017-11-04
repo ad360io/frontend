@@ -6,10 +6,12 @@
   "apps": [
     {
       "root": "src",
-      "outDir": "dist",
+      "outDir": "docs",
       "assets": [
         "assets",
-        "favicon.ico"
+        "favicon.ico",
+        "404.html",
+        "CNAME"
       ],
       "index": "index.html",
       "main": "main.ts",
