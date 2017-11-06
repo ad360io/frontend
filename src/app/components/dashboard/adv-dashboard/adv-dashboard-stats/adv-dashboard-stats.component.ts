@@ -13,8 +13,8 @@ export class AdvDashboardStatsComponent implements OnInit {
   advertiserStats: AdvertiserStats = new AdvertiserStats();
   currencyType:string="";
     constructor(private dashboardService: DashboardService,private trackCurrency: TrackCurrency) {
-      this.currencyType=this.trackCurrency.currency;
-      this.trackCurrency.getCurrency().subscribe(
+      this.currencyType=trackCurrency.currency;
+      trackCurrency.getCurrency().subscribe(
         response =>{
         this.currencyType = response;
       });

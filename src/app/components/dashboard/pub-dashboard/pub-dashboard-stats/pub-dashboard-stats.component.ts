@@ -14,7 +14,7 @@ export class PubDashboardStatsComponent implements OnInit {
   currencyType : string= "";
   userMode: string="";
   constructor(private dashboardService : DashboardService,private trackCurrency: TrackCurrency) {
-    this.currencyType = this.trackCurrency.currency;
+    this.currencyType = trackCurrency.currency;
   }
   ngOnInit() {
     this.trackCurrency.getCurrency().subscribe(

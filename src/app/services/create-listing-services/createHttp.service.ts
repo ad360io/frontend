@@ -8,28 +8,37 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 
 @Injectable()
-
 export class CreateHttpService {
-  BASE_URL:string='https://still-gorge-60326.herokuapp.com/';
-  currentUser:any;
-  constructor(private http : Http, private trackMode : TrackMode, private trackCurrency : TrackCurrency ){
+  BASE_URL: string = 'https://still-gorge-60326.herokuapp.com/';
+  currentUser: any;
+
+  constructor(private http: Http,
+              private trackMode: TrackMode,
+              private trackCurrency: TrackCurrency) {
   }
-  postAdspaceForm( data : any ): Observable<boolean>{
+
+  postAdspaceListing(data: any): Observable<boolean> {
     //console.log(data);
+
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
+
     let options = new RequestOptions({ headers: headers });
-    //this.http.post(this.BASE_URL+'create-adspace/',data,headers).map((res:Response) => //console.log(res.json()));
-    return this.http.post('https://still-gorge-60326.herokuapp.com/create-adspace/',data,options).map((response: Response) => {
+
+    //this.http.post(this.BASE_URL + 'create-adspace/', data, headers).map((res: Response) => //console.log(res.json()));
+
+    return this.http.post(this.BASE_URL + 'create-adspace/', data, options).map((response: Response) => {
       //console.log(response)
       return true;
     });
   }
-  postAdForm( data : any ){
+
+  postAdListing(data: any) {
     //console.log(data);
+
     let headers: Headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    //this.http.post(this.BASE_URL+'create-adspace/',data,headers).map((res:Response) => //console.log(res.json()));
-  }
 
+    //this.http.post(this.BASE_URL + 'create-adspace/', data, headers).map((res: Response) => //console.log(res.json()));
+  }
 }

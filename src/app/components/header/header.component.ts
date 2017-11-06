@@ -1,30 +1,32 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth/auth.service';
 import { TrackCurrency } from '../../services/trackCurrency.service';
 import { TrackMode } from '../../services/trackMode.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
-  encapsulation: ViewEncapsulation.None
+  // encapsulation: ViewEncapsulation.None
 })
 
 export class HeaderComponent {
-  userMode = 'ADVERTISER';
-  currencyType = 'EQC';
-  isEthereum = true;
-  isNem = false;
-  dropdownElement = 'Advertiser';
-  activePage = '';
-  demoUserString = "demouser@qchain.co";
+  userMode: string = 'ADVERTISER';
+  currencyType: string = 'EQC';
+  isEthereum: boolean = true;
+  isNem: boolean = false;
+  dropdownElement: string = 'Advertiser';
+  activePage: string = '';
+  demoUserString: string = '';
+  userName: string = '';
 
   constructor(private router: Router,
-              public auth: AuthService,
               private trackMode: TrackMode,
-              private trackCurrency: TrackCurrency) {
-    this.activePage=window.location.pathname.substring(1, );
+              private trackCurrency: TrackCurrency,
+              private user: UserService) {
+    this.activePage = window.location.pathname.substring(1, );
+    // this.userName = this.user.profile.nickname;
   }
 
   checkEthereumActive()
@@ -40,9 +42,15 @@ export class HeaderComponent {
     }
   }
 
-  checkActivePage(pageName: string) {
-    if (pageName == this.activePage) {
-      return '#4b80c0';
+  bgcolorActiveCurrency(currency: string) {
+    if (currency === this.currencyType) {
+      return { 'background-color': '#ADD3DF' }
+    }
+  }
+
+  colorActiveNavLink(pageName: string) {
+    if (pageName === this.activePage) {
+      return { 'color': '#4b80c0' };
     }
   }
 
@@ -76,4 +84,6 @@ export class HeaderComponent {
     this.trackCurrency.setCurrency('EQC');
     //console.log(this.currencyType);
   }
+
+  // setCurrency
 }

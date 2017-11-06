@@ -1,39 +1,38 @@
-<nav class="navbar navbar-toggleable-sm navbar-inverse fixed-top fixed-top-2">
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar1" id="mobileMenu2" style="cursor: pointer; margin-top: 8px">
+<nav class="navbar navbar-toggleable-sm navbar-inverse fixed-top fixed-top-2 bottom-border">
+    <button id="mobileMenu2" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar1" style="cursor: pointer; margin-top: 8px">
         <!-- <span class="navbar-toggler-icon"></span> -->
-        <i class="fa fa-bars" style="color:black" aria-hidden="true"></i>
+        <i class="fa fa-bars" style="color: black" aria-hidden="true"></i>
     </button>
 
-    <div class="navbar-collapse collapse" id="navbar1">
-        <ul class="navbar-nav" id="nav2">
-            <li class="nav-item active">
-                <a class="nav-link" routerLink="/dashboard" [ngStyle]="{color:checkActivePage('dashboard')}">
+    <div id="navbar1" class="navbar-collapse collapse" style="margin-left: -18px">
+        <ul id="nav2" class="navbar-nav">
+            <li>
+                <a class="nav-link" routerLink="/dashboard" [ngStyle]="colorActiveNavLink('dashboard')">
                     <span class="zmdi zmdi-home"></span>
-                    <span>&nbsp;</span>
-                    DASHBOARD
+                    Dashboard
                 </a>
             </li>
 
-            <span class="hidden-xs-down">&nbsp; &nbsp; &nbsp;</span>
-
-            <li class="nav-item">
-                <a class="nav-link" routerLink="/marketplace" [ngStyle]="{color:checkActivePage('marketplace')}">
+            <li>
+                <a class="nav-link" routerLink="/marketplace" [ngStyle]="colorActiveNavLink('marketplace')">
                     <span class="zmdi zmdi-globe-alt"></span>
-                    <span>&nbsp;</span>
-                    MARKETPLACE
+                    Marketplace
                 </a>
             </li>
 
-            <span class="hidden-xs-down">&nbsp; &nbsp; &nbsp;</span>
-
-            <li class="nav-item">
-                <a class="nav-link" routerLink="/create" [ngStyle]="{color:checkActivePage('create')}">
+            <li>
+                <a class="nav-link" routerLink="/create" [ngStyle]="colorActiveNavLink('create')">
                     <span class="zmdi zmdi-collection-text"></span>
-                    <span>&nbsp;</span>
-                    CREATE
+                    Create
                 </a>
             </li>
 
+            <li>
+                <a class="nav-link" routerLink="/profile" [ngStyle]="colorActiveNavLink('profile')">
+                    <span class="zmdi zmdi-collection-text"></span>
+                    Profile
+                </a>
+            </li>
         </ul>
     </div>
 </nav>
@@ -49,26 +48,24 @@
         <img src="assets/images/Qchain_logo.png" alt="Qchain logo" width="122px" height="58px">
     </a>
 
-    <div class="navbar-collapse collapse" id="navbar2">
+    <div id="navbar2" class="navbar-collapse collapse">
 
-        <ul class="navbar-nav mr-auto" id="nav1">
+        <ul id="nav1" class="navbar-nav mr-auto">
 
             <li class="list-inline-item notification-list">
-                  <a class="nav-link">
-                      <span class="noti-icon"></span>
-                  </a>
+                <a><span class="noti-icon"></span></a>
             </li>
 
             <li class="list-inline-item notification-list" style="margin-top: 1px">
-                <div class="btn-group" role="group" >
-                    <button type="button" class="btn btn-sm btn-secondary" style="cursor: pointer" [ngStyle]="{backgroundColor:checkEthereumActive()}" (click)="ethereumActivated()">
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-sm btn-secondary" [ngStyle]="bgcolorActiveCurrency('EQC')" (click)="ethereumActivated()">
                         <img src="assets/images/Ethereum_logo.png" alt="Ethereum logo" width="22px" height="25px">
-                        <span style="font-family: 'Lato'; font-size: 15px; vertical-align: middle">EQC</span>
+                        <span style="font-size: 15px; vertical-align: middle">EQC</span>
                     </button>
 
-                    <button type="button" class="btn btn-sm btn-secondary" style="cursor: pointer" [ngStyle]="{backgroundColor:checkNemActive()}" (click)="nemActivated()">
+                    <button type="button" class="btn btn-sm btn-secondary" [ngStyle]="bgcolorActiveCurrency('XQC')" (click)="nemActivated()">
                         <img src="assets/images/NEM_logo.png" alt="NEM logo" width="30px" height="25px">
-                        <span style="font-family: 'Lato'; font-size: 15px; vertical-align: middle">XQC</span>
+                        <span style="font-size: 15px; vertical-align: middle">XQC</span>
                     </button>
                 </div>
             </li>
@@ -77,13 +74,13 @@
 
             <li class="list-inline-item notification-list">
                 <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="cursor: pointer; width: 120px">
+                    <button type="button" class="btn btn-secondary dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="cursor: pointer; width: 120px">
                         {{ dropdownElement }}
                     </button>
 
                     <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <button class="dropdown-item" type="button" style="cursor: pointer" (click)="setAdvertiser()">Advertiser</button>
-                        <button class="dropdown-item" type="button" style="cursor: pointer" (click)="setPublisher()">Publisher</button>
+                        <button type="button" class="dropdown-item" (click)="setAdvertiser()">Advertiser</button>
+                        <button type="button" class="dropdown-item" (click)="setPublisher()">Publisher</button>
                     </div>
                 </div>
             </li>
@@ -96,13 +93,13 @@
             </li>
 
             <li>
-                <span style="font-size: 13.5px">&nbsp;{{demoUserString}}</span>
+                <span style="font-size: 13.5px">{{ user.profile['https://example.com/user_metadata'].name }}</span>
             </li>
 
             <li style="margin: 0 8px">&nbsp;</li>
 
             <li>
-                <a class="fa fa-sign-out" style="color: #eeeeee; cursor: pointer; font-size: 20px; margin-top: 3px" aria-hidden="true" title="Log out" (click)="auth.logout()"></a>
+                <a class="menubar-link fa fa-sign-out" style="color: #eeeeee; cursor: pointer; font-size: 20px; margin-top: 3px" aria-hidden="true" title="Log out" (click)="auth.logout()"></a>
             </li>
         </ul>
 

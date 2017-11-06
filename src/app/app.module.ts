@@ -45,6 +45,8 @@ import { CreateListingComponent } from './components/create-listing/create-listi
 import { CreateAdListingComponent } from './components/create-listing/create-ad-listing/create-ad-listing.component';
 import { CreateAdspaceListingComponent } from './components/create-listing/create-adspace-listing/create-adspace-listing.component';
 
+import { ProfileComponent } from './components/profile/profile.component';
+
 
 /*
 SERVICES
@@ -52,6 +54,7 @@ SERVICES
 import { AuthService } from './services/auth/auth.service';
 import { TrackCurrency } from './services/trackCurrency.service';
 import { TrackMode } from './services/trackMode.service';
+import { UserService } from './services/user.service';
 
 
 /*
@@ -97,7 +100,9 @@ import { AppRoutes } from './app.routes';
 
     CreateListingComponent,
     CreateAdListingComponent,
-    CreateAdspaceListingComponent
+    CreateAdspaceListingComponent,
+
+    ProfileComponent
   ],
 
   imports: [
@@ -115,7 +120,8 @@ import { AppRoutes } from './app.routes';
     AuthService,
     AuthGuard,
     TrackCurrency,
-    TrackMode
+    TrackMode,
+    UserService
   ],
 
   bootstrap: [AppComponent]

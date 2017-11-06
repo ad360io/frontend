@@ -1,0 +1,13 @@
+<app-header></app-header>
+
+<div class="container" style="margin-top: 180px">
+    <div>
+        <h3>Profile</h3>
+    </div>
+
+    <div>
+        <img class="avatar" src="{{ user.profile.picture }}" width="80px">
+
+        <pre class="full-profile">{{ user.profile | json }}</pre>
+    </div>
+</div>

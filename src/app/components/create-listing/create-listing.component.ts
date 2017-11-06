@@ -13,16 +13,15 @@ export class CreateListingComponent implements OnInit {
 
   constructor(private trackMode: TrackMode) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
-  isPublisher(){
-    if (this.trackMode.mode == 'PUBLISHER')
+  isAdvertiser() {
+    if (this.trackMode.mode == 'ADVERTISER')
       return true;
   }
 
-  isAdvertiser(){
-    if (this.trackMode.mode == 'ADVERTISER')
+  isPublisher() {
+    if (this.trackMode.mode == 'PUBLISHER')
       return true;
   }
 }

@@ -12,7 +12,7 @@ import { TrackMode } from '../../../services/trackMode.service';
 export class AdvDashboardComponent implements OnInit {
 
   constructor(private dashboardService: DashboardService,  private trackCurrency: TrackCurrency, private trackMode: TrackMode) {
-  this.dashboardService.loadAdvertiserDashboard();
+  dashboardService.loadAdvertiserDashboard();
 }
 
   ngOnInit() {

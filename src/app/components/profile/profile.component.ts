@@ -2,24 +2,23 @@ import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { TrackMode } from '../../services/trackMode.service';
 import { TrackCurrency} from '../../services/trackCurrency.service';
-import { MarketplaceHttpService } from '../../services/marketplace-services/marketplace-http.service';
-import { MarketplaceService } from '../../services/marketplace-services/marketplace.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
-  selector: 'app-marketplace-container',
-  templateUrl: './marketplace-container.component.html',
-  styleUrls: ['./marketplace-container.component.css'],
-  providers: [MarketplaceService, MarketplaceHttpService]
+  selector: 'app-profile',
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.css']
 })
-export class MarketplaceComponent implements OnInit {
+export class ProfileComponent implements OnInit {
   userMode: string = '';
   currencyType: string = '';
   isLoggedIn: boolean;
 
   constructor(private titleService: Title,
+              private trackMode: TrackMode,
               private trackCurrency: TrackCurrency,
-              private trackMode: TrackMode) {
-    titleService.setTitle('Qchain – Marketplace');
+              private user: UserService) {
+    titleService.setTitle('Qchain – Profile');
 
     this.userMode = trackMode.mode;
     this.currencyType = trackCurrency.currency;
@@ -37,6 +36,8 @@ export class MarketplaceComponent implements OnInit {
       });
   }
 
+  ngOnInit() { }
+
   isAdvertiser() {
     if (this.trackMode.mode == 'ADVERTISER')
       return true;
@@ -46,6 +47,4 @@ export class MarketplaceComponent implements OnInit {
     if (this.trackMode.mode == 'PUBLISHER')
       return true;
   }
-
-  ngOnInit() {}
 }

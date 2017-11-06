@@ -14,7 +14,7 @@ import { TrackMode } from '../../../services/trackMode.service';
 export class PubDashboardComponent implements OnInit {
 
   constructor(private dashboardService:DashboardService, private trackCurrency: TrackCurrency, private trackMode: TrackMode) {
-    this.dashboardService.loadPublisherDashboard();
+    dashboardService.loadPublisherDashboard();
    }
 
   ngOnInit() {

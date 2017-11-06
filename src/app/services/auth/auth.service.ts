@@ -3,8 +3,8 @@
 
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Auth0Config } from './auth0-config';
 import Auth0Lock from 'auth0-lock';
+import { Auth0Config } from './auth0-config';
 import 'rxjs/add/operator/filter';
 
 @Injectable()
