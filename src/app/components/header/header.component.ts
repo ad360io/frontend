@@ -1,5 +1,5 @@
-import { Component, ViewEncapsulation } from '@angular/core';
-// import { Router } from '@angular/router';
+import { Component } from '@angular/core';
+import { RouterLinkActive } from '@angular/router';
 import { AuthService } from '../../services/auth/auth.service';
 import { TrackCurrency } from '../../services/trackCurrency.service';
 import { TrackMode } from '../../services/trackMode.service';
@@ -8,8 +8,7 @@ import { UserService } from '../../services/user.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css'],
-  // encapsulation: ViewEncapsulation.None
+  styleUrls: ['./header.component.css']
 })
 
 export class HeaderComponent {
@@ -18,16 +17,11 @@ export class HeaderComponent {
   isEthereum: boolean = true;
   isNem: boolean = false;
   dropdownElement: string = 'Advertiser';
-  activePage: string = '';
-  // demoUserString: string = '';
-  // userName: string = '';
 
   constructor(private auth: AuthService,
               private trackMode: TrackMode,
               private trackCurrency: TrackCurrency,
               private user: UserService) {
-    this.activePage = window.location.pathname.substring(1, );
-    // this.userName = this.user.profile.nickname;
   }
 
   checkEthereumActive()
@@ -46,12 +40,6 @@ export class HeaderComponent {
   bgcolorActiveCurrency(currency: string) {
     if (currency === this.currencyType) {
       return { 'background-color': '#ADD3DF' }
-    }
-  }
-
-  colorActiveNavLink(pageName: string) {
-    if (pageName === this.activePage) {
-      return { 'color': '#4b80c0' };
     }
   }
 

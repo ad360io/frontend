@@ -1,6 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
-import { Title } from '@angular/platform-browser';
 import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
@@ -12,12 +11,9 @@ import { AuthService } from '../../services/auth/auth.service';
 export class LoginComponent {
 
   constructor(public auth: AuthService,
-              private router: Router,
-              private titleService: Title) {
+              private router: Router) {
     if (auth.isAuthenticated()) {
       router.navigate(['/dashboard']);
-    } else {
-      titleService.setTitle('Qchain – Login');
     }
   }
 
@@ -25,13 +21,13 @@ export class LoginComponent {
     if (this.auth.isAuthenticated()) {
       this.router.navigate(['/dashboard']);
     } else {
-      this.auth.lock.show();
       document.getElementById('loginCard').style.opacity = '0';
+      this.auth.lock.show();
     }
   }
 
   public show_lock_signup(): void {
-    this.auth.lock.show({initialScreen: 'signUp'})
     document.getElementById('loginCard').style.opacity = '0';
+    this.auth.lock.show({initialScreen: 'signUp'})
   }
 }

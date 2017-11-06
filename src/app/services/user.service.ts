@@ -3,7 +3,7 @@ import { AuthService } from './auth/auth.service';
 
 @Injectable()
 export class UserService {
-  profile: any;
+  public profile: any;
 
   constructor(auth: AuthService) {
     auth.getProfile((err, profile) => {

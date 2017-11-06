@@ -13,6 +13,10 @@ a:focus {
   color: #3b70af;
 }
 
+.router-link-active {
+  color: #4b80c0 !important;
+}
+
 .nav-link {
   cursor: pointer;
   font-size: 13.5px;
