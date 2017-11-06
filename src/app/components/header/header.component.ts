@@ -1,5 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { Router } from '@angular/router';
+// import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth/auth.service';
 import { TrackCurrency } from '../../services/trackCurrency.service';
 import { TrackMode } from '../../services/trackMode.service';
 import { UserService } from '../../services/user.service';
@@ -18,10 +19,10 @@ export class HeaderComponent {
   isNem: boolean = false;
   dropdownElement: string = 'Advertiser';
   activePage: string = '';
-  demoUserString: string = '';
-  userName: string = '';
+  // demoUserString: string = '';
+  // userName: string = '';
 
-  constructor(private router: Router,
+  constructor(private auth: AuthService,
               private trackMode: TrackMode,
               private trackCurrency: TrackCurrency,
               private user: UserService) {
