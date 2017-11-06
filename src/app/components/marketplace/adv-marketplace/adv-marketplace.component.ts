@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TrackMode } from '../../../services/trackMode.service';
 import { TrackCurrency} from '../../../services/trackCurrency.service';
-import {CalendarModule} from 'primeng/primeng'
+import { CalendarModule } from 'primeng/primeng'
 import { MarketplaceService } from '../../../services/marketplace-services/marketplace.service';
 
 @Component({

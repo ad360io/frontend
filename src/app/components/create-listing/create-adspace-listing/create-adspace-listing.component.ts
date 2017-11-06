@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { NgForm } from '@angular/forms';
-import { CreateHttpService } from '../../../services/create-services/createHttpService.service';
+import { CreateHttpService } from '../../../services/create-listing-services/createHttp.service';
 import { TrackCurrency } from '../../../services/trackCurrency.service';
 
 @Component({
-  selector: 'app-create-adspace-form',
-  templateUrl: './create-adspace-form.component.html',
-  styleUrls: ['./create-adspace-form.component.css']
+  selector: 'app-create-adspace-listing',
+  templateUrl: './create-adspace-listing.component.html',
+  styleUrls: ['./create-adspace-listing.component.css']
 })
-export class CreateAdspaceFormComponent implements OnInit {
+export class CreateAdspaceListingComponent implements OnInit {
 
   submitted=false;
   currencyType="EQC"

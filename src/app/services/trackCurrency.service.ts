@@ -4,16 +4,15 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class TrackCurrency {
-   currency:string="EQC";
-   currencySubject: Subject<string> = new Subject<string>();
+  currency: string = 'EQC';
+  currencySubject: Subject<string> = new Subject<string>();
 
-   setCurrency(currency:string){
-     this.currency=currency;
-     this.currencySubject.next(currency);
+  setCurrency(currency: string){
+    this.currency = currency;
+    this.currencySubject.next(currency);
    }
 
   getCurrency(): Observable <string> {
     return this.currencySubject.asObservable();
   }
-
 }

@@ -4,16 +4,15 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class TrackMode {
-   mode:string="ADVERTISER";
+   mode: string = 'ADVERTISER';
    modeSubject: Subject<string> = new Subject<string>();
 
-  setMode(mode:string) {
-    this.mode=mode;
+  setMode(mode: string) {
+    this.mode = mode;
     this.modeSubject.next(mode);
   }
 
   getMode(): Observable <string> {
     return this.modeSubject.asObservable();
   }
-
 }

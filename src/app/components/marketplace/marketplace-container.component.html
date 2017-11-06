@@ -1,0 +1,6 @@
+<app-header></app-header>
+
+<div class="container">
+    <app-pub-marketplace *ngIf="isPublisher()"></app-pub-marketplace>
+    <app-adv-marketplace *ngIf="isAdvertiser()"></app-adv-marketplace>
+</div>
