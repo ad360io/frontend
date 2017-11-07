@@ -45,16 +45,22 @@ export class AuthService {
   constructor(public router: Router) {}
 
   // Call in auth-callback ts for path-based routing
-  public handleAuthentication(): void {
+  public handleAuthentication(root_URL: string,
+                              router_link_success: string,
+                              router_link_failure: string): void {
     this.lock.on('authenticated', (authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.setSession(authResult);
-        this.router.navigate(['/dashboard']);
+
+        history.replaceState(null, null, root_URL + router_link_success);
+        this.router.navigate([router_link_success], { skipLocationChange: true });
       }
     });
 
     this.lock.on('authorization_error', (err) => {
-      this.router.navigate(['/']);
+      history.replaceState(null, null, root_URL + router_link_failure);
+      this.router.navigate([router_link_failure], { skipLocationChange: true });
+
       console.log(err);
     });
   }
