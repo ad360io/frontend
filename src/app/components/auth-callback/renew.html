@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <script src="https://cdn.auth0.com/js/auth0/8.10.1/auth0.min.js"></script>
+
+    <script>
+        var webAuth = new auth0.WebAuth({
+          clientID: 'ip3jdlT8udp8hVobDn5Q2k67eEDvSSIj',
+          domain: 'qchain.auth0.com',
+          redirectUri: 'http://localhost:4200'
+          responseType: 'token id_token',
+          scope: 'openid profile email',
+        });
+    </script>
+
+    <script>
+        webAuth.parseHash(window.location.hash, function (err, response) {
+          parent.postMessage(err || response, 'http://localhost:4200');
+        });
+    </script>
+</head>
+
+<body></body>
+
+</html>

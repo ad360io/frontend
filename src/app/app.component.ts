@@ -9,6 +9,6 @@ import { AuthService } from './services/auth/auth.service';
 export class AppComponent {
 
   constructor(public auth: AuthService) {
-    // auth.handleAuthentication();
+    auth.scheduleRenewal();
   }
 }

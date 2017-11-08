@@ -3,12 +3,15 @@
 
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import Auth0Lock from 'auth0-lock';
+import { Observable } from 'rxjs';
 import { Auth0Config } from './auth0-config';
+import Auth0Lock from 'auth0-lock';
+import * as auth0 from 'auth0-js';
 import 'rxjs/add/operator/filter';
 
 @Injectable()
 export class AuthService {
+  refreshSubscription: any;
 
   lock = new Auth0Lock(Auth0Config.clientID, Auth0Config.domain,
     {
@@ -42,6 +45,11 @@ export class AuthService {
     }
   );
 
+  auth0 = new auth0.WebAuth({
+    clientID: Auth0Config.clientID,
+    domain: Auth0Config.domain
+  });
+
   constructor(public router: Router) {}
 
   // Call in auth-callback ts for path-based routing
@@ -72,6 +80,71 @@ export class AuthService {
     localStorage.setItem('access_token', authResult.accessToken);
     localStorage.setItem('id_token', authResult.idToken);
     localStorage.setItem('expires_at', expiresAt);
+
+    this.scheduleRenewal();
+  }
+
+  public renewToken(): void {
+    this.auth0.renewAuth({
+      audience: `https://${Auth0Config.domain}/userinfo`,
+      redirectUri: Auth0Config.renewalCallbackURL,
+      usePostMessage: true
+    }, (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        this.setSession(result);
+      }
+    });
+  }
+
+  public scheduleRenewal(): void {
+    if (!this.isAuthenticated()) {
+      return;
+    }
+
+    this.unscheduleRenewal();
+
+    const expiresAt = JSON.parse(window.localStorage.getItem('expires_at'));
+
+    const source = Observable.of(expiresAt).flatMap(expiresAt => {
+        const now = Date.now();
+
+        // Use the delay in a timer to run the refresh at the proper time
+        return Observable.timer(Math.max(1, expiresAt - now));
+      });
+
+    // Once delay time is reached, get a new JWT and schedule additional refreshes
+    this.refreshSubscription = source.subscribe(() => {
+      this.renewToken();
+      this.scheduleRenewal();
+    });
+  }
+
+  public unscheduleRenewal(): void {
+    if (!this.refreshSubscription) {
+      return;
+    }
+
+    this.refreshSubscription.unsubscribe();
+  }
+
+  public logout(): void {
+    // Remove tokens and expiry time from localStorage
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('id_token');
+    localStorage.removeItem('expires_at');
+
+    // Stop scheduling JWT renewals
+    this.unscheduleRenewal();
+
+    this.router.navigate(['']);
+  }
+
+  public isAuthenticated(): boolean {
+    // Check whether the current time is past the access token's expiry time
+    const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
+    return new Date().getTime() < expiresAt;
   }
 
   public getProfile(cb): void {
@@ -87,24 +160,8 @@ export class AuthService {
         return;
       }
 
-      cb(err, profile)
+      cb(err, profile);
     });
-  }
-
-  public logout(): void {
-    // Remove tokens and expiry time from localStorage
-    localStorage.removeItem('access_token');
-    localStorage.removeItem('id_token');
-    localStorage.removeItem('expires_at');
-
-    // Go back to the home route
-    this.router.navigate(['/']);
-  }
-
-  public isAuthenticated(): boolean {
-    // Check whether the current time is past the access token's expiry time
-    const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
-    return new Date().getTime() < expiresAt;
   }
 
 }
