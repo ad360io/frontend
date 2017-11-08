@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth/auth.service';
 
@@ -7,20 +7,22 @@ import { AuthService } from '../../services/auth/auth.service';
   templateUrl: './auth-callback.component.html',
   styleUrls: ['./auth-callback.component.css']
 })
-export class AuthCallbackComponent {
+export class AuthCallbackComponent implements OnInit {
+  root_URL: string = location.protocol + '//' + location.host;
+  router_link_success: string = '/dashboard';
+  router_link_failure: string = '';
 
   constructor(private auth: AuthService,
               private router: Router) {
-    let root_URL: string = location.protocol + '//' + location.host;
-    let router_link_success: string = '/dashboard';
-    let router_link_failure: string = '';
+  }
 
-    if (auth.isAuthenticated()) {
+  ngOnInit() {
+    if (this.auth.isAuthenticated()) {
       // replace history state, then route without pushing state to not add callback to history
-      history.replaceState(null, null, root_URL + router_link_success);
-      router.navigate([router_link_success], { skipLocationChange: true });
+      history.replaceState(null, null, this.root_URL + this.router_link_success);
+      this.router.navigate([this.router_link_success], { skipLocationChange: true });
     } else {
-      auth.handleAuthentication(root_URL, router_link_success, router_link_failure);
+      this.auth.handleAuthentication(this.root_URL, this.router_link_success, this.router_link_failure);
     }
   }
 }

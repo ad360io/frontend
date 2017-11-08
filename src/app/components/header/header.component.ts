@@ -24,19 +24,6 @@ export class HeaderComponent {
               private user: UserService) {
   }
 
-  checkEthereumActive()
-  {
-    if(this.isEthereum){
-      return '#ADD3DF';
-    }
-  }
-  checkNemActive()
-  {
-    if(this.isNem){
-      return '#ADD3DF';
-    }
-  }
-
   bgcolorActiveCurrency(currency: string) {
     if (currency === this.currencyType) {
       return { 'background-color': '#ADD3DF' }
