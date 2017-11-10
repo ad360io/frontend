@@ -1,22 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.css']
 })
-export class FooterComponent implements OnInit {
-  onLoginPage = false;
+export class FooterComponent {
 
-  constructor() { }
-
-  ngOnInit() {
-    if (window.location.pathname.substring(1, ) == '') {
-      this.onLoginPage = true;
-    }
-  }
-
-  checkOnLoginPage(){
-    return this.onLoginPage;
-  }
+  constructor(private auth: AuthService) { }
 }

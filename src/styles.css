@@ -10,6 +10,10 @@ body {
   /*font-size: 0.9rem;*/
 }
 
+input, select, textarea, button {
+  font-family: inherit;
+}
+
 button {
   cursor: pointer;
 }

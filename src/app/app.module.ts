@@ -1,11 +1,12 @@
 /*
 MODULES
 */
-import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ChartsModule } from 'ng2-charts';
 import { SliderModule } from 'primeng/primeng';
 import { CalendarModule } from 'primeng/primeng';
@@ -110,6 +111,7 @@ import { AppRoutes } from './app.routes';
     FormsModule,
     HttpModule,
     RouterModule.forRoot(AppRoutes),
+    NgbModule.forRoot(),
     ChartsModule,
     SliderModule,
     CalendarModule

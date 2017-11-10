@@ -1,11 +1,10 @@
-<nav class="navbar navbar-toggleable-sm navbar-inverse fixed-top fixed-top-2 bottom-border">
-    <button id="mobileMenu2" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar1" style="cursor: pointer; margin-top: 8px">
-        <!-- <span class="navbar-toggler-icon"></span> -->
+<nav class="navbar navbar-toggleable-sm navbar-inverse fixed-top navlinks bottom-border">
+    <button id="mobileMenu2" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar-links" style="margin-top: 8px">
         <i class="fa fa-bars" style="color: black" aria-hidden="true"></i>
     </button>
 
-    <div id="navbar1" class="navbar-collapse collapse" style="margin-left: -18px">
-        <ul id="nav2" class="navbar-nav">
+    <div id="navbar-links" class="navbar-collapse collapse">
+        <ul class="navbar-nav">
             <li>
                 <a class="nav-link" routerLinkActive="router-link-active" routerLink="/dashboard">
                     <span class="zmdi zmdi-home"></span>
@@ -40,23 +39,23 @@
 
 <nav class="navbar navbar-toggleable-sm navbar-inverse fixed-top">
 
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar2" id="mobileMenu1" style="cursor: pointer; margin-top: 18px">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#menubar" id="mobileMenu1" style="margin-top: 18px">
         <span class="fa fa-bars" aria-hidden="true"></span>
     </button>
 
-    <a routerLink="/dashboard" class="navbar-brand" style="cursor: pointer; margin-left: 8px">
-        <img src="assets/images/Qchain_logo.png" alt="Qchain logo" width="122px" height="58px">
+    <a routerLink="/dashboard" class="navbar-brand" style="cursor: pointer">
+        <img src="assets/images/Qchain_logo_bg.png" alt="Qchain logo" width="122px" height="58px">
     </a>
 
-    <div id="navbar2" class="navbar-collapse collapse">
+    <div id="menubar" class="navbar-collapse collapse">
 
-        <ul id="nav1" class="navbar-nav mr-auto">
+        <ul id="menubar-body" class="navbar-nav mr-auto">
 
             <li class="list-inline-item notification-list">
                 <a><span class="noti-icon"></span></a>
             </li>
 
-            <li class="list-inline-item notification-list" style="margin-top: 1px">
+            <li class="list-inline-item notification-list">
                 <div class="btn-group" role="group">
                     <button type="button" class="btn btn-sm btn-secondary" [ngStyle]="bgcolorActiveCurrency('EQC')" (click)="ethereumActivated()">
                         <img src="assets/images/Ethereum_logo.png" alt="Ethereum logo" width="22px" height="25px">
@@ -70,11 +69,9 @@
                 </div>
             </li>
 
-            <li class="list-inline-item notification-list" style="margin-left:12px"></li>
-
-            <li class="list-inline-item notification-list">
+            <li class="list-inline-item notification-list" style="margin-left: 18px">
                 <div class="dropdown">
-                    <button type="button" class="btn btn-secondary dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="cursor: pointer; width: 120px">
+                    <button type="button" class="btn btn-secondary dropdown-toggle" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 120px; height: 35px; font-weight: 300; line-height: 0.5rem; margin-left: -4px">
                         {{ dropdownElement }}
                     </button>
 
@@ -83,6 +80,10 @@
                         <button type="button" class="dropdown-item" (click)="setPublisher()">Publisher</button>
                     </div>
                 </div>
+            </li>
+
+            <li class="list-inline-item notification-list" style="margin-left: 18px; margin-top: 4px">
+                <button type="button" class="btn btn-sm btn-secondary">Testnet XQC faucet</button>
             </li>
 
         </ul>

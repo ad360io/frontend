@@ -17,6 +17,7 @@
     "@angular/platform-browser": "^4.4.6",
     "@angular/platform-browser-dynamic": "^4.4.6",
     "@angular/router": "^4.4.6",
+    "@ng-bootstrap/ng-bootstrap": "^1.0.0-beta.5",
     "auth0-js": "^8.10.1",
     "auth0-lock": "^10.23.1",
     "chart.js": "^2.7.1",
