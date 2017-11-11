@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "postinstall": "ng build --aot -prod",
+    "postinstall": "ng serve -delete-output-path=false",
     "start": "node server.js"
   },
   "private": true,
