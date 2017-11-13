@@ -68,6 +68,9 @@ import { AuthGuard } from './guards/auth-guard.guard';
 ROUTES
 */
 import { AppRoutes } from './app.routes';
+import { PubDashboardPlaceholderStatsComponent } from './components/dashboard/pub-dashboard/pub-dashboard-placeholder/pub-dashboard-placeholder-stats/pub-dashboard-placeholder-stats.component';
+import { PubDashboardPlaceholderTablesComponent } from './components/dashboard/pub-dashboard/pub-dashboard-placeholder/pub-dashboard-placeholder-tables/pub-dashboard-placeholder-tables.component';
+import { PubDashboardPlaceholderChartsComponent } from './components/dashboard/pub-dashboard/pub-dashboard-placeholder/pub-dashboard-placeholder-charts/pub-dashboard-placeholder-charts.component';
 
 
 @NgModule({
@@ -103,7 +106,15 @@ import { AppRoutes } from './app.routes';
     CreateAdListingComponent,
     CreateAdspaceListingComponent,
 
-    ProfileComponent
+    ProfileComponent,
+
+    PubDashboardPlaceholderStatsComponent,
+
+    PubDashboardPlaceholderTablesComponent,
+
+    PubDashboardPlaceholderChartsComponent,
+
+    
   ],
 
   imports: [
