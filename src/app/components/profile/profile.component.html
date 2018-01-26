@@ -1,12 +1,184 @@
 
-<div class="container" style="margin-top: 180px">
-    <div>
-        <h3>Profile</h3>
+<div class="container bootstrap snippet">
+    <div class="row">
+      <div class="col-sm-3" style="text-align:center">
+          <a href="/users"><img title="profile image" class="img-circle img-responsive" src="assets/images/avatar-logo.png"></a>
+      </div>
+      <div class="col-sm-9">
+        <h2>John Sully</h2>
+        <p>Hi, I'm John I advertise for FuturaForums. We're promoting our new massage chair and we're looking for related publishers!</p>
+      </div>
     </div>
+    <br>
+    <div class="row">
+        <div class="col-sm-3">
+            <ul class="list-group">
+                <li class="list-group-item text-right"><span class="pull-left"><strong>Name</strong></span> John Sully</li>
+                <li class="list-group-item text-right"><span class="pull-left"><strong>Member Since:</strong></span> 02.01.2018</li>
+                <li class="list-group-item text-right"><span class="pull-left"><strong>Age:</strong></span> 32 </li>
+                <li class="list-group-item text-right"><span class="pull-left"><strong>Occupation:</strong></span> Artist </li>
+            </ul>
+        </div>
+        <div class="col-sm-9">
+          <div class="col-sm-9">
 
-    <div>
-        <img class="avatar" src="{{ user.profile.picture }}" width="80px">
+            <ul class="nav nav-tabs" id="myTab">
+                <li class="active"><a href="#contracts" data-toggle="tab">Contracts</a></li>
+                <li><a href="#ads" data-toggle="tab">Ads</a></li>
+                <li><a href="#adspaces" data-toggle="tab">Adspaces</a></li>
+            </ul>
 
-        <pre class="full-profile">{{ user.profile | json }}</pre>
+            <div class="tab-content">
+                <div class="tab-pane active" id="contracts">
+                    <div class="table-responsive">
+                      <table class="table table-hover">
+                          <thead>
+                              <tr>
+                                  <th>#</th>
+                                  <th>Participant1</th>
+                                  <th>Participant 2</th>
+                              </tr>
+                          </thead>
+                          <tbody id="items">
+                              <tr>
+                                  <td>1</td>
+                                  <td>NZJEQ69AWOFKM58JCZEW25X</td>
+                                  <td>NFMZPMFG4LNJX7BEG5KGMJ2</td>
+                              </tr>
+                              <tr>
+                                  <td>2</td>
+                                  <td>NZJEQ69AWOFKM58JCZEW25X</td>
+                                  <td>NHS0OE472GE0ZWH0L154RES</td>
+                              </tr>
+                              <tr>
+                                  <td>3</td>
+                                  <td>NZJEQ69AWOFKM58JCZEW25X</td>
+                                  <td>NYOPLX02RV0V59C9RY8IFAU</td>
+                              </tr>
+                              <tr>
+                                  <td>4</td>
+                                  <td>NZJEQ69AWOFKM58JCZEW25X</td>
+                                  <td>NYOPLX02RV0V59C9RY8IFAU</td>
+
+                              </tr>
+                              <tr>
+                                  <td>5</td>
+                                  <td>NZJEQ69AWOFKM58JCZEW25XJ</td>
+                                  <td>NA0JUCS5MJ29AE05TT2L3X3P</td>
+                              </tr>
+
+                          </tbody>
+                      </table>
+                      <hr>
+                      <div class="row">
+                          <div class="col-md-4 col-md-offset-4 text-center">
+                              <ul class="pagination" id="myPager"></ul>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+                <div class="tab-pane" id="ads">
+                  <div class="table-responsive">
+                      <table class="table table-hover">
+                          <thead>
+                              <tr>
+                                  <th>#</th>
+                                  <th>Ad</th>
+                                  <th>Ad Genre</th>
+                                  <th>Host Website</th>
+                              </tr>
+                          </thead>
+                          <tbody id="items">
+                              <tr>
+                                  <td>1</td>
+                                  <td>New Video Game!</td>
+                                  <td>Video Games</td>
+                                  <td>www.skyrimvideogameexample.com</td>
+
+                              </tr>
+                              <tr>
+                                  <td>2</td>
+                                  <td>New Restaurant!</td>
+                                  <td>Dining</td>
+                                  <td>www.awesometacoexample.com</td>
+                              </tr>
+                              <tr>
+                                  <td>3</td>
+                                  <td>Boutique Clothing Store</td>
+                                  <td>Apparel</td>
+                                  <td>www.clothesboutiquesample.com</td>
+                              </tr>
+                              <tr>
+                                  <td>4</td>
+                                  <td>Real Journalism!</td>
+                                  <td>News</td>
+                                  <td>www.thedailyexample.com</td>
+                              </tr>
+                              <tr>
+                                  <td>5</td>
+                                  <td>Pet Food!</td>
+                                  <td>Pets</td>
+                                  <td>www.feedyourpetexample.com/td>
+                              </tr>
+                          </tbody>
+                      </table>
+                      <hr>
+                      <div class="row">
+                          <div class="col-md-4 col-md-offset-4 text-center">
+                              <ul class="pagination" id="myPager"></ul>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+
+                <div class="tab-pane" id="adspaces">
+                  <div class="table-responsive">
+                      <table class="table table-hover">
+                          <thead>
+                              <tr>
+                                  <th>#</th>
+                                  <th>Adspaces</th>
+                                  <th>Websites</th>
+                              </tr>
+                          </thead>
+                          <tbody id="items">
+                              <tr>
+                                  <td>1</td>
+                                  <td>Store announcement</td>
+                                  <td>www.furniture.com</td>
+                              </tr>
+                              <tr>
+                                  <td>2</td>
+                                  <td>Toys for kids</td>
+                                  <td>www.ToysOnUs.com</td>
+                              </tr>
+                              <tr>
+                                  <td>3</td>
+                                  <td>Sale</td>
+                                  <td>www.macys.com</td>
+                              </tr>
+                              <tr>
+                                  <td>4</td>
+                                  <td>Dining Deals</td>
+                                  <td>www.newagefoodie.com</td>
+                              </tr>
+                              <tr>
+                                  <td>5</td>
+                                  <td>Ballet Class</td>
+                                  <td>www.danceinstructors.com</td>
+                              </tr>
+                          </tbody>
+                      </table>
+                      <hr>
+                      <div class="row">
+                          <div class="col-md-4 col-md-offset-4 text-center">
+                              <ul class="pagination" id="myPager"></ul>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
     </div>
 </div>
