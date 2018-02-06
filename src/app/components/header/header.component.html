@@ -120,17 +120,17 @@
       <p></p>
       <p></p>
       <div class="form-group">
-      <label for="exampleInputEmail1">NEM Address:</label>
-      <input class="form-control" id="nemAddress" aria-describedby="nemAddress" placeholder="Enter NEM address">
+      <label for="exampleInputEmail1">NEM Address:</label>{{nemAddress}}
+      <input class="form-control" id="nemAddress" [(ngModel)]="nemAddress" aria-describedby="nemAddress" placeholder="Enter NEM address" name="nemAddr">
       <small id="nemHelp" class="form-text text-muted">Enter the address associated with the NEM account..</small>
     </div>
     <div class="form-group">
-      <label for="exampleInputPassword1">Enter the amount of XEM:</label>
-      <input class="form-control" id="xemAmount" placeholder="Enter amount">
+      <label for="exampleInputPassword1">Enter the amount of XEM:</label>{{xemAmount}}
+      <input class="form-control" [(ngModel)]="xemAmount" id="xemAmount" placeholder="Enter amount" name="xem">
     </div>
       </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-primary">Submit</button>
+      <button type="button" class="btn btn-primary" (click)="makeDirectRequest()">Submit</button>
       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
     </div>
   </div>

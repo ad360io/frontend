@@ -4,6 +4,7 @@ MODULES
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -56,8 +57,8 @@ import { AuthService } from './services/auth/auth.service';
 import { TrackCurrency } from './services/trackCurrency.service';
 import { TrackMode } from './services/trackMode.service';
 import { UserService } from './services/user.service';
-
-
+import { TestNetRequest } from './services/testnetService/testNetRequest.service';
+import { TestNet } from './services/testnetService/testNet.service';
 /*
 GUARDS
 */
@@ -122,7 +123,8 @@ import { AdvPlaceholderComponent } from './components/dashboard/placeholder-dash
     NgbModule.forRoot(),
     ChartsModule,
     SliderModule,
-    CalendarModule
+    CalendarModule,
+    HttpClientModule,
   ],
 
   providers: [
@@ -131,7 +133,9 @@ import { AdvPlaceholderComponent } from './components/dashboard/placeholder-dash
     AuthGuard,
     TrackCurrency,
     TrackMode,
-    UserService
+    UserService,
+    TestNet,
+    TestNetRequest
   ],
 
   bootstrap: [AppComponent]

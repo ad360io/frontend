@@ -4,11 +4,13 @@ import { AuthService } from '../../services/auth/auth.service';
 import { TrackCurrency } from '../../services/trackCurrency.service';
 import { TrackMode } from '../../services/trackMode.service';
 import { UserService } from '../../services/user.service';
+import { TestNet } from '../../services/testnetService/testNet.service';
+import { TestNetRequest } from '../../services/testnetService/testNetRequest.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
 })
 
 export class HeaderComponent {
@@ -17,11 +19,14 @@ export class HeaderComponent {
   isEthereum: boolean = true;
   isNem: boolean = false;
   dropdownElement: string = 'Advertiser';
-
+  nemAddress :string = '';
+  xemAmount : string = '';
   constructor(private auth: AuthService,
               private trackMode: TrackMode,
               private trackCurrency: TrackCurrency,
-              private user: UserService) {
+              private user: UserService,
+              private nemTestNet : TestNet,
+              private nemTestNetRequest : TestNetRequest ) {
   }
 
   bgcolorActiveCurrency(currency: string) {
@@ -61,5 +66,19 @@ export class HeaderComponent {
     //console.log(this.currencyType);
   }
 
-  // setCurrency
+  // makeTestNetQuery(){
+  //   this.nemTestNet.makeTestNetQuery(this.nemAddress,this.xemAmount);
+  //
+  // }
+  makeDirectRequest(){
+    this.nemTestNetRequest.makeTestNetRequest(this.nemAddress,this.xemAmount).subscribe(
+      res => {
+        console.log('This is from the component'+res);
+      },
+      err => {
+        console.log('There was an error');
+      }
+
+    )
+  }
 }
