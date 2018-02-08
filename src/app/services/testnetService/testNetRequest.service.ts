@@ -27,4 +27,7 @@ export class TestNetRequest {
     makesampleGetRequest(){
     return this.http.get('https://wmowh5c05f.execute-api.us-east-2.amazonaws.com/prod/demoFunction?TableName=MyTable');
   }
+    makeTransaction() {
+      return this.http.get('https://wmowh5c05f.execute-api.us-east-2.amazonaws.com/prod/demoFunction?TableName=MyTable');
+    }
 }

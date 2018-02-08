@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { RouterLinkActive } from '@angular/router';
 import { AuthService } from '../../services/auth/auth.service';
 import { TrackCurrency } from '../../services/trackCurrency.service';
@@ -6,6 +6,7 @@ import { TrackMode } from '../../services/trackMode.service';
 import { UserService } from '../../services/user.service';
 import { TestNet } from '../../services/testnetService/testNet.service';
 import { TestNetRequest } from '../../services/testnetService/testNetRequest.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +14,7 @@ import { TestNetRequest } from '../../services/testnetService/testNetRequest.ser
   styleUrls: ['./header.component.css'],
 })
 
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   userMode: string = 'ADVERTISER';
   currencyType: string = 'EQC';
   isEthereum: boolean = true;
@@ -22,12 +23,16 @@ export class HeaderComponent {
   nemAddress :string = '';
   xemAmount : string = '';
   returnedItems : any;
+  transactionString = '';
+  isTransactionRequestComplete :boolean = false;
+  // testNetForm: FormGroup;
   constructor(private auth: AuthService,
               private trackMode: TrackMode,
               private trackCurrency: TrackCurrency,
               private user: UserService,
               private nemTestNet : TestNet,
-              private nemTestNetRequest : TestNetRequest ) {
+              private nemTestNetRequest : TestNetRequest,
+             ) {
   }
 
   bgcolorActiveCurrency(currency: string) {
@@ -35,7 +40,12 @@ export class HeaderComponent {
       return { 'background-color': '#ADD3DF' }
     }
   }
-
+  ngOnInit(){
+      // this.testNetForm = this.formBuilder.group({
+      // nemAddress: [null, [Validators.required]],
+      // xemAmount: [null, Validators.required],
+      // });
+  }
   // Methods from header to set the mode in the trackMode service.
   setPublisher(){
     this.dropdownElement = 'Publisher';
@@ -90,5 +100,18 @@ export class HeaderComponent {
       console.log('There was an error!');
     }
   )
+  }
+  makeTestNetTransaction(){
+    this.nemTestNetRequest.makeTransaction().subscribe(
+      res => {
+        console.log(res);
+        this.isTransactionRequestComplete = true;
+        this.transactionString = 'Congrats! You received testnet xqc'
+      },
+      err => {
+        console.log(err);
+        this.transactionString = 'There was an issue with the transaction'
+      }
+    )
   }
 }

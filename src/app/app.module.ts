@@ -2,7 +2,7 @@
 MODULES
 */
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule , ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule, Title } from '@angular/platform-browser';
@@ -118,6 +118,7 @@ import { AdvPlaceholderComponent } from './components/dashboard/placeholder-dash
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot(AppRoutes),
     NgbModule.forRoot(),

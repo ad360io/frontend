@@ -8,34 +8,34 @@
 <div class="row flexrow" style="margin-bottom: -10px">
     <div class="col">
         <div class="card-format">
-            <span id="labelContent1" class="float-right label label-success"> +14.77% </span>
+            <span id="labelContent1" class="float-right label"> {{revenueDailyChange}} </span>
             <h6 class="text-muted text-uppercase m-b-20">Revenue</h6>
-            <h2 id="cardContent1" style="display: inline; font-size: 27px">{{ publisherStats?.revenue }}</h2>
+            <h2 id="cardContent1" style="display: inline; font-size: 27px">{{ revenue }}</h2>
             <h5 class="text-muted" style="display: inline">{{ currencyType }}</h5>
         </div>
     </div>
 
     <div class="col" >
         <div class="card-format">
-            <span id="labelContent2" class="float-right label label-success"> +11.58% </span>
+            <span id="labelContent2" class="float-right label" [class.label-success]=""> {{ impressionsDailyChange }} </span>
             <h6 class="text-muted text-uppercase m-b-20">Impressions</h6>
-            <h2 id="cardContent2" style="display: inline; font-size: 27px" >{{ publisherStats?.impressions }}</h2>
+            <h2 id="cardContent2" style="display: inline; font-size: 27px" >{{ impressions }}</h2>
         </div>
     </div>
 
     <div class="col" >
         <div class="card-format">
-            <span id="labelContent3" class="float-right label label-success"> +3.71% </span>
+            <span id="labelContent3" class="float-right label"> {{ clicksDailyChange }}</span>
             <h6 class="text-muted text-uppercase m-b-20">Clicks</h6>
-            <h2 id="cardContent3" style="font-size: 27px">{{ publisherStats?.clicks}}</h2>
+            <h2 id="cardContent3" style="font-size: 27px">{{ clicks }}</h2>
         </div>
     </div>
 
     <div class="col">
         <div class="card-format">
-            <span id="labelContent4" class="float-right label label-success"> +4.75% </span>
+            <span id="labelContent4" class="float-right label"> {{ cpmDailyChange }} </span>
             <h6 class="text-muted text-uppercase m-b-20">RPM</h6>
-            <h2 id="cardContent4" style="display: inline; font-size: 27px">{{ publisherStats?.rpm }}</h2>
+            <h2 id="cardContent4" style="display: inline; font-size: 27px">{{ cpm }}</h2>
             <h5 class="text-muted" style="display: inline">{{ currencyType }}</h5>
         </div>
     </div>
@@ -43,8 +43,8 @@
     <div class="col">
         <div class="card-format">
             <h6 class="text-muted text-uppercase m-b-20">Balance</h6>
-             <h2 id="cardContent5" style="display: inline; font-size: 27px" *ngIf="isEqc()">{{ publisherStats?.eqc_balance }}</h2>
-             <h2 id="cardContent6" style="display: inline; font-size: 27px" *ngIf="isXqc()">{{ publisherStats?.xqc_balance }}</h2>
+             <h2 id="cardContent5" style="display: inline; font-size: 27px" *ngIf="isEqc()">{{ eqc_balance  }}</h2>
+             <h2 id="cardContent6" style="display: inline; font-size: 27px" *ngIf="isXqc()">{{ xqc_balance }}</h2>
             <h5 class="text-muted" style="display: inline">{{ currencyType }}</h5>
         </div>
     </div>

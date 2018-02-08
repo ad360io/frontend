@@ -116,25 +116,26 @@
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
+    <form>
     <div class="modal-body">
-      <p></p>
-      <p></p>
       <div class="form-group">
-      <label for="exampleInputEmail1">NEM Address:</label>{{nemAddress}}
-      <input class="form-control" id="nemAddress" [(ngModel)]="nemAddress" aria-describedby="nemAddress" placeholder="Enter NEM address" name="nemAddr">
-      <small id="nemHelp" class="form-text text-muted">Enter the address associated with the NEM account..</small>
-    </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">Enter the amount of XEM:</label>{{xemAmount}}
-      <input class="form-control" [(ngModel)]="xemAmount" id="xemAmount" placeholder="Enter amount" name="xem">
-      <p>The name returned as a response is:</p>{{returnedItems}}
-    </div>
-
+        <label for="nemAddress">NEM Address:</label>{{nemAddress}}
+        <input class="form-control" id="nemAddress" [(ngModel)]="nemAddress" aria-describedby="nemAddress" placeholder="Enter NEM address" size="40" name="nemAddr" required>
+        <small id="nemHelp" class="form-text text-muted">Enter the address associated with the NEM account..</small>
       </div>
+      <div class="form-group">
+        <label for="xemAmount">Enter the amount of XEM:</label>{{xemAmount}}
+        <input class="form-control" [(ngModel)]="xemAmount" id="xemAmount" placeholder="Enter amount" name="xem" required >
+        <div *ngIf="isTransactionRequestComplete">
+          <p> {{ transactionString }} </p>
+        </div>
+      </div>
+    </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-primary" (click)="makeDirectRequest()">Submit</button>
+      <button type="button" class="btn btn-primary" (click)="makeTestNetTransaction()">Submit</button>
       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
     </div>
+  </form>
   </div>
 </div>
 </div>
