@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
 import { TrackMode } from '../trackMode.service';
@@ -17,13 +17,14 @@ export class TestNetRequest {
                 private trackCurrency: TrackCurrency) {
     }
 
-    makeTestNetRequest(nemAddress:string, xemAmount : string ){
-      console.log('This is the nem address'+nemAddress+'The xem amount was:'+xemAmount)
-      return this.http.post('http://jsonplaceholder.typicode.com/posts',
-      {
-          title : 'Another One',
-          body : 'This is another message',
-          userId : '427'
-      });
-    }
+    // makeTestNetRequest(nemAddress:string, xemAmount : string ){
+    //   console.log('This is the nem address'+nemAddress+'The xem amount was:'+xemAmount)
+    //   return this.http.post('https://wmowh5c05f.execute-api.us-east-2.amazonaws.com/prod/demoFunction?TableName=MyTable'),
+    //   {
+    //
+    //   });
+    // }
+    makesampleGetRequest(){
+    return this.http.get('https://wmowh5c05f.execute-api.us-east-2.amazonaws.com/prod/demoFunction?TableName=MyTable');
+  }
 }

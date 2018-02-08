@@ -71,14 +71,22 @@ export class HeaderComponent {
   //
   // }
   makeDirectRequest(){
-    this.nemTestNetRequest.makeTestNetRequest(this.nemAddress,this.xemAmount).subscribe(
-      res => {
-        console.log('This is from the component'+res);
-      },
-      err => {
-        console.log('There was an error');
-      }
-
-    )
+    // this.nemTestNetRequest.makeTestNetRequest(this.nemAddress,this.xemAmount).subscribe(
+    //   res => {
+    //     console.log('This is from the component'+res);
+    //   },
+    //   err => {
+    //     console.log('There was an error');
+    //   }
+    //
+    // )
+    this.nemTestNetRequest.makesampleGetRequest().subscribe(
+    res => {
+      console.log(res);
+    },
+    err => {
+      console.log('There was an error!');
+    }
+  )
   }
 }

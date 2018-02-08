@@ -19,15 +19,15 @@ export class TestNet {
     }
 
     makeTestNetQuery(nemAddress:string, xemAmount:string){
-      this.nemTestNetRequestService.makeTestNetRequest(nemAddress,xemAmount).subscribe(
-        res => {
-          console.log(res)
-
-        },
-        err => {
-          console.log('There was an error with the testnet service');
-        }
-      );
+      // this.nemTestNetRequestService.makeTestNetRequest(nemAddress,xemAmount).subscribe(
+      //   res => {
+      //     console.log(res)
+      //
+      //   },
+      //   err => {
+      //     console.log('There was an error with the testnet service');
+      //   }
+      // );
 
     }
 
