@@ -127,7 +127,9 @@
     <div class="form-group">
       <label for="exampleInputPassword1">Enter the amount of XEM:</label>{{xemAmount}}
       <input class="form-control" [(ngModel)]="xemAmount" id="xemAmount" placeholder="Enter amount" name="xem">
+      <p>The name returned as a response is:</p>{{returnedItems}}
     </div>
+
       </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-primary" (click)="makeDirectRequest()">Submit</button>

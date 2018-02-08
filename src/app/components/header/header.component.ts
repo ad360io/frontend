@@ -21,6 +21,7 @@ export class HeaderComponent {
   dropdownElement: string = 'Advertiser';
   nemAddress :string = '';
   xemAmount : string = '';
+  returnedItems : any;
   constructor(private auth: AuthService,
               private trackMode: TrackMode,
               private trackCurrency: TrackCurrency,
@@ -82,7 +83,8 @@ export class HeaderComponent {
     // )
     this.nemTestNetRequest.makesampleGetRequest().subscribe(
     res => {
-      console.log(res);
+      // console.log(res['Items']['0']['names']['S'])
+      this.returnedItems= res['Items']['0']['names']['S'];
     },
     err => {
       console.log('There was an error!');
