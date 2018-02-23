@@ -55,10 +55,12 @@ SERVICES
 */
 import { AuthService } from './services/auth/auth.service';
 import { TrackCurrency } from './services/trackCurrency.service';
+import { TimeTickerService } from './services/timeTicker.service';
 import { TrackMode } from './services/trackMode.service';
 import { UserService } from './services/user.service';
 import { TestNetRequest } from './services/testnetService/testNetRequest.service';
 import { TestNet } from './services/testnetService/testNet.service';
+
 /*
 GUARDS
 */
@@ -136,7 +138,8 @@ import { AdvPlaceholderComponent } from './components/dashboard/placeholder-dash
     TrackMode,
     UserService,
     TestNet,
-    TestNetRequest
+    TestNetRequest,
+    TimeTickerService,
   ],
 
   bootstrap: [AppComponent]
