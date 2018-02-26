@@ -10,7 +10,7 @@
         <div class="card-format">
             <span id="labelContent2" class="float-right label label-success"> +13.46% </span>
             <h6 class="text-muted text-uppercase m-b-20">Impressions</h6>
-            <h2 id="cardContent2" style="display: inline; font-size: 27px" >{{ advertiserStats?.impressions }}</h2>
+            <h2 id="cardContent2" style="display: inline; font-size: 27px" >{{ impressions }}</h2>
         </div>
     </div>
 
@@ -18,15 +18,15 @@
         <div class="card-format">
             <span id="labelContent3" class="float-right label label-success"> +4.57% </span>
             <h6 class="text-muted text-uppercase m-b-20">Clicks</h6>
-            <h2 id="cardContent3" style="font-size: 27px">{{ advertiserStats?.clicks }}</h2>
+            <h2 id="cardContent3" style="font-size: 27px">{{ clicks }}</h2>
         </div>
     </div>
     <div class="col" >
         <div class="card-format">
             <span id="labelContent12" class="float-right label label-danger"> -1.57% </span>
             <h6 class="text-muted text-uppercase m-b-20">CPM</h6>
-            <h2 id="cardContent12" style="display: inline; font-size: 27px" *ngIf="isEqc()">41.5653832</h2>
-            <h2 id="cardContent13" style="display: inline; font-size: 27px" *ngIf="isXqc()">33.9283134</h2>
+            <h2 id="cardContent12" style="display: inline; font-size: 27px" *ngIf="isEqc()">{{ eqcCpm }}</h2>
+            <h2 id="cardContent13" style="display: inline; font-size: 27px" *ngIf="isXqc()">{{ xqcCpm }}</h2>
             <h5 class="text-muted" style="display: inline">{{ currencyType }}</h5>
         </div>
     </div>
@@ -34,8 +34,8 @@
     <div class="col">
         <div class="card-format">
             <h6 class="text-muted text-uppercase m-b-20">Expenses</h6>
-            <h2 id="cardContent15" style="display: inline; font-size: 27px" *ngIf="isEqc()">13.8923392</h2>
-            <h2 id="cardContent16" style="display: inline; font-size: 27px" *ngIf="isXqc()">10.6288212</h2>
+            <h2 id="cardContent15" style="display: inline; font-size: 27px" *ngIf="isEqc()">{{ eqcExpenses }}</h2>
+            <h2 id="cardContent16" style="display: inline; font-size: 27px" *ngIf="isXqc()">{{ xqcExpenses }}</h2>
             <h5 class="text-muted" style="display: inline">{{ currencyType }}</h5>
         </div>
     </div>
@@ -43,10 +43,10 @@
     <div class="col">
         <div class="card-format">
             <h6 class="text-muted text-uppercase m-b-20">Balance</h6>
-            <h2 id="cardContent5" style="display: inline; font-size: 27px" *ngIf="isEqc()">{{ advertiserStats?.eqc_balance }}</h2>
-            <h2 id="cardContent6" style="display: inline; font-size: 27px" *ngIf="isXqc()">{{ advertiserStats?.xqc_balance }}</h2>
+            <h2 id="cardContent5" style="display: inline; font-size: 27px" *ngIf="isEqc()">{{ eqcBalance }}</h2>
+            <h2 id="cardContent6" style="display: inline; font-size: 27px" *ngIf="isXqc()">{{ xqcBalance }}</h2>
             <h5 class="text-muted" style="display: inline">{{ currencyType }}</h5>
         </div>
     </div>
-</div>        <!-- end row -->
+</div>   <!-- end row -->
 <hr>
