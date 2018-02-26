@@ -81,19 +81,20 @@ export class AdvDashboardStatsComponent implements OnInit {
 
   // Function to set stats based on the Date
   setStats() {
-      let daysOffset = this.daysBetween(this.statisticsStartDate,this.currentDate);
+      let daysOffset = Math.floor(this.daysBetween(this.statisticsStartDate,this.currentDate));
+      console.log(daysOffset);
 
       this.impressions = this.impressionsArray[daysOffset];
       this.clicks = this.clicksArray[daysOffset];
 
-      this.eqcCpm = this.eqcCpmArray[daysOffset];
-      this.xqcCpm = this.xqcCpmArray[daysOffset];
+      this.eqcCpm = +this.eqcCpmArray[daysOffset].toFixed(5);
+      this.xqcCpm = +this.xqcCpmArray[daysOffset].toFixed(5);
 
-      this.eqcExpenses = this.eqcExpensesArray[daysOffset];
-      this.xqcExpenses = this.xqcExpensesArray[daysOffset];
+      this.eqcExpenses = +this.eqcExpensesArray[daysOffset].toFixed(5);
+      this.xqcExpenses = +this.xqcExpensesArray[daysOffset].toFixed(5);
 
-      this.eqcBalance = this.eqcBalancesArray[daysOffset];
-      this.xqcBalance = this.xqcBalancesArray[daysOffset];
+      this.eqcBalance = +this.eqcBalancesArray[daysOffset].toFixed(5);
+      this.xqcBalance = +this.xqcBalancesArray[daysOffset].toFixed(5);
   }
 
   // Function that checks whether the header setting for currency is 'EQC'
