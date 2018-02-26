@@ -44,10 +44,10 @@ export class AdvDashboardStatsComponent implements OnInit {
 
   currencyType: string = '';
 
-  //Tracking to see if the date changed to change the statistics.
+  // Tracking to see if the date changed to change the statistics.
   currentDate: any;
 
-  //Start Date for statistics
+  // Start Date for statistics
   statisticsStartDate: any =  +new Date('2018, 2, 26');
 
   // Constructor
@@ -63,10 +63,6 @@ export class AdvDashboardStatsComponent implements OnInit {
   // Angular initialization hook
   ngOnInit() {
     this.currentDate = +new Date(); //Typescript doesn't allow arithmetic operations on Date objects directly.
-    // this.dashboardService.getAdvertiserStats().subscribe(
-    //   response => {
-    //     this.advertiserStats.update(response);
-    //   });
     this.setStats();
   }
 
@@ -101,7 +97,7 @@ export class AdvDashboardStatsComponent implements OnInit {
   }
 
   // Function that checks whether the header setting for currency is 'EQC'
-  isEqc(){
+  isEqc() {
     if (this.trackCurrency.currency === 'EQC')
       return true;
     else
@@ -109,7 +105,7 @@ export class AdvDashboardStatsComponent implements OnInit {
   }
 
   // Function that checks whether the header setting for currency is 'XQC'
-  isXqc(){
+  isXqc() {
     if (this.trackCurrency.currency === 'XQC')
       return true;
     else
