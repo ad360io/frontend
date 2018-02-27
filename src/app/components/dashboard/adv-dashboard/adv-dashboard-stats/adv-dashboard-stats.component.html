@@ -1,80 +1,88 @@
-<div class="row" style="margin: 18px"></div>
+<div class = "row" style = "margin: 18px"></div>
 <!-- Page-Title -->
-<div class="row" style="margin: 42px 0 0 3px">
-    <div class="col-sm-12">
-        <h5 style="font-size: 24px">Last 24 Hours</h5>
+<div class = "row" style = "margin: 42px 0 0 3px">
+    <div class = "col-sm-12">
+        <h5 style = "font-size: 24px">Last 24 Hours</h5>
     </div>
 </div>
-<div class="row flexrow" style="margin-bottom: -10px">
-    <div class="col" >
-        <div class="card-format">
-            <span id="labelContent2" class="float-right label" [ngClass]="{
+<div class = "row flexrow" style = "margin-bottom: -10px">
+    <div class = "col" >
+        <div class = "card-format">
+            <span id = "labelContent2" class = "float-right label" [ngClass] = "{
                 'label-success' : statisticsLabels[0] === 'positive',
                 'label-danger' : statisticsLabels[0] === 'negative',
-                'label-primary' : statisticsLabels[0] === 'neutral' } "> {{ impressionsChange }} </span>
-            <h6 class="text-muted text-uppercase m-b-20">Impressions</h6>
-            <h2 id="cardContent2" style="display: inline; font-size: 27px" >{{ impressions }}</h2>
+                'label-primary' : statisticsLabels[0] === 'neutral' } "> {{ impressionsChange }}
+            </span>
+            <h6 class = "text-muted text-uppercase m-b-20">Impressions</h6>
+            <h2 id = "cardContent2" style = "display: inline; font-size: 27px" >{{ impressions }}</h2>
         </div>
     </div>
 
-    <div class="col" >
-        <div class="card-format">
-            <span id="labelContent3" class="float-right label" [ngClass]="{
+    <div class = "col" >
+        <div class = "card-format">
+            <span id = "labelContent3" class = "float-right label" [ngClass] = "{
                 'label-success' : statisticsLabels[1] === 'positive',
                 'label-danger' : statisticsLabels[1] === 'negative',
-                'label-primary' : statisticsLabels[1] === 'neutral' }"> {{ clicksChange }} </span>
-            <h6 class="text-muted text-uppercase m-b-20">Clicks</h6>
-            <h2 id="cardContent3" style="font-size: 27px">{{ clicks }}</h2>
+                'label-primary' : statisticsLabels[1] === 'neutral' }"> {{ clicksChange }}
+            </span>
+            <h6 class = "text-muted text-uppercase m-b-20">Clicks</h6>
+            <h2 id = "cardContent3" style = "font-size: 27px">{{ clicks }}</h2>
         </div>
     </div>
-    <div class="col" >
-        <div class="card-format">
-            <span id="labelContent12" class="float-right label" *ngIf="isEqc()" [ngClass]="{
+    <div class = "col" >
+        <div class = "card-format">
+            <span id = "labelContent12" class = "float-right label" *ngIf = "isEqc()" [ngClass] = "{
                 'label-success' : statisticsLabels[2] === 'positive',
                 'label-danger' : statisticsLabels[2] === 'negative',
-                'label-primary' : statisticsLabels[2] === 'neutral' }"> {{ eqcCpmChange }} </span>
-            <span id="labelContent13" class="float-right label" *ngIf="isXqc()" [ngClass]="{
+                'label-primary' : statisticsLabels[2] === 'neutral' }"> {{ eqcCpmChange }}
+            </span>
+            <span id = "labelContent13" class = "float-right label" *ngIf = "isXqc()" [ngClass] = "{
                 'label-success' : statisticsLabels[3] === 'positive',
                 'label-danger' : statisticsLabels[3] === 'negative',
-                'label-primary' : statisticsLabels[3] === 'neutral' }"> {{ xqcCpmChange }} </span>
-            <h6 class="text-muted text-uppercase m-b-20">CPM</h6>
-            <h2 id="cardContent12" style="display: inline; font-size: 27px" *ngIf="isEqc()">{{ eqcCpm }}</h2>
-            <h2 id="cardContent13" style="display: inline; font-size: 27px" *ngIf="isXqc()">{{ xqcCpm }}</h2>
-            <h5 class="text-muted" style="display: inline">{{ currencyType }}</h5>
+                'label-primary' : statisticsLabels[3] === 'neutral' }"> {{ xqcCpmChange }}
+            </span>
+            <h6 class = "text-muted text-uppercase m-b-20">CPM</h6>
+            <h2 id = "cardContent12" style = "display: inline; font-size: 27px" *ngIf = "isEqc()">{{ eqcCpm }}</h2>
+            <h2 id = "cardContent13" style = "display: inline; font-size: 27px" *ngIf = "isXqc()">{{ xqcCpm }}</h2>
+            <h5 class = "text-muted" style = "display: inline">{{ currencyType }}</h5>
         </div>
     </div>
 
-    <div class="col">
-        <div class="card-format">
-            <span id="labelContent14" class="float-right label" *ngIf="isEqc()" [ngClass]="{
+    <div class = "col">
+        <div class = "card-format">
+            <span id = "labelContent14" class = "float-right label" *ngIf = "isEqc()" [ngClass] = "{
                 'label-success' : statisticsLabels[4] === 'positive',
                 'label-danger' : statisticsLabels[4] === 'negative',
-                'label-primary' : statisticsLabels[4] === 'neutral' }"> {{ eqcExpensesChange }} </span>
-            <span id="labelContent15" class="float-right label" *ngIf="isXqc()" [ngClass]="{
+                'label-primary' : statisticsLabels[4] === 'neutral' }"> {{ eqcExpensesChange }}
+            </span>
+            <span id = "labelContent15" class = "float-right label" *ngIf = "isXqc()" [ngClass] = "{
                 'label-success' : statisticsLabels[5] === 'positive',
                 'label-danger' : statisticsLabels[5] === 'negative',
-                'label-primary' : statisticsLabels[5] === 'neutral' }"> {{ xqcExpensesChange }} </span>
-            <h6 class="text-muted text-uppercase m-b-20">Expenses</h6>
-            <h2 id="cardContent15" style="display: inline; font-size: 27px" *ngIf="isEqc()">{{ eqcExpenses }}</h2>
-            <h2 id="cardContent16" style="display: inline; font-size: 27px" *ngIf="isXqc()">{{ xqcExpenses }}</h2>
-            <h5 class="text-muted" style="display: inline">{{ currencyType }}</h5>
+                'label-primary' : statisticsLabels[5] === 'neutral' }"> {{ xqcExpensesChange }}
+            </span>
+            <h6 class = "text-muted text-uppercase m-b-20">Expenses</h6>
+            <h2 id = "cardContent15" style = "display: inline; font-size: 27px" *ngIf = "isEqc()">{{ eqcExpenses }}</h2>
+            <h2 id = "cardContent16" style = "display: inline; font-size: 27px" *ngIf = "isXqc()">{{ xqcExpenses }}</h2>
+            <h5 class = "text-muted" style = "display: inline">{{ currencyType }}</h5>
         </div>
     </div>
 
-    <div class="col">
-        <div class="card-format">
-            <span id="labelContent16" class="float-right label" *ngIf="isEqc()" [ngClass]="{
+    <div class = "col">
+        <div class = "card-format">
+            <span id = "labelContent16" class = "float-right label" *ngIf = "isEqc()" [ngClass] = "{
                 'label-success' : statisticsLabels[6] === 'positive',
                 'label-danger' : statisticsLabels[6] === 'negative',
-                'label-primary' : statisticsLabels[6] === 'neutral' }"> {{ eqcBalanceChange }} </span>
-            <span id="labelContent17" class="float-right label" *ngIf="isXqc()" [ngClass]="{
+                'label-primary' : statisticsLabels[6] === 'neutral' }"> {{ eqcBalanceChange }}
+            </span>
+            <span id = "labelContent17" class = "float-right label" *ngIf = "isXqc()" [ngClass] = "{
                 'label-success' : statisticsLabels[7] === 'positive',
                 'label-danger' : statisticsLabels[7] === 'negative',
-                'label-primary' : statisticsLabels[7] === 'neutral' }"> {{ xqcBalanceChange }} </span>
-            <h6 class="text-muted text-uppercase m-b-20">Balance</h6>
-            <h2 id="cardContent5" style="display: inline; font-size: 27px" *ngIf="isEqc()">{{ eqcBalance }}</h2>
-            <h2 id="cardContent6" style="display: inline; font-size: 27px" *ngIf="isXqc()">{{ xqcBalance }}</h2>
-            <h5 class="text-muted" style="display: inline">{{ currencyType }}</h5>
+                'label-primary' : statisticsLabels[7] === 'neutral' }"> {{ xqcBalanceChange }}
+            </span>
+            <h6 class = "text-muted text-uppercase m-b-20">Balance</h6>
+            <h2 id = "cardContent5" style = "display: inline; font-size: 27px" *ngIf = "isEqc()">{{ eqcBalance }}</h2>
+            <h2 id = "cardContent6" style = "display: inline; font-size: 27px" *ngIf = "isXqc()">{{ xqcBalance }}</h2>
+            <h5 class = "text-muted" style = "display: inline">{{ currencyType }}</h5>
         </div>
     </div>
 </div>   <!-- end row -->
