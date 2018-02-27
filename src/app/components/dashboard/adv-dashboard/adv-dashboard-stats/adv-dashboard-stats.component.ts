@@ -25,6 +25,22 @@ export class AdvDashboardStatsComponent implements OnInit {
   eqcBalance: number;
   xqcBalance: number;
 
+  // Daily Change trackers
+  impressionsChange: number = 13.46;
+  clicksChange: number = -12.52;
+
+  eqcCpmChange: number = -10.52;
+  xqcCpmChange: number = +9.62;
+
+  eqcExpensesChange: number = -8.32;
+  xqcExpensesChange: number = 5.6;
+
+  eqcBalanceChange: number = 3.2;
+  xqcBalanceChange: number = -14.2;
+
+  // Track labels for statistics
+  statisticsLabels : string[]= ['positive','positive','positive','negative','positive','positive','positive','negative'];
+
   // Advertiser Data Store
   impressionsArray: number[] = [4942,2926,2574,4639,4371,2388,2149,3347,3944,2067,5783,4785,5989,2584,3311,5136,3881,5661,3312,5341,2430,5437,4581,3132,3532,2974,3188,3516,5551,2367,5507,3094,5044,3183,5546,3720,3721,4889,5191,2519,5722,5226,3782,3300,2868,4376,5226,2726,2545,2378,3952,3512,3265,2985,4048,5761,5818,3333,4837,2475,2715,2044,2530,5943,3094,5191,2532,3614,4235,2575,2707,5934,5387,3426,5147,3276,2403,5254,5101,2211,3913,5047,5387,3706,2124,2647,4563,3343,3097,2624,5292,4012,4820,3597,5133,3773,5840,2901,3937,3136,4927,3087,3624,5838,4603,2900,3583,4183,5765,3425,3577,5087,3807,3834,3609,3164,4731,3824,4865,2938,2961,4944,2521,5717,2240,2280,2281,3639,5957,5322,2352,4093,3526,2302,3171,3784,5674,4422,3727,5862,4804,5839,3036,2798,3309,3378,2347,5381,4894,5146,5756,4052,5256,4985,5866,5093,5510,4493,3431,3589,2704,2137,5766,2388,2566,2400,5218,3827,4867,4265,5923,3021,2397,5549,2161,5893,3430,4091,2283,5010];
 
@@ -64,6 +80,7 @@ export class AdvDashboardStatsComponent implements OnInit {
   ngOnInit() {
     this.currentDate = +new Date(); //Typescript doesn't allow arithmetic operations on Date objects directly.
     this.setStats();
+    this.calculateDailyChanges();
   }
 
   // Function that standardizes dates to UTC
@@ -97,6 +114,56 @@ export class AdvDashboardStatsComponent implements OnInit {
       this.xqcBalance = +this.xqcBalancesArray[daysOffset].toFixed(5);
   }
 
+  // Function that calculates the day-to-day changes in the statistics.
+  calculateDailyChanges(){
+    // Checking for the initial condition (wont matter except for today, lol)
+    let daysOffset = Math.floor(this.daysBetween(this.statisticsStartDate,this.currentDate));
+    if (daysOffset != 0) {
+
+      this.impressionsChange = (this.impressionsArray[daysOffset] - this.impressionsArray[daysOffset - 1])*100/(this.impressionsArray[daysOffset - 1]);
+      this.clicksChange =  (this.clicksArray[daysOffset] - this.clicksArray[daysOffset - 1])*100/(this.clicksArray[daysOffset - 1]);
+
+      this.eqcCpmChange =  (this.eqcCpmArray[daysOffset] - this.eqcCpmArray[daysOffset - 1])*100/(this.eqcCpmArray[daysOffset - 1]);
+      this.xqcCpmChange =  (this.xqcCpmArray[daysOffset] - this.xqcCpmArray[daysOffset - 1])*100/(this.xqcCpmArray[daysOffset - 1]);
+
+      this.eqcExpensesChange =  (this.eqcExpensesArray[daysOffset] - this.eqcExpensesArray[daysOffset - 1])*100/(this.eqcExpensesArray[daysOffset - 1]);
+      this.xqcExpensesChange =  (this.xqcExpensesArray[daysOffset] - this.xqcExpensesArray[daysOffset - 1])*100/(this.xqcExpensesArray[daysOffset - 1]);
+
+      this.eqcBalanceChange =  (this.eqcBalancesArray[daysOffset] - this.eqcBalancesArray[daysOffset - 1])*100/(this.eqcBalancesArray[daysOffset - 1]);
+      this.xqcBalanceChange =  (this.xqcBalancesArray[daysOffset] - this.xqcBalancesArray[daysOffset - 1])*100/(this.xqcBalancesArray[daysOffset - 1]);
+    }
+    this.changeDailyStatLabels();
+  }
+  checkStatsAndReturnResult(stat: number) {
+    console.log(stat);
+    if (stat > 0) {
+      console.log('this stat was positive'+stat);
+      return 'positive';
+    }
+    else if (stat < 0){
+      console.log('this stat was negative'+stat);
+      return 'negative';
+    }
+    else{
+      return 'neutral';
+    }
+  }
+
+  changeDailyStatLabels() {
+        this.statisticsLabels[0] = this.checkStatsAndReturnResult(this.impressionsChange);
+        this.statisticsLabels[1] = this.checkStatsAndReturnResult(this.clicksChange);
+        this.statisticsLabels[2] = this.checkStatsAndReturnResult(this.eqcCpmChange);
+        this.statisticsLabels[3] = this.checkStatsAndReturnResult(this.xqcCpmChange);
+        this.statisticsLabels[4] = this.checkStatsAndReturnResult(this.eqcExpensesChange);
+        this.statisticsLabels[5] = this.checkStatsAndReturnResult(this.xqcExpensesChange);
+        this.statisticsLabels[6] = this.checkStatsAndReturnResult(this.eqcBalanceChange);
+        this.statisticsLabels[7] = this.checkStatsAndReturnResult(this.xqcBalanceChange);
+    }
+
+  checkAndAssignLabel(){
+
+
+  }
   // Function that checks whether the header setting for currency is 'EQC'
   isEqc() {
     if (this.trackCurrency.currency === 'EQC')
