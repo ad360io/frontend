@@ -1,22 +1,23 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DashboardService } from '../../../../../services/dashboard-services/dashboard.service';
 import { AdvertiserCharts } from '../../../../../models/advertiser-charts.model';
 import { TrackCurrency } from '../../../../../services/trackCurrency.service';
+
 
 @Component({
   selector: 'app-adv-linechart',
   templateUrl: './adv-linechart.component.html',
   styleUrls: ['./adv-linechart.component.css']
 })
-export class AdvLinechartComponent implements OnInit, AfterViewInit {
+
+
+export class AdvLinechartComponent implements OnInit {
 
   chosenChart: any = 'impressionsChart';
   chartData: any;
   isLoaded: boolean = false;
 
-
   // Data initiailization for advertiser charts in EQC.
-
   impressionsDataEqc1: number [] = [4276,5716,3925,2934,5306,4596,5079,3232,4350,5182,5848,4092,2339,3720,3451,2434,4714,3038,4887,4697,5017,3117,5901,2552,3723,2917,5726,5732,2928,2272,4365,2326,2414,2667,4601,2563,2791,2235,3011,4812,4204,4164,2343,3975,2577,2314,4783,5663,3949,5670,3045,5391,5851,5597,5184,4777,4214,5302,3468,4105,2381,2589,2414,3453,4721,3075,3763,3437,3315,4279,4582,5170,4075,2984,4620,3034,3045,5112,4894,5604,5894,4474,4897,5924,2355,2906,3703,5035,2117,5772,5557,4092,2400,5807,5058,3749,4588,2312,4953,2359,4967,3740,3825,3396,5150,2524,4144,4085,5674,4708,2558,5508,2962,4478,3245,5546,4327,5782,4893,5012,3005,3037,2180,3199,5464,4444,2981,2598,2485,4032,3356,2807,5523,3699,3479,2963,2437,5631,3381,2253,2180,3670,2408,3767,5800,5205,5678,2378,2314,5557,2842,2923,3691,5165,4669,3685,4351,2089,5602,2848,5840,5396,2436,4268,2194,2397,4240,2792,4884,4971,4900,3537,3931,4034,3573,3762,2266,2667,3461,2466,4004,5950,4470,2018,5074,2024,3661,4412,2375,5278,3872,4388,3280,4293,3230,5099,2567,4193,3305,3547,2223,3129,2376,5723,5331,3546,4819,5526,3147,5128,3424,5537,2664,3212,5004,2852,2826,4545,5827,3306,2176,5518,3206,4740,4544,3608,3079,3938,2428,3173,4011,5812,4197,3236,3945,3791,2849,3618,5972,5651,5632,4972,5797,3171,5137,4326,5516,3162,5779,5027];
 
 
@@ -61,11 +62,12 @@ export class AdvLinechartComponent implements OnInit, AfterViewInit {
 
   clicksDataXqc5: number [] = [5719,5043,6357,5779,5246,5340,6866,6431,5039,5150,5273,5434,5054,5751,5846,6367,5524,5697,6796,6722,5090,6710,6191,6162,5604,6948,5082,5315,6635,6721,5909,5183,6067,6770,5973,5143,5540,5676,5034,5823,5957,6817,6549,6544,6042,5082,6606,5538,5111,6802,6050,6467,5396,6200,6627,5976,6298,5407,5368,5655,6228,6750,6214,6349,5703,5638,6676,5226,6204,5676,5771,6513,6381,5002,5506,6142,6892,5729,6123,5637,5515,5327,5806,6962,6388,6003,5251,6689,5858,6404,5020,5652,5424,5781,6655,5695,5220,6615,6235,6533,6199,6036,5634,6426,6286,6536,6447,5564,6433,6080,5927,5929,6420,6753,6347,5800,5168,6858,6649,5425,6230,5894,5557,5596,5739,6952,5890,6734,5254,5856,5510,6369,6424,5538,5667,5568,6126,6060,6251,6652,5154,5232,5248,5356,5192,6783,6909,6060,5742,5904,6028,6280,5618,5320,6513,5539,5311,5980,5312,6401,6512,6275,5616,6162,5420,6769,6065,6989,5347,5109,6212,6856,6678,6863,5409,5213,5005,6096,5135,5405,6630,6618,6676,6880,5051,6010,5206,6064,6572,6879,6715,5272,5279,6375,5661,6537,6543,6413,6100,6547,6824,6176,6644,6151,6541,6028,5198,5242,6065,5609,6566,5757,6172,5543,5902,6493,6740,5192,5155,6435,5986,6766,6867,5224,5750,6150,5520,6705,6394,6909,5756,5904,5393,6755,6996,5082,5034,6101,5057,5161,6851,6418,6343,6357,5201,5287,6515,6810,6281,5273];
 
-  public lineChartOptions:any = {
+  // Declarations for the Linechart attributes
+  public lineChartOptions: any = {
     responsive: true
   };
 
-  public lineChartColors:Array<any> = [
+  public lineChartColors: Array<any> = [
     { // grey
       backgroundColor: 'rgba(255,161,181,0.6)',
       borderColor: 'rgba(255,161,181,1)',
@@ -113,13 +115,6 @@ export class AdvLinechartComponent implements OnInit, AfterViewInit {
   isImpressionsActive: boolean = true;
   isClicksActive: boolean = false;
 
-  currentDate: any;
-  statisticsStartDate: any =  +new Date('2018, 2, 26');
-
-  adNamesPool = ['Twitter Influencer','Trailer Spot','Blog Post','Sponsored Forum','Video Spot', 'Podcast Spot','Written Spot', 'Twitch Influencer','Instagram Influencer','Youtube Influencer','Facebook Influencer', 'Niconico Influencer']
-  adNamesEqc: string[] = ['Name1','Name2','Name3','Name4','Name5'];
-  adNamesXqc: string[] = ['Name1','Name2','Name3','Name4','Name5'];
-
   lineChartImpressionsEqcDataset: any;
   lineChartImpressionsXqcDataset: any;
 
@@ -128,12 +123,18 @@ export class AdvLinechartComponent implements OnInit, AfterViewInit {
 
   lineChartXAxisDates: any;
 
+  currentDate : any;
+  statisticsStartDate: any =  +new Date('2018, 2, 26');
+
+  //Declarations for creating names for ads.
+  adNamesPool = ['Twitter Influencer','Trailer Spot','Blog Post','Sponsored Forum','Video Spot', 'Podcast Spot','Written Spot', 'Twitch Influencer','Instagram Influencer','Youtube Influencer','Facebook Influencer', 'Niconico Influencer']
+  adNamesEqc: string[] = ['Name1','Name2','Name3','Name4','Name5'];
+  adNamesXqc: string[] = ['Name1','Name2','Name3','Name4','Name5'];
+
 
   constructor(private dashboardService: DashboardService,
               private trackCurrency: TrackCurrency){
-    // Date.prototype.addDays = function(days) {
-    //
-    // }
+
   }
 
   ngOnInit() {
@@ -142,12 +143,6 @@ export class AdvLinechartComponent implements OnInit, AfterViewInit {
     this.calculateChartDatasets();
     this.isLoaded = true;
   }
-
-
-  ngAfterViewInit(){
-
-  }
-
 
   // Function that standardizes dates to UTC
   treatAsUTC(date) {
@@ -179,18 +174,19 @@ export class AdvLinechartComponent implements OnInit, AfterViewInit {
     return dates;
   }
 
+  // Function that generates names for ads.
   generateAdNames() {
     for (let i = 0; i < this.adNamesEqc.length; i++) {
-      this.adNamesEqc[i] = this.adNamesPool[Math.floor(Math.random() * this.adNamesPool.length)]+'No.'+(Math.floor(Math.random() * 15)).toString();
+      this.adNamesEqc[i] = this.adNamesPool[Math.floor(Math.random() * this.adNamesPool.length)]+' No.'+(Math.floor(Math.random() * 15)).toString();
     }
 
     for (let i = 0; i < this.adNamesXqc.length; i++) {
-      this.adNamesXqc[i] = this.adNamesPool[Math.floor(Math.random() * this.adNamesPool.length)]+'No.'+(Math.floor(Math.random() * 15)).toString();
+      this.adNamesXqc[i] = this.adNamesPool[Math.floor(Math.random() * this.adNamesPool.length)]+' No.'+(Math.floor(Math.random() * 15)).toString();
     }
 
   }
 
-
+  // Functions that portions the data to be used by the charts.
   calculateChartDatasets(){
     this.generateAdNames();
     let daysOffset = Math.floor(this.daysBetween(this.statisticsStartDate,this.currentDate));
@@ -230,11 +226,6 @@ export class AdvLinechartComponent implements OnInit, AfterViewInit {
     //Create X axis chartLabels
     let dayArray:any;
     let startDate: Date = new Date(new Date().setDate(new Date().getDate() - 30));
-    // let i = 0;
-    // for (let date in this.getDates(startDate,this.currentDate)) {
-    //   dayArray[i] = date.getDate();
-    //   ++i;
-    // }
     let dates = this.getDates(startDate,this.currentDate);
     let weekDays: string[] = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
     let xAxis : any[] = [];
@@ -242,12 +233,13 @@ export class AdvLinechartComponent implements OnInit, AfterViewInit {
       xAxis[i] = new Date(dates[i]);
     }
     let dateList: any[] =[];
-    for (let i = 0; i < xAxis.length; i++){
+    for (let i = 0; i < xAxis.length -1; i++){
       dateList[i] = weekDays[xAxis[i].getDay()];
     }
     this.lineChartXAxisDates = dateList;
   }
 
+  // Function that returns the right dataset based on the chosen currency and chart type.
   public chooseDataset(){
     if(this.trackCurrency.currency === 'EQC') {
       if(this.chosenChart == 'impressionsChart') {
@@ -268,6 +260,7 @@ export class AdvLinechartComponent implements OnInit, AfterViewInit {
     }
   }
 
+  // Function that provides the labels for the charts.
   public chooseLabels() {
     if(this.trackCurrency.currency === 'EQC') {
       return this.adNamesEqc;
@@ -277,7 +270,7 @@ export class AdvLinechartComponent implements OnInit, AfterViewInit {
     }
   }
 
-
+  // Function that determines that chart that is currently active on the template.
   public activeChart(event:any)  {
     let target = event.target || event.srcElement || event.currentTarget;
     this.chosenChart = target.attributes.id.value;
@@ -293,15 +286,13 @@ export class AdvLinechartComponent implements OnInit, AfterViewInit {
       }
   }
 
+  // Helper functions for the chart.
   public chartHovered(e:any):void {
     console.log(e);
   }
 
-
+  // Helper functions for the chart.
   public chartClicked(e:any):void {
     console.log(e);
   }
-
-
-
 }
