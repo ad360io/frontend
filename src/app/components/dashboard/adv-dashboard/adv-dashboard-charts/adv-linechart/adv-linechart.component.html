@@ -1,12 +1,12 @@
 <canvas baseChart style="padding: 12px"
               [datasets]="chooseDataset()"
-              [labels]="advertiserCharts.lineChartLabels"
+              [labels]="lineChartXAxisDates"
               [options]="lineChartOptions"
               [colors]="lineChartColors"
               [legend]="lineChartLegend"
               [chartType]="lineChartType"
-
-              (chartClick)="chartClicked($event)" *ngIf="isLoaded"></canvas>
+              (chartClick)="chartClicked($event)" *ngIf="isLoaded">
+</canvas>
 <div class="card-footer text-center">
     <div class="btn-group" role="group" aria-label="Basic example">
       <button type="button" class="btn btn-sm btn-secondary" [class.active]="isImpressionsActive" (click)="activeChart($event)" id="impressionsChart">Impressions</button>

@@ -18,6 +18,7 @@ export class AdvBarchartComponent implements OnInit {
     responsive: true,
      legend: { display: false }
   };
+
   barChartData:any=[];
   public barChartLabels=[];
   public barChartType:  string = 'bar';

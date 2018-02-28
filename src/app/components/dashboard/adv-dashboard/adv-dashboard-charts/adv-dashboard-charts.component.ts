@@ -15,4 +15,8 @@ export class AdvDashboardChartsComponent implements OnInit {
   ngOnInit() {
 
   }
+
+  displayChart(){
+    
+  }
 }

@@ -120,28 +120,28 @@ export class AdvDashboardStatsComponent implements OnInit {
     let daysOffset = Math.floor(this.daysBetween(this.statisticsStartDate,this.currentDate));
     if (daysOffset != 0) {
 
-      this.impressionsChange = (this.impressionsArray[daysOffset] - this.impressionsArray[daysOffset - 1])*100/(this.impressionsArray[daysOffset - 1]);
-      this.clicksChange =  (this.clicksArray[daysOffset] - this.clicksArray[daysOffset - 1])*100/(this.clicksArray[daysOffset - 1]);
+      this.impressionsChange = +((this.impressionsArray[daysOffset] - this.impressionsArray[daysOffset - 1]) * 100 / (this.impressionsArray[daysOffset - 1])).toFixed(2);
+      this.clicksChange =  +((this.clicksArray[daysOffset] - this.clicksArray[daysOffset - 1]) * 100 / (this.clicksArray[daysOffset - 1])).toFixed(2);
 
-      this.eqcCpmChange =  (this.eqcCpmArray[daysOffset] - this.eqcCpmArray[daysOffset - 1])*100/(this.eqcCpmArray[daysOffset - 1]);
-      this.xqcCpmChange =  (this.xqcCpmArray[daysOffset] - this.xqcCpmArray[daysOffset - 1])*100/(this.xqcCpmArray[daysOffset - 1]);
+      this.eqcCpmChange =  +((this.eqcCpmArray[daysOffset] - this.eqcCpmArray[daysOffset - 1]) * 100 / (this.eqcCpmArray[daysOffset - 1])).toFixed(2);
+      this.xqcCpmChange =  +((this.xqcCpmArray[daysOffset] - this.xqcCpmArray[daysOffset - 1]) * 100 / (this.xqcCpmArray[daysOffset - 1])).toFixed(2);
 
-      this.eqcExpensesChange =  (this.eqcExpensesArray[daysOffset] - this.eqcExpensesArray[daysOffset - 1])*100/(this.eqcExpensesArray[daysOffset - 1]);
-      this.xqcExpensesChange =  (this.xqcExpensesArray[daysOffset] - this.xqcExpensesArray[daysOffset - 1])*100/(this.xqcExpensesArray[daysOffset - 1]);
+      this.eqcExpensesChange =  +((this.eqcExpensesArray[daysOffset] - this.eqcExpensesArray[daysOffset - 1]) * 100 / (this.eqcExpensesArray[daysOffset - 1])).toFixed(2);
+      this.xqcExpensesChange =  +((this.xqcExpensesArray[daysOffset] - this.xqcExpensesArray[daysOffset - 1]) * 100 / (this.xqcExpensesArray[daysOffset - 1])).toFixed(2);
 
-      this.eqcBalanceChange =  (this.eqcBalancesArray[daysOffset] - this.eqcBalancesArray[daysOffset - 1])*100/(this.eqcBalancesArray[daysOffset - 1]);
-      this.xqcBalanceChange =  (this.xqcBalancesArray[daysOffset] - this.xqcBalancesArray[daysOffset - 1])*100/(this.xqcBalancesArray[daysOffset - 1]);
+      this.eqcBalanceChange =  +((this.eqcBalancesArray[daysOffset] - this.eqcBalancesArray[daysOffset - 1]) * 100 / (this.eqcBalancesArray[daysOffset - 1])).toFixed(2);
+      this.xqcBalanceChange =  +((this.xqcBalancesArray[daysOffset] - this.xqcBalancesArray[daysOffset - 1]) * 100 / (this.xqcBalancesArray[daysOffset - 1])).toFixed(2);
     }
     this.changeDailyStatLabels();
   }
   checkStatsAndReturnResult(stat: number) {
-    console.log(stat);
+    //console.log(stat);
     if (stat > 0) {
-      console.log('this stat was positive'+stat);
+      //console.log('this stat was positive'+stat);
       return 'positive';
     }
     else if (stat < 0){
-      console.log('this stat was negative'+stat);
+      //console.log('this stat was negative'+stat);
       return 'negative';
     }
     else{
