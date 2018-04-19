@@ -1,4 +1,49 @@
+<img class="profile-pic" src="../../../../assets/images/placeholder.png"> 
+<h2 class="welcome-msg">WAZZZUP DUDE!</h2>
 
-<app-adv-dashboard-stats></app-adv-dashboard-stats>
-<app-adv-dashboard-charts></app-adv-dashboard-charts>
-<app-adv-dashboard-tables></app-adv-dashboard-tables>
+<mat-divider></mat-divider>
+  
+<div class="dashboard-left">
+    <div class="wallet-info">
+        <mat-card id="wallet-info-card">
+            <mat-card-title>
+                <h4>Your Balances:</h4>
+            </mat-card-title>
+            <mat-card-content>
+                <ul>
+                    <li>12345678 EQC</li>
+                    <li>0.000001 XQC</li>
+                </ul>
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+    <div class="stats">
+        <mat-card id="stats-card">
+            <mat-card-title>
+                <h4>Last 24 Hours</h4>
+            </mat-card-title>
+            <mat-card-content>
+                <app-adv-dashboard-stats></app-adv-dashboard-stats>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
+    
+<div class="dashboard-right">
+    <div class="charts">
+            <app-adv-dashboard-charts></app-adv-dashboard-charts>
+    </div>
+</div>
+
+<mat-divider></mat-divider>
+
+<div class="tables">
+    <app-adv-dashboard-tables></app-adv-dashboard-tables>
+</div>
+
+
+
+
+
+

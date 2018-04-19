@@ -11,6 +11,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ChartsModule } from 'ng2-charts';
 import { SliderModule } from 'primeng/primeng';
 import { CalendarModule } from 'primeng/primeng';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+/*
+NG-MATERIAL MODULES
+*/
+import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
 
 
 /*
@@ -119,6 +126,7 @@ import { AdvPlaceholderComponent } from './components/dashboard/placeholder-dash
 
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
@@ -128,6 +136,9 @@ import { AdvPlaceholderComponent } from './components/dashboard/placeholder-dash
     SliderModule,
     CalendarModule,
     HttpClientModule,
+
+    MatCardModule,
+    MatDividerModule
   ],
 
   providers: [

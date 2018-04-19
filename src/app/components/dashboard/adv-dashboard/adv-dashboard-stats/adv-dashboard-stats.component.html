@@ -1,12 +1,8 @@
-<div class = "row" style = "margin: 18px"></div>
+
 <!-- Page-Title -->
-<div class = "row" style = "margin: 42px 0 0 3px">
-    <div class = "col-sm-12">
-        <h5 style = "font-size: 24px">Last 24 Hours</h5>
-    </div>
-</div>
+
 <div class = "row flexrow" style = "margin-bottom: -10px">
-    <div class = "col" >
+    <div class = "row" >
         <div class = "card-format">
             <span id = "labelContent2" class = "float-right label" [ngClass] = "{
                 'label-success' : statisticsLabels[0] === 'positive',
@@ -20,7 +16,7 @@
         </div>
     </div>
 
-    <div class = "col" >
+    <div class = "row" >
         <div class = "card-format">
             <span id = "labelContent3" class = "float-right label" [ngClass] = "{
                 'label-success' : statisticsLabels[1] === 'positive',
@@ -33,7 +29,7 @@
             <h2 id = "cardContent3" style = "font-size: 27px">{{ clicks }}</h2>
         </div>
     </div>
-    <div class = "col" >
+    <div class = "row" >
         <div class = "card-format">
             <span id = "labelContent12" class = "float-right label" *ngIf = "isEqc()" [ngClass] = "{
                 'label-success' : statisticsLabels[2] === 'positive',
@@ -56,7 +52,7 @@
         </div>
     </div>
 
-    <div class = "col">
+    <div class = "row">
         <div class = "card-format">
             <span id = "labelContent14" class = "float-right label" *ngIf = "isEqc()" [ngClass] = "{
                 'label-success' : statisticsLabels[4] === 'positive',
@@ -79,7 +75,7 @@
         </div>
     </div>
 
-    <div class = "col">
+    <div class = "row">
         <div class = "card-format">
             <span id = "labelContent16" class = "float-right label" *ngIf = "isEqc()" [ngClass] = "{
                 'label-success' : statisticsLabels[6] === 'positive',
@@ -102,4 +98,3 @@
         </div>
     </div>
 </div>   <!-- end row -->
-<hr>
