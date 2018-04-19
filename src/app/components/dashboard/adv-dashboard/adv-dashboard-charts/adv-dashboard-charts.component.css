@@ -1,15 +1,46 @@
+/*
+COMMON CSS
+*/
 .card-header{
   background-color:#304F76;
 }
 
-.linechart-container {
-  margin: auto;
-  width: 80%;
+/*
+FOR PHONES AND TABLETS
+*/
+@media only screen and (max-width: 1188px){
+  .linechart-container{
+    margin-top: 5%;
+    width: 100%;
+  }
+
+  .barchart-container{
+    margin-top: 5%;
+    width: 100%;
+  }
 }
 
-.barchart-container  {
-  width: 80%;
-  margin: auto;
-  margin-top: 3%;
-  margin-bottom: 3%;
+
+/*
+FOR DESKTOP
+*/
+@media only screen and (min-width: 1189px){
+  
+  .linechart-container {
+    margin-left: 5%;
+    width: 80%;
+  }
+
+  .barchart-container  {
+    margin-left: 5%;
+    width: 80%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+  }
 }
+
+
+
+
+
+

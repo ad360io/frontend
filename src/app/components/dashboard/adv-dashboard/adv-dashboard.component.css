@@ -1,16 +1,6 @@
-
-.profile-pic{
-    margin-top: 4%;
-    margin-left: 1.25%;
-    margin-right: 1.25%;
-    width:80px;
-    float: left;
-}
-
-.welcome-msg{
-    margin-top: 5%;
-    margin-left: 5%;
-}
+/*
+COMMON CSS
+*/
 
 mat-divider {
     margin-top: 2%;
@@ -19,25 +9,80 @@ mat-divider {
     opacity: 0.2;
 }
 
-.dashboard-left{
-    width:25%;
-    float:left;
-    margin: auto;
-    margin-top: 2%;
-    height: 100%;
-}
-
-.dashboard-right {
-    margin-left: 25%;
-    margin-top: 2%;
-    height: 100%;
-}
-
-.stats{
-    margin-top: 5%;
-}
-
-
 mat-card{
     background-color: #fafafa;
+}
+
+
+/*
+FOR PHONES AND TABLETS
+*/
+@media only screen and (max-width:1188px){
+   
+    .welcome-msg{
+        display: none;
+    }
+
+    .profile-pic{
+        display: none;
+    }
+
+    .dashboard-left{
+        height: 100%;  
+        margin-top: 2%; 
+        margin-left: 0%;
+        margin-right: 0%;
+        padding-left:0;
+        padding-right:0;
+    }
+
+    .card-title{
+        font-size: 20px;
+    }
+    .stats{
+        margin-top: 2%;
+    }   
+
+}
+
+
+/*
+FOR DESKTOP
+*/
+@media only screen and (min-width: 1189px) {
+    
+    .dashboard-left{
+        width:25%;
+        float:left;
+        margin: auto;
+        margin-top: 2%;
+        height: 100%;
+    }
+    
+    .dashboard-right {
+        margin-left: 25%;
+        margin-top: 2%;
+        height: 100%;
+    }
+
+    .stats{
+        margin-top: 5%;
+    }
+
+    .welcome-msg{
+        margin-top: 5%;
+        margin-left: 5%;
+    }
+
+    .profile-pic{
+        margin-top: 4%;
+        margin-left: 1.25%;
+        margin-right: 1.25%;
+        width:80px;
+        float: left;
+    }
+
+    .card-title{
+        font-size: 24px;
+    }
 }
