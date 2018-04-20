@@ -63,3 +63,14 @@ a:focus {
 #mobileMenu1 {
   margin-top: 10px;
 }
+
+i{
+  vertical-align: middle;
+  display: inline-flex;
+  font-size: 20px;
+}
+
+.nav-label{
+  vertical-align: middle;
+  display: inline-flex;
+}
