@@ -3,8 +3,8 @@ COMMON CSS
 */
 .card-header{
   background-color: #eeeeee;
-  background: -webkit-linear-gradient(30deg, #7b4397, #be335a);
-  background: linear-gradient(30deg, #7b4397, #be335a);
+  background: url("../../../../../assets/images/bg-pattern.png"), -webkit-linear-gradient(330deg, #7b4397, #be335a);
+  background: url("../../../../../assets/images/bg-pattern.png"), linear-gradient(330deg, #7b4397, #be335a);
 }
 
 /*

@@ -1,0 +1,76 @@
+/*
+COMMON CSS
+*/
+.wallet-info{
+    background-color: #fafafa;
+}
+
+ul{
+    list-style-type: none;
+    margin-left: 0;
+}
+
+.eqc-icon{
+    height: 36px;
+    width: 36px;
+    vertical-align: middle;
+    display: inline-flex;
+    background-color: #ffad15;
+    border-radius: 15px;
+}
+
+.xqc-icon{
+    height: 36px;
+    width: 36px;
+    vertical-align: middle;
+    display: inline-flex;
+    background-color: #ff8080;
+    border-radius: 15px;
+}
+
+li{
+    margin-top: 2%;
+}
+
+/*
+FOR PHONES AND TABLETS
+*/
+@media only screen and (max-width:1188px){
+
+    .card-title{
+        font-size: 20px;
+    }
+    
+    li{
+        font-size: 20px;
+    }
+
+    img{
+        margin-right: 4%;
+    }
+
+}
+
+
+/*
+FOR DESKTOP
+*/
+@media only screen and (min-width: 1189px) {
+
+    .card-title{
+        font-size: 24px;
+    }
+
+    li{
+        font-size: 18px;
+    }
+
+    img{
+        margin-right: 8%;
+    }
+
+    ul{
+        padding-left: 0;
+    }
+
+}

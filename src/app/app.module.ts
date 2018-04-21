@@ -33,6 +33,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { DashboardComponent } from './components/dashboard/dashboard-container.component';
 
 import { AdvDashboardComponent } from './components/dashboard/adv-dashboard/adv-dashboard.component';
+import { AdvDashboardWalletComponent } from './components/dashboard/adv-dashboard/adv-dashboard-wallet/adv-dashboard-wallet.component';
 import { AdvDashboardStatsComponent } from './components/dashboard/adv-dashboard/adv-dashboard-stats/adv-dashboard-stats.component';
 import { AdvDashboardTablesComponent } from './components/dashboard/adv-dashboard/adv-dashboard-tables/adv-dashboard-tables.component';
 import { AdvDashboardChartsComponent } from './components/dashboard/adv-dashboard/adv-dashboard-charts/adv-dashboard-charts.component';
@@ -81,6 +82,7 @@ import { AppRoutes } from './app.routes';
 import { PubPlaceholderComponent } from './components/dashboard/placeholder-dashboards/pub-placeholder/pub-placeholder.component';
 import { AdvPlaceholderComponent } from './components/dashboard/placeholder-dashboards/adv-placeholder/adv-placeholder.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -119,6 +121,8 @@ import { AdvPlaceholderComponent } from './components/dashboard/placeholder-dash
     PubPlaceholderComponent,
 
     AdvPlaceholderComponent,
+
+    AdvDashboardWalletComponent,
 
 
 
