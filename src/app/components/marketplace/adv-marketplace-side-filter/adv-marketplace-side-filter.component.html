@@ -1,97 +1,89 @@
-<mat-sidenav-container class="example-container">
-    <mat-sidenav #sidenav mode="side" opened="true" class="example-sidenav"
-                 [fixedInViewport]="true" >
+<mat-sidenav-container class="side-filter-container">
+  <mat-sidenav #sidenav mode="side" opened="true" class="side-filter" [fixedInViewport]="true">
+    <div class="side-filter-element">
+      <button raised-button [matMenuTriggerFor]="mainGenre">Select Genre</button> 
+      <span class="side-filter-label">{{genre}}</span>
 
-                 
-                    <form (ngSubmit)="onSubmit()">
-                       <button raised-button [matMenuTriggerFor]="mainGenre">Ad Genre</button> <span style="color: white">{{genre}}</span>
+      <mat-menu #mainGenre="matMenu">
+        <button mat-menu-item [matMenuTriggerFor]="brandedContent">Branded Content</button>
+        <button mat-menu-item [matMenuTriggerFor]="influencerPost">Influencer Post</button>
+        <button mat-menu-item (click)="updateGenre('Sponsorship')">Sponsorship</button>
+      </mat-menu>
 
-                        <mat-menu #mainGenre="matMenu">
-                          <button mat-menu-item [matMenuTriggerFor]="brandedContent">Branded Content</button>
-                          <button mat-menu-item [matMenuTriggerFor]="influencerPost">Influencer Post</button>
-                          <button mat-menu-item (click)="updateGenre('Sponsorship')">Sponsorship</button>
-                        </mat-menu>
-                        
-                        <mat-menu #brandedContent="matMenu">
-                          <button mat-menu-item (click)="updateGenre('Written Post')">Written Post</button>
-                          <button mat-menu-item (click)="updateGenre('Podcast')">Podcast</button>
-                          <button mat-menu-item (click)="updateGenre('Video')">Video</button>
-                        </mat-menu>
-              
-                        <mat-menu #influencerPost="matMenu">
-                          <button mat-menu-item (click)="updateGenre('Tweet')">Tweet</button>
-                          <button mat-menu-item (click)="updateGenre('Instagram')">Instagram</button>
-                          <button mat-menu-item (click)="updateGenre('Twitch')">Twitch</button>
-                          <button mat-menu-item (click)="updateGenre('Youtube')">Youtube</button>
-                          <button mat-menu-item (click)="updateGenre('Facebook')">Facebook</button>
-                          <button mat-menu-item (click)="updateGenre('Twitter')">Twitter</button>
-                          <button mat-menu-item (click)="updateGenre('NicoNico')">NicoNico</button>
-                        </mat-menu>
+      <mat-menu #brandedContent="matMenu">
+        <button mat-menu-item (click)="updateGenre('Written Post')">Written Post</button>
+        <button mat-menu-item (click)="updateGenre('Podcast')">Podcast</button>
+        <button mat-menu-item (click)="updateGenre('Video')">Video</button>
+      </mat-menu>
 
-         
+      <mat-menu #influencerPost="matMenu">
+        <button mat-menu-item (click)="updateGenre('Tweet')">Tweet</button>
+        <button mat-menu-item (click)="updateGenre('Instagram')">Instagram</button>
+        <button mat-menu-item (click)="updateGenre('Twitch')">Twitch</button>
+        <button mat-menu-item (click)="updateGenre('Youtube')">Youtube</button>
+        <button mat-menu-item (click)="updateGenre('Facebook')">Facebook</button>
+        <button mat-menu-item (click)="updateGenre('Twitter')">Twitter</button>
+        <button mat-menu-item (click)="updateGenre('NicoNico')">NicoNico</button>
+      </mat-menu>
+    </div>
     
-                      <li>
-                        <span style="font-size: 15px; font-weight: bold">CPC:</span> {{rangeValues2[0] + ' - ' + rangeValues2[1]}}
-                      </li>
-                      <li style="margin: 0 0 24px 28px; width: 70%">
-                        <p-slider class="form-group" [(ngModel)]="rangeValues2" [min]="10" [max]="50"  [range]="true"name="slider1" ></p-slider>
-                      </li>
-    
-                      <li>
-                        <span style="font-size: 15px; font-weight: bold">CPM:</span> {{rangeValues3[0] + ' - ' + rangeValues3[1]}}
-                      </li>
-                      <li style="margin: 0 0 24px 28px; width: 70%">
-                        <p-slider class="form-group" [(ngModel)]="rangeValues3" [min]="5" [max]="50" [range]="true"name="slider2"></p-slider>
-                      </li>
-    
-                      <li style="margin-top:10px">
-                        <button type="submit" class="btn btn-primary">Filter</button>
-                      </li>
-                    </form>
-                    
-    </mat-sidenav>
+    <div class="side-filter-element">
+        <span class="cpcRangeLabel side-filter-label">CPC: {{rangeValues2[0] + ' - ' + rangeValues2[1]}} </span>
+        <p-slider [(ngModel)]="rangeValues2" [min]="10" [max]="50" [range]="true" name="slider1"></p-slider>
+        <br>
+        <span class="cpmRangeLabel side-filter-label">CPM: {{rangeValues3[0] + ' - ' + rangeValues3[1]}} </span> 
+        <p-slider [(ngModel)]="rangeValues3" [min]="5" [max]="50" [range]="true" name="slider2"></p-slider>
+    </div>
 
-    <mat-sidenav-content>
-      <div class="container-fluid">
-        
-        <h3 style="margin-top: 18px">Available Adspaces</h3>
+    <button (click)="onSubmit()" class="btn btn-primary side-filter-element">Filter</button>
+  </mat-sidenav>
 
-        <ng-container *ngIf="filterUsed">
-          <div class="row" *ngFor="let i of array">
-            <div class="card-format">
-              <div class="card-block">
-                <h4 class="card-title"><span class="label label-default">{{selectedList[i]["genre"]}}</span> <span class="label label-success">{{ selectedList[i]["adtype"] }}</span> {{selectedList[i]["name"]}} </h4>
-                <p class="card-text">{{selectedList[i]["msg"]}}</p>
-                <h5>CPC : {{selectedList[i]["cpi"]}}  {{selectedList[i]["currency"]}}</h5>
-                <h5>CPM : {{selectedList[i]["cpm"]}}  {{selectedList[i]["currency"]}}</h5>
-                <h6>Posted Date : {{selectedList[i]["ask_date_from"]}}</h6>
-                <a style="color:white" class="btn btn-primary disabled">Contact {{selectedList[i]["username"]}} &gt; </a>
-              </div>
-            </div>
-          </div>
-        </ng-container>
+  <mat-sidenav-content>
+    <div class="container-fluid">
 
-        <ng-container *ngIf="!filterUsed && isNotEmpty">
-          <div class="row" *ngFor="let i of array2">
-            <div class="card-format">
-              <div class="card-block">
-                <h4 class="card-title"><span class="label label-default">{{adspaceListings[i]["genre"]}}</span>  <span class="label label-success">{{ adspaceListings[i]["adtype"] }}</span> {{adspaceListings[i]["name"]}}</h4>
-                <p class="card-text">{{adspaceListings[i]["msg"]}}</p>
-                <h5>CPC : {{adspaceListings[i]["cpi"]}}  {{adspaceListings[i]["currency"]}}</h5>
-                <h5>CPM : {{adspaceListings[i]["cpm"]}}  {{adspaceListings[i]["currency"]}}</h5>
-                <h6>Posted Date : {{adspaceListings[i]["ask_date_from"]}}</h6>
-                <a style="color:white" title="This feature is temporarily disabled and will be re-enabled when we open account registrations." class="btn btn-primary disabled">Contact {{adspaceListings[i]["username"]}} &gt; </a>
-              </div>
-            </div>
-          </div>
-        </ng-container>
-        <ng-container *ngIf="!isNotEmpty">
+      <h3 style="margin-top: 18px">Available Adspaces</h3>
+
+      <ng-container *ngIf="filterUsed">
+        <div class="row" *ngFor="let i of array">
           <div class="card-format">
             <div class="card-block">
-              <h4>No Adspaces match the filters provided</h4>
+              <h4 class="card-title">
+                <span class="label label-default">{{selectedList[i]["genre"]}}</span>
+                <span class="label label-success">{{ selectedList[i]["adtype"] }}</span> {{selectedList[i]["name"]}} </h4>
+              <p class="card-text">{{selectedList[i]["msg"]}}</p>
+              <h5>CPC : {{selectedList[i]["cpi"]}} {{selectedList[i]["currency"]}}</h5>
+              <h5>CPM : {{selectedList[i]["cpm"]}} {{selectedList[i]["currency"]}}</h5>
+              <h6>Posted Date : {{selectedList[i]["ask_date_from"]}}</h6>
+              <a style="color:white" class="btn btn-primary disabled">Contact {{selectedList[i]["username"]}} &gt; </a>
             </div>
+          </div>
         </div>
       </ng-container>
-      </div>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
+
+      <ng-container *ngIf="!filterUsed && isNotEmpty">
+        <div class="row" *ngFor="let i of array2">
+          <div class="card-format">
+            <div class="card-block">
+              <h4 class="card-title">
+                <span class="label label-default">{{adspaceListings[i]["genre"]}}</span>
+                <span class="label label-success">{{ adspaceListings[i]["adtype"] }}</span> {{adspaceListings[i]["name"]}}</h4>
+              <p class="card-text">{{adspaceListings[i]["msg"]}}</p>
+              <h5>CPC : {{adspaceListings[i]["cpi"]}} {{adspaceListings[i]["currency"]}}</h5>
+              <h5>CPM : {{adspaceListings[i]["cpm"]}} {{adspaceListings[i]["currency"]}}</h5>
+              <h6>Posted Date : {{adspaceListings[i]["ask_date_from"]}}</h6>
+              <a style="color:white" title="This feature is temporarily disabled and will be re-enabled when we open account registrations."
+                class="btn btn-primary disabled">Contact {{adspaceListings[i]["username"]}} &gt; </a>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="!isNotEmpty">
+        <div class="card-format">
+          <div class="card-block">
+            <h4>No Adspaces match the filters provided</h4>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
