@@ -5,11 +5,11 @@ import { CalendarModule } from 'primeng/primeng'
 import { MarketplaceService } from '../../../services/marketplace-services/marketplace.service';
 
 @Component({
-  selector: 'app-adv-marketplace-side-filter',
-  templateUrl: './adv-marketplace-side-filter.component.html',
-  styleUrls: ['./adv-marketplace-side-filter.component.css']
+  selector: 'app-marketplace-side-filter',
+  templateUrl: './marketplace-side-filter.component.html',
+  styleUrls: ['./marketplace-side-filter.component.css']
 })
-export class AdvMarketplaceSideFilterComponent implements OnInit {
+export class MarketplaceSideFilterComponent implements OnInit {
 
   currencyType:string="";
   Adtype:any="Banner Top";

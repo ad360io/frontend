@@ -53,6 +53,8 @@ import { PubLinechartComponent } from './components/dashboard/pub-dashboard/pub-
 import { MarketplaceComponent } from './components/marketplace/marketplace-container.component';
 import { AdvMarketplaceComponent } from './components/marketplace/adv-marketplace/adv-marketplace.component';
 import { PubMarketplaceComponent } from './components/marketplace/pub-marketplace/pub-marketplace.component';
+import { MarketplaceSideFilterComponent } from './components/marketplace/marketplace-side-filter/marketplace-side-filter.component';
+
 
 import { CreateListingComponent } from './components/create-listing/create-listing.component';
 import { CreateAdListingComponent } from './components/create-listing/create-ad-listing/create-ad-listing.component';
@@ -84,7 +86,6 @@ ROUTES
 import { AppRoutes } from './app.routes';
 import { PubPlaceholderComponent } from './components/dashboard/placeholder-dashboards/pub-placeholder/pub-placeholder.component';
 import { AdvPlaceholderComponent } from './components/dashboard/placeholder-dashboards/adv-placeholder/adv-placeholder.component';
-import { AdvMarketplaceSideFilterComponent } from './components/marketplace/adv-marketplace-side-filter/adv-marketplace-side-filter.component';
 
 
 @NgModule({
@@ -99,6 +100,7 @@ import { AdvMarketplaceSideFilterComponent } from './components/marketplace/adv-
     DashboardComponent,
 
     AdvDashboardComponent,
+      AdvDashboardWalletComponent,
       AdvDashboardStatsComponent,
       AdvDashboardTablesComponent,
       AdvDashboardChartsComponent,
@@ -113,11 +115,12 @@ import { AdvMarketplaceSideFilterComponent } from './components/marketplace/adv-
         PubLinechartComponent,
 
     MarketplaceComponent,
-    AdvMarketplaceComponent,
-    PubMarketplaceComponent,
+      MarketplaceSideFilterComponent,
+      AdvMarketplaceComponent,
+      PubMarketplaceComponent,
 
     CreateListingComponent,
-    CreateAdListingComponent,
+      CreateAdListingComponent,
     CreateAdspaceListingComponent,
 
     ProfileComponent,
@@ -126,9 +129,9 @@ import { AdvMarketplaceSideFilterComponent } from './components/marketplace/adv-
 
     AdvPlaceholderComponent,
 
-    AdvDashboardWalletComponent,
+    
 
-    AdvMarketplaceSideFilterComponent,
+    
 
 
 

@@ -5,9 +5,14 @@
       <span class="side-filter-label">{{genre}}</span>
 
       <mat-menu #mainGenre="matMenu">
-        <button mat-menu-item [matMenuTriggerFor]="brandedContent">Branded Content</button>
-        <button mat-menu-item [matMenuTriggerFor]="influencerPost">Influencer Post</button>
-        <button mat-menu-item (click)="updateGenre('Sponsorship')">Sponsorship</button>
+        <button mat-menu-item 
+                  [matMenuTriggerFor]="brandedContent"
+                  (click)="updateGenre('Branded Content')">Branded Content</button>
+        <button mat-menu-item 
+                  [matMenuTriggerFor]="influencerPost"
+                  (click)="updateGenre('Influencer Post')">Influencer Post</button>
+        <button mat-menu-item 
+                  (click)="updateGenre('Sponsorship')">Sponsorship</button>
       </mat-menu>
 
       <mat-menu #brandedContent="matMenu">
