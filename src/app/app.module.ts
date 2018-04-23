@@ -18,6 +18,9 @@ NG-MATERIAL MODULES
 */
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatMenuModule } from '@angular/material/menu';
+import {MatButtonModule} from '@angular/material/button';
 
 
 /*
@@ -81,6 +84,7 @@ ROUTES
 import { AppRoutes } from './app.routes';
 import { PubPlaceholderComponent } from './components/dashboard/placeholder-dashboards/pub-placeholder/pub-placeholder.component';
 import { AdvPlaceholderComponent } from './components/dashboard/placeholder-dashboards/adv-placeholder/adv-placeholder.component';
+import { AdvMarketplaceSideFilterComponent } from './components/marketplace/adv-marketplace-side-filter/adv-marketplace-side-filter.component';
 
 
 @NgModule({
@@ -124,6 +128,8 @@ import { AdvPlaceholderComponent } from './components/dashboard/placeholder-dash
 
     AdvDashboardWalletComponent,
 
+    AdvMarketplaceSideFilterComponent,
+
 
 
   ],
@@ -142,7 +148,10 @@ import { AdvPlaceholderComponent } from './components/dashboard/placeholder-dash
     HttpClientModule,
 
     MatCardModule,
-    MatDividerModule
+    MatDividerModule,
+    MatSidenavModule,
+    MatMenuModule,
+    MatButtonModule
   ],
 
   providers: [

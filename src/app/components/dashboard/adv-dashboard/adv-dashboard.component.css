@@ -41,14 +41,6 @@ FOR PHONES AND TABLETS
         margin-top:5%;
     }
 
-    .card-title{
-        font-size: 20px;
-    }
-
-    .stats{
-        margin-top: 2%;
-    }   
-
 }
 
 
@@ -71,10 +63,6 @@ FOR DESKTOP
         margin-top: 2%;
     }
 
-    .stats{
-        margin-top: 5%;
-    }
-
     .welcome-msg{
         margin-top: 3%;
         margin-left: 5%;
@@ -89,8 +77,5 @@ FOR DESKTOP
         width:80px;
         float: left;
     }
-
-    .card-title{
-        font-size: 24px;
-    }
+    
 }

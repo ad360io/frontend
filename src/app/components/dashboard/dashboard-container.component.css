@@ -2,8 +2,8 @@
 COMMON CSS
 */
 .container{
-  background:#f3f3f3;
-  background-image: url('../../../assets/images/bg-pattern.png');
+  
+  background: #f2f2f2;
   font-family: 'Lato', 'Nunito Sans';
   font-size: 0.9rem;
 }
