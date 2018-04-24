@@ -86,6 +86,7 @@ ROUTES
 import { AppRoutes } from './app.routes';
 import { PubPlaceholderComponent } from './components/dashboard/placeholder-dashboards/pub-placeholder/pub-placeholder.component';
 import { AdvPlaceholderComponent } from './components/dashboard/placeholder-dashboards/adv-placeholder/adv-placeholder.component';
+import { MarketplaceItemListComponent } from './components/marketplace/marketplace-item-list/marketplace-item-list.component';
 
 
 @NgModule({
@@ -128,6 +129,8 @@ import { AdvPlaceholderComponent } from './components/dashboard/placeholder-dash
     PubPlaceholderComponent,
 
     AdvPlaceholderComponent,
+
+    MarketplaceItemListComponent,
 
     
 

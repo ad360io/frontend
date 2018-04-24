@@ -1,0 +1,46 @@
+    <div class="container-fluid">
+
+      <h3 style="margin-top: 18px">Available Adspaces</h3>
+
+      <ng-container *ngIf="filterUsed">
+        <div class="row" *ngFor="let i of array">
+          <div class="card-format">
+            <div class="card-block">
+              <h4 class="card-title">
+                <span class="label label-default">{{selectedList[i]["genre"]}}</span>
+                <span class="label label-success">{{ selectedList[i]["adtype"] }}</span> {{selectedList[i]["name"]}} </h4>
+              <p class="card-text">{{selectedList[i]["msg"]}}</p>
+              <h5>CPC : {{selectedList[i]["cpi"]}} {{selectedList[i]["currency"]}}</h5>
+              <h5>CPM : {{selectedList[i]["cpm"]}} {{selectedList[i]["currency"]}}</h5>
+              <h6>Posted Date : {{selectedList[i]["ask_date_from"]}}</h6>
+              <a style="color:white" class="btn btn-primary disabled">Contact {{selectedList[i]["username"]}} &gt; </a>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="!filterUsed && isNotEmpty">
+        <div class="row" *ngFor="let i of array2">
+          <div class="card-format">
+            <div class="card-block">
+              <h4 class="card-title">
+                <span class="label label-default">{{adspaceListings[i]["genre"]}}</span>
+                <span class="label label-success">{{ adspaceListings[i]["adtype"] }}</span> {{adspaceListings[i]["name"]}}</h4>
+              <p class="card-text">{{adspaceListings[i]["msg"]}}</p>
+              <h5>CPC : {{adspaceListings[i]["cpi"]}} {{adspaceListings[i]["currency"]}}</h5>
+              <h5>CPM : {{adspaceListings[i]["cpm"]}} {{adspaceListings[i]["currency"]}}</h5>
+              <h6>Posted Date : {{adspaceListings[i]["ask_date_from"]}}</h6>
+              <a style="color:white" title="This feature is temporarily disabled and will be re-enabled when we open account registrations."
+                class="btn btn-primary disabled">Contact {{adspaceListings[i]["username"]}} &gt; </a>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="!isNotEmpty">
+        <div class="card-format">
+          <div class="card-block">
+            <h4>No Adspaces match the filters provided</h4>
+          </div>
+        </div>
+      </ng-container>
+    </div>
