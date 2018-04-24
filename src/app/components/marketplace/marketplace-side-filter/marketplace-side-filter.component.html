@@ -5,6 +5,8 @@
       <span class="side-filter-label">{{genre}}</span>
 
       <mat-menu #mainGenre="matMenu">
+        <button mat-menu-item
+                  (click)="updateGenre('All')">Show All</button>
         <button mat-menu-item 
                   [matMenuTriggerFor]="brandedContent"
                   (click)="updateGenre('Branded Content')">Branded Content</button>
@@ -33,14 +35,14 @@
     </div>
     
     <div class="side-filter-element">
-        <span class="cpcRangeLabel side-filter-label">CPC: {{rangeValues2[0] + ' - ' + rangeValues2[1]}} </span>
-        <p-slider [(ngModel)]="rangeValues2" [min]="10" [max]="50" [range]="true" name="slider1"></p-slider>
+        <span class="cpiRangeLabel side-filter-label">CPI: {{cpiRangeValues[0] + ' - ' + cpiRangeValues[1]}} </span>
+        <p-slider [(ngModel)]="cpiRangeValues" [min]="10" [max]="50" [range]="true" (change)="onChange()"></p-slider>
         <br>
-        <span class="cpmRangeLabel side-filter-label">CPM: {{rangeValues3[0] + ' - ' + rangeValues3[1]}} </span> 
-        <p-slider [(ngModel)]="rangeValues3" [min]="5" [max]="50" [range]="true" name="slider2"></p-slider>
+        <span class="cpmRangeLabel side-filter-label">CPM: {{cpmRangeValues[0] + ' - ' + cpmRangeValues[1]}} </span> 
+        <p-slider [(ngModel)]="cpmRangeValues" [min]="5" [max]="50" [range]="true" (change)="onChange()"></p-slider>
     </div>
 
-    <button (click)="onSubmit()" class="btn btn-primary side-filter-element">Filter</button>
+    <button (click)="onChange()" class="btn btn-primary side-filter-element">Filter</button>
   </mat-sidenav>
 
   <mat-sidenav-content>

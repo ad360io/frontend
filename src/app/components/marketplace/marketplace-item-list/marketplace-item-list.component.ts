@@ -8,12 +8,18 @@ import { filter } from 'rxjs/operators';
   styleUrls: ['./marketplace-item-list.component.css']
 })
 export class MarketplaceItemListComponent implements OnInit {
-  selectedList = [];
-  constructor(private marketplaceService : MarketplaceService) { }
 
-  ngOnInit() {
-    this.selectedList = this.marketplaceService.getFilteredAdListings();
+  selectedList = [];
+  
+  constructor(private marketplaceService : MarketplaceService) { 
+    this.marketplaceService.getAdspaceListings().subscribe(
+      adspaceListings => {
+        this.selectedList = adspaceListings;
+      }
+    );
   }
+
+  ngOnInit() {  }
 
   isListEmpty(){
     return this.selectedList.length === 0;

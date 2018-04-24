@@ -9,9 +9,9 @@ import { MarketplaceService } from '../../../services/marketplace-services/marke
 export class MarketplaceSideFilterComponent implements OnInit {
 
   currencyType: string = "";
-  genre: any = "All";
-  rangeValues2 = [10, 50];
-  rangeValues3 = [5, 50];
+  genre: string;
+  cpiRangeValues = [10, 50];
+  cpmRangeValues = [5, 50];
 
 
   constructor(private marketplaceService: MarketplaceService) {
@@ -19,25 +19,26 @@ export class MarketplaceSideFilterComponent implements OnInit {
 
 
   ngOnInit() {
-    this.onSubmit();
+    this.updateGenre("All");
   }
 
 
   updateGenre(genre: any) {
     this.genre = genre;
+    this.onChange();
   }
 
 
-  onSubmit() {
+  onChange() {
     let filterObject = {
           'genre': this.genre,
-          'adspaceListingCpiRangeLow'  : this.rangeValues2[0],
-          'adspaceListingCpiRangeHigh' : this.rangeValues2[1],
-          'adspaceListingCpmRangeLow'  : this.rangeValues3[0],
-          'adspaceListingCpmRangeHigh' : this.rangeValues3[1]
+          'adspaceListingCpiRangeLow'  : this.cpiRangeValues[0],
+          'adspaceListingCpiRangeHigh' : this.cpiRangeValues[1],
+          'adspaceListingCpmRangeLow'  : this.cpmRangeValues[0],
+          'adspaceListingCpmRangeHigh' : this.cpmRangeValues[1]
     };
     
-    this.marketplaceService.setFilter(filterObject);
+    this.marketplaceService.filterAdspaceListings(filterObject);
   }
 
 }

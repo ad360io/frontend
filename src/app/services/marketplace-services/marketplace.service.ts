@@ -18,8 +18,9 @@ export class MarketplaceService {
   adListings: Array <AdListing>;
   //adspaceListings: Array <AdspaceListing>;
   adListingsSubject: Subject<any> = new Subject<any>();
+  filteredAdListings = new Subject<any>();
   adspaceListingsSubject : Subject<any> = new Subject<any>();
-  selectedList = [];
+  
 
   adspaceListings :any = [
     {"username": "User4", "cpi": "37.00000000", "cpm": "16.00000000", "ask_date_to": "2017-10-09", "currency": "eqc", "msg": "Want to get your ad the eyeballs from the right audience? We have just the right adspace for you from the publisher, User1.Our userbase is diverse and large!, get your product/service the attention it deserves!", "ask_date_from": "2017-09-07", "adtype": "Banner Left", "genre": "Native", "name": "www.nativefirefoodbluelisting.com"},
@@ -436,42 +437,34 @@ export class MarketplaceService {
   constructor(private trackMode: TrackMode,
               private trackCurrency: TrackCurrency,
               private marketplaceHttpService: MarketplaceHttpService) {
-    this.adListingsSubject.next(this.adListings);
+    
   }
   
 
-  getAdListings(){
-    return this.adListingsSubject.asObservable();
+  getAdspaceListings(){
+    return this.adspaceListingsSubject.asObservable();
   }
 
-  setFilter(filterObject : object){
-    this.filterObject = filterObject;
-  }
+  filterAdspaceListings(filterObject: object){
+    let genreFilter = filterObject["genre"];
+    let cpiRangeFilterLow = filterObject["adspaceListingCpiRangeLow"];
+    let cpiRangeFilterHigh = filterObject["adspaceListingCpiRangeHigh"];
+    let cpmRangeFilterLow = filterObject['adspaceListingCpmRangeLow'];
+    let cpmRangeFilterHigh = filterObject['adspaceListingCpmRangeHigh'];
 
-  getFilteredAdListings(){
-    let filteredAdListings = new Subject<any>();
-    let genreFilter = this.filterObject["genre"];
-    let cpiRangeFilterLow = this.filterObject["adspaceListingCpiRangeLow"];
-    let cpiRangeFilterHigh = this.filterObject["adspaceListingCpiRangeHigh"];
-    let cpmRangeFilterLow = this.filterObject['adspaceListingCpmRangeLow'];
-    let cpmRangeFilterHigh = this.filterObject['adspaceListingCpmRangeHigh'];
-
-    this.selectedList = [];
+    let selectedList = [];
 
     for (var i = 0; i < this.adspaceListings.length; i++) {
       if ((genreFilter === this.adspaceListings[i]["genre"] || genreFilter === "All") 
               && (parseInt(this.adspaceListings[i]["cpi"]) >= cpiRangeFilterLow) 
               && (parseInt(this.adspaceListings[i]["cpi"]) <= cpiRangeFilterHigh) 
-              && (parseInt(this.adspaceListings[i]["cpm"]) <= cpmRangeFilterHigh)
+              && (parseInt(this.adspaceListings[i]["cpm"]) >= cpmRangeFilterLow)
               && (parseInt(this.adspaceListings[i]["cpm"]) <= cpmRangeFilterHigh)) {
-        this.selectedList.push(this.adspaceListings[i]); 
+        selectedList.push(this.adspaceListings[i]); 
       }
     }
     
-    return this.selectedList;
-  }
+    this.adspaceListingsSubject.next(selectedList);
 
- // filterListings(){
- //   this.marketplaceHttpService.loadPublisherMarketplace();
- // }
+  }
 }
