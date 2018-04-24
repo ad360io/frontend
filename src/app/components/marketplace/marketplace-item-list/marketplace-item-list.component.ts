@@ -10,7 +10,7 @@ import { filter } from 'rxjs/operators';
 export class MarketplaceItemListComponent implements OnInit {
 
   selectedList = [];
-  
+
   constructor(private marketplaceService : MarketplaceService) { 
     this.marketplaceService.getAdspaceListings().subscribe(
       adspaceListings => {
@@ -23,6 +23,18 @@ export class MarketplaceItemListComponent implements OnInit {
 
   isListEmpty(){
     return this.selectedList.length === 0;
+  }
+
+  getImagePlaceholderPath(genre: string){
+    if (genre === "Branded Content"){
+      return '../../../../assets/images/branded_content_placeholder.png';
+    }else if (genre === "Influencer Post"){
+      return '../../../../assets/images/influencer_marketing_placeholder.png';
+    }else if (genre === "Sponsorship"){
+      return '../../../../assets/images/sponsorships_placeholder.png';
+    }else{
+      return '../../../../assets/images/pug_face.jpg';
+    }
   }
 
 }
