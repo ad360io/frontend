@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
+import { MarketplaceService } from '../../../services/marketplace-services/marketplace.service';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-marketplace-item-list',
@@ -6,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./marketplace-item-list.component.css']
 })
 export class MarketplaceItemListComponent implements OnInit {
-
-  constructor() { }
+  selectedList = [];
+  constructor(private marketplaceService : MarketplaceService) { }
 
   ngOnInit() {
+    this.selectedList = this.marketplaceService.getFilteredAdListings();
+  }
+
+  isListEmpty(){
+    return this.selectedList.length === 0;
   }
 
 }
