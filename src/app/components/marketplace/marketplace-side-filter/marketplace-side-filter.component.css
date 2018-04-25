@@ -1,0 +1,26 @@
+.side-filter-container {
+  margin-top: 36px;
+  left: 0;
+  right: 0;
+  position: absolute;
+}
+
+.side-filter {
+    margin-top: 138px;
+    width: 20vw;
+    background: #252526;
+    display: block;
+}
+
+.side-filter-element{
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.side-filter-label{
+    color: white;
+    margin-left: 5%;
+}

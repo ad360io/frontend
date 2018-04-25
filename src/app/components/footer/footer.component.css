@@ -1,15 +1,11 @@
 footer {
-position: absolute;
-  width: 100vw;
-  bottom: 0;
-  padding: 18px 0;
+  background-color: #222222;
+  padding: 25px 0;
+  color: rgba(255, 255, 255, 0.4);
   text-align: center;
-  background-color: #f5f5f5;
-  border-top: 1px solid rgba(34, 34, 34, 0.1);
 }
 
 footer p {
-  color: #222222;
-  font-size: 14px;
+  font-size: 13px;
   margin: 0;
 }

@@ -1,3 +1,45 @@
+/*
+COMMON CSS
+*/
 .card-header{
-  background-color:#304F76;
+  background-color: #eeeeee;
+  background: url("../../../../../assets/images/bg-pattern.png"), -webkit-linear-gradient(330deg, #7b4397, #be335a);
+  background: url("../../../../../assets/images/bg-pattern.png"), linear-gradient(330deg, #7b4397, #be335a);
 }
+
+/*
+FOR PHONES AND TABLETS
+*/
+@media only screen and (max-width: 1188px){
+  .linechart-container{
+    margin-top: 5%;
+    width: 100%;
+  }
+
+  .barchart-container{
+    margin-top: 5%;
+    width: 100%;
+  }
+}
+
+
+/*
+FOR DESKTOP
+*/
+@media only screen and (min-width: 1189px){
+  
+  .linechart-container {
+    width: 85%;
+  }
+
+  .barchart-container  {
+    width: 85%;
+    margin-top: 5%;
+  }
+}
+
+
+
+
+
+

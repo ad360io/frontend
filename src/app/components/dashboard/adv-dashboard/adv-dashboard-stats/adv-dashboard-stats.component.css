@@ -67,7 +67,7 @@ a {
     width: auto;
   }
 }
-
+/* 
 @-moz-keyframes pulse {
   0% {
     -moz-transform: scale(0);
@@ -93,8 +93,8 @@ a {
     -moz-transform: scale(1);
     opacity: 0.0;
   }
-}
-
+} */
+/* 
 @-webkit-keyframes pulse {
   0% {
     -webkit-transform: scale(0);
@@ -120,7 +120,7 @@ a {
     -webkit-transform: scale(1);
     opacity: 0.0;
   }
-}
+} */
 
 /* Footer */
 
@@ -193,7 +193,6 @@ a {
 .flexrow > div {
   display: flex;
   padding: 10px;
-  //align-items: stretch;
   width: 100%;
 }
 
@@ -218,4 +217,43 @@ a {
 /*background-color: #1bb99a; }*/
 .label {
   font-weight: 500;
+}
+
+
+/* Below is custom CSS, Above is casually copied from web to hack a style*/
+/*
+COMMON CSS
+*/
+mat-card{
+  background-color: #fafafa;
+}
+
+/*
+FOR PHONES AND TABLETS
+*/
+@media only screen and (max-width:1188px){
+
+  .card-title{
+      font-size: 20px;
+  }
+
+  .stats{
+      margin-top: 2%;
+  }   
+
+}
+
+
+/*
+FOR DESKTOP
+*/
+@media only screen and (min-width: 1189px) {
+
+  .stats{
+      margin-top: 5%;
+  }
+
+  .card-title{
+      font-size: 24px;
+  }
 }

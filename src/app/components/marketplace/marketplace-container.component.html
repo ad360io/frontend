@@ -1,4 +1,9 @@
-<div class="container">
-    <app-pub-marketplace *ngIf="isPublisher()"></app-pub-marketplace>
-    <app-adv-marketplace *ngIf="isAdvertiser()"></app-adv-marketplace>
+<div class="container" layout="column">
+    <!-- <app-pub-marketplace *ngIf="isPublisher()"></app-pub-marketplace>
+    <app-adv-marketplace *ngIf="isAdvertiser()"></app-adv-marketplace> -->
+    
+        <app-marketplace-side-filter></app-marketplace-side-filter>
+        
+   
+    
 </div>

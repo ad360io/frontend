@@ -1,6 +1,8 @@
 .cover-login {
   height: 100vh;
-  background: url("https://qchain.co/img/core/bg-pattern.png"), linear-gradient(to left, #7b4397, #be335a);
+  background-color: purple;
+  background: url('../../../assets/images/bg-pattern.png'), -webkit-linear-gradient(330deg, #7b4397, #be335a);
+  background: url('../../../assets/images/bg-pattern.png'), linear-gradient(330deg, #7b4397, #be335a);
   display: flex;
   justify-content: center;
   align-items: center;

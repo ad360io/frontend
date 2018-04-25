@@ -11,6 +11,16 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ChartsModule } from 'ng2-charts';
 import { SliderModule } from 'primeng/primeng';
 import { CalendarModule } from 'primeng/primeng';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+/*
+NG-MATERIAL MODULES
+*/
+import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatMenuModule } from '@angular/material/menu';
+import {MatButtonModule} from '@angular/material/button';
 
 
 /*
@@ -26,6 +36,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { DashboardComponent } from './components/dashboard/dashboard-container.component';
 
 import { AdvDashboardComponent } from './components/dashboard/adv-dashboard/adv-dashboard.component';
+import { AdvDashboardWalletComponent } from './components/dashboard/adv-dashboard/adv-dashboard-wallet/adv-dashboard-wallet.component';
 import { AdvDashboardStatsComponent } from './components/dashboard/adv-dashboard/adv-dashboard-stats/adv-dashboard-stats.component';
 import { AdvDashboardTablesComponent } from './components/dashboard/adv-dashboard/adv-dashboard-tables/adv-dashboard-tables.component';
 import { AdvDashboardChartsComponent } from './components/dashboard/adv-dashboard/adv-dashboard-charts/adv-dashboard-charts.component';
@@ -42,6 +53,8 @@ import { PubLinechartComponent } from './components/dashboard/pub-dashboard/pub-
 import { MarketplaceComponent } from './components/marketplace/marketplace-container.component';
 import { AdvMarketplaceComponent } from './components/marketplace/adv-marketplace/adv-marketplace.component';
 import { PubMarketplaceComponent } from './components/marketplace/pub-marketplace/pub-marketplace.component';
+import { MarketplaceSideFilterComponent } from './components/marketplace/marketplace-side-filter/marketplace-side-filter.component';
+
 
 import { CreateListingComponent } from './components/create-listing/create-listing.component';
 import { CreateAdListingComponent } from './components/create-listing/create-ad-listing/create-ad-listing.component';
@@ -73,6 +86,8 @@ ROUTES
 import { AppRoutes } from './app.routes';
 import { PubPlaceholderComponent } from './components/dashboard/placeholder-dashboards/pub-placeholder/pub-placeholder.component';
 import { AdvPlaceholderComponent } from './components/dashboard/placeholder-dashboards/adv-placeholder/adv-placeholder.component';
+import { MarketplaceItemListComponent } from './components/marketplace/marketplace-item-list/marketplace-item-list.component';
+
 
 @NgModule({
   declarations: [
@@ -86,6 +101,7 @@ import { AdvPlaceholderComponent } from './components/dashboard/placeholder-dash
     DashboardComponent,
 
     AdvDashboardComponent,
+      AdvDashboardWalletComponent,
       AdvDashboardStatsComponent,
       AdvDashboardTablesComponent,
       AdvDashboardChartsComponent,
@@ -100,11 +116,12 @@ import { AdvPlaceholderComponent } from './components/dashboard/placeholder-dash
         PubLinechartComponent,
 
     MarketplaceComponent,
-    AdvMarketplaceComponent,
-    PubMarketplaceComponent,
+      MarketplaceSideFilterComponent,
+      AdvMarketplaceComponent,
+      PubMarketplaceComponent,
 
     CreateListingComponent,
-    CreateAdListingComponent,
+      CreateAdListingComponent,
     CreateAdspaceListingComponent,
 
     ProfileComponent,
@@ -113,12 +130,19 @@ import { AdvPlaceholderComponent } from './components/dashboard/placeholder-dash
 
     AdvPlaceholderComponent,
 
+    MarketplaceItemListComponent,
+
+    
+
+    
+
 
 
   ],
 
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
@@ -128,6 +152,12 @@ import { AdvPlaceholderComponent } from './components/dashboard/placeholder-dash
     SliderModule,
     CalendarModule,
     HttpClientModule,
+
+    MatCardModule,
+    MatDividerModule,
+    MatSidenavModule,
+    MatMenuModule,
+    MatButtonModule
   ],
 
   providers: [
