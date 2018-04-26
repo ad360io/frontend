@@ -20,7 +20,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatMenuModule } from '@angular/material/menu';
-import {MatButtonModule} from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
+import { NgbdCarouselConfig } from './components/dashboard/adv-dashboard/adv-dashboard-charts/adv-linechart/carousel-config';
 
 
 /*
@@ -116,7 +117,7 @@ import { AdvPlaceholderComponent } from './components/dashboard/placeholder-dash
     MarketplaceComponent,
       MarketplaceSideFilterComponent,
       MarketplaceItemListComponent,
-      
+
     CreateListingComponent,
       CreateAdListingComponent,
     CreateAdspaceListingComponent,
@@ -126,6 +127,8 @@ import { AdvPlaceholderComponent } from './components/dashboard/placeholder-dash
     PubPlaceholderComponent,
 
     AdvPlaceholderComponent,
+
+    NgbdCarouselConfig,
 
    
 
