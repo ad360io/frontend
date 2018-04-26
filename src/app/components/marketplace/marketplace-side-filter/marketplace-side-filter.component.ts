@@ -6,7 +6,7 @@ import { MarketplaceService } from '../../../services/marketplace-services/marke
   templateUrl: './marketplace-side-filter.component.html',
   styleUrls: ['./marketplace-side-filter.component.css']
 })
-export class MarketplaceSideFilterComponent implements OnInit {
+export class MarketplaceSideFilterComponent {
 
   currencyType: string = "";
   genre: string;
@@ -15,13 +15,8 @@ export class MarketplaceSideFilterComponent implements OnInit {
 
 
   constructor(private marketplaceService: MarketplaceService) {
-  }
-
-
-  ngOnInit() {
     this.updateGenre("All");
   }
-
 
   updateGenre(genre: any) {
     this.genre = genre;
@@ -38,7 +33,7 @@ export class MarketplaceSideFilterComponent implements OnInit {
           'adspaceListingCpmRangeHigh' : this.cpmRangeValues[1]
     };
     
-    this.marketplaceService.filterAdspaceListings(filterObject);
+    this.marketplaceService.updateListings(filterObject);
   }
 
 }
