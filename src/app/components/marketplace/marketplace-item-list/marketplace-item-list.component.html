@@ -1,6 +1,6 @@
     <div class="container-fluid">
 
-      <h3 style="margin-top: 18px">Available Adspaces</h3>
+      <h3 style="margin-top: 18px">Available {{ getListingType() }}</h3>
 
       <ng-container *ngIf="!isListEmpty()">
         <div *ngFor="let listing of selectedList">
@@ -29,7 +29,7 @@
       <ng-container *ngIf="isListEmpty()">
         <div class="card-format">
           <div class="card-block">
-            <h4>No Adspaces match the filters provided</h4>
+            <h4>No {{ getListingType() }} match the filters provided</h4>
           </div>
         </div>
       </ng-container>

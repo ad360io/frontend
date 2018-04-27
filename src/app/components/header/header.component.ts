@@ -33,6 +33,8 @@ export class HeaderComponent implements OnInit {
               private nemTestNet : TestNet,
               private nemTestNetRequest : TestNetRequest,
              ) {
+
+              this.trackMode.setMode('ADVERTISER');
   }
 
   bgcolorActiveCurrency(currency: string) {

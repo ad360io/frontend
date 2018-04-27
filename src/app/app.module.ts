@@ -20,7 +20,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatMenuModule } from '@angular/material/menu';
-import {MatButtonModule} from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
+import { NgbdCarouselConfig } from './components/dashboard/adv-dashboard/adv-dashboard-charts/adv-linechart/carousel-config';
 
 
 /*
@@ -51,9 +52,8 @@ import { PubBarchartComponent } from './components/dashboard/pub-dashboard/pub-d
 import { PubLinechartComponent } from './components/dashboard/pub-dashboard/pub-dashboard-charts/pub-linechart/pub-linechart.component';
 
 import { MarketplaceComponent } from './components/marketplace/marketplace-container.component';
-import { AdvMarketplaceComponent } from './components/marketplace/adv-marketplace/adv-marketplace.component';
-import { PubMarketplaceComponent } from './components/marketplace/pub-marketplace/pub-marketplace.component';
 import { MarketplaceSideFilterComponent } from './components/marketplace/marketplace-side-filter/marketplace-side-filter.component';
+import { MarketplaceItemListComponent } from './components/marketplace/marketplace-item-list/marketplace-item-list.component';
 
 
 import { CreateListingComponent } from './components/create-listing/create-listing.component';
@@ -86,7 +86,6 @@ ROUTES
 import { AppRoutes } from './app.routes';
 import { PubPlaceholderComponent } from './components/dashboard/placeholder-dashboards/pub-placeholder/pub-placeholder.component';
 import { AdvPlaceholderComponent } from './components/dashboard/placeholder-dashboards/adv-placeholder/adv-placeholder.component';
-import { MarketplaceItemListComponent } from './components/marketplace/marketplace-item-list/marketplace-item-list.component';
 
 
 @NgModule({
@@ -117,8 +116,7 @@ import { MarketplaceItemListComponent } from './components/marketplace/marketpla
 
     MarketplaceComponent,
       MarketplaceSideFilterComponent,
-      AdvMarketplaceComponent,
-      PubMarketplaceComponent,
+      MarketplaceItemListComponent,
 
     CreateListingComponent,
       CreateAdListingComponent,
@@ -130,7 +128,9 @@ import { MarketplaceItemListComponent } from './components/marketplace/marketpla
 
     AdvPlaceholderComponent,
 
-    MarketplaceItemListComponent,
+    NgbdCarouselConfig,
+
+   
 
     
 

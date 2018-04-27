@@ -36,8 +36,8 @@ a:focus {
 
 .navbar.navbar-toggleable-sm.navbar-inverse.fixed-top {
   background-color: purple;
-  background: url('../../../assets/images/bg-pattern.png'), -webkit-linear-gradient(330deg, #7b4397, #be335a);
-  background: url('../../../assets/images/bg-pattern.png'), linear-gradient(330deg, #7b4397, #be335a);
+  background:  -webkit-linear-gradient(90deg, #384b91, #552072);
+  background:  linear-gradient(90deg, #384b91, #552072);
   padding-left: 65px;
   padding-top: 9px;
 }

@@ -62,52 +62,54 @@ export class AdvLinechartComponent implements OnInit {
 
   clicksDataXqc5: number [] = [5719,5043,6357,5779,5246,5340,6866,6431,5039,5150,5273,5434,5054,5751,5846,6367,5524,5697,6796,6722,5090,6710,6191,6162,5604,6948,5082,5315,6635,6721,5909,5183,6067,6770,5973,5143,5540,5676,5034,5823,5957,6817,6549,6544,6042,5082,6606,5538,5111,6802,6050,6467,5396,6200,6627,5976,6298,5407,5368,5655,6228,6750,6214,6349,5703,5638,6676,5226,6204,5676,5771,6513,6381,5002,5506,6142,6892,5729,6123,5637,5515,5327,5806,6962,6388,6003,5251,6689,5858,6404,5020,5652,5424,5781,6655,5695,5220,6615,6235,6533,6199,6036,5634,6426,6286,6536,6447,5564,6433,6080,5927,5929,6420,6753,6347,5800,5168,6858,6649,5425,6230,5894,5557,5596,5739,6952,5890,6734,5254,5856,5510,6369,6424,5538,5667,5568,6126,6060,6251,6652,5154,5232,5248,5356,5192,6783,6909,6060,5742,5904,6028,6280,5618,5320,6513,5539,5311,5980,5312,6401,6512,6275,5616,6162,5420,6769,6065,6989,5347,5109,6212,6856,6678,6863,5409,5213,5005,6096,5135,5405,6630,6618,6676,6880,5051,6010,5206,6064,6572,6879,6715,5272,5279,6375,5661,6537,6543,6413,6100,6547,6824,6176,6644,6151,6541,6028,5198,5242,6065,5609,6566,5757,6172,5543,5902,6493,6740,5192,5155,6435,5986,6766,6867,5224,5750,6150,5520,6705,6394,6909,5756,5904,5393,6755,6996,5082,5034,6101,5057,5161,6851,6418,6343,6357,5201,5287,6515,6810,6281,5273];
 
+  datasets = [{},{},{},{},{}]
   // Declarations for the Linechart attributes
   public lineChartOptions: any = {
     responsive: true
   };
 
   public lineChartColors: Array<any> = [
-    { // grey
-      backgroundColor: 'rgba(255,161,181,0.6)',
-      borderColor: 'rgba(255,161,181,1)',
-      pointBackgroundColor: 'rgba(255,161,181,1)',
-      pointBorderColor: '#fff',
-      pointHoverBackgroundColor: '#fff',
+    { // red
+      backgroundColor: 'rgba(255,155,5,0.5)',
+      borderColor: 'rgba(255,155,5,1)',
+      pointBackgroundColor: 'rgba(255,155,5,1)',
+      pointBorderColor: 'rgba(255,155,5,1)',
+      pointHoverBackgroundColor: '#00f',
       pointHoverBorderColor: 'rgba(255,161,181,0.8)'
     },
-    { // dark grey
-      backgroundColor: 'rgba(134,199,243,0.6)',
-      borderColor: 'rgba(134,199,243,1)',
-      pointBackgroundColor: 'rgba(134,199,243,1)',
-      pointBorderColor: '#fff',
-      pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: 'rgba(134,199,243,0.8)'
-    },
-    { // grey
-      backgroundColor: 'rgba(255,226,154,0.6)',
-      borderColor: 'rgba(255,226,154,1)',
-      pointBackgroundColor: 'rgba(255,226,154,1)',
-      pointBorderColor: '#fff',
-      pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: 'rgba(255,226,154,0.8)'
-    },
-    { // grey
-      backgroundColor: 'rgba(241,242,244,0.6)',
-      borderColor: 'rgba(241,242,244,1)',
-      pointBackgroundColor: 'rgba(241,242,244,1)',
-      pointBorderColor: '#fff',
-      pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: 'rgba(241,242,244,0.8)'
-    },
-    { // grey
-      backgroundColor: 'rgba(147,217,217,0.6)',
-      borderColor: 'rgba(147,217,217,1)',
-      pointBackgroundColor: 'rgba(147,217,217,1)',
-      pointBorderColor: '#fff',
-      pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: 'rgba(147,217,217,0.8)'
-    }
+    // { // dark grey
+    //   backgroundColor: 'rgba(255,255,255,0)',
+    //   backgroundHoverColor: 'rgba(255,255,255,0)',
+    //   borderColor: 'rgba(255,255,255,0)',
+    //   pointBackgroundColor: 'rgba(255,255,255,0)',
+    //   pointBorderColor: 'rgba(255,255,255,0)',
+    //   pointHoverBackgroundColor: 'rbga(0,0,0,1)',
+    //   pointHoverBorderColor: 'rgba(134,199,243,0.8)'
+    // },
+    // { // grey
+    //   backgroundColor: 'rgba(255,255,255,0)',
+    //   borderColor: 'rgba(255,255,255,0)',
+    //   pointBackgroundColor: 'rgba(255,255,255,0)',
+    //   pointBorderColor: 'rgba(255,255,255,0)',
+    //   pointHoverBackgroundColor: '#fff',
+    //   pointHoverBorderColor: 'rgba(255,226,154,0.8)'
+    // },
+    // { // grey
+    //   backgroundColor: 'rgba(255,255,255,0)',
+    //   borderColor: 'rgba(255,255,255,0)',
+    //   pointBackgroundColor: 'rgba(255,255,255,0)',
+    //   pointBorderColor: 'rgba(255,255,255,0)',
+    //   pointHoverBackgroundColor: 'rgba(255,255,255,0)',
+    //   pointHoverBorderColor: 'rgba(241,242,244,0.8)'
+    // },
+    // { // grey
+    //   backgroundColor: 'rgba(255,255,255,0)',
+    //   borderColor: 'rgba(255,255,255,0)',
+    //   pointBackgroundColor: 'rgba(255,255,255,0)',
+    //   pointBorderColor: 'rgba(255,255,255,0)',
+    //   pointHoverBackgroundColor: '#fff',
+    //   pointHoverBorderColor: 'rgba(147,217,217,0.8)'
+    // }
   ];
   public lineChartLegend:boolean = true;
   public lineChartType:string = 'line';
@@ -125,7 +127,7 @@ export class AdvLinechartComponent implements OnInit {
 
   currentDate : any;
   statisticsStartDate: any =  +new Date('2018, 2, 26');
-
+  someDataset;
   //Declarations for creating names for ads.
   adNamesPool = ['Twitter Influencer','Trailer Spot','Blog Post','Sponsored Forum','Video Spot', 'Podcast Spot','Written Spot', 'Twitch Influencer','Instagram Influencer','Youtube Influencer','Facebook Influencer', 'Niconico Influencer']
   adNamesEqc: string[] = ['Name1','Name2','Name3','Name4','Name5'];
@@ -142,6 +144,7 @@ export class AdvLinechartComponent implements OnInit {
     this.currentDate = +new Date();
     this.calculateChartDatasets();
     this.isLoaded = true;
+    this.someDataset = this.chooseDataset();
   }
 
   // Function that standardizes dates to UTC
