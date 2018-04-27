@@ -73,7 +73,7 @@ export class AdvLinechartComponent implements OnInit {
       backgroundColor: 'rgba(255,155,5,0.5)',
       borderColor: 'rgba(255,155,5,1)',
       pointBackgroundColor: 'rgba(255,155,5,1)',
-      pointBorderColor: 'rgba(255,155,5,1)',
+      pointBorderColor: 'rgba(255,155,5 ,1)',
       pointHoverBackgroundColor: '#00f',
       pointHoverBorderColor: 'rgba(255,161,181,0.8)'
     },

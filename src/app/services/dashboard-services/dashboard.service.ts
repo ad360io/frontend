@@ -11,6 +11,7 @@ Services
 import { TrackMode } from '../trackMode.service';
 import { TrackCurrency } from '../trackCurrency.service';
 import { DashboardHttpService } from './dashboard-http.service';
+
 /*
 Models
 */
@@ -24,7 +25,6 @@ import { AdvertiserTables } from '../../models/advertiser-tables.model';
 
 
 @Injectable()
-
 export class DashboardService {
 
   publisherStats: PublisherStats;
