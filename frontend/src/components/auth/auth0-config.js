@@ -1,3 +1,6 @@
+/**
+ * REQUIRE CHANGES !!
+ */
 export const Auth0Config = {
     clientID: 'ip3jdlT8udp8hVobDn5Q2k67eEDvSSIj',
     domain: 'qchain.auth0.com',

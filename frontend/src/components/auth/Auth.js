@@ -1,13 +1,14 @@
+/*
+Auth0 Libs
+*/
+import { Auth0Config } from './auth0-config';
+import Auth0Lock from 'auth0-lock';
+import * as auth0 from 'auth0-js';
+
+
 const Auth = {
-    isAuthenticated: false,
-    authenticate(cb) {
-      this.isAuthenticated = true;
-      setTimeout(cb, 100); // fake async
-    },
-    signout(cb) {
-      this.isAuthenticated = false;
-      setTimeout(cb, 100);
-    }
-  };
+    isAuthenticated: false
+};
+
 
 export default Auth;

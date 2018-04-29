@@ -1,15 +1,26 @@
+/*
+React, Redux, Router Cores
+*/
 import React, { Component } from 'react';
+import { Provider } from 'react-redux';
+import AppRouter from './router/AppRouter';
+import store from './store/index';
+
+/*
+Local CSS
+*/
 import './App.css';
-import  AppRouter from './AppRouter';
+
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <Provider store={store}>
           <AppRouter></AppRouter>
-      </div>
+      </Provider>
     );
   }
 }
+
 
 export default App;
