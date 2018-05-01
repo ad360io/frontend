@@ -41,18 +41,18 @@ class InAppNavBar extends Component {
     render() {
         return <div className="navbar-container">
             <Navbar>
-                <Nav>
-                    <NavItem eventKey={1} onSelect={this.handleNavSelect}>
-                        <i class="fas fa-home fa-lg"></i>Dashboard
+                <Nav stacked={false}>
+                    <NavItem className="in-app-nav-item" eventKey={1} onSelect={this.handleNavSelect}>
+                        <i class="fas fa-home fa-lg"></i> <span className="nav-label">Dashboard</span>
                     </NavItem>
-                    <NavItem eventKey={2} onSelect={this.handleNavSelect}>
-                        <i class="fas fa-suitcase fa-lg"></i>Marketplace
+                    <NavItem className="in-app-nav-item" eventKey={2} onSelect={this.handleNavSelect}>
+                        <i class="fas fa-suitcase fa-lg"></i> <span className="nav-label">Marketplace</span>
                     </NavItem>
-                    <NavItem eventKey={3} onSelect={this.handleNavSelect}>
-                        <i class="fas fa-file-alt fa-lg"></i>Create
+                    <NavItem className="in-app-nav-item" eventKey={3} onSelect={this.handleNavSelect}>
+                        <i class="fas fa-file-alt fa-lg"></i><span className="nav-label">Create</span>
                     </NavItem>
-                    <NavItem eventKey={4} onSelect={this.handleNavSelect}>
-                        <i class="far fa-user fa-lg"></i>Profile
+                    <NavItem className="in-app-nav-item" eventKey={4} onSelect={this.handleNavSelect}>
+                        <i class="far fa-user fa-lg"></i><span className="nav-label">Profile</span>
                     </NavItem>
     
                 </Nav>

@@ -36,10 +36,6 @@ FOR PHONES AND TABLETS
 */
 @media only screen and (max-width:768px){
     
-    .wallet-info-card{
-        margin-top: 255px;
-    }
-
     .wallet-card-title{
         font-size: 20px;
         margin-bottom: 30px;

@@ -12,3 +12,20 @@ i {
 :local(li) > a:hover, a:focus{
     color: #4b80c0 !important;
 }
+
+/*
+FOR PHONES AND TABLETS
+*/
+@media only screen and (max-width:768px){
+    
+    .nav-label {
+        display: none;
+    }
+
+    .in-app-nav-item {
+        width: 25%;
+        float: left;
+        padding-left: 4%;
+    }
+
+}
