@@ -14,13 +14,9 @@ import nem_logo    from '../../../assets/images/NEM_logo.png';
 /*
 React-Bootstrap Components
 */
-import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
-import { Button, ButtonGroup, DropdownButton }         from 'react-bootstrap';
+import { Navbar, Nav, MenuItem }                   from 'react-bootstrap';
+import { Button, ButtonGroup, DropdownButton }     from 'react-bootstrap';
 
-/*
-Other Custom Componenets
-*/
-import InAppNavBar          from '../InAppNavBar/InAppNavBar.component'
 
 /**
  * Work to be done:
@@ -69,8 +65,8 @@ class MenuBar extends Component {
                 <Navbar.Collapse>
 
                 <ButtonGroup bsSize="large" className="currency-selector">
-                    <Button><img src={eth_logo} className="currency-logo"/>EQC</Button>
-                    <Button><img src={nem_logo} className="currency-logo"/>XQC</Button>
+                    <Button><img src={eth_logo} className="currency-logo" alt="eth-logo"/>EQC</Button>
+                    <Button><img src={nem_logo} className="currency-logo" alt="nem-logo"/>XQC</Button>
                 </ButtonGroup>
                     
                 <DropdownButton bsSize="large" eventKey={1} title={this.state.mode} className="mode-selector">

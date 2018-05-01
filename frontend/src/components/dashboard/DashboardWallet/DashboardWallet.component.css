@@ -1,0 +1,84 @@
+#wallet-info-card{
+    background-color: #fafafa;
+}
+
+ul{
+    list-style-type: none;
+    margin-left: 0;
+}
+
+.eqc-icon{
+    height: 36px;
+    width: 36px;
+    vertical-align: middle;
+    display: inline-flex;
+    background-color: #ffad15;
+    border-radius: 15px;
+}
+
+.xqc-icon{
+    height: 36px;
+    width: 36px;
+    vertical-align: middle;
+    display: inline-flex;
+    background-color: #ff8080;
+    border-radius: 15px;
+}
+
+.wallet-currency-label{
+    margin-top: 2%;
+    font-size: 18px;
+    margin-left: 2%;
+}
+
+/*
+FOR PHONES AND TABLETS
+*/
+@media only screen and (max-width:768px){
+    
+    .wallet-info-card{
+        margin-top: 255px;
+    }
+
+    .wallet-card-title{
+        font-size: 20px;
+        margin-bottom: 30px;
+    }
+    
+    .wallet-currency-label{
+        font-size: 20px;
+    }
+
+}
+
+
+/*
+FOR DESKTOP
+*/
+@media only screen and (min-width: 769px) {
+
+    .wallet-card-title{
+        font-size: 24px;
+        margin-top: 5px;
+        padding-top: 0px;
+        margin-bottom: 20px;
+        margin-left: 15px;
+    }
+
+    .wallet-currency-label{
+        font-size: 18px;
+    }
+
+    .wallet-container{
+        width: 20%;
+        min-width: 280px;
+        margin-left: 10%;
+        padding-top: 2%;
+    }
+
+    .wallet-info-card > ul > li {
+        padding: 0;
+        margin: 0;
+    }
+
+}

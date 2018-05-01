@@ -19,20 +19,22 @@ import { Navbar, Nav, NavItem } from 'react-bootstrap';
  */
 class InAppNavBar extends Component {
 
-    constructor(props){
-        super(props);
-    }
-
     handleNavSelect(eventKey) {
         switch(eventKey){
             case 1:
+                break;
                 //BrowserHistory.push("/dashboard");
             case 2:
+                break;
                 //BrowserHistory.push("/marketplace");
             case 3:
+                break;
                 //BrowserHistory.push("/create");
             case 4:
+                break;  
                 //BrowserHistory.push("/profile");
+            default:
+                break;
         }
     }
 

@@ -8,11 +8,14 @@ Local CSS
 */
 import './Dashboard.component.css';
 
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
 /*
 Custom Components
 */
 import Footer from '../footer/Footer.component';
 import WallofText from '../../components/WallofText';
+import DashboardWallet from './DashboardWallet/DashboardWallet.component';
 
 /**
  * 
@@ -34,7 +37,10 @@ class Dashboard extends Component {
             <div class="tables">
                 <app-adv-dashboard-tables></app-adv-dashboard-tables>
             </div> */}
-            <WallofText />
+            <MuiThemeProvider>
+                <DashboardWallet/>
+                <WallofText />
+            </MuiThemeProvider>
             <Footer />
         </div>;
     }
