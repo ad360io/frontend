@@ -2,7 +2,6 @@
 Core Libs and Children Components
 */
 import React, { Component } from 'react';
-import { Navbar } from 'react-bootstrap';
 
 /*
 Local CSS

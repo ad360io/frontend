@@ -4,3 +4,7 @@
     background:  -webkit-linear-gradient(90deg, #2655a0, #552072);
     background:  linear-gradient(90deg, #2655a0, #552072);
 }
+
+/* Header total height in px = MenuBar.height + InAppNavBar.height
+*           134  px                  80       +       54
+*/
