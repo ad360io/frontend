@@ -1,0 +1,56 @@
+.logo_img {
+    height: 60px;
+    vertical-align: middle;
+}
+
+.logo-redirect{
+    padding-top: 0px;
+    padding-right: 5vw;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.menu-header {
+    height: 80px;
+    margin-right: 5%;
+    margin-left: 5%;
+}
+
+.menu-container {
+    padding: 0;
+    background-color: purple;
+    background:  -webkit-linear-gradient(90deg, #2655a0, #552072);
+    background:  linear-gradient(90deg, #2655a0, #552072);
+}
+
+.currency-selector {
+    margin-top: 17px;
+    margin-right: 5%;
+    padding-left: 0px;
+}
+
+.currency-logo {
+    height: 25px;
+}
+
+
+.mode-selector {
+    margin-top: 17px;
+}
+
+.nav-custom {
+    color: black;
+}
+
+.burger-button {
+    margin-top: 22px;
+}
+
+.menu-user-action{
+    color: white;
+    font-size: 18px;
+}
+
+.menu-user-action-top {
+    margin-top: 15px;
+}

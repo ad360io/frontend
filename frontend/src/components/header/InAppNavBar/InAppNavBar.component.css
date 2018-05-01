@@ -1,0 +1,14 @@
+.navbar-container {
+    position: fixed;
+    top: 80px;
+    width: 100vw;
+}
+
+i {
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+:local(li) > a:hover, a:focus{
+    color: #4b80c0 !important;
+}

@@ -7,7 +7,7 @@ import * as auth0 from 'auth0-js';
 
 
 const Auth = {
-    isAuthenticated: false
+    isAuthenticated: true
 };
 
 

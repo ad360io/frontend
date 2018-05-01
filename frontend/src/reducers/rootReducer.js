@@ -11,7 +11,7 @@ import SampleReducer       from './sampleReducer';
 
 /**
  * Organize and combine all reducers
- * Export to be used by redux store
+ * All new reducers must be added to rootReducer to be accessed by store
  */
 const rootReducer = combineReducers({
     SampleReducer
