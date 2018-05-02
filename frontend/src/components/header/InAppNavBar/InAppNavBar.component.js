@@ -43,16 +43,16 @@ class InAppNavBar extends Component {
             <Navbar>
                 <Nav stacked={false}>
                     <NavItem className="in-app-nav-item" eventKey={1} onSelect={this.handleNavSelect}>
-                        <i class="fas fa-home fa-lg"></i> <span className="nav-label">Dashboard</span>
+                        <i className="fas fa-home fa-lg"></i> <span className="nav-label">Dashboard</span>
                     </NavItem>
                     <NavItem className="in-app-nav-item" eventKey={2} onSelect={this.handleNavSelect}>
-                        <i class="fas fa-suitcase fa-lg"></i> <span className="nav-label">Marketplace</span>
+                        <i className="fas fa-suitcase fa-lg"></i> <span className="nav-label">Marketplace</span>
                     </NavItem>
                     <NavItem className="in-app-nav-item" eventKey={3} onSelect={this.handleNavSelect}>
-                        <i class="fas fa-file-alt fa-lg"></i><span className="nav-label">Create</span>
+                        <i className="fas fa-file-alt fa-lg"></i><span className="nav-label">Create</span>
                     </NavItem>
                     <NavItem className="in-app-nav-item" eventKey={4} onSelect={this.handleNavSelect}>
-                        <i class="far fa-user fa-lg"></i><span className="nav-label">Profile</span>
+                        <i className="far fa-user fa-lg"></i><span className="nav-label">Profile</span>
                     </NavItem>
     
                 </Nav>

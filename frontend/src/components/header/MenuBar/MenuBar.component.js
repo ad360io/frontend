@@ -14,7 +14,7 @@ import nem_logo    from '../../../assets/images/NEM_logo.png';
 /*
 React-Bootstrap Components
 */
-import { Navbar, Nav, MenuItem }                   from 'react-bootstrap';
+import { Navbar, Nav, MenuItem, NavItem }          from 'react-bootstrap';
 import { Button, ButtonGroup, DropdownButton }     from 'react-bootstrap';
 
 
@@ -69,22 +69,22 @@ class MenuBar extends Component {
                     <Button><img src={nem_logo} className="currency-logo" alt="nem-logo"/>XQC</Button>
                 </ButtonGroup>
                     
-                <DropdownButton bsSize="large" eventKey={1} title={this.state.mode} className="mode-selector">
+                <DropdownButton id="mode-selector" bsSize="large" title={this.state.mode} className="mode-selector">
                     <MenuItem eventKey={1.1} onSelect={this.handleModeSelection}>Advertiser</MenuItem>
                     <MenuItem eventKey={1.2} onSelect={this.handleModeSelection}>Publisher</MenuItem>
                 </DropdownButton>
         
-                <Nav pullRight>
-                    <Navbar.Link href="/profile">
-                        <div className="menu-user-action menu-user-action-top">
-                            <i class="far fa-user"></i>User Name
-                        </div>
-                    </Navbar.Link>
-                    <Navbar.Link href="#">
+                <Nav pullRight stacked>
+                    <NavItem eventKey={0} href="/profile">
                         <div className="menu-user-action">
-                            <i class="fas fa-sign-out-alt"></i>Sign Out
+                            <i className="far fa-user"></i>User Name
                         </div>
-                    </Navbar.Link>
+                    </NavItem>
+                    <NavItem eventKey={0} href="/">
+                        <div className="menu-user-action">
+                            <i className="fas fa-sign-out-alt"></i>Sign Out
+                        </div>
+                    </NavItem>
                 </Nav>
                 </Navbar.Collapse>
                 

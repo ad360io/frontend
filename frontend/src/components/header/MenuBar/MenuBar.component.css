@@ -49,8 +49,6 @@
 .menu-user-action{
     color: white;
     font-size: 18px;
-}
-
-.menu-user-action-top {
-    margin-top: 15px;
+    padding-top: 0px;
+    margin-top: 13px;
 }

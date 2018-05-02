@@ -1,0 +1,25 @@
+/*
+FOR PHONES AND TABLETS
+*/
+@media only screen and (max-width:768px){
+    
+    .stats-container {
+        margin-top: 2%;
+    }
+    
+}
+
+
+/*
+FOR DESKTOP
+*/
+@media only screen and (min-width: 769px) {
+
+    .stats-container {
+        width: 20%;
+        min-width: 280px;
+        margin-left: 10%;
+        padding-top: 2%;
+    }
+
+}
