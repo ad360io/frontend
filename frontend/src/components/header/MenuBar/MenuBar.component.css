@@ -49,6 +49,21 @@
 .menu-user-action{
     color: white;
     font-size: 18px;
-    padding-top: 0px;
-    margin-top: 13px;
+    padding-top: 0px;   
 }
+
+.heightless-br {
+    display: block; /* makes it have a width */
+    content: ""; /* clears default height */
+    margin-top: 0; /* change this to whatever height you want it */
+}
+
+li.user-label > a {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}
+
+li.logout-label > a {
+    padding-top: 5px !important;
+}
+

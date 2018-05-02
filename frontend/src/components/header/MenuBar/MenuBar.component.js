@@ -74,13 +74,14 @@ class MenuBar extends Component {
                     <MenuItem eventKey={1.2} onSelect={this.handleModeSelection}>Publisher</MenuItem>
                 </DropdownButton>
         
-                <Nav pullRight stacked>
-                    <NavItem eventKey={0} href="/profile">
+                <Nav pullRight>
+                    <NavItem className="user-label" eventKey={0} href="/profile">
                         <div className="menu-user-action">
                             <i className="far fa-user"></i>User Name
                         </div>
                     </NavItem>
-                    <NavItem eventKey={0} href="/">
+                    <br className="heightless-br" />
+                    <NavItem className="logout-label" eventKey={0} href="/">
                         <div className="menu-user-action">
                             <i className="fas fa-sign-out-alt"></i>Sign Out
                         </div>
