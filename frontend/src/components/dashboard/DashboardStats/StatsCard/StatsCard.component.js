@@ -25,7 +25,7 @@ class StatsCard extends Component {
     }
 
     getTrendingHrStyle(){
-        let trendInNumber = Number.parseInt(this.props.trend);
+        let trendInNumber = Number.parseInt(this.props.trend, 10);
         if(trendInNumber > 0) {
             return "green-hr";
         }else if(trendInNumber < 0) {
@@ -36,7 +36,7 @@ class StatsCard extends Component {
     }
 
     getTrendingLabelStyle(){
-        let trendInNumber = Number.parseInt(this.props.trend);
+        let trendInNumber = Number.parseInt(this.props.trend, 10);
         if(trendInNumber > 0) {
             return "green-label";
         }else if(trendInNumber < 0) {

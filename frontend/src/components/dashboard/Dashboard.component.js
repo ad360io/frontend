@@ -14,7 +14,6 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 Custom Components
 */
 import Footer from '../footer/Footer.component';
-import WallofText from '../../components/WallofText';
 import DashboardWallet from './DashboardWallet/DashboardWallet.component';
 import DashboardStats from './DashboardStats/DashboardStats.component';
 

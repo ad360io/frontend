@@ -61,7 +61,8 @@ class DashboardStats extends Component {
                     this.getStatsTitles().map((statsTitle, i)=>{
                         return <StatsCard   title={statsTitle} 
                                             value={this.getStatsValueByTitle(statsTitle)} 
-                                            trend={this.getStatsValueByTitle(statsTitle+"_trend")} />
+                                            trend={this.getStatsValueByTitle(statsTitle+"_trend")}
+                                            key={this.state.mode+statsTitle} />
                     })
                 }
                 </CardText>

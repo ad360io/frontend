@@ -52,12 +52,6 @@
     padding-top: 0px;   
 }
 
-.heightless-br {
-    display: block; /* makes it have a width */
-    content: ""; /* clears default height */
-    margin-top: 0; /* change this to whatever height you want it */
-}
-
 li.user-label > a {
     padding-top: 10px !important;
     padding-bottom: 10px !important;
@@ -65,4 +59,8 @@ li.user-label > a {
 
 li.logout-label > a {
     padding-top: 5px !important;
+}
+
+.logout-container {
+    width: 23%;
 }
