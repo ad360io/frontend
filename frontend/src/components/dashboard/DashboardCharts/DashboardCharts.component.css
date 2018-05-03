@@ -1,13 +1,19 @@
-.dashboard-charts-container {
-    display:block;
-}
 
 .dashboard-line-charts-card{
     width: 65vw;
-    min-width: 768px;
     margin-bottom: 2%;
 }
 
 .chart-title{
     margin-left: 5%;
+}
+
+
+/*
+FOR SMALL SIZE SCREENS
+*/
+@media only screen and (max-width: 768px){
+    .dashboard-line-charts-card {
+        width: 100vw;
+    }
 }
