@@ -18,7 +18,7 @@ import './Marketplace.component.css'
  */
 class Marketplace extends Component {
     render() {
-        return <p>Marketplace works!</p>;
+        return <p className="marketplace-container">Marketplace works!</p>;
     }
 }
 

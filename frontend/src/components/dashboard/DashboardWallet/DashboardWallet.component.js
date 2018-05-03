@@ -26,7 +26,7 @@ class DashboardWallet extends Component {
 
     render() {
         return <div className="wallet-container">
-            <Card className="wallet-info-card">
+            <Card className="wallet-info-card" style={{background:"#fafafa"}}>
                 <CardText>
                 <h3 className="wallet-card-title"> Your Balances </h3>
                 <ul>

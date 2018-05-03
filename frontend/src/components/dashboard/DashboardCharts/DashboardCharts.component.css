@@ -1,0 +1,13 @@
+.dashboard-charts-container {
+    display:block;
+}
+
+.dashboard-line-charts-card{
+    width: 65vw;
+    min-width: 768px;
+    margin-bottom: 2%;
+}
+
+.chart-title{
+    margin-left: 5%;
+}

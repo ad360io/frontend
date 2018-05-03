@@ -2,6 +2,11 @@
     position: fixed;
     top: 80px;
     width: 100vw;
+    z-index: 3;
+}
+
+.navbar-container > .navbar > .container {
+    width: 83% !important;
 }
 
 i {
