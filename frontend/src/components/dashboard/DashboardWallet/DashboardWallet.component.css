@@ -1,5 +1,5 @@
-#wallet-info-card{
-    background-color: #fafafa;
+.wallet-info-card{
+    background: #fafafa !important;
 }
 
 ul{

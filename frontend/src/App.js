@@ -15,9 +15,11 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-      <Provider store={store}>
-          <AppRouter></AppRouter>
-      </Provider>
+      <div className="app-container">
+        <Provider store={store}>
+            <AppRouter></AppRouter>
+        </Provider>
+      </div>
     );
   }
 }
