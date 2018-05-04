@@ -19,8 +19,11 @@ Local CSS
 */
 import './DashboardWallet.component.css'
 
+
 /**
- * 
+ * Wallet Component should display accurate balances
+ *         Work to be done: 
+ *              - Pull data on componentsWillMount
  */
 class DashboardWallet extends Component {
 

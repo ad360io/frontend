@@ -28,6 +28,12 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
     }/>
 );
 
+/**
+ * All authenticated components will display header,
+ * Therefore abstracting the header to serve only to the private contents
+ * @param {*} props     Passed from Route component
+ * @param {*} Component Passed from Route component
+ */
 const PrivateContent = (props, Component) => (
     <div>
         <Header/>

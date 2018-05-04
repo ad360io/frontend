@@ -40,15 +40,16 @@ const AppRouter = () => (
         <CSSTransition timeout={300} classNames="fade" key={location.key}>
           <Switch location={location}>
             <Route exact path="/" component={ Login } />
-            <PrivateRoute exact path="/dashboard" component={ Dashboard } />
-            <PrivateRoute exact path="/marketplace" component={ Marketplace } />
-            <PrivateRoute exact path="/create" component={ CreateListing } />
-            <PrivateRoute exact path="/profile" component={ Profile } />
+            <PrivateRoute exact path="/dashboard"   component={ Dashboard }     />
+            <PrivateRoute exact path="/marketplace" component={ Marketplace }   />
+            <PrivateRoute exact path="/create"      component={ CreateListing } />
+            <PrivateRoute exact path="/profile"     component={ Profile }       />
             <DefaultRoute />
           </Switch>
         </CSSTransition>
       </TransitionGroup>
     )}/>
+    
   </BrowserRouter>
 );
 

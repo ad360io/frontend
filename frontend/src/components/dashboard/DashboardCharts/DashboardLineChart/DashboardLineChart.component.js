@@ -13,8 +13,10 @@ Chart.js Components
 */
 import { Line } from 'react-chartjs-2';
 
+
 /**
- * 
+ * Line Chart singleton
+ * Requires a props of data (Number array) to be graphed
  */
 class DashboardLineChart extends Component {
     
@@ -27,6 +29,13 @@ class DashboardLineChart extends Component {
     }
 
     render() {
+
+        /* Make sure if the props.data is undefined */
+        if(typeof this.props.data === 'undefined'){
+            return null;
+        }
+
+        /* Only render the chart.js library if data is present */
         return <div className="dashboard-line-chart-container">
             <Line   data={this.props.data}
                     options={{

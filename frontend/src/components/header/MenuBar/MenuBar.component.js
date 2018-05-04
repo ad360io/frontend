@@ -19,8 +19,11 @@ import { Button, ButtonGroup, DropdownButton }     from 'react-bootstrap';
 
 
 /**
- * Work to be done:
- *      - actions, icons, inappbar integration
+ * The bar that is at the very top of each component
+ * Has a selection of actions that are not navigation, hence called menu
+ * 
+ * -Caution: When changing css, be aware of the signout part that might extend to next line
+ * --------- causing blockage to InAppNavBar.
  */
 class MenuBar extends Component {
 
@@ -55,37 +58,47 @@ class MenuBar extends Component {
         const menuBar = (
             <div>
             <Navbar collapseOnSelect fixedTop className="menu-container">
+
+                {/*Start of Logo section*/}
                 <Navbar.Header className="menu-header">
                     <Navbar.Brand>
                         <a href="/dashboard" className="logo-redirect"><img src={qchain_logo} className="logo_img" alt="logo"/></a>
                     </Navbar.Brand>
                     <Navbar.Toggle className="burger-button"/>
                 </Navbar.Header>
-                
-                <Navbar.Collapse>
+                {/* End of Logo section*/}
 
-                <ButtonGroup bsSize="large" className="currency-selector">
-                    <Button><img src={eth_logo} className="currency-logo" alt="eth-logo"/>EQC</Button>
-                    <Button><img src={nem_logo} className="currency-logo" alt="nem-logo"/>XQC</Button>
-                </ButtonGroup>
+                <Navbar.Collapse> {/* Any children inside Collapse will be stored in hamburger menu on small screen*/}
+
+                    {/* Start of Currency selector */}
+                    <ButtonGroup bsSize="large" className="currency-selector">
+                        <Button><img src={eth_logo} className="currency-logo" alt="eth-logo"/>EQC</Button>
+                        <Button><img src={nem_logo} className="currency-logo" alt="nem-logo"/>XQC</Button>
+                    </ButtonGroup>
+                    {/* End of Currency selector */}
+
+                    {/* Start of Mode selector */}
+                    <DropdownButton id="mode-selector" bsSize="large" title={this.state.mode} className="mode-selector">
+                        <MenuItem eventKey={1.1} onSelect={this.handleModeSelection}>Advertiser</MenuItem>
+                        <MenuItem eventKey={1.2} onSelect={this.handleModeSelection}>Publisher</MenuItem>
+                    </DropdownButton>
+                    {/* End of Mode selector*/}
+
+                    {/* Start of Sign Out menu*/}
+                    <Nav pullRight stacked className="logout-container">
+                        <NavItem className="user-label" eventKey={0} href="/profile">
+                            <div className="menu-user-action">
+                                <i className="far fa-user"></i>User Name
+                            </div>
+                        </NavItem>
+                        <NavItem className="logout-label" eventKey={0} href="/">
+                            <div className="menu-user-action">
+                                <i className="fas fa-sign-out-alt"></i>Sign Out
+                            </div>
+                        </NavItem>
+                    </Nav>
+                    {/* End of Sign Out menu */}
                     
-                <DropdownButton id="mode-selector" bsSize="large" title={this.state.mode} className="mode-selector">
-                    <MenuItem eventKey={1.1} onSelect={this.handleModeSelection}>Advertiser</MenuItem>
-                    <MenuItem eventKey={1.2} onSelect={this.handleModeSelection}>Publisher</MenuItem>
-                </DropdownButton>
-        
-                <Nav pullRight stacked className="logout-container">
-                    <NavItem className="user-label" eventKey={0} href="/profile">
-                        <div className="menu-user-action">
-                            <i className="far fa-user"></i>User Name
-                        </div>
-                    </NavItem>
-                    <NavItem className="logout-label" eventKey={0} href="/">
-                        <div className="menu-user-action">
-                            <i className="fas fa-sign-out-alt"></i>Sign Out
-                        </div>
-                    </NavItem>
-                </Nav>
                 </Navbar.Collapse>
                 
             </Navbar>

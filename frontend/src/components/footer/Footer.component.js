@@ -10,7 +10,7 @@ import './Footer.component.css';
 
 
 /**
- * 
+ * Simple footer for Qchain
  */
 class Footer extends Component {
     render() {
