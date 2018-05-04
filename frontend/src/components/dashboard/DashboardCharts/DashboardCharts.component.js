@@ -25,6 +25,7 @@ import { Card, CardText } from 'material-ui/Card';
 Children Components
 */
 import DashboardLineChart from './DashboardLineChart/DashboardLineChart.component';
+import LineChartSlider    from './LineChartSlider/LineChartSlider.component';
 
 
 /**
@@ -32,13 +33,26 @@ import DashboardLineChart from './DashboardLineChart/DashboardLineChart.componen
  */
 class DashboardCharts extends Component {
 
+    constructor(props){
+        super(props);
+        // make api calls to get all datasets, display partial datasets based on store.state
+        // suppose save all datasets in local state
+        this.state = {
+            clickDatasetsInEqc,
+            clickDatasetsInXqc,
+            impressionDatasetsInEqc,
+            impressionDatasetsInXqc
+        }
+    }
+
     
-    prepareLineChartXaxis(){
+    prepareXaxisLabels(dataset){
         let daysLabel = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
         let today = new Date().getDay();
-        let labelsArray = new Array(30);
-        for (let i = 0; i < 30; i++) {
-            labelsArray[30-i] = daysLabel[this.mod((today - i),7)];
+        let labelSize = (dataset.length > 30 ? 30 : dataset.length);
+        let labelsArray = new Array(labelSize);
+        for (let i = 0; i < labelSize; i++) {
+            labelsArray[labelSize-i] = daysLabel[this.mod((today - i),7)];
         }
         return labelsArray;
     }
@@ -47,32 +61,32 @@ class DashboardCharts extends Component {
         return ((n % m) + m) % m;
     }
 
-    prepareDataset(sampleIndex){
-        let sampleRGB = ['rgba(75,192,192,1)', 'rgba(255,20,20,1)'];
-        let sampleDataset = (sampleIndex ? clickDatasetsInEqc[0] : impressionDatasetsInEqc[0]);
+    prepareDatasetToChart(dataset, rbgaString){
+        // let sampleRGB = ['rgba(75,192,192,1)', 'rgba(255,20,20,1)'];
+        //let sampleDataset = (sampleIndex ? clickDatasetsInEqc[0] : impressionDatasetsInEqc[0]);
         const data = {
-            labels : this.prepareLineChartXaxis(),
+            labels : this.prepareXaxisLabels(dataset),
             datasets: [
               {
                 label: 'Some Ad names maybe',
                 fill: false,
                 lineTension: 0.1,
-                backgroundColor: sampleRGB[sampleIndex],
-                borderColor: sampleRGB[sampleIndex],
+                backgroundColor: rbgaString,
+                borderColor: rbgaString,
                 borderCapStyle: 'butt',
                 borderDash: [],
                 borderDashOffset: 0.0,
                 borderJoinStyle: 'miter',
-                pointBorderColor: sampleRGB[sampleIndex],
+                pointBorderColor: rbgaString,
                 pointBackgroundColor: '#fff',
                 pointBorderWidth: 1,
                 pointHoverRadius: 5,
-                pointHoverBackgroundColor: sampleRGB[sampleIndex],
-                pointHoverBorderColor: sampleRGB[sampleIndex],
+                pointHoverBackgroundColor: rbgaString,
+                pointHoverBorderColor: rbgaString,
                 pointHoverBorderWidth: 2,
                 pointRadius: 1,
                 pointHitRadius: 10,
-                data: sampleDataset
+                data: dataset
               }
             ]
           };
@@ -80,18 +94,33 @@ class DashboardCharts extends Component {
     }
 
     render() {
+        let clickDatasetChartList = [];
+        this.state.clickDatasetsInEqc.map((dataset)=>{
+            let currentDataset = this.prepareDatasetToChart(dataset, 'rgba(75,192,192,1)');
+            return clickDatasetChartList.push(<DashboardLineChart data={currentDataset} />);
+        })
+
+        let impressionDatasetChartList = [];
+        this.state.impressionDatasetsInEqc.map((dataset) =>{
+            let currentDataset = this.prepareDatasetToChart(dataset, 'rgba(255,20,20,1)');
+            return impressionDatasetChartList.push(<DashboardLineChart data={currentDataset}/>);
+        })
+
         return <div className="dashboard-charts-container">
+            <LineChartSlider />
             <Card className="dashboard-line-charts-card" style={{background:'#fafafa'}}>
                 <CardText>
                     <h2 className="chart-title">Ad Click Performance</h2>
-                    <DashboardLineChart data={this.prepareDataset(0)}/>
+                    <LineChartSlider itemList={clickDatasetChartList} />
+                    {/* //<DashboardLineChart data={this.prepareDataset(0)}/> */}
                 </CardText>
             </Card>
 
             <Card className="dashboard-line-charts-card" style={{background:'#fafafa'}}>
                 <CardText>
                     <h2 className="chart-title">Ad Impression Performance</h2>
-                    <DashboardLineChart data={this.prepareDataset(1)}/>
+                    {/* <DashboardLineChart data={this.prepareDataset(1)}/> */}
+                    <LineChartSlider itemList={impressionDatasetChartList} />
                 </CardText>
             </Card>
         </div>;

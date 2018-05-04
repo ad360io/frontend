@@ -32,6 +32,7 @@ class DashboardLineChart extends Component {
                     options={{
                         maintainAspectRatio: false,
                         responsive: true,
+                        animation: false,
                         legend: {
                             labels: {
                                 boxWidth: 0,

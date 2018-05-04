@@ -8,6 +8,11 @@
     margin-left: 5%;
 }
 
+.dashboard-line-charts-card > div > div {
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+}
+
 
 /*
 FOR SMALL SIZE SCREENS

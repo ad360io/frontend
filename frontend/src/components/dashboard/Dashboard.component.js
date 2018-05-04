@@ -37,7 +37,7 @@ class Dashboard extends Component {
                         <DashboardStats />
                     </Col>
 
-                    <Col xs={12} md={8} className="dashboard-right">
+                    <Col xs={12} md={10} className="dashboard-right">
                         <DashboardCharts />
                     </Col>
                 </Row>
