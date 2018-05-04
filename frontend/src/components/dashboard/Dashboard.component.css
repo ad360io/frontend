@@ -50,6 +50,8 @@ FOR SMALL SIZE SCREENS
     .dashboard-left {
         margin-left: 0px;
         margin-top: 2%;
+        padding-right: 0px;
+        width: 100vw;
     }
 
     .dashboard-right{
