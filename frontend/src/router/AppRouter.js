@@ -1,8 +1,9 @@
 /*
 Core Libs
 */
-import { BrowserRouter, Switch, Route }  from "react-router-dom";
-import React                             from 'react';
+import { BrowserRouter, Switch, Route }   from "react-router-dom";
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import React                              from 'react';
 
 /*
 Custom Helpers
@@ -19,6 +20,11 @@ import Marketplace    from '../components/marketplace/Marketplace.component';
 import CreateListing  from '../components/create-listing/CreateListing.component';
 import Profile        from '../components/profile/Profile.component';
 
+/*
+Transition CSS
+*/
+import './RouterTransition.css'
+
 
 /**
  * Main router for the app.
@@ -29,14 +35,20 @@ import Profile        from '../components/profile/Profile.component';
  */
 const AppRouter = () => (
   <BrowserRouter>
-    <Switch>
-      <Route exact={true} path="/" component={ Login } />
-      <PrivateRoute path="/dashboard" component={ Dashboard } />
-      <PrivateRoute path="/marketplace" component={ Marketplace } />
-      <PrivateRoute path="/create" component={ CreateListing } />
-      <PrivateRoute path="/profile" component={ Profile } />
-      <DefaultRoute />
-    </Switch>
+    <Route render={({location})=>(
+      <TransitionGroup>
+        <CSSTransition timeout={300} classNames="fade" key={location.key}>
+          <Switch location={location}>
+            <Route exact path="/" component={ Login } />
+            <PrivateRoute exact path="/dashboard" component={ Dashboard } />
+            <PrivateRoute exact path="/marketplace" component={ Marketplace } />
+            <PrivateRoute exact path="/create" component={ CreateListing } />
+            <PrivateRoute exact path="/profile" component={ Profile } />
+            <DefaultRoute />
+          </Switch>
+        </CSSTransition>
+      </TransitionGroup>
+    )}/>
   </BrowserRouter>
 );
 

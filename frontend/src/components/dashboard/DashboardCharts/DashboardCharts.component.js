@@ -52,7 +52,7 @@ class DashboardCharts extends Component {
         let labelSize = (dataset.length > 30 ? 30 : dataset.length);
         let labelsArray = new Array(labelSize);
         for (let i = 0; i < labelSize; i++) {
-            labelsArray[labelSize-i] = daysLabel[this.mod((today - i),7)];
+            labelsArray[labelSize-i-1] = daysLabel[this.mod((today - i),7)];
         }
         return labelsArray;
     }
@@ -86,7 +86,7 @@ class DashboardCharts extends Component {
                 pointHoverBorderWidth: 2,
                 pointRadius: 1,
                 pointHitRadius: 10,
-                data: dataset
+                data: dataset.slice(0, (dataset.length > 30 ? 30 : dataset.length))
               }
             ]
           };
