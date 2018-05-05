@@ -2,6 +2,7 @@
 Core Libs
 */
 import React, { Component } from 'react';
+import { connect }          from 'react-redux';
 
 /*
 Local CSS
@@ -14,8 +15,15 @@ import nem_logo    from '../../../assets/images/NEM_logo.png';
 /*
 React-Bootstrap Components
 */
-import { Navbar, Nav, MenuItem, NavItem }          from 'react-bootstrap';
-import { Button, ButtonGroup, DropdownButton }     from 'react-bootstrap';
+import { Navbar, Nav, MenuItem, NavItem }     from 'react-bootstrap';
+import { ButtonGroup, DropdownButton }        from 'react-bootstrap';
+
+/*
+Action classes
+*/
+import CurrencySelector                     from  './CurrencySelector/CurrencySelector.component';
+import { ModeDropdownButton, ModeMenuItem } from  './ModeSelector/ModeSelector.component';
+
 
 
 /**
@@ -27,35 +35,9 @@ import { Button, ButtonGroup, DropdownButton }     from 'react-bootstrap';
  */
 class MenuBar extends Component {
 
-    constructor(props){
-        super(props);
-        this.handleModeSelection = this.handleModeSelection.bind(this);
-        this.state = {
-            mode: 'Advertiser'
-        }
-    }
-
-    handleModeSelection(eventKey){
-        let newState = {};
-
-        if(eventKey === 1.1){
-            newState = {
-                mode: 'Advertiser'
-            }
-        }
-
-        if(eventKey === 1.2){
-            newState = {
-                mode: 'Publisher'
-            }
-        }
-
-        this.setState(newState);
-    }
-
     render() {
-        
-        const menuBar = (
+
+        return (
             <div>
             <Navbar collapseOnSelect fixedTop className="menu-container">
 
@@ -72,16 +54,20 @@ class MenuBar extends Component {
 
                     {/* Start of Currency selector */}
                     <ButtonGroup bsSize="large" className="currency-selector">
-                        <Button><img src={eth_logo} className="currency-logo" alt="eth-logo"/>EQC</Button>
-                        <Button><img src={nem_logo} className="currency-logo" alt="nem-logo"/>XQC</Button>
+                        <CurrencySelector currency="EQC">
+                            <img src={eth_logo} className="currency-logo" alt="eth-logo"/>EQC
+                        </CurrencySelector>
+                        <CurrencySelector currency="XQC">
+                            <img src={nem_logo} className="currency-logo" alt="nem-logo"/>XQC
+                        </CurrencySelector>
                     </ButtonGroup>
                     {/* End of Currency selector */}
 
                     {/* Start of Mode selector */}
-                    <DropdownButton id="mode-selector" bsSize="large" title={this.state.mode} className="mode-selector">
-                        <MenuItem eventKey={1.1} onSelect={this.handleModeSelection}>Advertiser</MenuItem>
-                        <MenuItem eventKey={1.2} onSelect={this.handleModeSelection}>Publisher</MenuItem>
-                    </DropdownButton>
+                    <ModeDropdownButton id="mode-selector" bsSize="large" className="mode-selector">
+                        <ModeMenuItem mode="Advertiser">Advertiser</ModeMenuItem>
+                        <ModeMenuItem mode="Publisher">Publisher</ModeMenuItem>
+                    </ModeDropdownButton>
                     {/* End of Mode selector*/}
 
                     {/* Start of Sign Out menu*/}
@@ -104,7 +90,6 @@ class MenuBar extends Component {
             </Navbar>
             </div>
         );
-        return menuBar;
     }
 }
 

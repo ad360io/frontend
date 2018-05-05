@@ -34,8 +34,8 @@ class Dashboard extends Component {
     render() {
         return <div className="dashboard-container">
            
-            <MuiThemeProvider> {/*MuiThemeProvider is solely used and required for Material-UI Card, shall be changed/optimized after*/}
-                
+            {/*MuiThemeProvider is solely used and required for Material-UI Card, shall be changed/optimized after*/}
+            <MuiThemeProvider> 
                 <div className="dashboard-theme-supplier">
                     <Row>
                         <Col xs={12} md={2} className="dashboard-left">
@@ -48,7 +48,6 @@ class Dashboard extends Component {
                         </Col>
                     </Row>
                 </div>
-
             </MuiThemeProvider>
             <Footer />
         </div>;

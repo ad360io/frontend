@@ -16,24 +16,10 @@ import { Navbar, Nav, NavItem } from 'react-bootstrap';
 
 
 /**
- * 
+ * Navigation bar that is directly under MenuBar component
+ * Main purpose is to navigate between main components
  */
 class InAppNavBar extends Component {
-
-    // handleNavSelect(eventKey) {
-    //     switch(eventKey){
-    //         case 1:
-    //             browserHistory.push("/dashboard")
-    //         case 2:
-    //             browserHistory.push("/marketplace");
-    //         case 3:
-    //             browserHistory.push("/create")
-    //         case 4:
-    //             browserHistory.push("/profile");
-    //         default:
-    //             break;
-    //     }
-    // }
 
     render() {
         return <div className="navbar-container">

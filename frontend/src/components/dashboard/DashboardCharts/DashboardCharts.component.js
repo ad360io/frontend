@@ -112,16 +112,16 @@ class DashboardCharts extends Component {
         * Here we are preparing the itemList for click graph slider to contain list of DashboardLineCharts
         */
         let clickDatasetChartList = [];
-        this.state.clickDatasetsInEqc.map((dataset)=>{
+        this.state.clickDatasetsInEqc.map((dataset, index)=>{
             let currentDataset = this.prepareDatasetToChart(dataset, 'rgba(75,192,192,1)');
-            return clickDatasetChartList.push(<DashboardLineChart data={currentDataset} />);
+            return clickDatasetChartList.push(<DashboardLineChart data={currentDataset} key={"clickDataLine"+index} />);
         })
 
         /* Here we are preparing the itemList for impression graph slider to contain list of DashboardLineCharts*/
         let impressionDatasetChartList = [];
-        this.state.impressionDatasetsInEqc.map((dataset) =>{
+        this.state.impressionDatasetsInEqc.map((dataset, index) =>{
             let currentDataset = this.prepareDatasetToChart(dataset, 'rgba(255,20,20,1)');
-            return impressionDatasetChartList.push(<DashboardLineChart data={currentDataset}/>);
+            return impressionDatasetChartList.push(<DashboardLineChart data={currentDataset} key={"impressionDataLine"+index} />);
         })
 
         return <div className="dashboard-charts-container">

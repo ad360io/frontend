@@ -16,7 +16,8 @@ import InAppNavBar from './InAppNavBar/InAppNavBar.component';
 
 
 /**
- * 
+ * The header that is only to be served on private components
+ * Usage check under /router/PrivateRoute.js
  */
 class Header extends Component {
 
