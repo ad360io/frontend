@@ -43,6 +43,8 @@ class DashboardCharts extends Component {
             impressionDatasetsInEqc,
             impressionDatasetsInXqc
         }
+
+        this.chooseDisplayingDataset = this.chooseDisplayingDataset.bind(this);
     }
 
     /**
@@ -106,41 +108,81 @@ class DashboardCharts extends Component {
         return data;
     }
 
-    render() {
-        /*
-        * LineChartSlider requires a itemList props that should contain list of !!!COMPONENTS!!! to be rendered
-        * Here we are preparing the itemList for click graph slider to contain list of DashboardLineCharts
-        */
-        let clickDatasetChartList = [];
-        this.state.clickDatasetsInEqc.map((dataset, index)=>{
-            let currentDataset = this.prepareDatasetToChart(dataset, 'rgba(75,192,192,1)');
-            return clickDatasetChartList.push(<DashboardLineChart data={currentDataset} key={"clickDataLine"+index} />);
-        })
+    chooseDisplayingDataset() {
+        if(this.props.modeFilter === 'Advertiser'){
+            // Advertiser charts (Clicks Impressions)
+            return (this.props.currencyFilter === "EQC" ? [this.state.clickDatasetsInEqc, this.state.impressionDatasetsInEqc] 
+                        : [this.state.clickDatasetsInXqc, this.state.impressionDatasetsInXqc])
+        }else {
+            // Publisher charts  (Clicks Impression RPM Revenue)
+            // returning empty array at this time to serve as a test case and wait for actual data
+            return (this.props.currencyFilter === "EQC" ? [] : []);
+        }
+    }
 
-        /* Here we are preparing the itemList for impression graph slider to contain list of DashboardLineCharts*/
-        let impressionDatasetChartList = [];
-        this.state.impressionDatasetsInEqc.map((dataset, index) =>{
-            let currentDataset = this.prepareDatasetToChart(dataset, 'rgba(255,20,20,1)');
-            return impressionDatasetChartList.push(<DashboardLineChart data={currentDataset} key={"impressionDataLine"+index} />);
-        })
+    getLineColor(k) {
+        switch (k){
+            case 1:
+                return 'rgba(200,20,20,1)';
+            case 2:
+                return 'rgba(0,128,128,1)';
+            case 3: 
+                return 'rgba(40,240,240,1)';
+            default:
+                return 'rgba(32,178,120,1)';
+        }
+    }
+
+    /**
+     * Definitely Need Refactoring after database ( API ) is ready
+     * @param {*} k 
+     */
+    getChartTitle(k){
+        if(this.props.modeFilter === 'Advertiser'){
+            switch (k){
+                case 0:
+                    return 'Ad Clicks';
+                case 1:
+                    return 'Ad Impressions'
+            }
+        }else {
+            switch (k) {
+                case 0:
+                    return 'Adspace Clicks';
+                case 1:
+                    return 'Adspace Impressions';
+                case 2:
+                    return 'Adspace Revenue';
+                case 3:
+                    return 'Adspace RPM';
+            }
+        }
+        
+    }
+
+    render() {
+
+        let itemListsForSlider = [];
+        this.chooseDisplayingDataset().map((datasets, key) => {
+            let currentDatasetChartList = [];
+            datasets.map((dataset, index)=>{
+                let currentDataset = this.prepareDatasetToChart(dataset,this.getLineColor(key));
+                return currentDatasetChartList.push(<DashboardLineChart data={currentDataset} key={key+""+index} />);
+            })
+            return itemListsForSlider.push(currentDatasetChartList);
+        })       
 
         return <div className="dashboard-charts-container">
-
-            {/* Card container for click data slider */}
-            <Card className="dashboard-line-charts-card" style={{background:'#fafafa'}}>
-                <CardText>
-                    <h2 className="chart-title">Ad Click Performance</h2>
-                    <LineChartSlider itemList={clickDatasetChartList} />
-                </CardText>
-            </Card>
-
-            {/* Card container for impression data slider */}
-            <Card className="dashboard-line-charts-card" style={{background:'#fafafa'}}>
-                <CardText>
-                    <h2 className="chart-title">Ad Impression Performance</h2>
-                    <LineChartSlider itemList={impressionDatasetChartList} />
-                </CardText>
-            </Card>
+            {
+                itemListsForSlider.map((itemList, i)=>{
+                    return <Card key={"itemList"+i} className="dashboard-line-charts-card" style={{background:'#fafafa'}}>
+                                <CardText>
+                                    <h2 className="chart-title"> {this.getChartTitle(i)} Performance</h2>
+                                    <LineChartSlider itemList={itemList} />
+                                </CardText>
+                            </Card>
+                })
+            }
         </div>;
     }
 }

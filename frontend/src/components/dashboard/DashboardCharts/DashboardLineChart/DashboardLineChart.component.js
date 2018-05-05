@@ -20,17 +20,9 @@ import { Line } from 'react-chartjs-2';
  */
 class DashboardLineChart extends Component {
     
-    constructor(props){
-        super(props);
-        this.state = {
-            mode : "Advertiser",
-            currency: "eqc"
-        }
-    }
-
     render() {
 
-        /* Make sure if the props.data is undefined */
+        /* Make sure the props.data is not undefined */
         if(typeof this.props.data === 'undefined'){
             return null;
         }
