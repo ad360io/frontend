@@ -7,7 +7,7 @@ const mapStateTo_ModeDropdownButton_Props = (state) => {
     }
 }
 const mapDispatchTo_ModeDropdownButton_Props = (dispatch) => {
-    return null;
+    return {};
 }
 const ModeDropdownButton = connect(
     mapStateTo_ModeDropdownButton_Props,
@@ -16,7 +16,7 @@ const ModeDropdownButton = connect(
 
 
 const mapStateTo_ModeMenuItem_Props = (state) => {
-    return null;
+    return {};
 }
 const mapDispatchTo_ModeMenuItem_Props = (dispatch, ownProps) => {
     return {

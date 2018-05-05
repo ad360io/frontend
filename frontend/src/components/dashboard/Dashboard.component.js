@@ -2,6 +2,7 @@
 Core Libs
 */
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 /*
 Local CSS
@@ -40,11 +41,11 @@ class Dashboard extends Component {
                     <Row>
                         <Col xs={12} md={2} className="dashboard-left">
                             <DashboardWallet/>
-                            <DashboardStats />
+                            <StatsProvider />
                         </Col>
 
                         <Col xs={12} md={10} className="dashboard-right">
-                            <DashboardCharts />
+                            <ChartsProvider />
                         </Col>
                     </Row>
                 </div>
@@ -53,6 +54,23 @@ class Dashboard extends Component {
         </div>;
     }
 }
+
+
+const mapStateToProps = (state) => {
+    return {
+        modeFilter      : state.FilterReducer.modeFilter,
+        currencyFilter  : state.FilterReducer.currencyFilter
+    }
+}
+const StatsProvider = connect(
+    mapStateToProps,
+    {}
+)(DashboardStats)
+
+const ChartsProvider = connect(
+    mapStateToProps,
+    {}
+)(DashboardCharts)
 
 
 export default Dashboard;

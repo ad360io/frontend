@@ -2,6 +2,7 @@
 Core Libs and Children Components
 */
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 /*
 Custom Components
@@ -23,34 +24,25 @@ import fake_24hr_data from '../../../assets/fakeData/fakeDashboardData/fake-24-h
  * 
  */
 class DashboardStats extends Component {
-
+    
     constructor(props){
         super(props);
-        this.state = {
-            mode: 'Advertiser'
-        }
-        this.getStatsTitles = this.getStatsTitles.bind(this);
-        this.getStatsValueByTitle = this.getStatsValueByTitle.bind(this);
+        this.getStatsCardTitles = this.getStatsCardTitles.bind(this);
+        this.getStatsCardValueByTitle = this.getStatsCardValueByTitle.bind(this);
+    }
+    
+    getStatsCardTitles() {
+        console.log(this.props.modeFilter)
+        return (this.props.modeFilter === 'Advertiser' ? 
+            ['Impressions', 'Clicks', 'CPM', 'Expenses', 'Balance']:
+            ['Impressions', 'Clicks', "RPM", "Revenue", "Balance"])
     }
 
-    getStatsTitles(){
-        if(this.state.mode === 'Advertiser'){
-            return ['Impressions', 'Clicks', 'CPM', 'Expenses', 'Balance'];
-        }else{
-            return ['Impressions', 'Clicks', "RPM", "Revenue", "Balance"];
-        }
+    getStatsCardValueByTitle(title) {
+        return (this.props.modeFilter === 'Advertiser' ?
+            fake_24hr_data.adv_24hr_data[title]:
+            fake_24hr_data.pub_24hr_data[title])
     }
-
-    getStatsValueByTitle(title){
-        if(this.state.mode === 'Advertiser'){
-            return fake_24hr_data.adv_24hr_data[title];
-        }else{
-            return fake_24hr_data.pub_24hr_data[title];
-        }
-    }
-
-    // for advertiser stats card should contain [ Impressions, Clicks, CPM, Expenses, Balance ]
-    // for publisher stats card should contain  [ Impressions, Clicks, RPM, Revenue,  Balance ]
 
     render() {
         return <div className="stats-container">
@@ -58,11 +50,11 @@ class DashboardStats extends Component {
                 <h3 className="stats-title"> Last 24 Hours </h3>
                 <CardText>
                 {
-                    this.getStatsTitles().map((statsTitle, i)=>{
+                    this.getStatsCardTitles().map((statsTitle, i)=>{
                         return <StatsCard   title={statsTitle} 
-                                            value={this.getStatsValueByTitle(statsTitle)} 
-                                            trend={this.getStatsValueByTitle(statsTitle+"_trend")}
-                                            key={this.state.mode+statsTitle} />
+                                            value={this.getStatsCardValueByTitle(statsTitle)} 
+                                            trend={this.getStatsCardValueByTitle(statsTitle+"_trend")}
+                                            key={this.props.modeFilter+statsTitle} />
                     })
                 }
                 </CardText>

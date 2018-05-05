@@ -24,6 +24,7 @@ const FilterReducer = (state=defaultState, action) => {
                 ...state,
                 modeFilter: action.modeFilter
             }
+            
         default:
             return state;
     }
