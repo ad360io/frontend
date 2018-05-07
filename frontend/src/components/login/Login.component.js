@@ -9,6 +9,8 @@ Local CSS and Logo
 import './Login.component.css';
 import qchain_logo from '../../assets/images/Qchain_logo.png';
 
+import  Auth  from '../auth/Auth';
+
 
 /**
  * Login Component
@@ -19,11 +21,16 @@ import qchain_logo from '../../assets/images/Qchain_logo.png';
 class Login extends Component {
     
     onLoginClickHandler = () => {
-        console.log("Login Clicked");
+        // document.getElementById('loginCard').style.opacity = '0';
+        // lock.show();
+        
+        this.props.auth.login();
     }
 
     onSignUpClickHandler = () => {
-        console.log("SignUp Clicked");
+        this.props.auth.signup();
+        // document.getElementById('loginCard').style.opacity = '0';
+        // lock.show({initialScreen:'signUp'})
     }
 
     render(){
@@ -39,11 +46,11 @@ class Login extends Component {
 
                     <br/>
                     {/* (click)="show_lock_login()"  */}
-                    <a className="btn btn-primary btn-login" onClick={this.onLoginClickHandler}>LOG IN</a>
+                    <a className="btn btn-primary btn-login" id="btn-login" onClick={this.onLoginClickHandler}>LOG IN</a>
 
                     <span>&nbsp; &nbsp;</span>
                     {/* (click)="show_lock_signup()" */}
-                    <a className="btn btn-primary btn-signup" onClick={this.onSignUpClickHandler}>SIGN UP</a>
+                    <a className="btn btn-primary btn-signup" id="btn-signup" onClick={this.onSignUpClickHandler}>SIGN UP</a>
                 </div>
             </div>
         );

@@ -24,7 +24,7 @@ Action classes
 import CurrencySelector                     from  './CurrencySelector/CurrencySelector.component';
 import { ModeDropdownButton, ModeMenuItem } from  './ModeSelector/ModeSelector.component';
 
-
+import Auth from '../../auth/Auth';
 
 /**
  * The bar that is at the very top of each component
@@ -34,6 +34,15 @@ import { ModeDropdownButton, ModeMenuItem } from  './ModeSelector/ModeSelector.c
  * --------- causing blockage to InAppNavBar.
  */
 class MenuBar extends Component {
+    constructor(props){
+        super(props);
+        this.handleLogout = this.handleLogout.bind(this);
+    }
+
+    handleLogout() {
+        const { logout } = this.props.auth;
+        logout();
+    }
 
     render() {
 
@@ -77,7 +86,7 @@ class MenuBar extends Component {
                                 <i className="far fa-user"></i>User Name
                             </div>
                         </NavItem>
-                        <NavItem className="logout-label" eventKey={0} href="/">
+                        <NavItem className="logout-label" eventKey={0} onClick={this.handleLogout} href="/">
                             <div className="menu-user-action">
                                 <i className="fas fa-sign-out-alt"></i>Sign Out
                             </div>

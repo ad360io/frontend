@@ -6,5 +6,5 @@ export const Auth0Config = {
     domain: 'qchain.auth0.com',
     callbackURL: 'http://localhost:4200/auth-callback',
     renewalCallbackURL: 'http://localhost:3001/renew',
-    logoURL: 'assets/images/Qchain_logo.png'
+    logoURL: 'Qchain_logo.png'
 };

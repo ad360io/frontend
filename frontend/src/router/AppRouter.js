@@ -19,12 +19,25 @@ import Dashboard      from '../components/dashboard/Dashboard.component';
 import Marketplace    from '../components/marketplace/Marketplace.component';
 import CreateListing  from '../components/create-listing/CreateListing.component';
 import Profile        from '../components/profile/Profile.component';
+import AuthCallback   from '../components/auth-callback/AuthCallback';
+import Auth           from '../components/auth/Auth';
 
 /*
 Transition CSS
 */
 import './RouterTransition.css'
 
+const auth = new Auth();  
+
+const handleAuthentication = (nextState, replace, history) => {
+  if (/access_token|id_token|error/.test(nextState.location.hash)) {
+    auth.handleAuthentication(history);
+  }
+}
+
+const pm = new Promise((resolve, reject)=>{
+  resolve(handleAuthentication)
+})
 
 /**
  * Main router for the app.
@@ -39,12 +52,17 @@ const AppRouter = () => (
       <TransitionGroup>
         <CSSTransition timeout={300} classNames="fade" key={location.key}>
           <Switch location={location}>
-            <Route exact path="/" component={ Login } />
-            <PrivateRoute exact path="/dashboard"   component={ Dashboard }     />
-            <PrivateRoute exact path="/marketplace" component={ Marketplace }   />
-            <PrivateRoute exact path="/create"      component={ CreateListing } />
-            <PrivateRoute exact path="/profile"     component={ Profile }       />
-            <DefaultRoute />
+            
+            <Route exact path="/" render={(props)=><Login auth={auth} {...props}/>} />
+            <PrivateRoute exact path="/dashboard"      component={ Dashboard }     auth={auth} />
+            <PrivateRoute exact path="/marketplace"    component={ Marketplace }   auth={auth} />
+            <PrivateRoute exact path="/create"         component={ CreateListing } auth={auth} />
+            <PrivateRoute exact path="/profile"        component={ Profile }       auth={auth} />
+            <Route path="/auth-callback" render={ (props) => {
+                handleAuthentication(props,null, props.history);
+                return <AuthCallback auth={auth} {...props} /> 
+            }}/>
+            <DefaultRoute auth={auth}/>
           </Switch>
         </CSSTransition>
       </TransitionGroup>

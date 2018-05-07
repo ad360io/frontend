@@ -19,13 +19,15 @@ import Header from '../components/header/Header.component';
  * First check if user is authenticated,
  * if not, send back to Login component
  */
-const PrivateRoute = ({ component: Component, ...rest }) => (
+const PrivateRoute = ({ component: Component, auth: Auth,...rest }) => (
     <Route
       {...rest}
-      render={props =>
-        Auth.isAuthenticated ? 
-        ( PrivateContent(props, Component) ) : ( <Redirect to={{ pathname: "/" }} /> )
-    }/>
+      render={props => {
+          const { isAuthenticated } = Auth;
+          return isAuthenticated() ? PrivateContent(props, Component, Auth): 
+            <Redirect to={{pathname: '/'}}/>
+          }}
+    />
 );
 
 /**
@@ -34,9 +36,9 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
  * @param {*} props     Passed from Route component
  * @param {*} Component Passed from Route component
  */
-const PrivateContent = (props, Component) => (
+const PrivateContent = (props, Component, Auth) => (
     <div>
-        <Header/>
+        <Header auth={Auth}/>
         <Component {...props} />
     </div>
 );

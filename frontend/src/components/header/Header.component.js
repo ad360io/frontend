@@ -23,7 +23,7 @@ class Header extends Component {
 
     render() {
         return <div>
-            <MenuBar />
+            <MenuBar auth={this.props.auth}/>
             <InAppNavBar />
         </div>
     }
