@@ -2,7 +2,6 @@
 Core Libs
 */
 import React, { Component } from 'react';
-import { connect }          from 'react-redux';
 
 /*
 Local CSS
@@ -15,16 +14,14 @@ import nem_logo    from '../../../assets/images/NEM_logo.png';
 /*
 React-Bootstrap Components
 */
-import { Navbar, Nav, MenuItem, NavItem }     from 'react-bootstrap';
-import { ButtonGroup, DropdownButton }        from 'react-bootstrap';
+import { Navbar, Nav, NavItem }     from 'react-bootstrap';
+import { ButtonGroup }        from 'react-bootstrap';
 
 /*
 Action classes
 */
 import CurrencySelector                     from  './CurrencySelector/CurrencySelector.component';
 import { ModeDropdownButton, ModeMenuItem } from  './ModeSelector/ModeSelector.component';
-
-import Auth from '../../auth/Auth';
 
 /**
  * The bar that is at the very top of each component

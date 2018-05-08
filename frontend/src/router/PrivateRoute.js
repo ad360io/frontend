@@ -5,14 +5,10 @@ import React                from 'react';
 import { Route, Redirect }  from 'react-router-dom';
 
 /*
-Auth Libs
-*/
-import Auth from '../components/auth/Auth';
-
-/*
 Other Components
 */
 import Header from '../components/header/Header.component';
+
 
 /**
  * Requesting a Private Route will...

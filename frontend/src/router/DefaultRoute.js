@@ -4,10 +4,6 @@ Core Libs
 import React                from 'react';
 import { Route, Redirect }  from 'react-router-dom';
 
-/*
-Auth Libs
-*/
-import Auth                 from '../components/auth/Auth';
 
 /**
  * Requesting a Default Route will...

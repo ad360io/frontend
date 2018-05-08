@@ -1,3 +1,5 @@
 .marketplace-container {
     margin-top: 180px;
+    position: relative;
+    z-index: 2;
 }

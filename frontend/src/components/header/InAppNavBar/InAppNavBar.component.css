@@ -2,7 +2,7 @@
     position: fixed;
     top: 80px;
     width: 100vw;
-    z-index: 3;
+    z-index: 5;
     background: white;
     box-shadow: 0 4px 5px -2px gray;
     height: 50px;

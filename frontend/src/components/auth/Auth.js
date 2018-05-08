@@ -1,13 +1,9 @@
 /*
 Auth0 Libs
 */
-import React, { Component } from 'react';
 import { Auth0Config } from './auth0-config';
-import Auth0Lock from 'auth0-lock';
 import auth0 from 'auth0-js';
-import history from '../../history';
-import { withRouter } from 'react-router-dom';
-import { Redirect } from 'react-router-dom';
+
 
 export default class Auth {
 

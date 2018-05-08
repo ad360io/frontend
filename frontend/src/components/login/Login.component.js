@@ -9,8 +9,6 @@ Local CSS and Logo
 import './Login.component.css';
 import qchain_logo from '../../assets/images/Qchain_logo.png';
 
-import  Auth  from '../auth/Auth';
-
 
 /**
  * Login Component

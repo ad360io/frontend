@@ -2,7 +2,6 @@
 Core Libs and Children Components
 */
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 
 /*
 Custom Components

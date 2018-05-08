@@ -9,11 +9,6 @@ Local CSS
 */
 import './InAppNavBar.component.css';
 
-/*
-React-Bootstrap Components
-*/
-import { Navbar, Nav, NavItem } from 'react-bootstrap';
-
 
 /**
  * Navigation bar that is directly under MenuBar component

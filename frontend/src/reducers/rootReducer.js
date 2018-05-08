@@ -6,8 +6,9 @@ import { combineReducers } from 'redux';
 /*
 Other Reducers
 */
-import SampleReducer       from './sampleReducer';
-import FilterReducer       from './FilterReducer';
+import SampleReducer            from './sampleReducer';
+import FilterReducer            from './FilterReducer';
+import MarketplaceDrawerReducer from './MarketplaceDrawerReducer'
 
 
 /**
@@ -16,7 +17,8 @@ import FilterReducer       from './FilterReducer';
  */
 const RootReducer = combineReducers({
     SampleReducer,
-    FilterReducer
+    FilterReducer,
+    MarketplaceDrawerReducer
 })
 
 

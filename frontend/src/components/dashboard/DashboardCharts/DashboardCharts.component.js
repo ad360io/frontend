@@ -144,6 +144,8 @@ class DashboardCharts extends Component {
                     return 'Ad Clicks';
                 case 1:
                     return 'Ad Impressions'
+                default:
+                    return null;
             }
         }else {
             switch (k) {
@@ -155,6 +157,8 @@ class DashboardCharts extends Component {
                     return 'Adspace Revenue';
                 case 3:
                     return 'Adspace RPM';
+                default:
+                    return null;
             }
         }
         

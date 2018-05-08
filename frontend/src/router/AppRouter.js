@@ -2,7 +2,6 @@
 Core Libs
 */
 import { BrowserRouter, Switch, Route }   from "react-router-dom";
-import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import React                              from 'react';
 
 /*
@@ -22,11 +21,6 @@ import Profile        from '../components/profile/Profile.component';
 import AuthCallback   from '../components/auth-callback/AuthCallback';
 import Auth           from '../components/auth/Auth';
 
-/*
-Transition CSS
-*/
-import './RouterTransition.css'
-
 const auth = new Auth();  
 
 const handleAuthentication = (nextState, replace, history) => {
@@ -35,9 +29,6 @@ const handleAuthentication = (nextState, replace, history) => {
   }
 }
 
-const pm = new Promise((resolve, reject)=>{
-  resolve(handleAuthentication)
-})
 
 /**
  * Main router for the app.
@@ -48,11 +39,9 @@ const pm = new Promise((resolve, reject)=>{
  */
 const AppRouter = () => (
   <BrowserRouter>
-    <Route render={({location})=>(
-      <TransitionGroup>
-        <CSSTransition timeout={300} classNames="fade" key={location.key}>
-          <Switch location={location}>
-            
+    
+        <Switch>
+                      
             <Route exact path="/" render={(props)=><Login auth={auth} {...props}/>} />
             <PrivateRoute exact path="/dashboard"      component={ Dashboard }     auth={auth} />
             <PrivateRoute exact path="/marketplace"    component={ Marketplace }   auth={auth} />
@@ -64,10 +53,7 @@ const AppRouter = () => (
             }}/>
             <DefaultRoute auth={auth}/>
           </Switch>
-        </CSSTransition>
-      </TransitionGroup>
-    )}/>
-    
+
   </BrowserRouter>
 );
 

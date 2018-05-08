@@ -17,7 +17,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 /*
 React Bootstrap Components
 */
-import { Grid, Col, Row } from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap';
 
 /*
 Custom Components
@@ -26,6 +26,7 @@ import Footer           from '../footer/Footer.component';
 import DashboardWallet  from './DashboardWallet/DashboardWallet.component';
 import DashboardStats   from './DashboardStats/DashboardStats.component';
 import DashboardCharts  from './DashboardCharts/DashboardCharts.component';
+
 
 /**
  * Dashboard container manages the layout of each children components
