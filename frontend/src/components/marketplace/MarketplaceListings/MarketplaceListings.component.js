@@ -41,7 +41,7 @@ class MarketplaceListings extends Component {
 
     filterDataWithProps(data){
         return data.filter((listing)=>{
-            if(listing.pricing <= this.props.budgetFilter 
+            if(listing.pricing <= this.props.budgetFilter && listing.currency.toUpperCase() === this.props.currencyFilter
                 && (this.props.adGenreFilter === 'Show All' || listing.genre === this.props.adGenreFilter)){
                 return listing;
             }else{
@@ -54,7 +54,7 @@ class MarketplaceListings extends Component {
         return <div className="marketplace-listings-container">
             {
                 displayData.map((listing, i)=>{
-                    return <ListingCard key={'listingCard'+i} title={listing.name}/>
+                    return <ListingCard key={'listingCard'+i} listing={listing}/>
                 })
             }
         </div>

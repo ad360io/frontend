@@ -33,7 +33,16 @@
 }
 
 .btn-open-filter-drawer{
-    width: 240px;
-    margin-left: 10%;
-    margin-top: 2%;
+    left: 0;
+    position: fixed;
+    -webkit-transform-origin: bottom left;
+       -moz-transform-origin: bottom left;
+        -ms-transform-origin: bottom left;
+         -o-transform-origin: bottom left;
+            transform-origin: bottom left;
+    -webkit-transform: rotate(90deg);
+       -moz-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+         -o-transform: rotate(90deg); 
+            transform: rotate(90deg);
 }

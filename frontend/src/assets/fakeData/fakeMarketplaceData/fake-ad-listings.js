@@ -2,7 +2,7 @@ export default{
     "adListings": [
         {
             "username": "User8",
-            "pricing": "32.00000000",
+            "pricing": "32.00",
             "name": "Native1listing",
             "ask_date_to": "2017-09-17",
             "currency": "eqc",
@@ -11,11 +11,11 @@ export default{
             "genre": "Native",
             "adtype": "FullScreen Takeover",
             "ask_date_from": "2017-08-16",
-            "cpm": "50.00000000"
+            "cpm": "50.00"
         },
         {
             "username": "User9",
-            "pricing": "16.00000000",
+            "pricing": "16.00",
             "name": "Nativelisting",
             "ask_date_to": "2017-09-22",
             "currency": "xqc",
@@ -24,11 +24,11 @@ export default{
             "genre": "Native",
             "adtype": "Banner Left",
             "ask_date_from": "2017-08-12",
-            "cpm": "42.00000000"
+            "cpm": "42.00"
         },
         {
             "username": "User5",
-            "pricing": "22.00000000",
+            "pricing": "22.00",
             "name": "NativeHonda3listing",
             "ask_date_to": "2017-10-08",
             "currency": "xqc",
@@ -37,11 +37,11 @@ export default{
             "genre": "Native",
             "adtype": "FullScreen Takeover",
             "ask_date_from": "2017-09-03",
-            "cpm": "30.00000000"
+            "cpm": "30.00"
         },
         {
             "username": "User9",
-            "pricing": "10.00000000",
+            "pricing": "10.00",
             "name": "NativeGameOfThrones4listing",
             "ask_date_to": "2017-08-23",
             "currency": "eqc",
@@ -50,11 +50,11 @@ export default{
             "genre": "Native",
             "adtype": "FullScreen Takeover",
             "ask_date_from": "2017-07-17",
-            "cpm": "42.00000000"
+            "cpm": "42.00"
         },
         {
             "username": "User1",
-            "pricing": "19.00000000",
+            "pricing": "19.00",
             "name": "Native5listing",
             "ask_date_to": "2017-09-08",
             "currency": "xqc",
@@ -63,11 +63,11 @@ export default{
             "genre": "Native",
             "adtype": "Banner Right",
             "ask_date_from": "2017-08-04",
-            "cpm": "11.00000000"
+            "cpm": "11.00"
         },
         {
             "username": "User5",
-            "pricing": "20.00000000",
+            "pricing": "20.00",
             "name": "Native6listing",
             "ask_date_to": "2017-09-22",
             "currency": "xqc",
@@ -76,11 +76,11 @@ export default{
             "genre": "Native",
             "adtype": "Banner Left",
             "ask_date_from": "2017-08-13",
-            "cpm": "33.00000000"
+            "cpm": "33.00"
         },
         {
             "username": "User5",
-            "pricing": "43.00000000",
+            "pricing": "43.00",
             "name": "Native7listing",
             "ask_date_to": "2017-08-25",
             "currency": "xqc",
@@ -89,11 +89,11 @@ export default{
             "genre": "Native",
             "adtype": "Banner Left",
             "ask_date_from": "2017-07-16",
-            "cpm": "33.00000000"
+            "cpm": "33.00"
         },
         {
             "username": "User7",
-            "pricing": "31.00000000",
+            "pricing": "31.00",
             "name": "NativeMovieListing",
             "ask_date_to": "2017-12-11",
             "currency": "xqc",
@@ -102,11 +102,11 @@ export default{
             "genre": "Native",
             "adtype": "Banner Left",
             "ask_date_from": "2017-10-08",
-            "cpm": "18.00000000"
+            "cpm": "18.00"
         },
         {
             "username": "User3",
-            "pricing": "15.00000000",
+            "pricing": "15.00",
             "name": "Native9listing",
             "ask_date_to": "2017-09-22",
             "currency": "eqc",
@@ -115,11 +115,11 @@ export default{
             "genre": "Native",
             "adtype": "Banner Left",
             "ask_date_from": "2017-08-17",
-            "cpm": "37.00000000"
+            "cpm": "37.00"
         },
         {
             "username": "User1",
-            "pricing": "12.00000000",
+            "pricing": "12.00",
             "name": "NativeDining10listing",
             "ask_date_to": "2017-09-14",
             "currency": "eqc",
@@ -128,11 +128,11 @@ export default{
             "genre": "Native",
             "adtype": "Banner Top",
             "ask_date_from": "2017-07-07",
-            "cpm": "28.00000000"
+            "cpm": "28.00"
         },
         {
             "username": "User2",
-            "pricing": "21.00000000",
+            "pricing": "21.00",
             "name": "NativeCar11listing",
             "ask_date_to": "2017-08-19",
             "currency": "xqc",
@@ -141,11 +141,11 @@ export default{
             "genre": "Native",
             "adtype": "Banner Right",
             "ask_date_from": "2017-07-18",
-            "cpm": "24.00000000"
+            "cpm": "24.00"
         },
         {
             "username": "User5",
-            "pricing": "28.00000000",
+            "pricing": "28.00",
             "name": "OtherNativelisting",
             "ask_date_to": "2017-09-16",
             "currency": "xqc",
@@ -154,11 +154,11 @@ export default{
             "genre": "Native",
             "adtype": "Banner Top",
             "ask_date_from": "2017-07-08",
-            "cpm": "8.00000000"
+            "cpm": "8.00"
         },
         {
             "username": "User5",
-            "pricing": "18.00000000",
+            "pricing": "18.00",
             "name": "Morelisting",
             "ask_date_to": "2017-09-22",
             "currency": "xqc",
@@ -167,11 +167,11 @@ export default{
             "genre": "Native",
             "adtype": "Banner Top",
             "ask_date_from": "2017-07-17",
-            "cpm": "7.00000000"
+            "cpm": "7.00"
         },
         {
             "username": "User8",
-            "pricing": "39.00000000",
+            "pricing": "39.00",
             "name": "ToyStory1listing",
             "ask_date_to": "2017-09-17",
             "currency": "eqc",
@@ -180,11 +180,11 @@ export default{
             "genre": "Movies",
             "adtype": "FullScreen Takeover",
             "ask_date_from": "2017-08-16",
-            "cpm": "50.00000000"
+            "cpm": "50.00"
         },
         {
             "username": "User9",
-            "pricing": "17.00000000",
+            "pricing": "17.00",
             "name": "left-for-dead2listing",
             "ask_date_to": "2017-09-22",
             "currency": "xqc",
@@ -193,11 +193,11 @@ export default{
             "genre": "Gaming",
             "adtype": "Banner Left",
             "ask_date_from": "2017-08-12",
-            "cpm": "42.00000000"
+            "cpm": "42.00"
         },
         {
             "username": "User5",
-            "pricing": "27.00000000",
+            "pricing": "27.00",
             "name": "Honda3listing",
             "ask_date_to": "2017-10-08",
             "currency": "xqc",
@@ -206,11 +206,11 @@ export default{
             "genre": "Auto",
             "adtype": "FullScreen Takeover",
             "ask_date_from": "2017-09-03",
-            "cpm": "30.00000000"
+            "cpm": "30.00"
         },
         {
             "username": "User9",
-            "pricing": "20.00000000",
+            "pricing": "20.00",
             "name": "GameOfThrones4listing",
             "ask_date_to": "2017-08-23",
             "currency": "eqc",
@@ -219,11 +219,11 @@ export default{
             "genre": "Movies",
             "adtype": "FullScreen Takeover",
             "ask_date_from": "2017-07-17",
-            "cpm": "42.00000000"
+            "cpm": "42.00"
         },
         {
             "username": "User1",
-            "pricing": "39.00000000",
+            "pricing": "39.00",
             "name": "left-for-dead5listing",
             "ask_date_to": "2017-09-08",
             "currency": "xqc",
@@ -232,11 +232,11 @@ export default{
             "genre": "Gaming",
             "adtype": "Banner Right",
             "ask_date_from": "2017-08-04",
-            "cpm": "11.00000000"
+            "cpm": "11.00"
         },
         {
             "username": "User5",
-            "pricing": "30.00000000",
+            "pricing": "30.00",
             "name": "left-for-dead6listing",
             "ask_date_to": "2017-09-22",
             "currency": "xqc",
@@ -245,11 +245,11 @@ export default{
             "genre": "Gaming",
             "adtype": "Banner Left",
             "ask_date_from": "2017-08-13",
-            "cpm": "33.00000000"
+            "cpm": "33.00"
         },
         {
             "username": "User5",
-            "pricing": "46.00000000",
+            "pricing": "46.00",
             "name": "Diningx7listing",
             "ask_date_to": "2017-08-25",
             "currency": "xqc",
@@ -258,11 +258,11 @@ export default{
             "genre": "Dining",
             "adtype": "Banner Left",
             "ask_date_from": "2017-07-16",
-            "cpm": "33.00000000"
+            "cpm": "33.00"
         },
         {
             "username": "User7",
-            "pricing": "36.00000000",
+            "pricing": "36.00",
             "name": "xx8listing",
             "ask_date_to": "2017-12-11",
             "currency": "xqc",
@@ -271,11 +271,11 @@ export default{
             "genre": "Dining",
             "adtype": "Banner Left",
             "ask_date_from": "2017-10-08",
-            "cpm": "18.00000000"
+            "cpm": "18.00"
         },
         {
             "username": "User3",
-            "pricing": "12.00000000",
+            "pricing": "12.00",
             "name": "Counterstrike9listing",
             "ask_date_to": "2017-09-22",
             "currency": "eqc",
@@ -284,11 +284,11 @@ export default{
             "genre": "Gaming",
             "adtype": "Banner Left",
             "ask_date_from": "2017-08-17",
-            "cpm": "37.00000000"
+            "cpm": "37.00"
         },
         {
             "username": "User1",
-            "pricing": "13.00000000",
+            "pricing": "13.00",
             "name": "Dining10listing",
             "ask_date_to": "2017-09-14",
             "currency": "eqc",
@@ -297,11 +297,11 @@ export default{
             "genre": "Dining",
             "adtype": "Banner Top",
             "ask_date_from": "2017-07-07",
-            "cpm": "28.00000000"
+            "cpm": "28.00"
         },
         {
             "username": "User2",
-            "pricing": "21.00000000",
+            "pricing": "21.00",
             "name": "Volvo11listing",
             "ask_date_to": "2017-08-19",
             "currency": "xqc",
@@ -310,11 +310,11 @@ export default{
             "genre": "Auto",
             "adtype": "Banner Right",
             "ask_date_from": "2017-07-18",
-            "cpm": "24.00000000"
+            "cpm": "24.00"
         },
         {
             "username": "User5",
-            "pricing": "28.00000000",
+            "pricing": "28.00",
             "name": "Diningx12listing",
             "ask_date_to": "2017-09-16",
             "currency": "xqc",
@@ -323,11 +323,11 @@ export default{
             "genre": "Dining",
             "adtype": "Banner Top",
             "ask_date_from": "2017-07-08",
-            "cpm": "8.00000000"
+            "cpm": "8.00"
         },
         {
             "username": "User5",
-            "pricing": "18.00000000",
+            "pricing": "18.00",
             "name": "Honda13listing",
             "ask_date_to": "2017-09-22",
             "currency": "xqc",
@@ -336,11 +336,11 @@ export default{
             "genre": "Auto",
             "adtype": "Banner Top",
             "ask_date_from": "2017-07-17",
-            "cpm": "7.00000000"
+            "cpm": "7.00"
         },
         {
             "username": "User9",
-            "pricing": "16.00000000",
+            "pricing": "16.00",
             "name": "newDining14listing",
             "ask_date_to": "2017-11-13",
             "currency": "eqc",
@@ -349,11 +349,11 @@ export default{
             "genre": "Dining",
             "adtype": "FullScreen Takeover",
             "ask_date_from": "2017-10-07",
-            "cpm": "7.00000000"
+            "cpm": "7.00"
         },
         {
             "username": "User8",
-            "pricing": "36.00000000",
+            "pricing": "36.00",
             "name": "InfinityWar15listing",
             "ask_date_to": "2017-12-18",
             "currency": "xqc",
@@ -362,11 +362,11 @@ export default{
             "genre": "Movies",
             "adtype": "Banner Right",
             "ask_date_from": "2017-10-08",
-            "cpm": "48.00000000"
+            "cpm": "48.00"
         },
         {
             "username": "User1",
-            "pricing": "43.00000000",
+            "pricing": "43.00",
             "name": "Dota216listing",
             "ask_date_to": "2017-11-12",
             "currency": "xqc",
@@ -375,11 +375,11 @@ export default{
             "genre": "Gaming",
             "adtype": "Banner Right",
             "ask_date_from": "2017-10-11",
-            "cpm": "11.00000000"
+            "cpm": "11.00"
         },
         {
             "username": "User6",
-            "pricing": "22.00000000",
+            "pricing": "22.00",
             "name": "ToyStory17listing",
             "ask_date_to": "2017-09-20",
             "currency": "eqc",
@@ -388,11 +388,11 @@ export default{
             "genre": "Movies",
             "adtype": "Banner Right",
             "ask_date_from": "2017-07-11",
-            "cpm": "27.00000000"
+            "cpm": "27.00"
         },
         {
             "username": "User8",
-            "pricing": "47.00000000",
+            "pricing": "47.00",
             "name": "InfinityWar18listing",
             "ask_date_to": "2017-11-13",
             "currency": "xqc",
@@ -401,11 +401,11 @@ export default{
             "genre": "Movies",
             "adtype": "Banner Left",
             "ask_date_from": "2017-09-03",
-            "cpm": "20.00000000"
+            "cpm": "20.00"
         },
         {
             "username": "User2",
-            "pricing": "20.00000000",
+            "pricing": "20.00",
             "name": "Call-Of-Duty19listing",
             "ask_date_to": "2017-11-12",
             "currency": "eqc",
@@ -414,11 +414,11 @@ export default{
             "genre": "Gaming",
             "adtype": "FullScreen Takeover",
             "ask_date_from": "2017-09-07",
-            "cpm": "14.00000000"
+            "cpm": "14.00"
         },
         {
             "username": "User1",
-            "pricing": "17.00000000",
+            "pricing": "17.00",
             "name": "Dota220listing",
             "ask_date_to": "2017-09-15",
             "currency": "xqc",
@@ -427,11 +427,11 @@ export default{
             "genre": "Gaming",
             "adtype": "Banner Left",
             "ask_date_from": "2017-08-09",
-            "cpm": "9.00000000"
+            "cpm": "9.00"
         },
         {
             "username": "User7",
-            "pricing": "12.00000000",
+            "pricing": "12.00",
             "name": "Call-Of-Duty21listing",
             "ask_date_to": "2017-11-22",
             "currency": "xqc",
@@ -440,11 +440,11 @@ export default{
             "genre": "Gaming",
             "adtype": "FullScreen Takeover",
             "ask_date_from": "2017-10-14",
-            "cpm": "21.00000000"
+            "cpm": "21.00"
         },
         {
             "username": "User5",
-            "pricing": "19.00000000",
+            "pricing": "19.00",
             "name": "Dining22listing",
             "ask_date_to": "2017-11-09",
             "currency": "eqc",
@@ -453,11 +453,11 @@ export default{
             "genre": "Dining",
             "adtype": "Banner Left",
             "ask_date_from": "2017-10-05",
-            "cpm": "46.00000000"
+            "cpm": "46.00"
         },
         {
             "username": "User4",
-            "pricing": "22.00000000",
+            "pricing": "22.00",
             "name": "GoodFellas23listing",
             "ask_date_to": "2017-12-12",
             "currency": "xqc",
@@ -466,11 +466,11 @@ export default{
             "genre": "Movies",
             "adtype": "Banner Left",
             "ask_date_from": "2017-10-11",
-            "cpm": "18.00000000"
+            "cpm": "18.00"
         },
         {
             "username": "User5",
-            "pricing": "49.00000000",
+            "pricing": "49.00",
             "name": "GameOfThrones24listing",
             "ask_date_to": "2017-09-22",
             "currency": "eqc",
@@ -479,11 +479,11 @@ export default{
             "genre": "Movies",
             "adtype": "Banner Left",
             "ask_date_from": "2017-08-20",
-            "cpm": "5.00000000"
+            "cpm": "5.00"
         },
         {
             "username": "User9",
-            "pricing": "31.00000000",
+            "pricing": "31.00",
             "name": "left-for-dead25listing",
             "ask_date_to": "2017-12-26",
             "currency": "xqc",
@@ -492,11 +492,11 @@ export default{
             "genre": "Gaming",
             "adtype": "FullScreen Takeover",
             "ask_date_from": "2017-10-18",
-            "cpm": "20.00000000"
+            "cpm": "20.00"
         },
         {
             "username": "User3",
-            "pricing": "44.00000000",
+            "pricing": "44.00",
             "name": "GameOfThrones26listing",
             "ask_date_to": "2017-09-04",
             "currency": "eqc",
@@ -505,11 +505,11 @@ export default{
             "genre": "Movies",
             "adtype": "FullScreen Takeover",
             "ask_date_from": "2017-07-03",
-            "cpm": "40.00000000"
+            "cpm": "40.00"
         },
         {
             "username": "User5",
-            "pricing": "48.00000000",
+            "pricing": "48.00",
             "name": "Nissan27listing",
             "ask_date_to": "2017-09-14",
             "currency": "xqc",
@@ -518,11 +518,11 @@ export default{
             "genre": "Auto",
             "adtype": "Banner Right",
             "ask_date_from": "2017-07-10",
-            "cpm": "13.00000000"
+            "cpm": "13.00"
         },
         {
             "username": "User4",
-            "pricing": "38.00000000",
+            "pricing": "38.00",
             "name": "Volvo28listing",
             "ask_date_to": "2017-10-04",
             "currency": "xqc",
@@ -531,11 +531,11 @@ export default{
             "genre": "Auto",
             "adtype": "FullScreen Takeover",
             "ask_date_from": "2017-08-01",
-            "cpm": "31.00000000"
+            "cpm": "31.00"
         },
         {
             "username": "User5",
-            "pricing": "48.00000000",
+            "pricing": "48.00",
             "name": "newDining29listing",
             "ask_date_to": "2017-09-10",
             "currency": "eqc",
@@ -544,11 +544,11 @@ export default{
             "genre": "Dining",
             "adtype": "FullScreen Takeover",
             "ask_date_from": "2017-07-07",
-            "cpm": "20.00000000"
+            "cpm": "20.00"
         },
         {
             "username": "User5",
-            "pricing": "30.00000000",
+            "pricing": "30.00",
             "name": "GameOfThrones30listing",
             "ask_date_to": "2017-12-12",
             "currency": "xqc",
@@ -557,11 +557,11 @@ export default{
             "genre": "Movies",
             "adtype": "FullScreen Takeover",
             "ask_date_from": "2017-10-05",
-            "cpm": "29.00000000"
+            "cpm": "29.00"
         },
         {
             "username": "User7",
-            "pricing": "33.00000000",
+            "pricing": "33.00",
             "name": "Godfather31listing",
             "ask_date_to": "2017-11-13",
             "currency": "eqc",
@@ -570,11 +570,11 @@ export default{
             "genre": "Movies",
             "adtype": "FullScreen Takeover",
             "ask_date_from": "2017-10-12",
-            "cpm": "26.00000000"
+            "cpm": "26.00"
         },
         {
             "username": "User3",
-            "pricing": "10.00000000",
+            "pricing": "10.00",
             "name": "Overwatch32listing",
             "ask_date_to": "2017-11-14",
             "currency": "eqc",
@@ -583,11 +583,11 @@ export default{
             "genre": "Gaming",
             "adtype": "Banner Right",
             "ask_date_from": "2017-09-05",
-            "cpm": "22.00000000"
+            "cpm": "22.00"
         },
         {
             "username": "User9",
-            "pricing": "49.00000000",
+            "pricing": "49.00",
             "name": "GoodFellas33listing",
             "ask_date_to": "2017-09-14",
             "currency": "xqc",
@@ -596,11 +596,11 @@ export default{
             "genre": "Movies",
             "adtype": "Banner Left",
             "ask_date_from": "2017-08-06",
-            "cpm": "36.00000000"
+            "cpm": "36.00"
         },
         {
             "username": "User8",
-            "pricing": "16.00000000",
+            "pricing": "16.00",
             "name": "Honda34listing",
             "ask_date_to": "2017-12-09",
             "currency": "eqc",
@@ -609,11 +609,11 @@ export default{
             "genre": "Auto",
             "adtype": "Banner Top",
             "ask_date_from": "2017-10-01",
-            "cpm": "19.00000000"
+            "cpm": "19.00"
         },
         {
             "username": "User3",
-            "pricing": "32.00000000",
+            "pricing": "32.00",
             "name": "Overwatch35listing",
             "ask_date_to": "2017-11-19",
             "currency": "xqc",
@@ -622,11 +622,11 @@ export default{
             "genre": "Gaming",
             "adtype": "Banner Left",
             "ask_date_from": "2017-09-13",
-            "cpm": "14.00000000"
+            "cpm": "14.00"
         },
         {
             "username": "User4",
-            "pricing": "49.00000000",
+            "pricing": "49.00",
             "name": "GameOfThrones36listing",
             "ask_date_to": "2017-08-29",
             "currency": "xqc",
@@ -635,11 +635,11 @@ export default{
             "genre": "Movies",
             "adtype": "FullScreen Takeover",
             "ask_date_from": "2017-07-20",
-            "cpm": "50.00000000"
+            "cpm": "50.00"
         },
         {
             "username": "User3",
-            "pricing": "42.00000000",
+            "pricing": "42.00",
             "name": "Call-Of-Duty37listing",
             "ask_date_to": "2017-11-11",
             "currency": "xqc",
@@ -648,11 +648,11 @@ export default{
             "genre": "Gaming",
             "adtype": "Banner Left",
             "ask_date_from": "2017-10-06",
-            "cpm": "42.00000000"
+            "cpm": "42.00"
         },
         {
             "username": "User3",
-            "pricing": "46.00000000",
+            "pricing": "46.00",
             "name": "Dining38listing",
             "ask_date_to": "2017-09-12",
             "currency": "eqc",
@@ -661,11 +661,11 @@ export default{
             "genre": "Dining",
             "adtype": "FullScreen Takeover",
             "ask_date_from": "2017-08-02",
-            "cpm": "25.00000000"
+            "cpm": "25.00"
         },
         {
             "username": "User4",
-            "pricing": "18.00000000",
+            "pricing": "18.00",
             "name": "Honda39listing",
             "ask_date_to": "2017-09-12",
             "currency": "xqc",
@@ -674,11 +674,11 @@ export default{
             "genre": "Auto",
             "adtype": "Banner Right",
             "ask_date_from": "2017-07-05",
-            "cpm": "50.00000000"
+            "cpm": "50.00"
         },
         {
             "username": "User7",
-            "pricing": "50.00000000",
+            "pricing": "50.00",
             "name": "InfinityWar40listing",
             "ask_date_to": "2017-10-14",
             "currency": "eqc",
@@ -687,11 +687,11 @@ export default{
             "genre": "Movies",
             "adtype": "Banner Left",
             "ask_date_from": "2017-08-09",
-            "cpm": "21.00000000"
+            "cpm": "21.00"
         },
         {
             "username": "User3",
-            "pricing": "29.00000000",
+            "pricing": "29.00",
             "name": "left-for-dead41listing",
             "ask_date_to": "2017-11-20",
             "currency": "xqc",
@@ -700,11 +700,11 @@ export default{
             "genre": "Gaming",
             "adtype": "FullScreen Takeover",
             "ask_date_from": "2017-09-16",
-            "cpm": "47.00000000"
+            "cpm": "47.00"
         },
         {
             "username": "User7",
-            "pricing": "19.00000000",
+            "pricing": "19.00",
             "name": "Godfather42listing",
             "ask_date_to": "2017-09-23",
             "currency": "xqc",
@@ -713,11 +713,11 @@ export default{
             "genre": "Movies",
             "adtype": "Banner Right",
             "ask_date_from": "2017-08-13",
-            "cpm": "34.00000000"
+            "cpm": "34.00"
         },
         {
             "username": "User3",
-            "pricing": "36.00000000",
+            "pricing": "36.00",
             "name": "Tesla43listing",
             "ask_date_to": "2017-09-14",
             "currency": "eqc",
@@ -726,11 +726,11 @@ export default{
             "genre": "Auto",
             "adtype": "Banner Top",
             "ask_date_from": "2017-07-12",
-            "cpm": "38.00000000"
+            "cpm": "38.00"
         },
         {
             "username": "User2",
-            "pricing": "26.00000000",
+            "pricing": "26.00",
             "name": "GoodFellas44listing",
             "ask_date_to": "2017-12-10",
             "currency": "xqc",
@@ -739,11 +739,11 @@ export default{
             "genre": "Movies",
             "adtype": "FullScreen Takeover",
             "ask_date_from": "2017-10-08",
-            "cpm": "23.00000000"
+            "cpm": "23.00"
         },
         {
             "username": "User8",
-            "pricing": "26.00000000",
+            "pricing": "26.00",
             "name": "GameOfThrones45listing",
             "ask_date_to": "2017-09-04",
             "currency": "xqc",
@@ -752,11 +752,11 @@ export default{
             "genre": "Movies",
             "adtype": "Banner Top",
             "ask_date_from": "2017-07-03",
-            "cpm": "15.00000000"
+            "cpm": "15.00"
         },
         {
             "username": "User6",
-            "pricing": "32.00000000",
+            "pricing": "32.00",
             "name": "half-life-346listing",
             "ask_date_to": "2017-09-19",
             "currency": "eqc",
@@ -765,11 +765,11 @@ export default{
             "genre": "Gaming",
             "adtype": "FullScreen Takeover",
             "ask_date_from": "2017-07-12",
-            "cpm": "27.00000000"
+            "cpm": "27.00"
         },
         {
             "username": "User2",
-            "pricing": "39.00000000",
+            "pricing": "39.00",
             "name": "xx47listing",
             "ask_date_to": "2017-08-13",
             "currency": "eqc",
@@ -778,11 +778,11 @@ export default{
             "genre": "Dining",
             "adtype": "Banner Top",
             "ask_date_from": "2017-07-06",
-            "cpm": "49.00000000"
+            "cpm": "49.00"
         },
         {
             "username": "User2",
-            "pricing": "50.00000000",
+            "pricing": "50.00",
             "name": "ToyStory48listing",
             "ask_date_to": "2017-11-08",
             "currency": "eqc",
@@ -791,11 +791,11 @@ export default{
             "genre": "Movies",
             "adtype": "Banner Top",
             "ask_date_from": "2017-10-03",
-            "cpm": "27.00000000"
+            "cpm": "27.00"
         },
         {
             "username": "User2",
-            "pricing": "11.00000000",
+            "pricing": "11.00",
             "name": "Subaru49listing",
             "ask_date_to": "2017-09-12",
             "currency": "xqc",
@@ -804,11 +804,11 @@ export default{
             "genre": "Auto",
             "adtype": "Banner Right",
             "ask_date_from": "2017-07-10",
-            "cpm": "33.00000000"
+            "cpm": "33.00"
         },
         {
             "username": "User8",
-            "pricing": "50.00000000",
+            "pricing": "50.00",
             "name": "ToyStory1Listing No.9",
             "ask_date_to": "2017-11-21",
             "currency": "eqc",
@@ -817,11 +817,11 @@ export default{
             "genre": "Movies",
             "adtype": "FullScreen Takeover",
             "ask_date_from": "2017-09-16",
-            "cpm": "25.00000000"
+            "cpm": "25.00"
         },
         {
             "username": "User9",
-            "pricing": "43.00000000",
+            "pricing": "43.00",
             "name": "left-for-dead2Listing No.2",
             "ask_date_to": "2017-10-03",
             "currency": "xqc",
@@ -830,11 +830,11 @@ export default{
             "genre": "Gaming",
             "adtype": "Banner Left",
             "ask_date_from": "2017-09-02",
-            "cpm": "29.00000000"
+            "cpm": "29.00"
         },
         {
             "username": "User5",
-            "pricing": "25.00000000",
+            "pricing": "25.00",
             "name": "Honda3Listing No.6",
             "ask_date_to": "2017-10-03",
             "currency": "eqc",
@@ -843,11 +843,11 @@ export default{
             "genre": "Auto",
             "adtype": "FullScreen Takeover",
             "ask_date_from": "2017-09-02",
-            "cpm": "31.00000000"
+            "cpm": "31.00"
         },
         {
             "username": "User9",
-            "pricing": "38.00000000",
+            "pricing": "38.00",
             "name": "GameOfThrones4Listing No.1",
             "ask_date_to": "2017-10-15",
             "currency": "eqc",
@@ -856,11 +856,11 @@ export default{
             "genre": "Movies",
             "adtype": "FullScreen Takeover",
             "ask_date_from": "2017-08-11",
-            "cpm": "23.00000000"
+            "cpm": "23.00"
         },
         {
             "username": "User1",
-            "pricing": "27.00000000",
+            "pricing": "27.00",
             "name": "left-for-dead5Listing No.2",
             "ask_date_to": "2017-10-26",
             "currency": "eqc",
@@ -869,11 +869,11 @@ export default{
             "genre": "Gaming",
             "adtype": "Banner Right",
             "ask_date_from": "2017-08-20",
-            "cpm": "19.00000000"
+            "cpm": "19.00"
         },
         {
             "username": "User5",
-            "pricing": "15.00000000",
+            "pricing": "15.00",
             "name": "left-for-dead6Listing No.9",
             "ask_date_to": "2017-09-15",
             "currency": "xqc",
@@ -882,11 +882,11 @@ export default{
             "genre": "Gaming",
             "adtype": "Banner Left",
             "ask_date_from": "2017-08-06",
-            "cpm": "36.00000000"
+            "cpm": "36.00"
         },
         {
             "username": "User5",
-            "pricing": "27.00000000",
+            "pricing": "27.00",
             "name": "Diningx7Listing No.9",
             "ask_date_to": "2017-11-21",
             "currency": "eqc",
@@ -895,11 +895,11 @@ export default{
             "genre": "Dining",
             "adtype": "Banner Left",
             "ask_date_from": "2017-09-14",
-            "cpm": "32.00000000"
+            "cpm": "32.00"
         },
         {
             "username": "User7",
-            "pricing": "32.00000000",
+            "pricing": "32.00",
             "name": "xx8Listing No.4",
             "ask_date_to": "2017-10-11",
             "currency": "xqc",
@@ -908,11 +908,11 @@ export default{
             "genre": "Dining",
             "adtype": "Banner Left",
             "ask_date_from": "2017-08-03",
-            "cpm": "44.00000000"
+            "cpm": "44.00"
         },
         {
             "username": "User3",
-            "pricing": "44.00000000",
+            "pricing": "44.00",
             "name": "Counterstrike9Listing No.6",
             "ask_date_to": "2017-12-16",
             "currency": "xqc",
@@ -921,11 +921,11 @@ export default{
             "genre": "Gaming",
             "adtype": "Banner Left",
             "ask_date_from": "2017-10-10",
-            "cpm": "14.00000000"
+            "cpm": "14.00"
         },
         {
             "username": "User1",
-            "pricing": "15.00000000",
+            "pricing": "15.00",
             "name": "Dining10Listing No.9",
             "ask_date_to": "2017-09-19",
             "currency": "eqc",
@@ -934,11 +934,11 @@ export default{
             "genre": "Dining",
             "adtype": "Banner Top",
             "ask_date_from": "2017-07-09",
-            "cpm": "42.00000000"
+            "cpm": "42.00"
         },
         {
             "username": "User2",
-            "pricing": "47.00000000",
+            "pricing": "47.00",
             "name": "Volvo11Listing No.1",
             "ask_date_to": "2017-08-12",
             "currency": "xqc",
@@ -947,11 +947,11 @@ export default{
             "genre": "Auto",
             "adtype": "Banner Right",
             "ask_date_from": "2017-07-02",
-            "cpm": "25.00000000"
+            "cpm": "25.00"
         },
         {
             "username": "User5",
-            "pricing": "43.00000000",
+            "pricing": "43.00",
             "name": "Diningx12Listing No.2",
             "ask_date_to": "2017-09-17",
             "currency": "xqc",
@@ -960,11 +960,11 @@ export default{
             "genre": "Dining",
             "adtype": "Banner Top",
             "ask_date_from": "2017-07-14",
-            "cpm": "37.00000000"
+            "cpm": "37.00"
         },
         {
             "username": "User5",
-            "pricing": "34.00000000",
+            "pricing": "34.00",
             "name": "Honda13Listing No.9",
             "ask_date_to": "2017-09-08",
             "currency": "eqc",
@@ -973,11 +973,11 @@ export default{
             "genre": "Auto",
             "adtype": "Banner Top",
             "ask_date_from": "2017-08-02",
-            "cpm": "24.00000000"
+            "cpm": "24.00"
         },
         {
             "username": "User9",
-            "pricing": "39.00000000",
+            "pricing": "39.00",
             "name": "newDining14Listing No.6",
             "ask_date_to": "2017-08-19",
             "currency": "xqc",
@@ -986,11 +986,11 @@ export default{
             "genre": "Dining",
             "adtype": "FullScreen Takeover",
             "ask_date_from": "2017-07-16",
-            "cpm": "39.00000000"
+            "cpm": "39.00"
         },
         {
             "username": "User8",
-            "pricing": "29.00000000",
+            "pricing": "29.00",
             "name": "InfinityWar15Listing No.6",
             "ask_date_to": "2017-09-21",
             "currency": "xqc",
@@ -999,11 +999,11 @@ export default{
             "genre": "Movies",
             "adtype": "Banner Right",
             "ask_date_from": "2017-07-16",
-            "cpm": "25.00000000"
+            "cpm": "25.00"
         },
         {
             "username": "User1",
-            "pricing": "11.00000000",
+            "pricing": "11.00",
             "name": "Dota216Listing No.4",
             "ask_date_to": "2017-10-20",
             "currency": "xqc",
@@ -1012,11 +1012,11 @@ export default{
             "genre": "Gaming",
             "adtype": "Banner Right",
             "ask_date_from": "2017-09-19",
-            "cpm": "40.00000000"
+            "cpm": "40.00"
         },
         {
             "username": "User6",
-            "pricing": "14.00000000",
+            "pricing": "14.00",
             "name": "ToyStory17Listing No.1",
             "ask_date_to": "2017-11-09",
             "currency": "eqc",
@@ -1025,11 +1025,11 @@ export default{
             "genre": "Movies",
             "adtype": "Banner Right",
             "ask_date_from": "2017-09-03",
-            "cpm": "9.00000000"
+            "cpm": "9.00"
         },
         {
             "username": "User8",
-            "pricing": "18.00000000",
+            "pricing": "18.00",
             "name": "InfinityWar18Listing No.2",
             "ask_date_to": "2017-08-21",
             "currency": "eqc",
@@ -1038,11 +1038,11 @@ export default{
             "genre": "Movies",
             "adtype": "Banner Left",
             "ask_date_from": "2017-07-20",
-            "cpm": "9.00000000"
+            "cpm": "9.00"
         },
         {
             "username": "User2",
-            "pricing": "12.00000000",
+            "pricing": "12.00",
             "name": "Call-Of-Duty19Listing No.9",
             "ask_date_to": "2017-11-20",
             "currency": "eqc",
@@ -1051,11 +1051,11 @@ export default{
             "genre": "Gaming",
             "adtype": "FullScreen Takeover",
             "ask_date_from": "2017-09-16",
-            "cpm": "41.00000000"
+            "cpm": "41.00"
         },
         {
             "username": "User1",
-            "pricing": "33.00000000",
+            "pricing": "33.00",
             "name": "Dota220Listing No.5",
             "ask_date_to": "2017-09-15",
             "currency": "eqc",
@@ -1064,11 +1064,11 @@ export default{
             "genre": "Gaming",
             "adtype": "Banner Left",
             "ask_date_from": "2017-08-14",
-            "cpm": "5.00000000"
+            "cpm": "5.00"
         },
         {
             "username": "User7",
-            "pricing": "38.00000000",
+            "pricing": "38.00",
             "name": "Call-Of-Duty21Listing No.8",
             "ask_date_to": "2017-10-22",
             "currency": "xqc",
@@ -1077,11 +1077,11 @@ export default{
             "genre": "Gaming",
             "adtype": "FullScreen Takeover",
             "ask_date_from": "2017-08-16",
-            "cpm": "34.00000000"
+            "cpm": "34.00"
         },
         {
             "username": "User5",
-            "pricing": "37.00000000",
+            "pricing": "37.00",
             "name": "Dining22Listing No.3",
             "ask_date_to": "2017-09-13",
             "currency": "eqc",
@@ -1090,11 +1090,11 @@ export default{
             "genre": "Dining",
             "adtype": "Banner Left",
             "ask_date_from": "2017-07-10",
-            "cpm": "23.00000000"
+            "cpm": "23.00"
         },
         {
             "username": "User4",
-            "pricing": "27.00000000",
+            "pricing": "27.00",
             "name": "GoodFellas23Listing No.4",
             "ask_date_to": "2017-11-09",
             "currency": "xqc",
@@ -1103,11 +1103,11 @@ export default{
             "genre": "Movies",
             "adtype": "Banner Left",
             "ask_date_from": "2017-10-06",
-            "cpm": "22.00000000"
+            "cpm": "22.00"
         },
         {
             "username": "User5",
-            "pricing": "14.00000000",
+            "pricing": "14.00",
             "name": "GameOfThrones24Listing No.5",
             "ask_date_to": "2017-10-18",
             "currency": "xqc",
@@ -1116,11 +1116,11 @@ export default{
             "genre": "Movies",
             "adtype": "Banner Left",
             "ask_date_from": "2017-09-09",
-            "cpm": "16.00000000"
+            "cpm": "16.00"
         },
         {
             "username": "User9",
-            "pricing": "16.00000000",
+            "pricing": "16.00",
             "name": "left-for-dead25Listing No.1",
             "ask_date_to": "2017-11-16",
             "currency": "xqc",
@@ -1129,11 +1129,11 @@ export default{
             "genre": "Gaming",
             "adtype": "FullScreen Takeover",
             "ask_date_from": "2017-09-10",
-            "cpm": "36.00000000"
+            "cpm": "36.00"
         },
         {
             "username": "User3",
-            "pricing": "27.00000000",
+            "pricing": "27.00",
             "name": "GameOfThrones26Listing No.4",
             "ask_date_to": "2017-11-24",
             "currency": "xqc",
@@ -1142,11 +1142,11 @@ export default{
             "genre": "Movies",
             "adtype": "FullScreen Takeover",
             "ask_date_from": "2017-09-18",
-            "cpm": "43.00000000"
+            "cpm": "43.00"
         },
         {
             "username": "User5",
-            "pricing": "36.00000000",
+            "pricing": "36.00",
             "name": "Nissan27Listing No.6",
             "ask_date_to": "2017-08-19",
             "currency": "eqc",
@@ -1155,11 +1155,11 @@ export default{
             "genre": "Auto",
             "adtype": "Banner Right",
             "ask_date_from": "2017-07-14",
-            "cpm": "48.00000000"
+            "cpm": "48.00"
         },
         {
             "username": "User4",
-            "pricing": "44.00000000",
+            "pricing": "44.00",
             "name": "Volvo28Listing No.5",
             "ask_date_to": "2017-10-12",
             "currency": "eqc",
@@ -1168,11 +1168,11 @@ export default{
             "genre": "Auto",
             "adtype": "FullScreen Takeover",
             "ask_date_from": "2017-08-08",
-            "cpm": "40.00000000"
+            "cpm": "40.00"
         },
         {
             "username": "User5",
-            "pricing": "11.00000000",
+            "pricing": "11.00",
             "name": "newDining29Listing No.3",
             "ask_date_to": "2017-10-10",
             "currency": "eqc",
@@ -1181,11 +1181,11 @@ export default{
             "genre": "Dining",
             "adtype": "FullScreen Takeover",
             "ask_date_from": "2017-09-03",
-            "cpm": "44.00000000"
+            "cpm": "44.00"
         },
         {
             "username": "User5",
-            "pricing": "43.00000000",
+            "pricing": "43.00",
             "name": "GameOfThrones30Listing No.2",
             "ask_date_to": "2017-11-22",
             "currency": "xqc",
@@ -1194,11 +1194,11 @@ export default{
             "genre": "Movies",
             "adtype": "FullScreen Takeover",
             "ask_date_from": "2017-09-19",
-            "cpm": "46.00000000"
+            "cpm": "46.00"
         },
         {
             "username": "User7",
-            "pricing": "19.00000000",
+            "pricing": "19.00",
             "name": "Godfather31Listing No.3",
             "ask_date_to": "2017-08-13",
             "currency": "eqc",
@@ -1207,11 +1207,11 @@ export default{
             "genre": "Movies",
             "adtype": "FullScreen Takeover",
             "ask_date_from": "2017-07-11",
-            "cpm": "32.00000000"
+            "cpm": "32.00"
         },
         {
             "username": "User3",
-            "pricing": "40.00000000",
+            "pricing": "40.00",
             "name": "Overwatch32Listing No.3",
             "ask_date_to": "2017-11-10",
             "currency": "eqc",
@@ -1220,11 +1220,11 @@ export default{
             "genre": "Gaming",
             "adtype": "Banner Right",
             "ask_date_from": "2017-09-02",
-            "cpm": "45.00000000"
+            "cpm": "45.00"
         },
         {
             "username": "User9",
-            "pricing": "46.00000000",
+            "pricing": "46.00",
             "name": "GoodFellas33Listing No.1",
             "ask_date_to": "2017-12-14",
             "currency": "eqc",
@@ -1233,11 +1233,11 @@ export default{
             "genre": "Movies",
             "adtype": "Banner Left",
             "ask_date_from": "2017-10-11",
-            "cpm": "24.00000000"
+            "cpm": "24.00"
         },
         {
             "username": "User8",
-            "pricing": "50.00000000",
+            "pricing": "50.00",
             "name": "Honda34Listing No.9",
             "ask_date_to": "2017-12-29",
             "currency": "eqc",
@@ -1246,11 +1246,11 @@ export default{
             "genre": "Auto",
             "adtype": "Banner Top",
             "ask_date_from": "2017-10-20",
-            "cpm": "43.00000000"
+            "cpm": "43.00"
         },
         {
             "username": "User3",
-            "pricing": "28.00000000",
+            "pricing": "28.00",
             "name": "Overwatch35Listing No.7",
             "ask_date_to": "2017-11-18",
             "currency": "eqc",
@@ -1259,11 +1259,11 @@ export default{
             "genre": "Gaming",
             "adtype": "Banner Left",
             "ask_date_from": "2017-10-16",
-            "cpm": "38.00000000"
+            "cpm": "38.00"
         },
         {
             "username": "User4",
-            "pricing": "10.00000000",
+            "pricing": "10.00",
             "name": "GameOfThrones36Listing No.2",
             "ask_date_to": "2017-08-14",
             "currency": "eqc",
@@ -1272,11 +1272,11 @@ export default{
             "genre": "Movies",
             "adtype": "FullScreen Takeover",
             "ask_date_from": "2017-07-08",
-            "cpm": "48.00000000"
+            "cpm": "48.00"
         },
         {
             "username": "User3",
-            "pricing": "45.00000000",
+            "pricing": "45.00",
             "name": "Call-Of-Duty37Listing No.5",
             "ask_date_to": "2017-10-14",
             "currency": "xqc",
@@ -1285,11 +1285,11 @@ export default{
             "genre": "Gaming",
             "adtype": "Banner Left",
             "ask_date_from": "2017-09-09",
-            "cpm": "8.00000000"
+            "cpm": "8.00"
         },
         {
             "username": "User3",
-            "pricing": "46.00000000",
+            "pricing": "46.00",
             "name": "Dining38Listing No.4",
             "ask_date_to": "2017-09-20",
             "currency": "eqc",
@@ -1298,11 +1298,11 @@ export default{
             "genre": "Dining",
             "adtype": "FullScreen Takeover",
             "ask_date_from": "2017-07-18",
-            "cpm": "45.00000000"
+            "cpm": "45.00"
         },
         {
             "username": "User4",
-            "pricing": "19.00000000",
+            "pricing": "19.00",
             "name": "Honda39Listing No.1",
             "ask_date_to": "2017-08-17",
             "currency": "xqc",
@@ -1311,11 +1311,11 @@ export default{
             "genre": "Auto",
             "adtype": "Banner Right",
             "ask_date_from": "2017-07-10",
-            "cpm": "19.00000000"
+            "cpm": "19.00"
         },
         {
             "username": "User7",
-            "pricing": "10.00000000",
+            "pricing": "10.00",
             "name": "InfinityWar40Listing No.8",
             "ask_date_to": "2017-10-24",
             "currency": "xqc",
@@ -1324,11 +1324,11 @@ export default{
             "genre": "Movies",
             "adtype": "Banner Left",
             "ask_date_from": "2017-08-19",
-            "cpm": "16.00000000"
+            "cpm": "16.00"
         },
         {
             "username": "User3",
-            "pricing": "44.00000000",
+            "pricing": "44.00",
             "name": "left-for-dead41Listing No.7",
             "ask_date_to": "2017-09-21",
             "currency": "xqc",
@@ -1337,11 +1337,11 @@ export default{
             "genre": "Gaming",
             "adtype": "FullScreen Takeover",
             "ask_date_from": "2017-07-13",
-            "cpm": "37.00000000"
+            "cpm": "37.00"
         },
         {
             "username": "User7",
-            "pricing": "30.00000000",
+            "pricing": "30.00",
             "name": "Godfather42Listing No.4",
             "ask_date_to": "2017-09-17",
             "currency": "xqc",
@@ -1350,11 +1350,11 @@ export default{
             "genre": "Movies",
             "adtype": "Banner Right",
             "ask_date_from": "2017-07-14",
-            "cpm": "37.00000000"
+            "cpm": "37.00"
         },
         {
             "username": "User3",
-            "pricing": "25.00000000",
+            "pricing": "25.00",
             "name": "Tesla43Listing No.3",
             "ask_date_to": "2017-09-14",
             "currency": "eqc",
@@ -1363,11 +1363,11 @@ export default{
             "genre": "Auto",
             "adtype": "Banner Top",
             "ask_date_from": "2017-07-11",
-            "cpm": "14.00000000"
+            "cpm": "14.00"
         },
         {
             "username": "User2",
-            "pricing": "15.00000000",
+            "pricing": "15.00",
             "name": "GoodFellas44Listing No.9",
             "ask_date_to": "2017-11-07",
             "currency": "xqc",
@@ -1376,11 +1376,11 @@ export default{
             "genre": "Movies",
             "adtype": "FullScreen Takeover",
             "ask_date_from": "2017-09-06",
-            "cpm": "5.00000000"
+            "cpm": "5.00"
         },
         {
             "username": "User8",
-            "pricing": "40.00000000",
+            "pricing": "40.00",
             "name": "GameOfThrones45Listing No.8",
             "ask_date_to": "2017-11-20",
             "currency": "xqc",
@@ -1389,11 +1389,11 @@ export default{
             "genre": "Movies",
             "adtype": "Banner Top",
             "ask_date_from": "2017-10-15",
-            "cpm": "29.00000000"
+            "cpm": "29.00"
         },
         {
             "username": "User6",
-            "pricing": "50.00000000",
+            "pricing": "50.00",
             "name": "half-life-346Listing No.4",
             "ask_date_to": "2017-10-19",
             "currency": "eqc",
@@ -1402,11 +1402,11 @@ export default{
             "genre": "Gaming",
             "adtype": "FullScreen Takeover",
             "ask_date_from": "2017-09-10",
-            "cpm": "25.00000000"
+            "cpm": "25.00"
         },
         {
             "username": "User2",
-            "pricing": "47.00000000",
+            "pricing": "47.00",
             "name": "xx47Listing No.9",
             "ask_date_to": "2017-10-07",
             "currency": "xqc",
@@ -1415,11 +1415,11 @@ export default{
             "genre": "Dining",
             "adtype": "Banner Top",
             "ask_date_from": "2017-08-03",
-            "cpm": "7.00000000"
+            "cpm": "7.00"
         },
         {
             "username": "User2",
-            "pricing": "46.00000000",
+            "pricing": "46.00",
             "name": "ToyStory48Listing No.2",
             "ask_date_to": "2017-09-19",
             "currency": "xqc",
@@ -1428,11 +1428,11 @@ export default{
             "genre": "Movies",
             "adtype": "Banner Top",
             "ask_date_from": "2017-08-17",
-            "cpm": "12.00000000"
+            "cpm": "12.00"
         },
         {
             "username": "User2",
-            "pricing": "13.00000000",
+            "pricing": "13.00",
             "name": "Subaru49Listing No.4",
             "ask_date_to": "2017-09-16",
             "currency": "eqc",
@@ -1441,11 +1441,11 @@ export default{
             "genre": "Auto",
             "adtype": "Banner Right",
             "ask_date_from": "2017-08-09",
-            "cpm": "46.00000000"
+            "cpm": "46.00"
         },
         {
             "username": "User8",
-            "pricing": "28.00000000",
+            "pricing": "28.00",
             "name": "ToyStory1Listing No.4",
             "ask_date_to": "2017-09-23",
             "currency": "eqc",
@@ -1454,11 +1454,11 @@ export default{
             "genre": "Movies",
             "adtype": "FullScreen Takeover",
             "ask_date_from": "2017-08-18",
-            "cpm": "35.00000000"
+            "cpm": "35.00"
         },
         {
             "username": "User9",
-            "pricing": "33.00000000",
+            "pricing": "33.00",
             "name": "left-for-dead2Listing No.8",
             "ask_date_to": "2017-10-12",
             "currency": "eqc",
@@ -1467,11 +1467,11 @@ export default{
             "genre": "Gaming",
             "adtype": "Banner Left",
             "ask_date_from": "2017-09-06",
-            "cpm": "16.00000000"
+            "cpm": "16.00"
         },
         {
             "username": "User5",
-            "pricing": "44.00000000",
+            "pricing": "44.00",
             "name": "Honda3Listing No.6",
             "ask_date_to": "2017-10-13",
             "currency": "eqc",
@@ -1480,11 +1480,11 @@ export default{
             "genre": "Auto",
             "adtype": "FullScreen Takeover",
             "ask_date_from": "2017-08-06",
-            "cpm": "21.00000000"
+            "cpm": "21.00"
         },
         {
             "username": "User9",
-            "pricing": "39.00000000",
+            "pricing": "39.00",
             "name": "GameOfThrones4Listing No.4",
             "ask_date_to": "2017-09-09",
             "currency": "xqc",
@@ -1493,11 +1493,11 @@ export default{
             "genre": "Movies",
             "adtype": "FullScreen Takeover",
             "ask_date_from": "2017-08-02",
-            "cpm": "49.00000000"
+            "cpm": "49.00"
         },
         {
             "username": "User1",
-            "pricing": "35.00000000",
+            "pricing": "35.00",
             "name": "left-for-dead5Listing No.3",
             "ask_date_to": "2017-11-18",
             "currency": "eqc",
@@ -1506,11 +1506,11 @@ export default{
             "genre": "Gaming",
             "adtype": "Banner Right",
             "ask_date_from": "2017-09-09",
-            "cpm": "27.00000000"
+            "cpm": "27.00"
         },
         {
             "username": "User5",
-            "pricing": "44.00000000",
+            "pricing": "44.00",
             "name": "left-for-dead6Listing No.5",
             "ask_date_to": "2017-11-23",
             "currency": "xqc",
@@ -1519,11 +1519,11 @@ export default{
             "genre": "Gaming",
             "adtype": "Banner Left",
             "ask_date_from": "2017-09-15",
-            "cpm": "20.00000000"
+            "cpm": "20.00"
         },
         {
             "username": "User5",
-            "pricing": "41.00000000",
+            "pricing": "41.00",
             "name": "Diningx7Listing No.7",
             "ask_date_to": "2017-11-05",
             "currency": "eqc",
@@ -1532,11 +1532,11 @@ export default{
             "genre": "Dining",
             "adtype": "Banner Left",
             "ask_date_from": "2017-10-02",
-            "cpm": "29.00000000"
+            "cpm": "29.00"
         },
         {
             "username": "User7",
-            "pricing": "19.00000000",
+            "pricing": "19.00",
             "name": "xx8Listing No.9",
             "ask_date_to": "2017-09-24",
             "currency": "eqc",
@@ -1545,11 +1545,11 @@ export default{
             "genre": "Dining",
             "adtype": "Banner Left",
             "ask_date_from": "2017-07-17",
-            "cpm": "35.00000000"
+            "cpm": "35.00"
         },
         {
             "username": "User3",
-            "pricing": "15.00000000",
+            "pricing": "15.00",
             "name": "Counterstrike9Listing No.6",
             "ask_date_to": "2017-12-20",
             "currency": "xqc",
@@ -1558,11 +1558,11 @@ export default{
             "genre": "Gaming",
             "adtype": "Banner Left",
             "ask_date_from": "2017-10-14",
-            "cpm": "36.00000000"
+            "cpm": "36.00"
         },
         {
             "username": "User1",
-            "pricing": "27.00000000",
+            "pricing": "27.00",
             "name": "Dining10Listing No.9",
             "ask_date_to": "2017-09-10",
             "currency": "xqc",
@@ -1571,11 +1571,11 @@ export default{
             "genre": "Dining",
             "adtype": "Banner Top",
             "ask_date_from": "2017-08-04",
-            "cpm": "9.00000000"
+            "cpm": "9.00"
         },
         {
             "username": "User2",
-            "pricing": "46.00000000",
+            "pricing": "46.00",
             "name": "Volvo11Listing No.1",
             "ask_date_to": "2017-11-07",
             "currency": "eqc",
@@ -1584,11 +1584,11 @@ export default{
             "genre": "Auto",
             "adtype": "Banner Right",
             "ask_date_from": "2017-09-02",
-            "cpm": "29.00000000"
+            "cpm": "29.00"
         },
         {
             "username": "User5",
-            "pricing": "29.00000000",
+            "pricing": "29.00",
             "name": "Diningx12Listing No.2",
             "ask_date_to": "2017-11-19",
             "currency": "eqc",
@@ -1597,11 +1597,11 @@ export default{
             "genre": "Dining",
             "adtype": "Banner Top",
             "ask_date_from": "2017-10-13",
-            "cpm": "40.00000000"
+            "cpm": "40.00"
         },
         {
             "username": "User5",
-            "pricing": "34.00000000",
+            "pricing": "34.00",
             "name": "Honda13Listing No.7",
             "ask_date_to": "2017-10-27",
             "currency": "eqc",
@@ -1610,11 +1610,11 @@ export default{
             "genre": "Auto",
             "adtype": "Banner Top",
             "ask_date_from": "2017-09-19",
-            "cpm": "48.00000000"
+            "cpm": "48.00"
         },
         {
             "username": "User9",
-            "pricing": "12.00000000",
+            "pricing": "12.00",
             "name": "newDining14Listing No.1",
             "ask_date_to": "2017-08-03",
             "currency": "eqc",
@@ -1623,11 +1623,11 @@ export default{
             "genre": "Dining",
             "adtype": "FullScreen Takeover",
             "ask_date_from": "2017-07-01",
-            "cpm": "7.00000000"
+            "cpm": "7.00"
         },
         {
             "username": "User8",
-            "pricing": "47.00000000",
+            "pricing": "47.00",
             "name": "InfinityWar15Listing No.1",
             "ask_date_to": "2017-10-25",
             "currency": "eqc",
@@ -1636,11 +1636,11 @@ export default{
             "genre": "Movies",
             "adtype": "Banner Right",
             "ask_date_from": "2017-08-20",
-            "cpm": "37.00000000"
+            "cpm": "37.00"
         },
         {
             "username": "User1",
-            "pricing": "46.00000000",
+            "pricing": "46.00",
             "name": "Dota216Listing No.5",
             "ask_date_to": "2017-10-10",
             "currency": "eqc",
@@ -1649,11 +1649,11 @@ export default{
             "genre": "Gaming",
             "adtype": "Banner Right",
             "ask_date_from": "2017-08-01",
-            "cpm": "13.00000000"
+            "cpm": "13.00"
         },
         {
             "username": "User6",
-            "pricing": "13.00000000",
+            "pricing": "13.00",
             "name": "ToyStory17Listing No.5",
             "ask_date_to": "2017-08-08",
             "currency": "eqc",
@@ -1662,11 +1662,11 @@ export default{
             "genre": "Movies",
             "adtype": "Banner Right",
             "ask_date_from": "2017-07-07",
-            "cpm": "41.00000000"
+            "cpm": "41.00"
         },
         {
             "username": "User8",
-            "pricing": "16.00000000",
+            "pricing": "16.00",
             "name": "InfinityWar18Listing No.5",
             "ask_date_to": "2017-10-06",
             "currency": "eqc",
@@ -1675,11 +1675,11 @@ export default{
             "genre": "Movies",
             "adtype": "Banner Left",
             "ask_date_from": "2017-09-05",
-            "cpm": "37.00000000"
+            "cpm": "37.00"
         },
         {
             "username": "User2",
-            "pricing": "17.00000000",
+            "pricing": "17.00",
             "name": "Call-Of-Duty19Listing No.2",
             "ask_date_to": "2017-09-18",
             "currency": "eqc",
@@ -1688,11 +1688,11 @@ export default{
             "genre": "Gaming",
             "adtype": "FullScreen Takeover",
             "ask_date_from": "2017-07-13",
-            "cpm": "19.00000000"
+            "cpm": "19.00"
         },
         {
             "username": "User1",
-            "pricing": "48.00000000",
+            "pricing": "48.00",
             "name": "Dota220Listing No.2",
             "ask_date_to": "2017-08-09",
             "currency": "eqc",
@@ -1701,11 +1701,11 @@ export default{
             "genre": "Gaming",
             "adtype": "Banner Left",
             "ask_date_from": "2017-07-01",
-            "cpm": "18.00000000"
+            "cpm": "18.00"
         },
         {
             "username": "User7",
-            "pricing": "40.00000000",
+            "pricing": "40.00",
             "name": "Call-Of-Duty21Listing No.2",
             "ask_date_to": "2017-10-08",
             "currency": "eqc",
@@ -1714,11 +1714,11 @@ export default{
             "genre": "Gaming",
             "adtype": "FullScreen Takeover",
             "ask_date_from": "2017-09-01",
-            "cpm": "22.00000000"
+            "cpm": "22.00"
         },
         {
             "username": "User5",
-            "pricing": "26.00000000",
+            "pricing": "26.00",
             "name": "Dining22Listing No.2",
             "ask_date_to": "2017-12-25",
             "currency": "xqc",
@@ -1727,11 +1727,11 @@ export default{
             "genre": "Dining",
             "adtype": "Banner Left",
             "ask_date_from": "2017-10-17",
-            "cpm": "37.00000000"
+            "cpm": "37.00"
         },
         {
             "username": "User4",
-            "pricing": "22.00000000",
+            "pricing": "22.00",
             "name": "GoodFellas23Listing No.7",
             "ask_date_to": "2017-09-11",
             "currency": "eqc",
@@ -1740,11 +1740,11 @@ export default{
             "genre": "Movies",
             "adtype": "Banner Left",
             "ask_date_from": "2017-08-05",
-            "cpm": "18.00000000"
+            "cpm": "18.00"
         },
         {
             "username": "User5",
-            "pricing": "46.00000000",
+            "pricing": "46.00",
             "name": "GameOfThrones24Listing No.8",
             "ask_date_to": "2017-11-05",
             "currency": "eqc",
@@ -1753,11 +1753,11 @@ export default{
             "genre": "Movies",
             "adtype": "Banner Left",
             "ask_date_from": "2017-10-02",
-            "cpm": "44.00000000"
+            "cpm": "44.00"
         },
         {
             "username": "User9",
-            "pricing": "48.00000000",
+            "pricing": "48.00",
             "name": "left-for-dead25Listing No.5",
             "ask_date_to": "2017-10-27",
             "currency": "eqc",
@@ -1766,11 +1766,11 @@ export default{
             "genre": "Gaming",
             "adtype": "FullScreen Takeover",
             "ask_date_from": "2017-09-17",
-            "cpm": "7.00000000"
+            "cpm": "7.00"
         },
         {
             "username": "User3",
-            "pricing": "42.00000000",
+            "pricing": "42.00",
             "name": "GameOfThrones26Listing No.7",
             "ask_date_to": "2017-10-13",
             "currency": "xqc",
@@ -1779,11 +1779,11 @@ export default{
             "genre": "Movies",
             "adtype": "FullScreen Takeover",
             "ask_date_from": "2017-09-06",
-            "cpm": "30.00000000"
+            "cpm": "30.00"
         },
         {
             "username": "User5",
-            "pricing": "45.00000000",
+            "pricing": "45.00",
             "name": "Nissan27Listing No.5",
             "ask_date_to": "2017-11-10",
             "currency": "eqc",
@@ -1792,11 +1792,11 @@ export default{
             "genre": "Auto",
             "adtype": "Banner Right",
             "ask_date_from": "2017-10-03",
-            "cpm": "26.00000000"
+            "cpm": "26.00"
         },
         {
             "username": "User4",
-            "pricing": "17.00000000",
+            "pricing": "17.00",
             "name": "Volvo28Listing No.5",
             "ask_date_to": "2017-12-23",
             "currency": "eqc",
@@ -1805,11 +1805,11 @@ export default{
             "genre": "Auto",
             "adtype": "FullScreen Takeover",
             "ask_date_from": "2017-10-17",
-            "cpm": "19.00000000"
+            "cpm": "19.00"
         },
         {
             "username": "User5",
-            "pricing": "31.00000000",
+            "pricing": "31.00",
             "name": "newDining29Listing No.5",
             "ask_date_to": "2017-11-06",
             "currency": "xqc",
@@ -1818,11 +1818,11 @@ export default{
             "genre": "Dining",
             "adtype": "FullScreen Takeover",
             "ask_date_from": "2017-09-01",
-            "cpm": "40.00000000"
+            "cpm": "40.00"
         },
         {
             "username": "User5",
-            "pricing": "41.00000000",
+            "pricing": "41.00",
             "name": "GameOfThrones30Listing No.5",
             "ask_date_to": "2017-09-11",
             "currency": "eqc",
@@ -1831,11 +1831,11 @@ export default{
             "genre": "Movies",
             "adtype": "FullScreen Takeover",
             "ask_date_from": "2017-07-03",
-            "cpm": "29.00000000"
+            "cpm": "29.00"
         },
         {
             "username": "User7",
-            "pricing": "42.00000000",
+            "pricing": "42.00",
             "name": "Godfather31Listing No.1",
             "ask_date_to": "2017-11-20",
             "currency": "xqc",
@@ -1844,11 +1844,11 @@ export default{
             "genre": "Movies",
             "adtype": "FullScreen Takeover",
             "ask_date_from": "2017-10-15",
-            "cpm": "23.00000000"
+            "cpm": "23.00"
         },
         {
             "username": "User3",
-            "pricing": "43.00000000",
+            "pricing": "43.00",
             "name": "Overwatch32Listing No.4",
             "ask_date_to": "2017-12-08",
             "currency": "eqc",
@@ -1857,11 +1857,11 @@ export default{
             "genre": "Gaming",
             "adtype": "Banner Right",
             "ask_date_from": "2017-10-06",
-            "cpm": "31.00000000"
+            "cpm": "31.00"
         },
         {
             "username": "User9",
-            "pricing": "27.00000000",
+            "pricing": "27.00",
             "name": "GoodFellas33Listing No.1",
             "ask_date_to": "2017-09-11",
             "currency": "xqc",
@@ -1870,11 +1870,11 @@ export default{
             "genre": "Movies",
             "adtype": "Banner Left",
             "ask_date_from": "2017-08-06",
-            "cpm": "43.00000000"
+            "cpm": "43.00"
         },
         {
             "username": "User8",
-            "pricing": "46.00000000",
+            "pricing": "46.00",
             "name": "Honda34Listing No.2",
             "ask_date_to": "2017-11-23",
             "currency": "xqc",
@@ -1883,11 +1883,11 @@ export default{
             "genre": "Auto",
             "adtype": "Banner Top",
             "ask_date_from": "2017-09-14",
-            "cpm": "11.00000000"
+            "cpm": "11.00"
         },
         {
             "username": "User3",
-            "pricing": "48.00000000",
+            "pricing": "48.00",
             "name": "Overwatch35Listing No.2",
             "ask_date_to": "2017-08-12",
             "currency": "xqc",
@@ -1896,11 +1896,11 @@ export default{
             "genre": "Gaming",
             "adtype": "Banner Left",
             "ask_date_from": "2017-07-09",
-            "cpm": "29.00000000"
+            "cpm": "29.00"
         },
         {
             "username": "User4",
-            "pricing": "30.00000000",
+            "pricing": "30.00",
             "name": "GameOfThrones36Listing No.3",
             "ask_date_to": "2017-08-18",
             "currency": "eqc",
@@ -1909,11 +1909,11 @@ export default{
             "genre": "Movies",
             "adtype": "FullScreen Takeover",
             "ask_date_from": "2017-07-16",
-            "cpm": "27.00000000"
+            "cpm": "27.00"
         },
         {
             "username": "User3",
-            "pricing": "17.00000000",
+            "pricing": "17.00",
             "name": "Call-Of-Duty37Listing No.1",
             "ask_date_to": "2017-10-22",
             "currency": "eqc",
@@ -1922,11 +1922,11 @@ export default{
             "genre": "Gaming",
             "adtype": "Banner Left",
             "ask_date_from": "2017-09-15",
-            "cpm": "36.00000000"
+            "cpm": "36.00"
         },
         {
             "username": "User3",
-            "pricing": "19.00000000",
+            "pricing": "19.00",
             "name": "Dining38Listing No.6",
             "ask_date_to": "2017-11-19",
             "currency": "eqc",
@@ -1935,11 +1935,11 @@ export default{
             "genre": "Dining",
             "adtype": "FullScreen Takeover",
             "ask_date_from": "2017-10-09",
-            "cpm": "10.00000000"
+            "cpm": "10.00"
         },
         {
             "username": "User4",
-            "pricing": "27.00000000",
+            "pricing": "27.00",
             "name": "Honda39Listing No.6",
             "ask_date_to": "2017-11-15",
             "currency": "xqc",
@@ -1948,11 +1948,11 @@ export default{
             "genre": "Auto",
             "adtype": "Banner Right",
             "ask_date_from": "2017-10-13",
-            "cpm": "11.00000000"
+            "cpm": "11.00"
         },
         {
             "username": "User7",
-            "pricing": "11.00000000",
+            "pricing": "11.00",
             "name": "InfinityWar40Listing No.5",
             "ask_date_to": "2017-10-10",
             "currency": "eqc",
@@ -1961,11 +1961,11 @@ export default{
             "genre": "Movies",
             "adtype": "Banner Left",
             "ask_date_from": "2017-09-08",
-            "cpm": "16.00000000"
+            "cpm": "16.00"
         },
         {
             "username": "User3",
-            "pricing": "16.00000000",
+            "pricing": "16.00",
             "name": "left-for-dead41Listing No.9",
             "ask_date_to": "2017-11-20",
             "currency": "xqc",
@@ -1974,11 +1974,11 @@ export default{
             "genre": "Gaming",
             "adtype": "FullScreen Takeover",
             "ask_date_from": "2017-09-11",
-            "cpm": "12.00000000"
+            "cpm": "12.00"
         },
         {
             "username": "User7",
-            "pricing": "13.00000000",
+            "pricing": "13.00",
             "name": "Godfather42Listing No.8",
             "ask_date_to": "2017-08-15",
             "currency": "xqc",
@@ -1987,11 +1987,11 @@ export default{
             "genre": "Movies",
             "adtype": "Banner Right",
             "ask_date_from": "2017-07-12",
-            "cpm": "18.00000000"
+            "cpm": "18.00"
         },
         {
             "username": "User3",
-            "pricing": "43.00000000",
+            "pricing": "43.00",
             "name": "Tesla43Listing No.4",
             "ask_date_to": "2017-09-23",
             "currency": "eqc",
@@ -2000,11 +2000,11 @@ export default{
             "genre": "Auto",
             "adtype": "Banner Top",
             "ask_date_from": "2017-07-15",
-            "cpm": "26.00000000"
+            "cpm": "26.00"
         },
         {
             "username": "User2",
-            "pricing": "34.00000000",
+            "pricing": "34.00",
             "name": "GoodFellas44Listing No.9",
             "ask_date_to": "2017-09-19",
             "currency": "eqc",
@@ -2013,11 +2013,11 @@ export default{
             "genre": "Movies",
             "adtype": "FullScreen Takeover",
             "ask_date_from": "2017-08-09",
-            "cpm": "35.00000000"
+            "cpm": "35.00"
         },
         {
             "username": "User8",
-            "pricing": "40.00000000",
+            "pricing": "40.00",
             "name": "GameOfThrones45Listing No.2",
             "ask_date_to": "2017-11-17",
             "currency": "eqc",
@@ -2026,11 +2026,11 @@ export default{
             "genre": "Movies",
             "adtype": "Banner Top",
             "ask_date_from": "2017-09-07",
-            "cpm": "49.00000000"
+            "cpm": "49.00"
         },
         {
             "username": "User6",
-            "pricing": "36.00000000",
+            "pricing": "36.00",
             "name": "half-life-346Listing No.2",
             "ask_date_to": "2017-11-22",
             "currency": "xqc",
@@ -2039,11 +2039,11 @@ export default{
             "genre": "Gaming",
             "adtype": "FullScreen Takeover",
             "ask_date_from": "2017-10-20",
-            "cpm": "44.00000000"
+            "cpm": "44.00"
         },
         {
             "username": "User2",
-            "pricing": "16.00000000",
+            "pricing": "16.00",
             "name": "xx47Listing No.2",
             "ask_date_to": "2017-10-12",
             "currency": "xqc",
@@ -2052,11 +2052,11 @@ export default{
             "genre": "Dining",
             "adtype": "Banner Top",
             "ask_date_from": "2017-08-05",
-            "cpm": "35.00000000"
+            "cpm": "35.00"
         },
         {
             "username": "User2",
-            "pricing": "13.00000000",
+            "pricing": "13.00",
             "name": "ToyStory48Listing No.3",
             "ask_date_to": "2017-09-17",
             "currency": "xqc",
@@ -2065,11 +2065,11 @@ export default{
             "genre": "Movies",
             "adtype": "Banner Top",
             "ask_date_from": "2017-08-15",
-            "cpm": "39.00000000"
+            "cpm": "39.00"
         },
         {
             "username": "User2",
-            "pricing": "42.00000000",
+            "pricing": "42.00",
             "name": "Subaru49Listing No.9",
             "ask_date_to": "2017-11-22",
             "currency": "xqc",
@@ -2078,7 +2078,7 @@ export default{
             "genre": "Auto",
             "adtype": "Banner Right",
             "ask_date_from": "2017-09-16",
-            "cpm": "30.00000000"
+            "cpm": "30.00"
         }
     ]
 }
