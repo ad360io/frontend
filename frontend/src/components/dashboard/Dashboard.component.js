@@ -59,8 +59,8 @@ class Dashboard extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        modeFilter      : state.FilterReducer.modeFilter,
-        currencyFilter  : state.FilterReducer.currencyFilter
+        modeFilter      : state.MenuBarFilterReducer.modeFilter,
+        currencyFilter  : state.MenuBarFilterReducer.currencyFilter
     }
 }
 const StatsProvider = connect(

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 const mapStateTo_ModeDropdownButton_Props = (state) => {
     return {
-        title: state.FilterReducer.modeFilter
+        title: state.MenuBarFilterReducer.modeFilter
     }
 }
 const mapDispatchTo_ModeDropdownButton_Props = (dispatch) => {

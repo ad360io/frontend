@@ -4,9 +4,9 @@ Core Libs
 import React, { Component } from 'react';
 import {Button, SplitButton, MenuItem} from 'react-bootstrap';
 import Paper from 'material-ui/Paper';
-import ConnectedDrawer from './ConnectedDrawer/ConnectedDrawer'
-import ConnectedSlider from './ConnectedSlider/ConnectedSlider'
 import Divider from 'material-ui/Divider'
+import Slider from 'material-ui/Slider'
+import Drawer from 'material-ui/Drawer'
 /*
 Local CSS
 */
@@ -16,7 +16,6 @@ const placeholderStyle = {
     height: 130,
     width: 300,
     margin: 0,
-    textAlign: 'center',
     display: 'inline-block',
 }
 /**
@@ -30,6 +29,7 @@ class MarketplaceFilter extends Component {
             width: window.innerWidth
         }
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+        this.decide_BtnOpenFilterDrawer_Display = this.decide_BtnOpenFilterDrawer_Display.bind(this);
     }
 
     componentDidMount() {
@@ -43,26 +43,63 @@ class MarketplaceFilter extends Component {
       
     updateWindowDimensions() {
         this.setState({ width: window.innerWidth });
+        if(window.innerWidth <= 768) this.props.closeDrawer();
+        else this.props.openDrawer();
+    }
+
+    decide_BtnOpenFilterDrawer_Display(){
+        if(this.state.width > 768) return 'none'
+        else return 'inline';
     }
 
     render() {
         return <div className="marketplace-filter-container" >
-            <ConnectedDrawer
+            <Button 
+                className="btn-open-filter-drawer"
+                style={{display: this.decide_BtnOpenFilterDrawer_Display()}}
+                onClick={()=>this.props.openDrawer()}
+            > 
+                Click Me to Set Filters 
+            </Button>
+            <Drawer
                 docked={this.state.width > 768}
                 width={300}
-                zDepth={2}
+                zDepth={1}
+                open={this.props.isDrawerOpen}
+                onRequestChange={this.props.onDrawerRequestChange}
                 className='filter-drawer'
             >
                 <Paper style={placeholderStyle} zDepth={0}/>
-                <p>Ad Genre</p>
-                    <SplitButton title="Branded Content" id="branded-content-menu">
+
+                <div className="ad-genre-container">
+                    <h4 className="filter-title">Ad Genre</h4>
+                    <Button 
+                        className="btn-single"
+                        onClick={()=>{this.props.onAdGenreClick('Show All')}}
+                        active={this.props.adGenre === 'Show All'}
+                    >
+                        Show All
+                    </Button>
+                    <SplitButton 
+                        className="btn-ad-genre" 
+                        title="Branded Content" 
+                        id="branded-content-menu" 
+                        pullRight
+                        onClick={()=>this.props.onAdGenreClick('Branded Content')}
+                        active={this.props.adGenre === 'Branded Content'}
+                    >
                         <MenuItem >Written Post</MenuItem>
                         <MenuItem >Podcast</MenuItem>
                         <MenuItem >Video</MenuItem>
                     </SplitButton>
-                    <div className="range-selector">
-
-                    <SplitButton title="Influencer Post" id="influencer-post-menu">
+                    <SplitButton 
+                        className="btn-ad-genre" 
+                        title="Influencer Post" 
+                        id="influencer-post-menu" 
+                        pullRight
+                        onClick={()=>this.props.onAdGenreClick('Influencer Post')}
+                        active={this.props.adGenre === 'Influencer Post'}
+                    >
                         <MenuItem >Tweet</MenuItem>
                         <MenuItem >Instagram</MenuItem>
                         <MenuItem >Twitch</MenuItem>
@@ -71,19 +108,27 @@ class MarketplaceFilter extends Component {
                         <MenuItem >Twitter</MenuItem>
                         <MenuItem >NicoNico</MenuItem>
                     </SplitButton>
-                
-                    <Button>Sponsorship</Button>
+                    <Button 
+                        className="btn-single"
+                        onClick={()=>this.props.onAdGenreClick('Sponsorship')}
+                        active={this.props.adGenre === 'Sponsorship'}
+                    >
+                        Sponsorship
+                    </Button>
+                </div>
 
-                    <Divider/>
+                <Divider/>
 
-                    <p className="range-label">Max Budget: {this.props.sliderValue} k</p>
-                    <ConnectedSlider className="range-slider"
+                <div className="range-selector">
+                    <h4 className="filter-title">Max Budget: {this.props.sliderValue} k {this.props.currency}</h4>
+                    <Slider className="range-slider"
+                        onChange={this.props.onSliderChange}
+                        value={this.props.sliderValue}
                         min={0}
                         max={100}
                         step={1}/>
-                    
                 </div>
-            </ConnectedDrawer>
+            </Drawer>
         </div>        
     }
 }

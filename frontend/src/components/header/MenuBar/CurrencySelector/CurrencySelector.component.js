@@ -6,7 +6,7 @@ Setting up a Button Component that is responsible to dispatch currency mode acti
 */
 const mapStateToProps = (state, ownProps) => {
     return {
-        active: ownProps.currency === state.FilterReducer.currencyFilter
+        active: ownProps.currency === state.MenuBarFilterReducer.currencyFilter
     }
 }
 const mapDispathToProps = (dispatch, ownProps) => {

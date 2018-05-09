@@ -1,7 +1,8 @@
 // Default state
 const defaultState = {
-   open: true,
-   sliderValue: 50
+   isDrawerOpen: true,
+   sliderValue: 50,
+   adGenre: 'Show All'
 }
 
 /**
@@ -16,25 +17,25 @@ const MarketplaceDrawerReducer = (state=defaultState, action) => {
         case 'OPEN_DRAWER':
             return {
                 ...state,
-                open: true
+                isDrawerOpen: true
             };
         
         case 'CLOSE_DRAWER':
             return {
                 ...state,
-                open: false
+                isDrawerOpen: false
             }
 
         case 'TOGGLE_DRAWER':
             return {
                 ...state,
-                open: !state.open
+                isDrawerOpen: !state.open
             }
 
         case 'SET_DRAWER':
             return {
                 ...state,
-                open: action.value
+                isDrawerOpen: action.value
             }
 
         case 'SET_SLIDER_VALUE':
@@ -43,6 +44,11 @@ const MarketplaceDrawerReducer = (state=defaultState, action) => {
                 sliderValue: action.value
             }
             
+        case 'SET_AD_GENRE':
+            return {
+                ...state,
+                adGenre: action.value
+            }
         default:
             return state;
     }

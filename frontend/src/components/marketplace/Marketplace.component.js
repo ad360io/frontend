@@ -38,12 +38,44 @@ class Marketplace extends Component {
 
 const mapStateToFilterProps = (state) => {
     return {
-        sliderValue: state.MarketplaceDrawerReducer.sliderValue,
-        activeTypes: state.MarketplaceDrawerReducer.activeTypes
+        sliderValue  : state.MarketplaceFilterReducer.sliderValue,
+        activeTypes  : state.MarketplaceFilterReducer.activeTypes,
+        isDrawerOpen : state.MarketplaceFilterReducer.isDrawerOpen,
+        currency     : state.MenuBarFilterReducer.currencyFilter,
+        adGenre      : state.MarketplaceFilterReducer.adGenre
     }
 }
 const mapDispatchToFilterProps = (dispatch) => {
-    return {};
+    return {
+        onSliderChange:(event, sliderValue)=>{
+            dispatch({
+                type:"SET_SLIDER_VALUE",
+                value: sliderValue
+            })
+        },
+        onDrawerRequestChange: (open)=>{
+            dispatch({
+                type: 'SET_DRAWER',
+                value: open
+            })
+        },
+        onAdGenreClick: (adgenre) => {
+            dispatch({
+                type: 'SET_AD_GENRE',
+                value: adgenre
+            })
+        },
+        closeDrawer: () => {
+            dispatch({
+                type: 'CLOSE_DRAWER'
+            })
+        },
+        openDrawer: () => {
+            dispatch({
+                type: 'OPEN_DRAWER'
+            })
+        }
+    }
 }
 
 const ConnectedMarketplaceFilter = connect(

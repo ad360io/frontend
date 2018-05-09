@@ -1,3 +1,39 @@
 .filter-drawer {
-    margin-top: 130px;
+    background: red;
+}
+
+.btn-single {
+    min-width: 240px;
+    margin-left: 25px;
+    margin-bottom: 5%;
+}
+
+.btn-ad-genre {
+    min-width: 215px;
+    margin-bottom: 5%;
+}
+
+.dropdown {
+    margin-left: 25px;
+}
+
+.filter-title {
+    margin-left: 8%;
+    margin-top: 5%;
+    font-size: 20px;
+}
+
+.ad-genre-container {
+    margin-bottom: 5%;
+}
+
+.range-slider{
+    width: 80%;
+    margin-left: 25px;
+}
+
+.btn-open-filter-drawer{
+    width: 240px;
+    margin-left: 10%;
+    margin-top: 2%;
 }

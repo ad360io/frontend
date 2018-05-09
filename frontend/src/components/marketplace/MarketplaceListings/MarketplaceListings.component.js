@@ -8,6 +8,10 @@ Local CSS
 */
 import './MarketplaceListings.component.css'
 
+/*
+Children Component
+*/
+import ListingCard from './ListingCard/ListingCard.component'
 
 /**
  * 
@@ -15,7 +19,14 @@ import './MarketplaceListings.component.css'
 class MarketplaceListings extends Component {
 
     render() {
-        return <div className="marketplace-listings-container"></div>
+        const placeholderArray = [1,2,3,4,5];
+        return <div className="marketplace-listings-container">
+            {
+                placeholderArray.map((i)=>{
+                    return <ListingCard key={'listingCard'+i}/>
+                })
+            }
+        </div>
     }
 }
 
