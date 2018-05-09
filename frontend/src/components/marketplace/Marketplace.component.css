@@ -2,4 +2,7 @@
     margin-top: 130px;
     position: relative;
     z-index: 2;
+    height: auto;
+    min-height: 100vh;
+    margin-bottom: 5%;
 }

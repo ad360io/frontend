@@ -1,8 +1,8 @@
 // Default state
 const defaultState = {
    isDrawerOpen: true,
-   sliderValue: 50,
-   adGenre: 'Show All'
+   budgetFilter: 50,
+   adGenreFilter: 'Show All'
 }
 
 /**
@@ -38,16 +38,16 @@ const MarketplaceDrawerReducer = (state=defaultState, action) => {
                 isDrawerOpen: action.value
             }
 
-        case 'SET_SLIDER_VALUE':
+        case 'SET_BUDGET_VALUE':
             return {
                 ...state,
-                sliderValue: action.value
+                budgetFilter: action.value
             }
             
         case 'SET_AD_GENRE':
             return {
                 ...state,
-                adGenre: action.value
+                adGenreFilter: action.value
             }
         default:
             return state;

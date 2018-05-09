@@ -76,7 +76,7 @@ class MarketplaceFilter extends Component {
                     <Button 
                         className="btn-single"
                         onClick={()=>{this.props.onAdGenreClick('Show All')}}
-                        active={this.props.adGenre === 'Show All'}
+                        active={this.props.adGenreFilter === 'Show All'}
                     >
                         Show All
                     </Button>
@@ -86,7 +86,7 @@ class MarketplaceFilter extends Component {
                         id="branded-content-menu" 
                         pullRight
                         onClick={()=>this.props.onAdGenreClick('Branded Content')}
-                        active={this.props.adGenre === 'Branded Content'}
+                        active={this.props.adGenreFilter === 'Branded Content'}
                     >
                         <MenuItem >Written Post</MenuItem>
                         <MenuItem >Podcast</MenuItem>
@@ -98,7 +98,7 @@ class MarketplaceFilter extends Component {
                         id="influencer-post-menu" 
                         pullRight
                         onClick={()=>this.props.onAdGenreClick('Influencer Post')}
-                        active={this.props.adGenre === 'Influencer Post'}
+                        active={this.props.adGenreFilter === 'Influencer Post'}
                     >
                         <MenuItem >Tweet</MenuItem>
                         <MenuItem >Instagram</MenuItem>
@@ -111,7 +111,7 @@ class MarketplaceFilter extends Component {
                     <Button 
                         className="btn-single"
                         onClick={()=>this.props.onAdGenreClick('Sponsorship')}
-                        active={this.props.adGenre === 'Sponsorship'}
+                        active={this.props.adGenreFilter === 'Sponsorship'}
                     >
                         Sponsorship
                     </Button>
@@ -120,10 +120,10 @@ class MarketplaceFilter extends Component {
                 <Divider/>
 
                 <div className="range-selector">
-                    <h4 className="filter-title">Max Budget: {this.props.sliderValue} k {this.props.currency}</h4>
+                    <h4 className="filter-title">Max Budget: {this.props.budgetFilter} k {this.props.currency}</h4>
                     <Slider className="range-slider"
                         onChange={this.props.onSliderChange}
-                        value={this.props.sliderValue}
+                        value={this.props.budgetFilter}
                         min={0}
                         max={100}
                         step={1}/>

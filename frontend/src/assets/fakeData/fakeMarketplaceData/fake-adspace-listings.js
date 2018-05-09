@@ -2,7 +2,7 @@ export default{
     "adspaceListings": [
         {
             "username": "User4",
-            "cpi": "37.00000000",
+            "pricing": "37.00000000",
             "cpm": "16.00000000",
             "ask_date_to": "2017-10-09",
             "currency": "eqc",
@@ -14,7 +14,7 @@ export default{
         },
         {
             "username": "User6",
-            "cpi": "25.00000000",
+            "pricing": "25.00000000",
             "cpm": "44.00000000",
             "ask_date_to": "2017-08-12",
             "currency": "eqc",
@@ -26,7 +26,7 @@ export default{
         },
         {
             "username": "User1",
-            "cpi": "49.00000000",
+            "pricing": "49.00000000",
             "cpm": "50.00000000",
             "ask_date_to": "2017-11-05",
             "currency": "xqc",
@@ -38,7 +38,7 @@ export default{
         },
         {
             "username": "User2",
-            "cpi": "40.00000000",
+            "pricing": "40.00000000",
             "cpm": "7.00000000",
             "ask_date_to": "2017-09-08",
             "currency": "eqc",
@@ -50,7 +50,7 @@ export default{
         },
         {
             "username": "User8",
-            "cpi": "23.00000000",
+            "pricing": "23.00000000",
             "cpm": "29.00000000",
             "ask_date_to": "2017-11-25",
             "currency": "xqc",
@@ -62,7 +62,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "42.00000000",
+            "pricing": "42.00000000",
             "cpm": "26.00000000",
             "ask_date_to": "2017-08-14",
             "currency": "eqc",
@@ -74,7 +74,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "35.00000000",
+            "pricing": "35.00000000",
             "cpm": "9.00000000",
             "ask_date_to": "2017-11-20",
             "currency": "xqc",
@@ -86,7 +86,7 @@ export default{
         },
         {
             "username": "User9",
-            "cpi": "27.00000000",
+            "pricing": "27.00000000",
             "cpm": "35.00000000",
             "ask_date_to": "2017-11-07",
             "currency": "eqc",
@@ -98,7 +98,7 @@ export default{
         },
         {
             "username": "User8",
-            "cpi": "40.00000000",
+            "pricing": "40.00000000",
             "cpm": "36.00000000",
             "ask_date_to": "2017-11-08",
             "currency": "xqc",
@@ -110,7 +110,7 @@ export default{
         },
         {
             "username": "User4",
-            "cpi": "11.00000000",
+            "pricing": "11.00000000",
             "cpm": "24.00000000",
             "ask_date_to": "2017-09-09",
             "currency": "xqc",
@@ -122,7 +122,7 @@ export default{
         },
         {
             "username": "User9",
-            "cpi": "31.00000000",
+            "pricing": "31.00000000",
             "cpm": "35.00000000",
             "ask_date_to": "2017-09-17",
             "currency": "xqc",
@@ -134,7 +134,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "39.00000000",
+            "pricing": "39.00000000",
             "cpm": "33.00000000",
             "ask_date_to": "2017-10-15",
             "currency": "eqc",
@@ -146,7 +146,7 @@ export default{
         },
         {
             "username": "User2",
-            "cpi": "10.00000000",
+            "pricing": "10.00000000",
             "cpm": "38.00000000",
             "ask_date_to": "2017-11-08",
             "currency": "eqc",
@@ -158,7 +158,7 @@ export default{
         },
         {
             "username": "User4",
-            "cpi": "37.00000000",
+            "pricing": "37.00000000",
             "cpm": "16.00000000",
             "ask_date_to": "2017-10-09",
             "currency": "eqc",
@@ -170,7 +170,7 @@ export default{
         },
         {
             "username": "User6",
-            "cpi": "25.00000000",
+            "pricing": "25.00000000",
             "cpm": "44.00000000",
             "ask_date_to": "2017-08-12",
             "currency": "eqc",
@@ -182,7 +182,7 @@ export default{
         },
         {
             "username": "User1",
-            "cpi": "49.00000000",
+            "pricing": "49.00000000",
             "cpm": "50.00000000",
             "ask_date_to": "2017-11-05",
             "currency": "xqc",
@@ -194,7 +194,7 @@ export default{
         },
         {
             "username": "User2",
-            "cpi": "40.00000000",
+            "pricing": "40.00000000",
             "cpm": "7.00000000",
             "ask_date_to": "2017-09-08",
             "currency": "eqc",
@@ -206,7 +206,7 @@ export default{
         },
         {
             "username": "User8",
-            "cpi": "23.00000000",
+            "pricing": "23.00000000",
             "cpm": "29.00000000",
             "ask_date_to": "2017-11-25",
             "currency": "xqc",
@@ -218,7 +218,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "42.00000000",
+            "pricing": "42.00000000",
             "cpm": "26.00000000",
             "ask_date_to": "2017-08-14",
             "currency": "eqc",
@@ -230,7 +230,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "35.00000000",
+            "pricing": "35.00000000",
             "cpm": "9.00000000",
             "ask_date_to": "2017-11-20",
             "currency": "xqc",
@@ -242,7 +242,7 @@ export default{
         },
         {
             "username": "User9",
-            "cpi": "27.00000000",
+            "pricing": "27.00000000",
             "cpm": "35.00000000",
             "ask_date_to": "2017-11-07",
             "currency": "eqc",
@@ -254,7 +254,7 @@ export default{
         },
         {
             "username": "User8",
-            "cpi": "40.00000000",
+            "pricing": "40.00000000",
             "cpm": "36.00000000",
             "ask_date_to": "2017-11-08",
             "currency": "xqc",
@@ -266,7 +266,7 @@ export default{
         },
         {
             "username": "User4",
-            "cpi": "11.00000000",
+            "pricing": "11.00000000",
             "cpm": "24.00000000",
             "ask_date_to": "2017-09-09",
             "currency": "xqc",
@@ -278,7 +278,7 @@ export default{
         },
         {
             "username": "User9",
-            "cpi": "31.00000000",
+            "pricing": "31.00000000",
             "cpm": "35.00000000",
             "ask_date_to": "2017-09-17",
             "currency": "xqc",
@@ -290,7 +290,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "39.00000000",
+            "pricing": "39.00000000",
             "cpm": "33.00000000",
             "ask_date_to": "2017-10-15",
             "currency": "eqc",
@@ -302,7 +302,7 @@ export default{
         },
         {
             "username": "User2",
-            "cpi": "10.00000000",
+            "pricing": "10.00000000",
             "cpm": "38.00000000",
             "ask_date_to": "2017-11-08",
             "currency": "eqc",
@@ -314,7 +314,7 @@ export default{
         },
         {
             "username": "User7",
-            "cpi": "13.00000000",
+            "pricing": "13.00000000",
             "cpm": "7.00000000",
             "ask_date_to": "2017-10-14",
             "currency": "xqc",
@@ -326,7 +326,7 @@ export default{
         },
         {
             "username": "User4",
-            "cpi": "32.00000000",
+            "pricing": "32.00000000",
             "cpm": "45.00000000",
             "ask_date_to": "2017-11-21",
             "currency": "eqc",
@@ -338,7 +338,7 @@ export default{
         },
         {
             "username": "User9",
-            "cpi": "17.00000000",
+            "pricing": "17.00000000",
             "cpm": "45.00000000",
             "ask_date_to": "2017-09-16",
             "currency": "eqc",
@@ -350,7 +350,7 @@ export default{
         },
         {
             "username": "User5",
-            "cpi": "32.00000000",
+            "pricing": "32.00000000",
             "cpm": "13.00000000",
             "ask_date_to": "2017-11-20",
             "currency": "xqc",
@@ -362,7 +362,7 @@ export default{
         },
         {
             "username": "User1",
-            "cpi": "10.00000000",
+            "pricing": "10.00000000",
             "cpm": "25.00000000",
             "ask_date_to": "2017-12-13",
             "currency": "xqc",
@@ -374,7 +374,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "45.00000000",
+            "pricing": "45.00000000",
             "cpm": "22.00000000",
             "ask_date_to": "2017-10-04",
             "currency": "xqc",
@@ -386,7 +386,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "43.00000000",
+            "pricing": "43.00000000",
             "cpm": "46.00000000",
             "ask_date_to": "2017-09-08",
             "currency": "xqc",
@@ -398,7 +398,7 @@ export default{
         },
         {
             "username": "User5",
-            "cpi": "20.00000000",
+            "pricing": "20.00000000",
             "cpm": "10.00000000",
             "ask_date_to": "2017-10-10",
             "currency": "xqc",
@@ -410,7 +410,7 @@ export default{
         },
         {
             "username": "User7",
-            "cpi": "49.00000000",
+            "pricing": "49.00000000",
             "cpm": "41.00000000",
             "ask_date_to": "2017-08-16",
             "currency": "xqc",
@@ -422,7 +422,7 @@ export default{
         },
         {
             "username": "User7",
-            "cpi": "48.00000000",
+            "pricing": "48.00000000",
             "cpm": "18.00000000",
             "ask_date_to": "2017-08-07",
             "currency": "xqc",
@@ -434,7 +434,7 @@ export default{
         },
         {
             "username": "User1",
-            "cpi": "42.00000000",
+            "pricing": "42.00000000",
             "cpm": "19.00000000",
             "ask_date_to": "2017-10-11",
             "currency": "xqc",
@@ -446,7 +446,7 @@ export default{
         },
         {
             "username": "User5",
-            "cpi": "15.00000000",
+            "pricing": "15.00000000",
             "cpm": "40.00000000",
             "ask_date_to": "2017-12-06",
             "currency": "xqc",
@@ -458,7 +458,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "20.00000000",
+            "pricing": "20.00000000",
             "cpm": "13.00000000",
             "ask_date_to": "2017-11-07",
             "currency": "eqc",
@@ -470,7 +470,7 @@ export default{
         },
         {
             "username": "User6",
-            "cpi": "30.00000000",
+            "pricing": "30.00000000",
             "cpm": "41.00000000",
             "ask_date_to": "2017-10-09",
             "currency": "xqc",
@@ -482,7 +482,7 @@ export default{
         },
         {
             "username": "User5",
-            "cpi": "49.00000000",
+            "pricing": "49.00000000",
             "cpm": "16.00000000",
             "ask_date_to": "2017-08-15",
             "currency": "xqc",
@@ -494,7 +494,7 @@ export default{
         },
         {
             "username": "User8",
-            "cpi": "18.00000000",
+            "pricing": "18.00000000",
             "cpm": "17.00000000",
             "ask_date_to": "2017-08-22",
             "currency": "eqc",
@@ -506,7 +506,7 @@ export default{
         },
         {
             "username": "User6",
-            "cpi": "12.00000000",
+            "pricing": "12.00000000",
             "cpm": "50.00000000",
             "ask_date_to": "2017-08-10",
             "currency": "eqc",
@@ -518,7 +518,7 @@ export default{
         },
         {
             "username": "User1",
-            "cpi": "37.00000000",
+            "pricing": "37.00000000",
             "cpm": "9.00000000",
             "ask_date_to": "2017-11-21",
             "currency": "xqc",
@@ -530,7 +530,7 @@ export default{
         },
         {
             "username": "User4",
-            "cpi": "12.00000000",
+            "pricing": "12.00000000",
             "cpm": "49.00000000",
             "ask_date_to": "2017-08-03",
             "currency": "eqc",
@@ -542,7 +542,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "27.00000000",
+            "pricing": "27.00000000",
             "cpm": "33.00000000",
             "ask_date_to": "2017-11-21",
             "currency": "eqc",
@@ -554,7 +554,7 @@ export default{
         },
         {
             "username": "User9",
-            "cpi": "31.00000000",
+            "pricing": "31.00000000",
             "cpm": "26.00000000",
             "ask_date_to": "2017-08-13",
             "currency": "eqc",
@@ -566,7 +566,7 @@ export default{
         },
         {
             "username": "User2",
-            "cpi": "14.00000000",
+            "pricing": "14.00000000",
             "cpm": "5.00000000",
             "ask_date_to": "2017-12-14",
             "currency": "eqc",
@@ -578,7 +578,7 @@ export default{
         },
         {
             "username": "User8",
-            "cpi": "21.00000000",
+            "pricing": "21.00000000",
             "cpm": "33.00000000",
             "ask_date_to": "2017-12-22",
             "currency": "eqc",
@@ -590,7 +590,7 @@ export default{
         },
         {
             "username": "User9",
-            "cpi": "20.00000000",
+            "pricing": "20.00000000",
             "cpm": "10.00000000",
             "ask_date_to": "2017-11-16",
             "currency": "eqc",
@@ -602,7 +602,7 @@ export default{
         },
         {
             "username": "User4",
-            "cpi": "28.00000000",
+            "pricing": "28.00000000",
             "cpm": "35.00000000",
             "ask_date_to": "2017-09-13",
             "currency": "xqc",
@@ -614,7 +614,7 @@ export default{
         },
         {
             "username": "User4",
-            "cpi": "31.00000000",
+            "pricing": "31.00000000",
             "cpm": "32.00000000",
             "ask_date_to": "2017-09-28",
             "currency": "eqc",
@@ -626,7 +626,7 @@ export default{
         },
         {
             "username": "User9",
-            "cpi": "49.00000000",
+            "pricing": "49.00000000",
             "cpm": "30.00000000",
             "ask_date_to": "2017-09-22",
             "currency": "xqc",
@@ -638,7 +638,7 @@ export default{
         },
         {
             "username": "User2",
-            "cpi": "37.00000000",
+            "pricing": "37.00000000",
             "cpm": "12.00000000",
             "ask_date_to": "2017-11-16",
             "currency": "eqc",
@@ -650,7 +650,7 @@ export default{
         },
         {
             "username": "User2",
-            "cpi": "25.00000000",
+            "pricing": "25.00000000",
             "cpm": "44.00000000",
             "ask_date_to": "2017-12-11",
             "currency": "xqc",
@@ -662,7 +662,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "25.00000000",
+            "pricing": "25.00000000",
             "cpm": "40.00000000",
             "ask_date_to": "2017-11-08",
             "currency": "eqc",
@@ -674,7 +674,7 @@ export default{
         },
         {
             "username": "User2",
-            "cpi": "14.00000000",
+            "pricing": "14.00000000",
             "cpm": "32.00000000",
             "ask_date_to": "2017-10-20",
             "currency": "xqc",
@@ -686,7 +686,7 @@ export default{
         },
         {
             "username": "User9",
-            "cpi": "39.00000000",
+            "pricing": "39.00000000",
             "cpm": "11.00000000",
             "ask_date_to": "2017-09-13",
             "currency": "xqc",
@@ -698,7 +698,7 @@ export default{
         },
         {
             "username": "User7",
-            "cpi": "31.00000000",
+            "pricing": "31.00000000",
             "cpm": "44.00000000",
             "ask_date_to": "2017-12-09",
             "currency": "xqc",
@@ -710,7 +710,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "49.00000000",
+            "pricing": "49.00000000",
             "cpm": "19.00000000",
             "ask_date_to": "2017-12-15",
             "currency": "xqc",
@@ -722,7 +722,7 @@ export default{
         },
         {
             "username": "User6",
-            "cpi": "21.00000000",
+            "pricing": "21.00000000",
             "cpm": "36.00000000",
             "ask_date_to": "2017-08-18",
             "currency": "xqc",
@@ -734,7 +734,7 @@ export default{
         },
         {
             "username": "User4",
-            "cpi": "19.00000000",
+            "pricing": "19.00000000",
             "cpm": "47.00000000",
             "ask_date_to": "2017-11-16",
             "currency": "xqc",
@@ -746,7 +746,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "19.00000000",
+            "pricing": "19.00000000",
             "cpm": "43.00000000",
             "ask_date_to": "2017-11-16",
             "currency": "xqc",
@@ -758,7 +758,7 @@ export default{
         },
         {
             "username": "User4",
-            "cpi": "14.00000000",
+            "pricing": "14.00000000",
             "cpm": "5.00000000",
             "ask_date_to": "2017-09-06",
             "currency": "eqc",
@@ -770,7 +770,7 @@ export default{
         },
         {
             "username": "User4",
-            "cpi": "46.00000000",
+            "pricing": "46.00000000",
             "cpm": "9.00000000",
             "ask_date_to": "2017-12-25",
             "currency": "eqc",
@@ -782,7 +782,7 @@ export default{
         },
         {
             "username": "User8",
-            "cpi": "40.00000000",
+            "pricing": "40.00000000",
             "cpm": "47.00000000",
             "ask_date_to": "2017-11-08",
             "currency": "xqc",
@@ -794,7 +794,7 @@ export default{
         },
         {
             "username": "User4",
-            "cpi": "45.00000000",
+            "pricing": "45.00000000",
             "cpm": "44.00000000",
             "ask_date_to": "2017-11-17",
             "currency": "xqc",
@@ -806,7 +806,7 @@ export default{
         },
         {
             "username": "User8",
-            "cpi": "40.00000000",
+            "pricing": "40.00000000",
             "cpm": "37.00000000",
             "ask_date_to": "2017-09-10",
             "currency": "xqc",
@@ -818,7 +818,7 @@ export default{
         },
         {
             "username": "User4",
-            "cpi": "34.00000000",
+            "pricing": "34.00000000",
             "cpm": "8.00000000",
             "ask_date_to": "2017-10-22",
             "currency": "eqc",
@@ -830,7 +830,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "24.00000000",
+            "pricing": "24.00000000",
             "cpm": "34.00000000",
             "ask_date_to": "2017-10-20",
             "currency": "xqc",
@@ -842,7 +842,7 @@ export default{
         },
         {
             "username": "User4",
-            "cpi": "14.00000000",
+            "pricing": "14.00000000",
             "cpm": "35.00000000",
             "ask_date_to": "2017-10-20",
             "currency": "eqc",
@@ -854,7 +854,7 @@ export default{
         },
         {
             "username": "User1",
-            "cpi": "20.00000000",
+            "pricing": "20.00000000",
             "cpm": "17.00000000",
             "ask_date_to": "2017-11-23",
             "currency": "xqc",
@@ -866,7 +866,7 @@ export default{
         },
         {
             "username": "User7",
-            "cpi": "50.00000000",
+            "pricing": "50.00000000",
             "cpm": "19.00000000",
             "ask_date_to": "2017-11-11",
             "currency": "xqc",
@@ -878,7 +878,7 @@ export default{
         },
         {
             "username": "User1",
-            "cpi": "42.00000000",
+            "pricing": "42.00000000",
             "cpm": "24.00000000",
             "ask_date_to": "2017-10-15",
             "currency": "xqc",
@@ -890,7 +890,7 @@ export default{
         },
         {
             "username": "User4",
-            "cpi": "23.00000000",
+            "pricing": "23.00000000",
             "cpm": "21.00000000",
             "ask_date_to": "2017-11-27",
             "currency": "xqc",
@@ -902,7 +902,7 @@ export default{
         },
         {
             "username": "User9",
-            "cpi": "34.00000000",
+            "pricing": "34.00000000",
             "cpm": "14.00000000",
             "ask_date_to": "2017-09-22",
             "currency": "eqc",
@@ -914,7 +914,7 @@ export default{
         },
         {
             "username": "User7",
-            "cpi": "44.00000000",
+            "pricing": "44.00000000",
             "cpm": "41.00000000",
             "ask_date_to": "2017-08-12",
             "currency": "xqc",
@@ -926,7 +926,7 @@ export default{
         },
         {
             "username": "User8",
-            "cpi": "49.00000000",
+            "pricing": "49.00000000",
             "cpm": "49.00000000",
             "ask_date_to": "2017-11-16",
             "currency": "xqc",
@@ -938,7 +938,7 @@ export default{
         },
         {
             "username": "User9",
-            "cpi": "24.00000000",
+            "pricing": "24.00000000",
             "cpm": "15.00000000",
             "ask_date_to": "2017-09-20",
             "currency": "eqc",
@@ -950,7 +950,7 @@ export default{
         },
         {
             "username": "User1",
-            "cpi": "43.00000000",
+            "pricing": "43.00000000",
             "cpm": "44.00000000",
             "ask_date_to": "2017-09-26",
             "currency": "eqc",
@@ -962,7 +962,7 @@ export default{
         },
         {
             "username": "User9",
-            "cpi": "16.00000000",
+            "pricing": "16.00000000",
             "cpm": "35.00000000",
             "ask_date_to": "2017-09-19",
             "currency": "eqc",
@@ -974,7 +974,7 @@ export default{
         },
         {
             "username": "User1",
-            "cpi": "34.00000000",
+            "pricing": "34.00000000",
             "cpm": "27.00000000",
             "ask_date_to": "2017-11-10",
             "currency": "xqc",
@@ -986,7 +986,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "28.00000000",
+            "pricing": "28.00000000",
             "cpm": "26.00000000",
             "ask_date_to": "2017-12-10",
             "currency": "eqc",
@@ -998,7 +998,7 @@ export default{
         },
         {
             "username": "User7",
-            "cpi": "18.00000000",
+            "pricing": "18.00000000",
             "cpm": "34.00000000",
             "ask_date_to": "2017-12-14",
             "currency": "xqc",
@@ -1010,7 +1010,7 @@ export default{
         },
         {
             "username": "User8",
-            "cpi": "49.00000000",
+            "pricing": "49.00000000",
             "cpm": "31.00000000",
             "ask_date_to": "2017-12-17",
             "currency": "eqc",
@@ -1022,7 +1022,7 @@ export default{
         },
         {
             "username": "User9",
-            "cpi": "30.00000000",
+            "pricing": "30.00000000",
             "cpm": "27.00000000",
             "ask_date_to": "2017-09-21",
             "currency": "xqc",
@@ -1034,7 +1034,7 @@ export default{
         },
         {
             "username": "User2",
-            "cpi": "12.00000000",
+            "pricing": "12.00000000",
             "cpm": "44.00000000",
             "ask_date_to": "2017-11-22",
             "currency": "xqc",
@@ -1046,7 +1046,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "17.00000000",
+            "pricing": "17.00000000",
             "cpm": "35.00000000",
             "ask_date_to": "2017-11-26",
             "currency": "xqc",
@@ -1058,7 +1058,7 @@ export default{
         },
         {
             "username": "User5",
-            "cpi": "15.00000000",
+            "pricing": "15.00000000",
             "cpm": "39.00000000",
             "ask_date_to": "2017-12-11",
             "currency": "eqc",
@@ -1070,7 +1070,7 @@ export default{
         },
         {
             "username": "User6",
-            "cpi": "41.00000000",
+            "pricing": "41.00000000",
             "cpm": "48.00000000",
             "ask_date_to": "2017-11-14",
             "currency": "xqc",
@@ -1082,7 +1082,7 @@ export default{
         },
         {
             "username": "User4",
-            "cpi": "41.00000000",
+            "pricing": "41.00000000",
             "cpm": "50.00000000",
             "ask_date_to": "2017-09-10",
             "currency": "xqc",
@@ -1094,7 +1094,7 @@ export default{
         },
         {
             "username": "User5",
-            "cpi": "30.00000000",
+            "pricing": "30.00000000",
             "cpm": "36.00000000",
             "ask_date_to": "2017-10-10",
             "currency": "xqc",
@@ -1106,7 +1106,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "18.00000000",
+            "pricing": "18.00000000",
             "cpm": "17.00000000",
             "ask_date_to": "2017-09-09",
             "currency": "eqc",
@@ -1118,7 +1118,7 @@ export default{
         },
         {
             "username": "User7",
-            "cpi": "18.00000000",
+            "pricing": "18.00000000",
             "cpm": "5.00000000",
             "ask_date_to": "2017-10-20",
             "currency": "xqc",
@@ -1130,7 +1130,7 @@ export default{
         },
         {
             "username": "User4",
-            "cpi": "32.00000000",
+            "pricing": "32.00000000",
             "cpm": "17.00000000",
             "ask_date_to": "2017-11-05",
             "currency": "eqc",
@@ -1142,7 +1142,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "27.00000000",
+            "pricing": "27.00000000",
             "cpm": "45.00000000",
             "ask_date_to": "2017-11-12",
             "currency": "xqc",
@@ -1154,7 +1154,7 @@ export default{
         },
         {
             "username": "User2",
-            "cpi": "40.00000000",
+            "pricing": "40.00000000",
             "cpm": "43.00000000",
             "ask_date_to": "2017-09-19",
             "currency": "xqc",
@@ -1166,7 +1166,7 @@ export default{
         },
         {
             "username": "User8",
-            "cpi": "49.00000000",
+            "pricing": "49.00000000",
             "cpm": "22.00000000",
             "ask_date_to": "2017-11-06",
             "currency": "eqc",
@@ -1178,7 +1178,7 @@ export default{
         },
         {
             "username": "User9",
-            "cpi": "49.00000000",
+            "pricing": "49.00000000",
             "cpm": "37.00000000",
             "ask_date_to": "2017-08-22",
             "currency": "eqc",
@@ -1190,7 +1190,7 @@ export default{
         },
         {
             "username": "User7",
-            "cpi": "49.00000000",
+            "pricing": "49.00000000",
             "cpm": "6.00000000",
             "ask_date_to": "2017-11-10",
             "currency": "eqc",
@@ -1202,7 +1202,7 @@ export default{
         },
         {
             "username": "User9",
-            "cpi": "33.00000000",
+            "pricing": "33.00000000",
             "cpm": "21.00000000",
             "ask_date_to": "2017-10-24",
             "currency": "eqc",
@@ -1214,7 +1214,7 @@ export default{
         },
         {
             "username": "User2",
-            "cpi": "42.00000000",
+            "pricing": "42.00000000",
             "cpm": "22.00000000",
             "ask_date_to": "2017-09-24",
             "currency": "eqc",
@@ -1226,7 +1226,7 @@ export default{
         },
         {
             "username": "User1",
-            "cpi": "27.00000000",
+            "pricing": "27.00000000",
             "cpm": "23.00000000",
             "ask_date_to": "2017-10-20",
             "currency": "eqc",
@@ -1238,7 +1238,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "42.00000000",
+            "pricing": "42.00000000",
             "cpm": "9.00000000",
             "ask_date_to": "2017-08-19",
             "currency": "eqc",
@@ -1250,7 +1250,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "36.00000000",
+            "pricing": "36.00000000",
             "cpm": "50.00000000",
             "ask_date_to": "2017-09-17",
             "currency": "xqc",
@@ -1262,7 +1262,7 @@ export default{
         },
         {
             "username": "User1",
-            "cpi": "49.00000000",
+            "pricing": "49.00000000",
             "cpm": "49.00000000",
             "ask_date_to": "2017-10-06",
             "currency": "eqc",
@@ -1274,7 +1274,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "11.00000000",
+            "pricing": "11.00000000",
             "cpm": "6.00000000",
             "ask_date_to": "2017-08-15",
             "currency": "eqc",
@@ -1286,7 +1286,7 @@ export default{
         },
         {
             "username": "User1",
-            "cpi": "20.00000000",
+            "pricing": "20.00000000",
             "cpm": "26.00000000",
             "ask_date_to": "2017-11-25",
             "currency": "xqc",
@@ -1298,7 +1298,7 @@ export default{
         },
         {
             "username": "User4",
-            "cpi": "27.00000000",
+            "pricing": "27.00000000",
             "cpm": "9.00000000",
             "ask_date_to": "2017-08-10",
             "currency": "eqc",
@@ -1310,7 +1310,7 @@ export default{
         },
         {
             "username": "User7",
-            "cpi": "16.00000000",
+            "pricing": "16.00000000",
             "cpm": "13.00000000",
             "ask_date_to": "2017-11-13",
             "currency": "xqc",
@@ -1322,7 +1322,7 @@ export default{
         },
         {
             "username": "User9",
-            "cpi": "44.00000000",
+            "pricing": "44.00000000",
             "cpm": "33.00000000",
             "ask_date_to": "2017-10-07",
             "currency": "eqc",
@@ -1334,7 +1334,7 @@ export default{
         },
         {
             "username": "User9",
-            "cpi": "40.00000000",
+            "pricing": "40.00000000",
             "cpm": "43.00000000",
             "ask_date_to": "2017-11-21",
             "currency": "eqc",
@@ -1346,7 +1346,7 @@ export default{
         },
         {
             "username": "User6",
-            "cpi": "22.00000000",
+            "pricing": "22.00000000",
             "cpm": "18.00000000",
             "ask_date_to": "2017-10-21",
             "currency": "eqc",
@@ -1358,7 +1358,7 @@ export default{
         },
         {
             "username": "User2",
-            "cpi": "40.00000000",
+            "pricing": "40.00000000",
             "cpm": "50.00000000",
             "ask_date_to": "2017-12-26",
             "currency": "xqc",
@@ -1370,7 +1370,7 @@ export default{
         },
         {
             "username": "User8",
-            "cpi": "33.00000000",
+            "pricing": "33.00000000",
             "cpm": "24.00000000",
             "ask_date_to": "2017-11-09",
             "currency": "xqc",
@@ -1382,7 +1382,7 @@ export default{
         },
         {
             "username": "User2",
-            "cpi": "43.00000000",
+            "pricing": "43.00000000",
             "cpm": "8.00000000",
             "ask_date_to": "2017-11-21",
             "currency": "xqc",
@@ -1394,7 +1394,7 @@ export default{
         },
         {
             "username": "User7",
-            "cpi": "24.00000000",
+            "pricing": "24.00000000",
             "cpm": "5.00000000",
             "ask_date_to": "2017-12-18",
             "currency": "xqc",
@@ -1406,7 +1406,7 @@ export default{
         },
         {
             "username": "User2",
-            "cpi": "19.00000000",
+            "pricing": "19.00000000",
             "cpm": "48.00000000",
             "ask_date_to": "2017-11-17",
             "currency": "xqc",
@@ -1418,7 +1418,7 @@ export default{
         },
         {
             "username": "User6",
-            "cpi": "38.00000000",
+            "pricing": "38.00000000",
             "cpm": "12.00000000",
             "ask_date_to": "2017-12-23",
             "currency": "eqc",
@@ -1430,7 +1430,7 @@ export default{
         },
         {
             "username": "User4",
-            "cpi": "45.00000000",
+            "pricing": "45.00000000",
             "cpm": "33.00000000",
             "ask_date_to": "2017-10-20",
             "currency": "eqc",
@@ -1442,7 +1442,7 @@ export default{
         },
         {
             "username": "User2",
-            "cpi": "47.00000000",
+            "pricing": "47.00000000",
             "cpm": "43.00000000",
             "ask_date_to": "2017-09-19",
             "currency": "xqc",
@@ -1454,7 +1454,7 @@ export default{
         },
         {
             "username": "User6",
-            "cpi": "36.00000000",
+            "pricing": "36.00000000",
             "cpm": "16.00000000",
             "ask_date_to": "2017-10-24",
             "currency": "eqc",
@@ -1466,7 +1466,7 @@ export default{
         },
         {
             "username": "User7",
-            "cpi": "19.00000000",
+            "pricing": "19.00000000",
             "cpm": "35.00000000",
             "ask_date_to": "2017-12-10",
             "currency": "eqc",
@@ -1478,7 +1478,7 @@ export default{
         },
         {
             "username": "User1",
-            "cpi": "47.00000000",
+            "pricing": "47.00000000",
             "cpm": "39.00000000",
             "ask_date_to": "2017-12-15",
             "currency": "eqc",
@@ -1490,7 +1490,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "36.00000000",
+            "pricing": "36.00000000",
             "cpm": "12.00000000",
             "ask_date_to": "2017-09-08",
             "currency": "xqc",
@@ -1502,7 +1502,7 @@ export default{
         },
         {
             "username": "User5",
-            "cpi": "23.00000000",
+            "pricing": "23.00000000",
             "cpm": "44.00000000",
             "ask_date_to": "2017-11-22",
             "currency": "xqc",
@@ -1514,7 +1514,7 @@ export default{
         },
         {
             "username": "User9",
-            "cpi": "32.00000000",
+            "pricing": "32.00000000",
             "cpm": "6.00000000",
             "ask_date_to": "2017-10-17",
             "currency": "xqc",
@@ -1526,7 +1526,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "32.00000000",
+            "pricing": "32.00000000",
             "cpm": "32.00000000",
             "ask_date_to": "2017-10-27",
             "currency": "eqc",
@@ -1538,7 +1538,7 @@ export default{
         },
         {
             "username": "User1",
-            "cpi": "30.00000000",
+            "pricing": "30.00000000",
             "cpm": "36.00000000",
             "ask_date_to": "2017-09-21",
             "currency": "eqc",
@@ -1550,7 +1550,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "15.00000000",
+            "pricing": "15.00000000",
             "cpm": "17.00000000",
             "ask_date_to": "2017-11-16",
             "currency": "xqc",
@@ -1562,7 +1562,7 @@ export default{
         },
         {
             "username": "User8",
-            "cpi": "36.00000000",
+            "pricing": "36.00000000",
             "cpm": "41.00000000",
             "ask_date_to": "2017-12-25",
             "currency": "eqc",
@@ -1574,7 +1574,7 @@ export default{
         },
         {
             "username": "User4",
-            "cpi": "30.00000000",
+            "pricing": "30.00000000",
             "cpm": "10.00000000",
             "ask_date_to": "2017-10-22",
             "currency": "eqc",
@@ -1586,7 +1586,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "37.00000000",
+            "pricing": "37.00000000",
             "cpm": "10.00000000",
             "ask_date_to": "2017-10-25",
             "currency": "xqc",
@@ -1598,7 +1598,7 @@ export default{
         },
         {
             "username": "User4",
-            "cpi": "50.00000000",
+            "pricing": "50.00000000",
             "cpm": "48.00000000",
             "ask_date_to": "2017-11-15",
             "currency": "xqc",
@@ -1610,7 +1610,7 @@ export default{
         },
         {
             "username": "User7",
-            "cpi": "10.00000000",
+            "pricing": "10.00000000",
             "cpm": "32.00000000",
             "ask_date_to": "2017-11-12",
             "currency": "eqc",
@@ -1622,7 +1622,7 @@ export default{
         },
         {
             "username": "User8",
-            "cpi": "12.00000000",
+            "pricing": "12.00000000",
             "cpm": "47.00000000",
             "ask_date_to": "2017-11-12",
             "currency": "eqc",
@@ -1634,7 +1634,7 @@ export default{
         },
         {
             "username": "User1",
-            "cpi": "41.00000000",
+            "pricing": "41.00000000",
             "cpm": "7.00000000",
             "ask_date_to": "2017-09-16",
             "currency": "xqc",
@@ -1646,7 +1646,7 @@ export default{
         },
         {
             "username": "User4",
-            "cpi": "10.00000000",
+            "pricing": "10.00000000",
             "cpm": "22.00000000",
             "ask_date_to": "2017-11-22",
             "currency": "eqc",
@@ -1658,7 +1658,7 @@ export default{
         },
         {
             "username": "User9",
-            "cpi": "19.00000000",
+            "pricing": "19.00000000",
             "cpm": "6.00000000",
             "ask_date_to": "2017-12-14",
             "currency": "eqc",
@@ -1670,7 +1670,7 @@ export default{
         },
         {
             "username": "User4",
-            "cpi": "37.00000000",
+            "pricing": "37.00000000",
             "cpm": "11.00000000",
             "ask_date_to": "2017-09-08",
             "currency": "xqc",
@@ -1682,7 +1682,7 @@ export default{
         },
         {
             "username": "User4",
-            "cpi": "43.00000000",
+            "pricing": "43.00000000",
             "cpm": "37.00000000",
             "ask_date_to": "2017-10-07",
             "currency": "xqc",
@@ -1694,7 +1694,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "28.00000000",
+            "pricing": "28.00000000",
             "cpm": "7.00000000",
             "ask_date_to": "2017-09-25",
             "currency": "eqc",
@@ -1706,7 +1706,7 @@ export default{
         },
         {
             "username": "User9",
-            "cpi": "19.00000000",
+            "pricing": "19.00000000",
             "cpm": "12.00000000",
             "ask_date_to": "2017-09-17",
             "currency": "eqc",
@@ -1718,7 +1718,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "22.00000000",
+            "pricing": "22.00000000",
             "cpm": "17.00000000",
             "ask_date_to": "2017-09-17",
             "currency": "eqc",
@@ -1730,7 +1730,7 @@ export default{
         },
         {
             "username": "User1",
-            "cpi": "18.00000000",
+            "pricing": "18.00000000",
             "cpm": "26.00000000",
             "ask_date_to": "2017-11-15",
             "currency": "xqc",
@@ -1742,7 +1742,7 @@ export default{
         },
         {
             "username": "User9",
-            "cpi": "42.00000000",
+            "pricing": "42.00000000",
             "cpm": "41.00000000",
             "ask_date_to": "2017-11-26",
             "currency": "xqc",
@@ -1754,7 +1754,7 @@ export default{
         },
         {
             "username": "User8",
-            "cpi": "44.00000000",
+            "pricing": "44.00000000",
             "cpm": "50.00000000",
             "ask_date_to": "2017-10-08",
             "currency": "eqc",
@@ -1766,7 +1766,7 @@ export default{
         },
         {
             "username": "User8",
-            "cpi": "22.00000000",
+            "pricing": "22.00000000",
             "cpm": "10.00000000",
             "ask_date_to": "2017-10-26",
             "currency": "eqc",
@@ -1778,7 +1778,7 @@ export default{
         },
         {
             "username": "User5",
-            "cpi": "41.00000000",
+            "pricing": "41.00000000",
             "cpm": "22.00000000",
             "ask_date_to": "2017-11-19",
             "currency": "eqc",
@@ -1790,7 +1790,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "48.00000000",
+            "pricing": "48.00000000",
             "cpm": "35.00000000",
             "ask_date_to": "2017-08-23",
             "currency": "eqc",
@@ -1802,7 +1802,7 @@ export default{
         },
         {
             "username": "User7",
-            "cpi": "34.00000000",
+            "pricing": "34.00000000",
             "cpm": "34.00000000",
             "ask_date_to": "2017-09-16",
             "currency": "eqc",
@@ -1814,7 +1814,7 @@ export default{
         },
         {
             "username": "User8",
-            "cpi": "28.00000000",
+            "pricing": "28.00000000",
             "cpm": "5.00000000",
             "ask_date_to": "2017-10-24",
             "currency": "eqc",
@@ -1826,7 +1826,7 @@ export default{
         },
         {
             "username": "User4",
-            "cpi": "15.00000000",
+            "pricing": "15.00000000",
             "cpm": "46.00000000",
             "ask_date_to": "2017-12-20",
             "currency": "xqc",
@@ -1838,7 +1838,7 @@ export default{
         },
         {
             "username": "User2",
-            "cpi": "27.00000000",
+            "pricing": "27.00000000",
             "cpm": "9.00000000",
             "ask_date_to": "2017-09-20",
             "currency": "xqc",
@@ -1850,7 +1850,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "16.00000000",
+            "pricing": "16.00000000",
             "cpm": "27.00000000",
             "ask_date_to": "2017-08-12",
             "currency": "eqc",
@@ -1862,7 +1862,7 @@ export default{
         },
         {
             "username": "User9",
-            "cpi": "25.00000000",
+            "pricing": "25.00000000",
             "cpm": "17.00000000",
             "ask_date_to": "2017-10-18",
             "currency": "xqc",
@@ -1874,7 +1874,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "32.00000000",
+            "pricing": "32.00000000",
             "cpm": "14.00000000",
             "ask_date_to": "2017-12-17",
             "currency": "eqc",
@@ -1886,7 +1886,7 @@ export default{
         },
         {
             "username": "User2",
-            "cpi": "29.00000000",
+            "pricing": "29.00000000",
             "cpm": "31.00000000",
             "ask_date_to": "2017-09-03",
             "currency": "xqc",
@@ -1898,7 +1898,7 @@ export default{
         },
         {
             "username": "User6",
-            "cpi": "27.00000000",
+            "pricing": "27.00000000",
             "cpm": "31.00000000",
             "ask_date_to": "2017-08-24",
             "currency": "eqc",
@@ -1910,7 +1910,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "14.00000000",
+            "pricing": "14.00000000",
             "cpm": "43.00000000",
             "ask_date_to": "2017-10-26",
             "currency": "eqc",
@@ -1922,7 +1922,7 @@ export default{
         },
         {
             "username": "User2",
-            "cpi": "44.00000000",
+            "pricing": "44.00000000",
             "cpm": "38.00000000",
             "ask_date_to": "2017-08-14",
             "currency": "eqc",
@@ -1934,7 +1934,7 @@ export default{
         },
         {
             "username": "User6",
-            "cpi": "35.00000000",
+            "pricing": "35.00000000",
             "cpm": "48.00000000",
             "ask_date_to": "2017-08-07",
             "currency": "xqc",
@@ -1946,7 +1946,7 @@ export default{
         },
         {
             "username": "User6",
-            "cpi": "13.00000000",
+            "pricing": "13.00000000",
             "cpm": "17.00000000",
             "ask_date_to": "2017-12-11",
             "currency": "eqc",
@@ -1958,7 +1958,7 @@ export default{
         },
         {
             "username": "User1",
-            "cpi": "44.00000000",
+            "pricing": "44.00000000",
             "cpm": "25.00000000",
             "ask_date_to": "2017-10-05",
             "currency": "eqc",
@@ -1970,7 +1970,7 @@ export default{
         },
         {
             "username": "User7",
-            "cpi": "13.00000000",
+            "pricing": "13.00000000",
             "cpm": "43.00000000",
             "ask_date_to": "2017-09-21",
             "currency": "xqc",
@@ -1982,7 +1982,7 @@ export default{
         },
         {
             "username": "User4",
-            "cpi": "48.00000000",
+            "pricing": "48.00000000",
             "cpm": "43.00000000",
             "ask_date_to": "2017-08-11",
             "currency": "eqc",
@@ -1994,7 +1994,7 @@ export default{
         },
         {
             "username": "User2",
-            "cpi": "21.00000000",
+            "pricing": "21.00000000",
             "cpm": "20.00000000",
             "ask_date_to": "2017-10-23",
             "currency": "eqc",
@@ -2006,7 +2006,7 @@ export default{
         },
         {
             "username": "User9",
-            "cpi": "17.00000000",
+            "pricing": "17.00000000",
             "cpm": "46.00000000",
             "ask_date_to": "2017-11-24",
             "currency": "eqc",
@@ -2018,7 +2018,7 @@ export default{
         },
         {
             "username": "User4",
-            "cpi": "37.00000000",
+            "pricing": "37.00000000",
             "cpm": "34.00000000",
             "ask_date_to": "2017-09-15",
             "currency": "eqc",
@@ -2030,7 +2030,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "50.00000000",
+            "pricing": "50.00000000",
             "cpm": "9.00000000",
             "ask_date_to": "2017-08-16",
             "currency": "eqc",
@@ -2042,7 +2042,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "15.00000000",
+            "pricing": "15.00000000",
             "cpm": "27.00000000",
             "ask_date_to": "2017-11-10",
             "currency": "xqc",
@@ -2054,7 +2054,7 @@ export default{
         },
         {
             "username": "User7",
-            "cpi": "22.00000000",
+            "pricing": "22.00000000",
             "cpm": "49.00000000",
             "ask_date_to": "2017-10-07",
             "currency": "eqc",
@@ -2066,7 +2066,7 @@ export default{
         },
         {
             "username": "User9",
-            "cpi": "35.00000000",
+            "pricing": "35.00000000",
             "cpm": "33.00000000",
             "ask_date_to": "2017-12-12",
             "currency": "xqc",
@@ -2078,7 +2078,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "15.00000000",
+            "pricing": "15.00000000",
             "cpm": "32.00000000",
             "ask_date_to": "2017-09-20",
             "currency": "eqc",
@@ -2090,7 +2090,7 @@ export default{
         },
         {
             "username": "User2",
-            "cpi": "35.00000000",
+            "pricing": "35.00000000",
             "cpm": "45.00000000",
             "ask_date_to": "2017-09-13",
             "currency": "xqc",
@@ -2102,7 +2102,7 @@ export default{
         },
         {
             "username": "User2",
-            "cpi": "11.00000000",
+            "pricing": "11.00000000",
             "cpm": "12.00000000",
             "ask_date_to": "2017-09-21",
             "currency": "eqc",
@@ -2114,7 +2114,7 @@ export default{
         },
         {
             "username": "User2",
-            "cpi": "33.00000000",
+            "pricing": "33.00000000",
             "cpm": "35.00000000",
             "ask_date_to": "2017-10-20",
             "currency": "eqc",
@@ -2126,7 +2126,7 @@ export default{
         },
         {
             "username": "User4",
-            "cpi": "45.00000000",
+            "pricing": "45.00000000",
             "cpm": "20.00000000",
             "ask_date_to": "2017-08-04",
             "currency": "xqc",
@@ -2138,7 +2138,7 @@ export default{
         },
         {
             "username": "User9",
-            "cpi": "29.00000000",
+            "pricing": "29.00000000",
             "cpm": "34.00000000",
             "ask_date_to": "2017-10-13",
             "currency": "eqc",
@@ -2150,7 +2150,7 @@ export default{
         },
         {
             "username": "User2",
-            "cpi": "47.00000000",
+            "pricing": "47.00000000",
             "cpm": "16.00000000",
             "ask_date_to": "2017-09-05",
             "currency": "eqc",
@@ -2162,7 +2162,7 @@ export default{
         },
         {
             "username": "User9",
-            "cpi": "39.00000000",
+            "pricing": "39.00000000",
             "cpm": "10.00000000",
             "ask_date_to": "2017-12-05",
             "currency": "eqc",
@@ -2174,7 +2174,7 @@ export default{
         },
         {
             "username": "User8",
-            "cpi": "20.00000000",
+            "pricing": "20.00000000",
             "cpm": "39.00000000",
             "ask_date_to": "2017-09-15",
             "currency": "eqc",
@@ -2186,7 +2186,7 @@ export default{
         },
         {
             "username": "User7",
-            "cpi": "50.00000000",
+            "pricing": "50.00000000",
             "cpm": "23.00000000",
             "ask_date_to": "2017-12-12",
             "currency": "xqc",
@@ -2198,7 +2198,7 @@ export default{
         },
         {
             "username": "User5",
-            "cpi": "42.00000000",
+            "pricing": "42.00000000",
             "cpm": "15.00000000",
             "ask_date_to": "2017-11-06",
             "currency": "eqc",
@@ -2210,7 +2210,7 @@ export default{
         },
         {
             "username": "User1",
-            "cpi": "24.00000000",
+            "pricing": "24.00000000",
             "cpm": "30.00000000",
             "ask_date_to": "2017-11-15",
             "currency": "xqc",
@@ -2222,7 +2222,7 @@ export default{
         },
         {
             "username": "User2",
-            "cpi": "28.00000000",
+            "pricing": "28.00000000",
             "cpm": "18.00000000",
             "ask_date_to": "2017-10-15",
             "currency": "eqc",
@@ -2234,7 +2234,7 @@ export default{
         },
         {
             "username": "User8",
-            "cpi": "48.00000000",
+            "pricing": "48.00000000",
             "cpm": "29.00000000",
             "ask_date_to": "2017-11-08",
             "currency": "eqc",
@@ -2246,7 +2246,7 @@ export default{
         },
         {
             "username": "User7",
-            "cpi": "46.00000000",
+            "pricing": "46.00000000",
             "cpm": "11.00000000",
             "ask_date_to": "2017-09-11",
             "currency": "eqc",
@@ -2258,7 +2258,7 @@ export default{
         },
         {
             "username": "User2",
-            "cpi": "11.00000000",
+            "pricing": "11.00000000",
             "cpm": "44.00000000",
             "ask_date_to": "2017-10-18",
             "currency": "xqc",
@@ -2270,7 +2270,7 @@ export default{
         },
         {
             "username": "User9",
-            "cpi": "32.00000000",
+            "pricing": "32.00000000",
             "cpm": "48.00000000",
             "ask_date_to": "2017-12-24",
             "currency": "eqc",
@@ -2282,7 +2282,7 @@ export default{
         },
         {
             "username": "User1",
-            "cpi": "19.00000000",
+            "pricing": "19.00000000",
             "cpm": "39.00000000",
             "ask_date_to": "2017-10-03",
             "currency": "eqc",
@@ -2294,7 +2294,7 @@ export default{
         },
         {
             "username": "User7",
-            "cpi": "28.00000000",
+            "pricing": "28.00000000",
             "cpm": "30.00000000",
             "ask_date_to": "2017-12-16",
             "currency": "xqc",
@@ -2306,7 +2306,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "32.00000000",
+            "pricing": "32.00000000",
             "cpm": "23.00000000",
             "ask_date_to": "2017-10-11",
             "currency": "eqc",
@@ -2318,7 +2318,7 @@ export default{
         },
         {
             "username": "User1",
-            "cpi": "25.00000000",
+            "pricing": "25.00000000",
             "cpm": "20.00000000",
             "ask_date_to": "2017-09-23",
             "currency": "xqc",
@@ -2330,7 +2330,7 @@ export default{
         },
         {
             "username": "User1",
-            "cpi": "40.00000000",
+            "pricing": "40.00000000",
             "cpm": "38.00000000",
             "ask_date_to": "2017-10-14",
             "currency": "eqc",
@@ -2342,7 +2342,7 @@ export default{
         },
         {
             "username": "User7",
-            "cpi": "13.00000000",
+            "pricing": "13.00000000",
             "cpm": "46.00000000",
             "ask_date_to": "2017-10-05",
             "currency": "xqc",
@@ -2354,7 +2354,7 @@ export default{
         },
         {
             "username": "User2",
-            "cpi": "45.00000000",
+            "pricing": "45.00000000",
             "cpm": "17.00000000",
             "ask_date_to": "2017-08-16",
             "currency": "eqc",
@@ -2366,7 +2366,7 @@ export default{
         },
         {
             "username": "User7",
-            "cpi": "35.00000000",
+            "pricing": "35.00000000",
             "cpm": "13.00000000",
             "ask_date_to": "2017-08-10",
             "currency": "eqc",
@@ -2378,7 +2378,7 @@ export default{
         },
         {
             "username": "User7",
-            "cpi": "32.00000000",
+            "pricing": "32.00000000",
             "cpm": "36.00000000",
             "ask_date_to": "2017-09-04",
             "currency": "eqc",
@@ -2390,7 +2390,7 @@ export default{
         },
         {
             "username": "User5",
-            "cpi": "46.00000000",
+            "pricing": "46.00000000",
             "cpm": "19.00000000",
             "ask_date_to": "2017-10-16",
             "currency": "xqc",
@@ -2402,7 +2402,7 @@ export default{
         },
         {
             "username": "User2",
-            "cpi": "47.00000000",
+            "pricing": "47.00000000",
             "cpm": "19.00000000",
             "ask_date_to": "2017-10-10",
             "currency": "xqc",
@@ -2414,7 +2414,7 @@ export default{
         },
         {
             "username": "User8",
-            "cpi": "36.00000000",
+            "pricing": "36.00000000",
             "cpm": "7.00000000",
             "ask_date_to": "2017-08-25",
             "currency": "xqc",
@@ -2426,7 +2426,7 @@ export default{
         },
         {
             "username": "User4",
-            "cpi": "17.00000000",
+            "pricing": "17.00000000",
             "cpm": "32.00000000",
             "ask_date_to": "2017-08-26",
             "currency": "eqc",
@@ -2438,7 +2438,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "36.00000000",
+            "pricing": "36.00000000",
             "cpm": "7.00000000",
             "ask_date_to": "2017-09-25",
             "currency": "xqc",
@@ -2450,7 +2450,7 @@ export default{
         },
         {
             "username": "User7",
-            "cpi": "38.00000000",
+            "pricing": "38.00000000",
             "cpm": "24.00000000",
             "ask_date_to": "2017-10-25",
             "currency": "eqc",
@@ -2462,7 +2462,7 @@ export default{
         },
         {
             "username": "User8",
-            "cpi": "42.00000000",
+            "pricing": "42.00000000",
             "cpm": "25.00000000",
             "ask_date_to": "2017-10-18",
             "currency": "xqc",
@@ -2474,7 +2474,7 @@ export default{
         },
         {
             "username": "User8",
-            "cpi": "36.00000000",
+            "pricing": "36.00000000",
             "cpm": "14.00000000",
             "ask_date_to": "2017-11-18",
             "currency": "eqc",
@@ -2486,7 +2486,7 @@ export default{
         },
         {
             "username": "User9",
-            "cpi": "29.00000000",
+            "pricing": "29.00000000",
             "cpm": "27.00000000",
             "ask_date_to": "2017-09-09",
             "currency": "eqc",
@@ -2498,7 +2498,7 @@ export default{
         },
         {
             "username": "User9",
-            "cpi": "11.00000000",
+            "pricing": "11.00000000",
             "cpm": "30.00000000",
             "ask_date_to": "2017-10-15",
             "currency": "xqc",
@@ -2510,7 +2510,7 @@ export default{
         },
         {
             "username": "User8",
-            "cpi": "18.00000000",
+            "pricing": "18.00000000",
             "cpm": "7.00000000",
             "ask_date_to": "2017-09-13",
             "currency": "eqc",
@@ -2522,7 +2522,7 @@ export default{
         },
         {
             "username": "User6",
-            "cpi": "10.00000000",
+            "pricing": "10.00000000",
             "cpm": "17.00000000",
             "ask_date_to": "2017-11-19",
             "currency": "xqc",
@@ -2534,7 +2534,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "39.00000000",
+            "pricing": "39.00000000",
             "cpm": "37.00000000",
             "ask_date_to": "2017-10-13",
             "currency": "xqc",
@@ -2546,7 +2546,7 @@ export default{
         },
         {
             "username": "User2",
-            "cpi": "26.00000000",
+            "pricing": "26.00000000",
             "cpm": "25.00000000",
             "ask_date_to": "2017-10-07",
             "currency": "eqc",
@@ -2558,7 +2558,7 @@ export default{
         },
         {
             "username": "User6",
-            "cpi": "32.00000000",
+            "pricing": "32.00000000",
             "cpm": "25.00000000",
             "ask_date_to": "2017-09-16",
             "currency": "eqc",
@@ -2570,7 +2570,7 @@ export default{
         },
         {
             "username": "User2",
-            "cpi": "22.00000000",
+            "pricing": "22.00000000",
             "cpm": "33.00000000",
             "ask_date_to": "2017-11-25",
             "currency": "xqc",
@@ -2582,7 +2582,7 @@ export default{
         },
         {
             "username": "User8",
-            "cpi": "17.00000000",
+            "pricing": "17.00000000",
             "cpm": "28.00000000",
             "ask_date_to": "2017-09-11",
             "currency": "xqc",
@@ -2594,7 +2594,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "20.00000000",
+            "pricing": "20.00000000",
             "cpm": "29.00000000",
             "ask_date_to": "2017-09-29",
             "currency": "eqc",
@@ -2606,7 +2606,7 @@ export default{
         },
         {
             "username": "User2",
-            "cpi": "30.00000000",
+            "pricing": "30.00000000",
             "cpm": "37.00000000",
             "ask_date_to": "2017-10-20",
             "currency": "eqc",
@@ -2618,7 +2618,7 @@ export default{
         },
         {
             "username": "User7",
-            "cpi": "40.00000000",
+            "pricing": "40.00000000",
             "cpm": "12.00000000",
             "ask_date_to": "2017-11-09",
             "currency": "xqc",
@@ -2630,7 +2630,7 @@ export default{
         },
         {
             "username": "User7",
-            "cpi": "47.00000000",
+            "pricing": "47.00000000",
             "cpm": "5.00000000",
             "ask_date_to": "2017-10-19",
             "currency": "eqc",
@@ -2642,7 +2642,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "22.00000000",
+            "pricing": "22.00000000",
             "cpm": "37.00000000",
             "ask_date_to": "2017-09-18",
             "currency": "eqc",
@@ -2654,7 +2654,7 @@ export default{
         },
         {
             "username": "User5",
-            "cpi": "23.00000000",
+            "pricing": "23.00000000",
             "cpm": "25.00000000",
             "ask_date_to": "2017-09-26",
             "currency": "eqc",
@@ -2666,7 +2666,7 @@ export default{
         },
         {
             "username": "User2",
-            "cpi": "41.00000000",
+            "pricing": "41.00000000",
             "cpm": "45.00000000",
             "ask_date_to": "2017-12-26",
             "currency": "xqc",
@@ -2678,7 +2678,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "34.00000000",
+            "pricing": "34.00000000",
             "cpm": "18.00000000",
             "ask_date_to": "2017-11-22",
             "currency": "xqc",
@@ -2690,7 +2690,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "49.00000000",
+            "pricing": "49.00000000",
             "cpm": "41.00000000",
             "ask_date_to": "2017-11-02",
             "currency": "eqc",
@@ -2702,7 +2702,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "46.00000000",
+            "pricing": "46.00000000",
             "cpm": "25.00000000",
             "ask_date_to": "2017-10-07",
             "currency": "eqc",
@@ -2714,7 +2714,7 @@ export default{
         },
         {
             "username": "User9",
-            "cpi": "45.00000000",
+            "pricing": "45.00000000",
             "cpm": "22.00000000",
             "ask_date_to": "2017-11-05",
             "currency": "xqc",
@@ -2726,7 +2726,7 @@ export default{
         },
         {
             "username": "User7",
-            "cpi": "23.00000000",
+            "pricing": "23.00000000",
             "cpm": "24.00000000",
             "ask_date_to": "2017-08-07",
             "currency": "xqc",
@@ -2738,7 +2738,7 @@ export default{
         },
         {
             "username": "User1",
-            "cpi": "26.00000000",
+            "pricing": "26.00000000",
             "cpm": "17.00000000",
             "ask_date_to": "2017-09-08",
             "currency": "eqc",
@@ -2750,7 +2750,7 @@ export default{
         },
         {
             "username": "User5",
-            "cpi": "15.00000000",
+            "pricing": "15.00000000",
             "cpm": "49.00000000",
             "ask_date_to": "2017-11-21",
             "currency": "xqc",
@@ -2762,7 +2762,7 @@ export default{
         },
         {
             "username": "User8",
-            "cpi": "33.00000000",
+            "pricing": "33.00000000",
             "cpm": "43.00000000",
             "ask_date_to": "2017-11-16",
             "currency": "eqc",
@@ -2774,7 +2774,7 @@ export default{
         },
         {
             "username": "User2",
-            "cpi": "50.00000000",
+            "pricing": "50.00000000",
             "cpm": "33.00000000",
             "ask_date_to": "2017-09-28",
             "currency": "eqc",
@@ -2786,7 +2786,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "22.00000000",
+            "pricing": "22.00000000",
             "cpm": "49.00000000",
             "ask_date_to": "2017-11-20",
             "currency": "xqc",
@@ -2798,7 +2798,7 @@ export default{
         },
         {
             "username": "User9",
-            "cpi": "27.00000000",
+            "pricing": "27.00000000",
             "cpm": "10.00000000",
             "ask_date_to": "2017-10-06",
             "currency": "xqc",
@@ -2810,7 +2810,7 @@ export default{
         },
         {
             "username": "User9",
-            "cpi": "39.00000000",
+            "pricing": "39.00000000",
             "cpm": "24.00000000",
             "ask_date_to": "2017-10-26",
             "currency": "xqc",
@@ -2822,7 +2822,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "46.00000000",
+            "pricing": "46.00000000",
             "cpm": "20.00000000",
             "ask_date_to": "2017-12-22",
             "currency": "eqc",
@@ -2834,7 +2834,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "49.00000000",
+            "pricing": "49.00000000",
             "cpm": "30.00000000",
             "ask_date_to": "2017-09-27",
             "currency": "xqc",
@@ -2846,7 +2846,7 @@ export default{
         },
         {
             "username": "User5",
-            "cpi": "46.00000000",
+            "pricing": "46.00000000",
             "cpm": "31.00000000",
             "ask_date_to": "2017-12-15",
             "currency": "xqc",
@@ -2858,7 +2858,7 @@ export default{
         },
         {
             "username": "User1",
-            "cpi": "24.00000000",
+            "pricing": "24.00000000",
             "cpm": "28.00000000",
             "ask_date_to": "2017-10-16",
             "currency": "xqc",
@@ -2870,7 +2870,7 @@ export default{
         },
         {
             "username": "User9",
-            "cpi": "38.00000000",
+            "pricing": "38.00000000",
             "cpm": "15.00000000",
             "ask_date_to": "2017-11-07",
             "currency": "eqc",
@@ -2882,7 +2882,7 @@ export default{
         },
         {
             "username": "User6",
-            "cpi": "35.00000000",
+            "pricing": "35.00000000",
             "cpm": "9.00000000",
             "ask_date_to": "2017-11-09",
             "currency": "xqc",
@@ -2894,7 +2894,7 @@ export default{
         },
         {
             "username": "User4",
-            "cpi": "21.00000000",
+            "pricing": "21.00000000",
             "cpm": "40.00000000",
             "ask_date_to": "2017-09-11",
             "currency": "eqc",
@@ -2906,7 +2906,7 @@ export default{
         },
         {
             "username": "User6",
-            "cpi": "32.00000000",
+            "pricing": "32.00000000",
             "cpm": "27.00000000",
             "ask_date_to": "2017-08-20",
             "currency": "xqc",
@@ -2918,7 +2918,7 @@ export default{
         },
         {
             "username": "User6",
-            "cpi": "44.00000000",
+            "pricing": "44.00000000",
             "cpm": "50.00000000",
             "ask_date_to": "2017-10-16",
             "currency": "xqc",
@@ -2930,7 +2930,7 @@ export default{
         },
         {
             "username": "User2",
-            "cpi": "15.00000000",
+            "pricing": "15.00000000",
             "cpm": "34.00000000",
             "ask_date_to": "2017-11-20",
             "currency": "xqc",
@@ -2942,7 +2942,7 @@ export default{
         },
         {
             "username": "User8",
-            "cpi": "38.00000000",
+            "pricing": "38.00000000",
             "cpm": "18.00000000",
             "ask_date_to": "2017-10-07",
             "currency": "xqc",
@@ -2954,7 +2954,7 @@ export default{
         },
         {
             "username": "User8",
-            "cpi": "23.00000000",
+            "pricing": "23.00000000",
             "cpm": "25.00000000",
             "ask_date_to": "2017-10-11",
             "currency": "xqc",
@@ -2966,7 +2966,7 @@ export default{
         },
         {
             "username": "User4",
-            "cpi": "16.00000000",
+            "pricing": "16.00000000",
             "cpm": "10.00000000",
             "ask_date_to": "2017-12-11",
             "currency": "eqc",
@@ -2978,7 +2978,7 @@ export default{
         },
         {
             "username": "User5",
-            "cpi": "38.00000000",
+            "pricing": "38.00000000",
             "cpm": "34.00000000",
             "ask_date_to": "2017-09-11",
             "currency": "xqc",
@@ -2990,7 +2990,7 @@ export default{
         },
         {
             "username": "User2",
-            "cpi": "23.00000000",
+            "pricing": "23.00000000",
             "cpm": "24.00000000",
             "ask_date_to": "2017-10-13",
             "currency": "eqc",
@@ -3002,7 +3002,7 @@ export default{
         },
         {
             "username": "User8",
-            "cpi": "42.00000000",
+            "pricing": "42.00000000",
             "cpm": "34.00000000",
             "ask_date_to": "2017-12-11",
             "currency": "xqc",
@@ -3014,7 +3014,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "36.00000000",
+            "pricing": "36.00000000",
             "cpm": "43.00000000",
             "ask_date_to": "2017-12-11",
             "currency": "xqc",
@@ -3026,7 +3026,7 @@ export default{
         },
         {
             "username": "User8",
-            "cpi": "10.00000000",
+            "pricing": "10.00000000",
             "cpm": "28.00000000",
             "ask_date_to": "2017-09-19",
             "currency": "eqc",
@@ -3038,7 +3038,7 @@ export default{
         },
         {
             "username": "User9",
-            "cpi": "17.00000000",
+            "pricing": "17.00000000",
             "cpm": "47.00000000",
             "ask_date_to": "2017-11-05",
             "currency": "eqc",
@@ -3050,7 +3050,7 @@ export default{
         },
         {
             "username": "User6",
-            "cpi": "10.00000000",
+            "pricing": "10.00000000",
             "cpm": "27.00000000",
             "ask_date_to": "2017-09-19",
             "currency": "xqc",
@@ -3062,7 +3062,7 @@ export default{
         },
         {
             "username": "User5",
-            "cpi": "38.00000000",
+            "pricing": "38.00000000",
             "cpm": "49.00000000",
             "ask_date_to": "2017-09-20",
             "currency": "eqc",
@@ -3074,7 +3074,7 @@ export default{
         },
         {
             "username": "User9",
-            "cpi": "35.00000000",
+            "pricing": "35.00000000",
             "cpm": "23.00000000",
             "ask_date_to": "2017-12-25",
             "currency": "eqc",
@@ -3086,7 +3086,7 @@ export default{
         },
         {
             "username": "User6",
-            "cpi": "43.00000000",
+            "pricing": "43.00000000",
             "cpm": "44.00000000",
             "ask_date_to": "2017-10-12",
             "currency": "xqc",
@@ -3098,7 +3098,7 @@ export default{
         },
         {
             "username": "User7",
-            "cpi": "17.00000000",
+            "pricing": "17.00000000",
             "cpm": "9.00000000",
             "ask_date_to": "2017-12-16",
             "currency": "eqc",
@@ -3110,7 +3110,7 @@ export default{
         },
         {
             "username": "User9",
-            "cpi": "20.00000000",
+            "pricing": "20.00000000",
             "cpm": "45.00000000",
             "ask_date_to": "2017-10-27",
             "currency": "xqc",
@@ -3122,7 +3122,7 @@ export default{
         },
         {
             "username": "User4",
-            "cpi": "31.00000000",
+            "pricing": "31.00000000",
             "cpm": "11.00000000",
             "ask_date_to": "2017-09-18",
             "currency": "xqc",
@@ -3134,7 +3134,7 @@ export default{
         },
         {
             "username": "User2",
-            "cpi": "27.00000000",
+            "pricing": "27.00000000",
             "cpm": "14.00000000",
             "ask_date_to": "2017-09-11",
             "currency": "xqc",
@@ -3146,7 +3146,7 @@ export default{
         },
         {
             "username": "User5",
-            "cpi": "18.00000000",
+            "pricing": "18.00000000",
             "cpm": "16.00000000",
             "ask_date_to": "2017-10-10",
             "currency": "xqc",
@@ -3158,7 +3158,7 @@ export default{
         },
         {
             "username": "User1",
-            "cpi": "38.00000000",
+            "pricing": "38.00000000",
             "cpm": "43.00000000",
             "ask_date_to": "2017-08-10",
             "currency": "eqc",
@@ -3170,7 +3170,7 @@ export default{
         },
         {
             "username": "User9",
-            "cpi": "24.00000000",
+            "pricing": "24.00000000",
             "cpm": "42.00000000",
             "ask_date_to": "2017-09-22",
             "currency": "xqc",
@@ -3182,7 +3182,7 @@ export default{
         },
         {
             "username": "User8",
-            "cpi": "21.00000000",
+            "pricing": "21.00000000",
             "cpm": "43.00000000",
             "ask_date_to": "2017-08-15",
             "currency": "eqc",
@@ -3194,7 +3194,7 @@ export default{
         },
         {
             "username": "User1",
-            "cpi": "21.00000000",
+            "pricing": "21.00000000",
             "cpm": "30.00000000",
             "ask_date_to": "2017-12-08",
             "currency": "eqc",
@@ -3206,7 +3206,7 @@ export default{
         },
         {
             "username": "User9",
-            "cpi": "15.00000000",
+            "pricing": "15.00000000",
             "cpm": "25.00000000",
             "ask_date_to": "2017-11-03",
             "currency": "eqc",
@@ -3218,7 +3218,7 @@ export default{
         },
         {
             "username": "User4",
-            "cpi": "34.00000000",
+            "pricing": "34.00000000",
             "cpm": "25.00000000",
             "ask_date_to": "2017-10-11",
             "currency": "xqc",
@@ -3230,7 +3230,7 @@ export default{
         },
         {
             "username": "User5",
-            "cpi": "29.00000000",
+            "pricing": "29.00000000",
             "cpm": "17.00000000",
             "ask_date_to": "2017-08-08",
             "currency": "eqc",
@@ -3242,7 +3242,7 @@ export default{
         },
         {
             "username": "User8",
-            "cpi": "12.00000000",
+            "pricing": "12.00000000",
             "cpm": "45.00000000",
             "ask_date_to": "2017-09-07",
             "currency": "xqc",
@@ -3254,7 +3254,7 @@ export default{
         },
         {
             "username": "User4",
-            "cpi": "35.00000000",
+            "pricing": "35.00000000",
             "cpm": "32.00000000",
             "ask_date_to": "2017-11-09",
             "currency": "xqc",
@@ -3266,7 +3266,7 @@ export default{
         },
         {
             "username": "User9",
-            "cpi": "37.00000000",
+            "pricing": "37.00000000",
             "cpm": "17.00000000",
             "ask_date_to": "2017-09-10",
             "currency": "eqc",
@@ -3278,7 +3278,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "13.00000000",
+            "pricing": "13.00000000",
             "cpm": "33.00000000",
             "ask_date_to": "2017-10-17",
             "currency": "eqc",
@@ -3290,7 +3290,7 @@ export default{
         },
         {
             "username": "User6",
-            "cpi": "43.00000000",
+            "pricing": "43.00000000",
             "cpm": "49.00000000",
             "ask_date_to": "2017-12-10",
             "currency": "xqc",
@@ -3302,7 +3302,7 @@ export default{
         },
         {
             "username": "User5",
-            "cpi": "21.00000000",
+            "pricing": "21.00000000",
             "cpm": "13.00000000",
             "ask_date_to": "2017-11-20",
             "currency": "eqc",
@@ -3314,7 +3314,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "43.00000000",
+            "pricing": "43.00000000",
             "cpm": "20.00000000",
             "ask_date_to": "2017-10-08",
             "currency": "xqc",
@@ -3326,7 +3326,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "39.00000000",
+            "pricing": "39.00000000",
             "cpm": "38.00000000",
             "ask_date_to": "2017-08-07",
             "currency": "xqc",
@@ -3338,7 +3338,7 @@ export default{
         },
         {
             "username": "User2",
-            "cpi": "11.00000000",
+            "pricing": "11.00000000",
             "cpm": "20.00000000",
             "ask_date_to": "2017-11-09",
             "currency": "eqc",
@@ -3350,7 +3350,7 @@ export default{
         },
         {
             "username": "User9",
-            "cpi": "44.00000000",
+            "pricing": "44.00000000",
             "cpm": "20.00000000",
             "ask_date_to": "2017-10-12",
             "currency": "eqc",
@@ -3362,7 +3362,7 @@ export default{
         },
         {
             "username": "User5",
-            "cpi": "20.00000000",
+            "pricing": "20.00000000",
             "cpm": "33.00000000",
             "ask_date_to": "2017-08-12",
             "currency": "xqc",
@@ -3374,7 +3374,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "37.00000000",
+            "pricing": "37.00000000",
             "cpm": "36.00000000",
             "ask_date_to": "2017-10-09",
             "currency": "eqc",
@@ -3386,7 +3386,7 @@ export default{
         },
         {
             "username": "User7",
-            "cpi": "12.00000000",
+            "pricing": "12.00000000",
             "cpm": "14.00000000",
             "ask_date_to": "2017-11-14",
             "currency": "xqc",
@@ -3398,7 +3398,7 @@ export default{
         },
         {
             "username": "User1",
-            "cpi": "17.00000000",
+            "pricing": "17.00000000",
             "cpm": "12.00000000",
             "ask_date_to": "2017-08-13",
             "currency": "eqc",
@@ -3410,7 +3410,7 @@ export default{
         },
         {
             "username": "User9",
-            "cpi": "34.00000000",
+            "pricing": "34.00000000",
             "cpm": "19.00000000",
             "ask_date_to": "2017-09-24",
             "currency": "eqc",
@@ -3422,7 +3422,7 @@ export default{
         },
         {
             "username": "User2",
-            "cpi": "10.00000000",
+            "pricing": "10.00000000",
             "cpm": "8.00000000",
             "ask_date_to": "2017-09-24",
             "currency": "xqc",
@@ -3434,7 +3434,7 @@ export default{
         },
         {
             "username": "User1",
-            "cpi": "39.00000000",
+            "pricing": "39.00000000",
             "cpm": "11.00000000",
             "ask_date_to": "2017-10-06",
             "currency": "xqc",
@@ -3446,7 +3446,7 @@ export default{
         },
         {
             "username": "User9",
-            "cpi": "34.00000000",
+            "pricing": "34.00000000",
             "cpm": "12.00000000",
             "ask_date_to": "2017-08-12",
             "currency": "eqc",
@@ -3458,7 +3458,7 @@ export default{
         },
         {
             "username": "User7",
-            "cpi": "26.00000000",
+            "pricing": "26.00000000",
             "cpm": "20.00000000",
             "ask_date_to": "2017-10-21",
             "currency": "eqc",
@@ -3470,7 +3470,7 @@ export default{
         },
         {
             "username": "User5",
-            "cpi": "20.00000000",
+            "pricing": "20.00000000",
             "cpm": "29.00000000",
             "ask_date_to": "2017-08-12",
             "currency": "xqc",
@@ -3482,7 +3482,7 @@ export default{
         },
         {
             "username": "User9",
-            "cpi": "15.00000000",
+            "pricing": "15.00000000",
             "cpm": "46.00000000",
             "ask_date_to": "2017-11-21",
             "currency": "xqc",
@@ -3494,7 +3494,7 @@ export default{
         },
         {
             "username": "User8",
-            "cpi": "16.00000000",
+            "pricing": "16.00000000",
             "cpm": "14.00000000",
             "ask_date_to": "2017-11-21",
             "currency": "eqc",
@@ -3506,7 +3506,7 @@ export default{
         },
         {
             "username": "User8",
-            "cpi": "46.00000000",
+            "pricing": "46.00000000",
             "cpm": "26.00000000",
             "ask_date_to": "2017-11-10",
             "currency": "xqc",
@@ -3518,7 +3518,7 @@ export default{
         },
         {
             "username": "User6",
-            "cpi": "11.00000000",
+            "pricing": "11.00000000",
             "cpm": "18.00000000",
             "ask_date_to": "2017-09-21",
             "currency": "xqc",
@@ -3530,7 +3530,7 @@ export default{
         },
         {
             "username": "User7",
-            "cpi": "26.00000000",
+            "pricing": "26.00000000",
             "cpm": "14.00000000",
             "ask_date_to": "2017-09-13",
             "currency": "xqc",
@@ -3542,7 +3542,7 @@ export default{
         },
         {
             "username": "User1",
-            "cpi": "40.00000000",
+            "pricing": "40.00000000",
             "cpm": "37.00000000",
             "ask_date_to": "2017-09-12",
             "currency": "xqc",
@@ -3554,7 +3554,7 @@ export default{
         },
         {
             "username": "User5",
-            "cpi": "33.00000000",
+            "pricing": "33.00000000",
             "cpm": "16.00000000",
             "ask_date_to": "2017-09-09",
             "currency": "xqc",
@@ -3566,7 +3566,7 @@ export default{
         },
         {
             "username": "User5",
-            "cpi": "36.00000000",
+            "pricing": "36.00000000",
             "cpm": "10.00000000",
             "ask_date_to": "2017-09-27",
             "currency": "xqc",
@@ -3578,7 +3578,7 @@ export default{
         },
         {
             "username": "User8",
-            "cpi": "21.00000000",
+            "pricing": "21.00000000",
             "cpm": "38.00000000",
             "ask_date_to": "2017-12-11",
             "currency": "xqc",
@@ -3590,7 +3590,7 @@ export default{
         },
         {
             "username": "User8",
-            "cpi": "49.00000000",
+            "pricing": "49.00000000",
             "cpm": "7.00000000",
             "ask_date_to": "2017-11-22",
             "currency": "eqc",
@@ -3602,7 +3602,7 @@ export default{
         },
         {
             "username": "User5",
-            "cpi": "14.00000000",
+            "pricing": "14.00000000",
             "cpm": "45.00000000",
             "ask_date_to": "2017-10-21",
             "currency": "eqc",
@@ -3614,7 +3614,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "47.00000000",
+            "pricing": "47.00000000",
             "cpm": "10.00000000",
             "ask_date_to": "2017-11-25",
             "currency": "eqc",
@@ -3626,7 +3626,7 @@ export default{
         },
         {
             "username": "User7",
-            "cpi": "12.00000000",
+            "pricing": "12.00000000",
             "cpm": "49.00000000",
             "ask_date_to": "2017-10-24",
             "currency": "xqc",
@@ -3638,7 +3638,7 @@ export default{
         },
         {
             "username": "User8",
-            "cpi": "31.00000000",
+            "pricing": "31.00000000",
             "cpm": "44.00000000",
             "ask_date_to": "2017-10-22",
             "currency": "xqc",
@@ -3650,7 +3650,7 @@ export default{
         },
         {
             "username": "User6",
-            "cpi": "43.00000000",
+            "pricing": "43.00000000",
             "cpm": "23.00000000",
             "ask_date_to": "2017-11-06",
             "currency": "xqc",
@@ -3662,7 +3662,7 @@ export default{
         },
         {
             "username": "User8",
-            "cpi": "18.00000000",
+            "pricing": "18.00000000",
             "cpm": "20.00000000",
             "ask_date_to": "2017-11-12",
             "currency": "xqc",
@@ -3674,7 +3674,7 @@ export default{
         },
         {
             "username": "User8",
-            "cpi": "19.00000000",
+            "pricing": "19.00000000",
             "cpm": "18.00000000",
             "ask_date_to": "2017-11-17",
             "currency": "xqc",
@@ -3686,7 +3686,7 @@ export default{
         },
         {
             "username": "User1",
-            "cpi": "39.00000000",
+            "pricing": "39.00000000",
             "cpm": "43.00000000",
             "ask_date_to": "2017-10-17",
             "currency": "eqc",
@@ -3698,7 +3698,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "43.00000000",
+            "pricing": "43.00000000",
             "cpm": "6.00000000",
             "ask_date_to": "2017-08-10",
             "currency": "eqc",
@@ -3710,7 +3710,7 @@ export default{
         },
         {
             "username": "User9",
-            "cpi": "11.00000000",
+            "pricing": "11.00000000",
             "cpm": "34.00000000",
             "ask_date_to": "2017-09-14",
             "currency": "xqc",
@@ -3722,7 +3722,7 @@ export default{
         },
         {
             "username": "User7",
-            "cpi": "22.00000000",
+            "pricing": "22.00000000",
             "cpm": "7.00000000",
             "ask_date_to": "2017-11-13",
             "currency": "eqc",
@@ -3734,7 +3734,7 @@ export default{
         },
         {
             "username": "User8",
-            "cpi": "23.00000000",
+            "pricing": "23.00000000",
             "cpm": "12.00000000",
             "ask_date_to": "2017-09-24",
             "currency": "eqc",
@@ -3746,7 +3746,7 @@ export default{
         },
         {
             "username": "User2",
-            "cpi": "32.00000000",
+            "pricing": "32.00000000",
             "cpm": "14.00000000",
             "ask_date_to": "2017-12-10",
             "currency": "eqc",
@@ -3758,7 +3758,7 @@ export default{
         },
         {
             "username": "User6",
-            "cpi": "50.00000000",
+            "pricing": "50.00000000",
             "cpm": "10.00000000",
             "ask_date_to": "2017-12-15",
             "currency": "xqc",
@@ -3770,7 +3770,7 @@ export default{
         },
         {
             "username": "User7",
-            "cpi": "38.00000000",
+            "pricing": "38.00000000",
             "cpm": "43.00000000",
             "ask_date_to": "2017-10-18",
             "currency": "eqc",
@@ -3782,7 +3782,7 @@ export default{
         },
         {
             "username": "User6",
-            "cpi": "18.00000000",
+            "pricing": "18.00000000",
             "cpm": "40.00000000",
             "ask_date_to": "2017-08-17",
             "currency": "eqc",
@@ -3794,7 +3794,7 @@ export default{
         },
         {
             "username": "User9",
-            "cpi": "23.00000000",
+            "pricing": "23.00000000",
             "cpm": "42.00000000",
             "ask_date_to": "2017-08-05",
             "currency": "eqc",
@@ -3806,7 +3806,7 @@ export default{
         },
         {
             "username": "User8",
-            "cpi": "37.00000000",
+            "pricing": "37.00000000",
             "cpm": "36.00000000",
             "ask_date_to": "2017-12-24",
             "currency": "eqc",
@@ -3818,7 +3818,7 @@ export default{
         },
         {
             "username": "User5",
-            "cpi": "34.00000000",
+            "pricing": "34.00000000",
             "cpm": "38.00000000",
             "ask_date_to": "2017-09-16",
             "currency": "xqc",
@@ -3830,7 +3830,7 @@ export default{
         },
         {
             "username": "User4",
-            "cpi": "25.00000000",
+            "pricing": "25.00000000",
             "cpm": "45.00000000",
             "ask_date_to": "2017-09-16",
             "currency": "xqc",
@@ -3842,7 +3842,7 @@ export default{
         },
         {
             "username": "User7",
-            "cpi": "33.00000000",
+            "pricing": "33.00000000",
             "cpm": "6.00000000",
             "ask_date_to": "2017-10-16",
             "currency": "eqc",
@@ -3854,7 +3854,7 @@ export default{
         },
         {
             "username": "User8",
-            "cpi": "15.00000000",
+            "pricing": "15.00000000",
             "cpm": "26.00000000",
             "ask_date_to": "2017-09-23",
             "currency": "xqc",
@@ -3866,7 +3866,7 @@ export default{
         },
         {
             "username": "User5",
-            "cpi": "46.00000000",
+            "pricing": "46.00000000",
             "cpm": "19.00000000",
             "ask_date_to": "2017-09-12",
             "currency": "eqc",
@@ -3878,7 +3878,7 @@ export default{
         },
         {
             "username": "User2",
-            "cpi": "25.00000000",
+            "pricing": "25.00000000",
             "cpm": "44.00000000",
             "ask_date_to": "2017-11-09",
             "currency": "eqc",
@@ -3890,7 +3890,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "33.00000000",
+            "pricing": "33.00000000",
             "cpm": "41.00000000",
             "ask_date_to": "2017-08-22",
             "currency": "eqc",
@@ -3902,7 +3902,7 @@ export default{
         },
         {
             "username": "User5",
-            "cpi": "22.00000000",
+            "pricing": "22.00000000",
             "cpm": "34.00000000",
             "ask_date_to": "2017-09-15",
             "currency": "xqc",
@@ -3914,7 +3914,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "12.00000000",
+            "pricing": "12.00000000",
             "cpm": "15.00000000",
             "ask_date_to": "2017-10-19",
             "currency": "xqc",
@@ -3926,7 +3926,7 @@ export default{
         },
         {
             "username": "User9",
-            "cpi": "26.00000000",
+            "pricing": "26.00000000",
             "cpm": "45.00000000",
             "ask_date_to": "2017-12-11",
             "currency": "eqc",
@@ -3938,7 +3938,7 @@ export default{
         },
         {
             "username": "User5",
-            "cpi": "43.00000000",
+            "pricing": "43.00000000",
             "cpm": "13.00000000",
             "ask_date_to": "2017-10-20",
             "currency": "xqc",
@@ -3950,7 +3950,7 @@ export default{
         },
         {
             "username": "User1",
-            "cpi": "28.00000000",
+            "pricing": "28.00000000",
             "cpm": "6.00000000",
             "ask_date_to": "2017-11-19",
             "currency": "eqc",
@@ -3962,7 +3962,7 @@ export default{
         },
         {
             "username": "User1",
-            "cpi": "27.00000000",
+            "pricing": "27.00000000",
             "cpm": "40.00000000",
             "ask_date_to": "2017-12-21",
             "currency": "eqc",
@@ -3974,7 +3974,7 @@ export default{
         },
         {
             "username": "User4",
-            "cpi": "49.00000000",
+            "pricing": "49.00000000",
             "cpm": "32.00000000",
             "ask_date_to": "2017-11-18",
             "currency": "xqc",
@@ -3986,7 +3986,7 @@ export default{
         },
         {
             "username": "User4",
-            "cpi": "12.00000000",
+            "pricing": "12.00000000",
             "cpm": "33.00000000",
             "ask_date_to": "2017-09-24",
             "currency": "xqc",
@@ -3998,7 +3998,7 @@ export default{
         },
         {
             "username": "User2",
-            "cpi": "37.00000000",
+            "pricing": "37.00000000",
             "cpm": "37.00000000",
             "ask_date_to": "2017-09-16",
             "currency": "eqc",
@@ -4010,7 +4010,7 @@ export default{
         },
         {
             "username": "User4",
-            "cpi": "27.00000000",
+            "pricing": "27.00000000",
             "cpm": "23.00000000",
             "ask_date_to": "2017-10-23",
             "currency": "xqc",
@@ -4022,7 +4022,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "13.00000000",
+            "pricing": "13.00000000",
             "cpm": "27.00000000",
             "ask_date_to": "2017-10-16",
             "currency": "eqc",
@@ -4034,7 +4034,7 @@ export default{
         },
         {
             "username": "User8",
-            "cpi": "23.00000000",
+            "pricing": "23.00000000",
             "cpm": "17.00000000",
             "ask_date_to": "2017-08-09",
             "currency": "eqc",
@@ -4046,7 +4046,7 @@ export default{
         },
         {
             "username": "User9",
-            "cpi": "25.00000000",
+            "pricing": "25.00000000",
             "cpm": "25.00000000",
             "ask_date_to": "2017-10-09",
             "currency": "xqc",
@@ -4058,7 +4058,7 @@ export default{
         },
         {
             "username": "User9",
-            "cpi": "21.00000000",
+            "pricing": "21.00000000",
             "cpm": "39.00000000",
             "ask_date_to": "2017-08-13",
             "currency": "xqc",
@@ -4070,7 +4070,7 @@ export default{
         },
         {
             "username": "User1",
-            "cpi": "33.00000000",
+            "pricing": "33.00000000",
             "cpm": "24.00000000",
             "ask_date_to": "2017-11-19",
             "currency": "eqc",
@@ -4082,7 +4082,7 @@ export default{
         },
         {
             "username": "User4",
-            "cpi": "42.00000000",
+            "pricing": "42.00000000",
             "cpm": "46.00000000",
             "ask_date_to": "2017-09-11",
             "currency": "eqc",
@@ -4094,7 +4094,7 @@ export default{
         },
         {
             "username": "User4",
-            "cpi": "22.00000000",
+            "pricing": "22.00000000",
             "cpm": "46.00000000",
             "ask_date_to": "2017-11-02",
             "currency": "eqc",
@@ -4106,7 +4106,7 @@ export default{
         },
         {
             "username": "User4",
-            "cpi": "32.00000000",
+            "pricing": "32.00000000",
             "cpm": "13.00000000",
             "ask_date_to": "2017-09-10",
             "currency": "xqc",
@@ -4118,7 +4118,7 @@ export default{
         },
         {
             "username": "User8",
-            "cpi": "38.00000000",
+            "pricing": "38.00000000",
             "cpm": "10.00000000",
             "ask_date_to": "2017-08-19",
             "currency": "xqc",
@@ -4130,7 +4130,7 @@ export default{
         },
         {
             "username": "User4",
-            "cpi": "33.00000000",
+            "pricing": "33.00000000",
             "cpm": "28.00000000",
             "ask_date_to": "2017-11-25",
             "currency": "xqc",
@@ -4142,7 +4142,7 @@ export default{
         },
         {
             "username": "User9",
-            "cpi": "37.00000000",
+            "pricing": "37.00000000",
             "cpm": "36.00000000",
             "ask_date_to": "2017-09-04",
             "currency": "eqc",
@@ -4154,7 +4154,7 @@ export default{
         },
         {
             "username": "User7",
-            "cpi": "10.00000000",
+            "pricing": "10.00000000",
             "cpm": "14.00000000",
             "ask_date_to": "2017-10-19",
             "currency": "xqc",
@@ -4166,7 +4166,7 @@ export default{
         },
         {
             "username": "User7",
-            "cpi": "37.00000000",
+            "pricing": "37.00000000",
             "cpm": "36.00000000",
             "ask_date_to": "2017-10-14",
             "currency": "eqc",
@@ -4178,7 +4178,7 @@ export default{
         },
         {
             "username": "User4",
-            "cpi": "19.00000000",
+            "pricing": "19.00000000",
             "cpm": "34.00000000",
             "ask_date_to": "2017-08-08",
             "currency": "eqc",
@@ -4190,7 +4190,7 @@ export default{
         },
         {
             "username": "User1",
-            "cpi": "28.00000000",
+            "pricing": "28.00000000",
             "cpm": "34.00000000",
             "ask_date_to": "2017-08-27",
             "currency": "xqc",
@@ -4202,7 +4202,7 @@ export default{
         },
         {
             "username": "User4",
-            "cpi": "18.00000000",
+            "pricing": "18.00000000",
             "cpm": "42.00000000",
             "ask_date_to": "2017-09-20",
             "currency": "eqc",
@@ -4214,7 +4214,7 @@ export default{
         },
         {
             "username": "User4",
-            "cpi": "36.00000000",
+            "pricing": "36.00000000",
             "cpm": "12.00000000",
             "ask_date_to": "2017-11-16",
             "currency": "xqc",
@@ -4226,7 +4226,7 @@ export default{
         },
         {
             "username": "User6",
-            "cpi": "12.00000000",
+            "pricing": "12.00000000",
             "cpm": "32.00000000",
             "ask_date_to": "2017-08-28",
             "currency": "eqc",
@@ -4238,7 +4238,7 @@ export default{
         },
         {
             "username": "User1",
-            "cpi": "19.00000000",
+            "pricing": "19.00000000",
             "cpm": "23.00000000",
             "ask_date_to": "2017-08-04",
             "currency": "eqc",
@@ -4250,7 +4250,7 @@ export default{
         },
         {
             "username": "User8",
-            "cpi": "34.00000000",
+            "pricing": "34.00000000",
             "cpm": "44.00000000",
             "ask_date_to": "2017-11-19",
             "currency": "xqc",
@@ -4262,7 +4262,7 @@ export default{
         },
         {
             "username": "User7",
-            "cpi": "14.00000000",
+            "pricing": "14.00000000",
             "cpm": "14.00000000",
             "ask_date_to": "2017-10-09",
             "currency": "eqc",
@@ -4274,7 +4274,7 @@ export default{
         },
         {
             "username": "User9",
-            "cpi": "10.00000000",
+            "pricing": "10.00000000",
             "cpm": "21.00000000",
             "ask_date_to": "2017-09-16",
             "currency": "xqc",
@@ -4286,7 +4286,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "17.00000000",
+            "pricing": "17.00000000",
             "cpm": "20.00000000",
             "ask_date_to": "2017-11-28",
             "currency": "xqc",
@@ -4298,7 +4298,7 @@ export default{
         },
         {
             "username": "User6",
-            "cpi": "50.00000000",
+            "pricing": "50.00000000",
             "cpm": "41.00000000",
             "ask_date_to": "2017-11-11",
             "currency": "eqc",
@@ -4310,7 +4310,7 @@ export default{
         },
         {
             "username": "User2",
-            "cpi": "50.00000000",
+            "pricing": "50.00000000",
             "cpm": "37.00000000",
             "ask_date_to": "2017-09-23",
             "currency": "eqc",
@@ -4322,7 +4322,7 @@ export default{
         },
         {
             "username": "User7",
-            "cpi": "20.00000000",
+            "pricing": "20.00000000",
             "cpm": "18.00000000",
             "ask_date_to": "2017-11-23",
             "currency": "xqc",
@@ -4334,7 +4334,7 @@ export default{
         },
         {
             "username": "User1",
-            "cpi": "25.00000000",
+            "pricing": "25.00000000",
             "cpm": "27.00000000",
             "ask_date_to": "2017-10-10",
             "currency": "eqc",
@@ -4346,7 +4346,7 @@ export default{
         },
         {
             "username": "User5",
-            "cpi": "27.00000000",
+            "pricing": "27.00000000",
             "cpm": "50.00000000",
             "ask_date_to": "2017-10-05",
             "currency": "eqc",
@@ -4358,7 +4358,7 @@ export default{
         },
         {
             "username": "User9",
-            "cpi": "44.00000000",
+            "pricing": "44.00000000",
             "cpm": "35.00000000",
             "ask_date_to": "2017-11-21",
             "currency": "eqc",
@@ -4370,7 +4370,7 @@ export default{
         },
         {
             "username": "User9",
-            "cpi": "37.00000000",
+            "pricing": "37.00000000",
             "cpm": "25.00000000",
             "ask_date_to": "2017-12-12",
             "currency": "xqc",
@@ -4382,7 +4382,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "32.00000000",
+            "pricing": "32.00000000",
             "cpm": "26.00000000",
             "ask_date_to": "2017-10-23",
             "currency": "eqc",
@@ -4394,7 +4394,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "24.00000000",
+            "pricing": "24.00000000",
             "cpm": "31.00000000",
             "ask_date_to": "2017-10-27",
             "currency": "eqc",
@@ -4406,7 +4406,7 @@ export default{
         },
         {
             "username": "User7",
-            "cpi": "23.00000000",
+            "pricing": "23.00000000",
             "cpm": "38.00000000",
             "ask_date_to": "2017-10-17",
             "currency": "eqc",
@@ -4418,7 +4418,7 @@ export default{
         },
         {
             "username": "User1",
-            "cpi": "43.00000000",
+            "pricing": "43.00000000",
             "cpm": "9.00000000",
             "ask_date_to": "2017-08-25",
             "currency": "eqc",
@@ -4430,7 +4430,7 @@ export default{
         },
         {
             "username": "User8",
-            "cpi": "39.00000000",
+            "pricing": "39.00000000",
             "cpm": "26.00000000",
             "ask_date_to": "2017-12-14",
             "currency": "eqc",
@@ -4442,7 +4442,7 @@ export default{
         },
         {
             "username": "User6",
-            "cpi": "42.00000000",
+            "pricing": "42.00000000",
             "cpm": "11.00000000",
             "ask_date_to": "2017-08-19",
             "currency": "xqc",
@@ -4454,7 +4454,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "32.00000000",
+            "pricing": "32.00000000",
             "cpm": "27.00000000",
             "ask_date_to": "2017-12-14",
             "currency": "xqc",
@@ -4466,7 +4466,7 @@ export default{
         },
         {
             "username": "User9",
-            "cpi": "17.00000000",
+            "pricing": "17.00000000",
             "cpm": "5.00000000",
             "ask_date_to": "2017-11-09",
             "currency": "eqc",
@@ -4478,7 +4478,7 @@ export default{
         },
         {
             "username": "User2",
-            "cpi": "28.00000000",
+            "pricing": "28.00000000",
             "cpm": "15.00000000",
             "ask_date_to": "2017-10-10",
             "currency": "eqc",
@@ -4490,7 +4490,7 @@ export default{
         },
         {
             "username": "User6",
-            "cpi": "17.00000000",
+            "pricing": "17.00000000",
             "cpm": "9.00000000",
             "ask_date_to": "2017-09-19",
             "currency": "xqc",
@@ -4502,7 +4502,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "41.00000000",
+            "pricing": "41.00000000",
             "cpm": "13.00000000",
             "ask_date_to": "2017-12-18",
             "currency": "xqc",
@@ -4514,7 +4514,7 @@ export default{
         },
         {
             "username": "User4",
-            "cpi": "26.00000000",
+            "pricing": "26.00000000",
             "cpm": "31.00000000",
             "ask_date_to": "2017-11-12",
             "currency": "xqc",
@@ -4526,7 +4526,7 @@ export default{
         },
         {
             "username": "User1",
-            "cpi": "37.00000000",
+            "pricing": "37.00000000",
             "cpm": "24.00000000",
             "ask_date_to": "2017-11-07",
             "currency": "xqc",
@@ -4538,7 +4538,7 @@ export default{
         },
         {
             "username": "User6",
-            "cpi": "31.00000000",
+            "pricing": "31.00000000",
             "cpm": "16.00000000",
             "ask_date_to": "2017-09-06",
             "currency": "eqc",
@@ -4550,7 +4550,7 @@ export default{
         },
         {
             "username": "User2",
-            "cpi": "34.00000000",
+            "pricing": "34.00000000",
             "cpm": "36.00000000",
             "ask_date_to": "2017-10-06",
             "currency": "xqc",
@@ -4562,7 +4562,7 @@ export default{
         },
         {
             "username": "User2",
-            "cpi": "36.00000000",
+            "pricing": "36.00000000",
             "cpm": "5.00000000",
             "ask_date_to": "2017-11-13",
             "currency": "eqc",
@@ -4574,7 +4574,7 @@ export default{
         },
         {
             "username": "User1",
-            "cpi": "21.00000000",
+            "pricing": "21.00000000",
             "cpm": "43.00000000",
             "ask_date_to": "2017-11-14",
             "currency": "eqc",
@@ -4586,7 +4586,7 @@ export default{
         },
         {
             "username": "User5",
-            "cpi": "47.00000000",
+            "pricing": "47.00000000",
             "cpm": "16.00000000",
             "ask_date_to": "2017-11-17",
             "currency": "eqc",
@@ -4598,7 +4598,7 @@ export default{
         },
         {
             "username": "User1",
-            "cpi": "34.00000000",
+            "pricing": "34.00000000",
             "cpm": "33.00000000",
             "ask_date_to": "2017-09-21",
             "currency": "eqc",
@@ -4610,7 +4610,7 @@ export default{
         },
         {
             "username": "User4",
-            "cpi": "37.00000000",
+            "pricing": "37.00000000",
             "cpm": "41.00000000",
             "ask_date_to": "2017-09-27",
             "currency": "xqc",
@@ -4622,7 +4622,7 @@ export default{
         },
         {
             "username": "User4",
-            "cpi": "12.00000000",
+            "pricing": "12.00000000",
             "cpm": "25.00000000",
             "ask_date_to": "2017-12-29",
             "currency": "eqc",
@@ -4634,7 +4634,7 @@ export default{
         },
         {
             "username": "User4",
-            "cpi": "40.00000000",
+            "pricing": "40.00000000",
             "cpm": "46.00000000",
             "ask_date_to": "2017-09-09",
             "currency": "xqc",
@@ -4646,7 +4646,7 @@ export default{
         },
         {
             "username": "User8",
-            "cpi": "32.00000000",
+            "pricing": "32.00000000",
             "cpm": "26.00000000",
             "ask_date_to": "2017-10-07",
             "currency": "eqc",
@@ -4658,7 +4658,7 @@ export default{
         },
         {
             "username": "User6",
-            "cpi": "43.00000000",
+            "pricing": "43.00000000",
             "cpm": "43.00000000",
             "ask_date_to": "2017-10-08",
             "currency": "xqc",
@@ -4670,7 +4670,7 @@ export default{
         },
         {
             "username": "User7",
-            "cpi": "10.00000000",
+            "pricing": "10.00000000",
             "cpm": "10.00000000",
             "ask_date_to": "2017-10-13",
             "currency": "eqc",
@@ -4682,7 +4682,7 @@ export default{
         },
         {
             "username": "User5",
-            "cpi": "24.00000000",
+            "pricing": "24.00000000",
             "cpm": "16.00000000",
             "ask_date_to": "2017-11-23",
             "currency": "xqc",
@@ -4694,7 +4694,7 @@ export default{
         },
         {
             "username": "User9",
-            "cpi": "35.00000000",
+            "pricing": "35.00000000",
             "cpm": "5.00000000",
             "ask_date_to": "2017-11-12",
             "currency": "eqc",
@@ -4706,7 +4706,7 @@ export default{
         },
         {
             "username": "User6",
-            "cpi": "16.00000000",
+            "pricing": "16.00000000",
             "cpm": "12.00000000",
             "ask_date_to": "2017-10-04",
             "currency": "xqc",
@@ -4718,7 +4718,7 @@ export default{
         },
         {
             "username": "User5",
-            "cpi": "18.00000000",
+            "pricing": "18.00000000",
             "cpm": "33.00000000",
             "ask_date_to": "2017-09-12",
             "currency": "xqc",
@@ -4730,7 +4730,7 @@ export default{
         },
         {
             "username": "User9",
-            "cpi": "37.00000000",
+            "pricing": "37.00000000",
             "cpm": "17.00000000",
             "ask_date_to": "2017-11-14",
             "currency": "xqc",
@@ -4742,7 +4742,7 @@ export default{
         },
         {
             "username": "User1",
-            "cpi": "46.00000000",
+            "pricing": "46.00000000",
             "cpm": "42.00000000",
             "ask_date_to": "2017-10-09",
             "currency": "xqc",
@@ -4754,7 +4754,7 @@ export default{
         },
         {
             "username": "User7",
-            "cpi": "36.00000000",
+            "pricing": "36.00000000",
             "cpm": "38.00000000",
             "ask_date_to": "2017-11-22",
             "currency": "eqc",
@@ -4766,7 +4766,7 @@ export default{
         },
         {
             "username": "User5",
-            "cpi": "34.00000000",
+            "pricing": "34.00000000",
             "cpm": "31.00000000",
             "ask_date_to": "2017-09-24",
             "currency": "eqc",
@@ -4778,7 +4778,7 @@ export default{
         },
         {
             "username": "User2",
-            "cpi": "43.00000000",
+            "pricing": "43.00000000",
             "cpm": "29.00000000",
             "ask_date_to": "2017-10-26",
             "currency": "xqc",
@@ -4790,7 +4790,7 @@ export default{
         },
         {
             "username": "User9",
-            "cpi": "12.00000000",
+            "pricing": "12.00000000",
             "cpm": "17.00000000",
             "ask_date_to": "2017-11-26",
             "currency": "xqc",
@@ -4802,7 +4802,7 @@ export default{
         },
         {
             "username": "User5",
-            "cpi": "12.00000000",
+            "pricing": "12.00000000",
             "cpm": "38.00000000",
             "ask_date_to": "2017-10-03",
             "currency": "xqc",
@@ -4814,7 +4814,7 @@ export default{
         },
         {
             "username": "User2",
-            "cpi": "25.00000000",
+            "pricing": "25.00000000",
             "cpm": "23.00000000",
             "ask_date_to": "2017-11-10",
             "currency": "eqc",
@@ -4826,7 +4826,7 @@ export default{
         },
         {
             "username": "User8",
-            "cpi": "40.00000000",
+            "pricing": "40.00000000",
             "cpm": "7.00000000",
             "ask_date_to": "2017-08-15",
             "currency": "xqc",
@@ -4838,7 +4838,7 @@ export default{
         },
         {
             "username": "User5",
-            "cpi": "32.00000000",
+            "pricing": "32.00000000",
             "cpm": "25.00000000",
             "ask_date_to": "2017-11-05",
             "currency": "xqc",
@@ -4850,7 +4850,7 @@ export default{
         },
         {
             "username": "User8",
-            "cpi": "45.00000000",
+            "pricing": "45.00000000",
             "cpm": "12.00000000",
             "ask_date_to": "2017-09-19",
             "currency": "xqc",
@@ -4862,7 +4862,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "30.00000000",
+            "pricing": "30.00000000",
             "cpm": "21.00000000",
             "ask_date_to": "2017-08-19",
             "currency": "xqc",
@@ -4874,7 +4874,7 @@ export default{
         },
         {
             "username": "User4",
-            "cpi": "25.00000000",
+            "pricing": "25.00000000",
             "cpm": "23.00000000",
             "ask_date_to": "2017-10-07",
             "currency": "eqc",
@@ -4886,7 +4886,7 @@ export default{
         },
         {
             "username": "User5",
-            "cpi": "50.00000000",
+            "pricing": "50.00000000",
             "cpm": "17.00000000",
             "ask_date_to": "2017-09-29",
             "currency": "eqc",
@@ -4898,7 +4898,7 @@ export default{
         },
         {
             "username": "User3",
-            "cpi": "45.00000000",
+            "pricing": "45.00000000",
             "cpm": "6.00000000",
             "ask_date_to": "2017-10-12",
             "currency": "xqc",

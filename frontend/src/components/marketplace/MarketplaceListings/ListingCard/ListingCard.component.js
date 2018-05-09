@@ -58,7 +58,7 @@ class ListingCard extends Component {
                 }
             }>
                 <CardHeader
-                    title="URL Avatar"
+                    title={this.props.title}
                     subtitle="Subtitle"
                 />
 
