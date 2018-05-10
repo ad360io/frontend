@@ -1,3 +1,6 @@
+// TODO(ahuszagh)
+// Change this to a database query.
+
 const adv_24hr_data = {
     'Impressions': 12345,
     'Impressions_trend' : '+12.21%',

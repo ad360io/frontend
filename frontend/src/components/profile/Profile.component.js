@@ -1,7 +1,7 @@
 /*
 Core Libs
 */
-import React, { Component } from 'react';
+import React from 'react';
 
 /*
 Local CSS
@@ -14,10 +14,6 @@ import './Profile.component.css';
  *     Work to be done:
  *         - Everything basically...
  */
-class Profile extends Component {
-    render() {
-        return <p>Profile works!</p>;
-    }
-}
+const Profile = () => <p>Profile works!</p>;
 
 export default Profile;

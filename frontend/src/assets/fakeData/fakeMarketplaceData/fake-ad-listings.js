@@ -1,3 +1,6 @@
+// TODO(ahuszagh)
+// Change this to a database query.
+
 export default{
     "adListings": [
         {

@@ -1,7 +1,7 @@
 /*
 Core Libs
 */
-import React, { Component } from 'react';
+import React from 'react';
 
 /*
 Local CSS
@@ -14,13 +14,9 @@ import ConnectedCreateListingForm from './CreateListingForm/ConnectedCreateListi
 /**
  * Create Listing Component
  */
-class CreateListing extends Component {
-    render() {
-        return <div className="create-container">
-            <ConnectedCreateListingForm />
-        </div>;
-    }
-}
-
+const CreateListing = () =>
+    <div className="create-container">
+        <ConnectedCreateListingForm />
+    </div>
 
 export default CreateListing;
