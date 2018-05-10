@@ -12,6 +12,9 @@ Local CSS
 import './App.css';
 
 
+// This should be purely functional.
+// This stores no state, no reason to use ES6 classes.
+
 class App extends Component {
   render() {
     return (

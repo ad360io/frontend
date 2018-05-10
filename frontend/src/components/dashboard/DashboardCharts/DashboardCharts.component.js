@@ -29,7 +29,7 @@ import LineChartSlider    from './LineChartSlider/LineChartSlider.component';
 
 
 /**
- * 
+ *
  */
 class DashboardCharts extends Component {
 
@@ -101,7 +101,7 @@ class DashboardCharts extends Component {
                 pointRadius: 1,
                 pointHitRadius: 10,
                  /* only get the first 30 element if the dataset is more than 30 elements*/
-                data: dataset.slice(0, (dataset.length > 30 ? 30 : dataset.length)) 
+                data: dataset.slice(0, (dataset.length > 30 ? 30 : dataset.length))
               }
             ]
           };
@@ -111,7 +111,7 @@ class DashboardCharts extends Component {
     chooseDisplayingDataset() {
         if(this.props.modeFilter === 'Advertiser'){
             // Advertiser charts (Clicks Impressions)
-            return (this.props.currencyFilter === "EQC" ? [this.state.clickDatasetsInEqc, this.state.impressionDatasetsInEqc] 
+            return (this.props.currencyFilter === "EQC" ? [this.state.clickDatasetsInEqc, this.state.impressionDatasetsInEqc]
                         : [this.state.clickDatasetsInXqc, this.state.impressionDatasetsInXqc])
         }else {
             // Publisher charts  (Clicks Impression RPM Revenue)
@@ -126,7 +126,7 @@ class DashboardCharts extends Component {
                 return 'rgba(200,20,20,1)';
             case 2:
                 return 'rgba(0,128,128,1)';
-            case 3: 
+            case 3:
                 return 'rgba(40,240,240,1)';
             default:
                 return 'rgba(32,178,120,1)';
@@ -135,10 +135,10 @@ class DashboardCharts extends Component {
 
     /**
      * Definitely Need Refactoring after database ( API ) is ready
-     * @param {*} k 
+     * @param {*} k
      */
     getChartTitle(k){
-        if(this.props.modeFilter === 'Advertiser'){
+        if(this.props.modeFilter === 'Advertiser'){         // Advertiser
             switch (k){
                 case 0:
                     return 'Ad Clicks';
@@ -147,7 +147,7 @@ class DashboardCharts extends Component {
                 default:
                     return null;
             }
-        }else {
+        }else {                                             // Publisher
             switch (k) {
                 case 0:
                     return 'Adspace Clicks';
@@ -161,7 +161,7 @@ class DashboardCharts extends Component {
                     return null;
             }
         }
-        
+
     }
 
     render() {
@@ -174,7 +174,7 @@ class DashboardCharts extends Component {
                 return currentDatasetChartList.push(<DashboardLineChart data={currentDataset} key={key+""+index} />);
             })
             return itemListsForSlider.push(currentDatasetChartList);
-        })       
+        })
 
         return <div className="dashboard-charts-container">
             {
