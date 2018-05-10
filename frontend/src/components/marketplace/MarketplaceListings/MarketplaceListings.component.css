@@ -16,3 +16,9 @@ FOR SMALL SIZE SCREENS
         margin-left: 0px;
     }
 }
+
+.marketplace-title {
+    text-align: center;
+    padding-top: 2%;
+    margin-bottom: 2%;
+}

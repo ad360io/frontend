@@ -2,15 +2,26 @@
 Core Libs
 */
 import React, { Component } from 'react';
-import { Card, CardHeader, CardText, CardTitle } from 'material-ui/Card';
-import Divider from 'material-ui/Divider';
 
-import branded_content_ph      from '../../../../assets/images/branded_content_placeholder.png'
-import influencer_marketing_ph from '../../../../assets/images/influencer_marketing_placeholder.png'
+/*
+Material UI Components
+*/
+import { Card, CardText, CardTitle } from 'material-ui/Card';
+
+/*
+Placeholder Images
+*/
+import branded_content_ph      from '../../../../assets/images/branded_content_placeholder.png';
+import influencer_marketing_ph from '../../../../assets/images/influencer_marketing_placeholder.png';
 import sponsorships_ph         from '../../../../assets/images/sponsorships_placeholder.png';
-import default_ph              from '../../../../assets/images/pug_face.jpg'
+import default_ph              from '../../../../assets/images/pug_face.jpg';
 
-import './ListingCard.component.css'
+/*
+Local CSS
+*/
+import './ListingCard.component.css';
+
+
 /**
  * Singleton of a Listing display
  * expects props of 
@@ -84,7 +95,7 @@ class ListingCard extends Component {
                 <div className="price-tag">{this.props.listing.pricing+" "+this.props.listing.currency}</div>
 
                 <CardTitle title={this.props.listing.name} subtitle={"Posted on: "+this.props.listing.ask_date_from} />
-                <img src={this.decidePlaceholderImage()} className="listing-img"/>
+                <img src={this.decidePlaceholderImage()} className="listing-img" alt="listing-img"/>
                 <CardText className="listing-msg">
                     {this.props.listing.msg}
                 </CardText>

@@ -4,9 +4,9 @@ FOR SMALL SIZE SCREENS
 .listing-card-container{
     margin-left: 2%;    
     float: left;
-    margin-top: 2%;
     height: 400px;
     position: relative;
+    margin-bottom: 2%;
 }
 
 .price-tag{

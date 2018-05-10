@@ -8,6 +8,8 @@ Local CSS
 */
 import './CreateListing.component.css'
 
+import ConnectedCreateListingForm from './CreateListingForm/ConnectedCreateListingForm'
+
 
 /**
  * Create Listing Component
@@ -24,7 +26,9 @@ import './CreateListing.component.css'
  */
 class CreateListing extends Component {
     render() {
-        return <p>Create Listings works!</p>;
+        return <div className="create-container">
+            <ConnectedCreateListingForm />
+        </div>;
     }
 }
 

@@ -13,8 +13,8 @@ class WallofText extends Component {
     render() {
 
         let wapows = [];
-        for(let i = 0; i < 300; i++){
-            wapows.push( <p>wapow</p> );
+        for(let i = 0; i < 40; i++){
+            wapows.push( <p key={'wapow'+i}>wapow</p> );
         }
 
         return <div>
