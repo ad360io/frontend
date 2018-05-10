@@ -1,10 +1,10 @@
 
 /*
-FOR DESKTOP
+FOR MEDIUM TO BIG SCREEN
 */
 @media only screen and (min-width: 769px) {
    .marketplace-listings-container {
-       margin-left: 300px;
+       margin-left: 300px;  /* Drawer is always open on medium to big screen*/
    }    
 }
 
@@ -13,7 +13,7 @@ FOR SMALL SIZE SCREENS
 */
 @media only screen and (max-width: 768px){
     .marketplace-listings-container {
-        margin-left: 0px;
+        margin-left: 0px;   /* Drawer gets closed and docked on small screen */
     }
 }
 

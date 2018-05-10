@@ -14,14 +14,10 @@ import nem_logo    from '../../../assets/images/NEM_logo.png';
 /*
 React-Bootstrap Components
 */
-import { Navbar, Nav, NavItem }     from 'react-bootstrap';
-import { ButtonGroup }        from 'react-bootstrap';
+import { Navbar, Nav, NavItem }        from 'react-bootstrap';
+import { ButtonGroup, Button  }        from 'react-bootstrap';
+import { DropdownButton, MenuItem }    from 'react-bootstrap';
 
-/*
-Action classes
-*/
-import CurrencySelector                     from  './CurrencySelector/CurrencySelector.component';
-import { ModeDropdownButton, ModeMenuItem } from  './ModeSelector/ModeSelector.component';
 
 /**
  * The bar that is at the very top of each component
@@ -60,20 +56,20 @@ class MenuBar extends Component {
 
                     {/* Start of Currency selector */}
                     <ButtonGroup bsSize="large" className="currency-selector">
-                        <CurrencySelector currency="EQC">
+                        <Button active={this.props.currencyFilter === 'EQC'} onClick={()=>this.props.onCurrencyClick('EQC')}>
                             <img src={eth_logo} className="currency-logo" alt="eth-logo"/>EQC
-                        </CurrencySelector>
-                        <CurrencySelector currency="XQC">
+                        </Button>
+                        <Button active={this.props.currencyFilter === 'XQC'} onClick={()=>this.props.onCurrencyClick('XQC')}>
                             <img src={nem_logo} className="currency-logo" alt="nem-logo"/>XQC
-                        </CurrencySelector>
+                        </Button>
                     </ButtonGroup>
                     {/* End of Currency selector */}
 
                     {/* Start of Mode selector */}
-                    <ModeDropdownButton id="mode-selector" bsSize="large" className="mode-selector">
-                        <ModeMenuItem mode="Advertiser">Advertiser</ModeMenuItem>
-                        <ModeMenuItem mode="Publisher">Publisher</ModeMenuItem>
-                    </ModeDropdownButton>
+                    <DropdownButton id="mode-selector" bsSize="large" className="mode-selector" title={this.props.modeFilter}>
+                        <MenuItem onClick={()=>this.props.onModeClick('Advertiser')}>Advertiser</MenuItem>
+                        <MenuItem onClick={()=>this.props.onModeClick('Publisher')}>Publisher</MenuItem>
+                    </DropdownButton>
                     {/* End of Mode selector*/}
 
                     {/* Start of Sign Out menu*/}

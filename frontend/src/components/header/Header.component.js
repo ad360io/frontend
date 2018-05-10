@@ -11,8 +11,8 @@ import './Header.component.css';
 /*
 Children Components
 */
-import MenuBar              from './MenuBar/MenuBar.component';
-import InAppNavBar from './InAppNavBar/InAppNavBar.component';
+import ConnectedMenuBar   from './MenuBar/ConnectedMenuBar';
+import InAppNavBar        from './InAppNavBar/InAppNavBar.component';
 
 
 /**
@@ -23,7 +23,7 @@ class Header extends Component {
 
     render() {
         return <div>
-            <MenuBar auth={this.props.auth}/>
+            <ConnectedMenuBar auth={this.props.auth}/>
             <InAppNavBar />
         </div>
     }

@@ -1,4 +1,4 @@
-import { connect } from 'react-redux';
+import { connect }       from 'react-redux';
 import CreateListingForm from './CreateListingForm.component'
 
 const mapStateToProps = (state) => {
@@ -10,7 +10,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        
+
     }
 }
 
@@ -18,5 +18,6 @@ const ConnectedCreateListingForm = connect(
     mapStateToProps,
     mapDispatchToProps
 )(CreateListingForm)
+
 
 export default ConnectedCreateListingForm;

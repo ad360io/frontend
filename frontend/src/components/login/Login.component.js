@@ -40,7 +40,7 @@ class Login extends Component {
 
                     <br/><br/>
 
-                    <p style={{fontSize: 24+'px'}}>ALPHA <span style={{fontSize: 20+'px'}}>v0.1</span></p>
+                    <p style={{fontSize: 24+'px'}}>ALPHA <span style={{fontSize: 20+'px'}}>v0.25</span></p>
 
                     <br/>
                     {/* (click)="show_lock_login()"  */}

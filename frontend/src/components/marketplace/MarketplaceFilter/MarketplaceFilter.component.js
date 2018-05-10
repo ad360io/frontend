@@ -12,12 +12,7 @@ Local CSS
 */
 import './MarketplaceFilter.component.css'
 
-const placeholderStyle = {
-    height: 130,
-    width: 300,
-    margin: 0,
-    display: 'inline-block',
-}
+
 /**
  * 
  */
@@ -43,10 +38,16 @@ class MarketplaceFilter extends Component {
       
     updateWindowDimensions() {
         this.setState({ width: window.innerWidth });
+
+        // Dynamically close the drawer for small screen
+        //             open  the drawer for medium to big screen
         if(window.innerWidth <= 768) this.props.closeDrawer();
         else this.props.openDrawer();
     }
 
+    /**
+     * Hide / Show the drawer toggle based on screen size
+     */
     decide_BtnOpenFilterDrawer_Display(){
         if(this.state.width > 768) return 'none'
         else return 'inline';
@@ -69,7 +70,12 @@ class MarketplaceFilter extends Component {
                 onRequestChange={this.props.onDrawerRequestChange}
                 className='filter-drawer'
             >
-                <Paper style={placeholderStyle} zDepth={0}/>
+                <Paper style={{
+                    height: 130,
+                    width: 300,
+                    margin: 0,
+                    display: 'inline-block',
+                }} zDepth={0}/>
 
                 <div className="ad-genre-container">
                     <h4 className="filter-title">Ad Genre</h4>

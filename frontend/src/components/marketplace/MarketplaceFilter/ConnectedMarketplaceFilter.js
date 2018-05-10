@@ -1,4 +1,4 @@
-import { connect } from 'react-redux';
+import { connect }       from 'react-redux';
 import MarketplaceFilter from './MarketplaceFilter.component'
 
 const mapStateToFilterProps = (state) => {
@@ -10,6 +10,7 @@ const mapStateToFilterProps = (state) => {
         adGenreFilter: state.MarketplaceFilterReducer.adGenreFilter
     }
 }
+
 const mapDispatchToFilterProps = (dispatch) => {
     return {
         onSliderChange:(event, budgetFilter)=>{
@@ -47,5 +48,6 @@ const ConnectedMarketplaceFilter = connect(
     mapStateToFilterProps,
     mapDispatchToFilterProps
 )(MarketplaceFilter)
+
 
 export default ConnectedMarketplaceFilter;
