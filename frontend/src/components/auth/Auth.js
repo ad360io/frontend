@@ -4,7 +4,6 @@ Auth0 Libs
 import { Auth0Config } from './auth0-config';
 import auth0 from 'auth0-js';
 
-
 export default class Auth {
 
     constructor(){
@@ -27,7 +26,7 @@ export default class Auth {
     auth0 = new auth0.WebAuth({
         domain: `${Auth0Config.domain}`,
         clientID: `${Auth0Config.clientID}`,
-        redirectUri: 'http://localhost:4200/auth-callback',
+        redirectUri: `${window.location.protocol}//${window.location.host}/auth-callback`,
         audience: `https://${Auth0Config.domain}/userinfo`,
         responseType: 'token id_token',
         scope: 'openid profile email'
@@ -47,7 +46,7 @@ export default class Auth {
           }
         });
       }
-    
+
     setSession(authResult, propsHistory) {
         // Set the time that the Access Token will expire at
         let expiresAt = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
@@ -57,7 +56,7 @@ export default class Auth {
         propsHistory.push('/dashboard');
         this.scheduleRenewal();
     }
-    
+
     logout() {
         // Clear Access Token and ID Token from local storage
         localStorage.removeItem('access_token');
@@ -66,9 +65,9 @@ export default class Auth {
 
         clearTimeout(this.tokenRenewalTimeout);
     }
-    
+
     isAuthenticated() {
-        // Check whether the current time is past the 
+        // Check whether the current time is past the
         // Access Token's expiry time
         let expiresAt = JSON.parse(localStorage.getItem('expires_at'));
         return new Date().getTime() < expiresAt;
@@ -112,5 +111,5 @@ export default class Auth {
           cb(err, profile);
         });
     }
-    
+
 }
