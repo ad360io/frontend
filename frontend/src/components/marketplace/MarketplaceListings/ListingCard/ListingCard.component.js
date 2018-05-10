@@ -36,11 +36,14 @@ class ListingCard extends Component {
         this.decideCardWidth = this.decideCardWidth.bind(this);
         this.decideMarginLeft = this.decideMarginLeft.bind(this);
         this.decidePlaceholderImage = this.decidePlaceholderImage.bind(this);
+        this.decideTitleDisplayText = this.decideTitleDisplayText.bind(this);
+        this.decideTitleDisplayText();
     }
 
     componentDidMount() {
         this.updateWindowDimensions();
         window.addEventListener('resize', this.updateWindowDimensions);
+        this.decideTitleDisplayText();
     }
 
     componentWillUnmount() {
@@ -82,6 +85,35 @@ class ListingCard extends Component {
         }
     }
 
+    decideTitleDisplayText() {
+
+        let cardWidthInPercent;
+        let drawerSize = 300;
+        // 1 character in CardTitle is around 10-13px
+        if(this.state.width >= 1440){
+            // In 3 column mode, each card is 30% of the full window width - drawer size (state.width - 300)
+            // To guarantee no visual bug, assume each character is 13px
+            cardWidthInPercent = .3
+            
+        }else if(this.state.width >= 1200){
+            // In 2 column mode, each card is 45% of the full window width - drawer size
+            cardWidthInPercent = .45
+        }else{
+            // Single column mode, each card is 80% of the full window width
+            cardWidthInPercent = .8
+        }
+
+        // Drawer closes at small screen, take into account
+        if(this.state.width <= 768){
+            drawerSize = 0;
+        }
+
+        const numberOfCharOriginal = this.props.listing.name.length;
+        const numberOfCharAllowed = Math.floor((this.state.width - drawerSize) * cardWidthInPercent / 13 - 3);
+        const dotDotDot = (numberOfCharAllowed < numberOfCharOriginal ? '...' : '')
+        return this.props.listing.name.slice(0, numberOfCharAllowed)+dotDotDot;
+    }
+
     render() {
         return <div>
             <Card className="listing-card-container" 
@@ -94,7 +126,7 @@ class ListingCard extends Component {
                 <div className="poster-tag">{this.props.listing.username} </div>
                 <div className="price-tag">{this.props.listing.pricing+" "+this.props.listing.currency}</div>
 
-                <CardTitle title={this.props.listing.name} subtitle={"Posted on: "+this.props.listing.ask_date_from} />
+                <CardTitle title={this.decideTitleDisplayText()} subtitle={"Posted on: "+this.props.listing.ask_date_from} />
                 <img src={this.decidePlaceholderImage()} className="listing-img" alt="listing-img"/>
                 <CardText className="listing-msg">
                     {this.props.listing.msg}

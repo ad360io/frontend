@@ -94,7 +94,7 @@ export default{
             "ask_date_from": "2017-10-04",
             "adtype": "Banner Right",
             "genre": "Branded Content",
-            "name": "www.nativefoodbluelisting.com"
+            "name": "This is some long ass title so that I can test the truncating function"
         },
         {
             "username": "User8",
