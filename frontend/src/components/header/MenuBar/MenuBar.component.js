@@ -58,10 +58,16 @@ class MenuBar extends Component {
 
                     {/* Start of Currency selector */}
                     <ButtonGroup bsSize="large" className="currency-selector">
-                        <Button active={this.props.currencyFilter === 'EQC'} onClick={()=>this.props.onCurrencyClick('EQC')}>
+                        <Button 
+                            active={this.props.currencyFilter === 'EQC'} 
+                            onClick={()=>this.props.onCurrencyClick('EQC')}
+                        >
                             <img src={eth_logo} className="currency-logo" alt="eth-logo"/>EQC
                         </Button>
-                        <Button active={this.props.currencyFilter === 'XQC'} onClick={()=>this.props.onCurrencyClick('XQC')}>
+                        <Button 
+                            active={this.props.currencyFilter === 'XQC'} 
+                            onClick={()=>this.props.onCurrencyClick('XQC')}
+                        >
                             <img src={nem_logo} className="currency-logo" alt="nem-logo"/>XQC
                         </Button>
                     </ButtonGroup>

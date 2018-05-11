@@ -2,4 +2,5 @@
   background: #e8e8e8;
   width: 100%;
   overflow-x: hidden;
+  overflow-y: auto;
 }

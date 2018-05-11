@@ -42,7 +42,7 @@ const LineChartSlider = function({itemList}) {
 }
 
 LineChartSlider.propTypes = {
-    itemList: PropTypes.object.isRequired
+    itemList: PropTypes.array.isRequired
 };
 
 export default LineChartSlider;

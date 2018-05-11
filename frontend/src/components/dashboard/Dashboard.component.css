@@ -11,16 +11,16 @@ FOR DESKTOP
 */
 @media only screen and (min-width: 769px) {
     .dashboard-left {
-        margin-top: 2%;
+        margin-top: 25px;
         padding-top: 0px;
         margin-left: 8%;
         position: relative;
     }
 
     .dashboard-right {
-       margin-top: 2%;
-       padding-left: 460px;
-       position: absolute;
+        margin-top: 5px;
+        padding-left: 460px;
+        position: absolute;
     }
     
 }
@@ -31,7 +31,7 @@ FOR MEDIUM SIZE SCREENS
 @media only screen and (max-width: 1280px){
     .dashboard-left {
         margin-left: 20px;
-        margin-top: 5px;
+        margin-top: 25px;
     }
 
     .dashboard-right{

@@ -13,6 +13,7 @@ import './Dashboard.component.css';
 Material-UI Theme
 */
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import Divider          from 'material-ui/Divider';
 
 /*
 React Bootstrap Components
@@ -26,6 +27,7 @@ import Footer           from '../footer/Footer.component';
 import DashboardWallet  from './DashboardWallet/DashboardWallet.component';
 import DashboardStats   from './DashboardStats/DashboardStats.component';
 import DashboardCharts  from './DashboardCharts/DashboardCharts.component';
+import DashboardTables  from './DashboardTables/DashboardTables.component';
 
 
 /**
@@ -48,6 +50,8 @@ const Dashboard = () =>
                         <ChartsProvider />
                     </Col>
                 </Row>
+                <Divider style={{marginTop: '2%', marginBottom:'2%'}} />
+                <DashboardTables />
             </div>
         </MuiThemeProvider>
         <Footer />
