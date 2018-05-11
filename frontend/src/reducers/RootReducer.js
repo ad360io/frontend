@@ -12,7 +12,7 @@ import MarketplaceFilterReducer from './MarketplaceFilterReducer'
 
 /**
  * Organize and combine all reducers
- * All new reducers must be added to rootReducer to be accessed by store
+ * All new reducers must be added to RootReducer to be accessed by store
  */
 const RootReducer = combineReducers({
     MenuBarFilterReducer,

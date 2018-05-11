@@ -20,23 +20,24 @@ import './DashboardStats.component.css'
 import fake_24hr_data from '../../../assets/fakeData/fakeDashboardData/fake-24-hr';
 
 /**
- * 
+ *
  */
 class DashboardStats extends Component {
-    
+
     constructor(props){
         super(props);
         this.getStatsCardTitles = this.getStatsCardTitles.bind(this);
         this.getStatsCardValueByTitle = this.getStatsCardValueByTitle.bind(this);
     }
-    
+
     getStatsCardTitles() {
-        return (this.props.modeFilter === 'Advertiser' ? 
+        return (this.props.modeFilter === 'Advertiser' ?
             ['Impressions', 'Clicks', 'CPM', 'Expenses', 'Balance']:
             ['Impressions', 'Clicks', "RPM", "Revenue", "Balance"])
     }
 
     getStatsCardValueByTitle(title) {
+        // TODO(ahuszagh) Change to use an API call in the constructor.
         return (this.props.modeFilter === 'Advertiser' ?
             fake_24hr_data.adv_24hr_data[title]:
             fake_24hr_data.pub_24hr_data[title])
@@ -49,8 +50,8 @@ class DashboardStats extends Component {
                 <CardText>
                 {
                     this.getStatsCardTitles().map((statsTitle, i)=>{
-                        return <StatsCard   title={statsTitle} 
-                                            value={this.getStatsCardValueByTitle(statsTitle)} 
+                        return <StatsCard   title={statsTitle}
+                                            value={this.getStatsCardValueByTitle(statsTitle)}
                                             trend={this.getStatsCardValueByTitle(statsTitle+"_trend")}
                                             key={this.props.modeFilter+statsTitle} />
                     })

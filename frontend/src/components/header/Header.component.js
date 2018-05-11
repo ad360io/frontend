@@ -1,7 +1,7 @@
 /*
 Core Libs and Children Components
 */
-import React, { Component } from 'react';
+import React from 'react';
 
 /*
 Local CSS
@@ -19,15 +19,10 @@ import InAppNavBar        from './InAppNavBar/InAppNavBar.component';
  * The header that is only to be served on private components
  * Usage check under /router/PrivateRoute.js
  */
-class Header extends Component {
-
-    render() {
-        return <div>
-            <ConnectedMenuBar auth={this.props.auth}/>
-            <InAppNavBar />
-        </div>
-    }
-}
-
+const Header = (props) =>
+    <div>
+        <ConnectedMenuBar auth={props.auth}/>
+        <InAppNavBar />
+    </div>
 
 export default Header;

@@ -1,7 +1,7 @@
 /*
 Core Libs
 */
-import React, { Component } from 'react';
+import React from 'react';
 
 /*
 Local CSS
@@ -12,20 +12,16 @@ import './Footer.component.css';
 /**
  * Simple footer for Qchain
  */
-class Footer extends Component {
-    render() {
-        return <div className="footer-container">
-            <footer className="footer" >
-                <div className="footer-content-container">
-                    <p>Copyright &copy; 2017 Qchain Co.</p>
-                    <p>Irvine, CA</p>
-                    <p><a href="mailto:team@qchain.co">team@qchain.co</a></p>
-                    <p><a href="https://qchain.co/privacy">Privacy Policy</a></p>
-                </div>
-            </footer>
-        </div>;
-    }
-}
-
+const Footer = () =>
+    <div className="footer-container">
+        <footer className="footer" >
+            <div className="footer-content-container">
+                <p>Copyright &copy; 2017 Qchain Co.</p>
+                <p>Irvine, CA</p>
+                <p><a href="mailto:team@qchain.co">team@qchain.co</a></p>
+                <p><a href="https://qchain.co/privacy">Privacy Policy</a></p>
+            </div>
+        </footer>
+    </div>
 
 export default Footer;

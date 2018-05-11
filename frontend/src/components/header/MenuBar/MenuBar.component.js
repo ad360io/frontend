@@ -18,11 +18,13 @@ import { Navbar, Nav, NavItem }        from 'react-bootstrap';
 import { ButtonGroup, Button  }        from 'react-bootstrap';
 import { DropdownButton, MenuItem }    from 'react-bootstrap';
 
+// TODO(ahuszagh)
+// Maybe modularize the menu-bar to smaller components?
 
 /**
  * The bar that is at the very top of each component
  * Has a selection of actions that are not navigation, hence called menu
- * 
+ *
  * -Caution: When changing css, be aware of the signout part that might extend to next line
  * --------- causing blockage to InAppNavBar.
  */
@@ -92,9 +94,9 @@ class MenuBar extends Component {
                         </NavItem>
                     </Nav>
                     {/* End of Sign Out menu */}
-                    
+
                 </Navbar.Collapse>
-                
+
             </Navbar>
             </div>
         );
