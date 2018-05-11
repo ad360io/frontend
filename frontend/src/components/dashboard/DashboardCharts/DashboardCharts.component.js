@@ -20,12 +20,14 @@ import impressionDatasetsInXqc from '../../../assets/fakeData/fakeDashboardData/
 Material UI Components
 */
 import { Card, CardText } from 'material-ui/Card';
+import  Divider           from 'material-ui/Divider';
 
 /*
 Children Components
 */
 import DashboardLineChart from './DashboardLineChart/DashboardLineChart.component';
 import LineChartSlider    from './LineChartSlider/LineChartSlider.component';
+import DashboardDoughnut  from './DashboardDoughnut/DashboardDoughnut.component';
 
 
 /**
@@ -44,7 +46,7 @@ class DashboardCharts extends Component {
             impressionDatasetsInXqc
         }
 
-        this.chooseDisplayingDataset = this.chooseDisplayingDataset.bind(this);
+        this.chooseLineChartDisplayData = this.chooseLineChartDisplayData.bind(this);
     }
 
     /**
@@ -52,7 +54,7 @@ class DashboardCharts extends Component {
      * Labels are capped at 30, which is a month in this case
      * @param {*} dataset Array of numbers that represent historical data by days.
      */
-    prepareXaxisLabels(dataset){
+    prepareLineChartXaxisLabels(dataset){
         let daysLabel = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
         let today = new Date().getDay();
         let labelSize = (dataset.length > 30 ? 30 : dataset.length);
@@ -77,9 +79,9 @@ class DashboardCharts extends Component {
      * @param {*} dataset provide the array of numbers that is to be plotted to chart.
      * @param {*} rbgaString provide the desired color of the graph in rgba format.
      */
-    prepareDatasetToChart(dataset, rbgaString){
+    prepareDatasetToLineChart(dataset, rbgaString){
         const data = {
-            labels : this.prepareXaxisLabels(dataset),
+            labels : this.prepareLineChartXaxisLabels(dataset),
             datasets: [
               {
                 label: 'Some Ad names maybe',
@@ -108,13 +110,13 @@ class DashboardCharts extends Component {
         return data;
     }
 
-    chooseDisplayingDataset() {
+    chooseLineChartDisplayData() {
         if(this.props.modeFilter === 'Advertiser'){
-            // Advertiser charts (Clicks Impressions)
+            // Advertiser charts (Clicks, Impressions)
             return (this.props.currencyFilter === "EQC" ? [this.state.clickDatasetsInEqc, this.state.impressionDatasetsInEqc]
                         : [this.state.clickDatasetsInXqc, this.state.impressionDatasetsInXqc])
         }else {
-            // Publisher charts  (Clicks Impression RPM Revenue)
+            // Publisher charts  (Clicks, Impression, RPM, Revenue)
             // returning empty array at this time to serve as a test case and wait for actual data
             return (this.props.currencyFilter === "EQC" ? [] : []);
         }
@@ -137,7 +139,7 @@ class DashboardCharts extends Component {
      * Definitely Need Refactoring after database ( API ) is ready
      * @param {*} k
      */
-    getChartTitle(k){
+    getLineChartTitle(k){
         if(this.props.modeFilter === 'Advertiser'){         // Advertiser
             switch (k){
                 case 0:
@@ -164,13 +166,36 @@ class DashboardCharts extends Component {
 
     }
 
+    chooseDoughnutDataset() {
+        return {
+            labels: [
+                'Contract Uno',
+                'Contract Dos',
+                'Contract Tres',
+            ],
+            datasets: [{
+                data: [300, 50, 100],
+                backgroundColor: [
+                '#FF6384',
+                '#36A2EB',
+                '#FFCE56'
+                ],
+                hoverBackgroundColor: [
+                '#FF6384',
+                '#36A2EB',
+                '#FFCE56'
+                ]
+            }]
+        };
+    }
+
     render() {
 
         let itemListsForSlider = [];
-        this.chooseDisplayingDataset().map((datasets, key) => {
+        this.chooseLineChartDisplayData().map((datasets, key) => {
             let currentDatasetChartList = [];
             datasets.map((dataset, index)=>{
-                let currentDataset = this.prepareDatasetToChart(dataset,this.getLineColor(key));
+                let currentDataset = this.prepareDatasetToLineChart(dataset,this.getLineColor(key));
                 return currentDatasetChartList.push(<DashboardLineChart data={currentDataset} key={key+""+index} />);
             })
             return itemListsForSlider.push(currentDatasetChartList);
@@ -179,13 +204,30 @@ class DashboardCharts extends Component {
         return <div className="dashboard-charts-container">
             {
                 itemListsForSlider.map((itemList, i)=>{
-                    return <Card key={"itemList"+i} className="dashboard-line-charts-card" style={{background:'#fafafa'}}>
-                                <CardText>
-                                    <h2 className="chart-title"> {this.getChartTitle(i)} Performance</h2>
+                    return <Card key={"itemList"+i} className="dashboard-charts-card" style={{background:'#fafafa'}}>
+                                <h2 className="chart-title"> {this.getLineChartTitle(i)} Performance</h2>
+                                <Divider style={{width: '75%'}}/>
+                                <CardText> 
                                     <LineChartSlider itemList={itemList} />
                                 </CardText>
                             </Card>
                 })
+            }
+            {
+                <Card className="dashboard-charts-card" style={{background: '#fafafa'}}>
+                  <h2 className="chart-title"> Highest Grossing Contracts </h2> 
+                    <Divider style={{width: '75%'}}/>
+                    <CardText>
+                        <div className="highest-gross-card-left">
+                            <DashboardDoughnut data={this.chooseDoughnutDataset()} />
+                        </div>
+                        <div className="highest-gross-card-right">
+                            {/* Build this info dynamically after we are pulling real data*/}
+                            The <a><i>Contract Uno</i></a> is the best deal you've done! 
+                            <span className="quick-maf"> 66.6</span>% of your total grossing are generated here!
+                        </div>
+                    </CardText>
+                </Card>
             }
         </div>;
     }

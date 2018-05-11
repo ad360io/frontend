@@ -22,6 +22,7 @@ import { Line } from 'react-chartjs-2';
 const DashboardLineChart = ({data}) =>
     <div className="dashboard-line-chart-container">
         <Line   data={data}
+                height={200}
                 options={{
                     maintainAspectRatio: false,
                     responsive: true,

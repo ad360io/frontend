@@ -1,24 +1,46 @@
 
-.dashboard-line-charts-card{
+.dashboard-charts-card{
     width: 65vw;
     margin-bottom: 2%;
 }
 
 .chart-title{
-    margin-left: 5%;
+    margin-left: 8%;
+    padding-top: 1%;
 }
 
-.dashboard-line-charts-card > div > div {
+.dashboard-charts-card > div > div {
     padding-left: 40px !important;
     padding-right: 40px !important;
 }
 
+.highest-gross-card-left {
+    width: 50%;
+    display: inline-block;
+    text-align: left;
+    vertical-align: top;
+}
+
+.highest-gross-card-right {
+    width: 43%;
+    margin-left: 5%;
+    margin-right: 2%;
+    height: 300px;
+    display: inline-block;
+    padding-top: 70px;
+    font-size: 22px;
+}
+
+.quick-maf {
+    font-size: 28px;
+    font-family: 'Lucida Console'
+}
 
 /*
 FOR SMALL SIZE SCREENS
 */
 @media only screen and (max-width: 768px){
-    .dashboard-line-charts-card {
+    .dashboard-charts-card {
         width: 100vw;
     }
 }

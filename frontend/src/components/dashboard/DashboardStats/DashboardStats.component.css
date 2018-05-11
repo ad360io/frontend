@@ -2,6 +2,10 @@
     background: #fafafa !important;
 }
 
+.stats-container-card > div > div {
+    padding-bottom: 0px !important;
+}
+
 /*
 FOR PHONES AND TABLETS
 */
