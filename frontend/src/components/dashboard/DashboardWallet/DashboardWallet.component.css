@@ -1,6 +1,17 @@
+.wallet-info-card > div > div {
+    padding: 0px !important;
+}
+
 ul{
     list-style-type: none;
     margin-left: 0;
+}
+
+.wallet-card-title{
+    margin-left: 10%;
+    padding-top: 4%;
+    margin-top: 0px;
+    font-size: 28px;
 }
 
 .eqc-icon{
@@ -31,12 +42,7 @@ ul{
 FOR PHONES AND TABLETS
 */
 @media only screen and (max-width:768px){
-    
-    .wallet-card-title{
-        font-size: 20px;
-        margin-bottom: 30px;
-    }
-    
+        
     .wallet-currency-label{
         font-size: 20px;
     }
@@ -47,14 +53,6 @@ FOR PHONES AND TABLETS
 FOR DESKTOP
 */
 @media only screen and (min-width: 769px) {
-
-    .wallet-card-title{
-        font-size: 24px;
-        margin-top: 5px;
-        padding-top: 0px;
-        margin-bottom: 20px;
-        margin-left: 15px;
-    }
 
     .wallet-currency-label{
         font-size: 18px;

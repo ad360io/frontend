@@ -7,6 +7,7 @@ import React from 'react';
 Material UI Components
 */
 import { Card, CardText } from 'material-ui/Card';
+import Divider            from 'material-ui/Divider';
 
 /*
 Image Resources
@@ -27,9 +28,10 @@ import './DashboardWallet.component.css'
  */
 const DashboardWallet = () =>
     <div className="wallet-container">
-        <Card className="wallet-info-card" style={{background:"#fafafa"}}>
+        <Card className="wallet-info-card" style={{background:"#fafafa", marginBottom:"2%"}}>
+            <h2 className="wallet-card-title">Your Balances</h2>
+            <Divider style={{width: '75%', marginBottom:'4%'}}/>
             <CardText>
-            <h3 className="wallet-card-title"> Your Balances </h3>
             <ul>
                 <li>
                     <img className="eqc-icon" src={eqc_icon} alt="eqc-icon"/>

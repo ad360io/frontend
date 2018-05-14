@@ -3,7 +3,8 @@
 }
 
 .stats-container-card > div > div {
-    padding-bottom: 0px !important;
+    padding-bottom: 5px !important;
+    padding-top: 0px !important;
 }
 
 /*
@@ -31,7 +32,8 @@ FOR DESKTOP
 }
 
 .stats-title{
-    padding-top: 15px;
-    padding-left: 10%;
-    margin-bottom: 2%;
+    margin-left: 10%;
+    padding-top: 4%;
+    margin-top: 0px;
+    font-size: 28px;
 }

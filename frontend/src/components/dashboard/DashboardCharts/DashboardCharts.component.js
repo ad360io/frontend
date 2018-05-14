@@ -214,7 +214,7 @@ class DashboardCharts extends Component {
                 })
             }
             {
-                <Card className="dashboard-charts-card" style={{background: '#fafafa'}}>
+                <Card className="dashboard-charts-card doughnut-card" style={{background: '#fafafa'}}>
                   <h2 className="chart-title"> Highest Grossing Contracts </h2> 
                     <Divider style={{width: '75%'}}/>
                     <CardText>

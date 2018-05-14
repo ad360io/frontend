@@ -18,7 +18,7 @@ import Divider          from 'material-ui/Divider';
 /*
 React Bootstrap Components
 */
-import { Col, Row } from 'react-bootstrap';
+import { Col, Row, Grid } from 'react-bootstrap';
 
 /*
 Custom Components
@@ -40,18 +40,23 @@ const Dashboard = () =>
         {/*MuiThemeProvider is solely used and required for Material-UI Card, shall be changed/optimized after*/}
         <MuiThemeProvider>
             <div className="dashboard-theme-supplier">
+            <Grid className="dashboard-grid">
                 <Row>
-                    <Col xs={12} md={2} className="dashboard-left">
-                        <DashboardWallet/>
-                        <StatsProvider />
+                    <Col xs={12} lg={5} sm={8} className="dashboard-left">
+                        <DashboardWallet className="wallet-div"/>
+                        <StatsProvider   className="stats-div"/>
                     </Col>
 
-                    <Col xs={12} md={10} className="dashboard-right">
+                    <Col xs={12} lg={7} sm={4} className="dashboard-right">
                         <ChartsProvider />
                     </Col>
                 </Row>
-                <Divider style={{marginTop: '2%', marginBottom:'2%'}} />
-                <DashboardTables />
+                <Row>
+                    <Col>
+                        <TableProvider xs={12} />
+                    </Col>
+                </Row>
+            </Grid>
             </div>
         </MuiThemeProvider>
         <Footer />
@@ -72,5 +77,10 @@ const ChartsProvider = connect(
     mapStateToProps,
     {}
 )(DashboardCharts)
+
+const TableProvider = connect(
+    mapStateToProps,
+    {}
+)(DashboardTables)
 
 export default Dashboard;

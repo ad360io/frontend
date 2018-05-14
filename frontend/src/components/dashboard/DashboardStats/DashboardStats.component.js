@@ -46,7 +46,7 @@ class DashboardStats extends Component {
     render() {
         return <div className="stats-container">
             <Card className="stats-container-card">
-                <h3 className="stats-title"> Last 24 Hours </h3>
+                <h2 className="stats-title">Last 24 Hours</h2>
                 <CardText>
                 {
                     this.getStatsCardTitles().map((statsTitle, i)=>{
