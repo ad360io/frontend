@@ -88,13 +88,8 @@ class MenuBar extends Component {
                     {/* End of Mode selector*/}
 
                     {/* Start of Sign Out menu*/}
-                    <Nav pullRight stacked className="logout-container">
-                        <NavItem className="user-label" eventKey={0} href="/profile">
-                            <div className="menu-user-action">
-                                <i className="far fa-user"></i>{this.props.profile.name}
-                            </div>
-                        </NavItem>
-                        <NavItem className="logout-label" eventKey={0} onClick={this.handleLogout} href="/">
+                    <Nav pullRight className="logout-container">
+                        <NavItem className="logout-label" onClick={this.handleLogout} href="/">
                             <div className="menu-user-action">
                                 <i className="fas fa-sign-out-alt"></i>Sign Out
                             </div>

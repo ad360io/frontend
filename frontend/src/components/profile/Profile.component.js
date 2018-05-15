@@ -31,10 +31,10 @@ class Profile extends Component {
 
                 <Media style={mediaStyle}>
                     <Media.Left align="middle">
-                    <img src={this.props.profile.avatar_url} style={{marginRight: '3vw'}} alt="user-avatar" />
+                    <img src={this.props.profile.avatar_url} style={{marginRight: '3vw'}} width="120" height="120" alt="user-avatar" />
                     </Media.Left>
                     <Media.Body>
-                    <Media.Heading style={mediaHeadingStyle}>{this.props.profile.name} (@{this.props.profile.nickname})</Media.Heading>
+                    <Media.Heading style={mediaHeadingStyle}>{this.props.profile.nickname}</Media.Heading>
                     Personal Contact:<br /> {this.props.profile.email}
                     </Media.Body>
                 </Media>
