@@ -204,7 +204,7 @@ class DashboardCharts extends Component {
         return <div className="dashboard-charts-container">
             {
                 itemListsForSlider.map((itemList, i)=>{
-                    return <Card key={"itemList"+i} className="dashboard-charts-card" style={{background:'#fafafa'}}>
+                    return <Card key={"itemList"+i} className="dashboard-charts-card">
                                 <h2 className="chart-title"> {this.getLineChartTitle(i)} Performance</h2>
                                 <Divider style={{width: '75%'}}/>
                                 <CardText> 
@@ -214,7 +214,7 @@ class DashboardCharts extends Component {
                 })
             }
             {
-                <Card className="dashboard-charts-card doughnut-card" style={{background: '#fafafa'}}>
+                <Card className="dashboard-charts-card doughnut-card">
                   <h2 className="chart-title"> Highest Grossing Contracts </h2> 
                     <Divider style={{width: '75%'}}/>
                     <CardText>

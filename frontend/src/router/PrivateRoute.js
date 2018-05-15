@@ -34,7 +34,7 @@ const PrivateRoute = ({ component: Component, auth: Auth,...rest }) => (
 const PrivateContent = (props, Component, Auth) => (
     <div>
         <Header auth={Auth}/>
-        <Component {...props} />
+        <Component auth={Auth} {...props} />
     </div>
 );
 

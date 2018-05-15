@@ -28,7 +28,7 @@ const sampleTableContent = () => {
         samples.push(
             (
                 <tr key={'tr'+i}>
-                    <td>someCoolUser456</td>
+                    <td>someCoolUser123</td>
                     <td>2018-05-14</td>
                     <td>2018-11-14</td>
                 </tr>

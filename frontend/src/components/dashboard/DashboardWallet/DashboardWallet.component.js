@@ -28,16 +28,16 @@ import './DashboardWallet.component.css'
  */
 const DashboardWallet = () =>
     <div className="wallet-container">
-        <Card className="wallet-info-card" style={{background:"#fafafa", marginBottom:"2%"}}>
+        <Card className="wallet-info-card" style={{marginBottom:"2%"}}>
             <h2 className="wallet-card-title">Your Balances</h2>
             <Divider style={{width: '75%', marginBottom:'4%'}}/>
             <CardText>
             <ul>
-                <li>
+                <li className="currency-item">
                     <img className="eqc-icon" src={eqc_icon} alt="eqc-icon"/>
                     <span className="wallet-currency-label">0.123455 EQC </span>
                 </li>
-                <li>
+                <li className="currency-item">
                     <img className="xqc-icon" src={xqc_icon} alt="xqc-icon"/>
                     <span className="wallet-currency-label">12345.12 XQC </span>
                 </li>

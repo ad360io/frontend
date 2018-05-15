@@ -5,9 +5,8 @@ import ActiveListing  from './ActiveListing/ActiveListing.component';
 import ActiveContract from './ActiveContract/ActiveContract.component';
 
 import {Card, CardText} from 'material-ui';
-import Divider from 'material-ui/Divider';
 
-import {Row, Col, Tabs, Tab} from 'react-bootstrap';
+import {Tabs, Tab} from 'react-bootstrap';
 
 class DashboardTables extends Component {
     constructor(props){
@@ -33,11 +32,12 @@ class DashboardTables extends Component {
         
                 <Card className="table-card table-left" style={{background: '#fafafa'}}>
                     <h2 className="dashboard-tables-title">Participating Activities</h2>
-                    <Divider style={{width: '75%', float: 'right'}} />
                     <CardText>
                         <Tabs activeKey={this.state.activeTabKey}
                             onSelect={this.handleTabOnSelect}
                             id="dashboard-tables-tabs"
+                            style={{paddingLeft: '5%', paddingRight:'5%'}}
+                            className="table-tabs"
                         >
                             <Tab eventKey={1} title="Active Listing">
                                 <ActiveListing listingType={this.getListingType()} />
