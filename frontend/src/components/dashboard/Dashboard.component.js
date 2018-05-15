@@ -58,7 +58,7 @@ const Dashboard = () =>
 const mapStateToProps = (state) => {
     return {
         modeFilter      : state.MenuBarFilterReducer.modeFilter,
-        currencyFilter  : state.MenuBarFilterReducer.currencyFilter
+        currencyFilter  : state.MenuBarFilterReducer.currencyFilter,
     }
 }
 const StatsProvider = connect(

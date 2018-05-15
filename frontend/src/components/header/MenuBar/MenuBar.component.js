@@ -39,6 +39,13 @@ class MenuBar extends Component {
         logout();
     }
 
+    componentWillMount() {
+        if(this.props.profile.name === 'User Name'){
+            const { dispatchProfile, getAccessToken } = this.props.auth;
+            dispatchProfile(getAccessToken());
+        }
+    }
+
     render() {
 
         return (
@@ -84,7 +91,7 @@ class MenuBar extends Component {
                     <Nav pullRight stacked className="logout-container">
                         <NavItem className="user-label" eventKey={0} href="/profile">
                             <div className="menu-user-action">
-                                <i className="far fa-user"></i>User Name
+                                <i className="far fa-user"></i>{this.props.profile.name}
                             </div>
                         </NavItem>
                         <NavItem className="logout-label" eventKey={0} onClick={this.handleLogout} href="/">

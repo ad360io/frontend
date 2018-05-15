@@ -7,7 +7,8 @@ import { combineReducers } from 'redux';
 Other Reducers
 */
 import MenuBarFilterReducer     from './MenuBarFilterReducer';
-import MarketplaceFilterReducer from './MarketplaceFilterReducer'
+import MarketplaceFilterReducer from './MarketplaceFilterReducer';
+import ProfileReducer           from './ProfileReducer';
 
 
 /**
@@ -16,7 +17,8 @@ import MarketplaceFilterReducer from './MarketplaceFilterReducer'
  */
 const RootReducer = combineReducers({
     MenuBarFilterReducer,
-    MarketplaceFilterReducer
+    MarketplaceFilterReducer,
+    ProfileReducer
 })
 
 
