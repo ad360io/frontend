@@ -2,7 +2,6 @@
 Core Libs
 */
 import React from 'react';
-import { MuiThemeProvider } from 'material-ui';
 
 /*
 Local CSS
@@ -27,13 +26,10 @@ import ConnectedMarketplaceListings from './MarketplaceListings/ConnectedMarketp
  */
 const Marketplace = () =>
     <div>
-        {/*Theme provider is required to use Material UI Components*/}
-        <MuiThemeProvider>
-            <div className="marketplace-container">
-                <ConnectedMarketplaceFilter />
-                <ConnectedMarketplaceListings />
-            </div>
-        </MuiThemeProvider>
+        <div className="marketplace-container">
+            <ConnectedMarketplaceFilter />
+            <ConnectedMarketplaceListings />
+        </div>
     </div>
 
 

@@ -9,6 +9,11 @@ Material UI Components
 import { Card, CardText, CardTitle } from 'material-ui/Card';
 
 /*
+React Bootstrap
+*/
+import { Modal, Button } from 'react-bootstrap';
+
+/*
 Placeholder Images
 */
 import branded_content_ph      from '../../../../assets/images/branded_content_placeholder.png';
@@ -32,7 +37,8 @@ class ListingCard extends Component {
 
         // Using window.innerWidth in state to acheive responsiveness
         this.state = {
-            width: window.innerWidth
+            width: window.innerWidth,
+            modalShow: false,
         }
 
         // Binding functions
@@ -41,6 +47,8 @@ class ListingCard extends Component {
         this.decideMarginLeft = this.decideMarginLeft.bind(this);
         this.decidePlaceholderImage = this.decidePlaceholderImage.bind(this);
         this.decideTitleDisplayText = this.decideTitleDisplayText.bind(this);
+        this.handleHideModal = this.handleHideModal.bind(this);
+        this.handleShowModal = this.handleShowModal.bind(this);
     }
 
     componentDidMount() {
@@ -53,7 +61,15 @@ class ListingCard extends Component {
     }
 
     updateWindowDimensions() {
-        this.setState({ width: window.innerWidth });
+        this.setState({ ...this.state, width: window.innerWidth });
+    }
+
+    handleShowModal(){
+        this.setState({ ...this.state, show: true });
+    }
+
+    handleHideModal(){
+        this.setState({ ...this.state, show: false });
     }
 
     /**
@@ -150,8 +166,28 @@ class ListingCard extends Component {
                 <CardText className="listing-msg">
                     {this.props.listing.msg}
                 </CardText>
-            <div className="btn-contact-action">Contact {this.props.listing.username}</div>
+            <Button bsStyle="primary" className="btn-contact-action" onClick={this.handleShowModal}>Contact {this.props.listing.username}</Button>
             </Card>
+
+            <Modal show={this.state.show} onHide={this.handleHideModal}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Invite to {this.props.listing.name}</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <h3>Why you should get in touch with us?</h3>
+                    <p>{this.props.listing.msg}</p>
+                    <br/>
+                    <h3>Our pricing</h3>
+                    <p>{this.props.listing.pricing+" "+this.props.listing.currency.toUpperCase()}</p>
+                    <br />
+                    <h3>Additional Info</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eget feugiat lacus. In porta diam vitae congue mollis. Aliquam erat volutpat. Phasellus venenatis justo ac quam ultrices, non pulvinar ex mollis. Fusce magna nisl, dignissim nec erat semper, finibus auctor tortor. Pellentesque sed lacus nec sapien finibus porta et vitae tortor. Fusce fermentum mattis purus, eget lacinia nulla porta sed. Praesent mi libero, pellentesque et vehicula eget, pretium in tortor. Donec consectetur, odio eu porttitor ultricies, mi risus blandit enim, ut interdum tellus tortor ut orci. Phasellus ut efficitur elit, at euismod sapien. Fusce nec elementum velit. </p>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button disabled>Send Invite</Button>
+                    <Button onClick={this.handleHideModal}>Close</Button>
+                </Modal.Footer>
+            </Modal>
         </div>
     }
 }

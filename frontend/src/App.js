@@ -7,6 +7,11 @@ import AppRouter from './router/AppRouter';
 import store from './store/index';
 
 /*
+Material-UI Theme
+*/
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
+/*
 Local CSS
 */
 import './App.css';
@@ -14,9 +19,11 @@ import './App.css';
 
 const App = () => (
     <div className="app-container">
-      <Provider store={store}>
-          <AppRouter></AppRouter>
-      </Provider>
+        <Provider store={store}>
+            <MuiThemeProvider>
+                <AppRouter></AppRouter>
+            </MuiThemeProvider>
+        </Provider>
     </div>
 );
 

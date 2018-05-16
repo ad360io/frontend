@@ -13,6 +13,7 @@ Children Components
 */
 import ActiveListing  from './ActiveListing/ActiveListing.component';
 import ActiveContract from './ActiveContract/ActiveContract.component';
+import InviteList     from './InviteList/InviteList.component';
 
 /*
 React Bootstrap
@@ -55,6 +56,10 @@ class ProfileTables extends Component {
 
                 <Tab eventKey={2} title="Active Contracts">
                     <ActiveContract listingType={this.getListingType()} />
+                </Tab>
+
+                <Tab eventKey={3} title="Invites">
+                    <InviteList />
                 </Tab>
             </Tabs>  
         </div>

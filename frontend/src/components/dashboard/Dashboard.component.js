@@ -10,11 +10,6 @@ Local CSS
 import './Dashboard.component.css';
 
 /*
-Material-UI Theme
-*/
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-
-/*
 React Bootstrap Components
 */
 import { Col, Row, Grid } from 'react-bootstrap';
@@ -34,24 +29,18 @@ import DashboardCharts  from './DashboardCharts/DashboardCharts.component';
  */
 const Dashboard = () =>
     <div className="dashboard-container">
+        <Grid className="dashboard-grid">
+            <Row>
+                <Col xs={12} lg={5} sm={8} className="dashboard-left">
+                    <DashboardWallet className="wallet-div"/>
+                    <StatsProvider   className="stats-div"/>
+                </Col>
 
-        {/*MuiThemeProvider is solely used and required for Material-UI Card, shall be changed/optimized after*/}
-        <MuiThemeProvider>
-            <div className="dashboard-theme-supplier">
-            <Grid className="dashboard-grid">
-                <Row>
-                    <Col xs={12} lg={5} sm={8} className="dashboard-left">
-                        <DashboardWallet className="wallet-div"/>
-                        <StatsProvider   className="stats-div"/>
-                    </Col>
-
-                    <Col xs={12} lg={7} sm={4} className="dashboard-right">
-                        <ChartsProvider />
-                    </Col>
-                </Row>
-            </Grid>
-            </div>
-        </MuiThemeProvider>
+                <Col xs={12} lg={7} sm={4} className="dashboard-right">
+                    <ChartsProvider />
+                </Col>
+            </Row>
+        </Grid>
         <Footer />
     </div>
 
