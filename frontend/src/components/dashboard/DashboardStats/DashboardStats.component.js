@@ -33,7 +33,7 @@ class DashboardStats extends Component {
     getStatsCardTitles() {
         return (this.props.modeFilter === 'Advertiser' ?
             ['Impressions', 'Clicks', 'CPM', 'Expenses', 'Balance']:
-            ['Impressions', 'Clicks', "RPM", "Revenue", "Balance"])
+            ['Impressions', 'Clicks', 'RPM', 'Revenue', 'Balance'])
     }
 
     getStatsCardValueByTitle(title) {
@@ -44,15 +44,15 @@ class DashboardStats extends Component {
     }
 
     render() {
-        return <div className="stats-container">
-            <Card className="stats-container-card">
-                <h2 className="stats-title">Last 24 Hours</h2>
+        return <div className='stats-container'>
+            <Card className='stats-container-card'>
+                <h2 className='stats-title'>Last 24 Hours</h2>
                 <CardText>
                 {
                     this.getStatsCardTitles().map((statsTitle, i)=>{
                         return <StatsCard   title={statsTitle}
                                             value={this.getStatsCardValueByTitle(statsTitle)}
-                                            trend={this.getStatsCardValueByTitle(statsTitle+"_trend")}
+                                            trend={this.getStatsCardValueByTitle(statsTitle+'_trend')}
                                             key={this.props.modeFilter+statsTitle} />
                     })
                 }

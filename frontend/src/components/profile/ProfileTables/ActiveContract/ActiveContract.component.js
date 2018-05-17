@@ -8,10 +8,10 @@ import React from 'react';
  * @param {string} listingType passed as props to decide the label
  */
 const ActiveContract = ({listingType}) => (
-    <div className="active-contract-container">
-        <div className="table-responsive" style={{height: '320px', margin:'2%'}}>
-            <table className="table table-bordered mb-0">
-                <thead className="thead-default">
+    <div className='active-contract-container'>
+        <div className='table-responsive' style={{height: '320px', margin:'2%'}}>
+            <table className='table table-bordered mb-0'>
+                <thead className='thead-default'>
                 <tr>
                     <th>User</th>
                     <th>Start Date</th>

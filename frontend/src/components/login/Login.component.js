@@ -21,17 +21,17 @@ class Login extends Component {
 
     render(){
         return (
-            <div className="cover-login">
-                <div id="loginCard" className="card-login text-center">
-                    <img className="logo" src={ qchain_logo } alt="Qchain" width="230px"/>
+            <div className='cover-login'>
+                <div id='loginCard' className='card-login text-center'>
+                    <img className='logo' src={ qchain_logo } alt='Qchain' width='230px'/>
                     <br/><br/>
 
                     <p style={{fontSize: 24+'px'}}>ALPHA <span style={{fontSize: 20+'px'}}>v0.25</span></p>
                     <br/>
 
-                    <a className="btn btn-primary btn-login" id="btn-login" onClick={this.onLoginClickHandler}>LOG IN</a>
+                    <a className='btn btn-primary btn-login' id='btn-login' onClick={this.onLoginClickHandler}>LOG IN</a>
                     <span>&nbsp; &nbsp;</span>
-                    <a className="btn btn-primary btn-signup" id="btn-signup">SIGN UP</a>
+                    <a className='btn btn-primary btn-signup' id='btn-signup'>SIGN UP</a>
                 </div>
             </div>
         );

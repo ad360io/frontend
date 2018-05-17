@@ -16,7 +16,7 @@ const mapDispatchToFilterProps = (dispatch) => {
     return {
         onSliderChange:(event, budgetFilter)=>{
             dispatch({
-                type:"SET_BUDGET_VALUE",
+                type:'SET_BUDGET_VALUE',
                 value: budgetFilter
             })
         },

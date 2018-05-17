@@ -28,15 +28,15 @@ import DashboardCharts  from './DashboardCharts/DashboardCharts.component';
  * ! Caution: when changing css, be aware dashboard-right may overlap to left on screen resize
  */
 const Dashboard = () =>
-    <div className="dashboard-container">
-        <Grid className="dashboard-grid">
+    <div className='dashboard-container'>
+        <Grid className='dashboard-grid'>
             <Row>
-                <Col xs={12} lg={5} sm={8} className="dashboard-left">
-                    <DashboardWallet className="wallet-div"/>
-                    <StatsProvider   className="stats-div"/>
+                <Col xs={12} lg={5} sm={8} className='dashboard-left'>
+                    <DashboardWallet className='wallet-div'/>
+                    <StatsProvider   className='stats-div'/>
                 </Col>
 
-                <Col xs={12} lg={7} sm={4} className="dashboard-right">
+                <Col xs={12} lg={7} sm={4} className='dashboard-right'>
                     <ChartsProvider />
                 </Col>
             </Row>

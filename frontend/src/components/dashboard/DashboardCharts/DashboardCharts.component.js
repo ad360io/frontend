@@ -113,12 +113,12 @@ class DashboardCharts extends Component {
     chooseLineChartDisplayData() {
         if(this.props.modeFilter === 'Advertiser'){
             // Advertiser charts (Clicks, Impressions)
-            return (this.props.currencyFilter === "EQC" ? [this.state.clickDatasetsInEqc, this.state.impressionDatasetsInEqc]
+            return (this.props.currencyFilter === 'EQC' ? [this.state.clickDatasetsInEqc, this.state.impressionDatasetsInEqc]
                         : [this.state.clickDatasetsInXqc, this.state.impressionDatasetsInXqc])
         }else {
             // Publisher charts  (Clicks, Impression, RPM, Revenue)
             // returning empty array at this time to serve as a test case and wait for actual data
-            return (this.props.currencyFilter === "EQC" ? [] : []);
+            return (this.props.currencyFilter === 'EQC' ? [] : []);
         }
     }
 
@@ -196,16 +196,16 @@ class DashboardCharts extends Component {
             let currentDatasetChartList = [];
             datasets.map((dataset, index)=>{
                 let currentDataset = this.prepareDatasetToLineChart(dataset,this.getLineColor(key));
-                return currentDatasetChartList.push(<DashboardLineChart data={currentDataset} key={key+""+index} />);
+                return currentDatasetChartList.push(<DashboardLineChart data={currentDataset} key={key+''+index} />);
             })
             return itemListsForSlider.push(currentDatasetChartList);
         })
 
-        return <div className="dashboard-charts-container">
+        return <div className='dashboard-charts-container'>
             {
                 itemListsForSlider.map((itemList, i)=>{
-                    return <Card key={"itemList"+i} className="dashboard-charts-card">
-                                <h2 className="chart-title"> {this.getLineChartTitle(i)} Performance</h2>
+                    return <Card key={'itemList'+i} className='dashboard-charts-card'>
+                                <h2 className='chart-title'> {this.getLineChartTitle(i)} Performance</h2>
                                 <Divider style={{width: '75%'}}/>
                                 <CardText> 
                                     <LineChartSlider itemList={itemList} />
@@ -214,17 +214,17 @@ class DashboardCharts extends Component {
                 })
             }
             {
-                <Card className="dashboard-charts-card doughnut-card">
-                  <h2 className="chart-title"> Highest Grossing Contracts </h2> 
+                <Card className='dashboard-charts-card doughnut-card'>
+                  <h2 className='chart-title'> Highest Grossing Contracts </h2> 
                     <Divider style={{width: '75%'}}/>
                     <CardText>
-                        <div className="highest-gross-card-left">
+                        <div className='highest-gross-card-left'>
                             <DashboardDoughnut data={this.chooseDoughnutDataset()} />
                         </div>
-                        <div className="highest-gross-card-right">
+                        <div className='highest-gross-card-right'>
                             {/* Build this info dynamically after we are pulling real data*/}
                             The <a><i>Contract Uno</i></a> is the best deal you've done! 
-                            <span className="quick-maf"> 66.6</span>% of your total grossing are generated here!
+                            <span className='quick-maf'> 66.6</span>% of your total grossing are generated here!
                         </div>
                     </CardText>
                 </Card>

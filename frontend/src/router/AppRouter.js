@@ -1,7 +1,7 @@
 /*
 Core Libs
 */
-import { BrowserRouter, Switch, Route }   from "react-router-dom";
+import { BrowserRouter, Switch, Route }   from 'react-router-dom';
 import React                              from 'react';
 
 /*
@@ -45,12 +45,12 @@ const AppRouter = () => (
 
       <BrowserRouter>
         <Switch>    
-            <Route exact path="/" render={(props)=><Login auth={auth} {...props}/>} />
-            <PrivateRoute exact path="/dashboard"      component={ Dashboard }         auth={auth} />
-            <PrivateRoute exact path="/marketplace"    component={ Marketplace }       auth={auth} />
-            <PrivateRoute exact path="/create"         component={ CreateListing }     auth={auth} />
-            <PrivateRoute exact path="/profile"        component={ ConnectedProfile }  auth={auth} />
-            <Route path="/auth-callback" render={ (props) => {
+            <Route exact path='/' render={(props)=><Login auth={auth} {...props}/>} />
+            <PrivateRoute exact path='/dashboard'      component={ Dashboard }         auth={auth} />
+            <PrivateRoute exact path='/marketplace'    component={ Marketplace }       auth={auth} />
+            <PrivateRoute exact path='/create'         component={ CreateListing }     auth={auth} />
+            <PrivateRoute exact path='/profile'        component={ ConnectedProfile }  auth={auth} />
+            <Route path='/auth-callback' render={ (props) => {
                 handleAuthentication(props,null, props.history);
                 return <AuthCallback auth={auth} {...props} /> 
             }}/>

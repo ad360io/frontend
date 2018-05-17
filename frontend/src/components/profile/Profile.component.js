@@ -26,12 +26,12 @@ import Footer          from '../footer/Footer.component';
 class Profile extends Component {
 
     render() {
-        return <div className="profile-container">
-            <div className="profile-header">
+        return <div className='profile-container'>
+            <div className='profile-header'>
 
                 <Media style={mediaStyle}>
-                    <Media.Left align="middle">
-                    <img src={this.props.profile.avatar_url} style={{marginRight: '3vw'}} width="120" height="120" alt="user-avatar" />
+                    <Media.Left align='middle'>
+                    <img src={this.props.profile.avatar_url} style={{marginRight: '3vw'}} width='120' height='120' alt='user-avatar' />
                     </Media.Left>
                     <Media.Body>
                     <Media.Heading style={mediaHeadingStyle}>{this.props.profile.nickname}</Media.Heading>
@@ -53,7 +53,7 @@ const mediaStyle = {
 
 const mediaHeadingStyle = {
     marginBottom: '15px',
-    fontSize:"2em",
+    fontSize:'2em',
     marginTop: '25px',
 }
 

@@ -1,13 +1,13 @@
 /*
 Core Libs
 */
-import React from "react";
+import React from 'react';
 import PropTypes from 'prop-types';
 
 /*
 Slick.js Component
 */
-import Slider from "react-slick";
+import Slider from 'react-slick';
 
 /*
 Local CSS

@@ -55,9 +55,9 @@ class MarketplaceFilter extends Component {
     }
 
     render() {
-        return <div className="marketplace-filter-container" >
+        return <div className='marketplace-filter-container' >
             <Button 
-                className="btn-open-filter-drawer"
+                className='btn-open-filter-drawer'
                 style={{display: this.decide_BtnOpenFilterDrawer_Display()}}
                 onClick={()=>this.props.openDrawer()}
             > 
@@ -78,19 +78,19 @@ class MarketplaceFilter extends Component {
                     display: 'inline-block',
                 }} zDepth={0}/>
 
-                <div className="ad-genre-container">
-                    <h4 className="filter-title">Ad Genre</h4>
+                <div className='ad-genre-container'>
+                    <h4 className='filter-title'>Ad Genre</h4>
                     <Button 
-                        className="btn-single"
+                        className='btn-single'
                         onClick={()=>{this.props.onAdGenreClick('Show All')}}
                         active={this.props.adGenreFilter === 'Show All'}
                     >
                         Show All
                     </Button>
                     <SplitButton 
-                        className="btn-ad-genre" 
-                        title="Branded Content" 
-                        id="branded-content-menu" 
+                        className='btn-ad-genre' 
+                        title='Branded Content' 
+                        id='branded-content-menu' 
                         pullRight
                         onClick={()=>this.props.onAdGenreClick('Branded Content')}
                         active={this.props.adGenreFilter === 'Branded Content'}
@@ -100,9 +100,9 @@ class MarketplaceFilter extends Component {
                         <MenuItem >Video</MenuItem>
                     </SplitButton>
                     <SplitButton 
-                        className="btn-ad-genre" 
-                        title="Influencer Post" 
-                        id="influencer-post-menu" 
+                        className='btn-ad-genre' 
+                        title='Influencer Post' 
+                        id='influencer-post-menu' 
                         pullRight
                         onClick={()=>this.props.onAdGenreClick('Influencer Post')}
                         active={this.props.adGenreFilter === 'Influencer Post'}
@@ -116,7 +116,7 @@ class MarketplaceFilter extends Component {
                         <MenuItem >NicoNico</MenuItem>
                     </SplitButton>
                     <Button 
-                        className="btn-single"
+                        className='btn-single'
                         onClick={()=>this.props.onAdGenreClick('Sponsorship')}
                         active={this.props.adGenreFilter === 'Sponsorship'}
                     >
@@ -126,9 +126,9 @@ class MarketplaceFilter extends Component {
 
                 <Divider/>
 
-                <div className="range-selector">
-                    <h4 className="filter-title">Max Budget: {this.props.budgetFilter} k {this.props.currency}</h4>
-                    <Slider className="range-slider"
+                <div className='range-selector'>
+                    <h4 className='filter-title'>Max Budget: {this.props.budgetFilter} k {this.props.currency}</h4>
+                    <Slider className='range-slider'
                         onChange={this.props.onSliderChange}
                         value={this.props.budgetFilter}
                         min={0}

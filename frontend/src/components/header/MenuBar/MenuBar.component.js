@@ -50,48 +50,48 @@ class MenuBar extends Component {
 
         return (
             <div>
-            <Navbar collapseOnSelect fixedTop className="menu-container">
+            <Navbar collapseOnSelect fixedTop className='menu-container'>
 
                 {/*Start of Logo section */}
-                <Navbar.Header className="menu-header">
+                <Navbar.Header className='menu-header'>
                     <Navbar.Brand>
-                        <a href="/dashboard" className="logo-redirect"><img src={qchain_logo} className="logo_img" alt="logo"/></a>
+                        <a href='/dashboard' className='logo-redirect'><img src={qchain_logo} className='logo_img' alt='logo'/></a>
                     </Navbar.Brand>
-                    <Navbar.Toggle className="burger-button"/>
+                    <Navbar.Toggle className='burger-button'/>
                 </Navbar.Header>
                 {/* End of Logo section */}
 
                 <Navbar.Collapse> {/* Any children inside Collapse will be stored in hamburger menu on small screen */}
 
                     {/* Start of Currency selector */}
-                    <ButtonGroup bsSize="large" className="currency-selector">
+                    <ButtonGroup bsSize='large' className='currency-selector'>
                         <Button 
                             active={this.props.currencyFilter === 'EQC'} 
                             onClick={()=>this.props.onCurrencyClick('EQC')}
                         >
-                            <img src={eth_logo} className="currency-logo" alt="eth-logo"/>EQC
+                            <img src={eth_logo} className='currency-logo' alt='eth-logo'/>EQC
                         </Button>
                         <Button 
                             active={this.props.currencyFilter === 'XQC'} 
                             onClick={()=>this.props.onCurrencyClick('XQC')}
                         >
-                            <img src={nem_logo} className="currency-logo" alt="nem-logo"/>XQC
+                            <img src={nem_logo} className='currency-logo' alt='nem-logo'/>XQC
                         </Button>
                     </ButtonGroup>
                     {/* End of Currency selector */}
 
                     {/* Start of Mode selector */}
-                    <DropdownButton id="mode-selector" bsSize="large" className="mode-selector" title={this.props.modeFilter}>
+                    <DropdownButton id='mode-selector' bsSize='large' className='mode-selector' title={this.props.modeFilter}>
                         <MenuItem onClick={()=>this.props.onModeClick('Advertiser')}>Advertiser</MenuItem>
                         <MenuItem onClick={()=>this.props.onModeClick('Publisher')}>Publisher</MenuItem>
                     </DropdownButton>
                     {/* End of Mode selector */}
 
                     {/* Start of Sign Out menu */}
-                    <Nav pullRight className="logout-container">
-                        <NavItem className="logout-label" onClick={this.handleLogout} href="/">
-                            <div className="menu-user-action">
-                                <i className="fas fa-sign-out-alt"></i>Sign Out
+                    <Nav pullRight className='logout-container'>
+                        <NavItem className='logout-label' onClick={this.handleLogout} href='/'>
+                            <div className='menu-user-action'>
+                                <i className='fas fa-sign-out-alt'></i>Sign Out
                             </div>
                         </NavItem>
                     </Nav>

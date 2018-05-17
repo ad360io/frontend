@@ -18,7 +18,7 @@ import './App.css';
 
 
 const App = () => (
-    <div className="app-container">
+    <div className='app-container'>
         <Provider store={store}>
             {/* MuiThemeProvider is required to use Material UI components */}
             <MuiThemeProvider>

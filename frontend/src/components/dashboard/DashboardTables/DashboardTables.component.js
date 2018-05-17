@@ -28,22 +28,22 @@ class DashboardTables extends Component {
     }
 
     render(){
-        return <div className="dashboard-tables-container">
+        return <div className='dashboard-tables-container'>
         
-                <Card className="table-card table-left" style={{background: '#fafafa'}}>
-                    <h2 className="dashboard-tables-title">Participating Activities</h2>
+                <Card className='table-card table-left' style={{background: '#fafafa'}}>
+                    <h2 className='dashboard-tables-title'>Participating Activities</h2>
                     <CardText>
                         <Tabs activeKey={this.state.activeTabKey}
                             onSelect={this.handleTabOnSelect}
-                            id="dashboard-tables-tabs"
+                            id='dashboard-tables-tabs'
                             style={{paddingLeft: '5%', paddingRight:'5%'}}
-                            className="table-tabs"
+                            className='table-tabs'
                         >
-                            <Tab eventKey={1} title="Active Listing">
+                            <Tab eventKey={1} title='Active Listing'>
                                 <ActiveListing listingType={this.getListingType()} />
                             </Tab>
 
-                            <Tab eventKey={2} title="Active Contracts">
+                            <Tab eventKey={2} title='Active Contracts'>
                                 <ActiveContract listingType={this.getListingType()} />
                             </Tab>
                         </Tabs>

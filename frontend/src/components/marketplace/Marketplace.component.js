@@ -26,7 +26,7 @@ import ConnectedMarketplaceListings from './MarketplaceListings/ConnectedMarketp
  */
 const Marketplace = () => (
     <div>
-        <div className="marketplace-container">
+        <div className='marketplace-container'>
             <ConnectedMarketplaceFilter />
             <ConnectedMarketplaceListings />
         </div>

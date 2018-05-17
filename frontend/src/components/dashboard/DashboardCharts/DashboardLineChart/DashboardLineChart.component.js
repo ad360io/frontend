@@ -15,7 +15,7 @@ import { Line } from 'react-chartjs-2';
  * Requires a props of data (Number array) to be graphed
  */
 const DashboardLineChart = ({data}) =>
-    <div className="dashboard-line-chart-container">
+    <div className='dashboard-line-chart-container'>
         <Line   data={data}
                 height={200}
                 options={{

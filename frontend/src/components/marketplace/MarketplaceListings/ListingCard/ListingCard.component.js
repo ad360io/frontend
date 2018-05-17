@@ -152,21 +152,21 @@ class ListingCard extends Component {
 
     render() {
         return <div>
-            <Card className="listing-card-container" 
+            <Card className='listing-card-container' 
                 style={{ 
                     width: this.decideCardWidth(),
                     marginLeft: this.decideMarginLeft(),
                 }
             }>
-                <div className="poster-tag">{this.props.listing.username} </div>
-                <div className="price-tag">{this.props.listing.pricing+" "+this.props.listing.currency}</div>
+                <div className='poster-tag'>{this.props.listing.username} </div>
+                <div className='price-tag'>{this.props.listing.pricing+' '+this.props.listing.currency}</div>
 
-                <CardTitle title={this.decideTitleDisplayText()} subtitle={"Posted on: "+this.props.listing.ask_date_from} />
-                <img src={this.decidePlaceholderImage()} className="listing-img" alt="listing-img"/>
-                <CardText className="listing-msg">
+                <CardTitle title={this.decideTitleDisplayText()} subtitle={'Posted on: '+this.props.listing.ask_date_from} />
+                <img src={this.decidePlaceholderImage()} className='listing-img' alt='listing-img'/>
+                <CardText className='listing-msg'>
                     {this.props.listing.msg}
                 </CardText>
-                <Button bsStyle="primary" className="btn-contact-action" onClick={this.handleShowModal}>Contact {this.props.listing.username}</Button>
+                <Button bsStyle='primary' className='btn-contact-action' onClick={this.handleShowModal}>Contact {this.props.listing.username}</Button>
             </Card>
 
             <Modal show={this.state.show} onHide={this.handleHideModal}>
@@ -178,7 +178,7 @@ class ListingCard extends Component {
                     <p>{this.props.listing.msg}</p>
                     <br/>
                     <h3>Our pricing</h3>
-                    <p>{this.props.listing.pricing+" "+this.props.listing.currency.toUpperCase()}</p>
+                    <p>{this.props.listing.pricing+' '+this.props.listing.currency.toUpperCase()}</p>
                     <br />
                     <h3>Additional Info</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eget feugiat lacus. In porta diam vitae congue mollis. Aliquam erat volutpat. Phasellus venenatis justo ac quam ultrices, non pulvinar ex mollis. Fusce magna nisl, dignissim nec erat semper, finibus auctor tortor. Pellentesque sed lacus nec sapien finibus porta et vitae tortor. Fusce fermentum mattis purus, eget lacinia nulla porta sed. Praesent mi libero, pellentesque et vehicula eget, pretium in tortor. Donec consectetur, odio eu porttitor ultricies, mi risus blandit enim, ut interdum tellus tortor ut orci. Phasellus ut efficitur elit, at euismod sapien. Fusce nec elementum velit. </p>

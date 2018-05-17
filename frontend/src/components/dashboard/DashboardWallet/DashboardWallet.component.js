@@ -27,19 +27,19 @@ import './DashboardWallet.component.css'
  *              - Pull data on componentsWillMount
  */
 const DashboardWallet = () =>
-    <div className="wallet-container">
-        <Card className="wallet-info-card" style={{marginBottom:"2%"}}>
-            <h2 className="wallet-card-title">Your Balances</h2>
+    <div className='wallet-container'>
+        <Card className='wallet-info-card' style={{marginBottom:'2%'}}>
+            <h2 className='wallet-card-title'>Your Balances</h2>
             <Divider style={{width: '75%', marginBottom:'4%'}}/>
             <CardText>
             <ul>
-                <li className="currency-item">
-                    <img className="eqc-icon" src={eqc_icon} alt="eqc-icon"/>
-                    <span className="wallet-currency-label">0.123455 EQC </span>
+                <li className='currency-item'>
+                    <img className='eqc-icon' src={eqc_icon} alt='eqc-icon'/>
+                    <span className='wallet-currency-label'>0.123455 EQC </span>
                 </li>
-                <li className="currency-item">
-                    <img className="xqc-icon" src={xqc_icon} alt="xqc-icon"/>
-                    <span className="wallet-currency-label">12345.12 XQC </span>
+                <li className='currency-item'>
+                    <img className='xqc-icon' src={xqc_icon} alt='xqc-icon'/>
+                    <span className='wallet-currency-label'>12345.12 XQC </span>
                 </li>
             </ul>
             </CardText>

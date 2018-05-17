@@ -27,35 +27,35 @@ class StatsCard extends Component {
     getTrendingHrStyle(){
         let trendInNumber = Number.parseInt(this.props.trend, 10);
         if(trendInNumber > 0) {
-            return "green-hr";
+            return 'green-hr';
         }else if(trendInNumber < 0) {
-            return "red-hr";
+            return 'red-hr';
         }else {
-            return "neutral-hr";
+            return 'neutral-hr';
         }
     }
 
     getTrendingLabelStyle(){
         let trendInNumber = Number.parseInt(this.props.trend, 10);
         if(trendInNumber > 0) {
-            return "green-label";
+            return 'green-label';
         }else if(trendInNumber < 0) {
-            return "red-label";
+            return 'red-label';
         }else {
-            return "";
+            return '';
         }
     }
 
     render() {
-        return <div className="stats-card-container">
-            <Card className="stats-card">
+        return <div className='stats-card-container'>
+            <Card className='stats-card'>
                 <CardText>
                     <div>
-                        <span className="stats-card-title"> { this.props.title } </span>
-                        <span className={this.getTrendingLabelStyle()+" stats-card-trend"}> { this.props.trend } </span>
+                        <span className='stats-card-title'> { this.props.title } </span>
+                        <span className={this.getTrendingLabelStyle()+' stats-card-trend'}> { this.props.trend } </span>
                     </div>
                     <hr className={this.getTrendingHrStyle()} />
-                    <span className="stats-card-value"> { this.props.value } </span>
+                    <span className='stats-card-value'> { this.props.value } </span>
                 </CardText>
             </Card>
         </div>

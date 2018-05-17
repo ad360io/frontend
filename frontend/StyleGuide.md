@@ -12,8 +12,8 @@ for maintainablity and readability.
 - JSON properties, state properties should be camelCased (Example. `{ someValue: 'some value'}`).
 ## Spacing
 - Use 4 spaces as indentation instead of hard tabs.
-- Insert 2 line breaks after import statements.
-- Insert 2 line breaks before export statements.
+- Insert 2 line breaks after the last import statement to separate from the main logic.
+- Insert 2 line breaks before the first export statement to separate from the main logic.
 - Group import components by its usage logics.
 - Use single quotation first. 
 - Modules called by using curly braces should be spaced (Example. `{ SomeComponent }`).

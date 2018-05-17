@@ -26,12 +26,12 @@ const DefaultRoute = ({ component: Component, auth: Auth, ...rest }) => (
 
 const unauthenticatedDefaultComponent = (props, Component) => {
   if(props.location.pathname === '/') return <Component {...props} /> 
-  else return <Redirect to={{pathname:"/"}} /> 
+  else return <Redirect to={{pathname:'/'}} /> 
 }
 
 const authenticatedDefaultComponent = (props, Component) => {
   if(props.location.pathname === '/dashboard') return <Component {...props} />
-  else return <Redirect to={{pathname:"/dashboard"}} />
+  else return <Redirect to={{pathname:'/dashboard'}} />
 }
 
 

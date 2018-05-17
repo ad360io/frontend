@@ -70,14 +70,14 @@ class MarketplaceListings extends Component {
     decideTitle(listingSize){
         const listingType = (this.props.modeFilter === 'Advertiser' ? 'Adspaces' : 'Ads');
         const isEmpty = (listingSize > 0 ? '' : 'No ' )
-        return isEmpty + listingType + " Available";
+        return isEmpty + listingType + ' Available';
     }
 
     render() {
         const displayData = this.filterDataWithProps(this.decideDataToDisplay());
         
-        return <div className="marketplace-listings-container">
-            <h2 className="marketplace-title">{this.decideTitle(displayData.length)}</h2>
+        return <div className='marketplace-listings-container'>
+            <h2 className='marketplace-title'>{this.decideTitle(displayData.length)}</h2>
             {
                 displayData.map((listing, i)=>{
                     return <ListingCard key={'listingCard'+i} listing={listing}/>

@@ -41,24 +41,24 @@ class ProfileTables extends Component {
     }
 
     render(){
-        return <div className="dashboard-tables-container">    
-            <h2 className="dashboard-tables-title">Participating Activities</h2>
+        return <div className='dashboard-tables-container'>    
+            <h2 className='dashboard-tables-title'>Participating Activities</h2>
                 <Tabs activeKey={this.state.activeTabKey}
                     onSelect={this.handleTabOnSelect}
-                    id="dashboard-tables-tabs"
+                    id='dashboard-tables-tabs'
                     style={{paddingLeft: '10%', paddingRight:'10%'}}
-                    className="table-tabs"
+                    className='table-tabs'
                 >
                 
-                <Tab eventKey={1} title="Active Listing">
+                <Tab eventKey={1} title='Active Listing'>
                     <ActiveListing listingType={this.getListingType()} />
                 </Tab>
 
-                <Tab eventKey={2} title="Active Contracts">
+                <Tab eventKey={2} title='Active Contracts'>
                     <ActiveContract listingType={this.getListingType()} />
                 </Tab>
 
-                <Tab eventKey={3} title="Invites">
+                <Tab eventKey={3} title='Invites'>
                     <InviteList />
                 </Tab>
             </Tabs>  
