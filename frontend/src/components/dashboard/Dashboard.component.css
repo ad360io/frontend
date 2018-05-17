@@ -1,3 +1,9 @@
+.dashboard-container {
+    animation-name: fade-in;
+    animation-duration: 0.8s;
+    animation-fill-mode: forwards;
+}
+
 .dashboard-grid {
     width: 100vw;
     padding-top: 130px;

@@ -8,9 +8,14 @@ Material UI Components
 */
 import CircularProgress from 'material-ui/CircularProgress';
 
+/*
+Local CSS
+*/
+import './AuthCallback.css';
+
 
 const AuthCallback = () => (
-    <div style={{height: '100vh', textAlign:'center'}}> 
+    <div className="auth-callback-container"> 
         <CircularProgress size={60} thickness={7} style={{margin: 'auto'}} />
     </div>
 ) 

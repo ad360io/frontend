@@ -8,4 +8,7 @@
 
 .profile-container {
     margin-top: 400px;
+    animation-name: fade-in;
+    animation-duration: 0.8s;
+    animation-fill-mode: forwards;
 }

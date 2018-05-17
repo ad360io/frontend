@@ -28,7 +28,7 @@
 .menu-container {
     z-index: 6;
     animation-name: slide-in-menu;
-    animation-duration: 1s;
+    animation-duration: 0.7s;
     animation-fill-mode: forwards;
     padding: 0;
     background-color: purple;
