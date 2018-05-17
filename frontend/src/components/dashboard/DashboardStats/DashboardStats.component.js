@@ -32,8 +32,8 @@ class DashboardStats extends Component {
 
     getStatsCardTitles() {
         return (this.props.modeFilter === 'Advertiser' ?
-            ['Impressions', 'Clicks', 'CPM', 'Expenses', 'Balance']:
-            ['Impressions', 'Clicks', 'RPM', 'Revenue', 'Balance'])
+            ['Impressions', 'Expenses', 'Balance']:
+            ['Impressions', 'Revenue' , 'Balance'])
     }
 
     getStatsCardValueByTitle(title) {

@@ -26,7 +26,7 @@ class CreateListingForm extends Component {
     }
 
     decideTitle(){
-        return (this.props.modeFilter === 'Advertiser' ? 'Ad' : 'Adspace')
+        return (this.props.modeFilter === 'Advertiser' ? 'Content' : 'Content Space')
     }
 
     handleOnGenreChange(event){

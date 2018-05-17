@@ -84,7 +84,7 @@ class DashboardCharts extends Component {
             labels : this.prepareLineChartXaxisLabels(dataset),
             datasets: [
               {
-                label: 'Some Ad names maybe',
+                label: 'Some Content names maybe',
                 fill: false,
                 lineTension: 0.1,
                 backgroundColor: rbgaString,
@@ -143,22 +143,18 @@ class DashboardCharts extends Component {
         if(this.props.modeFilter === 'Advertiser'){         // Advertiser
             switch (k){
                 case 0:
-                    return 'Ad Clicks';
+                    return 'Content Impression';
                 case 1:
-                    return 'Ad Impressions'
+                    return 'Content Measureable';
                 default:
                     return null;
             }
         }else {                                             // Publisher
             switch (k) {
                 case 0:
-                    return 'Adspace Clicks';
+                    return 'Content Space Revenue';
                 case 1:
-                    return 'Adspace Impressions';
-                case 2:
-                    return 'Adspace Revenue';
-                case 3:
-                    return 'Adspace RPM';
+                    return 'Content Space Impressions';
                 default:
                     return null;
             }
