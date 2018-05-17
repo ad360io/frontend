@@ -21,11 +21,11 @@ i {
     margin-left: 10px;
 }
 
-.selected-nav-item{
+.selected-nav-item {
     color: #4b80c0;
 }
 
-.in-app-nav-item:hover, .in-app-nav-item:focus{
+.in-app-nav-item:hover, .in-app-nav-item:focus {
     color: #4b80c0;
 }
 

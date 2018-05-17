@@ -43,6 +43,7 @@ class Profile extends Component {
             <Footer />
         </div>
     }
+    
 } 
 
 const mediaStyle = {

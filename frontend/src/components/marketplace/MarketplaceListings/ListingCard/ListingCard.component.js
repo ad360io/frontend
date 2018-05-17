@@ -166,7 +166,7 @@ class ListingCard extends Component {
                 <CardText className="listing-msg">
                     {this.props.listing.msg}
                 </CardText>
-            <Button bsStyle="primary" className="btn-contact-action" onClick={this.handleShowModal}>Contact {this.props.listing.username}</Button>
+                <Button bsStyle="primary" className="btn-contact-action" onClick={this.handleShowModal}>Contact {this.props.listing.username}</Button>
             </Card>
 
             <Modal show={this.state.show} onHide={this.handleHideModal}>

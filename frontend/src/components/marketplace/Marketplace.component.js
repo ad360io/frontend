@@ -24,13 +24,14 @@ import ConnectedMarketplaceListings from './MarketplaceListings/ConnectedMarketp
  *                       * Dynamic loading the listing (automate pagination)
  *                       * Implement contact user
  */
-const Marketplace = () =>
+const Marketplace = () => (
     <div>
         <div className="marketplace-container">
             <ConnectedMarketplaceFilter />
             <ConnectedMarketplaceListings />
         </div>
     </div>
+)
 
 
 export default Marketplace;

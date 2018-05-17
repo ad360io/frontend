@@ -14,9 +14,10 @@ import ConnectedCreateListingForm from './CreateListingForm/ConnectedCreateListi
 /**
  * Create Listing Component
  */
-const CreateListing = () =>
+const CreateListing = () => (
     <div className="create-container">
         <ConnectedCreateListingForm />
     </div>
+)
 
 export default CreateListing;

@@ -18,7 +18,7 @@ import InviteList     from './InviteList/InviteList.component';
 /*
 React Bootstrap
 */
-import { Tabs, Tab } from 'react-bootstrap';
+import { Tabs, Tab }  from 'react-bootstrap';
 
 
 class ProfileTables extends Component {

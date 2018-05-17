@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import MenuBar     from './MenuBar.component';
 
+
 const mapStateToProps = (state) => {
     return {
         modeFilter    : state.MenuBarFilterReducer.modeFilter,
@@ -8,6 +9,7 @@ const mapStateToProps = (state) => {
         profile       : state.ProfileReducer.profile
     }
 }
+
 const mapDispatchToProps = (dispatch) => {
     return {
         onModeClick: (mode)=>{

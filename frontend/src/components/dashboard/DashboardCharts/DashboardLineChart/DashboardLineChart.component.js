@@ -5,11 +5,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 /*
-Local CSS
-*/
-import './DashboardLineChart.component.css';
-
-/*
 Chart.js Components
 */
 import { Line } from 'react-chartjs-2';

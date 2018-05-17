@@ -6,8 +6,8 @@ const defaultState = {
 
 /**
  * Example to build a simple reducer.
- * @param {*} state   Current state fetched from the store.
- * @param {*} action  String or Enumerators to represent the desired operations.
+ * @param { Object } state   Current state fetched from the store.
+ * @param { Object } action  String or Enumerators to represent the desired operations.
  */
 const FilterReducer = (state=defaultState, action) => {
     

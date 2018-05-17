@@ -75,6 +75,7 @@ class MarketplaceListings extends Component {
 
     render() {
         const displayData = this.filterDataWithProps(this.decideDataToDisplay());
+        
         return <div className="marketplace-listings-container">
             <h2 className="marketplace-title">{this.decideTitle(displayData.length)}</h2>
             {
@@ -83,7 +84,6 @@ class MarketplaceListings extends Component {
                 })
             }
         </div>
-        
     }
 }
 

@@ -1,6 +1,7 @@
 import { connect }       from 'react-redux';
 import MarketplaceFilter from './MarketplaceFilter.component'
 
+
 const mapStateToFilterProps = (state) => {
     return {
         budgetFilter : state.MarketplaceFilterReducer.budgetFilter,

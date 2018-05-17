@@ -7,6 +7,7 @@ import Paper from 'material-ui/Paper';
 import Divider from 'material-ui/Divider'
 import Slider from 'material-ui/Slider'
 import Drawer from 'material-ui/Drawer'
+
 /*
 Local CSS
 */
@@ -14,7 +15,7 @@ import './MarketplaceFilter.component.css'
 
 
 /**
- * 
+ * MarketplaceFilter Component
  */
 class MarketplaceFilter extends Component {
 
@@ -138,7 +139,6 @@ class MarketplaceFilter extends Component {
         </div>        
     }
 }
-
 
 
 export default (MarketplaceFilter);

@@ -52,16 +52,16 @@ class MenuBar extends Component {
             <div>
             <Navbar collapseOnSelect fixedTop className="menu-container">
 
-                {/*Start of Logo section*/}
+                {/*Start of Logo section */}
                 <Navbar.Header className="menu-header">
                     <Navbar.Brand>
                         <a href="/dashboard" className="logo-redirect"><img src={qchain_logo} className="logo_img" alt="logo"/></a>
                     </Navbar.Brand>
                     <Navbar.Toggle className="burger-button"/>
                 </Navbar.Header>
-                {/* End of Logo section*/}
+                {/* End of Logo section */}
 
-                <Navbar.Collapse> {/* Any children inside Collapse will be stored in hamburger menu on small screen*/}
+                <Navbar.Collapse> {/* Any children inside Collapse will be stored in hamburger menu on small screen */}
 
                     {/* Start of Currency selector */}
                     <ButtonGroup bsSize="large" className="currency-selector">
@@ -85,9 +85,9 @@ class MenuBar extends Component {
                         <MenuItem onClick={()=>this.props.onModeClick('Advertiser')}>Advertiser</MenuItem>
                         <MenuItem onClick={()=>this.props.onModeClick('Publisher')}>Publisher</MenuItem>
                     </DropdownButton>
-                    {/* End of Mode selector*/}
+                    {/* End of Mode selector */}
 
-                    {/* Start of Sign Out menu*/}
+                    {/* Start of Sign Out menu */}
                     <Nav pullRight className="logout-container">
                         <NavItem className="logout-label" onClick={this.handleLogout} href="/">
                             <div className="menu-user-action">

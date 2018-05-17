@@ -1,5 +1,12 @@
+/*
+Core Libs
+*/
 import React from 'react';
 
+/**
+ * ActiveListing Component
+ * @param {string} listingType passed by props to decide label  
+ */
 const ActiveListing = ({listingType}) => (
     <div className="active-listing-container">
         <div className="table-responsive" style={{height: '320px', margin:"2%"}}>
@@ -22,6 +29,9 @@ const ActiveListing = ({listingType}) => (
     </div>
 )
 
+/**
+ * Dynamically generate dummy data.
+ */
 const sampleTableContent = () => {
     let samples = [];
     for(let i = 0; i < 40; i++){
@@ -44,5 +54,6 @@ const sampleTableContent = () => {
         }
         </tbody>
 }
+
 
 export default ActiveListing;

@@ -14,7 +14,7 @@ import './InAppNavBar.component.css';
  * Navigation bar that is directly under MenuBar component
  * Main purpose is to navigate between main components
  */
-const InAppNavBar = () =>
+const InAppNavBar = () => (
     <div className="navbar-container">
         <NavLink activeClassName="selected-nav-item" className="in-app-nav-item noselect" to="/dashboard">
             <i className="fas fa-home fa-lg"></i>
@@ -36,6 +36,7 @@ const InAppNavBar = () =>
             <span className="nav-label">Profile</span>
         </NavLink>
     </div>
+)
 
 
 export default InAppNavBar;

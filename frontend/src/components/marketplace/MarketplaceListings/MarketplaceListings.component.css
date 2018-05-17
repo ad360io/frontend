@@ -1,3 +1,12 @@
+.marketplace-listings-container {
+    margin-left: 0px;   /* Drawer gets closed and docked on small screen */
+}
+
+.marketplace-title {
+    text-align: center;
+    padding-top: 2%;
+    margin-bottom: 2%;
+}
 
 /*
 FOR MEDIUM TO BIG SCREEN
@@ -6,19 +15,4 @@ FOR MEDIUM TO BIG SCREEN
    .marketplace-listings-container {
        margin-left: 300px;  /* Drawer is always open on medium to big screen*/
    }    
-}
-
-/*
-FOR SMALL SIZE SCREENS
-*/
-@media only screen and (max-width: 768px){
-    .marketplace-listings-container {
-        margin-left: 0px;   /* Drawer gets closed and docked on small screen */
-    }
-}
-
-.marketplace-title {
-    text-align: center;
-    padding-top: 2%;
-    margin-bottom: 2%;
 }

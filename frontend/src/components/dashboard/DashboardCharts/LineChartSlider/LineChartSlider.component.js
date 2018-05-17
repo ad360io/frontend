@@ -45,4 +45,5 @@ LineChartSlider.propTypes = {
     itemList: PropTypes.array.isRequired
 };
 
+
 export default LineChartSlider;

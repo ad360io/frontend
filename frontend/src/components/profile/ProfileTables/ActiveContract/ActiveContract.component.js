@@ -1,5 +1,12 @@
+/*
+Core Libs
+*/
 import React from 'react';
 
+/**
+ * Active Contract Component
+ * @param {string} listingType passed as props to decide the label
+ */
 const ActiveContract = ({listingType}) => (
     <div className="active-contract-container">
         <div className="table-responsive" style={{height: '320px', margin:'2%'}}>
@@ -22,6 +29,9 @@ const ActiveContract = ({listingType}) => (
     </div>
 )
 
+/**
+ * Dynamically generate dummy data
+ */
 const sampleTableContent = () => {
     let samples = [];
     for(let i = 0; i < 6; i++){
@@ -44,5 +54,6 @@ const sampleTableContent = () => {
         }
         </tbody>
 }
+
 
 export default ActiveContract;

@@ -9,6 +9,7 @@ Other Components
 */
 import Header from '../components/header/Header.component';
 
+
 /**
  * Requesting a Private Route will...
  * First check if user is authenticated,
@@ -16,12 +17,13 @@ import Header from '../components/header/Header.component';
  */
 const PrivateRoute = ({ component: Component, auth: Auth,...rest }) => (
     <Route
-      {...rest}
-      render={props => {
-          const { isAuthenticated } = Auth;
-          return isAuthenticated() ? PrivateContent(props, Component, Auth): 
-            <Redirect to={{pathname: '/'}}/>
-          }}
+        {...rest}
+        render={props => {
+            const { isAuthenticated } = Auth;
+            return isAuthenticated() ? 
+                        PrivateContent(props, Component, Auth): 
+                        <Redirect to={{pathname: '/'}}/>
+        }}
     />
 );
 

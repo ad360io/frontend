@@ -22,6 +22,10 @@ import AuthCallback      from '../components/auth-callback/AuthCallback';
 import Auth              from '../components/auth/Auth';
 import store             from '../store/index';
 
+
+/* Initialization of Auth, 
+ * passing in store to dispatch profile, on successful login 
+*/
 const auth = new Auth(store);  
 
 const handleAuthentication = (nextState, replace, history) => {
@@ -29,7 +33,6 @@ const handleAuthentication = (nextState, replace, history) => {
     auth.handleAuthentication(history);
   }
 }
-
 
 /**
  * Main router for the app.
@@ -40,10 +43,8 @@ const handleAuthentication = (nextState, replace, history) => {
  */
 const AppRouter = () => (
 
-  	<BrowserRouter>
-
-        <Switch>
-                      
+      <BrowserRouter>
+        <Switch>    
             <Route exact path="/" render={(props)=><Login auth={auth} {...props}/>} />
             <PrivateRoute exact path="/dashboard"      component={ Dashboard }         auth={auth} />
             <PrivateRoute exact path="/marketplace"    component={ Marketplace }       auth={auth} />
@@ -55,8 +56,7 @@ const AppRouter = () => (
             }}/>
             <DefaultRoute auth={auth}/>
         </Switch>
-
-  	</BrowserRouter>
+      </BrowserRouter>
 );
 
 

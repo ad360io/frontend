@@ -1,6 +1,7 @@
 import { connect }         from 'react-redux';
 import MarketplaceListings from './MarketplaceListings.component';
 
+
 const mapStateToProps = (state) => {
     return {
         currencyFilter: state.MenuBarFilterReducer.currencyFilter,
@@ -18,5 +19,6 @@ const ConnectedMarketplaceListings = connect(
     mapStateToProps,
     mapDispatchToProps
 )(MarketplaceListings)
+
 
 export default ConnectedMarketplaceListings;

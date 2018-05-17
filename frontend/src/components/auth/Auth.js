@@ -4,10 +4,11 @@ Auth0 Libs
 import { Auth0Config } from './auth0-config';
 import auth0 from 'auth0-js';
 
+
 export default class Auth {
 
     constructor(store){
-		this.store = store;
+        this.store = store;
         this.login = this.login.bind(this);
         this.handleAuthentication = this.handleAuthentication.bind(this);
         this.setSession = this.setSession.bind(this);
@@ -16,8 +17,8 @@ export default class Auth {
         this.renewToken = this.renewToken.bind(this);
         this.scheduleRenewal = this.scheduleRenewal.bind(this);
         this.getAccessToken = this.getAccessToken.bind(this);
-		this.getProfile = this.getProfile.bind(this);
-		this.dispatchProfile = this.dispatchProfile.bind(this);
+        this.getProfile = this.getProfile.bind(this);
+        this.dispatchProfile = this.dispatchProfile.bind(this);
 
         this.scheduleRenewal();
     }
@@ -54,8 +55,8 @@ export default class Auth {
         let expiresAt = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
         localStorage.setItem('access_token', authResult.accessToken);
         localStorage.setItem('id_token', authResult.idToken);
-		localStorage.setItem('expires_at', expiresAt);
-		this.dispatchProfile(authResult.accessToken);
+        localStorage.setItem('expires_at', expiresAt);
+        this.dispatchProfile(authResult.accessToken);
         propsHistory.push('/dashboard');
         this.scheduleRenewal();
     }
@@ -113,24 +114,24 @@ export default class Auth {
           }
           cb(err, profile);
         });
-	}
-	
-	dispatchProfile(accessToken){
+    }
+    
+    dispatchProfile(accessToken){
         this.auth0.client.userInfo(accessToken, (err, profile) => {
-          if (profile) {
-			let name = profile['https://auth.qchain.co/user_metadata'].name;
-			let nickname = profile.nickname;
-			let email = profile.email;
-			let avatar_url = profile.picture;
-			let value = {
-				name,
-				nickname,
-				email,
-				avatar_url
-			}
-			this.store.dispatch({type: 'SET_PROFILE', value})
-          }
+            if (profile) {
+                let name = profile['https://auth.qchain.co/user_metadata'].name;
+                let nickname = profile.nickname;
+                let email = profile.email;
+                let avatar_url = profile.picture;
+                let value = {
+                    name,
+                    nickname,
+                    email,
+                    avatar_url
+                }
+                this.store.dispatch({type: 'SET_PROFILE', value})
+            }
         });
-	}
+    }
 
 }

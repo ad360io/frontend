@@ -11,8 +11,8 @@ import './DashboardCharts.component.css';
 /*
 Fake Data
 */
-import clickDatasetsInEqc from '../../../assets/fakeData/fakeDashboardData/fake-click-eqc';
-import clickDatasetsInXqc from '../../../assets/fakeData/fakeDashboardData/fake-click-xqc';
+import clickDatasetsInEqc      from '../../../assets/fakeData/fakeDashboardData/fake-click-eqc';
+import clickDatasetsInXqc      from '../../../assets/fakeData/fakeDashboardData/fake-click-xqc';
 import impressionDatasetsInEqc from '../../../assets/fakeData/fakeDashboardData/fake-impression-eqc';
 import impressionDatasetsInXqc from '../../../assets/fakeData/fakeDashboardData/fake-impression-xqc';
 

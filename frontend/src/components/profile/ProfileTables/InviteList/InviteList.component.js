@@ -1,6 +1,20 @@
+/*
+Core Libs
+*/
 import React from 'react';
-import { Button, Popover, OverlayTrigger } from 'react-bootstrap'
 
+/*
+React Bootstrap Components
+*/
+import { Button }                  from 'react-bootstrap';
+import { Popover, OverlayTrigger } from 'react-bootstrap';
+
+
+/**
+ * InviteList Component
+ * User should be able to create a new smart contract when accepting a invite
+ * Invite listing should be removed from list after action is performed.
+ */
 const InviteList = () => (
     <div className="invite-list-container">
         <div className="table-responsive" style={{height: '320px', margin:"2%"}}>
@@ -22,11 +36,13 @@ const InviteList = () => (
     </div>
 )
 
+/**
+ * Dynamically generate dummy data, 
+ * can take in props in future to create all invite listings.
+ */
 const sampleTableContent = () => {
+    
     let samples = [];
-    
-    
-
     for(let i = 0; i < 3; i++){
         
         const listingPopover = (
@@ -61,5 +77,6 @@ const sampleTableContent = () => {
         }
         </tbody>
 }
+
 
 export default InviteList;
