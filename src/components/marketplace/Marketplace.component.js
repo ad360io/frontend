@@ -11,8 +11,8 @@ import './Marketplace.component.css';
 /*
 Children Components
 */
-import ConnectedMarketplaceFilter   from './MarketplaceFilter/ConnectedMarketplaceFilter';
-import ConnectedMarketplaceListings from './MarketplaceListings/ConnectedMarketplaceListings';
+import MarketplaceFilter   from './MarketplaceFilter/MarketplaceFilter.component';
+import MarketplaceListings from './MarketplaceListings/MarketplaceListings.component';
 
 
 /**
@@ -27,8 +27,8 @@ import ConnectedMarketplaceListings from './MarketplaceListings/ConnectedMarketp
 const Marketplace = () => (
     <div>
         <div className='marketplace-container'>
-            <ConnectedMarketplaceFilter />
-            <ConnectedMarketplaceListings />
+            <MarketplaceFilter />
+            <MarketplaceListings />
         </div>
     </div>
 )

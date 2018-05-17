@@ -2,7 +2,16 @@
 Core Libs
 */
 import React, { Component } from 'react';
+import { connect }          from 'react-redux';
+
+/*
+React Bootstrap Components
+*/
 import {Button, SplitButton, MenuItem} from 'react-bootstrap';
+
+/*
+Material UI Components
+*/ 
 import Paper from 'material-ui/Paper';
 import Divider from 'material-ui/Divider'
 import Slider from 'material-ui/Slider'
@@ -140,5 +149,51 @@ class MarketplaceFilter extends Component {
     }
 }
 
+const mapStateToFilterProps = (state) => {
+    return {
+        budgetFilter : state.MarketplaceFilterReducer.budgetFilter,
+        activeTypes  : state.MarketplaceFilterReducer.activeTypes,
+        isDrawerOpen : state.MarketplaceFilterReducer.isDrawerOpen,
+        currency     : state.MenuBarFilterReducer.currencyFilter,
+        adGenreFilter: state.MarketplaceFilterReducer.adGenreFilter
+    }
+}
 
-export default (MarketplaceFilter);
+const mapDispatchToFilterProps = (dispatch) => {
+    return {
+        onSliderChange:(event, budgetFilter)=>{
+            dispatch({
+                type:'SET_BUDGET_VALUE',
+                value: budgetFilter
+            })
+        },
+        onDrawerRequestChange: (open)=>{
+            dispatch({
+                type: 'SET_DRAWER',
+                value: open
+            })
+        },
+        onAdGenreClick: (adGenre) => {
+            dispatch({
+                type: 'SET_AD_GENRE',
+                value: adGenre
+            })
+        },
+        closeDrawer: () => {
+            dispatch({
+                type: 'CLOSE_DRAWER'
+            })
+        },
+        openDrawer: () => {
+            dispatch({
+                type: 'OPEN_DRAWER'
+            })
+        }
+    }
+}
+
+
+export default connect(
+    mapStateToFilterProps,
+    mapDispatchToFilterProps
+)(MarketplaceFilter)

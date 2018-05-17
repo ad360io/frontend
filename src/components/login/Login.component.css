@@ -1,17 +1,9 @@
 .btn-login {
     letter-spacing: 1px; 
     padding: 12px 0 12px 4px; 
-    color: white; width: 108px; 
+    color: white;
+     width: 316px; 
     font-size: 14px; font-weight: 400
-}
-
-.btn-signup{
-    letter-spacing: 1px; 
-    padding: 12px 0; 
-    color: white; 
-    width: 108px; 
-    font-size: 14px; 
-    font-weight: 400
 }
 
 .cover-login {
@@ -33,4 +25,3 @@
     box-shadow: 0 4px 30px 4px rgba(0, 0, 0, 0.5);
     transition: 250ms;
 }
-  

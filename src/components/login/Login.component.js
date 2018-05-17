@@ -29,9 +29,7 @@ class Login extends Component {
                     <p style={{fontSize: 24+'px'}}>ALPHA <span style={{fontSize: 20+'px'}}>v0.25</span></p>
                     <br/>
 
-                    <a className='btn btn-primary btn-login' id='btn-login' onClick={this.onLoginClickHandler}>LOG IN</a>
-                    <span>&nbsp; &nbsp;</span>
-                    <a className='btn btn-primary btn-signup' id='btn-signup'>SIGN UP</a>
+                    <a className='btn btn-primary btn-login' id='btn-login' onClick={this.onLoginClickHandler}>GET STARTED</a>
                 </div>
             </div>
         );

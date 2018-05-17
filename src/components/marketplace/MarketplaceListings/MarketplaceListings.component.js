@@ -2,6 +2,7 @@
 Core Libs
 */
 import React, { Component } from 'react';
+import { connect }          from 'react-redux';
 
 /*
 Local CSS
@@ -87,5 +88,21 @@ class MarketplaceListings extends Component {
     }
 }
 
+const mapStateToProps = (state) => {
+    return {
+        currencyFilter: state.MenuBarFilterReducer.currencyFilter,
+        modeFilter    : state.MenuBarFilterReducer.modeFilter,
+        budgetFilter  : state.MarketplaceFilterReducer.budgetFilter,
+        adGenreFilter : state.MarketplaceFilterReducer.adGenreFilter
+    }
+}
 
-export default MarketplaceListings;
+const mapDispatchToProps = (dispatch) => {
+    return {}
+}
+
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(MarketplaceListings);

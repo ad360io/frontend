@@ -2,6 +2,7 @@
 Core Libs
 */
 import React, { Component } from 'react';
+import { connect }          from 'react-redux';
 
 /*
 Local CSS
@@ -57,5 +58,18 @@ const mediaHeadingStyle = {
     marginTop: '25px',
 }
 
+const mapStateToProps = (state) => {
+    return {
+        profile: state.ProfileReducer.profile
+    }
+}
 
-export default Profile;
+const mapDispatchToProps = (dispatch) => {
+    return {}
+}
+
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Profile) 

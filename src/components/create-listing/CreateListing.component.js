@@ -8,7 +8,7 @@ Local CSS
 */
 import './CreateListing.component.css'
 
-import ConnectedCreateListingForm from './CreateListingForm/ConnectedCreateListingForm'
+import CreateListingForm from './CreateListingForm/CreateListingForm.component'
 
 
 /**
@@ -16,7 +16,7 @@ import ConnectedCreateListingForm from './CreateListingForm/ConnectedCreateListi
  */
 const CreateListing = () => (
     <div className='create-container'>
-        <ConnectedCreateListingForm />
+        <CreateListingForm />
     </div>
 )
 

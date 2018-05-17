@@ -2,6 +2,7 @@
 Core Libs
 */
 import React, { Component } from 'react';
+import { connect }          from 'react-redux';
 
 /*
 React Bootstrap Components
@@ -12,6 +13,7 @@ import { FormGroup, Button, HelpBlock, FormControl } from 'react-bootstrap';
 Local CSS
 */
 import './CreateListingForm.component.css';
+
 
 class CreateListingForm extends Component {
     
@@ -108,5 +110,19 @@ class CreateListingForm extends Component {
     }
 }
 
+const mapStateToProps = (state) => {
+    return {
+        modeFilter     : state.MenuBarFilterReducer.modeFilter,
+        currencyFilter : state.MenuBarFilterReducer.currencyFilter
+    }
+}
 
-export default CreateListingForm;
+const mapDispatchToProps = (dispatch) => {
+    return {}
+}
+
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(CreateListingForm)
