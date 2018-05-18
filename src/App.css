@@ -1,0 +1,15 @@
+.app-container {
+    background: #f6f6f6;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

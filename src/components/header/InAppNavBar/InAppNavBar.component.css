@@ -1,0 +1,70 @@
+@keyframes slide-in {
+    from {
+        top: -50px;
+    }
+    to {
+        top: 80px;
+    }
+}
+
+.navbar-container {
+    position: fixed;
+    top: -50px;
+    animation-name: slide-in;
+    animation-duration: 0.2s;
+    animation-delay:1s;
+    animation-fill-mode: forwards;
+    width: 100vw;
+    z-index: 5;
+    background: white;
+    box-shadow: 0 4px 5px -2px gray;
+    height: 50px;
+}
+
+.in-app-nav-item {
+    color: #7b7b7b;
+    display: inline-block;
+    padding-top: 18px;
+    padding-left: 60px;
+    text-decoration: none !important;
+}
+
+i {
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.selected-nav-item {
+    color: #4b80c0;
+}
+
+.in-app-nav-item:hover, .in-app-nav-item:focus {
+    color: #4b80c0;
+}
+
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome and Opera */
+  }
+
+/*
+FOR PHONES AND TABLETS
+*/
+@media only screen and (max-width:768px){
+    
+    .nav-label {
+        display: none;
+    }
+
+    .in-app-nav-item {
+        width: 25%;
+        float: left;
+        padding-left: 8%;
+    }
+
+}

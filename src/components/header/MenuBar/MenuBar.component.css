@@ -1,0 +1,90 @@
+@keyframes slide-in-menu {
+    from {
+        top: -130px;
+    }
+    to {
+        top: 0;
+    }
+}
+
+.logo_img {
+    height: 60px;
+    vertical-align: middle;
+}
+
+.logo-redirect{
+    padding-top: 0px;
+    padding-right: 5vw;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.menu-header {
+    height: 80px;
+    margin-right: 5%;
+    margin-left: 5%;
+}
+
+.menu-container {
+    z-index: 6;
+    animation-name: slide-in-menu;
+    animation-duration: 0.7s;
+    animation-fill-mode: forwards;
+    padding: 0;
+    background-color: purple;
+    background:  -webkit-linear-gradient(90deg, #2655a0, #552072);
+    background:  linear-gradient(90deg, #2655a0, #552072);
+}
+
+.currency-selector {
+    margin-top: 17px;
+    margin-right: 5%;
+    padding-left: 0px;
+}
+
+.currency-logo {
+    height: 25px;
+}
+
+
+.mode-selector {
+    margin-top: 17px;
+}
+
+.nav-custom {
+    color: black;
+}
+
+.burger-button {
+    margin-top: 22px;
+}
+
+.menu-user-action {
+    color: white;
+    font-size: 14px;
+    padding-top: 0px;   
+}
+
+li.user-label > a {
+    padding-top: 15%;
+    padding-left: 0px;
+    padding-right: 0px; 
+    padding-bottom: 0px;
+}
+
+li.logout-label > a {
+    padding-top: 30px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+}
+
+.logout-container {
+    width: 10%;
+    min-width: 130px;
+}
+
+.menu-container > .container {
+    width: 90%;
+    padding: 0px;
+}

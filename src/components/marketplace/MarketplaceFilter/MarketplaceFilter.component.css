@@ -1,0 +1,44 @@
+.btn-single {
+    min-width: 240px;
+    margin-left: 25px;
+    margin-bottom: 5%;
+}
+
+.btn-ad-genre {
+    min-width: 215px;
+    margin-bottom: 5%;
+}
+
+.dropdown {
+    margin-left: 25px;
+}
+
+.filter-title {
+    margin-left: 8%;
+    margin-top: 5%;
+    font-size: 20px;
+}
+
+.ad-genre-container {
+    margin-bottom: 5%;
+}
+
+.range-slider{
+    width: 80%;
+    margin-left: 25px;
+}
+
+.btn-open-filter-drawer{
+    left: 0;
+    position: fixed;
+    -webkit-transform-origin: bottom left;
+       -moz-transform-origin: bottom left;
+        -ms-transform-origin: bottom left;
+         -o-transform-origin: bottom left;
+            transform-origin: bottom left;
+    -webkit-transform: rotate(90deg);
+       -moz-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+         -o-transform: rotate(90deg); 
+            transform: rotate(90deg);
+}
