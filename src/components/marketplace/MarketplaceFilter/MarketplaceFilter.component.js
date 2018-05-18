@@ -35,6 +35,7 @@ class MarketplaceFilter extends Component {
         }
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
         this.decide_BtnOpenFilterDrawer_Display = this.decide_BtnOpenFilterDrawer_Display.bind(this);
+        this.decideTitle = this.decideTitle.bind(this);
     }
 
     componentDidMount() {
@@ -63,6 +64,11 @@ class MarketplaceFilter extends Component {
         else return 'inline';
     }
 
+    decideTitle(){
+        if(this.props.modeFilter === 'Advertiser') return 'Content Spaces';
+        else return 'Content'
+    }
+
     render() {
         return <div className='marketplace-filter-container' >
             <Button 
@@ -88,7 +94,7 @@ class MarketplaceFilter extends Component {
                 }} zDepth={0}/>
 
                 <div className='ad-genre-container'>
-                    <h4 className='filter-title'>Ad Genre</h4>
+                    <h4 className='filter-title'>{this.decideTitle()} Listings</h4>
                     <Button 
                         className='btn-single'
                         onClick={()=>{this.props.onAdGenreClick('Show All')}}
@@ -155,7 +161,8 @@ const mapStateToFilterProps = (state) => {
         activeTypes  : state.MarketplaceFilterReducer.activeTypes,
         isDrawerOpen : state.MarketplaceFilterReducer.isDrawerOpen,
         currency     : state.MenuBarFilterReducer.currencyFilter,
-        adGenreFilter: state.MarketplaceFilterReducer.adGenreFilter
+        adGenreFilter: state.MarketplaceFilterReducer.adGenreFilter,
+        modeFilter   : state.MenuBarFilterReducer.modeFilter
     }
 }
 

@@ -13,8 +13,8 @@ const ActiveListing = ({listingType}) => (
             <table className='table table-bordered mb-0'>
                 <thead className='thead-default'>
                 <tr>
-                    <th>Website</th>
-                    <th>Ad Genre</th>
+                    <th>Content Title</th>
+                    <th>Listing Type</th>
                     <th>Subcategory</th>
                 </tr>
                 </thead>
@@ -34,11 +34,11 @@ const ActiveListing = ({listingType}) => (
  */
 const sampleTableContent = () => {
     let samples = [];
-    for(let i = 0; i < 40; i++){
+    for(let i = 0; i < 20; i++){
         samples.push(
             (
                 <tr key={'tr'+i}>
-                    <td>www.qchain.co</td>
+                    <td>Brandy Content</td>
                     <td>Branded Content</td>
                     <td>Other</td>
                 </tr>

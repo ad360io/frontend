@@ -11,7 +11,7 @@ import { Card, CardText, CardTitle } from 'material-ui/Card';
 /*
 React Bootstrap
 */
-import { Modal, Button } from 'react-bootstrap';
+import { Modal, Button, FormGroup, FormControl } from 'react-bootstrap';
 
 /*
 Placeholder Images
@@ -181,7 +181,13 @@ class ListingCard extends Component {
                     <p>{this.props.listing.pricing+' '+this.props.listing.currency.toUpperCase()}</p>
                     <br />
                     <h3>Additional Info</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eget feugiat lacus. In porta diam vitae congue mollis. Aliquam erat volutpat. Phasellus venenatis justo ac quam ultrices, non pulvinar ex mollis. Fusce magna nisl, dignissim nec erat semper, finibus auctor tortor. Pellentesque sed lacus nec sapien finibus porta et vitae tortor. Fusce fermentum mattis purus, eget lacinia nulla porta sed. Praesent mi libero, pellentesque et vehicula eget, pretium in tortor. Donec consectetur, odio eu porttitor ultricies, mi risus blandit enim, ut interdum tellus tortor ut orci. Phasellus ut efficitur elit, at euismod sapien. Fusce nec elementum velit. </p>
+                    <FormGroup controlId='control-form-additional-info'>
+                        <FormControl componentClass='textarea' 
+                            placeholder='Is there anything that you want them to know?' 
+                            maxLength={280} 
+                            rows={8}
+                            style={{resize: 'vertical'}}/>
+                    </FormGroup>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button disabled>Send Invite</Button>
