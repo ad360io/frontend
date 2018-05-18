@@ -2,7 +2,7 @@
     "name": "frontend",
     "version": "0.1.0",
     "private": true,
-    "homepage" : "http://qchain.co/frontend/",
+    "homepage": "http://qchain.co/frontend/",
     "dependencies": {
         "ajv": "^6.5.0",
         "auth0": "^2.9.1",
@@ -10,7 +10,6 @@
         "auth0-lock": "^11.6.1",
         "bootstrap-3-card": "^0.2.0",
         "chart.js": "^2.7.2",
-        "gh-pages": "^1.1.0",
         "history": "^4.7.2",
         "material-ui": "^0.20.0",
         "react": "^16.3.2",
@@ -33,13 +32,14 @@
         "build": "react-scripts build",
         "test": "jest",
         "eject": "react-scripts eject",
-        "predeploy" : "npm run build",
-        "deploy" : "gh-pages -d build"
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d build"
     },
     "devDependencies": {
         "axios": "^0.18.0",
         "cross-env": "^5.1.5",
         "follow-redirects": "^1.4.1",
+        "gh-pages": "^1.1.0",
         "jest": "^22.4.3"
     }
 }
