@@ -145,7 +145,7 @@ class DashboardCharts extends Component {
                 case 0:
                     return 'Content Impression';
                 case 1:
-                    return 'Content Measureable';
+                    return 'Content Measurable';
                 default:
                     return null;
             }
