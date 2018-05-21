@@ -1,16 +1,7 @@
-@keyframes slide-in {
-    from {
-        top: -50px;
-    }
-    to {
-        top: 80px;
-    }
-}
-
 .navbar-container {
     position: fixed;
     top: -50px;
-    animation-name: slide-in;
+    animation-name: slide-in-navbar;
     animation-duration: 0.2s;
     animation-delay:1s;
     animation-fill-mode: forwards;

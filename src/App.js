@@ -17,6 +17,10 @@ Local CSS
 import './App.css';
 
 
+/**
+ * Application container
+ *      set up necessary providers for children components to use.
+ */
 const App = () => (
     <div className='app-container'>
         <Provider store={store}>
@@ -27,5 +31,6 @@ const App = () => (
         </Provider>
     </div>
 );
+
 
 export default App;

@@ -1,7 +1,7 @@
 /*
 Core Libs
 */
-import React from 'react';
+import React, { Component } from 'react';
 
 /*
 Local CSS
@@ -17,21 +17,26 @@ import MarketplaceListings from './MarketplaceListings/MarketplaceListings.compo
 
 /**
  * Marketplace Component
- * Shall display accurate listings base on filters
- * All filters set in MarketplaceFilter is sent to Redux state
- *          Future Task: * operation of filtering the listings
- *                         should propbably be done on server side
- *                       * Dynamic loading the listing (automate pagination)
- *                       * Implement contact user
+ *      displays accurate listings base on filters
+ *      filters set in MarketplaceFilter is sent to Redux state.
+ *          Future Task: * Dynamic loading the listing (automate pagination)
  */
-const Marketplace = () => (
-    <div>
-        <div className='marketplace-container'>
-            <MarketplaceFilter />
-            <MarketplaceListings />
+class Marketplace extends Component {
+
+    componentDidMount() {
+        document.title = "Qchain - Marketplace";
+    }
+
+    render(){
+        return <div>
+            <div className='marketplace-container'>
+                <MarketplaceFilter />
+                <MarketplaceListings />
+            </div>
         </div>
-    </div>
-)
+    }
+    
+}
 
 
 export default Marketplace;

@@ -1,5 +1,5 @@
 /*
-Core Libs and Children Components
+Core Libs
 */
 import React, { Component } from 'react';
 
@@ -17,10 +17,15 @@ import { Card, CardText } from 'material-ui/Card';
 Local CSS
 */
 import './DashboardStats.component.css'
+
+/*
+Fake Data
+*/
 import fake_24hr_data from '../../../assets/fakeData/fakeDashboardData/fake-24-hr';
 
+
 /**
- *
+ * Dashboard Stats Component
  */
 class DashboardStats extends Component {
 

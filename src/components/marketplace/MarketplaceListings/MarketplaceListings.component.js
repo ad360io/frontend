@@ -24,8 +24,7 @@ import fakeAdspaceListings from '../../../assets/fakeData/fakeMarketplaceData/fa
 /**
  * Marketplace Listings contains array of Listing Cards
  * Filtering of data is done here, which isn't ideal
- *         Future Task: * migrate filtering to server side
- *                      * auto load on scroll should happen here
+ *         Future Task: * auto load on scroll should happen here
  */
 class MarketplaceListings extends Component {
 

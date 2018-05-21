@@ -1,15 +1,17 @@
-// Default state
+/** DEFAULT STATE */
 const defaultState = {
     profile: {
-        name: 'User Name',
-        nickname: 'Nickname',
-        email: 'Email',
-        avatar_url: '' 
+        name: 'User Name',       
+        nickname: 'Nickname',    
+        email: 'Email',         
+        avatar_url: ''          
     }
 }
 
 /**
- * Example to build a simple reducer.
+ * Profile Reducer 
+ *      manipulate the data that represents the user 
+ *      fetched from auth0 services. 
  * @param { Object } state   Current state fetched from the store.
  * @param { Object } action  String or Enumerators to represent the desired operations.
  */

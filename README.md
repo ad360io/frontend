@@ -11,6 +11,7 @@ You can find the most recent version of this guide [here](https://github.com/fac
 - [Available Scripts](#available-scripts)
   - [npm start](#npm-start)
   - [npm test](#npm-test)
+  - [npm run deploy](#npm-run-deploy)
   - [npm run build](#npm-run-build)
   - [npm run eject](#npm-run-eject)
 - [Supported Browsers](#supported-browsers)
@@ -187,6 +188,12 @@ The build is minified and the filenames include the hashes.<br>
 Your app is ready to be deployed!
 
 See the section about [deployment](#deployment) for more information.
+
+### `npm run deploy`
+
+Deploy the application to Qchain's Github pages, using gh-pages module. <br>
+Scripts are set up in package.json file. This module creates a branch called gh-pages that serves the static build files.
+**Note: gh-pages automatically builds and publishes, but does not include a custom domain file. Therefore, remember to configure custom domain after every deploy**
 
 ### `npm run eject`
 

@@ -1,16 +1,19 @@
-// Default state
+/** DEFAULT STATE */
 const defaultState = {
-   isDrawerOpen: false,
-   budgetFilter: 75,
+   isDrawerOpen: false,       
+   budgetFilter: 75,       
    adGenreFilter: 'Show All'
 }
 
 /**
- * Example to build a simple reducer.
+ * Marketplace Filter Reducer
+ *      manages the state of drawer,
+ *      manipulate the budget value on the slider bar,
+ *      and manipulate the listing genre.
  * @param { Object } state   Current state fetched from the store.
  * @param { Object } action  String or Enumerators to represent the desired operations.
  */
-const MarketplaceDrawerReducer = (state=defaultState, action) => {
+const MarketplaceFilterReducer = (state=defaultState, action) => {
     
     switch(action.type)
     {
@@ -55,4 +58,4 @@ const MarketplaceDrawerReducer = (state=defaultState, action) => {
 }
 
 
-export default MarketplaceDrawerReducer;
+export default MarketplaceFilterReducer;

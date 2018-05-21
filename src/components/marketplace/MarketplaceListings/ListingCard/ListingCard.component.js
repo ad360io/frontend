@@ -2,6 +2,7 @@
 Core Libs
 */
 import React, { Component } from 'react';
+import PropTypes            from 'prop-types'
 
 /*
 Material UI Components
@@ -29,7 +30,7 @@ import './ListingCard.component.css';
 
 /**
  * Singleton of a Listing display
- * expects props of a single listing object
+ *      requires a props of a single listing object.
  */
 class ListingCard extends Component {
     constructor(props) {
@@ -196,6 +197,10 @@ class ListingCard extends Component {
             </Modal>
         </div>
     }
+}
+
+ListingCard.propTypes = {
+    listing: PropTypes.object.isRequired
 }
 
 

@@ -11,7 +11,7 @@ import './Header.component.css';
 /*
 Children Components
 */
-import ConnectedMenuBar   from './MenuBar/ConnectedMenuBar';
+import MenuBar            from './MenuBar/MenuBar.component';
 import InAppNavBar        from './InAppNavBar/InAppNavBar.component';
 
 
@@ -21,7 +21,7 @@ import InAppNavBar        from './InAppNavBar/InAppNavBar.component';
  */
 const Header = (props) => (
     <div>
-        <ConnectedMenuBar auth={props.auth}/>
+        <MenuBar auth={props.auth}/>
         <InAppNavBar />
     </div>
 )

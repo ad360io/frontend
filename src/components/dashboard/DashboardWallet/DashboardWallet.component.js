@@ -1,5 +1,5 @@
 /*
-Core Libs and Children Components
+Core Libs
 */
 import React from 'react';
 

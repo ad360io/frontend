@@ -1,7 +1,7 @@
 /*
 Core Libs
 */
-import React from 'react';
+import React, { Component } from 'react';
 
 /*
 Local CSS
@@ -14,10 +14,17 @@ import CreateListingForm from './CreateListingForm/CreateListingForm.component'
 /**
  * Create Listing Component
  */
-const CreateListing = () => (
-    <div className='create-container'>
-        <CreateListingForm />
-    </div>
-)
+class CreateListing extends Component {
+
+    componentDidMount() {
+        document.title = "Qchain - Create"
+    }
+
+    render() {
+        return <div className='create-container'>
+            <CreateListingForm />
+        </div>
+    }
+}
 
 export default CreateListing;

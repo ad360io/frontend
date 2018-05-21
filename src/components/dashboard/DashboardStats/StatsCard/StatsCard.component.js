@@ -2,6 +2,7 @@
 Core Libs and Children Components
 */
 import React, { Component } from 'react';
+import PropTypes            from 'prop-types';
 
 /*
 Material UI Components
@@ -13,8 +14,10 @@ Local CSS
 */
 import './StatsCard.component.css'
 
+
 /**
- * 
+ * Stats Card singleton
+ *      requires props of 'trend', 'title', and 'value'
  */
 class StatsCard extends Component {
 
@@ -60,6 +63,12 @@ class StatsCard extends Component {
             </Card>
         </div>
     }
+}
+
+StatsCard.propTypes = {
+    trend: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired
 }
 
 

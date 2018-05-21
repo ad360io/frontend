@@ -1,12 +1,3 @@
-@keyframes slide-in-menu {
-    from {
-        top: -130px;
-    }
-    to {
-        top: 0;
-    }
-}
-
 .logo_img {
     height: 60px;
     vertical-align: middle;
@@ -27,7 +18,7 @@
 
 .menu-container {
     z-index: 6;
-    animation-name: slide-in-menu;
+    animation-name: slide-in-menubar;
     animation-duration: 0.7s;
     animation-fill-mode: forwards;
     padding: 0;

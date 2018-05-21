@@ -13,3 +13,21 @@
         opacity: 1;
     }
 }
+
+@keyframes slide-in-navbar {
+    from {
+        top: -50px;
+    }
+    to {
+        top: 80px;
+    }
+}
+
+@keyframes slide-in-menubar {
+    from {
+        top: -130px;
+    }
+    to {
+        top: 0;
+    }
+}

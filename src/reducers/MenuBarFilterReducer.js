@@ -1,15 +1,17 @@
-// Default state
+/** DEFAULT STATE */
 const defaultState = {
-    currencyFilter : 'EQC', 
-    modeFilter     : 'Advertiser'
+    currencyFilter : 'EQC',         
+    modeFilter     : 'Advertiser'   
 }
 
 /**
- * Example to build a simple reducer.
+ * MenuBar Filter Reducer
+ *      manipulate the unit of currency,
+ *      manipulate the mode of user.
  * @param { Object } state   Current state fetched from the store.
  * @param { Object } action  String or Enumerators to represent the desired operations.
  */
-const FilterReducer = (state=defaultState, action) => {
+const MenuBarFilterReducer = (state=defaultState, action) => {
     
     switch(action.type)
     {
@@ -31,4 +33,4 @@ const FilterReducer = (state=defaultState, action) => {
 }
 
 
-export default FilterReducer;
+export default MenuBarFilterReducer;

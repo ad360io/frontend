@@ -14,6 +14,10 @@ import qchain_logo from '../../assets/images/Qchain_logo.png';
  * Login Component
  */
 class Login extends Component {
+
+    componentDidMount() {
+        document.title = "Qchain - Login";
+    }
     
     onLoginClickHandler = () => {
         this.props.auth.login();

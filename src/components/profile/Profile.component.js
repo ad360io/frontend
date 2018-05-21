@@ -23,13 +23,18 @@ import Footer          from '../footer/Footer.component';
 
 /**
  * Profile Component
+ *      represents user and display related activities.
  */
 class Profile extends Component {
 
+    componentDidMount() {
+        document.title = "Qchain - Profile";
+    }
+
     render() {
         return <div className='profile-container'>
-            <div className='profile-header'>
 
+            <div className='profile-header'>
                 <Media style={mediaStyle}>
                     <Media.Left align='middle'>
                     <img src={this.props.profile.avatar_url} style={{marginRight: '3vw'}} width='120' height='120' alt='user-avatar' />
@@ -40,11 +45,13 @@ class Profile extends Component {
                     </Media.Body>
                 </Media>
             </div>
+
             <ProfileTables/>
+
             <Footer />
+
         </div>
     }
-    
 } 
 
 const mediaStyle = {

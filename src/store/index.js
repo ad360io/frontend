@@ -4,9 +4,8 @@ import RootReducer from '../reducers/RootReducer';
 
 /**
  * Initialization of the Redux Store
- * provided with organized reducers.
+ *      served with RootReducer, which has organized reducers for the application.
  */
-
 const store = createStore(
     RootReducer
 );

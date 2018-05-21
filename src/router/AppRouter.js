@@ -24,8 +24,8 @@ import store             from '../store/index';
 
 
 /* Initialization of Auth, 
- * passing in store to dispatch profile, on successful login 
-*/
+ *    passing in redux store to dispatch profile on successful login.
+ */
 const auth = new Auth(store);  
 
 const handleAuthentication = (nextState, replace, history) => {
@@ -49,9 +49,9 @@ const AppRouter = () => (
             <PrivateRoute exact path='/dashboard'      component={ Dashboard }         auth={auth} />
             <PrivateRoute exact path='/marketplace'    component={ Marketplace }       auth={auth} />
             <PrivateRoute exact path='/create'         component={ CreateListing }     auth={auth} />
-            <PrivateRoute exact path='/profile'        component={ Profile }  auth={auth} />
+            <PrivateRoute exact path='/profile'        component={ Profile }           auth={auth} />
             <Route path='/auth-callback' render={ (props) => {
-                handleAuthentication(props,null, props.history);
+                handleAuthentication(props, null, props.history);
                 return <AuthCallback auth={auth} {...props} /> 
             }}/>
             <DefaultRoute auth={auth}/>

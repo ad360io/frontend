@@ -4,17 +4,16 @@
     padding-top: 0px !important;
 }
 
-/*
-FOR PHONES AND TABLETS
-*/
-@media only screen and (max-width:768px){
-    
-    .stats-container {
-        margin-top: 2%;
-    }
-    
+.stats-container {
+    margin-top: 2%;
 }
 
+.stats-title{
+    margin-left: 10%;
+    padding-top: 4%;
+    margin-top: 0px;
+    font-size: 28px;
+}
 
 /*
 FOR DESKTOP
@@ -27,11 +26,4 @@ FOR DESKTOP
         margin-top: 5%;
     }
 
-}
-
-.stats-title{
-    margin-left: 10%;
-    padding-top: 4%;
-    margin-top: 0px;
-    font-size: 28px;
 }

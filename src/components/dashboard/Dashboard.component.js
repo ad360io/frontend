@@ -1,8 +1,8 @@
 /*
 Core Libs
 */
-import React from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from 'react';
+import { connect }          from 'react-redux';
 
 /*
 Local CSS
@@ -27,22 +27,30 @@ import DashboardCharts  from './DashboardCharts/DashboardCharts.component';
  * Dashboard container manages the layout of each children components
  * ! Caution: when changing css, be aware dashboard-right may overlap to left on screen resize
  */
-const Dashboard = () =>
-    <div className='dashboard-container'>
-        <Grid className='dashboard-grid'>
-            <Row>
-                <Col xs={12} lg={5} sm={8} className='dashboard-left'>
-                    <DashboardWallet className='wallet-div'/>
-                    <StatsProvider   className='stats-div'/>
-                </Col>
+class Dashboard extends Component {
 
-                <Col xs={12} lg={7} sm={4} className='dashboard-right'>
-                    <ChartsProvider />
-                </Col>
-            </Row>
-        </Grid>
-        <Footer />
-    </div>
+    componentDidMount(){
+        document.title = "Qchain - Dashboard"
+    }
+
+    render() {
+        return <div className='dashboard-container'>
+            <Grid className='dashboard-grid'>
+                <Row>
+                    <Col xs={12} lg={5} sm={8} className='dashboard-left'>
+                        <DashboardWallet className='wallet-div'/>
+                        <StatsProvider   className='stats-div'/>
+                    </Col>
+
+                    <Col xs={12} lg={7} sm={4} className='dashboard-right'>
+                        <ChartsProvider />
+                    </Col>
+                </Row>
+            </Grid>
+            <Footer />
+        </div>
+    }
+}
 
 const mapStateToProps = (state) => {
     return {
