@@ -2,7 +2,7 @@
 // Change this to a database query.
 
 const adv_24hr_data = {
-    'Impressions': 12345,
+    'Impressions': '12345',
     'Impressions_trend' : '+12.21%',
     'Clicks': 352,
     'Clicks_trend': '-2.3%',
@@ -15,7 +15,7 @@ const adv_24hr_data = {
 }
 
 const pub_24hr_data = {
-    'Impressions': 23456,
+    'Impressions': '23456',
     'Impressions_trend' : '+12.21%',
     'Clicks': 352,
     'Clicks_trend': '-2.3%',

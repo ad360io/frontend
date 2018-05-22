@@ -29,7 +29,7 @@ const DatabaseReducer = (state=initialState, action) => {
         }
         case 'FETCH_DATABASE_FULFILLED': {
             return {
-                ...state
+                ...state,
                 fetching: false,
                 fetched: true,
                 db: action.payload

@@ -120,7 +120,6 @@ You can find the most recent version of this guide [here](https://github.com/fac
 
 - Purpose of this documentation:
   - Help developers transition and understand the development decisions and conventions for Qchain.
-<br>
 - Purpose of each major components in the app:
   - Header: Smoothly transition user into desired mode and currency.
   - Dashboard: Analyze user data and provide inspiration.
