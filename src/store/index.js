@@ -25,7 +25,7 @@ const store = createStore(
 var databaseDispatcher = () => {
     store.dispatch((dispatch) => {
         dispatch({type: 'FETCH_DATABASE_PENDING'})
-        axios.get(`${window.location.protocol}//${window.location.host}/db`)
+        axios.get(`${window.location.protocol}//${window.location.host}/api/db`)
             .then((response) => {
                 dispatch({
                     type: 'FETCH_DATABASE_FULFILLED',

@@ -41,11 +41,9 @@
         "jest": "^22.4.3"
     },
     "proxy": {
-        "/db": {
+        "/api/db": {
             "target": "https://d9aubk6q99.execute-api.us-east-1.amazonaws.com/production/db/fake/db",
-            "pathRewrite": {
-                "^/db": ""
-            },
+            "pathRewrite": {"^/api/db" : ""},
             "changeOrigin": true
         }
     }
