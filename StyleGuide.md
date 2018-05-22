@@ -23,4 +23,5 @@ for maintainablity and readability.
 - Mobile first development, avoid overwriting styles too often.
 - Many reuseable components has styles that needs to be overwritten, comment if nested CSS is needed to go under unclear structure. 
 - Inline CSS should be short and clear, otherwise should be moved to a JSON or external CSS file.
-
+## Design Choices
+- Use stateless functional component whenever a component shall not be attached to React Component lifecycle methods.

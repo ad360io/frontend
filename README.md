@@ -1,10 +1,22 @@
+# Qchain - Frontend
+
+Common create-react-app documentations are generated. Any additional configuration that is helpful for future development and maintaince should be appended to appropriate sections. <br>
+
+Changes and additions should be recorded in [Change Log](#Change-Log) for future references. 
+
+## Change Log
+- 5/21/2018: added [Purposes](#purposes)
+- 5/21/2018: added [`npm run deploy`](#npm-run-deploy) description
+- 5/16/2018: added StyleGuide.md 
+
+## Documentation
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
 You can find the most recent version of this guide [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
 
 ## Table of Contents
-
+- [Purposes](#purposes)
 - [Updating to New Releases](#updating-to-new-releases)
 - [Sending Feedback](#sending-feedback)
 - [Folder Structure](#folder-structure)
@@ -104,6 +116,18 @@ You can find the most recent version of this guide [here](https://github.com/fac
 - [Alternatives to Ejecting](#alternatives-to-ejecting)
 - [Something Missing?](#something-missing)
 
+## Purposes
+
+- Purpose of this documentation:
+  - Help developers transition and understand the development decisions and conventions for Qchain.
+<br>
+- Purpose of each major components in the app:
+  - Header: Smoothly transition user into desired mode and currency.
+  - Dashboard: Analyze user data and provide inspiration.
+  - Marketplace: Trade and promote businesses.
+  - Create: Get user involved.
+  - Profile: Manage user representation and activities.
+
 ## Updating to New Releases
 
 Create React App is divided into two packages:
@@ -192,7 +216,8 @@ See the section about [deployment](#deployment) for more information.
 ### `npm run deploy`
 
 Deploy the application to Qchain's Github pages, using gh-pages module. <br>
-Scripts are set up in package.json file. This module creates a branch called gh-pages that serves the static build files.
+Scripts are set up in package.json file. This module creates a branch called gh-pages that serves the static build files. <br>
+
 **Note: gh-pages automatically builds and publishes, but does not include a custom domain file. Therefore, remember to configure custom domain after every deploy**
 
 ### `npm run eject`
