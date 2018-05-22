@@ -116,7 +116,7 @@ export default class Auth {
           cb(err, profile);
         });
     }
-    
+
     dispatchProfile(accessToken){
         this.auth0.client.userInfo(accessToken, (err, profile) => {
             if (profile) {

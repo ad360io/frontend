@@ -37,6 +37,7 @@ class DashboardCharts extends Component {
 
     constructor(props){
         super(props);
+        //console.log(store.dispatch({type: 'SET_PROFILE', value})
         // make api calls to get all datasets, display partial datasets based on mode/currency
         // supposedly we have saved all datasets in local state
         this.state = {
@@ -111,6 +112,7 @@ class DashboardCharts extends Component {
     }
 
     chooseLineChartDisplayData() {
+        //console.log(store.dispatch())
         if(this.props.modeFilter === 'Advertiser'){
             // Advertiser charts (Clicks, Impressions)
             return (this.props.currencyFilter === 'EQC' ? [this.state.clickDatasetsInEqc, this.state.impressionDatasetsInEqc]
@@ -163,6 +165,7 @@ class DashboardCharts extends Component {
     }
 
     chooseDoughnutDataset() {
+        // TODO(ahuszagh): fix, shouldn't be hard-coded.
         return {
             labels: [
                 'Contract Uno',
@@ -203,7 +206,7 @@ class DashboardCharts extends Component {
                     return <Card key={'itemList'+i} className='dashboard-charts-card'>
                                 <h2 className='chart-title'> {this.getLineChartTitle(i)} Performance</h2>
                                 <Divider style={{width: '75%'}}/>
-                                <CardText> 
+                                <CardText>
                                     <LineChartSlider itemList={itemList} />
                                 </CardText>
                             </Card>
@@ -211,7 +214,7 @@ class DashboardCharts extends Component {
             }
             {
                 <Card className='dashboard-charts-card doughnut-card'>
-                  <h2 className='chart-title'> Highest Grossing Contracts </h2> 
+                  <h2 className='chart-title'> Highest Grossing Contracts </h2>
                     <Divider style={{width: '75%'}}/>
                     <CardText>
                         <div className='highest-gross-card-left'>
@@ -219,7 +222,7 @@ class DashboardCharts extends Component {
                         </div>
                         <div className='highest-gross-card-right'>
                             {/* Build this info dynamically after we are pulling real data*/}
-                            The <a><i>Contract Uno</i></a> is the best deal you've done! 
+                            The <a><i>Contract Uno</i></a> is the best deal you've done!
                             <span className='quick-maf'> 66.6</span>% of your total grossing are generated here!
                         </div>
                     </CardText>
