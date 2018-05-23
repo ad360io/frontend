@@ -2,19 +2,12 @@
 Core Libs
 */
 import React, { Component } from 'react';
+import { connect }          from 'react-redux';
 
 /*
 Local CSS
 */
 import './DashboardCharts.component.css';
-
-/*
-Fake Data
-*/
-import clickDatasetsInEqc      from '../../../assets/fakeData/fakeDashboardData/fake-click-eqc';
-import clickDatasetsInXqc      from '../../../assets/fakeData/fakeDashboardData/fake-click-xqc';
-import impressionDatasetsInEqc from '../../../assets/fakeData/fakeDashboardData/fake-impression-eqc';
-import impressionDatasetsInXqc from '../../../assets/fakeData/fakeDashboardData/fake-impression-xqc';
 
 /*
 Material UI Components
@@ -37,16 +30,6 @@ class DashboardCharts extends Component {
 
     constructor(props){
         super(props);
-        //console.log(store.dispatch({type: 'SET_PROFILE', value})
-        // make api calls to get all datasets, display partial datasets based on mode/currency
-        // supposedly we have saved all datasets in local state
-        this.state = {
-            clickDatasetsInEqc,
-            clickDatasetsInXqc,
-            impressionDatasetsInEqc,
-            impressionDatasetsInXqc
-        }
-
         this.chooseLineChartDisplayData = this.chooseLineChartDisplayData.bind(this);
     }
 
@@ -68,8 +51,8 @@ class DashboardCharts extends Component {
 
     /**
      * Helper method to calculate modulo operation, including negative numbers;
-     * @param {*} n operand
-     * @param {*} m operand base
+     * @param { number } n operand
+     * @param { number } m operand base
      */
     mod(n, m) {
         return ((n % m) + m) % m;
@@ -115,8 +98,8 @@ class DashboardCharts extends Component {
         //console.log(store.dispatch())
         if(this.props.modeFilter === 'Advertiser'){
             // Advertiser charts (Clicks, Impressions)
-            return (this.props.currencyFilter === 'EQC' ? [this.state.clickDatasetsInEqc, this.state.impressionDatasetsInEqc]
-                        : [this.state.clickDatasetsInXqc, this.state.impressionDatasetsInXqc])
+            return (this.props.currencyFilter === 'EQC' ? [this.props.eqcClicks, this.props.eqcImpressions]
+                        : [this.props.xqcClicks, this.props.xqcImpressions])
         }else {
             // Publisher charts  (Clicks, Impression, RPM, Revenue)
             // returning empty array at this time to serve as a test case and wait for actual data
@@ -232,5 +215,20 @@ class DashboardCharts extends Component {
     }
 }
 
+const mapStateToProps = (state) => {
+    return {
+        eqcClicks      : state.DatabaseReducer.db.eqcClicks,
+        eqcImpressions : state.DatabaseReducer.db.eqcImpressions,
+        xqcClicks      : state.DatabaseReducer.db.xqcClicks,
+        xqcImpressions : state.DatabaseReducer.db.xqcImpressions
+    }
+}
 
-export default DashboardCharts;
+const mapDispatchToProps = (dispatch) => {
+    return {}
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(DashboardCharts);

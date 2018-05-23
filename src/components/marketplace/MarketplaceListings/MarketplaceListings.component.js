@@ -14,12 +14,6 @@ Children Component
 */
 import ListingCard from './ListingCard/ListingCard.component';
 
-/*
-Fake Marketplace Data
-*/
-import fakeAdListings      from '../../../assets/fakeData/fakeMarketplaceData/fake-ad-listings';
-import fakeAdspaceListings from '../../../assets/fakeData/fakeMarketplaceData/fake-adspace-listings';
-
 
 /**
  * Marketplace Listings contains array of Listing Cards
@@ -41,9 +35,9 @@ class MarketplaceListings extends Component {
      */
     decideDataToDisplay() {
         if(this.props.modeFilter === 'Advertiser'){
-            return fakeAdspaceListings.adspaceListings;
+            return this.props.adspaceListings;
         }else{
-            return fakeAdListings.adListings; 
+            return this.props.adListings; 
         }
     }
 
@@ -89,10 +83,12 @@ class MarketplaceListings extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        currencyFilter: state.MenuBarFilterReducer.currencyFilter,
-        modeFilter    : state.MenuBarFilterReducer.modeFilter,
-        budgetFilter  : state.MarketplaceFilterReducer.budgetFilter,
-        adGenreFilter : state.MarketplaceFilterReducer.adGenreFilter
+        currencyFilter : state.MenuBarFilterReducer.currencyFilter,
+        modeFilter     : state.MenuBarFilterReducer.modeFilter,
+        budgetFilter   : state.MarketplaceFilterReducer.budgetFilter,
+        adGenreFilter  : state.MarketplaceFilterReducer.adGenreFilter,
+        adListings     : state.DatabaseReducer.db.adListings,
+        adspaceListings: state.DatabaseReducer.db.adspaceListings
     }
 }
 

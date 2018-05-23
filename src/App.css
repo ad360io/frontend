@@ -31,3 +31,12 @@
         top: 0;
     }
 }
+
+@keyframes slide-in-chart-card {
+    from {
+        margin-left: 65vw;
+    }
+    to {
+        margin-left: 0px;
+    }
+}

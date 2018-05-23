@@ -2,6 +2,7 @@
 Core Libs
 */
 import React, { Component } from 'react';
+import { connect }          from 'react-redux';
 
 /*
 Custom Components
@@ -18,11 +19,6 @@ Local CSS
 */
 import './DashboardStats.component.css'
 
-/*
-Fake Data
-*/
-import fake_24hr_data from '../../../assets/fakeData/fakeDashboardData/fake-24-hr';
-
 
 /**
  * Dashboard Stats Component
@@ -36,16 +32,16 @@ class DashboardStats extends Component {
     }
 
     getStatsCardTitles() {
-        return (this.props.modeFilter === 'Advertiser' ?
-            ['Impressions', 'Expenses', 'Balance']:
-            ['Impressions', 'Revenue' , 'Balance'])
+        return (this.props.modeFilter === 'Advertiser'
+            ? ['Impressions', 'Expenses', 'Balance']
+            : ['Impressions', 'Revenue' , 'Balance'])
     }
 
     getStatsCardValueByTitle(title) {
         // TODO(ahuszagh) Change to use an API call in the constructor.
-        return (this.props.modeFilter === 'Advertiser' ?
-            fake_24hr_data.adv_24hr_data[title]:
-            fake_24hr_data.pub_24hr_data[title])
+        return (this.props.modeFilter === 'Advertiser' 
+            ? this.props.db.advertiserDailyData[title]
+            : this.props.db.publisherDailyData[title])
     }
 
     render() {
@@ -56,7 +52,7 @@ class DashboardStats extends Component {
                 {
                     this.getStatsCardTitles().map((statsTitle, i)=>{
                         return <StatsCard   title={statsTitle}
-                                            value={this.getStatsCardValueByTitle(statsTitle)}
+                                            value={""+this.getStatsCardValueByTitle(statsTitle)}
                                             trend={this.getStatsCardValueByTitle(statsTitle+'_trend')}
                                             key={this.props.modeFilter+statsTitle} />
                     })
@@ -67,5 +63,18 @@ class DashboardStats extends Component {
     }
 }
 
+const mapStateToProps = (state) => {
+    return {
+        db: state.DatabaseReducer.db
+    }
+}
 
-export default DashboardStats;
+const mapDispatchToProps = (dispatch) => {
+    return {}
+}
+
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(DashboardStats);

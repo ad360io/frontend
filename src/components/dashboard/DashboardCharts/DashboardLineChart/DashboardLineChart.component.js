@@ -20,8 +20,8 @@ const DashboardLineChart = ({data}) =>
                 height={200}
                 options={{
                     maintainAspectRatio: false,
-                    responsive: true,
                     animation: false,
+                    responsive: true,
                     legend: {
                         labels: {
                             boxWidth: 0,

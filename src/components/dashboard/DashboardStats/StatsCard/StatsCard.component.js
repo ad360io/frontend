@@ -68,7 +68,7 @@ class StatsCard extends Component {
 StatsCard.propTypes = {
     trend: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    value: PropTypes.string.isRequired
+    value: PropTypes.string.isRequired,
 }
 
 
