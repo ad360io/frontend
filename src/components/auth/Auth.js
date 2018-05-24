@@ -18,7 +18,9 @@ export default class Auth {
         this.scheduleRenewal = this.scheduleRenewal.bind(this);
         this.getAccessToken = this.getAccessToken.bind(this);
         this.getProfile = this.getProfile.bind(this);
+        this.handleProfileOnAuthenticated = this.handleProfileOnAuthenticated.bind(this);
         this.dispatchProfile = this.dispatchProfile.bind(this);
+        this.updateUserMetadata = this.updateUserMetadata.bind(this);
 
         this.scheduleRenewal();
     }
@@ -56,7 +58,8 @@ export default class Auth {
         localStorage.setItem('access_token', authResult.accessToken);
         localStorage.setItem('id_token', authResult.idToken);
         localStorage.setItem('expires_at', expiresAt);
-        this.dispatchProfile(authResult.accessToken);
+        localStorage.setItem('user_id', authResult.idTokenPayload.sub);
+        this.handleProfileOnAuthenticated(authResult.accessToken);
         propsHistory.replace('/dashboard');
         propsHistory.push('/dashboard')
         this.scheduleRenewal();
@@ -67,7 +70,7 @@ export default class Auth {
         localStorage.removeItem('access_token');
         localStorage.removeItem('id_token');
         localStorage.removeItem('expires_at');
-
+        window.location.reload();
         clearTimeout(this.tokenRenewalTimeout);
     }
 
@@ -117,22 +120,60 @@ export default class Auth {
         });
     }
 
-    dispatchProfile(accessToken){
-        this.auth0.client.userInfo(accessToken, (err, profile) => {
-            if (profile) {
-                let name = profile['https://auth.qchain.co/user_metadata'].name;
-                let nickname = profile.nickname;
-                let email = profile.email;
-                let avatar_url = profile.picture;
-                let value = {
-                    name,
-                    nickname,
-                    email,
-                    avatar_url
-                }
-                this.store.dispatch({type: 'SET_PROFILE', value})
+    handleProfileOnAuthenticated(accessToken){
+        this.getProfile((err, profile)=>{
+            if(profile) {
+                this.dispatchProfile(profile, 
+                    profile['https://auth.qchain.co/user_metadata']
+                );
             }
-        });
+            if(err) console.log(err)
+        })
+    }
+
+    dispatchProfile(profile, user_metadata) {
+        let name        = user_metadata.name;
+        let email       = (typeof user_metadata.email === 'undefined' 
+                            ? profile.email
+                            : user_metadata.email);
+        let nickname    = (typeof user_metadata.nickname === 'undefined' 
+                            ? profile.nickname
+                            : user_metadata.nickname);
+        let avatar_url  = (typeof user_metadata.picture === 'undefined' 
+                            ? profile.picture
+                            : user_metadata.picture);
+        let value = {
+            name,
+            email,
+            nickname,
+            avatar_url
+        }
+        this.store.dispatch({
+            type: 'SET_PROFILE',
+            value
+        })
+    }
+
+    updateUserMetadata(newMetadata){
+        let myIdToken = localStorage.getItem('id_token');
+        let auth0Manager = new auth0.Management({
+            domain: `${Auth0Config.domain}`,
+            token: myIdToken,
+            _sendTelemetry: false,
+        })
+        let myUserId = localStorage.getItem('user_id');
+        auth0Manager.patchUserMetadata(
+            myUserId,
+            newMetadata, 
+            (err, newProfile) => {
+                if(err) {
+                    console.log(err);
+                } 
+                else {
+                    this.logout();
+                }
+            }
+        )
     }
 
 }
