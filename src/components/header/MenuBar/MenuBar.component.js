@@ -42,8 +42,8 @@ class MenuBar extends Component {
 
     componentWillMount() {
         if(this.props.profile.name === 'User Name'){
-            const { dispatchProfile, getAccessToken } = this.props.auth;
-            dispatchProfile(getAccessToken());
+            const { handleProfileOnAuthenticated, getAccessToken } = this.props.auth;
+            handleProfileOnAuthenticated(getAccessToken());
         }
     }
 

@@ -21,10 +21,10 @@ const initialState = {
             Revenue_trend: '0',
             Balance_trend: '0'
        },
-       eqcImpressions:[[0]],
-       xqcImpressions:[[0]],
-       eqcClicks: [[0]],
-       xqcClicks: [[0]]
+       eqcImpressions:[[]],
+       xqcImpressions:[[]],
+       eqcClicks: [[]],
+       xqcClicks: [[]]
    },
    error: null
 }

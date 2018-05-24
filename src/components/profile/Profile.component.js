@@ -17,7 +17,8 @@ import { Media } from 'react-bootstrap';
 /*
 Children Component
 */
-import ProfileTables   from './ProfileTables/ProfileTables.component'
+import ProfileTables   from './ProfileTables/ProfileTables.component';
+import ProfileEditor   from './ProfileEditor/ProfileEditor.component';
 import Footer          from '../footer/Footer.component';
 
 
@@ -40,14 +41,16 @@ class Profile extends Component {
                     <img src={this.props.profile.avatar_url} style={{marginRight: '3vw'}} width='120' height='120' alt='user-avatar' />
                     </Media.Left>
                     <Media.Body>
-                    <Media.Heading style={mediaHeadingStyle}>{this.props.profile.nickname}</Media.Heading>
+                    <Media.Heading style={mediaHeadingStyle}>
+                        <p style={{float:'left'}}>{this.props.profile.nickname}</p>
+                        <ProfileEditor auth={this.props.auth}/>
+                    </Media.Heading>
                     Personal Contact:<br /> {this.props.profile.email}
                     </Media.Body>
                 </Media>
             </div>
-
-            <ProfileTables/>
-
+            
+            <ProfileTables />
             <Footer />
 
         </div>
