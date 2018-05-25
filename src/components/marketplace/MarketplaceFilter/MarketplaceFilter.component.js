@@ -18,6 +18,12 @@ import Slider from 'material-ui/Slider'
 import Drawer from 'material-ui/Drawer'
 
 /*
+Action
+*/
+import { setBudget, setContentGenre }             from '../../../actions/MarketplaceActions';
+import { openDrawer, closeDrawer, drawerRequest } from '../../../actions/MarketplaceActions';
+
+/*
 Local CSS
 */
 import './MarketplaceFilter.component.css'
@@ -169,32 +175,19 @@ const mapStateToFilterProps = (state) => {
 const mapDispatchToFilterProps = (dispatch) => {
     return {
         onSliderChange:(event, budgetFilter)=>{
-            dispatch({
-                type:'SET_BUDGET_VALUE',
-                value: budgetFilter
-            })
+            dispatch(setBudget(budgetFilter))
         },
         onDrawerRequestChange: (open)=>{
-            dispatch({
-                type: 'SET_DRAWER',
-                value: open
-            })
+            dispatch(drawerRequest(open))
         },
         onContentGenreClick: (contentGenre) => {
-            dispatch({
-                type: 'SET_CONTENT_GENRE',
-                value: contentGenre
-            })
+            dispatch(setContentGenre(contentGenre))
         },
         closeDrawer: () => {
-            dispatch({
-                type: 'CLOSE_DRAWER'
-            })
+            dispatch(closeDrawer())
         },
         openDrawer: () => {
-            dispatch({
-                type: 'OPEN_DRAWER'
-            })
+            dispatch(openDrawer())
         }
     }
 }

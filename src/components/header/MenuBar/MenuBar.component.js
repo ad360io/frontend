@@ -19,6 +19,11 @@ import { Navbar, Nav, NavItem }        from 'react-bootstrap';
 import { ButtonGroup, Button  }        from 'react-bootstrap';
 import { DropdownButton, MenuItem }    from 'react-bootstrap';
 
+/*
+Actions
+*/
+import { setMode, setCurrency } from '../../../actions/HeaderActions'
+
 // TODO(ahuszagh)
 // Maybe modularize the menu-bar to smaller components?
 
@@ -117,16 +122,10 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onModeClick: (mode)=>{
-            dispatch({
-                type: 'SET_MODE_FILTER',
-                modeFilter: mode
-            })
+            dispatch(setMode(mode))
         },
         onCurrencyClick: (currency) => {
-            dispatch({
-                type: 'SET_CURRENCY_FILTER',
-                currencyFilter: currency
-            })
+            dispatch(setCurrency(currency))
         }
     }
 }

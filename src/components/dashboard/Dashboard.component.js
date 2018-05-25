@@ -20,6 +20,11 @@ Networking
 import axios from 'axios';
 
 /*
+Actions
+*/
+import { fetchFulfilled, fetchPending, fetchRejected } from '../../actions/DatabaseRequestActions';
+
+/*
 Custom Components
 */
 import Footer           from '../footer/Footer.component';
@@ -86,19 +91,13 @@ const mapDispatchToProps = (dispatch) => {
     return {
         onStartLoadData : () => {
             dispatch((dispatch) => {
-                dispatch({type: 'FETCH_DATABASE_PENDING'})
+                dispatch(fetchPending())
                 axios.get(`${window.location.protocol}//${window.location.host}/api/db`)
                     .then((response) => {
-                        dispatch({
-                            type: 'FETCH_DATABASE_FULFILLED',
-                            payload: response.data
-                        })
+                        dispatch(fetchFulfilled(response.data))
                     })
                     .catch((err) => {
-                        dispatch({
-                            type: 'FETCH_DATABASE_REJECTED',
-                            payload: err
-                        })
+                        dispatch(fetchRejected(err))
                     })
             })
         }
