@@ -42,14 +42,14 @@ class MarketplaceListings extends Component {
     }
 
     /** 
-     * Filter the datasets with currencyFilter, budgetFilter, and adGenreFilter
-     * Remember to ignore adGenreFilter if it is Show All
+     * Filter the datasets with currencyFilter, budgetFilter, and contentGenreFilter
+     * Remember to ignore contentGenreFilter if it is Show All
      * @param {Array} data The full array of listings waiting to be filtered
      */
     filterDataWithProps(data){
         return data.filter((listing)=>{
             if(listing.pricing <= this.props.budgetFilter && listing.currency.toUpperCase() === this.props.currencyFilter
-                && (this.props.adGenreFilter === 'Show All' || listing.genre === this.props.adGenreFilter)){
+                && (this.props.contentGenreFilter === 'Show All' || listing.genre === this.props.contentGenreFilter)){
                 return listing;
             }else{
                 return null;
@@ -83,12 +83,12 @@ class MarketplaceListings extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        currencyFilter : state.MenuBarFilterReducer.currencyFilter,
-        modeFilter     : state.MenuBarFilterReducer.modeFilter,
-        budgetFilter   : state.MarketplaceFilterReducer.budgetFilter,
-        adGenreFilter  : state.MarketplaceFilterReducer.adGenreFilter,
-        adListings     : state.DatabaseReducer.db.adListings,
-        adspaceListings: state.DatabaseReducer.db.adspaceListings
+        currencyFilter     : state.MenuBarFilterReducer.currencyFilter,
+        modeFilter         : state.MenuBarFilterReducer.modeFilter,
+        budgetFilter       : state.MarketplaceFilterReducer.budgetFilter,
+        contentGenreFilter : state.MarketplaceFilterReducer.contentGenreFilter,
+        adListings         : state.DatabaseReducer.db.adListings,
+        adspaceListings    : state.DatabaseReducer.db.adspaceListings
     }
 }
 

@@ -2,7 +2,7 @@
 const defaultState = {
    isDrawerOpen: false,       
    budgetFilter: 75,       
-   adGenreFilter: 'Show All'
+   contentGenreFilter: 'Show All'
 }
 
 /**
@@ -47,10 +47,10 @@ const MarketplaceFilterReducer = (state=defaultState, action) => {
                 budgetFilter: action.value
             }
             
-        case 'SET_AD_GENRE':
+        case 'SET_CONTENT_GENRE':
             return {
                 ...state,
-                adGenreFilter: action.value
+                contentGenreFilter: action.value
             }
         default:
             return state;

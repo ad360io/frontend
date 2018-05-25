@@ -97,8 +97,8 @@ class MarketplaceFilter extends Component {
                     <h4 className='filter-title'>{this.decideTitle()} Listings</h4>
                     <Button 
                         className='btn-single'
-                        onClick={()=>{this.props.onAdGenreClick('Show All')}}
-                        active={this.props.adGenreFilter === 'Show All'}
+                        onClick={()=>{this.props.onContentGenreClick('Show All')}}
+                        active={this.props.contentGenreFilter === 'Show All'}
                     >
                         Show All
                     </Button>
@@ -107,8 +107,8 @@ class MarketplaceFilter extends Component {
                         title='Branded Content' 
                         id='branded-content-menu' 
                         pullRight
-                        onClick={()=>this.props.onAdGenreClick('Branded Content')}
-                        active={this.props.adGenreFilter === 'Branded Content'}
+                        onClick={()=>this.props.onContentGenreClick('Branded Content')}
+                        active={this.props.contentGenreFilter === 'Branded Content'}
                     >
                         <MenuItem >Written Post</MenuItem>
                         <MenuItem >Podcast</MenuItem>
@@ -119,8 +119,8 @@ class MarketplaceFilter extends Component {
                         title='Influencer Post' 
                         id='influencer-post-menu' 
                         pullRight
-                        onClick={()=>this.props.onAdGenreClick('Influencer Post')}
-                        active={this.props.adGenreFilter === 'Influencer Post'}
+                        onClick={()=>this.props.onContentGenreClick('Influencer Post')}
+                        active={this.props.contentGenreFilter === 'Influencer Post'}
                     >
                         <MenuItem >Tweet</MenuItem>
                         <MenuItem >Instagram</MenuItem>
@@ -132,8 +132,8 @@ class MarketplaceFilter extends Component {
                     </SplitButton>
                     <Button 
                         className='btn-single'
-                        onClick={()=>this.props.onAdGenreClick('Sponsorship')}
-                        active={this.props.adGenreFilter === 'Sponsorship'}
+                        onClick={()=>this.props.onContentGenreClick('Sponsorship')}
+                        active={this.props.contentGenreFilter === 'Sponsorship'}
                     >
                         Sponsorship
                     </Button>
@@ -157,12 +157,12 @@ class MarketplaceFilter extends Component {
 
 const mapStateToFilterProps = (state) => {
     return {
-        budgetFilter : state.MarketplaceFilterReducer.budgetFilter,
-        activeTypes  : state.MarketplaceFilterReducer.activeTypes,
-        isDrawerOpen : state.MarketplaceFilterReducer.isDrawerOpen,
-        currency     : state.MenuBarFilterReducer.currencyFilter,
-        adGenreFilter: state.MarketplaceFilterReducer.adGenreFilter,
-        modeFilter   : state.MenuBarFilterReducer.modeFilter
+        budgetFilter       : state.MarketplaceFilterReducer.budgetFilter,
+        activeTypes        : state.MarketplaceFilterReducer.activeTypes,
+        isDrawerOpen       : state.MarketplaceFilterReducer.isDrawerOpen,
+        currency           : state.MenuBarFilterReducer.currencyFilter,
+        contentGenreFilter : state.MarketplaceFilterReducer.contentGenreFilter,
+        modeFilter         : state.MenuBarFilterReducer.modeFilter
     }
 }
 
@@ -180,10 +180,10 @@ const mapDispatchToFilterProps = (dispatch) => {
                 value: open
             })
         },
-        onAdGenreClick: (adGenre) => {
+        onContentGenreClick: (contentGenre) => {
             dispatch({
-                type: 'SET_AD_GENRE',
-                value: adGenre
+                type: 'SET_CONTENT_GENRE',
+                value: contentGenre
             })
         },
         closeDrawer: () => {
