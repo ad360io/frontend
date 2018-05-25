@@ -14,32 +14,79 @@ Local CSS
 */
 import './CreateListingForm.component.css';
 
-
+/**
+ * Create Listing Form Component
+ */
 class CreateListingForm extends Component {
     
     constructor(props){
         super(props);
         this.state = {
-            selectedGenre: 'Sponsorship'
+            selectedGenre: 'Sponsorship',
+            pitch: '',
+            title: '',
+            subCategory: '',
         }
-        this.decideTitle = this.decideTitle.bind(this);
+
+        this.handleTitleChange = this.handleTitleChange.bind(this);
         this.handleOnGenreChange = this.handleOnGenreChange.bind(this);
+        this.handleSubCategoryChange = this.handleSubCategoryChange.bind(this);
+        this.handlePitchChange = this.handlePitchChange.bind(this);
+
+        this.decideTitle = this.decideTitle.bind(this);
         this.showSubGenre = this.showSubGenre.bind(this);
+        
+        this.handleSubmitForm = this.handleSubmitForm.bind(this);
     }
 
-    decideTitle(){
-        return (this.props.modeFilter === 'Advertiser' ? 'Content' : 'Content Space')
+    decideTitle() {
+        return (this.props.modeFilter === 'Advertiser' 
+            ? 'Content' 
+            : 'Content Space'
+        );
     }
 
-    handleOnGenreChange(event){
-        this.setState({selectedGenre : event.target.value});
+    handleOnGenreChange(event) {
+        this.setState({
+            ...this.state,
+            selectedGenre : event.target.value
+        });
+    }
+
+    handlePitchChange(event) {
+        this.setState({
+            ...this.state,
+            pitch: event.target.value
+        })
+    }
+
+    handleTitleChange(event) {
+        this.setState({
+            ...this.state,
+            title: event.target.value
+        })
+    }
+
+    handleSubCategoryChange(event) {
+        this.setState({
+            ...this.state,
+            subCategory: event.target.value
+        })
+    }
+
+    handleSubmitForm(){
+        // build URL to Postgrest
     }
 
     showSubGenre() {
         if (this.state.selectedGenre === 'Branded Content') {
             return <FormGroup controlId='control-form-genre'>
                     <p className='control-label'>*Select Sub-Category </p>
-                    <FormControl componentClass='select' required>
+                    <FormControl 
+                        componentClass='select' 
+                        onChange={this.handleSubCategoryChange}
+                        required
+                    >
                         <option value='Written Post'>Written Post</option>
                         <option value='Podcast'>Podcast</option>
                         <option value='Video'>Video</option>
@@ -49,7 +96,11 @@ class CreateListingForm extends Component {
         }else if (this.state.selectedGenre === 'Influencer Post'){
             return <FormGroup controlId='control-form-genre'>
                 <p className='control-label'>*Select Sub-Category</p>
-                <FormControl componentClass='select' required>
+                <FormControl 
+                    componentClass='select'
+                    onChange={this.handleSubCategoryChange}
+                    required
+                >
                     <option value='Tweet'>Tweet</option>
                     <option value='Instagram'>Instagram</option>
                     <option value='Twitch'>Twitch</option>
@@ -76,7 +127,7 @@ class CreateListingForm extends Component {
                     <p className='control-label'>
                         {`*${this.decideTitle()} Title`}
                     </p>
-                    <FormControl type='text' required />
+                    <FormControl type='text' onChange={this.handleTitleChange} required />
                 </FormGroup>
                 <FormGroup controlId='control-form-genre'>
                     <p className='control-label'>*Select Genre</p>
@@ -102,9 +153,17 @@ class CreateListingForm extends Component {
                         placeholder='Show me your best pitch here!' 
                         maxLength={280} 
                         rows={8}
-                        style={{resize: 'vertical'}}/>
+                        style={{resize: 'vertical'}}
+                        onChange={this.handlePitchChange}    
+                    />
                 </FormGroup>
-                <Button type='submit' className='control-form-submit btn-lg btn-primary' disabled>Create</Button>
+                <Button type='submit' 
+                    className='control-form-submit btn-lg btn-primary'
+                    onClick={this.handleSubmitForm}
+                    disabled
+                >
+                    Create
+                </Button>
             </form>
         </div>;
     }
