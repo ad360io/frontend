@@ -27,21 +27,6 @@
     background:  linear-gradient(90deg, #2655a0, #552072);
 }
 
-.currency-selector {
-    margin-top: 17px;
-    margin-right: 5%;
-    padding-left: 0px;
-}
-
-.currency-logo {
-    height: 25px;
-}
-
-
-.mode-selector {
-    margin-top: 17px;
-}
-
 .nav-custom {
     color: black;
 }
