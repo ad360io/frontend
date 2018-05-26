@@ -103,7 +103,7 @@ class DashboardCharts extends Component {
         }else {
             // Publisher charts  (Clicks, Impression, RPM, Revenue)
             // returning empty array at this time to serve as a test case and wait for actual data
-            return (this.props.currencyFilter === 'EQC' ? [] : []);
+            return (this.props.currencyFilter === 'EQC' ? [[[]],[[]]] : [[[]],[[]]]);
         }
     }
 
