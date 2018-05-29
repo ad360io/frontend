@@ -2,11 +2,6 @@
 .dashboard-charts-card {
     width: 65vw;
     margin-bottom: 2%;
-    /* animation-name: slide-in-chart-card;
-    margin-left: 80vw;
-    animation-duration: 0.2s;
-    animation-delay: 0.5s;
-    animation-fill-mode: forwards; */
 }
 
 .doughnut-card {

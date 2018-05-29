@@ -26,6 +26,7 @@ const initialState = {
        eqcClicks: [[]],
        xqcClicks: [[]]
    },
+   isEmpty: false,
    error: null
 }
 
@@ -51,11 +52,13 @@ const DatabaseReducer = (state=initialState, action) => {
             }
         }
         case 'FETCH_DATABASE_FULFILLED': {
+            let isEmpty = (action.payload.length === 0);
             return {
                 ...state,
                 fetching: false,
                 fetched: true,
-                db: action.payload
+                db: action.payload,
+                isEmpty
             }
         }
         default:

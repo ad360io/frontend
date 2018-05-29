@@ -18,9 +18,10 @@ import  Divider           from 'material-ui/Divider';
 /*
 Children Components
 */
-import DashboardLineChart from './DashboardLineChart/DashboardLineChart.component';
-import LineChartSlider    from './LineChartSlider/LineChartSlider.component';
-import DashboardDoughnut  from './DashboardDoughnut/DashboardDoughnut.component';
+import DashboardLineChart   from './DashboardLineChart/DashboardLineChart.component';
+import LineChartSlider      from './LineChartSlider/LineChartSlider.component';
+import DashboardDoughnut    from './DashboardDoughnut/DashboardDoughnut.component';
+import DashboardPlaceholder from '../DashboardPlaceholder/DashboardPlaceholder.component';
 
 
 /**
@@ -31,6 +32,7 @@ class DashboardCharts extends Component {
     constructor(props){
         super(props);
         this.chooseLineChartDisplayData = this.chooseLineChartDisplayData.bind(this);
+        this.injectLineChartDataset = this.injectLineChartDataset.bind(this);
     }
 
     /**
@@ -171,6 +173,18 @@ class DashboardCharts extends Component {
         };
     }
 
+    injectLineChartDataset (itemListsForSlider) {
+        return itemListsForSlider.map((itemList, i)=>{
+                    return <Card key={'itemList'+i} className='dashboard-charts-card'>
+                                <h2 className='chart-title'> {this.getLineChartTitle(i)} Performance</h2>
+                                <Divider style={{width: '75%'}}/>
+                                <CardText>
+                                    <LineChartSlider itemList={itemList} />
+                                </CardText>
+                            </Card>
+                })
+    }
+
     render() {
 
         let itemListsForSlider = [];
@@ -183,33 +197,32 @@ class DashboardCharts extends Component {
             return itemListsForSlider.push(currentDatasetChartList);
         })
 
+        const doughnutChart = (
+            <Card className='dashboard-charts-card doughnut-card'>
+                <h2 className='chart-title'> Highest Grossing Contracts </h2>
+                <Divider style={{width: '75%'}}/>
+                <CardText>
+                    <div className='highest-gross-card-left'>
+                        <DashboardDoughnut data={this.chooseDoughnutDataset()} />
+                    </div>
+                    <div className='highest-gross-card-right'>
+                    {/* Build this info dynamically after we are pulling real data*/}
+                        The <a><i>Contract Uno</i></a> is the best deal you've done!
+                        <span className='quick-maf'> 66.6</span>% of your total grossing are generated here!
+                    </div>
+                </CardText>
+            </Card>
+        )
+
         return <div className='dashboard-charts-container'>
             {
-                itemListsForSlider.map((itemList, i)=>{
-                    return <Card key={'itemList'+i} className='dashboard-charts-card'>
-                                <h2 className='chart-title'> {this.getLineChartTitle(i)} Performance</h2>
-                                <Divider style={{width: '75%'}}/>
-                                <CardText>
-                                    <LineChartSlider itemList={itemList} />
-                                </CardText>
-                            </Card>
-                })
+                (!this.props.isEmpty 
+                    ? <DashboardPlaceholder />
+                    : this.injectLineChartDataset(itemListsForSlider)
+                ) 
             }
             {
-                <Card className='dashboard-charts-card doughnut-card'>
-                  <h2 className='chart-title'> Highest Grossing Contracts </h2>
-                    <Divider style={{width: '75%'}}/>
-                    <CardText>
-                        <div className='highest-gross-card-left'>
-                            <DashboardDoughnut data={this.chooseDoughnutDataset()} />
-                        </div>
-                        <div className='highest-gross-card-right'>
-                            {/* Build this info dynamically after we are pulling real data*/}
-                            The <a><i>Contract Uno</i></a> is the best deal you've done!
-                            <span className='quick-maf'> 66.6</span>% of your total grossing are generated here!
-                        </div>
-                    </CardText>
-                </Card>
+                (!this.props.isEmpty ? doughnutChart : null)
             }
         </div>;
     }
@@ -220,7 +233,8 @@ const mapStateToProps = (state) => {
         eqcClicks      : state.DatabaseReducer.db.eqcClicks,
         eqcImpressions : state.DatabaseReducer.db.eqcImpressions,
         xqcClicks      : state.DatabaseReducer.db.xqcClicks,
-        xqcImpressions : state.DatabaseReducer.db.xqcImpressions
+        xqcImpressions : state.DatabaseReducer.db.xqcImpressions,
+        isDatasetEmpty : state.DatabaseReducer.isEmpty
     }
 }
 

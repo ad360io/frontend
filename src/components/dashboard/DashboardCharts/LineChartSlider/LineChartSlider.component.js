@@ -19,7 +19,7 @@ import './LineChartSlider.component.css';
  * Carousel made by slick.js library
  * Requires a props of itemList that should contain a list of elements to be rendered in the carousel.
  */
-const LineChartSlider = function({itemList}) {
+const LineChartSlider = ({itemList}) => {
     /* Prepare the settings prop for Slider, for more options check slick.js doc*/
     let settings = {
         dots: true,
