@@ -42,6 +42,8 @@ class Dashboard extends Component {
     constructor(props){
         super(props);
         props.onStartLoadData();
+        this.decideSmallDashboardLeft = this.decideSmallDashboardLeft.bind(this);
+        this.decideSmallDashboardRight = this.decideSmallDashboardRight.bind(this);
     }
 
     componentDidMount() {
@@ -58,18 +60,26 @@ class Dashboard extends Component {
         this.loadDataInterval = 0;
     }
 
+    decideSmallDashboardLeft() {
+        return this.props.isDatabaseEmpty ? 5 : 8
+    }
+
+    decideSmallDashboardRight() {
+        return this.props.isDatabaseEmpty ? 7 : 4
+    }
+
     render() {
         return <div className='dashboard-container'>
             <Grid className='dashboard-grid'>
                 <Row>
-                    <Col xs={12} lg={5} sm={8} className='dashboard-left'>
+                    <Col xs={12} lg={5} sm={this.decideSmallDashboardLeft()} className='dashboard-left'>
                         <DashboardWallet className='wallet-div'/>
                         <DashboardStats modeFilter={this.props.modeFilter} 
                             currencyFilter={this.props.currencyFilter}  
                             className='stats-div'/>
                     </Col>
 
-                    <Col xs={12} lg={7} sm={4} className='dashboard-right'>
+                    <Col xs={12} lg={7} sm={this.decideSmallDashboardRight()} className='dashboard-right'>
                         <DashboardCharts modeFilter={this.props.modeFilter}
                             currencyFilter={this.props.currencyFilter} />
                     </Col>
@@ -84,6 +94,7 @@ const mapStateToProps = (state) => {
     return {
         modeFilter      : state.MenuBarFilterReducer.modeFilter,
         currencyFilter  : state.MenuBarFilterReducer.currencyFilter,
+        isDatabaseEmpty : state.DatabaseReducer.isEmpty
     }
 }
 

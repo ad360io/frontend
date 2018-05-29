@@ -216,13 +216,13 @@ class DashboardCharts extends Component {
 
         return <div className='dashboard-charts-container'>
             {
-                (!this.props.isEmpty 
+                (this.props.isEmpty 
                     ? <DashboardPlaceholder />
                     : this.injectLineChartDataset(itemListsForSlider)
                 ) 
             }
             {
-                (!this.props.isEmpty ? doughnutChart : null)
+                (this.props.isEmpty ? null : doughnutChart)
             }
         </div>;
     }
