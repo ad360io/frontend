@@ -146,7 +146,7 @@ class ListingCard extends Component {
         // and the count of characters without overflowing
         // to detect if we need '...' at the end of title.
         const numberOfCharOriginal = this.props.listing.name.length;
-        const numberOfCharAllowed = Math.floor((this.state.width - drawerSize) * cardWidthInPercent / 13 - 3);
+        const numberOfCharAllowed = Math.floor((this.state.width - drawerSize) * cardWidthInPercent / 13);
         const dotDotDot = (numberOfCharAllowed < numberOfCharOriginal ? '...' : '')
         return this.props.listing.name.slice(0, numberOfCharAllowed)+dotDotDot;
     }
@@ -162,7 +162,10 @@ class ListingCard extends Component {
                 <div className='poster-tag'>{this.props.listing.username} </div>
                 <div className='price-tag'>{this.props.listing.pricing+' '+this.props.listing.currency}</div>
 
-                <CardTitle title={this.decideTitleDisplayText()} subtitle={'Posted on: '+this.props.listing.ask_date_from} />
+                <CardTitle 
+                    title={this.decideTitleDisplayText()} 
+                    subtitle={'Posted on: '+this.props.listing.ask_date_from} 
+                    style={{paddingBottom:'0px'}}/>
                 <img src={this.decidePlaceholderImage()} className='listing-img' alt='listing-img'/>
                 <CardText className='listing-msg'>
                     {this.props.listing.msg}
