@@ -13,6 +13,7 @@ import StatsCard from './StatsCard/StatsCard.component';
 Material UI Card
 */
 import { Card, CardText } from 'material-ui/Card';
+import Divider            from 'material-ui/Divider';
 
 /*
 Local CSS
@@ -48,6 +49,7 @@ class DashboardStats extends Component {
         return <div className='stats-container'>
             <Card className='stats-container-card'>
                 <h2 className='stats-title'>Last 24 Hours</h2>
+                <Divider style={{width: '75%'}} />
                 <CardText>
                 {
                     this.getStatsCardTitles().map((statsTitle, i)=>{

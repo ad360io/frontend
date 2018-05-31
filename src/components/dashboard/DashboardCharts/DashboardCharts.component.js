@@ -63,28 +63,27 @@ class DashboardCharts extends Component {
     /**
      * This Method initialize the data object that is required for Chart.js component
      * @param {*} dataset provide the array of numbers that is to be plotted to chart.
-     * @param {*} rbgaString provide the desired color of the graph in rgba format.
      */
-    prepareDatasetToLineChart(dataset, rbgaString){
+    prepareDatasetToLineChart(dataset){
         const data = {
             labels : this.prepareLineChartXaxisLabels(dataset),
             datasets: [
               {
                 label: 'Some Content names maybe',
-                fill: false,
-                lineTension: 0.1,
-                backgroundColor: rbgaString,
-                borderColor: rbgaString,
+                fill: true,
+                lineTension: 0.05,
+                backgroundColor: 'rgba(20,78,170,0.3)',
+                borderColor: 'rgba(20,78,170,1)',
                 borderCapStyle: 'butt',
                 borderDash: [],
                 borderDashOffset: 0.0,
                 borderJoinStyle: 'miter',
-                pointBorderColor: rbgaString,
+                pointBorderColor: 'rgba(20,78,170,1)',
                 pointBackgroundColor: '#fff',
                 pointBorderWidth: 1,
                 pointHoverRadius: 5,
-                pointHoverBackgroundColor: rbgaString,
-                pointHoverBorderColor: rbgaString,
+                pointHoverBackgroundColor: 'rgba(20,78,170,1)',
+                pointHoverBorderColor: 'rgba(20,78,170,1)',
                 pointHoverBorderWidth: 2,
                 pointRadius: 1,
                 pointHitRadius: 10,
@@ -106,19 +105,6 @@ class DashboardCharts extends Component {
             // Publisher charts  (Clicks, Impression, RPM, Revenue)
             // returning empty array at this time to serve as a test case and wait for actual data
             return (this.props.currencyFilter === 'EQC' ? [[[]],[[]]] : [[[]],[[]]]);
-        }
-    }
-
-    getLineColor(k) {
-        switch (k){
-            case 1:
-                return 'rgba(200,20,20,1)';
-            case 2:
-                return 'rgba(0,128,128,1)';
-            case 3:
-                return 'rgba(40,240,240,1)';
-            default:
-                return 'rgba(32,178,120,1)';
         }
     }
 
@@ -160,14 +146,14 @@ class DashboardCharts extends Component {
             datasets: [{
                 data: [300, 50, 100],
                 backgroundColor: [
-                '#FF6384',
-                '#36A2EB',
-                '#FFCE56'
+                    'rgba(38,40,191, 1.0)',
+                    'rgba(255,170,0, 1.0)',
+                    'rgba(100,46,165, 1.0)'
                 ],
                 hoverBackgroundColor: [
-                '#FF6384',
-                '#36A2EB',
-                '#FFCE56'
+                    'rgba(38,40,191, 0.9)',
+                    'rgba(255,170,0, 0.9)',
+                    'rgba(100,46,165, 0.9)',
                 ]
             }]
         };
@@ -191,7 +177,7 @@ class DashboardCharts extends Component {
         this.chooseLineChartDisplayData().map((datasets, key) => {
             let currentDatasetChartList = [];
             datasets.map((dataset, index)=>{
-                let currentDataset = this.prepareDatasetToLineChart(dataset,this.getLineColor(key));
+                let currentDataset = this.prepareDatasetToLineChart(dataset);
                 return currentDatasetChartList.push(<DashboardLineChart data={currentDataset} key={key+''+index} />);
             })
             return itemListsForSlider.push(currentDatasetChartList);

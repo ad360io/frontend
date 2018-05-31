@@ -10,8 +10,10 @@
 }
 
 .chart-title {
+    font-weight: normal;
+    letter-spacing: 0.02em;
     margin-left: 8%;
-    padding-top: 2%;
+    padding-top: 19px;
     margin-top: 0px;
 }
 

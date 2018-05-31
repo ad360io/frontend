@@ -5,11 +5,6 @@ import React, { Component } from 'react';
 import PropTypes            from 'prop-types';
 
 /*
-Material UI Components
-*/
-import { Card, CardText } from 'material-ui/Card';
-
-/*
 Local CSS
 */
 import './StatsCard.component.css'
@@ -51,16 +46,14 @@ class StatsCard extends Component {
 
     render() {
         return <div className='stats-card-container'>
-            <Card className='stats-card'>
-                <CardText>
+            <div className='stats-card'>
                     <div>
                         <span className='stats-card-title'> { this.props.title } </span>
                         <span className={this.getTrendingLabelStyle()+' stats-card-trend'}> { this.props.trend } </span>
                     </div>
                     <hr className={this.getTrendingHrStyle()} />
                     <span className='stats-card-value'> { this.props.value } </span>
-                </CardText>
-            </Card>
+            </div>
         </div>
     }
 }

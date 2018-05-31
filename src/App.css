@@ -40,3 +40,41 @@
         margin-left: 0px;
     }
 }
+
+@keyframes stats-indicator-translate-to-red {
+    from {
+        width: 1%;
+    }
+    to {
+        width: 100%;
+        border-top: 3px solid red;
+    }
+}
+
+@keyframes stats-indicator-translate-to-green{
+    from {
+        width: 1%;
+    }
+    to {
+        width: 100%;
+        border-top: 3px solid #00CD00;
+    }
+}
+
+@keyframes stats-label-to-green {
+    from {
+        color: black;
+    }
+    to {
+        color: #00CD00;
+    }
+}
+
+@keyframes stats-label-to-red {
+    from {
+        color: black;
+    }
+    to {
+        color: red;
+    }
+}

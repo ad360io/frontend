@@ -12,8 +12,8 @@ import Divider            from 'material-ui/Divider';
 /*
 Image Resources
 */
-import eqc_icon from '../../../assets/images/eqc_icon.png';
-import xqc_icon from '../../../assets/images/xqc_icon.png';
+import eqc_icon from '../../../assets/images/neqc.png';
+import xqc_icon from '../../../assets/images/nxqc.png';
 
 /*
 Local CSS
@@ -30,7 +30,7 @@ const DashboardWallet = () =>
     <div className='wallet-container'>
         <Card className='wallet-info-card' style={{marginBottom:'2%'}}>
             <h2 className='wallet-card-title'>Your Balances</h2>
-            <Divider style={{width: '75%', marginBottom:'4%'}}/>
+            <Divider style={{marginBottom:'4%'}}/>
             <CardText>
             <ul>
                 <li className='currency-item'>

@@ -138,7 +138,7 @@ class CreateListingForm extends Component {
                     </FormControl>
                 </FormGroup>
 
-                {this.showSubGenre()};
+                {this.showSubGenre()}
 
                 <FormGroup controlId='control-form-image'>
                     <p className='control-label'>

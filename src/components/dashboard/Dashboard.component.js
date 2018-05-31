@@ -50,7 +50,7 @@ class Dashboard extends Component {
         document.title = "Qchain - Dashboard";
         
         // Register data loading every 10 minutes.
-        const tenMinutes = 1000 * 60 * 10 ;
+        const tenMinutes = 1000 * 60 * 10;
         this.loadDataInterval = setInterval(this.props.onStartLoadData, tenMinutes);
     }
 

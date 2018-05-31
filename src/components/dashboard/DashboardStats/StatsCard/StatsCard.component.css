@@ -1,48 +1,17 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto:400,500,700,300");
-
-@keyframes translate-to-red{
-    from {
-        width: 1%;
-    }
-    to {
-        width: 100%;
-        border-top: 3px solid red;
-    }
+.stats-card-container {
+    border-style: solid;
+    border-width: 2px;
+    border-color: #eeeeee7c;
+    padding: 5px 10px 5px 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border-top: 0px;
+    border-left: 0px;
 }
-
-@keyframes translate-to-green{
-    from {
-        width: 1%;
-    }
-    to {
-        width: 100%;
-        border-top: 3px solid #00CD00;
-    }
-}
-
-@keyframes label-to-green {
-    from {
-        color: black;
-    }
-    to {
-        color: #00CD00;
-    }
-}
-
-@keyframes label-to-red {
-    from {
-        color: black;
-    }
-    to {
-        color: red;
-    }
-}
-
-
 
 .green-hr {
     display: block;
-    animation-name: translate-to-green;
+    animation-name: stats-indicator-translate-to-green;
     animation-duration: 1s;
     animation-delay: 0.3s;
     animation-fill-mode: forwards;
@@ -54,7 +23,7 @@
 }
 
 .red-hr {
-    animation-name: translate-to-red;
+    animation-name: stats-indicator-translate-to-red;
     animation-duration: 1s;
     animation-delay: 0.3s;
     animation-fill-mode: forwards;
@@ -81,28 +50,24 @@
 
 .stats-card-title {
     font-size: 22px;
-    font-weight: 400;
-    letter-spacing: 1.2px;
 }
 
 .stats-card-value {
-    font-size: 28px;
-    font-weight: bold;
+    font-size: 24px;
 }
 
 .stats-card-trend {
     font-size: 18px;
-    font-family: 'Monospace', 'Lucida Console';
 }
 
 .green-label {
-    animation-name: label-to-green;
+    animation-name: stats-label-to-green;
     animation-duration: 1s;
     animation-fill-mode: forwards;
 }
 
 .red-label {
-    animation-name: label-to-red;
+    animation-name: stats-label-to-red;
     animation-duration: 1s;
     animation-fill-mode: forwards;
 }
