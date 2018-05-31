@@ -47,8 +47,6 @@ class Dashboard extends Component {
     constructor(props) {
         super(props);
         props.onStartLoadData();
-        this.decideSmallDashboardLeft = this.decideSmallDashboardLeft.bind(this);
-        this.decideSmallDashboardRight = this.decideSmallDashboardRight.bind(this);
     }
 
     componentDidMount() {
@@ -65,23 +63,17 @@ class Dashboard extends Component {
         this.loadDataInterval = 0;
     }
 
-    decideSmallDashboardLeft() {
-        return this.props.isDatabaseEmpty ? 5 : 8
-    }
-
-    decideSmallDashboardRight() {
-        return this.props.isDatabaseEmpty ? 7 : 4
-    }
-
     render() {
-        return <div>{
-            this.props.fetched 
-            ? <DashboardRenderer 
-                modeFilter={this.props.modeFilter} 
-                currencyFilter={this.props.currencyFilter} 
-              />
-            : <ProgressRenderer />
-        }</div>
+        return <div>
+            {
+                this.props.fetched 
+                ? <DashboardRenderer 
+                    modeFilter={this.props.modeFilter} 
+                    currencyFilter={this.props.currencyFilter} 
+                />
+                : <ProgressRenderer />
+            }
+        </div>
     }
 }
 
@@ -110,7 +102,7 @@ const DashboardRenderer = ({ modeFilter, currencyFilter }) => (
 
 const ProgressRenderer = () => (
     <div className="progress-renderer">
-        <CircularProgress style={{ color: 'purple' }} thickness={3} />
+        <CircularProgress style={{ color: 'purple' }} size={100} thickness={6} />
     </div>
 )
 

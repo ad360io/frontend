@@ -34,13 +34,10 @@ class DashboardCharts extends Component {
         this.state = {
             triggerPlaceholder: false
         }
+        this.getLineChartTitle = this.getLineChartTitle.bind(this);
         this.chooseLineChartDisplayData = this.chooseLineChartDisplayData.bind(this);
-        this.injectLineChartDataset = this.injectLineChartDataset.bind(this);
         this.prepareLineChartSliderProps = this.prepareLineChartSliderProps.bind(this);
     }
-
-    
-
 
     /**
      * Fairly dirty code here, please fix if got a better solution
@@ -130,18 +127,6 @@ class DashboardCharts extends Component {
 
     }
 
-    injectLineChartDataset () {
-        return this.prepareLineChartSliderProps().map((itemList, i)=>{
-                    return <Card key={'itemList'+i} className='dashboard-charts-card'>
-                                <h2 className='chart-title'> {this.getLineChartTitle(i)} Performance</h2>
-                                <Divider style={{width: '75%'}}/>
-                                <CardText>
-                                    <LineChartSlider itemList={itemList} />
-                                </CardText>
-                            </Card>
-                })
-    }
-
     prepareLineChartSliderProps() {
         let itemListsForSlider = [];
 
@@ -157,22 +142,36 @@ class DashboardCharts extends Component {
     }
 
     render() {
-
-        
-
         return <div className='dashboard-charts-container'>
             {
                 (this.state.triggerPlaceholder
                     ? <DashboardPlaceholder />
-                    : this.injectLineChartDataset()
+                    : <DashboardChartsRenderer 
+                        sliderProps={this.prepareLineChartSliderProps()} 
+                        getLineChartTitle={this.getLineChartTitle}
+                      />
                 ) 
-            }
-            {
-                (this.state.triggerPlaceholder ? null : <DashboardDoughnut/>)
             }
         </div>;
     }
 }
+
+const DashboardChartsRenderer = ({sliderProps, getLineChartTitle}) => (
+    <div>
+        {   
+            sliderProps.map((itemList, i)=>{
+                return <Card key={'itemList'+i} className='dashboard-charts-card'>
+                            <h2 className='chart-title'> {getLineChartTitle(i)} Performance</h2>
+                            <Divider style={{width: '75%'}}/>
+                            <CardText>
+                                <LineChartSlider itemList={itemList} />
+                            </CardText>
+                        </Card>
+                })
+        }
+        <DashboardDoughnut/>
+    </div>
+)
 
 const mapStateToProps = (state) => {
     return {
