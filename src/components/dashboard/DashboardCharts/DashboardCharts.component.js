@@ -81,14 +81,14 @@ class DashboardCharts extends Component {
                 borderDash: [],
                 borderDashOffset: 0.0,
                 borderJoinStyle: 'miter',
-                pointBorderColor: 'rgba(20,78,170,0.8)',
-                pointBackgroundColor: 'rgba(20,78,170,0.8)',
+                pointBorderColor: 'rgba(20,78,170,0.4)',
+                pointBackgroundColor: 'rgba(20,78,170,0.4)',
                 pointBorderWidth: 1,
                 pointHoverRadius: 5,
                 pointHoverBackgroundColor: 'rgba(20,78,170,1)',
                 pointHoverBorderColor: 'rgba(20,78,170,1)',
                 pointHoverBorderWidth: 2,
-                pointRadius: 4,
+                pointRadius: 3,
                 pointHitRadius: 10,
                  /* only get the first 30 element if the dataset is more than 30 elements*/
                 data: dataset.slice(0, (dataset.length > 30 ? 30 : dataset.length))
