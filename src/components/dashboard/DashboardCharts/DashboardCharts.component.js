@@ -31,6 +31,9 @@ class DashboardCharts extends Component {
 
     constructor(props){
         super(props);
+        this.state = {
+            triggerPlaceholder: false
+        }
         this.chooseLineChartDisplayData = this.chooseLineChartDisplayData.bind(this);
         this.injectLineChartDataset = this.injectLineChartDataset.bind(this);
     }
@@ -95,8 +98,57 @@ class DashboardCharts extends Component {
         return data;
     }
 
+
+    /**
+     * Fairly dirty code here, please fix if got a better solution
+     * @param {*} previousProps 
+     * @param {*} previousState 
+     */
+    componentDidUpdate(previousProps, previousState) {
+        
+        if(this.props.modeFilter === 'Advertiser'){
+            // Advertiser charts (Clicks, Impressions)
+            if(this.props.currencyFilter === 'EQC') {
+                let newState = {
+                    triggerPlaceholder: this.props.fetched 
+                        && this.props.eqcClicks.length === 0
+                        && this.props.eqcImpressions.length === 0
+                }
+                if(newState.triggerPlaceholder !== previousState.triggerPlaceholder){
+                    this.setState(newState)
+                }
+            }else {
+                let newState = {
+                    triggerPlaceholder: this.props.fetched 
+                        && this.props.xqcClicks.length === 0
+                        && this.props.xqcImpressions.length === 0
+                }
+                if(newState.triggerPlaceholder !== previousState.triggerPlaceholder){
+                     this.setState(newState)
+                }           
+            }
+        }else {
+            // Publisher charts  (Clicks, Impression, RPM, Revenue)
+            // returning empty array at this time to serve as a test case and wait for actual data
+            if(this.props.currencyFilter === 'EQC') {
+                let newState = {
+                    triggerPlaceholder: true
+                }
+                if(newState.triggerPlaceholder !== previousState.triggerPlaceholder){
+                    this.setState(newState)
+                } 
+            }else {
+                let newState = {
+                    triggerPlaceholder: true
+                }
+                if(newState.triggerPlaceholder !== previousState.triggerPlaceholder){
+                    this.setState(newState)
+                } 
+            }
+        }
+    }
+
     chooseLineChartDisplayData() {
-        //console.log(store.dispatch())
         if(this.props.modeFilter === 'Advertiser'){
             // Advertiser charts (Clicks, Impressions)
             return (this.props.currencyFilter === 'EQC' ? [this.props.eqcClicks, this.props.eqcImpressions]
@@ -104,7 +156,7 @@ class DashboardCharts extends Component {
         }else {
             // Publisher charts  (Clicks, Impression, RPM, Revenue)
             // returning empty array at this time to serve as a test case and wait for actual data
-            return (this.props.currencyFilter === 'EQC' ? [[[]],[[]]] : [[[]],[[]]]);
+            return (this.props.currencyFilter === 'EQC' ? [[[]]] : [[[]]]);
         }
     }
 
@@ -202,13 +254,13 @@ class DashboardCharts extends Component {
 
         return <div className='dashboard-charts-container'>
             {
-                (this.props.isEmpty 
+                (this.state.triggerPlaceholder
                     ? <DashboardPlaceholder />
                     : this.injectLineChartDataset(itemListsForSlider)
                 ) 
             }
             {
-                (this.props.isEmpty ? null : doughnutChart)
+                (this.state.triggerPlaceholder ? null : doughnutChart)
             }
         </div>;
     }
@@ -220,7 +272,7 @@ const mapStateToProps = (state) => {
         eqcImpressions : state.DatabaseReducer.db.eqcImpressions,
         xqcClicks      : state.DatabaseReducer.db.xqcClicks,
         xqcImpressions : state.DatabaseReducer.db.xqcImpressions,
-        isDatasetEmpty : state.DatabaseReducer.isEmpty
+        fetched      : state.DatabaseReducer.fetched
     }
 }
 
