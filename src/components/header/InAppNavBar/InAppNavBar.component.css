@@ -13,12 +13,13 @@
 }
 
 .in-app-nav-item {
-    color: #7b7b7b;
+    color: #575757;
     display: inline-block;
     padding-top: 18px;
     padding-left: 60px;
+
+    /* Remove NavItem style inherited from anchor tag */
     text-decoration: none !important;
-    outline: 0;
 }
 
 i {
@@ -26,12 +27,10 @@ i {
     margin-left: 10px;
 }
 
+.in-app-nav-item:hover, 
+.in-app-nav-item:focus,
 .selected-nav-item {
-    color: #4b80c0;
-}
-
-.in-app-nav-item:hover, .in-app-nav-item:focus {
-    color: #4b80c0;
+    color: #6f7dc9;
 }
 
 .noselect {

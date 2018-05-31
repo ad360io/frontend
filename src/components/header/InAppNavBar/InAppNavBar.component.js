@@ -32,7 +32,7 @@ const InAppNavBar = () => (
         </NavLink>
 
         <NavLink activeClassName='selected-nav-item' className='in-app-nav-item noselect' to='/profile'>
-            <i className='far fa-user fa-lg'></i>
+            <i className='fa fa-user fa-lg'></i>
             <span className='nav-label'>Profile</span>
         </NavLink>
     </div>

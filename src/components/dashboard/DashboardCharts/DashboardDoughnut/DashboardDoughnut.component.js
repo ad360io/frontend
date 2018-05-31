@@ -1,11 +1,21 @@
-import { Doughnut } from 'react-chartjs-2';
+/*
+Core Libs
+*/
 import React, { Component }        from 'react';
+
+/*
+Chart.js
+*/
+import { Doughnut } from 'react-chartjs-2';
+
+/*
+Material UI
+*/
 import { Card, CardText } from 'material-ui/Card';
 import Divider from 'material-ui/Divider';
 
 
 const DashboardDoughnutSingleton = ({data}) => (
-    
         <Doughnut   data={data}
                     height={300}
                     options={{
@@ -53,7 +63,7 @@ class DashboardDoughnut extends Component {
                     </div>
                     <div className='highest-gross-card-right'>
                     {/* Build this info dynamically after we are pulling real data*/}
-                        The <a><i>Contract Uno</i></a> is the best deal you've done!
+                        The <a>Contract Uno</a> is the best deal you've done!
                         <span className='quick-maf'> 66.6</span>% of your total grossing are generated here!
                     </div>
                 </CardText>
