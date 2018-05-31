@@ -133,13 +133,13 @@ export default class Auth {
 
     dispatchProfile(profile, user_metadata) {
         let name        = user_metadata.name;
-        let email       = (typeof user_metadata.email === 'undefined' 
+        let email       = (typeof user_metadata.email === 'undefined' || user_metadata.email === ''
                             ? profile.email
                             : user_metadata.email);
-        let nickname    = (typeof user_metadata.nickname === 'undefined' 
+        let nickname    = (typeof user_metadata.nickname === 'undefined' || user_metadata.nickname === ''
                             ? profile.nickname
                             : user_metadata.nickname);
-        let avatar_url  = (typeof user_metadata.picture === 'undefined' 
+        let avatar_url  = (typeof user_metadata.picture === 'undefined'  || user_metadata.picture === ''
                             ? profile.picture
                             : user_metadata.picture);
         let value = {
