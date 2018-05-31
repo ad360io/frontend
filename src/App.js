@@ -26,7 +26,7 @@ const App = () => (
         <Provider store={store}>
             {/* MuiThemeProvider is required to use Material UI components */}
             <MuiThemeProvider>
-                <AppRouter></AppRouter>
+                    <AppRouter/>
             </MuiThemeProvider>
         </Provider>
     </div>

@@ -36,67 +36,10 @@ class DashboardCharts extends Component {
         }
         this.chooseLineChartDisplayData = this.chooseLineChartDisplayData.bind(this);
         this.injectLineChartDataset = this.injectLineChartDataset.bind(this);
+        this.prepareLineChartSliderProps = this.prepareLineChartSliderProps.bind(this);
     }
 
-    /**
-     * Based on the dataset that needs to be graphed, return the X-axis labels
-     * Labels are capped at 30, which is a month in this case
-     * @param {*} dataset Array of numbers that represent historical data by days.
-     */
-    prepareLineChartXaxisLabels(dataset){
-        let daysLabel = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-        let today = new Date().getDay();
-        let labelSize = (dataset.length > 30 ? 30 : dataset.length);
-        let labelsArray = new Array(labelSize);
-        for (let i = 0; i < labelSize; i++) {
-            labelsArray[labelSize-i-1] = daysLabel[this.mod((today - i),7)];
-        }
-        return labelsArray;
-    }
-
-    /**
-     * Helper method to calculate modulo operation, including negative numbers;
-     * @param { number } n operand
-     * @param { number } m operand base
-     */
-    mod(n, m) {
-        return ((n % m) + m) % m;
-    }
-
-    /**
-     * This Method initialize the data object that is required for Chart.js component
-     * @param {*} dataset provide the array of numbers that is to be plotted to chart.
-     */
-    prepareDatasetToLineChart(dataset){
-        const data = {
-            labels : this.prepareLineChartXaxisLabels(dataset),
-            datasets: [
-              {
-                label: 'Some Content names maybe',
-                fill: true,
-                lineTension: 0.05,
-                backgroundColor: 'rgba(20,78,170,0.3)',
-                borderColor: 'rgba(20,78,170,1)',
-                borderCapStyle: 'butt',
-                borderDash: [],
-                borderDashOffset: 0.0,
-                borderJoinStyle: 'miter',
-                pointBorderColor: 'rgba(20,78,170,0.4)',
-                pointBackgroundColor: 'rgba(20,78,170,0.4)',
-                pointBorderWidth: 1,
-                pointHoverRadius: 5,
-                pointHoverBackgroundColor: 'rgba(20,78,170,1)',
-                pointHoverBorderColor: 'rgba(20,78,170,1)',
-                pointHoverBorderWidth: 2,
-                pointRadius: 3,
-                pointHitRadius: 10,
-                 /* only get the first 30 element if the dataset is more than 30 elements*/
-                data: dataset.slice(0, (dataset.length > 30 ? 30 : dataset.length))
-              }
-            ]
-          };
-        return data;
-    }
+    
 
 
     /**
@@ -187,32 +130,8 @@ class DashboardCharts extends Component {
 
     }
 
-    chooseDoughnutDataset() {
-        // TODO(ahuszagh): fix, shouldn't be hard-coded.
-        return {
-            labels: [
-                'Contract Uno',
-                'Contract Dos',
-                'Contract Tres',
-            ],
-            datasets: [{
-                data: [300, 50, 100],
-                backgroundColor: [
-                    'rgba(38,40,191, 1.0)',
-                    'rgba(255,170,0, 1.0)',
-                    'rgba(100,46,165, 1.0)'
-                ],
-                hoverBackgroundColor: [
-                    'rgba(38,40,191, 0.9)',
-                    'rgba(255,170,0, 0.9)',
-                    'rgba(100,46,165, 0.9)',
-                ]
-            }]
-        };
-    }
-
-    injectLineChartDataset (itemListsForSlider) {
-        return itemListsForSlider.map((itemList, i)=>{
+    injectLineChartDataset () {
+        return this.prepareLineChartSliderProps().map((itemList, i)=>{
                     return <Card key={'itemList'+i} className='dashboard-charts-card'>
                                 <h2 className='chart-title'> {this.getLineChartTitle(i)} Performance</h2>
                                 <Divider style={{width: '75%'}}/>
@@ -223,44 +142,33 @@ class DashboardCharts extends Component {
                 })
     }
 
-    render() {
-
+    prepareLineChartSliderProps() {
         let itemListsForSlider = [];
+
         this.chooseLineChartDisplayData().map((datasets, key) => {
             let currentDatasetChartList = [];
             datasets.map((dataset, index)=>{
-                let currentDataset = this.prepareDatasetToLineChart(dataset);
-                return currentDatasetChartList.push(<DashboardLineChart data={currentDataset} key={key+''+index} />);
+                return currentDatasetChartList.push(<DashboardLineChart dataset={dataset} key={key+''+index} />);
             })
             return itemListsForSlider.push(currentDatasetChartList);
         })
 
-        const doughnutChart = (
-            <Card className='dashboard-charts-card doughnut-card'>
-                <h2 className='chart-title'> Highest Grossing Contracts </h2>
-                <Divider style={{width: '75%'}}/>
-                <CardText>
-                    <div className='highest-gross-card-left'>
-                        <DashboardDoughnut data={this.chooseDoughnutDataset()} />
-                    </div>
-                    <div className='highest-gross-card-right'>
-                    {/* Build this info dynamically after we are pulling real data*/}
-                        The <a><i>Contract Uno</i></a> is the best deal you've done!
-                        <span className='quick-maf'> 66.6</span>% of your total grossing are generated here!
-                    </div>
-                </CardText>
-            </Card>
-        )
+        return itemListsForSlider;
+    }
+
+    render() {
+
+        
 
         return <div className='dashboard-charts-container'>
             {
                 (this.state.triggerPlaceholder
                     ? <DashboardPlaceholder />
-                    : this.injectLineChartDataset(itemListsForSlider)
+                    : this.injectLineChartDataset()
                 ) 
             }
             {
-                (this.state.triggerPlaceholder ? null : doughnutChart)
+                (this.state.triggerPlaceholder ? null : <DashboardDoughnut/>)
             }
         </div>;
     }

@@ -2,8 +2,8 @@
     position: fixed;
     top: -50px;
     animation-name: slide-in-navbar;
-    animation-duration: 0.5s;
-    animation-delay:0.5s;
+    animation-duration: 0.2s;
+    animation-delay:0.2s;
     animation-fill-mode: forwards;
     width: 100vw;
     z-index: 5;

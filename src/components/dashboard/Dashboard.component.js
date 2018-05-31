@@ -2,7 +2,7 @@
 Core Libs
 */
 import React, { Component } from 'react';
-import { connect }          from 'react-redux';
+import { connect } from 'react-redux';
 
 /*
 Local CSS
@@ -13,6 +13,11 @@ import './Dashboard.component.css';
 React Bootstrap Components
 */
 import { Col, Row, Grid } from 'react-bootstrap';
+
+/*
+Material UI
+*/
+import CircularProgress from 'material-ui/CircularProgress';
 
 /*
 Networking
@@ -27,10 +32,10 @@ import { fetchFulfilled, fetchPending, fetchRejected } from '../../actions/Datab
 /*
 Custom Components
 */
-import Footer           from '../footer/Footer.component';
-import DashboardWallet  from './DashboardWallet/DashboardWallet.component';
-import DashboardStats   from './DashboardStats/DashboardStats.component';
-import DashboardCharts  from './DashboardCharts/DashboardCharts.component';
+import Footer from '../footer/Footer.component';
+import DashboardWallet from './DashboardWallet/DashboardWallet.component';
+import DashboardStats from './DashboardStats/DashboardStats.component';
+import DashboardCharts from './DashboardCharts/DashboardCharts.component';
 
 
 /**
@@ -39,7 +44,7 @@ import DashboardCharts  from './DashboardCharts/DashboardCharts.component';
  */
 class Dashboard extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
         props.onStartLoadData();
         this.decideSmallDashboardLeft = this.decideSmallDashboardLeft.bind(this);
@@ -48,7 +53,7 @@ class Dashboard extends Component {
 
     componentDidMount() {
         document.title = "Qchain - Dashboard";
-        
+
         // Register data loading every 10 minutes.
         const tenMinutes = 1000 * 60 * 10;
         this.loadDataInterval = setInterval(this.props.onStartLoadData, tenMinutes);
@@ -69,38 +74,57 @@ class Dashboard extends Component {
     }
 
     render() {
-        return <div className='dashboard-container'>
-            <Grid className='dashboard-grid'>
-                <Row>
-                    <Col xs={12} lg={5} sm={this.decideSmallDashboardLeft()} className='dashboard-left'>
-                        <DashboardWallet className='wallet-div'/>
-                        <DashboardStats modeFilter={this.props.modeFilter} 
-                            currencyFilter={this.props.currencyFilter}  
-                            className='stats-div'/>
-                    </Col>
-
-                    <Col xs={12} lg={7} sm={this.decideSmallDashboardRight()} className='dashboard-right'>
-                        <DashboardCharts modeFilter={this.props.modeFilter}
-                            currencyFilter={this.props.currencyFilter} />
-                    </Col>
-                </Row>
-            </Grid>
-            <Footer />
-        </div>
+        return <div>{
+            this.props.fetched 
+            ? <DashboardRenderer 
+                modeFilter={this.props.modeFilter} 
+                currencyFilter={this.props.currencyFilter} 
+              />
+            : <ProgressRenderer />
+        }</div>
     }
 }
 
+const DashboardRenderer = ({ modeFilter, currencyFilter }) => (
+    <div className='dashboard-container'>
+        <Grid className='dashboard-grid'>
+            <Row>
+                <Col xs={12} lg={5} sm={8} className='dashboard-left'>
+                    <DashboardWallet className='wallet-div' />
+                    <DashboardStats
+                        modeFilter={modeFilter}
+                        currencyFilter={currencyFilter}
+                        className='stats-div' />
+                </Col>
+
+                <Col xs={12} lg={7} sm={4} className='dashboard-right'>
+                    <DashboardCharts
+                        modeFilter={modeFilter}
+                        currencyFilter={currencyFilter} />
+                </Col>
+            </Row>
+        </Grid>
+        <Footer />
+    </div>
+)
+
+const ProgressRenderer = () => (
+    <div className="progress-renderer">
+        <CircularProgress style={{ color: 'purple' }} thickness={3} />
+    </div>
+)
+
 const mapStateToProps = (state) => {
     return {
-        modeFilter      : state.MenuBarFilterReducer.modeFilter,
-        currencyFilter  : state.MenuBarFilterReducer.currencyFilter,
-        isDatabaseEmpty : state.DatabaseReducer.isEmpty
+        modeFilter: state.MenuBarFilterReducer.modeFilter,
+        currencyFilter: state.MenuBarFilterReducer.currencyFilter,
+        fetched: state.DatabaseReducer.fetched
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onStartLoadData : () => {
+        onStartLoadData: () => {
             dispatch((dispatch) => {
                 dispatch(fetchPending())
                 axios.get(`${window.location.protocol}//${window.location.host}/api/db`)

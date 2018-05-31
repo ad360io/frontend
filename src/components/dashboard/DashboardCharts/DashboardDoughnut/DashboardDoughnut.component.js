@@ -1,25 +1,65 @@
 import { Doughnut } from 'react-chartjs-2';
-import React        from 'react';
-import PropTypes    from 'prop-types';
+import React, { Component }        from 'react';
+import { Card, CardText } from 'material-ui/Card';
+import Divider from 'material-ui/Divider';
 
 
-const DashboardDoughnut = ({data}) => (
+const DashboardDoughnutSingleton = ({data}) => (
     
         <Doughnut   data={data}
                     height={300}
                     options={{
                         maintainAspectRatio: false,
                         responsive: true,
-                        animation: false,
                         legend: {
                             position: 'bottom'
                         }
         }}/>
 )
 
-DashboardDoughnut.propTypes = {
-    data: PropTypes.object.isRequired
-};
+class DashboardDoughnut extends Component {
     
+    chooseDoughnutDataset() {
+        // TODO(ahuszagh): fix, shouldn't be hard-coded.
+        return {
+            labels: [
+                'Contract Uno',
+                'Contract Dos',
+                'Contract Tres',
+            ],
+            datasets: [{
+                data: [300, 50, 100],
+                backgroundColor: [
+                    'rgba(38,40,191, 1.0)',
+                    'rgba(255,170,0, 1.0)',
+                    'rgba(100,46,165, 1.0)'
+                ],
+                hoverBackgroundColor: [
+                    'rgba(38,40,191, 0.9)',
+                    'rgba(255,170,0, 0.9)',
+                    'rgba(100,46,165, 0.9)',
+                ]
+            }]
+        };
+    }
+
+    render() {
+        return <Card className='dashboard-charts-card doughnut-card'>
+                <h2 className='chart-title'> Highest Grossing Contracts </h2>
+                <Divider style={{width: '75%'}}/>
+                <CardText>
+                    <div className='highest-gross-card-left'>
+                        <DashboardDoughnutSingleton data={this.chooseDoughnutDataset()} />
+                    </div>
+                    <div className='highest-gross-card-right'>
+                    {/* Build this info dynamically after we are pulling real data*/}
+                        The <a><i>Contract Uno</i></a> is the best deal you've done!
+                        <span className='quick-maf'> 66.6</span>% of your total grossing are generated here!
+                    </div>
+                </CardText>
+            </Card>
+    }
+}
+
 
 export default DashboardDoughnut;

@@ -13,7 +13,7 @@
     display: block;
     animation-name: stats-indicator-translate-to-green;
     animation-duration: 1s;
-    animation-delay: 0.3s;
+    animation-delay: 0.8s;
     animation-fill-mode: forwards;
     height: 3px;
     border: 0;
@@ -25,7 +25,7 @@
 .red-hr {
     animation-name: stats-indicator-translate-to-red;
     animation-duration: 1s;
-    animation-delay: 0.3s;
+    animation-delay: 0.8s;
     animation-fill-mode: forwards;
     display: block;
     height: 3px;
