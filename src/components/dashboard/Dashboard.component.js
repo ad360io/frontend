@@ -115,15 +115,18 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
+    const proxyURL = `${window.location.protocol}//${window.location.host}/api/db`;
+    //const trueURL = "https://d9aubk6q99.execute-api.us-east-1.amazonaws.com/production/db/fake/db";
     return {
         onStartLoadData: () => {
             dispatch((dispatch) => {
                 dispatch(fetchPending())
-                axios.get(`${window.location.protocol}//${window.location.host}/api/db`)
+                axios.get(proxyURL)
                     .then((response) => {
                         dispatch(fetchFulfilled(response.data))
                     })
                     .catch((err) => {
+                        console.log(err)
                         dispatch(fetchRejected(err))
                     })
             })

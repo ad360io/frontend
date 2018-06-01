@@ -167,8 +167,8 @@ class ListingCard extends Component {
                     subtitle={'Posted on: '+this.props.listing.ask_date_from} 
                     style={{paddingBottom:'0px'}}/>
                 <img src={this.decidePlaceholderImage()} className='listing-img' alt='listing-img'/>
-                <CardText className='listing-msg'>
-                    {this.props.listing.msg}
+                <CardText className='listing-msg-container'>
+                    <span className="listing-msg">{this.props.listing.msg}</span>
                 </CardText>
                 <Button bsStyle='primary' className='btn-contact-action' onClick={this.handleShowModal}>Contact {this.props.listing.username}</Button>
             </Card>
