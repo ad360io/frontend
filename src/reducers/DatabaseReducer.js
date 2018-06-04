@@ -2,6 +2,7 @@
 const initialState = {
    fetching: false,
    fetched: false,
+   hasError: false,
    db: {
        adListings: [],
        adspaceListings: [],
@@ -47,7 +48,8 @@ const DatabaseReducer = (state=initialState, action) => {
             return {
                 ...state,
                 fetching: false,
-                error: action.payload
+                error: action.payload,
+                hasError: true,
             }
         }
         case 'FETCH_DATABASE_FULFILLED': {
@@ -55,6 +57,7 @@ const DatabaseReducer = (state=initialState, action) => {
                 ...state,
                 fetching: false,
                 fetched: true,
+                hasError: false,
                 db: action.payload,
             }
         }

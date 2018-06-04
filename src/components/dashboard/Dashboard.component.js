@@ -32,10 +32,11 @@ import { fetchFulfilled, fetchPending, fetchRejected } from '../../actions/Datab
 /*
 Custom Components
 */
-import Footer from '../footer/Footer.component';
+import Footer          from '../footer/Footer.component';
 import DashboardWallet from './DashboardWallet/DashboardWallet.component';
-import DashboardStats from './DashboardStats/DashboardStats.component';
+import DashboardStats  from './DashboardStats/DashboardStats.component';
 import DashboardCharts from './DashboardCharts/DashboardCharts.component';
+import ErrorPage       from '../ErrorPage/ErrorPage.component';
 
 
 /**
@@ -64,16 +65,17 @@ class Dashboard extends Component {
     }
 
     render() {
-        return <div>
-            {
-                this.props.fetched 
-                ? <DashboardRenderer 
-                    modeFilter={this.props.modeFilter} 
-                    currencyFilter={this.props.currencyFilter} 
-                />
-                : <ProgressRenderer />
-            }
-        </div>
+        if (this.props.hasError) {
+            return <ErrorPage />
+        }
+        else if (this.props.fetched){
+            return <DashboardRenderer
+                        modeFilter={this.props.modeFilter}
+                        currencyFilter={this.props.currencyFilter}
+                    />
+        }else {
+            return <ProgressRenderer />
+        }
     }
 }
 
@@ -108,9 +110,10 @@ const ProgressRenderer = () => (
 
 const mapStateToProps = (state) => {
     return {
-        modeFilter: state.MenuBarFilterReducer.modeFilter,
-        currencyFilter: state.MenuBarFilterReducer.currencyFilter,
-        fetched: state.DatabaseReducer.fetched
+        modeFilter     : state.MenuBarFilterReducer.modeFilter,
+        currencyFilter : state.MenuBarFilterReducer.currencyFilter,
+        fetched        : state.DatabaseReducer.fetched,
+        hasError       : state.DatabaseReducer.hasError
     }
 }
 
