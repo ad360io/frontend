@@ -1,7 +1,8 @@
 /*
 Core Libs
 */
-import React from 'react';
+import React       from 'react';
+import { connect } from 'react-redux';
 
 /*
 Material UI Components
@@ -26,24 +27,52 @@ import './DashboardWallet.component.css'
  *         Work to be done:
  *              - Pull data on componentsWillMount
  */
-const DashboardWallet = () =>
+const DashboardWallet = ({ currencyFilter }) => (
     <div className='wallet-container'>
         <Card className='wallet-info-card' style={{marginBottom:'2%'}}>
             <h2 className='wallet-card-title'>Your Balances</h2>
             <Divider style={{marginBottom:'4%'}}/>
             <CardText>
             <ul>
-                <li className='currency-item'>
-                    <img className='eqc-icon' src={eqc_icon} alt='eqc-icon'/>
-                    <span className='wallet-currency-label'>0.123455 EQC </span>
-                </li>
-                <li className='currency-item'>
-                    <img className='xqc-icon' src={xqc_icon} alt='xqc-icon'/>
-                    <span className='wallet-currency-label'>12345.12 XQC </span>
-                </li>
+                {
+                    (currencyFilter === 'EQC' 
+                        ? <WalletEqcRenderer />
+                        : <WalletXqcRenderer />
+                    )
+                }
             </ul>
             </CardText>
         </Card>
     </div>
+)
 
-export default DashboardWallet;
+const WalletEqcRenderer = () => (
+    <li className='currency-item'>
+        <img className='eqc-icon' src={eqc_icon} alt='eqc-icon'/>
+        <span className='wallet-currency-label'>0.123455 EQC </span>
+    </li>
+)
+
+const WalletXqcRenderer = () => (
+    <li className='currency-item'>
+        <img className='xqc-icon' src={xqc_icon} alt='xqc-icon'/>
+        <span className='wallet-currency-label'>12345.12 XQC </span>
+    </li>
+)
+
+const mapStateToProps = (state) => {
+    return {
+        currencyFilter: state.MenuBarFilterReducer.currencyFilter
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {}
+}
+
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)
+(DashboardWallet);
