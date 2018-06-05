@@ -2,6 +2,7 @@
 Core Libs
 */
 import React       from 'react';
+import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
 /*
@@ -14,7 +15,7 @@ import './InAppNavBar.component.css';
  * Navigation bar that is directly under MenuBar component
  * Main purpose is to navigate between main components
  */
-const InAppNavBar = () => (
+const InAppNavBar = ({ modeFilter }) => (
     <div className='navbar-container'>
         <NavLink activeClassName='selected-nav-item' className='in-app-nav-item noselect' to='/dashboard'>
             <i className='fas fa-home fa-lg'></i>
@@ -28,7 +29,7 @@ const InAppNavBar = () => (
 
         <NavLink activeClassName='selected-nav-item' className='in-app-nav-item noselect' to='/create'>
             <i className='fas fa-file-alt fa-lg'></i>
-            <span className='nav-label'>Create</span>
+            <DynamicNavLabel modeFilter={modeFilter} />
         </NavLink>
 
         <NavLink activeClassName='selected-nav-item' className='in-app-nav-item noselect' to='/profile'>
@@ -38,5 +39,23 @@ const InAppNavBar = () => (
     </div>
 )
 
+const DynamicNavLabel = ({ modeFilter }) => (
+    modeFilter === 'Advertiser'
+        ? <span className='nav-label'>Request</span>
+        : <span className='nav-label'>Create</span>                
+)
 
-export default InAppNavBar;
+const mapStateToProps = (state) => {
+    return {
+        modeFilter: state.MenuBarFilterReducer.modeFilter
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {}
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(InAppNavBar);
