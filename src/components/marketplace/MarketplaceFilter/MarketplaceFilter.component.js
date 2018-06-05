@@ -148,7 +148,7 @@ class MarketplaceFilter extends Component {
                 <Divider/>
 
                 <div className='range-selector'>
-                    <h4 className='filter-title'>Max Budget: {this.props.budgetFilter} k {this.props.currency}</h4>
+                    <h4 className='filter-title'>Max Purchase: {this.props.budgetFilter} k {this.props.currency}</h4>
                     <Slider className='range-slider'
                         onChange={this.props.onSliderChange}
                         value={this.props.budgetFilter}

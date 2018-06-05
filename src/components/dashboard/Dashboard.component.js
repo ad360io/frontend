@@ -104,7 +104,7 @@ const DashboardRenderer = ({ modeFilter, currencyFilter }) => (
 
 const ProgressRenderer = () => (
     <div className="progress-renderer">
-        <CircularProgress style={{ color: 'purple' }} size={100} thickness={6} />
+        <CircularProgress size={100} thickness={6} />
     </div>
 )
 

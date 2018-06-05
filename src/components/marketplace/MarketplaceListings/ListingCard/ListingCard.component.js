@@ -160,7 +160,7 @@ class ListingCard extends Component {
                 }
             }>
                 <div className='poster-tag'>{this.props.listing.username} </div>
-                <div className='price-tag'>{this.props.listing.pricing+' '+this.props.listing.currency}</div>
+                <div className='price-tag'>{this.props.listing.pricing+' '+this.props.listing.currency.toUpperCase()}</div>
 
                 <CardTitle 
                     title={this.decideTitleDisplayText()} 
@@ -170,7 +170,7 @@ class ListingCard extends Component {
                 <CardText className='listing-msg-container'>
                     <span className="listing-msg">{this.props.listing.msg}</span>
                 </CardText>
-                <Button bsStyle='primary' className='btn-contact-action' onClick={this.handleShowModal}>Contact {this.props.listing.username}</Button>
+                <Button bsStyle='primary' className='btn-contact-action' onClick={this.handleShowModal}>Explore this listing.</Button>
             </Card>
 
             <Modal show={this.state.show} onHide={this.handleHideModal}>
