@@ -18,9 +18,9 @@
 
 .menu-container {
     z-index: 6;
-    animation-name: slide-in-menubar;
+    /* animation-name: slide-in-menubar;
     animation-duration: 0.2s;
-    animation-fill-mode: forwards;
+    animation-fill-mode: forwards; */
     padding: 0;
     background-color: purple;
     background:  -webkit-linear-gradient(330deg, #5345a5, #9135a1);

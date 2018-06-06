@@ -20,7 +20,7 @@ Children Components
 */
 import DashboardLineChart   from './DashboardLineChart/DashboardLineChart.component';
 import LineChartSlider      from './LineChartSlider/LineChartSlider.component';
-import DashboardDoughnut    from './DashboardDoughnut/DashboardDoughnut.component';
+// import DashboardDoughnut    from './DashboardDoughnut/DashboardDoughnut.component';
 import DashboardPlaceholder from '../DashboardPlaceholder/DashboardPlaceholder.component';
 
 
@@ -105,26 +105,14 @@ class DashboardCharts extends Component {
      * @param {*} k
      */
     getLineChartTitle(k){
-        if(this.props.modeFilter === 'Advertiser'){         // Advertiser
-            switch (k){
-                case 0:
-                    return 'Content Impression';
-                case 1:
-                    return 'Content Measurable';
-                default:
-                    return null;
-            }
-        }else {                                             // Publisher
-            switch (k) {
-                case 0:
-                    return 'Content Space Revenue';
-                case 1:
-                    return 'Content Space Impressions';
-                default:
-                    return null;
-            }
+        switch (k){
+            case 0:
+                return 'Content Impressions';
+            case 1:
+                return 'Content Referral Clicks';
+            default:
+                return null;
         }
-
     }
 
     prepareLineChartSliderProps() {
@@ -161,7 +149,7 @@ const DashboardChartsRenderer = ({sliderProps, getLineChartTitle}) => (
         {   
             sliderProps.map((itemList, i)=>{
                 return <Card key={'itemList'+i} className='dashboard-charts-card'>
-                            <h2 className='chart-title'> {getLineChartTitle(i)} Performance</h2>
+                            <h2 className='chart-title'>{getLineChartTitle(i)}</h2>
                             <Divider style={{width: '75%'}}/>
                             <CardText>
                                 <LineChartSlider itemList={itemList} />
@@ -169,7 +157,8 @@ const DashboardChartsRenderer = ({sliderProps, getLineChartTitle}) => (
                         </Card>
                 })
         }
-        <DashboardDoughnut/>
+        {/* Not using doughnut chart in MVP, save it though */}
+        {/* <DashboardDoughnut/> */}
     </div>
 )
 

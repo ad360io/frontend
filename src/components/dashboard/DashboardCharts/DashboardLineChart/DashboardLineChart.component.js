@@ -49,14 +49,19 @@ class DashboardLineChart extends Component {
      * This Method initialize the data object that is required for Chart.js component
      */
     prepareDatasetToLineChart(){
-        const data = {
+        const data = (canvas) => {
+            const ctx = canvas.getContext('2d')
+            const gradient = ctx.createLinearGradient(500,0,100,0);
+            gradient.addColorStop(0, 'rgba(83 , 69, 165, 0.3)');
+            gradient.addColorStop(1, 'rgba(145, 53, 161, 0.3)');
+            return {
             labels : this.prepareLineChartXaxisLabels(this.props.dataset),
             datasets: [
               {
                 label: 'Some Content names maybe',
                 fill: true,
                 lineTension: 0.05,
-                backgroundColor: 'rgba(20,78,170,0.3)',
+                backgroundColor: gradient,
                 borderColor: 'rgba(20,78,170,1)',
                 borderCapStyle: 'butt',
                 borderDash: [],
@@ -78,6 +83,7 @@ class DashboardLineChart extends Component {
               }
             ]
           };
+        }
         return data;
     }
     

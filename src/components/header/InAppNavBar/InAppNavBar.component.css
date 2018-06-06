@@ -1,9 +1,10 @@
 .navbar-container {
     position: fixed;
-    top: -50px;
+    /* top: -50px;
     animation-name: slide-in-navbar;
     animation-duration: 0.2s;
-    animation-delay:0.2s;
+    animation-delay:0.2s; */
+    top: 80px;
     animation-fill-mode: forwards;
     width: 100vw;
     z-index: 5;
