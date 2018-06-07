@@ -1,9 +1,23 @@
+/*
+Core Libs
+*/
 import React, { Component } from 'react';
 
+/*
+React Bootstrap
+*/
 import { SplitButton, MenuItem } from 'react-bootstrap';
+
+/*
+Material UI 
+*/
 import Divider from 'material-ui/Divider';
 
+/*
+Local CSS
+*/
 import './StatsTimeRangeSelector.component.css';
+
 
 class StatsTimeRangeSelector extends Component {
     constructor(props){
@@ -52,5 +66,6 @@ class StatsTimeRangeSelector extends Component {
         </div>
     }
 }
+
 
 export default StatsTimeRangeSelector;

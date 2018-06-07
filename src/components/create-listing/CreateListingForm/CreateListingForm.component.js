@@ -95,13 +95,14 @@ class CreateListingForm extends Component {
                         required
                     />
                 </FormGroup>
-                <FormGroup controlId='control-form-image'>
+
+                <FormGroup controlId='control-form-image' hidden={this.props.modeFilter === 'Publisher'}>
                     <p className='control-label'>
-                        {/* {`${this.decideTitle()} Image (optional)`} */}
+                        Content Samples and Inspiration (optional)
                     </p>
                     <FormControl type='file' />
-                    <HelpBlock>Don't mess up your first impression!</HelpBlock>
                 </FormGroup>    
+
                 <Button type='submit' 
                     className='control-form-submit btn-lg btn-primary'
                     onClick={this.handleSubmitForm}

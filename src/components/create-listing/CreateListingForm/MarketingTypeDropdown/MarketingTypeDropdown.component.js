@@ -1,5 +1,13 @@
+/*
+Core Libs
+*/
 import React, { Component } from 'react';
+
+/*
+React Bootstrap
+*/
 import { FormGroup, FormControl } from 'react-bootstrap';
+
 
 class MarketingTypeDropdown extends Component {
     constructor(props) {
@@ -21,16 +29,24 @@ class MarketingTypeDropdown extends Component {
     }
 
     handleTypeChange (event) {
-        this.setState({
-            ...this.state,
-            selectedType: event.target.value
-        })
+        if(event.target.value === 'Sponsorship'){
+            this.setState({
+                selectedMedium: '',
+                selectedType: event.target.value
+            })
+        }else{
+            this.setState({
+                ...this.state,
+                selectedType: event.target.value
+            })
+        }
+        
     }
 
     showMedium() {
         if (this.state.selectedType === 'Branded Content') {
             return <FormGroup controlId='control-form-genre'>
-                    <p className='control-label'>*Select Sub-Category </p>
+                    <p className='control-label'>*Select Medium</p>
                     <FormControl 
                         componentClass='select' 
                         onChange={this.handleMediumChange}
@@ -44,7 +60,7 @@ class MarketingTypeDropdown extends Component {
             </FormGroup>
         }else if (this.state.selectedType === 'Influencer Post'){
             return <FormGroup controlId='control-form-genre'>
-                <p className='control-label'>*Select Sub-Category</p>
+                <p className='control-label'>*Select Medium</p>
                 <FormControl 
                     componentClass='select'
                     onChange={this.handleMediumChange}
