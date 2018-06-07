@@ -118,13 +118,15 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    const proxyURL = `${window.location.protocol}//${window.location.host}/api/db`;
+    //const proxyURL = `${window.location.protocol}//${window.location.host}/api/db`;
     //const trueURL = "https://d9aubk6q99.execute-api.us-east-1.amazonaws.com/production/db/fake/db";
+    const TestServerURL = "http://127.0.0.1:3000/api/db";
     return {
         onStartLoadData: () => {
+            console.log("I should be called here to make req");
             dispatch((dispatch) => {
                 dispatch(fetchPending())
-                axios.get(proxyURL)
+                axios.get(TestServerURL)
                     .then((response) => {
                         dispatch(fetchFulfilled(response.data))
                     })

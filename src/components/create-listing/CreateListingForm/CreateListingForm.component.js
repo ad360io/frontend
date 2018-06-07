@@ -87,11 +87,19 @@ class CreateListingForm extends Component {
 
                 <MarketingTypeDropdown />
 
-                <FormGroup controlId='control-form-title'>
+                <FormGroup controlId='control-form-topic'>
                     <p className='control-label'>
                         *Content Topic
                     </p>
                     <FormControl type='text' onChange={this.handleTopicChange} required />
+                </FormGroup>
+
+                 <FormGroup controlId='control-form-price' hidden={this.props.modeFilter==='Advertiser'}>
+                    <p className='control-label'>
+                        *Price per time unit (day/week/month/year)
+                    </p>
+
+               
                 </FormGroup>
                
                 <FormGroup controlId='control-form-pitch'>

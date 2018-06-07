@@ -51,8 +51,8 @@ class DashboardCharts extends Component {
             if(this.props.currencyFilter === 'EQC') {
                 let newState = {
                     triggerPlaceholder: this.props.fetched 
-                        && this.props.eqcClicks.length === 0
-                        && this.props.eqcImpressions.length === 0
+                        && this.props.eqcContracts.length === 0
+                        && this.props.eqcContracts.length === 0
                 }
                 if(newState.triggerPlaceholder !== previousState.triggerPlaceholder){
                     this.setState(newState)
@@ -60,8 +60,8 @@ class DashboardCharts extends Component {
             }else {
                 let newState = {
                     triggerPlaceholder: this.props.fetched 
-                        && this.props.xqcClicks.length === 0
-                        && this.props.xqcImpressions.length === 0
+                        && this.props.xqcContracts.length === 0
+                        && this.props.xqcContracts.length === 0
                 }
                 if(newState.triggerPlaceholder !== previousState.triggerPlaceholder){
                      this.setState(newState)
@@ -89,15 +89,9 @@ class DashboardCharts extends Component {
     }
 
     chooseLineChartDisplayData() {
-        if(this.props.modeFilter === 'Advertiser'){
-            // Advertiser charts (Clicks, Impressions)
-            return (this.props.currencyFilter === 'EQC' ? [this.props.eqcClicks, this.props.eqcImpressions]
-                        : [this.props.xqcClicks, this.props.xqcImpressions])
-        }else {
-            // Publisher charts  (Clicks, Impression, RPM, Revenue)
-            // returning empty array at this time to serve as a test case and wait for actual data
-            return (this.props.currencyFilter === 'EQC' ? [[[]]] : [[[]]]);
-        }
+            return this.props.currencyFilter === 'EQC' 
+                        ? this.props.eqcContracts 
+                        : this.props.xqcContracts
     }
 
     /**
@@ -116,17 +110,22 @@ class DashboardCharts extends Component {
     }
 
     prepareLineChartSliderProps() {
-        let itemListsForSlider = [];
+        let impressionCharts = [];
+        let referralClicksCharts = [];
 
-        this.chooseLineChartDisplayData().map((datasets, key) => {
-            let currentDatasetChartList = [];
-            datasets.map((dataset, index)=>{
-                return currentDatasetChartList.push(<DashboardLineChart dataset={dataset} key={key+''+index} />);
-            })
-            return itemListsForSlider.push(currentDatasetChartList);
+        this.chooseLineChartDisplayData().map((contract, key) => {
+
+            return impressionCharts.push(<DashboardLineChart 
+                                            legend={contract['content_topic']} 
+                                            dataset={contract['impressions_by_days']} 
+                                            key={key+'impChart'}/>)
+                && referralClicksCharts.push(<DashboardLineChart 
+                                            legend={contract['content_topic']}
+                                            dataset={contract['referral_clicks_by_days']} 
+                                            key={key+'refChart'}/>)
         })
 
-        return itemListsForSlider;
+        return [impressionCharts, referralClicksCharts];
     }
 
     render() {
@@ -164,10 +163,8 @@ const DashboardChartsRenderer = ({sliderProps, getLineChartTitle}) => (
 
 const mapStateToProps = (state) => {
     return {
-        eqcClicks      : state.DatabaseReducer.db.eqcClicks,
-        eqcImpressions : state.DatabaseReducer.db.eqcImpressions,
-        xqcClicks      : state.DatabaseReducer.db.xqcClicks,
-        xqcImpressions : state.DatabaseReducer.db.xqcImpressions,
+        eqcContracts      : state.DatabaseReducer.db.eqcContracts,
+        xqcContracts      : state.DatabaseReducer.db.xqcContracts,
         fetched      : state.DatabaseReducer.fetched
     }
 }

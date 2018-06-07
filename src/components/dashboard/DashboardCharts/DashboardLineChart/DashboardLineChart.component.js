@@ -58,7 +58,7 @@ class DashboardLineChart extends Component {
             labels : this.prepareLineChartXaxisLabels(this.props.dataset),
             datasets: [
               {
-                label: 'Some Content names maybe',
+                label: this.props.legend,
                 fill: true,
                 lineTension: 0.05,
                 backgroundColor: gradient,

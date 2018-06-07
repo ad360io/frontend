@@ -35,9 +35,9 @@ class MarketplaceListings extends Component {
      */
     decideDataToDisplay() {
         if(this.props.modeFilter === 'Advertiser'){
-            return this.props.adspaceListings;
+            return this.props.contentSpaceListings;
         }else{
-            return this.props.adListings; 
+            return this.props.requestListings; 
         }
     }
 
@@ -48,8 +48,10 @@ class MarketplaceListings extends Component {
      */
     filterDataWithProps(data){
         return data.filter((listing)=>{
-            if(listing.pricing <= this.props.budgetFilter && listing.currency.toUpperCase() === this.props.currencyFilter
-                && (this.props.contentGenreFilter === 'Show All' || listing.genre === this.props.contentGenreFilter)){
+            if(listing.currency.toUpperCase() === this.props.currencyFilter
+                && listing.pricing <= this.props.budgetFilter 
+                && (this.props.contentGenreFilter === 'Show All' 
+                || listing.marketing_type === this.props.contentGenreFilter)){
                 return listing;
             }else{
                 return null;
@@ -83,12 +85,12 @@ class MarketplaceListings extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        currencyFilter     : state.MenuBarFilterReducer.currencyFilter,
-        modeFilter         : state.MenuBarFilterReducer.modeFilter,
-        budgetFilter       : state.MarketplaceFilterReducer.budgetFilter,
-        contentGenreFilter : state.MarketplaceFilterReducer.contentGenreFilter,
-        adListings         : state.DatabaseReducer.db.adListings,
-        adspaceListings    : state.DatabaseReducer.db.adspaceListings
+        currencyFilter       : state.MenuBarFilterReducer.currencyFilter,
+        modeFilter           : state.MenuBarFilterReducer.modeFilter,
+        budgetFilter         : state.MarketplaceFilterReducer.budgetFilter,
+        contentGenreFilter   : state.MarketplaceFilterReducer.contentGenreFilter,
+        contentSpaceListings : state.DatabaseReducer.db.contentSpaceListings,
+        requestListings      : state.DatabaseReducer.db.requestListings
     }
 }
 

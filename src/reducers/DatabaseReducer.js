@@ -1,33 +1,41 @@
 // Initial state
 const initialState = {
-   fetching: false,
-   fetched: false,
-   hasError: false,
-   db: {
-       adListings: [],
-       adspaceListings: [],
-       advertiserDailyData: {
-            Impressions: 0,
-            Expenses: 0,
-            Balance: 0,
-            Impressions_trend: '0',
-            Expenses_trend: '0',
-            Balance_trend: '0'
-       },
-       publisherDailyData: {
-            Impressions: 0,
-            Revenue: 0,
-            Balance: 0,
-            Impressions_trend: '0',
-            Revenue_trend: '0',
-            Balance_trend: '0'
-       },
-       eqcImpressions:[],
-       xqcImpressions:[],
-       eqcClicks: [],
-       xqcClicks: []
-   },
-   error: null
+    fetching: false,
+    fetched: false,
+    hasError: false,
+    db: {
+        requestListings : [],
+        contentSpaceListings : [],
+        advertiserDailyData: {
+            "Impressions": 0,
+            "Impressions_trend": "0",
+            "Clicks": 0,
+            "Clicks_trend": "",
+            "Total_Spend": "0",
+            "Total_Spend_trend": "",
+            "Balance": "0",
+            "Balance_trend": "",
+            "Purchased_Contract": "0",
+            "Purchased_Contract_trend": "",
+            "Total_Invoice_Due": "0"
+        },
+        publisherDailyData: {
+            "Impressions": 0,
+            "Impressions_trend": "0",
+            "Clicks": 0,
+            "Clicks_trend": "",
+            "Total_Spend": "0",
+            "Total_Spend_trend": "",
+            "Balance": "0",
+            "Balance_trend": "",
+            "Purchased_Contract": "0",
+            "Purchased_Contract_trend": "",
+            "Total_Invoice_Due": "0"
+        },
+        "xqcContracts": [],
+        "eqcContracts": []
+    },
+    error: null
 }
 
 
@@ -35,9 +43,9 @@ const initialState = {
  *  Core database reducer.
  *  Fetches data from the database and updates the state.
  */
-const DatabaseReducer = (state=initialState, action) => {
+const DatabaseReducer = (state = initialState, action) => {
 
-    switch(action.type) {
+    switch (action.type) {
         case 'FETCH_DATABASE_PENDING': {
             return {
                 ...state,
