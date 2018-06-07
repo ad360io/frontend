@@ -7,7 +7,7 @@ import { connect }          from 'react-redux';
 /*
 React Bootstrap Components
 */
-import { FormGroup, Button, HelpBlock, FormControl } from 'react-bootstrap';
+import { FormGroup, Button, FormControl } from 'react-bootstrap';
 
 /*
 Local CSS
@@ -18,6 +18,8 @@ import './CreateListingForm.component.css';
 Children Components
 */
 import MarketingTypeDropdown from './MarketingTypeDropdown/MarketingTypeDropdown.component';
+import AvailabilityPicker    from './AvailabilityPicker/AvailabilityPicker.component';
+
 
 /**
  * Create Listing Form Component
@@ -75,7 +77,14 @@ class CreateListingForm extends Component {
         return <div className='create-listing-form-container'>
             <h2 className='create-listing-form-title'>{this.decideFormTitle()}</h2>
 
-            <form className='create-form'>
+            <form className='create-form'> 
+                <FormGroup hidden={this.props.modeFilter==='Advertiser'}>
+                    <p className='control-label'>
+                        *Select Promotion Duration
+                    </p>
+                    <AvailabilityPicker />
+                </FormGroup>
+
                 <MarketingTypeDropdown />
 
                 <FormGroup controlId='control-form-title'>
@@ -84,7 +93,7 @@ class CreateListingForm extends Component {
                     </p>
                     <FormControl type='text' onChange={this.handleTopicChange} required />
                 </FormGroup>
-                
+               
                 <FormGroup controlId='control-form-pitch'>
                     <p className='control-label'>*{this.decideDescriptionLabel()} </p>
                     <FormControl componentClass='textarea'  
