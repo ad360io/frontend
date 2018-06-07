@@ -7,7 +7,8 @@ import { connect }          from 'react-redux';
 /*
 Custom Components
 */
-import StatsCard from './StatsCard/StatsCard.component';
+import StatsCard              from './StatsCard/StatsCard.component';
+import StatsTimeRangeSelector from './StatsTimeRangeSelector/StatsTimeRangeSelector.component';
 
 /*
 Material UI Card
@@ -48,7 +49,8 @@ class DashboardStats extends Component {
     render() {
         return <div className='stats-container'>
             <Card className='stats-container-card'>
-                <h2 className='stats-title'>Last 24 Hours</h2>
+                {/* <h2 className='stats-title'>Last 24 Hours</h2> */}
+                <StatsTimeRangeSelector />
                 <Divider style={{width: '75%'}} />
                 <CardText>
                 {
