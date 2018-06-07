@@ -101,9 +101,9 @@ class DashboardCharts extends Component {
     getLineChartTitle(k){
         switch (k){
             case 0:
-                return 'Content Impressions';
+                return 'Content Impressions Performance';
             case 1:
-                return 'Content Referral Clicks';
+                return 'Content Referral Clicks Performance';
             default:
                 return null;
         }

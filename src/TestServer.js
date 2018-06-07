@@ -57,27 +57,25 @@ var fakeData = {
     "advertiserDailyData": {
         "Impressions": 12345,
         "Impressions_trend": "+12.21%",
-        "Clicks": 352,
-        "Clicks_trend": "-2.3%",
+        "Referral_Clicks": 352,
+        "Referral_Clicks_trend": "-2.3%",
         "Total_Spend": "58994.21",
         "Total_Spend_trend": "+302.5%",
         "Balance": "0.01",
         "Balance_trend": "-85%",
         "Purchased_Contract": "3",
-        "Purchased_Contract_trend": "0",
         "Total_Invoice_Due": "756"
     },
     "publisherDailyData": {
         "Impressions": 23456,
         "Impressions_trend": "+12.21%",
-        "Clicks": 352,
-        "Clicks_trend": "-2.3%",
+        "Referral_Clicks": 352,
+        "Referral_Clicks_trend": "-2.3%",
         "Revenue": "58994.21",
         "Revenue_trend": "+302.5%",
         "Balance": "2018",
         "Balance_trend": "+85%",
         "Active_Contract": "3",
-        "Active_Contract_trend": "+50%",
         "Total_Invoice_Due": "998"
     },
     "xqcContracts": [

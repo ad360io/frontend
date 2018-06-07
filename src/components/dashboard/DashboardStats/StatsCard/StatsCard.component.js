@@ -44,11 +44,15 @@ class StatsCard extends Component {
         }
     }
 
+    sanitizeTitle(title) {
+        return title.replace(new RegExp('_', 'g'), ' ');
+    }
+
     render() {
         return <div className='stats-card-container'>
             <div className='stats-card'>
                     <div>
-                        <span className='stats-card-title'> { this.props.title } </span>
+                        <span className='stats-card-title'> { this.sanitizeTitle(this.props.title) } </span>
                         <span className={this.getTrendingLabelStyle()+' stats-card-trend'}> { this.props.trend } </span>
                     </div>
                     <hr className={this.getTrendingHrStyle()} />

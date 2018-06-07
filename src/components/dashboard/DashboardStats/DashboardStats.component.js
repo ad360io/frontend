@@ -35,8 +35,8 @@ class DashboardStats extends Component {
 
     getStatsCardTitles() {
         return (this.props.modeFilter === 'Advertiser'
-            ? ['Impressions', 'Expenses', 'Balance']
-            : ['Impressions', 'Revenue' , 'Balance'])
+            ? ['Impressions', 'Referral_Clicks', 'Total_Spend','Balance', 'Purchased_Contract', 'Total_Invoice_Due']
+            : ['Impressions', 'Referral_Clicks', 'Revenue' , 'Balance', 'Active_Contract', 'Total_Invoice_Due'])
     }
 
     getStatsCardValueByTitle(title) {
@@ -57,7 +57,7 @@ class DashboardStats extends Component {
                     this.getStatsCardTitles().map((statsTitle, i)=>{
                         return <StatsCard   title={statsTitle}
                                             value={""+this.getStatsCardValueByTitle(statsTitle)}
-                                            trend={this.getStatsCardValueByTitle(statsTitle+'_trend')}
+                                            trend={this.getStatsCardValueByTitle(statsTitle+'_trend')||''}
                                             key={this.props.modeFilter+statsTitle} />
                     })
                 }
