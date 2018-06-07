@@ -1,7 +1,7 @@
 /** DEFAULT STATE */
 const defaultState = {
    isDrawerOpen: false,       
-   budgetFilter: 75,       
+   budgetFilter: 7.5,       
    contentGenreFilter: 'Show All'
 }
 

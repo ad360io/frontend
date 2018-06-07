@@ -12,7 +12,8 @@ import { Card, CardText, CardTitle } from 'material-ui/Card';
 /*
 React Bootstrap
 */
-import { Modal, Button, FormGroup, FormControl } from 'react-bootstrap';
+//import { Modal, Button, FormGroup, FormControl } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 
 /*
 Placeholder Images
@@ -50,6 +51,9 @@ class ListingCard extends Component {
         this.decideTitleDisplayText = this.decideTitleDisplayText.bind(this);
         this.handleHideModal = this.handleHideModal.bind(this);
         this.handleShowModal = this.handleShowModal.bind(this);
+        this.decideContactInfo = this.decideContactInfo.bind(this);
+        this.decideDescription = this.decideDescription.bind(this);
+        this.decidePriceTag = this.decidePriceTag.bind(this);
     }
 
     componentDidMount() {
@@ -102,7 +106,7 @@ class ListingCard extends Component {
      * Decide placeholder image based on the listing's genre
      */
     decidePlaceholderImage(){
-        switch(this.props.listing.genre){
+        switch(this.props.listing.marketingType){
             case 'Branded Content':
                 return branded_content_ph;
             case 'Influencer Post':
@@ -145,10 +149,34 @@ class ListingCard extends Component {
         // Get the count of original title 
         // and the count of characters without overflowing
         // to detect if we need '...' at the end of title.
-        const numberOfCharOriginal = this.props.listing.name.length;
+        const numberOfCharOriginal = this.props.listing.contentTopic.length;
         const numberOfCharAllowed = Math.floor((this.state.width - drawerSize) * cardWidthInPercent / 13);
         const dotDotDot = (numberOfCharAllowed < numberOfCharOriginal ? '...' : '')
-        return this.props.listing.name.slice(0, numberOfCharAllowed)+dotDotDot;
+        return this.props.listing.contentTopic.slice(0, numberOfCharAllowed)+dotDotDot;
+    }
+
+    decideContactInfo() {
+        if(this.props.modeFilter === 'Advertiser'){
+            return this.props.listing.creator
+        }else {
+            return this.props.listing.requestor
+        }
+    }
+
+    decideDescription() {
+        if(this.props.modeFilter === 'Advertiser'){
+            return this.props.listing.listingDescription
+        }else{
+            return this.props.listing.requestDescription
+        }
+    }
+
+    decidePriceTag() {
+        if(this.props.modeFilter === 'Advertiser') {
+            return this.props.listing.pricing+' '+this.props.listing.currency.toUpperCase()
+        }else{
+            return ''
+        }
     }
 
     render() {
@@ -159,23 +187,23 @@ class ListingCard extends Component {
                     marginLeft: this.decideMarginLeft(),
                 }
             }>
-                <div className='poster-tag'>{this.props.listing.username} </div>
-                <div className='price-tag'>{this.props.listing.pricing+' '+this.props.listing.currency.toUpperCase()}</div>
-
+                <div className='poster-tag'>{this.decideContactInfo()} </div>
+                <div className='price-tag'>{this.decidePriceTag()}</div>)
+            
                 <CardTitle 
                     title={this.decideTitleDisplayText()} 
                     subtitle={'Posted on: '+this.props.listing.ask_date_from} 
                     style={{paddingBottom:'0px'}}/>
                 <img src={this.decidePlaceholderImage()} className='listing-img' alt='listing-img'/>
                 <CardText className='listing-msg-container'>
-                    <span className="listing-msg">{this.props.listing.msg}</span>
+                    <span className="listing-msg">{this.decideDescription()}</span>
                 </CardText>
-                <Button bsStyle='primary' className='btn-contact-action' onClick={this.handleShowModal}>Explore this listing.</Button>
+                <Button bsStyle='primary' className='btn-contact-action' onClick={this.handleShowModal}>Explore This Listing</Button>
             </Card>
 
-            <Modal show={this.state.show} onHide={this.handleHideModal}>
+            {/* <Modal show={this.state.show} onHide={this.handleHideModal}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Invite to {this.props.listing.name}</Modal.Title>
+                    <Modal.Title>Invite to {this.props.listing.contentTopic}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <h3>Why you should get in touch with us?</h3>
@@ -197,7 +225,7 @@ class ListingCard extends Component {
                     <Button disabled>Send Invite</Button>
                     <Button onClick={this.handleHideModal}>Close</Button>
                 </Modal.Footer>
-            </Modal>
+            </Modal> */}
         </div>
     }
 }

@@ -18,12 +18,23 @@ var fakeData = {
     "requestListings": [
         {
             "requestor": "User8",
-            "marketing_type": "Branded Content",
+            "currency": "EQC",
+            "marketingType": "Branded Content",
             "medium": "Video",
-            "content_topic": "Recycling Used Toilet Paper",
+            "contentTopic": "Recycling Used Toilet Paper",
             "images": "",
             "ask_date_from": "2017-09-17",
-            "content_description": "This is a product you will be thrilled to show your users .Feature us on your website."
+            "requestDescription": "This is a product you will be thrilled to show your users .Feature us on your website."
+        },
+        {
+            "requestor": "User8",
+            "currency": "XQC",
+            "marketingType": "Sponsorship",
+            "medium": "",
+            "contentTopic": "Recycling Used Toilet Paper",
+            "images": "",
+            "ask_date_from": "2017-09-17",
+            "requestDescription": "This is a product you will be thrilled to show your users .Feature us on your website."
         }
     ],
     "contentSpaceListings": [
@@ -35,9 +46,9 @@ var fakeData = {
             "medium": "Video",
             "contentTopic": "Recycling Paper",
             "pricing": 700,
-            "time_unit": "day",
+            "timeUnit": "day",
             "currency": "EQC",
-            "lisintgDescription": "We have a large user base averaging 10,000 daily users, and are ready to share a sponsored content story on 2017/07/01. We are looking to write on topics related to clean energy. If you are an advertiser interested in a content piece with this topic, please check our listing.",
+            "listingDescription": "We have a large user base averaging 10,000 daily users, and are ready to share a sponsored content story on 2017/07/01. We are looking to write on topics related to clean energy. If you are an advertiser interested in a content piece with this topic, please check our listing.",
             "referralURI": ""
         },
         {
@@ -50,7 +61,7 @@ var fakeData = {
             "pricing": 8000,
             "time_unit": "week",
             "currency": "XQC",
-            "lisintgDescription": "We have a large user base averaging 10,000 daily users, and are ready to share a sponsored content story on 2017/07/01. We are looking to write on topics related to clean energy. If you are an advertiser interested in a content piece with this topic, please check our listing.",
+            "listingDescription": "We have a large user base averaging 10,000 daily users, and are ready to share a sponsored content story on 2017/07/01. We are looking to write on topics related to clean energy. If you are an advertiser interested in a content piece with this topic, please check our listing.",
             "referralURI": ""
         }
     ],

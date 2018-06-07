@@ -47,15 +47,28 @@ class MarketplaceListings extends Component {
      * @param {Array} data The full array of listings waiting to be filtered
      */
     filterDataWithProps(data){
-        return data.filter((listing)=>{
-            if(listing.currency.toUpperCase() === this.props.currencyFilter
-                && listing.pricing <= this.props.budgetFilter 
-                && (this.props.contentGenreFilter === 'Show All' 
-                || listing.marketing_type === this.props.contentGenreFilter)){
-                return listing;
-            }else{
-                return null;
-            }})
+        if(this.props.modeFilter === 'Advertiser' ){
+            // we are looking at content spaces, with price and currency
+            return data.filter((listing)=>{
+                if(listing.currency.toUpperCase() === this.props.currencyFilter
+                    && listing.pricing <= (this.props.budgetFilter * 1000)
+                    && (this.props.contentGenreFilter === 'Show All' 
+                    || listing.marketing_type === this.props.contentGenreFilter)){
+                    return listing;
+                }else{
+                    return null;
+                }})
+        }else{
+            // we are looking at requests
+            return data.filter((listing)=>{
+                if(listing.currency.toUpperCase() === this.props.currencyFilter
+                    && (this.props.contentGenreFilter === 'Show All' || listing.marketing_type === this.props.contentGenreFilter)){
+                    return listing;
+                }else{
+                    return null;
+                }})
+        }
+        
     }
 
     /**
@@ -76,7 +89,7 @@ class MarketplaceListings extends Component {
             <h2 className='marketplace-title'>{this.decideTitle(displayData.length)}</h2>
             {
                 displayData.map((listing, i)=>{
-                    return <ListingCard key={'listingCard'+i} listing={listing}/>
+                    return <ListingCard key={'listingCard'+i} listing={listing} modeFilter={this.props.modeFilter}/>
                 })
             }
         </div>

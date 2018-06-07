@@ -152,9 +152,9 @@ class MarketplaceFilter extends Component {
                     <Slider className='range-slider'
                         onChange={this.props.onSliderChange}
                         value={this.props.budgetFilter}
-                        min={0}
-                        max={100}
-                        step={1}/>
+                        min={0.1}
+                        max={10}
+                        step={0.1}/>
                 </div>
             </Drawer>
         </div>        
