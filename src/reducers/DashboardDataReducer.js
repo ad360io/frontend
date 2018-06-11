@@ -4,8 +4,6 @@ const initialState = {
     fetched: false,
     hasError: false,
     db: {
-        requestListings : [],
-        contentSpaceListings : [],
         advertiserDailyData: {
             "Impressions": 0,
             "Impressions_trend": "0",
@@ -43,16 +41,16 @@ const initialState = {
  *  Core database reducer.
  *  Fetches data from the database and updates the state.
  */
-const DatabaseReducer = (state = initialState, action) => {
+const DashboardDataReducer = (state = initialState, action) => {
 
     switch (action.type) {
-        case 'FETCH_DATABASE_PENDING': {
+        case 'FETCH_DASHBOARD_DATA_PENDING': {
             return {
                 ...state,
                 fetching: true
             }
         }
-        case 'FETCH_DATABASE_REJECTED': {
+        case 'FETCH_DASHBOARD_DATA_REJECTED': {
             return {
                 ...state,
                 fetching: false,
@@ -60,7 +58,7 @@ const DatabaseReducer = (state = initialState, action) => {
                 hasError: true,
             }
         }
-        case 'FETCH_DATABASE_FULFILLED': {
+        case 'FETCH_DASHBOARD_DATA_FULFILLED': {
             return {
                 ...state,
                 fetching: false,
@@ -74,4 +72,4 @@ const DatabaseReducer = (state = initialState, action) => {
     }
 }
 
-export default DatabaseReducer;
+export default DashboardDataReducer;

@@ -12,7 +12,31 @@ app.get('/api/db', (req, res, next) => {
     res.send(fakeData)
 })
 
-app.listen(3000, () => console.log('Example app listening on port 3000!'))
+app.get('/api/dashboard', (req, res, next) => {
+    res.send({
+        advertiserDailyData: fakeData.advertiserDailyData,
+        publisherDailyData : fakeData.publisherDailyData,
+        xqcContracts : fakeData.xqcContracts,
+        eqcContracts : fakeData.eqcContracts
+    })
+})
+
+app.get('/api/marketplace', (req, res, next) => {
+    res.send({
+        requestListings: fakeData.requestListings,
+        contentSpaceListings: fakeData.contentSpaceListings
+    })
+})
+
+app.listen(3000, () => {
+    console.log('-------------------------------------')
+    console.log('* TEST SERVER listening on port 3000 *')
+    console.log('* -----------------------------------')
+    console.log('End points: ')
+    console.log('\t* GET /api/db         : The whole shit.');
+    console.log('\t* GET /api/dashboard  : Daily stats + XQC contracts + EQC contracts.');
+    console.log('\t* GET /api/marketplace: RequestListings + contentSpaceListings.');
+})
 
 var fakeData = {
     "requestListings": [

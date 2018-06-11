@@ -102,8 +102,8 @@ const mapStateToProps = (state) => {
         modeFilter           : state.MenuBarFilterReducer.modeFilter,
         budgetFilter         : state.MarketplaceFilterReducer.budgetFilter,
         contentGenreFilter   : state.MarketplaceFilterReducer.contentGenreFilter,
-        contentSpaceListings : state.DatabaseReducer.db.contentSpaceListings,
-        requestListings      : state.DatabaseReducer.db.requestListings
+        contentSpaceListings : state.MarketplaceDataReducer.db.contentSpaceListings,
+        requestListings      : state.MarketplaceDataReducer.db.requestListings
     }
 }
 

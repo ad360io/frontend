@@ -163,9 +163,9 @@ const DashboardChartsRenderer = ({sliderProps, getLineChartTitle}) => (
 
 const mapStateToProps = (state) => {
     return {
-        eqcContracts      : state.DatabaseReducer.db.eqcContracts,
-        xqcContracts      : state.DatabaseReducer.db.xqcContracts,
-        fetched      : state.DatabaseReducer.fetched
+        eqcContracts      : state.DashboardDataReducer.db.eqcContracts,
+        xqcContracts      : state.DashboardDataReducer.db.xqcContracts,
+        fetched           : state.DashboardDataReducer.fetched
     }
 }
 

@@ -69,7 +69,7 @@ class DashboardStats extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        db: state.DatabaseReducer.db
+        db: state.DashboardDataReducer.db
     }
 }
 
