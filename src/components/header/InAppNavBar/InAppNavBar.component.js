@@ -1,9 +1,9 @@
 /*
 Core Libs
 */
-import React       from 'react';
-import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import React                   from 'react';
+import { connect }             from 'react-redux';
+import { NavLink, withRouter } from 'react-router-dom';
 
 /*
 Local CSS
@@ -55,7 +55,7 @@ const mapDispatchToProps = (dispatch) => {
     return {}
 }
 
-export default connect(
+export default withRouter(connect(
     mapStateToProps,
     mapDispatchToProps
-)(InAppNavBar);
+)(InAppNavBar));
