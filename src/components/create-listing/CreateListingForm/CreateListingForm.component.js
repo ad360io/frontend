@@ -20,6 +20,12 @@ Children Components
 import MarketingTypeDropdown from './MarketingTypeDropdown/MarketingTypeDropdown.component';
 import AvailabilityPicker    from './AvailabilityPicker/AvailabilityPicker.component';
 
+/*
+Material UI
+*/
+import Checkbox from '@material-ui/core/Checkbox';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+
 
 /**
  * Create Listing Form Component
@@ -74,6 +80,11 @@ class CreateListingForm extends Component {
     }
 
     render() {
+        const labelStyle = {
+            lable: {
+                fontSize: '30px'
+            }
+        }
         return <div className='create-listing-form-container'>
             <h2 className='create-listing-form-title'>{this.decideFormTitle()}</h2>
 
@@ -98,7 +109,13 @@ class CreateListingForm extends Component {
                     <p className='control-label'>
                         *Price per time unit (day/week/month/year)
                     </p>
-
+                    <FormControl type='number' style={{width: '50%', float: 'left'}} />
+                    <FormControl componentClass='select' style={{width: '50%'}} required>
+                        <option value='day'>per day</option>
+                        <option value='week'>per week</option>
+                        <option value='month'>per month</option>
+                        <option value='year'>per year</option>
+                    </FormControl>
                
                 </FormGroup>
                
@@ -118,6 +135,39 @@ class CreateListingForm extends Component {
                         Content Samples and Inspiration (optional)
                     </p>
                     <FormControl type='file' />
+                </FormGroup>  
+
+                <FormGroup controlId='control-form-additional' hidden={this.props.modeFilter === 'Advertiser'}>
+                    <p className='control-label noselect'>
+                        Additional Services (optional)
+                    </p>
+                    <div style={{width: '10%', float: 'left'}}>
+                        <Checkbox color="default"/>
+                    </div>
+                    <div style={{width: '90%', height: '48px', marginTop: '9px'}}>Banner</div>
+
+                    <div style={{width: '10%', float: 'left'}}>
+                        <Checkbox color="default"/>
+                    </div>
+                    <div style={{width: '90%', height: '48px', marginTop: '9px'}}>Fullscreen Overlay</div>
+
+                    <div style={{width: '10%', float: 'left'}}>
+                        <Checkbox color="default"/>
+                    </div>
+                    <div style={{width: '90%', height: '48px', marginTop: '9px'}}>Custom Art</div>
+
+                     <div style={{width: '10%', float: 'left'}}>
+                        <Checkbox color="default"/>
+                    </div>
+                    <div style={{width: '90%', height: '48px', marginTop: '9px'}}>Other</div>
+                
+                </FormGroup>    
+
+                <FormGroup controlId='control-form-referral' hidden={this.props.modeFilter === 'Advertiser'}>
+                    <p className='control-label'>
+                        Referral URI (optional)
+                    </p>
+                    <FormControl type='text' />
                 </FormGroup>    
 
                 <Button type='submit' 
