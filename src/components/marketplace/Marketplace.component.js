@@ -85,7 +85,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     const TestServerURL = "http://localhost:3000/api/marketplace";
     return {
-        onStartLoadData: () => {console.log("HI")
+        onStartLoadData: () => {
             dispatch((dispatch) => {
                 
                 dispatch(fetch_MarketplaceData_Pending())

@@ -3,6 +3,7 @@ Core Libs
 */
 import React, { Component } from 'react';
 import PropTypes            from 'prop-types'
+import { connect }          from 'react-redux';
 
 /*
 Material UI Components
@@ -234,5 +235,18 @@ ListingCard.propTypes = {
     listing: PropTypes.object.isRequired
 }
 
+const mapStateToProps = (state) => {
+    return {
+        viewModeFilter : state.MarketplaceFilterReducer.viewModeFilter
+    }
+}
 
-export default ListingCard;
+const mapDispatchToProps = (dispatch) => {
+    return {}
+}
+
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(ListingCard);
