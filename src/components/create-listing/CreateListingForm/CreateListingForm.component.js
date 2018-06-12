@@ -24,7 +24,6 @@ import AvailabilityPicker    from './AvailabilityPicker/AvailabilityPicker.compo
 Material UI
 */
 import Checkbox from '@material-ui/core/Checkbox';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 
 /**
@@ -80,11 +79,6 @@ class CreateListingForm extends Component {
     }
 
     render() {
-        const labelStyle = {
-            lable: {
-                fontSize: '30px'
-            }
-        }
         return <div className='create-listing-form-container'>
             <h2 className='create-listing-form-title'>{this.decideFormTitle()}</h2>
 

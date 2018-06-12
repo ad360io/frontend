@@ -31,4 +31,11 @@ const setContentGenre = (contentGenre) => {
     }
 }
 
-export { setBudget, drawerRequest, openDrawer, closeDrawer, setContentGenre }
+const setViewMode = (viewModeFilter) => {
+    return {
+        type: 'SET_VIEW_MODE',
+        value: viewModeFilter
+    }
+}
+
+export { setBudget, drawerRequest, openDrawer, closeDrawer, setContentGenre, setViewMode }

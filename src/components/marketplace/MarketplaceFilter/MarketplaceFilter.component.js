@@ -21,8 +21,8 @@ import Drawer from 'material-ui/Drawer'
 /*
 Action
 */
-import { setBudget, setContentGenre }             from '../../../actions/MarketplaceActions';
-import { openDrawer, closeDrawer, drawerRequest } from '../../../actions/MarketplaceActions';
+import { setBudget, setContentGenre, setViewMode }  from '../../../actions/MarketplaceActions';
+import { openDrawer, closeDrawer, drawerRequest }   from '../../../actions/MarketplaceActions';
 
 /*
 Local CSS
@@ -109,8 +109,25 @@ class MarketplaceFilter extends Component {
                             marginBottom:'5%',
                         }}
                     >
-                        <Button style={{paddingLeft: '25px', paddingRight: '25px'}}><i class="fas fa-th-large"></i>Grid</Button>
-                        <Button style={{paddingRight: '18px'}}><i class="fas fa-align-justify"></i>Listing</Button>
+                        <Button 
+                            style={{
+                                paddingLeft: '25px',
+                                paddingRight: '25px'
+                            }}
+                            active={this.props.viewModeFilter === 'Grid'}
+                            onClick={()=>this.props.onViewModeClick('Grid')}
+                        >
+                                <i className="fas fa-th-large"></i>Grid
+                        </Button>
+                        <Button 
+                            style={{
+                                paddingRight: '18px'
+                            }}
+                            active={this.props.viewModeFilter === 'Listing'}
+                            onClick={()=>this.props.onViewModeClick('Listing')}
+                        >
+                            <i className="fas fa-align-justify"></i>Listing
+                        </Button>
                     </ButtonGroup>
                     <Button 
                         className='btn-single'
@@ -177,9 +194,11 @@ const mapStateToFilterProps = (state) => {
         budgetFilter       : state.MarketplaceFilterReducer.budgetFilter,
         activeTypes        : state.MarketplaceFilterReducer.activeTypes,
         isDrawerOpen       : state.MarketplaceFilterReducer.isDrawerOpen,
-        currency           : state.MenuBarFilterReducer.currencyFilter,
         contentGenreFilter : state.MarketplaceFilterReducer.contentGenreFilter,
-        modeFilter         : state.MenuBarFilterReducer.modeFilter
+        viewModeFilter     : state.MarketplaceFilterReducer.viewModeFilter,
+
+        modeFilter         : state.MenuBarFilterReducer.modeFilter,
+        currency           : state.MenuBarFilterReducer.currencyFilter,
     }
 }
 
@@ -199,6 +218,9 @@ const mapDispatchToFilterProps = (dispatch) => {
         },
         openDrawer: () => {
             dispatch(openDrawer())
+        },
+        onViewModeClick: (viewModeFilter) => {
+            dispatch(setViewMode(viewModeFilter))
         }
     }
 }
