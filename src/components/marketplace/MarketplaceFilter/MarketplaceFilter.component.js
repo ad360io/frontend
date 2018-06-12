@@ -7,7 +7,8 @@ import { connect }          from 'react-redux';
 /*
 React Bootstrap Components
 */
-import {Button, SplitButton, MenuItem} from 'react-bootstrap';
+import { Button, SplitButton, MenuItem } from 'react-bootstrap';
+import { ButtonGroup }                   from 'react-bootstrap';
 
 /*
 Material UI Components
@@ -40,8 +41,8 @@ class MarketplaceFilter extends Component {
             width: window.innerWidth
         }
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
-        this.decide_BtnOpenFilterDrawer_Display = this.decide_BtnOpenFilterDrawer_Display.bind(this);
         this.decideTitle = this.decideTitle.bind(this);
+        this.decideHidden = this.decideHidden.bind(this);
     }
 
     componentDidMount() {
@@ -62,24 +63,24 @@ class MarketplaceFilter extends Component {
         else this.props.openDrawer();
     }
 
-    /**
-     * Hide / Show the drawer toggle based on screen size
-     */
-    decide_BtnOpenFilterDrawer_Display(){
-        if(this.state.width > 768) return 'none'
-        else return 'inline';
-    }
-
     decideTitle(){
         if(this.props.modeFilter === 'Advertiser') return 'Content Spaces';
         else return 'Content'
+    }
+
+    decideHidden() {
+        if(this.state.width <= 768) {
+            return 'none';
+        }else{
+            return 'inline-block';
+        }
     }
 
     render() {
         return <div className='marketplace-filter-container' >
             <Button 
                 className='btn-open-filter-drawer'
-                style={{display: this.decide_BtnOpenFilterDrawer_Display()}}
+                hidden={this.state.width > 768}
                 onClick={()=>this.props.openDrawer()}
             > 
                 Click Me to Set Filters 
@@ -101,6 +102,16 @@ class MarketplaceFilter extends Component {
 
                 <div className='ad-genre-container'>
                     <h4 className='filter-title'>{this.decideTitle()} Listings</h4>
+                    <ButtonGroup
+                        style={{
+                            display: this.decideHidden(), 
+                            marginLeft:'25px', 
+                            marginBottom:'5%',
+                        }}
+                    >
+                        <Button style={{paddingLeft: '25px', paddingRight: '25px'}}><i class="fas fa-th-large"></i>Grid</Button>
+                        <Button style={{paddingRight: '18px'}}><i class="fas fa-align-justify"></i>Listing</Button>
+                    </ButtonGroup>
                     <Button 
                         className='btn-single'
                         onClick={()=>{this.props.onContentGenreClick('Show All')}}
