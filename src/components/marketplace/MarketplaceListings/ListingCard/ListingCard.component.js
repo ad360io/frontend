@@ -28,6 +28,7 @@ import default_ph              from '../../../../assets/images/pug_face.jpg';
 Local CSS
 */
 import './ListingCard.component.css';
+import { Grid } from '@material-ui/core';
 
 
 /**
@@ -166,42 +167,44 @@ class ListingCard extends Component {
 
     decideDescription() {
         if(this.props.modeFilter === 'Advertiser'){
-            return this.props.listing.listingDescription
+            return this.props.listing.listingDescription;
         }else{
-            return this.props.listing.requestDescription
+            return this.props.listing.requestDescription;
         }
     }
 
     decidePriceTag() {
         if(this.props.modeFilter === 'Advertiser') {
-            return this.props.listing.pricing+' '+this.props.listing.currency.toUpperCase()
+            return this.props.listing.pricing + ' ' + this.props.listing.currency.toUpperCase();
         }else{
-            return ''
+            return '';
         }
     }
 
     render() {
         return <div>
-            <Card className='listing-card-container' 
-                style={{ 
-                    width: this.decideCardWidth(),
-                    marginLeft: this.decideMarginLeft(),
-                }
-            }>
-                <div className='poster-tag'>{this.decideContactInfo()} </div>
-                <div className='price-tag'>{this.decidePriceTag()}</div>)
+            {this.props.viewModeFilter === 'Grid'  
+                ? <GridCardRenderer
+                    width={this.decideCardWidth()}
+                    marginLeft={this.decideMarginLeft()}
+                    contactInfo={this.decideContactInfo()}
+                    priceTag={this.decidePriceTag()}
+                    title={this.decideTitleDisplayText()}
+                    placeholderImage={this.decidePlaceholderImage()}
+                    description={this.decideDescription()}
+                    ask_date_from={this.props.listing.ask_date_from}
+                />
+                : <ListingCardRenderer
+                    marginLeft={this.decideMarginLeft()}
+                    contactInfo={this.decideContactInfo()}
+                    priceTag={this.decidePriceTag()}
+                    title={this.decideTitleDisplayText()}
+                    placeholderImage={this.decidePlaceholderImage()}
+                    description={this.decideDescription()}
+                    ask_date_from={this.props.listing.ask_date_from}
+                />
+            }
             
-                <CardTitle 
-                    title={this.decideTitleDisplayText()} 
-                    subtitle={'Posted on: '+this.props.listing.ask_date_from} 
-                    style={{paddingBottom:'0px'}}/>
-                <img src={this.decidePlaceholderImage()} className='listing-img' alt='listing-img'/>
-                <CardText className='listing-msg-container'>
-                    <span className="listing-msg">{this.decideDescription()}</span>
-                </CardText>
-                <Button bsStyle='primary' className='btn-contact-action' onClick={this.handleShowModal}>Explore This Listing</Button>
-            </Card>
-
             {/* <Modal show={this.state.show} onHide={this.handleHideModal}>
                 <Modal.Header closeButton>
                     <Modal.Title>Invite to {this.props.listing.contentTopic}</Modal.Title>
@@ -230,6 +233,50 @@ class ListingCard extends Component {
         </div>
     }
 }
+
+const GridCardRenderer = ({ width, marginLeft, contactInfo, priceTag, title, placeholderImage, description, ask_date_from }) => (
+    <Card className='grid-card-container noselect' 
+        style={{ 
+            width,
+            marginLeft,
+        }}
+    >
+        <div className='poster-tag'>{contactInfo} </div>
+        <div className='price-tag'>{priceTag}</div>)
+            
+        <CardTitle 
+            title={title} 
+            subtitle={'Posted on: '+ ask_date_from} 
+            style={{paddingBottom:'0px'}}/>
+        <img src={placeholderImage} className='grid-img' alt='listing-img'/>
+        <CardText className='grid-msg-container'>
+            <span className="listing-msg">{description}</span>
+        </CardText>
+        <Button bsStyle='primary' className='btn-contact-action' onClick={this.handleShowModal}>Explore This Listing</Button>
+    </Card>
+)
+
+const ListingCardRenderer = ({ marginLeft, contactInfo, priceTag, title, placeholderImage, description, ask_date_from }) => (
+    <Card className='listing-card-container noselect' 
+        style={{ 
+            width: '90%',
+            marginLeft,
+        }}
+    >
+        <div className='poster-tag'>{contactInfo} </div>
+        <div className='price-tag'>{priceTag}</div>)
+            
+        <CardTitle 
+            title={title} 
+            subtitle={'Posted on: '+ ask_date_from} 
+            className='listing-card-title'
+            style={{paddingBottom:'0px'}}/>
+        <img src={placeholderImage} className='listing-img' alt='listing-img'/>
+        <CardText className='listing-msg-container'>
+            <span className="listing-msg">{description}</span>
+        </CardText>
+    </Card>
+)
 
 ListingCard.propTypes = {
     listing: PropTypes.object.isRequired
