@@ -32,6 +32,7 @@ import './MarketplaceFilter.component.css'
 Children Components
 */
 import ViewModeSelector from './ViewModeSelector/ViewModeSelector.component';
+import MarketingTypeFilter from './MarketingTypeFilter/MarketingTypeFilter.component';
 
 /**
  * MarketplaceFilter Component
@@ -108,48 +109,7 @@ class MarketplaceFilter extends Component {
                     
                     <ViewModeSelector decideHidden={this.decideHidden} />
 
-                    <Button 
-                        className='btn-single'
-                        onClick={()=>{this.props.onContentGenreClick('Show All')}}
-                        active={this.props.contentGenreFilter === 'Show All'}
-                    >
-                        Show All
-                    </Button>
-                    <SplitButton 
-                        className='btn-ad-genre' 
-                        title='Branded Content' 
-                        id='branded-content-menu' 
-                        pullRight
-                        onClick={()=>this.props.onContentGenreClick('Branded Content')}
-                        active={this.props.contentGenreFilter === 'Branded Content'}
-                    >
-                        <MenuItem >Written Post</MenuItem>
-                        <MenuItem >Podcast</MenuItem>
-                        <MenuItem >Video</MenuItem>
-                    </SplitButton>
-                    <SplitButton 
-                        className='btn-ad-genre' 
-                        title='Influencer Post' 
-                        id='influencer-post-menu' 
-                        pullRight
-                        onClick={()=>this.props.onContentGenreClick('Influencer Post')}
-                        active={this.props.contentGenreFilter === 'Influencer Post'}
-                    >
-                        <MenuItem >Tweet</MenuItem>
-                        <MenuItem >Instagram</MenuItem>
-                        <MenuItem >Twitch</MenuItem>
-                        <MenuItem >Youtube</MenuItem>
-                        <MenuItem >Facebook</MenuItem>
-                        <MenuItem >Twitter</MenuItem>
-                        <MenuItem >NicoNico</MenuItem>
-                    </SplitButton>
-                    <Button 
-                        className='btn-single'
-                        onClick={()=>this.props.onContentGenreClick('Sponsorship')}
-                        active={this.props.contentGenreFilter === 'Sponsorship'}
-                    >
-                        Sponsorship
-                    </Button>
+                    <MarketingTypeFilter />
                 </div>
 
                 <Divider/>
@@ -173,8 +133,6 @@ const mapStateToFilterProps = (state) => {
         budgetFilter       : state.MarketplaceFilterReducer.budgetFilter,
         activeTypes        : state.MarketplaceFilterReducer.activeTypes,
         isDrawerOpen       : state.MarketplaceFilterReducer.isDrawerOpen,
-        contentGenreFilter : state.MarketplaceFilterReducer.contentGenreFilter,
-        viewModeFilter     : state.MarketplaceFilterReducer.viewModeFilter,
 
         modeFilter         : state.MenuBarFilterReducer.modeFilter,
         currency           : state.MenuBarFilterReducer.currencyFilter,
@@ -188,9 +146,6 @@ const mapDispatchToFilterProps = (dispatch) => {
         },
         onDrawerRequestChange: (open)=>{
             dispatch(drawerRequest(open))
-        },
-        onContentGenreClick: (contentGenre) => {
-            dispatch(setContentGenre(contentGenre))
         },
         closeDrawer: () => {
             dispatch(closeDrawer())
