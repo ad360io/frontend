@@ -8,7 +8,6 @@ import { connect }          from 'react-redux';
 React Bootstrap Components
 */
 import { Button, SplitButton, MenuItem } from 'react-bootstrap';
-import { ButtonGroup }                   from 'react-bootstrap';
 
 /*
 Material UI Components

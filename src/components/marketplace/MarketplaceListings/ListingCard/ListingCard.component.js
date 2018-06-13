@@ -28,7 +28,6 @@ import default_ph              from '../../../../assets/images/pug_face.jpg';
 Local CSS
 */
 import './ListingCard.component.css';
-import { Grid } from '@material-ui/core';
 
 
 /**
@@ -84,7 +83,7 @@ class ListingCard extends Component {
      * to avoid too many white spaces on the card
      */
     decideCardWidth() {
-        if(this.state.width >= 1440){
+        if(this.state.width >= 1550){
             return '30%';
         }else if(this.state.width >= 1200){
             return '45%';
