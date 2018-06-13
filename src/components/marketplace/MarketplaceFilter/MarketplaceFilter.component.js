@@ -21,7 +21,7 @@ import Drawer from 'material-ui/Drawer'
 /*
 Action
 */
-import { setBudget, setContentGenre, setViewMode }  from '../../../actions/MarketplaceActions';
+import { setBudget, setContentGenre }  from '../../../actions/MarketplaceActions';
 import { openDrawer, closeDrawer, drawerRequest }   from '../../../actions/MarketplaceActions';
 
 /*
@@ -29,6 +29,10 @@ Local CSS
 */
 import './MarketplaceFilter.component.css'
 
+/*
+Children Components
+*/
+import ViewModeSelector from './ViewModeSelector/ViewModeSelector.component';
 
 /**
  * MarketplaceFilter Component
@@ -102,33 +106,9 @@ class MarketplaceFilter extends Component {
 
                 <div className='ad-genre-container'>
                     <h4 className='filter-title'>{this.decideTitle()} Listings</h4>
-                    <ButtonGroup
-                        style={{
-                            display: this.decideHidden(), 
-                            marginLeft:'25px', 
-                            marginBottom:'5%',
-                        }}
-                    >
-                        <Button 
-                            style={{
-                                paddingLeft: '25px',
-                                paddingRight: '25px'
-                            }}
-                            active={this.props.viewModeFilter === 'Grid'}
-                            onClick={()=>this.props.onViewModeClick('Grid')}
-                        >
-                                <i className="fas fa-th-large"></i>Grid
-                        </Button>
-                        <Button 
-                            style={{
-                                paddingRight: '18px'
-                            }}
-                            active={this.props.viewModeFilter === 'Listing'}
-                            onClick={()=>this.props.onViewModeClick('Listing')}
-                        >
-                            <i className="fas fa-align-justify"></i>Listing
-                        </Button>
-                    </ButtonGroup>
+                    
+                    <ViewModeSelector decideHidden={this.decideHidden} />
+
                     <Button 
                         className='btn-single'
                         onClick={()=>{this.props.onContentGenreClick('Show All')}}
@@ -218,9 +198,6 @@ const mapDispatchToFilterProps = (dispatch) => {
         },
         openDrawer: () => {
             dispatch(openDrawer())
-        },
-        onViewModeClick: (viewModeFilter) => {
-            dispatch(setViewMode(viewModeFilter))
         }
     }
 }
