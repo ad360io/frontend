@@ -34,6 +34,8 @@ Children Components
 import ViewModeSelector from './ViewModeSelector/ViewModeSelector.component';
 import MarketingTypeFilter from './MarketingTypeFilter/MarketingTypeFilter.component';
 import PurchaseRangeSelector from './PurchaseRangeSelector/PurchaseRangeSelector.component';
+import KeywordFilter from './KeywordFilter/KeywordFilter.component';
+
 
 /**
  * MarketplaceFilter Component
@@ -43,11 +45,13 @@ class MarketplaceFilter extends Component {
     constructor(props){
         super(props)
         this.state = {
-            width: window.innerWidth
+            width: window.innerWidth,
+            searchTerm: ''
         }
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
         this.decideTitle = this.decideTitle.bind(this);
         this.decideHidden = this.decideHidden.bind(this);
+        this.searchUpdated = this.searchUpdated.bind(this);
     }
 
     componentDidMount() {
@@ -60,7 +64,7 @@ class MarketplaceFilter extends Component {
     }
       
     updateWindowDimensions() {
-        this.setState({ width: window.innerWidth });
+        this.setState({ ...this.state, width: window.innerWidth });
 
         // Dynamically close the drawer for small screen
         //             open  the drawer for medium to big screen
@@ -81,12 +85,16 @@ class MarketplaceFilter extends Component {
         }
     }
 
+    searchUpdated (term) {
+        this.setState({...this.state, searchTerm: term});
+    }
+
     render() {
         return <div className='marketplace-filter-container' >
             <Button 
                 className='btn-open-filter-drawer'
                 hidden={this.state.width > 768}
-                onClick={()=>this.props.openDrawer()}
+                onClick={() => this.props.openDrawer()}
             > 
                 Click Me to Set Filters 
             </Button>
@@ -107,26 +115,31 @@ class MarketplaceFilter extends Component {
 
                 <h4 className='filter-title'>View Mode</h4>
                 <ViewModeSelector decideHidden={this.decideHidden} style={{marginBotton: '5%'}} /> 
-                <Divider className='divider'/>
+                <FilterDivider />
 
                 <h4 className='filter-title'>{this.decideTitle()} Listings</h4>          
                 <MarketingTypeFilter />
-                <Divider className='divider'/>
+                <FilterDivider />
+                
+                <h4 className='filter-title'>Keyword Search</h4>
+                <KeywordFilter onChange={this.searchUpdated}/>
+                <FilterDivider />
 
                 <PurchaseRangeSelector />
+                <FilterDivider />
             </Drawer>
         </div>        
     }
 }
 
-const mapStateToFilterProps = (state) => {
-    return {
-        
-        activeTypes        : state.MarketplaceFilterReducer.activeTypes,
-        isDrawerOpen       : state.MarketplaceFilterReducer.isDrawerOpen,
+const FilterDivider = () => (
+    <Divider style={{marginTop: '5%'}}/>
+)
 
+const mapStateToFilterProps = (state) => {
+    return {   
+        isDrawerOpen       : state.MarketplaceFilterReducer.isDrawerOpen,
         modeFilter         : state.MenuBarFilterReducer.modeFilter,
-        currency           : state.MenuBarFilterReducer.currencyFilter,
     }
 }
 

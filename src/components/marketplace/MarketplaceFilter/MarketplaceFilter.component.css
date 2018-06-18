@@ -8,11 +8,6 @@
     text-align: center;
 }
 
-.range-slider{
-    width: 80%;
-    margin-left: 25px;
-}
-
 .btn-open-filter-drawer{
     left: 0;
     position: fixed;
