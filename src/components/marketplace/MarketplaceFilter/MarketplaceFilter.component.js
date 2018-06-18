@@ -7,7 +7,7 @@ import { connect }          from 'react-redux';
 /*
 React Bootstrap Components
 */
-import { Button, SplitButton, MenuItem } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 
 /*
 Material UI Components
@@ -20,7 +20,7 @@ import Drawer from 'material-ui/Drawer'
 /*
 Action
 */
-import { setBudget, setContentGenre }  from '../../../actions/MarketplaceActions';
+import { setBudget }  from '../../../actions/MarketplaceActions';
 import { openDrawer, closeDrawer, drawerRequest }   from '../../../actions/MarketplaceActions';
 
 /*

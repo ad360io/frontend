@@ -51,6 +51,13 @@ const MarketingTypeFilter = ({onMarketingTypeClick, marketingTypeFilter}) => (
         >
             Sponsorship
         </Button>
+        <Button
+            className='btn-marketing-type'
+            onClick={() => onMarketingTypeClick('Patron Journalism')}
+            active={marketingTypeFilter === 'Patron Journalism'}
+        >
+            Patron Journalism
+        </Button>
     </div>
 )
 
