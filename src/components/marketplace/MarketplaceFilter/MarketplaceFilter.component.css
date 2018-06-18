@@ -3,13 +3,9 @@
 }
 
 .filter-title {
-    margin-left: 8%;
     margin-top: 5%;
     font-size: 20px;
-}
-
-.ad-genre-container {
-    margin-bottom: 5%;
+    text-align: center;
 }
 
 .range-slider{
@@ -34,4 +30,8 @@
 
 .marketplace-filter-container {
     font-stretch: normal;
+}
+
+.divider {
+    margin-top: 5%;
 }

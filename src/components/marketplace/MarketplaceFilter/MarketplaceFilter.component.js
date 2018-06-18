@@ -33,6 +33,7 @@ Children Components
 */
 import ViewModeSelector from './ViewModeSelector/ViewModeSelector.component';
 import MarketingTypeFilter from './MarketingTypeFilter/MarketingTypeFilter.component';
+import PurchaseRangeSelector from './PurchaseRangeSelector/PurchaseRangeSelector.component';
 
 /**
  * MarketplaceFilter Component
@@ -104,25 +105,15 @@ class MarketplaceFilter extends Component {
                     display: 'inline-block',
                 }} zDepth={0}/>
 
-                <div className='ad-genre-container'>
-                    <h4 className='filter-title'>{this.decideTitle()} Listings</h4>
-                    
-                    <ViewModeSelector decideHidden={this.decideHidden} />
+                <h4 className='filter-title'>View Mode</h4>
+                <ViewModeSelector decideHidden={this.decideHidden} style={{marginBotton: '5%'}} /> 
+                <Divider className='divider'/>
 
-                    <MarketingTypeFilter />
-                </div>
+                <h4 className='filter-title'>{this.decideTitle()} Listings</h4>          
+                <MarketingTypeFilter />
+                <Divider className='divider'/>
 
-                <Divider/>
-
-                <div className='range-selector'>
-                    <h4 className='filter-title'>Max Purchase: {this.props.budgetFilter} k {this.props.currency}</h4>
-                    <Slider className='range-slider'
-                        onChange={this.props.onSliderChange}
-                        value={this.props.budgetFilter}
-                        min={0.1}
-                        max={10}
-                        step={0.1}/>
-                </div>
+                <PurchaseRangeSelector />
             </Drawer>
         </div>        
     }
@@ -130,7 +121,7 @@ class MarketplaceFilter extends Component {
 
 const mapStateToFilterProps = (state) => {
     return {
-        budgetFilter       : state.MarketplaceFilterReducer.budgetFilter,
+        
         activeTypes        : state.MarketplaceFilterReducer.activeTypes,
         isDrawerOpen       : state.MarketplaceFilterReducer.isDrawerOpen,
 
@@ -141,9 +132,6 @@ const mapStateToFilterProps = (state) => {
 
 const mapDispatchToFilterProps = (dispatch) => {
     return {
-        onSliderChange:(event, budgetFilter)=>{
-            dispatch(setBudget(budgetFilter))
-        },
         onDrawerRequestChange: (open)=>{
             dispatch(drawerRequest(open))
         },
