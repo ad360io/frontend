@@ -24,9 +24,9 @@ const MarketingTypeFilter = ({onMarketingTypeClick, marketingTypeFilter}) => (
             onClick={() => onMarketingTypeClick('Branded Content')}
             active={marketingTypeFilter === 'Branded Content'}
         >
-            <MenuItem >Written Post</MenuItem>
-            <MenuItem >Podcast</MenuItem>
-            <MenuItem >Video</MenuItem>
+            <MenuItem >Written Piece</MenuItem>
+            <MenuItem >Audio Piece</MenuItem>
+            <MenuItem >Video Piece</MenuItem>
         </SplitButton>
         <SplitButton
             className='split-btn-marketing-type'
@@ -51,13 +51,18 @@ const MarketingTypeFilter = ({onMarketingTypeClick, marketingTypeFilter}) => (
         >
             Sponsorship
         </Button>
-        <Button
-            className='btn-marketing-type'
+        <SplitButton
+            className='split-btn-marketing-type'
+            title='Patron Journalism'
+            id='branded-content-menu'
+            pullRight
             onClick={() => onMarketingTypeClick('Patron Journalism')}
             active={marketingTypeFilter === 'Patron Journalism'}
         >
-            Patron Journalism
-        </Button>
+            <MenuItem >Written Piece</MenuItem>
+            <MenuItem >Audio Piece</MenuItem>
+            <MenuItem >Video Piece</MenuItem>
+        </SplitButton>
     </div>
 )
 

@@ -44,7 +44,7 @@ class MarketingTypeDropdown extends Component {
     }
 
     showMedium() {
-        if (this.state.selectedType === 'Branded Content') {
+        if (this.state.selectedType === 'Branded Content' || this.state.selectedType === 'Patron Journalism') {
             return <FormGroup controlId='control-form-genre'>
                     <p className='control-label'>*Select Medium</p>
                     <FormControl 
@@ -52,9 +52,9 @@ class MarketingTypeDropdown extends Component {
                         onChange={this.handleMediumChange}
                         required
                     >
-                        <option value='Written Post'>Written Post</option>
-                        <option value='Podcast'>Podcast</option>
-                        <option value='Video'>Video</option>
+                        <option value='Written Post'>Written Piece</option>
+                        <option value='Podcast'>Audio Piece</option>
+                        <option value='Video'>Video Piece</option>
                         <option value='Other'>Other</option>
                     </FormControl>
             </FormGroup>
@@ -90,7 +90,7 @@ class MarketingTypeDropdown extends Component {
                     <option value='Sponsorship'>Sponsorship</option>
                     <option value='Branded Content'>Branded Content</option>
                     <option value='Influencer Post'>Influencer Post</option>
-                    <option value='Patron Journalism'>Patron journalism</option>
+                    <option value='Patron Journalism'>Patron Journalism</option>
                 </FormControl>
                 </FormGroup>
 
