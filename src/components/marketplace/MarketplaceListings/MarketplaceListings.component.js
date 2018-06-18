@@ -82,10 +82,14 @@ class MarketplaceListings extends Component {
         return isEmpty + listingType + ' Available';
     }
 
+    componentDidUpdate() {
+        window.scrollTo(0,0);
+    }
+
     render() {
         const displayData = this.filterDataWithProps(this.decideDataToDisplay());
         
-        return <div className='marketplace-listings-container'>
+        return <div className='marketplace-listings-container' ref={(ref) => this._containerDiv = ref}>
             <h2 className='marketplace-title'>{this.decideTitle(displayData.length)}</h2>
             {
                 displayData.map((listing, i)=>{
