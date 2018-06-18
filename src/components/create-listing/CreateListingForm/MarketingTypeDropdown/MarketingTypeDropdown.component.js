@@ -90,6 +90,7 @@ class MarketingTypeDropdown extends Component {
                     <option value='Sponsorship'>Sponsorship</option>
                     <option value='Branded Content'>Branded Content</option>
                     <option value='Influencer Post'>Influencer Post</option>
+                    <option value='Patron Journalism'>Patron journalism</option>
                 </FormControl>
                 </FormGroup>
 
