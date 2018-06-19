@@ -22,13 +22,13 @@ import './PurchaseRangeSelector.component.css';
 
 const PurchaseRangeSelector = ({budgetFilter, currencyFilter, onSliderChange}) => (
     <div className='range-selector'>
-        <h4 className='filter-title'>Max Purchase: {budgetFilter} k {currencyFilter}</h4>
         <Slider className='range-slider'
             onChange={onSliderChange}
             value={budgetFilter}
             min={0.1}
             max={10}
             step={0.1} />
+        <h4 className='budget-value'> {budgetFilter} k {currencyFilter}</h4>
     </div>
 )
 

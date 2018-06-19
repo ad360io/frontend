@@ -124,6 +124,7 @@ class MarketplaceFilter extends Component {
                 <KeywordFilter onChange={this.searchUpdated}/>
                 <FilterDivider />
 
+                <h4 className='filter-title'>Max Purchase:</h4>
                 <PurchaseRangeSelector />
                 <FilterDivider />
 
