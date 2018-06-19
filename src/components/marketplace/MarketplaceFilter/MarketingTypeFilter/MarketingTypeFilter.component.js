@@ -1,11 +1,24 @@
+/*
+Core Libs
+*/
 import React from 'react';
 import { connect } from 'react-redux';
 
+/*
+Local CSS
+*/
 import './MarketingTypeFilter.component.css';
 
+/*
+Actions
+*/
 import { setContentGenre } from '../../../../actions/MarketplaceActions';
 
+/*
+React Bootstrap
+*/
 import { Button, SplitButton, MenuItem } from 'react-bootstrap';
+
 
 const MarketingTypeFilter = ({onMarketingTypeClick, marketingTypeFilter}) => (
     <div>

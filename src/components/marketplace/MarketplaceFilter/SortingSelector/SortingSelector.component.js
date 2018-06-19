@@ -1,6 +1,13 @@
+/*
+Core Libs
+*/
 import React, { Component } from 'react';
 
+/*
+React Bootstrap
+*/
 import { SplitButton, MenuItem } from 'react-bootstrap';
+
 
 class SortingSelector extends Component {
 

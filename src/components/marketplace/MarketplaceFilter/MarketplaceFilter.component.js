@@ -13,20 +13,18 @@ import { Button } from 'react-bootstrap';
 Material UI Components
 */ 
 import Paper from 'material-ui/Paper';
-import Divider from 'material-ui/Divider'
-import Slider from 'material-ui/Slider'
-import Drawer from 'material-ui/Drawer'
+import Divider from 'material-ui/Divider';
+import Drawer from 'material-ui/Drawer';
 
 /*
 Action
 */
-import { setBudget }  from '../../../actions/MarketplaceActions';
 import { openDrawer, closeDrawer, drawerRequest }   from '../../../actions/MarketplaceActions';
 
 /*
 Local CSS
 */
-import './MarketplaceFilter.component.css'
+import './MarketplaceFilter.component.css';
 
 /*
 Children Components
@@ -131,6 +129,7 @@ class MarketplaceFilter extends Component {
 
                 <h4 className='filter-title' style={{textAlign: 'left', marginLeft: '25px'}}>Sort By:</h4>
                 <SortingSelector />
+                <FilterDivider />
             </Drawer>
         </div>        
     }

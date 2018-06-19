@@ -29,7 +29,9 @@ import ErrorPage           from '../ErrorPage/ErrorPage.component';
 /*
 Actions
 */
-import { fetch_MarketplaceData_Fulfilled, fetch_MarketplaceData_Pending, fetch_MarketplaceData_Rejected } from '../../actions/DatabaseRequestActions';
+import { fetch_MarketplaceData_Fulfilled,
+         fetch_MarketplaceData_Pending, 
+         fetch_MarketplaceData_Rejected } from '../../actions/DatabaseRequestActions';
 
 
 /**
