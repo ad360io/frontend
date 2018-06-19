@@ -6,7 +6,12 @@ import React, { Component } from 'react';
 /*
 React Bootstrap
 */
-import { SplitButton, MenuItem } from 'react-bootstrap';
+import { DropdownButton, MenuItem } from 'react-bootstrap';
+
+/*
+Local CSS
+*/
+import './SortingSelector.component.css';
 
 
 class SortingSelector extends Component {
@@ -26,15 +31,14 @@ class SortingSelector extends Component {
 
     render () {
         return <div>
-        <SplitButton
-            className='split-btn-marketing-type'
+        <DropdownButton
+            className='sorting-selector-btn'
             title={this.state.title}
-            pullRight
         >
             <MenuItem onClick={() => this.handleItemClick('Price (Low - High)')}>Price (Low - High)</MenuItem>
             <MenuItem onClick={() => this.handleItemClick('Price (High - Low)')}>Price (High - Low)</MenuItem>
             <MenuItem onClick={() => this.handleItemClick('Relevance')}>Relevance</MenuItem>
-        </SplitButton>
+        </DropdownButton>
     </div>
     }
 }
