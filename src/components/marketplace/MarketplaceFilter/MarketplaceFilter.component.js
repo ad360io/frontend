@@ -35,6 +35,7 @@ import ViewModeSelector from './ViewModeSelector/ViewModeSelector.component';
 import MarketingTypeFilter from './MarketingTypeFilter/MarketingTypeFilter.component';
 import PurchaseRangeSelector from './PurchaseRangeSelector/PurchaseRangeSelector.component';
 import KeywordFilter from './KeywordFilter/KeywordFilter.component';
+import SortingSelector from './SortingSelector/SortingSelector.component';
 
 
 /**
@@ -127,6 +128,9 @@ class MarketplaceFilter extends Component {
 
                 <PurchaseRangeSelector />
                 <FilterDivider />
+
+                <h4 className='filter-title' style={{textAlign: 'left', marginLeft: '25px'}}>Sort By:</h4>
+                <SortingSelector />
             </Drawer>
         </div>        
     }
