@@ -13,14 +13,15 @@ import DefaultRoute                      from './DefaultRoute';
 /*
 Other Major Components
 */
-import Login             from '../components/login/Login.component';
-import Dashboard         from '../components/dashboard/Dashboard.component';
-import Marketplace       from '../components/marketplace/Marketplace.component';
-import CreateListing     from '../components/create-listing/CreateListing.component';
-import Profile           from '../components/profile/Profile.component';
-import AuthCallback      from '../components/auth-callback/AuthCallback';
-import Auth              from '../components/auth/Auth';
-import store             from '../store/index';
+import Login               from '../components/login/Login.component';
+import Dashboard           from '../components/dashboard/Dashboard.component';
+import Marketplace         from '../components/marketplace/Marketplace.component';
+import CreateListing       from '../components/create-listing/CreateListing.component';
+import Profile             from '../components/profile/Profile.component';
+import AuthCallback        from '../components/auth-callback/AuthCallback';
+import Auth                from '../components/auth/Auth';
+import store               from '../store/index';
+import DetailedListingPage from '../components/marketplace/MarketplaceListings/DetailedListingPage/DetailedListingPage.component';
 
 
 /* Initialization of Auth, 
@@ -46,10 +47,11 @@ const AppRouter = () => (
       <BrowserRouter>
         <Switch>    
             <Route exact path='/' render={(props)=><Login auth={auth} {...props}/>} />
-            <PrivateRoute exact path='/dashboard'      component={ Dashboard }         auth={auth} />
-            <PrivateRoute exact path='/marketplace'    component={ Marketplace }       auth={auth} />
-            <PrivateRoute exact path='/create'         component={ CreateListing }     auth={auth} />
-            <PrivateRoute exact path='/profile'        component={ Profile }           auth={auth} />
+            <PrivateRoute exact path='/dashboard'    component={ Dashboard }           auth={auth} />
+            <PrivateRoute exact path='/marketplace'  component={ Marketplace }         auth={auth} />
+            <PrivateRoute exact path='/create'       component={ CreateListing }       auth={auth} />
+            <PrivateRoute       path='/listing/:id'  component={ DetailedListingPage } auth={auth} />
+            <PrivateRoute exact path='/profile'      component={ Profile }             auth={auth} />
             <Route path='/auth-callback' render={ (props) => {
                 handleAuthentication(props, null, props.history);
                 return <AuthCallback auth={auth} {...props} /> 

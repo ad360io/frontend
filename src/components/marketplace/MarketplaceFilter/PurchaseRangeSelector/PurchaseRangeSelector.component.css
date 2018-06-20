@@ -3,6 +3,9 @@
     margin-left: 25px;
 }
 
+/*
+Overwriting Material UI Slider's default margin
+*/
 .range-slider > div {
     margin-bottom: 15px !important;
     margin-top: 15px !important;

@@ -29,11 +29,11 @@ import './MarketplaceFilter.component.css';
 /*
 Children Components
 */
-import ViewModeSelector from './ViewModeSelector/ViewModeSelector.component';
-import MarketingTypeFilter from './MarketingTypeFilter/MarketingTypeFilter.component';
+import ViewModeSelector      from './ViewModeSelector/ViewModeSelector.component';
+import MarketingTypeFilter   from './MarketingTypeFilter/MarketingTypeFilter.component';
 import PurchaseRangeSelector from './PurchaseRangeSelector/PurchaseRangeSelector.component';
-import KeywordFilter from './KeywordFilter/KeywordFilter.component';
-import SortingSelector from './SortingSelector/SortingSelector.component';
+import KeywordFilter         from './KeywordFilter/KeywordFilter.component';
+import SortingSelector          from './SortingSelector/SortingSelector.component';
 
 
 /**
