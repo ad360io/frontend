@@ -28,6 +28,18 @@ app.get('/api/marketplace', (req, res, next) => {
     })
 })
 
+app.get('/api/listing', (req, res, next) => {
+    if(typeof req.query.id === 'undefined' || req.query.id.length <= 0){
+        res.send({ error: 'Invalid ID parameter provided'})
+    }else {
+        fakeDetailedListings.map((item)=>{
+            if(item.id === parseInt(req.query.id)) {
+                res.send(item)
+            }
+        })
+    }
+})
+
 app.listen(3000, () => {
     console.log('-------------------------------------')
     console.log('* TEST SERVER listening on port 3000 *')
@@ -36,7 +48,80 @@ app.listen(3000, () => {
     console.log('\t* GET /api/db         : The whole shit.');
     console.log('\t* GET /api/dashboard  : Daily stats + XQC contracts + EQC contracts.');
     console.log('\t* GET /api/marketplace: RequestListings + contentSpaceListings.');
+    console.log('\t* GET /api/listing?id : Detailed listing object provided listing ID.');
 })
+
+var fakeDetailedListings = [
+    {
+        "id" : 1,
+        "type" : "request",
+        "requestor": "User8",
+        "currency": "EQC",
+        "marketingType": "Branded Content",
+        "medium": "Video",
+        "contentTopic": "Recycling Used Toilet Paper",
+        "images": "",
+        "ask_date_from": "2017-09-17",
+        "requestDescription": "This is a product you will be thrilled to show your users .Feature us on your website."
+    }, 
+    {
+        "id" : 2,
+        "type" : "request",
+        "requestor": "User8",
+        "currency": "XQC",
+        "marketingType": "Sponsorship",
+        "medium": "",
+        "contentTopic": "Recycling Used Toilet Paper",
+        "images": "",
+        "ask_date_from": "2017-09-17",
+        "requestDescription": "This is a product you will be thrilled to show your users .Feature us on your website."
+    },
+    {
+        "id" : 3,
+        "type" : "listing",
+        "creator": "CoolUser17",
+        "ask_date_from": "2017-07-01",
+        "ask_date_to": "2018-07-01",
+        "marketingType": "Branded Content",
+        "medium": "Video",
+        "contentTopic": "Recycling Paper",
+        "pricing": 700,
+        "timeUnit": "day",
+        "currency": "EQC",
+        "listingDescription": "We have a large user base averaging 10,000 daily users, and are ready to share a sponsored content story on 2017/07/01. We are looking to write on topics related to clean energy. If you are an advertiser interested in a content piece with this topic, please check our listing.",
+        "referralURI": ""
+    },
+    {
+        "id" : 4,
+        "type" : "listing",
+        "creator": "CoolUser17",
+            "ask_date_from": "2017-07-01",
+            "ask_date_to": "2018-07-01",
+            "marketingType": "Branded Content",
+            "medium": "Video",
+            "contentTopic": "Recycling Paper",
+            "pricing": 8000,
+            "timeUnit": "day",
+            "currency": "EQC",
+            "listingDescription": "We have a large user base averaging 10,000 daily users, and are ready to share a sponsored content story on 2017/07/01. We are looking to write on topics related to clean energy. If you are an advertiser interested in a content piece with this topic, please check our listing.",
+            "referralURI": ""
+    },
+    {
+        "id": 5,
+        "type": "listing",
+        "creator": "CoolUser17",
+            "ask_date_from": "2017-07-01",
+            "ask_date_to": "2018-07-01",
+            "marketingType": "Influencer Post",
+            "medium": "Twitter",
+            "contentTopic": "Recycling Paper",
+            "pricing": 8000,
+            "time_unit": "week",
+            "currency": "XQC",
+            "listingDescription": "We have a large user base averaging 10,000 daily users, and are ready to share a sponsored content story on 2017/07/01. We are looking to write on topics related to clean energy. If you are an advertiser interested in a content piece with this topic, please check our listing.",
+            "referralURI": ""
+    }
+]
 
 var fakeData = {
     "requestListings": [
