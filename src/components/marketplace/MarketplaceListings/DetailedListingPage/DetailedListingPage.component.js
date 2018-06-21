@@ -1,12 +1,42 @@
 import React, { Component } from 'react';
-//import { connect } from 'react-redux';
+import axios from 'axios';
 
 import './DetailedListingPage.component.css';
 
 
 class DetailedListingPage extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            fetched: false,
+            error: null,
+            listing: null
+        }
+    }
     
     componentWillMount() {
+        // call on start load to get data
+        const baseURL = "http://localhost:3000/api/listing?id=";
+        axios.get(baseURL+this.props.match.params.id)
+            .then((response) => {
+                this.setState({
+                    ...this.state,
+                    fetched: true,
+                    listing: response.data
+                })
+                console.log(this.state)
+            })
+            .catch((err) => {
+                this.setState({
+                    ...this.state,
+                    fetched: true,
+                    error: err
+                })
+                console.log(err)
+                
+        })
+        // reset view
         window.scrollTo(0,0);
     }
 
@@ -20,5 +50,7 @@ class DetailedListingPage extends Component {
         </div>
     }
 }
+
+
 
 export default DetailedListingPage;
