@@ -5,6 +5,10 @@ import './DetailedListingPage.component.css';
 
 
 class DetailedListingPage extends Component {
+    
+    componentWillMount() {
+        window.scrollTo(0,0);
+    }
 
     render() {
         // console.log(this.props.match.params.id)

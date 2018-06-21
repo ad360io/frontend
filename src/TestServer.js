@@ -126,6 +126,7 @@ var fakeDetailedListings = [
 var fakeData = {
     "requestListings": [
         {
+            "id" : 1,
             "requestor": "User8",
             "currency": "EQC",
             "marketingType": "Branded Content",
@@ -136,6 +137,7 @@ var fakeData = {
             "requestDescription": "This is a product you will be thrilled to show your users .Feature us on your website."
         },
         {
+            "id": 2,
             "requestor": "User8",
             "currency": "XQC",
             "marketingType": "Sponsorship",
@@ -148,6 +150,7 @@ var fakeData = {
     ],
     "contentSpaceListings": [
         {
+            "id" : 3,
             "creator": "CoolUser17",
             "ask_date_from": "2017-07-01",
             "ask_date_to": "2018-07-01",
@@ -161,6 +164,7 @@ var fakeData = {
             "referralURI": ""
         },
         {
+            "id" : 4,
             "creator": "CoolUser17",
             "ask_date_from": "2017-07-01",
             "ask_date_to": "2018-07-01",
@@ -174,6 +178,7 @@ var fakeData = {
             "referralURI": ""
         },
         {
+            "id" : 5,
             "creator": "CoolUser17",
             "ask_date_from": "2017-07-01",
             "ask_date_to": "2018-07-01",

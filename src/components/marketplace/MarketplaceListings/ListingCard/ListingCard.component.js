@@ -4,6 +4,7 @@ Core Libs
 import React, { Component } from 'react';
 import PropTypes            from 'prop-types'
 import { connect }          from 'react-redux';
+import { withRouter }       from 'react-router-dom';
 
 /*
 Material UI Components
@@ -35,6 +36,11 @@ import './ListingCard.component.css';
  *      requires a props of a single listing object.
  */
 class ListingCard extends Component {
+    
+    static contextTypes = {
+        router: PropTypes.object
+    }
+    
     constructor(props) {
         super(props)
 
@@ -55,6 +61,7 @@ class ListingCard extends Component {
         this.decideContactInfo = this.decideContactInfo.bind(this);
         this.decideDescription = this.decideDescription.bind(this);
         this.decidePriceTag = this.decidePriceTag.bind(this);
+        this.handleExploreClick = this.handleExploreClick.bind(this);
     }
 
     componentDidMount() {
@@ -180,6 +187,10 @@ class ListingCard extends Component {
         }
     }
 
+    handleExploreClick(id) {
+        this.context.router.history.push(`/listing/${id}`)
+    }
+
     render() {
         return <div>
             {this.props.viewModeFilter === 'Grid'  
@@ -192,6 +203,8 @@ class ListingCard extends Component {
                     placeholderImage={this.decidePlaceholderImage()}
                     description={this.decideDescription()}
                     ask_date_from={this.props.listing.ask_date_from}
+                    id={this.props.listing.id}
+                    handleExploreClick={this.handleExploreClick}
                 />
                 : <ListingCardRenderer
                     marginLeft={this.decideMarginLeft()}
@@ -233,26 +246,42 @@ class ListingCard extends Component {
     }
 }
 
-const GridCardRenderer = ({ width, marginLeft, contactInfo, priceTag, title, placeholderImage, description, ask_date_from }) => (
-    <Card className='grid-card-container noselect' 
-        style={{ 
-            width,
-            marginLeft,
-        }}
-    >
-        <div className='poster-tag'>{contactInfo} </div>
-        <div className='price-tag'>{priceTag}</div>)
-            
-        <CardTitle 
-            title={title} 
-            subtitle={'Posted on: '+ ask_date_from} 
-            style={{paddingBottom:'0px'}}/>
-        <img src={placeholderImage} className='grid-img' alt='listing-img'/>
-        <CardText className='grid-msg-container'>
-            <span className="listing-msg">{description}</span>
-        </CardText>
-        <Button bsStyle='primary' className='btn-contact-action' onClick={this.handleShowModal}>Explore This Listing</Button>
-    </Card>
+const GridCardRenderer = ({ 
+        width, 
+        marginLeft, 
+        contactInfo, 
+        priceTag, 
+        title,
+        placeholderImage, 
+        description, 
+        ask_date_from,
+        id,
+        handleExploreClick 
+    }) => ( <Card className='grid-card-container noselect'
+                style={{ 
+                    width,
+                    marginLeft,
+                }}
+            >
+                <div className='poster-tag'>{contactInfo} </div>
+                <div className='price-tag'>{priceTag}</div>)
+                    
+                <CardTitle 
+                    title={title} 
+                    subtitle={'Posted on: '+ ask_date_from} 
+                    style={{paddingBottom:'0px'}}/>
+                <img src={placeholderImage} className='grid-img' alt='listing-img'/>
+                <CardText className='grid-msg-container'>
+                    <span className="listing-msg">{description}</span>
+                </CardText>
+                <Button 
+                    bsStyle='primary' 
+                    className='btn-contact-action' 
+                    onClick={() => handleExploreClick(id)}
+                >
+                    Explore This Listing
+                </Button>
+            </Card>
 )
 
 const ListingCardRenderer = ({ marginLeft, contactInfo, priceTag, title, placeholderImage, description, ask_date_from }) => (
@@ -292,7 +321,7 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 
-export default connect(
+export default withRouter(connect(
     mapStateToProps,
     mapDispatchToProps
-)(ListingCard);
+)(ListingCard));
