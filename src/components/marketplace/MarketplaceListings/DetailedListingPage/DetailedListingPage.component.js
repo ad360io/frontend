@@ -5,9 +5,6 @@ import './DetailedListingPage.component.css';
 
 
 class DetailedListingPage extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         // console.log(this.props.match.params.id)
