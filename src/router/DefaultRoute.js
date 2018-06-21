@@ -16,9 +16,9 @@ const DefaultRoute = ({ component: Component, auth: Auth, ...rest }) => (
         {...rest}
         render={props => {
                 const { isAuthenticated } = Auth;
-                return isAuthenticated() ? 
-                ( <Redirect to={{pathname:'/dashboard'}} /> ) : 
-                ( <Redirect to={{pathname:'/'}} /> )
+                return isAuthenticated() 
+                ? ( <Redirect to={{pathname:'/dashboard'}} /> ) 
+                : ( <Redirect to={{pathname:'/'}} /> )
             }
         }
     />
