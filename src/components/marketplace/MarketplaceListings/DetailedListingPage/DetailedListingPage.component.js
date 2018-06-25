@@ -47,10 +47,12 @@ class DetailedListingPage extends Component {
         return <div className='detailed-listing-container'>
             <p>I'm a detailed listing page</p>
             <p>ID = {this.props.match.params.id}</p>
+            <pre style={{textAlign: 'left', fontSize: '14px', fontFamily: 'sans serif', fontStretch: 'normal'}}>
+                {JSON.stringify(this.state.listing, null, 4)}
+            </pre>
         </div>
     }
 }
-
 
 
 export default DetailedListingPage;
