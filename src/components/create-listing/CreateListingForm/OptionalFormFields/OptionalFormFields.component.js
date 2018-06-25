@@ -1,12 +1,24 @@
+/*
+Core Libs
+*/
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { Button } from 'react-bootstrap';
+/*
+Bootstrap
+*/
 import { FormGroup, FormControl } from 'react-bootstrap';
 
+/*
+Material UI
+*/
 import Checkbox from 'material-ui/Checkbox';
 
+/*
+Local CSS
+*/
 import './OptionalFormFields.component.css'
+
 
 const OptionalFormField = ({ modeFilter }) => (
     <div>
@@ -49,14 +61,6 @@ const OptionalFormField = ({ modeFilter }) => (
                     </p>
             <FormControl type='text' />
         </FormGroup>
-
-        <Button type='submit'
-            className='control-form-submit btn-lg btn-primary'
-            onClick={null}
-            disabled
-        >
-            {modeFilter === 'Publisher' ? 'Post Listing' : 'Request Listing'}
-        </Button>
     </div>
 )
 

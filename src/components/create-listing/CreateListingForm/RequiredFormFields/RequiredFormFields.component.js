@@ -1,8 +1,17 @@
+/*
+Core Libs
+*/
 import React from 'react';
 import { connect } from 'react-redux';
 
+/*
+React Bootstrap
+*/
 import { FormGroup, FormControl } from 'react-bootstrap';
 
+/*
+Children Components
+*/
 import AvailabilityPicker from './AvailabilityPicker/AvailabilityPicker.component';
 import MarketingTypeDropdown from './MarketingTypeDropdown/MarketingTypeDropdown.component';
 
@@ -11,7 +20,7 @@ const RequiredFormField = ({ modeFilter,
                              handleTopicChange, 
                              decideDescriptionLabel, 
                              handleDescriptionChange 
-                            }) => (<div>
+                            }) => (<div style={{marginLeft: '2%', marginTop: '2%'}}>
         <FormGroup hidden={modeFilter === 'Advertiser'}>
             <p className='control-label'>
                 *Select Promotion Duration
