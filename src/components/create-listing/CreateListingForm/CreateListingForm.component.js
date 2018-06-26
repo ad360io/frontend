@@ -26,6 +26,11 @@ import StepLabel from '@material-ui/core/StepLabel';
 import StepContent from '@material-ui/core/StepContent';
 import Button from '@material-ui/core/Button';
 
+/*
+React Bootstrap
+*/
+import { Alert } from 'react-bootstrap';
+
 
 const styles = theme => ({
     root: {
@@ -63,30 +68,19 @@ class CreateListingForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            description: '',
-            topic: '',
             activeStep: 0
         }
 
-        this.handleTopicChange = this.handleTopicChange.bind(this);
-        this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
-
         this.decideFormTitle = this.decideFormTitle.bind(this);
-        this.decideDescriptionLabel = this.decideDescriptionLabel.bind(this);
-
         this.handleSubmitForm = this.handleSubmitForm.bind(this);
-
         this.getStepContent = this.getStepContent.bind(this);
+        this.isFormFilled = this.isFormFilled.bind(this)
     }
 
     getStepContent(step) {
         switch (step) {
             case 0:
-                return <RequiredFormFields
-                    handleDescriptionChange={this.handleDescriptionChange}
-                    handleTopicChange={this.handleTopicChange}
-                    decideDescriptionLabel={this.decideDescriptionLabel}
-                />
+                return <RequiredFormFields />;
             case 1:
                 return <OptionalFormFields />;
             case 2:
@@ -102,29 +96,8 @@ class CreateListingForm extends Component {
         );
     }
 
-    handleDescriptionChange(event) {
-        this.setState({
-            ...this.state,
-            description: event.target.value
-        })
-        console.log(this.state)
-    }
-
-    handleTopicChange(event) {
-        this.setState({
-            ...this.state,
-            topic: event.target.value
-        })
-    }
-
     handleSubmitForm() {
         // build URL to Postgrest
-    }
-
-    decideDescriptionLabel() {
-        return (this.props.modeFilter === 'Advertiser'
-            ? "Content Description"
-            : "Listing Description")
     }
 
     handleNext = () => {
@@ -148,6 +121,21 @@ class CreateListingForm extends Component {
         });
     };
 
+    isFormFilled() {
+        if (this.props.modeFilter === 'Advertiser') {
+            return this.props.marketingType.length > 0
+                && this.props.marketingMedium.length > 0
+                && this.props.description.length > 0
+                && this.props.topic.length > 0
+        }
+        else {
+            return this.props.marketingType.length > 0
+                && this.props.marketingMedium.length > 0
+                && this.props.description.length > 0
+                && this.props.topic.length > 0
+        }
+    }
+
     render() {
         const { classes } = this.props;
         const steps = getSteps();
@@ -169,24 +157,33 @@ class CreateListingForm extends Component {
                             <StepContent>
                                 <div>{this.getStepContent(index)}</div>
                                 <div className={classes.actionsContainer}>
-                                    <div>
+                                    <div
+                                        hidden={activeStep === 0 && !this.isFormFilled()}
+                                    >
                                         <Button
                                             disabled={activeStep === 0}
                                             onClick={this.handleBack}
                                             className={classes.button}
                                         >
                                             Back
-                      </Button>
+                                        </Button>
                                         <Button
                                             variant="contained"
                                             color="primary"
                                             onClick={this.handleNext}
                                             className={classes.button}
-                                            disabled={!this.props.isAdvertiserFormFilled}
                                         >
                                             {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
                                         </Button>
+
                                     </div>
+                                    <Alert
+                                        bsStyle='danger'
+                                        hidden={activeStep === 0 && this.isFormFilled()}
+                                        style={{marginLeft: '2%'}}
+                                    >
+                                        All information above is required to proceed to next step!
+                                    </Alert>
                                 </div>
                             </StepContent>
                         </Step>
@@ -203,9 +200,12 @@ class CreateListingForm extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        modeFilter             : state.MenuBarFilterReducer.modeFilter,
-        currencyFilter         : state.MenuBarFilterReducer.currencyFilter,
-        isAdvertiserFormFilled : state.CreateListingFormReducer.isAdvertiserFormFilled
+        modeFilter: state.MenuBarFilterReducer.modeFilter,
+        currencyFilter: state.MenuBarFilterReducer.currencyFilter,
+        marketingType: state.CreateListingFormReducer.marketingType,
+        marketingMedium: state.CreateListingFormReducer.marketingMedium,
+        topic: state.CreateListingFormReducer.topic,
+        description: state.CreateListingFormReducer.description
     }
 }
 

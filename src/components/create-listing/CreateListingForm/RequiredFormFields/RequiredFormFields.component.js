@@ -17,9 +17,8 @@ import MarketingTypeDropdown from './MarketingTypeDropdown/MarketingTypeDropdown
 
 
 const RequiredFormField = ({ modeFilter,
-                             handleTopicChange, 
-                             decideDescriptionLabel, 
-                             handleDescriptionChange 
+                             onTopicChange, 
+                             onDescriptionChange 
                             }) => (<div style={{marginLeft: '2%', marginTop: '2%'}}>
         <FormGroup hidden={modeFilter === 'Advertiser'}>
             <p className='control-label'>
@@ -34,7 +33,7 @@ const RequiredFormField = ({ modeFilter,
             <p className='control-label'>
                 Content Topic
                     </p>
-            <FormControl type='text' onChange={handleTopicChange} required />
+            <FormControl type='text' onChange={onTopicChange} required />
         </FormGroup>
 
         <FormGroup controlId='control-form-price' hidden={modeFilter === 'Advertiser'}>
@@ -52,12 +51,18 @@ const RequiredFormField = ({ modeFilter,
         </FormGroup>
 
         <FormGroup controlId='control-form-pitch'>
-            <p className='control-label'>{decideDescriptionLabel()} </p>
+            <p className='control-label'>
+            {
+                modeFilter === 'Advertiser'
+                    ? "Content Description"
+                    : "Listing Description"
+            }
+            </p>
             <FormControl componentClass='textarea'
                 maxLength={280}
                 rows={8}
                 style={{ resize: 'vertical' }}
-                onChange={handleDescriptionChange}
+                onChange={onDescriptionChange}
                 required
             />
         </FormGroup>
@@ -71,7 +76,22 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return {}
+    return {
+        onDescriptionChange: (event) => {
+            dispatch({
+                type: 'SET_DESCRIPTION',
+                description: event.target.value
+            })
+        },
+        onTopicChange: (event) => {
+            dispatch({
+                type: 'SET_TOPIC',
+                topic: event.target.value
+            })
+        }
+
+
+    }
 }
 
 

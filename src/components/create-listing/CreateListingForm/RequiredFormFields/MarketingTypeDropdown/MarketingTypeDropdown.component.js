@@ -7,7 +7,6 @@ import { connect } from 'react-redux';
 /*
 React Bootstrap
 */
-import { FormGroup, FormControl } from 'react-bootstrap';
 import { Button, ButtonGroup } from 'react-bootstrap';
 
 /*

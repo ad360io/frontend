@@ -4,7 +4,6 @@ const defaultState = {
     marketingMedium : '',
     description: '',
     topic: '',
-    isAdvertiserFormFilled: false,
     imgFile: null,
 }
 
@@ -23,42 +22,26 @@ const CreateListingFormReducer = (state=defaultState, action) => {
             return {
                 ...state,
                 marketingType: action.marketingType,
-                isAdvertiserFormFilled: state.marketingType.length > 0 
-                    && state.marketingMedium.length > 0 
-                    && state.description.length > 0
-                    && state.topic.length > 0
             };
         
         case 'SET_MARKETING_MEDIUM':
             return {
                 ...state,
                 marketingMedium: action.marketingMedium,
-                isAdvertiserFormFilled: state.marketingType.length > 0 
-                    && state.marketingMedium.length > 0 
-                    && state.description.length > 0
-                    && state.topic.length > 0
             }
 
         case 'SET_DESCRIPTION':
             return {
                 ...state,
                 description: action.description,
-                isAdvertiserFormFilled: state.marketingType.length > 0 
-                    && state.marketingMedium.length > 0 
-                    && state.description.length > 0
-                    && state.topic.length > 0
             }
             
         case 'SET_TOPIC': 
             return {
                 ...state,
                 topic: action.topic,
-                isAdvertiserFormFilled: state.marketingType.length > 0 
-                    && state.marketingMedium.length > 0 
-                    && state.description.length > 0
-                    && state.topic.length > 0
             }
-            
+
         default:
             return state;
     }
