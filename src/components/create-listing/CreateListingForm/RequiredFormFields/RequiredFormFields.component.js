@@ -23,7 +23,7 @@ const RequiredFormField = ({ modeFilter,
                             }) => (<div style={{marginLeft: '2%', marginTop: '2%'}}>
         <FormGroup hidden={modeFilter === 'Advertiser'}>
             <p className='control-label'>
-                *Select Promotion Duration
+                Select Promotion Duration
             </p>
             <AvailabilityPicker />
         </FormGroup>
@@ -32,14 +32,14 @@ const RequiredFormField = ({ modeFilter,
 
         <FormGroup controlId='control-form-topic'>
             <p className='control-label'>
-                *Content Topic
+                Content Topic
                     </p>
             <FormControl type='text' onChange={handleTopicChange} required />
         </FormGroup>
 
         <FormGroup controlId='control-form-price' hidden={modeFilter === 'Advertiser'}>
             <p className='control-label'>
-                *Price per time unit (day/week/month/year)
+                Price per time unit (day/week/month/year)
                     </p>
             <FormControl type='number' style={{ width: '50%', float: 'left' }} />
             <FormControl componentClass='select' style={{ width: '50%' }} required>
@@ -52,7 +52,7 @@ const RequiredFormField = ({ modeFilter,
         </FormGroup>
 
         <FormGroup controlId='control-form-pitch'>
-            <p className='control-label'>*{decideDescriptionLabel()} </p>
+            <p className='control-label'>{decideDescriptionLabel()} </p>
             <FormControl componentClass='textarea'
                 maxLength={280}
                 rows={8}

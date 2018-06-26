@@ -7,61 +7,66 @@ import React, { Component } from 'react';
 React Bootstrap
 */
 import { FormGroup, FormControl } from 'react-bootstrap';
+import { Button, ButtonGroup } from 'react-bootstrap';
 
+/*
+Local CSS
+*/
+import './MarketingTypeDropdown.component.css';
 
 class MarketingTypeDropdown extends Component {
     constructor(props) {
         super(props);
         this.state = {
             selectedMedium: '',
-            selectedType: 'Sponsorship'
+            selectedType: ''
         }
         this.showMedium = this.showMedium.bind(this);
-        this.handleTypeChange = this.handleTypeChange.bind(this);
+        this.handleTypeClick = this.handleTypeClick.bind(this);
         this.handleMediumChange = this.handleMediumChange.bind(this);
     }
 
-    handleMediumChange (event) {
+    handleMediumChange(event) {
         this.setState({
             ...this.state,
             selectedMedium: event.target.value
-        })            
+        })
     }
 
-    handleTypeChange (event) {
-        if(event.target.value === 'Sponsorship'){
+    handleTypeClick(value) {
+        if (value === 'Sponsorship') {
             this.setState({
                 selectedMedium: '',
-                selectedType: event.target.value
+                selectedType: value
             })
-        }else{
+        } else {
             this.setState({
                 ...this.state,
-                selectedType: event.target.value
+                selectedType: value
             })
         }
-        
+
     }
 
     showMedium() {
         if (this.state.selectedType === 'Branded Content' || this.state.selectedType === 'Patron Journalism') {
             return <FormGroup controlId='control-form-genre'>
-                    <p className='control-label'>*Select Medium</p>
-                    <FormControl 
-                        componentClass='select' 
-                        onChange={this.handleMediumChange}
-                        required
-                    >
-                        <option value='Written Post'>Written Piece</option>
-                        <option value='Podcast'>Audio Piece</option>
-                        <option value='Video'>Video Piece</option>
-                        <option value='Other'>Other</option>
-                    </FormControl>
+                <p className='control-label'>Select Medium</p>
+                <FormControl
+                    componentClass='select'
+                    onChange={this.handleMediumChange}
+                    required
+                >
+                    <option value='Written Post'>Written Piece</option>
+                    <option value='Podcast'>Audio Piece</option>
+                    <option value='Video'>Video Piece</option>
+                    <option value='Other'>Other</option>
+                </FormControl>
             </FormGroup>
-        }else if (this.state.selectedType === 'Influencer Post'){
+        } else if (this.state.selectedType === 'Influencer Post') {
             return <FormGroup controlId='control-form-genre'>
-                <p className='control-label'>*Select Medium</p>
-                <FormControl 
+                <p className='control-label'>Select Medium</p>
+                <FormControl
                     componentClass='select'
                     onChange={this.handleMediumChange}
                     required
@@ -77,23 +82,48 @@ class MarketingTypeDropdown extends Component {
                 </FormControl>
             </FormGroup>
 
-        }else {
+        } else {
             return null;
         }
     }
 
-    render () {
+    render() {
         return <div>
-            <FormGroup controlId='control-form-genre'>
-                <p className='control-label'>*Select Authentic Marketing Type</p>
-                <FormControl componentClass='select' onChange={this.handleTypeChange} required>
-                    <option value='Sponsorship'>Sponsorship</option>
-                    <option value='Branded Content'>Branded Content</option>
-                    <option value='Influencer Post'>Influencer Post</option>
-                    <option value='Patron Journalism'>Patron Journalism</option>
-                </FormControl>
-                </FormGroup>
-
+            <p className='marketing-type-selector-title'>Select Authentic Marketing Type</p>
+            <ButtonGroup style={{marginBottom: '25px'}} justified >
+                <Button
+                    className='btn-marketing-type-selector'
+                    onClick={() => this.handleTypeClick('Branded Content')}
+                    active={this.state.selectedType === 'Branded Content'}
+                    href="#"
+                >
+                    Branded Content
+                </Button>
+                <Button
+                    className='btn-marketing-type-selector'
+                    onClick={() => this.handleTypeClick('Influencer Post')}
+                    active={this.state.selectedType === 'Influencer Post'}
+                    href="#"
+                >
+                    Influencer Post
+                </Button>
+                <Button
+                    className='btn-marketing-type-selector'
+                    onClick={() => this.handleTypeClick('Sponsorship')}
+                    active={this.state.selectedType === 'Sponsorship'}
+                    href="#"
+                >
+                    Sponsorship
+                </Button>
+                <Button
+                    className='btn-marketing-type-selector'
+                    onClick={() => this.handleTypeClick('Patron Journalism')}
+                    active={this.state.selectedType === 'Patron Journalism'}
+                    href="#"
+                >
+                    Patron Journalism
+                </Button>
+            </ButtonGroup>
             {this.showMedium()}
         </div>
     }

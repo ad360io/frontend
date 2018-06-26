@@ -14,7 +14,7 @@ Children Components
 */
 import RequiredFormFields from './RequiredFormFields/RequiredFormFields.component';
 import OptionalFormFields from './OptionalFormFields/OptionalFormFields.component';
-import FormConfirmation   from './FormConfirmation/FormConfirmation.component';
+import FormConfirmation from './FormConfirmation/FormConfirmation.component';
 
 /*
 Material UI
@@ -41,6 +41,14 @@ const styles = theme => ({
     resetContainer: {
         padding: theme.spacing.unit * 3,
     },
+    iconContainer: { // define styles for icon container
+        transform: 'scale(1.3)',
+        marginLeft: '3px',
+        marginRight: '3px',
+    },
+    label: {
+        fontSize: '18px'
+    }
 });
 
 function getSteps() {
@@ -78,7 +86,7 @@ class CreateListingForm extends Component {
                     handleDescriptionChange={this.handleDescriptionChange}
                     handleTopicChange={this.handleTopicChange}
                     decideDescriptionLabel={this.decideDescriptionLabel}
-                />                    
+                />
             case 1:
                 return <OptionalFormFields />;
             case 2:
@@ -151,7 +159,13 @@ class CreateListingForm extends Component {
                 {steps.map((label, index) => {
                     return (
                         <Step key={label}>
-                            <StepLabel>{label}</StepLabel>
+                            <StepLabel classes={{
+                                iconContainer: classes.iconContainer,
+                                label: classes.label
+                            }}
+                            >
+                                {label}
+                            </StepLabel>
                             <StepContent>
                                 <div>{this.getStepContent(index)}</div>
                                 <div className={classes.actionsContainer}>
