@@ -2,6 +2,7 @@
 Core Libs
 */
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 /*
 React Bootstrap
@@ -17,71 +18,120 @@ import './MarketingTypeDropdown.component.css';
 class MarketingTypeDropdown extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            selectedMedium: '',
-            selectedType: ''
-        }
         this.showMedium = this.showMedium.bind(this);
-        this.handleTypeClick = this.handleTypeClick.bind(this);
-        this.handleMediumChange = this.handleMediumChange.bind(this);
-    }
-
-    handleMediumChange(event) {
-        this.setState({
-            ...this.state,
-            selectedMedium: event.target.value
-        })
-    }
-
-    handleTypeClick(value) {
-        if (value === 'Sponsorship') {
-            this.setState({
-                selectedMedium: '',
-                selectedType: value
-            })
-        } else {
-            this.setState({
-                ...this.state,
-                selectedType: value
-            })
-        }
-
     }
 
     showMedium() {
-        if (this.state.selectedType === 'Branded Content' || this.state.selectedType === 'Patron Journalism') {
-            return <FormGroup controlId='control-form-genre'>
-                <p className='control-label'>Select Medium</p>
-                <FormControl
-                    componentClass='select'
-                    onChange={this.handleMediumChange}
-                    required
-                >
-                    <option value='Written Post'>Written Piece</option>
-                    <option value='Podcast'>Audio Piece</option>
-                    <option value='Video'>Video Piece</option>
-                    <option value='Other'>Other</option>
-                </FormControl>
-            </FormGroup>
-        } else if (this.state.selectedType === 'Influencer Post') {
-            return <FormGroup controlId='control-form-genre'>
-                <p className='control-label'>Select Medium</p>
-                <FormControl
-                    componentClass='select'
-                    onChange={this.handleMediumChange}
-                    required
-                >
-                    <option value='Tweet'>Tweet</option>
-                    <option value='Instagram'>Instagram</option>
-                    <option value='Twitch'>Twitch</option>
-                    <option value='Youtube'>Youtube</option>
-                    <option value='Facebook'>Facebook</option>
-                    <option value='Twitter'>Twitter</option>
-                    <option value='Niconico'>Niconico</option>
-                    <option value='Other'>Other </option>
-                </FormControl>
-            </FormGroup>
-
+        if (this.props.marketingType === 'Branded Content' || this.props.marketingType === 'Patron Journalism') {
+            return <div>
+                <p className='marketing-type-selector-title'>Select Medium</p>
+                <ButtonGroup style={{ marginBottom: '25px' }} justified >
+                    <Button
+                        className='btn-marketing-type-selector'
+                        onClick={() => this.props.onMediumClick('Written Piece')}
+                        active={this.props.marketingMedium === 'Written Piece'}
+                        href="#"
+                    >
+                        Written Piece
+                </Button>
+                    <Button
+                        className='btn-marketing-type-selector'
+                        onClick={() => this.props.onMediumClick('Audio Piece')}
+                        active={this.props.marketingMedium === 'Audio Piece'}
+                        href="#"
+                    >
+                        Audio Piece
+                </Button>
+                    <Button
+                        className='btn-marketing-type-selector'
+                        onClick={() => this.props.onMediumClick('Video Piece')}
+                        active={this.props.marketingMedium === 'Video Piece'}
+                        href="#"
+                    >
+                        Video Piece
+                </Button>
+                    <Button
+                        className='btn-marketing-type-selector'
+                        onClick={() => this.props.onMediumClick('Other')}
+                        active={this.props.marketingMedium === 'Other'}
+                        href="#"
+                    >
+                        Other
+                </Button>
+                </ButtonGroup>
+            </div>
+        } else if (this.props.marketingType === 'Influencer Post') {
+            return <div>
+                <p className='marketing-type-selector-title'>Select Medium</p>
+                <ButtonGroup justified >
+                    <Button
+                        className='btn-marketing-type-selector'
+                        onClick={() => this.props.onMediumClick('Tweet')}
+                        active={this.props.marketingMedium === 'Tweet'}
+                        href="#"
+                    >
+                        Tweet
+                    </Button>
+                    <Button
+                        className='btn-marketing-type-selector'
+                        onClick={() => this.props.onMediumClick('Instagram')}
+                        active={this.props.marketingMedium === 'Instagram'}
+                        href="#"
+                    >
+                        Instagram
+                    </Button>
+                    <Button
+                        className='btn-marketing-type-selector'
+                        onClick={() => this.props.onMediumClick('Twitch')}
+                        active={this.props.marketingMedium === 'Twitch'}
+                        href="#"
+                    >
+                        Twitch
+                    </Button>
+                    <Button
+                        className='btn-marketing-type-selector'
+                        onClick={() => this.props.onMediumClick('Youtube')}
+                        active={this.props.marketingMedium === 'Youtube'}
+                        href="#"
+                    >
+                        Youtube
+                    </Button>
+                </ButtonGroup>
+                <ButtonGroup style={{ marginBottom: '25px' }} justified >
+                    <Button
+                        className='btn-marketing-type-selector'
+                        onClick={() => this.props.onMediumClick('Facebook')}
+                        active={this.props.marketingMedium === 'Facebook'}
+                        href="#"
+                    >
+                        Facebook
+                    </Button>
+                    <Button
+                        className='btn-marketing-type-selector'
+                        onClick={() => this.props.onMediumClick('Twitter')}
+                        active={this.props.marketingMedium === 'Twitter'}
+                        href="#"
+                    >
+                        Twitter
+                    </Button>
+                    <Button
+                        className='btn-marketing-type-selector'
+                        onClick={() => this.props.onMediumClick('NicoNico')}
+                        active={this.props.marketingMedium === 'NicoNico'}
+                        href="#"
+                    >
+                        NicoNico
+                    </Button>
+                    <Button
+                        className='btn-marketing-type-selector'
+                        onClick={() => this.props.onMediumClick('Other')}
+                        active={this.props.marketingMedium === 'Other'}
+                        href="#"
+                    >
+                        Other
+                    </Button>
+                </ButtonGroup>
+            </div>
         } else {
             return null;
         }
@@ -90,35 +140,35 @@ class MarketingTypeDropdown extends Component {
     render() {
         return <div>
             <p className='marketing-type-selector-title'>Select Authentic Marketing Type</p>
-            <ButtonGroup style={{marginBottom: '25px'}} justified >
+            <ButtonGroup style={{ marginBottom: '25px' }} justified >
                 <Button
                     className='btn-marketing-type-selector'
-                    onClick={() => this.handleTypeClick('Branded Content')}
-                    active={this.state.selectedType === 'Branded Content'}
+                    onClick={() => this.props.onTypeClick('Branded Content')}
+                    active={this.props.marketingType === 'Branded Content'}
                     href="#"
                 >
                     Branded Content
                 </Button>
                 <Button
                     className='btn-marketing-type-selector'
-                    onClick={() => this.handleTypeClick('Influencer Post')}
-                    active={this.state.selectedType === 'Influencer Post'}
+                    onClick={() => this.props.onTypeClick('Influencer Post')}
+                    active={this.props.marketingType === 'Influencer Post'}
                     href="#"
                 >
                     Influencer Post
                 </Button>
                 <Button
                     className='btn-marketing-type-selector'
-                    onClick={() => this.handleTypeClick('Sponsorship')}
-                    active={this.state.selectedType === 'Sponsorship'}
+                    onClick={() => this.props.onTypeClick('Sponsorship')}
+                    active={this.props.marketingType === 'Sponsorship'}
                     href="#"
                 >
                     Sponsorship
                 </Button>
                 <Button
                     className='btn-marketing-type-selector'
-                    onClick={() => this.handleTypeClick('Patron Journalism')}
-                    active={this.state.selectedType === 'Patron Journalism'}
+                    onClick={() => this.props.onTypeClick('Patron Journalism')}
+                    active={this.props.marketingType === 'Patron Journalism'}
                     href="#"
                 >
                     Patron Journalism
@@ -129,5 +179,44 @@ class MarketingTypeDropdown extends Component {
     }
 }
 
+const mapStateToProps = (props) => {
+    return {
+        marketingType   : props.CreateListingFormReducer.marketingType,
+        marketingMedium : props.CreateListingFormReducer.marketingMedium,
+    }
+}
 
-export default MarketingTypeDropdown;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onTypeClick: (value) => {
+            if(value === 'Sponsorship'){
+                dispatch({
+                    type: 'SET_MARKETING_TYPE',
+                    marketingType: value
+                }) && dispatch({
+                    type: 'SET_MARKETING_MEDIUM',
+                    marketingMedium: 'Other'
+                })
+            }else{
+                dispatch({
+                    type: 'SET_MARKETING_TYPE',
+                    marketingType: value
+                })
+            }
+        },
+
+        onMediumClick: (value) => {
+            dispatch({
+                type: 'SET_MARKETING_MEDIUM',
+                marketingMedium: value
+            })
+
+        }
+    }
+}
+
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(MarketingTypeDropdown);

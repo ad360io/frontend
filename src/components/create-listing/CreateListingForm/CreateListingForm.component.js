@@ -182,6 +182,7 @@ class CreateListingForm extends Component {
                                             color="primary"
                                             onClick={this.handleNext}
                                             className={classes.button}
+                                            disabled={!this.props.isAdvertiserFormFilled}
                                         >
                                             {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
                                         </Button>
@@ -202,8 +203,9 @@ class CreateListingForm extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        modeFilter: state.MenuBarFilterReducer.modeFilter,
-        currencyFilter: state.MenuBarFilterReducer.currencyFilter
+        modeFilter             : state.MenuBarFilterReducer.modeFilter,
+        currencyFilter         : state.MenuBarFilterReducer.currencyFilter,
+        isAdvertiserFormFilled : state.CreateListingFormReducer.isAdvertiserFormFilled
     }
 }
 

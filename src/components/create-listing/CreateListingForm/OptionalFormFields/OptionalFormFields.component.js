@@ -58,7 +58,7 @@ const OptionalFormField = ({ modeFilter }) => (
         <FormGroup controlId='control-form-referral' hidden={modeFilter === 'Advertiser'}>
             <p className='control-label'>
                 Referral URI (optional)
-                    </p>
+            </p>
             <FormControl type='text' />
         </FormGroup>
     </div>

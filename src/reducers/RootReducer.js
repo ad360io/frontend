@@ -10,7 +10,8 @@ import MenuBarFilterReducer     from './MenuBarFilterReducer';
 import MarketplaceFilterReducer from './MarketplaceFilterReducer';
 import ProfileReducer           from './ProfileReducer';
 import DashboardDataReducer     from './DashboardDataReducer';
-import MarketplaceDataReducer from './MarketplaceDataReducer';
+import MarketplaceDataReducer   from './MarketplaceDataReducer';
+import CreateListingFormReducer from './CreateListingFormReducer';
 
 
 /**
@@ -23,7 +24,8 @@ const RootReducer = combineReducers({
     MarketplaceFilterReducer,
     ProfileReducer,
     DashboardDataReducer,
-    MarketplaceDataReducer
+    MarketplaceDataReducer,
+    CreateListingFormReducer
 })
 
 
