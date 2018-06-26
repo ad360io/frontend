@@ -179,7 +179,7 @@ class CreateListingForm extends Component {
                                     </div>
                                     <Alert
                                         bsStyle='danger'
-                                        hidden={activeStep === 0 && this.isFormFilled()}
+                                        hidden={this.isFormFilled()}
                                         style={{marginLeft: '2%'}}
                                     >
                                         All information above is required to proceed to next step!
