@@ -10,21 +10,66 @@ Material UI
 import Button from '@material-ui/core/Button';
 
 
-const FormConfirmation = ({ modeFilter }) => (
+const FormConfirmation = ({ modeFilter, advertiserFields, publisherFields }) => (
     <div>
-        <Button type='submit'
-            className='control-form-submit btn-lg btn-primary'
-            onClick={null}
-            disabled
-        >
-            {modeFilter === 'Publisher' ? 'Post Listing' : 'Request Listing'}
-        </Button>
+    {
+        (
+            modeFilter === 'Advertiser' 
+                ? <AdvertiserFormConfirmation fields={advertiserFields} />
+                : <PublisherFormConfirmation  fields={publisherFields } />
+        )
+    }
+    </div>
+)
+
+const AdvertiserFormConfirmation = ({fields}) => (
+    <div>
+        <table className='table table-bordered mb-0'>
+                <tbody className='tbody-default'>
+                <tr>
+                    <td>Marketing Type </td>
+                    <td>{fields.marketingType}</td>
+                </tr>
+                <tr>
+                    <td>Marketing Medium </td>
+                    <td>{fields.marketingMedium}</td>
+                </tr>
+                <tr>
+                    <td>Description </td>
+                    <td>{fields.description}</td>
+                </tr>
+                <tr>
+                    <td>Content Topic </td>
+                    <td>{fields.topic}</td>
+                </tr>
+                <tr>
+                    <td>Image URL </td>
+                    <td>{fields.imgFile}</td>
+                </tr>
+                </tbody>
+        </table>
+    </div>
+)
+
+const PublisherFormConfirmation = ({fields}) => (
+    <div>
+
     </div>
 )
 
 const mapStateToProps = (state) => {
     return {
-        modeFilter: state.MenuBarFilterReducer.modeFilter
+        modeFilter      : state.MenuBarFilterReducer.modeFilter,
+        advertiserFields: {
+            marketingType   : state.CreateListingFormReducer.marketingType,         
+            marketingMedium : state.CreateListingFormReducer.marketingMedium,
+            description     : state.CreateListingFormReducer.description,
+            topic           : state.CreateListingFormReducer.topic,
+            imgFile         : state.CreateListingFormReducer.imgFile
+        },
+        publisherFields : {
+
+        }
     }
 }
 

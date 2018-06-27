@@ -173,7 +173,7 @@ class CreateListingForm extends Component {
                                             onClick={this.handleNext}
                                             className={classes.button}
                                         >
-                                            {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+                                            {activeStep === steps.length - 1 ? 'Confirm' : 'Next'}
                                         </Button>
 
                                     </div>
