@@ -77,6 +77,10 @@ class CreateListingForm extends Component {
         this.isFormFilled = this.isFormFilled.bind(this)
     }
 
+    componentWillReceiveProps() {
+        this.handleReset();
+    }
+
     getStepContent(step) {
         switch (step) {
             case 0:
