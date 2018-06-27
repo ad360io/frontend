@@ -123,16 +123,16 @@ class CreateListingForm extends Component {
 
     isFormFilled() {
         if (this.props.modeFilter === 'Advertiser') {
-            return this.props.marketingType.length > 0
-                && this.props.marketingMedium.length > 0
-                && this.props.description.length > 0
-                && this.props.topic.length > 0
+            return this.props.advertiserForm.marketingType.length > 0
+                && this.props.advertiserForm.marketingMedium.length > 0
+                && this.props.advertiserForm.description.length > 0
+                && this.props.advertiserForm.topic.length > 0
         }
         else {
-            return this.props.marketingType.length > 0
-                && this.props.marketingMedium.length > 0
-                && this.props.description.length > 0
-                && this.props.topic.length > 0
+            return this.props.publisherForm.marketingType.length > 0
+                && this.props.publisherForm.marketingMedium.length > 0
+                && this.props.publisherForm.description.length > 0
+                && this.props.publisherForm.topic.length > 0
         }
     }
 
@@ -200,12 +200,10 @@ class CreateListingForm extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        modeFilter: state.MenuBarFilterReducer.modeFilter,
-        currencyFilter: state.MenuBarFilterReducer.currencyFilter,
-        marketingType: state.CreateListingFormReducer.marketingType,
-        marketingMedium: state.CreateListingFormReducer.marketingMedium,
-        topic: state.CreateListingFormReducer.topic,
-        description: state.CreateListingFormReducer.description
+        modeFilter      : state.MenuBarFilterReducer.modeFilter,
+        currencyFilter  : state.MenuBarFilterReducer.currencyFilter,
+        advertiserForm  : state.CreateListingFormReducer.advertiserForm,
+        publisherForm   : state.CreateListingFormReducer.publisherForm
     }
 }
 

@@ -1,10 +1,19 @@
 /** DEFAULT STATE */
 const defaultState = {
-    marketingType   : '',         
-    marketingMedium : '',
-    description: '',
-    topic: '',
-    imgFile: null,
+    advertiserForm : {
+        marketingType   : '',         
+        marketingMedium : '',
+        description: '',
+        topic: '',
+        imgFile: null,
+    },
+    publisherForm : {
+        marketingType   : '',         
+        marketingMedium : '',
+        description: '',
+        topic: '',
+        imgFile: null,
+    }
 }
 
 /**
@@ -18,28 +27,40 @@ const CreateListingFormReducer = (state=defaultState, action) => {
     
     switch(action.type)
     {
-        case 'SET_MARKETING_TYPE':
+        case 'SET_ADV_FORM_MARKETING_TYPE':
             return {
                 ...state,
-                marketingType: action.marketingType,
+                advertiserForm : {
+                    ...state.advertiserForm,
+                    marketingType: action.marketingType,
+                }
             };
         
-        case 'SET_MARKETING_MEDIUM':
+        case 'SET_ADV_FORM_MARKETING_MEDIUM':
             return {
                 ...state,
-                marketingMedium: action.marketingMedium,
+                advertiserForm : {
+                    ...state.advertiserForm,
+                    marketingMedium: action.marketingMedium,
+                }
             }
 
-        case 'SET_DESCRIPTION':
+        case 'SET_ADV_FORM_DESCRIPTION':
             return {
                 ...state,
-                description: action.description,
+                advertiserForm : {
+                    ...state.advertiserForm,
+                    description: action.description,
+                }
             }
             
-        case 'SET_TOPIC': 
+        case 'SET_ADV_FORM_TOPIC': 
             return {
                 ...state,
-                topic: action.topic,
+                advertiserForm : {
+                    ...state.advertiserForm,
+                    topic: action.topic,
+                }
             }
 
         default:

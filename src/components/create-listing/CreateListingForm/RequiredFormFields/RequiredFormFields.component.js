@@ -79,13 +79,13 @@ const mapDispatchToProps = (dispatch) => {
     return {
         onDescriptionChange: (event) => {
             dispatch({
-                type: 'SET_DESCRIPTION',
+                type: 'SET_ADV_FORM_DESCRIPTION',
                 description: event.target.value
             })
         },
         onTopicChange: (event) => {
             dispatch({
-                type: 'SET_TOPIC',
+                type: 'SET_ADV_FORM_TOPIC',
                 topic: event.target.value
             })
         }

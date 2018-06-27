@@ -9,6 +9,7 @@ class AvailabilityPicker extends Component {
     static defaultProps = {
         numberOfMonths: 2
     }
+
     constructor(props){
         super(props);
         this.state = {

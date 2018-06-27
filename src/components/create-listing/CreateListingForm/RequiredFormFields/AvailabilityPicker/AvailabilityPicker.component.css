@@ -27,5 +27,6 @@
 
 .Selectable {
     margin-top: 15px;
-    margin-left: 20%;
+    margin-left: auto;
+    width: 100%;
 }

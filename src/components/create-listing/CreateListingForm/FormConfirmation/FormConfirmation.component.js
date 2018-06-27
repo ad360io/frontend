@@ -10,13 +10,13 @@ Material UI
 import Button from '@material-ui/core/Button';
 
 
-const FormConfirmation = ({ modeFilter, advertiserFields, publisherFields }) => (
+const FormConfirmation = ({ modeFilter, advertiserForm, publisherForm }) => (
     <div>
     {
         (
             modeFilter === 'Advertiser' 
-                ? <AdvertiserFormConfirmation fields={advertiserFields} />
-                : <PublisherFormConfirmation  fields={publisherFields } />
+                ? <AdvertiserFormConfirmation fields={advertiserForm} />
+                : <PublisherFormConfirmation  fields={publisherForm } />
         )
     }
     </div>
@@ -60,16 +60,8 @@ const PublisherFormConfirmation = ({fields}) => (
 const mapStateToProps = (state) => {
     return {
         modeFilter      : state.MenuBarFilterReducer.modeFilter,
-        advertiserFields: {
-            marketingType   : state.CreateListingFormReducer.marketingType,         
-            marketingMedium : state.CreateListingFormReducer.marketingMedium,
-            description     : state.CreateListingFormReducer.description,
-            topic           : state.CreateListingFormReducer.topic,
-            imgFile         : state.CreateListingFormReducer.imgFile
-        },
-        publisherFields : {
-
-        }
+        advertiserForm  : state.CreateListingFormReducer.advertiserForm,
+        publisherForm   : state.CreateListingFormReducer.publisherForm
     }
 }
 

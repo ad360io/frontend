@@ -17,18 +17,20 @@ import './MarketingTypeDropdown.component.css';
 class MarketingTypeDropdown extends Component {
     constructor(props) {
         super(props);
+        
         this.showMedium = this.showMedium.bind(this);
     }
 
-    showMedium() {
-        if (this.props.marketingType === 'Branded Content' || this.props.marketingType === 'Patron Journalism') {
+    showMedium(marketingType, marketingMedium) {
+        
+        if (marketingType === 'Branded Content' || marketingType === 'Patron Journalism') {
             return <div>
                 <p className='marketing-type-selector-title'>Select Medium</p>
                 <ButtonGroup style={{ marginBottom: '25px' }} justified >
                     <Button
                         className='btn-marketing-type-selector'
                         onClick={() => this.props.onMediumClick('Written Piece')}
-                        active={this.props.marketingMedium === 'Written Piece'}
+                        active={marketingMedium === 'Written Piece'}
                         href="#"
                     >
                         Written Piece
@@ -36,7 +38,7 @@ class MarketingTypeDropdown extends Component {
                     <Button
                         className='btn-marketing-type-selector'
                         onClick={() => this.props.onMediumClick('Audio Piece')}
-                        active={this.props.marketingMedium === 'Audio Piece'}
+                        active={marketingMedium === 'Audio Piece'}
                         href="#"
                     >
                         Audio Piece
@@ -44,7 +46,7 @@ class MarketingTypeDropdown extends Component {
                     <Button
                         className='btn-marketing-type-selector'
                         onClick={() => this.props.onMediumClick('Video Piece')}
-                        active={this.props.marketingMedium === 'Video Piece'}
+                        active={marketingMedium === 'Video Piece'}
                         href="#"
                     >
                         Video Piece
@@ -52,21 +54,21 @@ class MarketingTypeDropdown extends Component {
                     <Button
                         className='btn-marketing-type-selector'
                         onClick={() => this.props.onMediumClick('Other')}
-                        active={this.props.marketingMedium === 'Other'}
+                        active={marketingMedium === 'Other'}
                         href="#"
                     >
                         Other
                 </Button>
                 </ButtonGroup>
             </div>
-        } else if (this.props.marketingType === 'Influencer Post') {
+        } else if (marketingType === 'Influencer Post') {
             return <div>
                 <p className='marketing-type-selector-title'>Select Medium</p>
                 <ButtonGroup justified >
                     <Button
                         className='btn-marketing-type-selector'
                         onClick={() => this.props.onMediumClick('Tweet')}
-                        active={this.props.marketingMedium === 'Tweet'}
+                        active={marketingMedium === 'Tweet'}
                         href="#"
                     >
                         Tweet
@@ -74,7 +76,7 @@ class MarketingTypeDropdown extends Component {
                     <Button
                         className='btn-marketing-type-selector'
                         onClick={() => this.props.onMediumClick('Instagram')}
-                        active={this.props.marketingMedium === 'Instagram'}
+                        active={marketingMedium === 'Instagram'}
                         href="#"
                     >
                         Instagram
@@ -82,7 +84,7 @@ class MarketingTypeDropdown extends Component {
                     <Button
                         className='btn-marketing-type-selector'
                         onClick={() => this.props.onMediumClick('Twitch')}
-                        active={this.props.marketingMedium === 'Twitch'}
+                        active={marketingMedium === 'Twitch'}
                         href="#"
                     >
                         Twitch
@@ -90,7 +92,7 @@ class MarketingTypeDropdown extends Component {
                     <Button
                         className='btn-marketing-type-selector'
                         onClick={() => this.props.onMediumClick('Youtube')}
-                        active={this.props.marketingMedium === 'Youtube'}
+                        active={marketingMedium === 'Youtube'}
                         href="#"
                     >
                         Youtube
@@ -100,7 +102,7 @@ class MarketingTypeDropdown extends Component {
                     <Button
                         className='btn-marketing-type-selector'
                         onClick={() => this.props.onMediumClick('Facebook')}
-                        active={this.props.marketingMedium === 'Facebook'}
+                        active={marketingMedium === 'Facebook'}
                         href="#"
                     >
                         Facebook
@@ -108,7 +110,7 @@ class MarketingTypeDropdown extends Component {
                     <Button
                         className='btn-marketing-type-selector'
                         onClick={() => this.props.onMediumClick('Twitter')}
-                        active={this.props.marketingMedium === 'Twitter'}
+                        active={marketingMedium === 'Twitter'}
                         href="#"
                     >
                         Twitter
@@ -116,7 +118,7 @@ class MarketingTypeDropdown extends Component {
                     <Button
                         className='btn-marketing-type-selector'
                         onClick={() => this.props.onMediumClick('NicoNico')}
-                        active={this.props.marketingMedium === 'NicoNico'}
+                        active={marketingMedium === 'NicoNico'}
                         href="#"
                     >
                         NicoNico
@@ -124,7 +126,7 @@ class MarketingTypeDropdown extends Component {
                     <Button
                         className='btn-marketing-type-selector'
                         onClick={() => this.props.onMediumClick('Other')}
-                        active={this.props.marketingMedium === 'Other'}
+                        active={marketingMedium === 'Other'}
                         href="#"
                     >
                         Other
@@ -137,13 +139,16 @@ class MarketingTypeDropdown extends Component {
     }
 
     render() {
+        const marketingType = ( this.props.modeFilter === 'Advertiser' ? this.props.adv_marketingType : this.props.pub_makretingType );
+        const marketingMedium = ( this.props.modeFilter === 'Advertiser' ? this.props.adv_marketingMedium : this.props.pub_marketingMedium );
+
         return <div>
             <p className='marketing-type-selector-title'>Select Authentic Marketing Type</p>
             <ButtonGroup style={{ marginBottom: '25px' }} justified >
                 <Button
                     className='btn-marketing-type-selector'
                     onClick={() => this.props.onTypeClick('Branded Content')}
-                    active={this.props.marketingType === 'Branded Content'}
+                    active={marketingType === 'Branded Content'}
                     href="#"
                 >
                     Branded Content
@@ -151,7 +156,7 @@ class MarketingTypeDropdown extends Component {
                 <Button
                     className='btn-marketing-type-selector'
                     onClick={() => this.props.onTypeClick('Influencer Post')}
-                    active={this.props.marketingType === 'Influencer Post'}
+                    active={marketingType === 'Influencer Post'}
                     href="#"
                 >
                     Influencer Post
@@ -159,7 +164,7 @@ class MarketingTypeDropdown extends Component {
                 <Button
                     className='btn-marketing-type-selector'
                     onClick={() => this.props.onTypeClick('Sponsorship')}
-                    active={this.props.marketingType === 'Sponsorship'}
+                    active={marketingType === 'Sponsorship'}
                     href="#"
                 >
                     Sponsorship
@@ -167,21 +172,24 @@ class MarketingTypeDropdown extends Component {
                 <Button
                     className='btn-marketing-type-selector'
                     onClick={() => this.props.onTypeClick('Patron Journalism')}
-                    active={this.props.marketingType === 'Patron Journalism'}
+                    active={marketingType === 'Patron Journalism'}
                     href="#"
                 >
                     Patron Journalism
                 </Button>
             </ButtonGroup>
-            {this.showMedium()}
+            {this.showMedium(marketingType, marketingMedium)}
         </div>
     }
 }
 
-const mapStateToProps = (props) => {
+const mapStateToProps = (state) => {
     return {
-        marketingType   : props.CreateListingFormReducer.marketingType,
-        marketingMedium : props.CreateListingFormReducer.marketingMedium,
+        modeFilter          : state.MenuBarFilterReducer.modeFilter,
+        adv_marketingType   : state.CreateListingFormReducer.advertiserForm.marketingType,
+        adv_marketingMedium : state.CreateListingFormReducer.advertiserForm.marketingMedium,
+        pub_makretingType   : state.CreateListingFormReducer.publisherForm.marketingType,
+        pub_marketingMedium : state.CreateListingFormReducer.publisherForm.marketingMedium
     }
 }
 
@@ -190,15 +198,15 @@ const mapDispatchToProps = (dispatch) => {
         onTypeClick: (value) => {
             if(value === 'Sponsorship'){
                 dispatch({
-                    type: 'SET_MARKETING_TYPE',
+                    type: 'SET_ADV_FORM_MARKETING_TYPE',
                     marketingType: value
                 }) && dispatch({
-                    type: 'SET_MARKETING_MEDIUM',
+                    type: 'SET_ADV_FORM_MARKETING_MEDIUM',
                     marketingMedium: 'Other'
                 })
             }else{
                 dispatch({
-                    type: 'SET_MARKETING_TYPE',
+                    type: 'SET_ADV_FORM_MARKETING_TYPE',
                     marketingType: value
                 })
             }
@@ -206,7 +214,7 @@ const mapDispatchToProps = (dispatch) => {
 
         onMediumClick: (value) => {
             dispatch({
-                type: 'SET_MARKETING_MEDIUM',
+                type: 'SET_ADV_FORM_MARKETING_MEDIUM',
                 marketingMedium: value
             })
 
