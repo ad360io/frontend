@@ -1,9 +1,20 @@
+/*
+Core Libs
+*/
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
+/*
+Day Picker
+*/
 import DayPicker, { DateUtils } from 'react-day-picker';
 
+/*
+CSS Files
+*/
 import 'react-day-picker/lib/style.css'
 import './AvailabilityPicker.component.css';
+
 
 class AvailabilityPicker extends Component {
     static defaultProps = {
@@ -12,37 +23,21 @@ class AvailabilityPicker extends Component {
 
     constructor(props){
         super(props);
-        this.state = {
-            from: undefined,
-            to: undefined
-        }
-        this.handleDayClick = this.handleDayClick.bind(this);
-        this.handleResetClick = this.handleResetClick.bind(this);
-    }
+        console.log(props);
 
-    handleDayClick(day) {
-        const range = DateUtils.addDayToRange(day, this.state);
-        this.setState(range);
-    }
-
-    handleResetClick() {
-        this.setState({
-            from: undefined,
-            to: undefined
-        })
     }
 
     render() {
-        const { from , to } = this.state;
+        const { from , to } = this.props;
         const modifiers = { start: from, end: to };
         return <div>
             <div className="date-range-container">
                 <DayPicker
                     className='Selectable'
                     numberOfMonths={this.props.numberOfMonths}
-                    selectedDays={[from, { from ,to }]}
+                    selectedDays={[from, { from , to }]}
                     modifiers={modifiers}
-                    onDayClick={this.handleDayClick}
+                    onDayClick={this.props.onDayClick}
                 />
                 <p className='selected-range-label'>
                     { !from && !to && 'Please select the first day' }
@@ -50,7 +45,7 @@ class AvailabilityPicker extends Component {
                     { from && to &&  `Selected from ${from.toLocaleDateString()}
                         to ${to.toLocaleDateString()}`}{'  '}
                     { from && to && (
-                        <button className='link' onClick={this.handleResetClick}>
+                        <button className='link' onClick={this.props.onResetClick}>
                             Reset
                         </button>
                     )}
@@ -61,4 +56,27 @@ class AvailabilityPicker extends Component {
 
 }
 
-export default AvailabilityPicker;
+const mapStateToProps = (state) => {
+    return {}
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        onDayClick : (day) => {
+            dispatch({
+                type: 'SET_PUB_FORM_DATE_RANGE',
+                range: DateUtils.addDayToRange(day, ownProps)
+            })
+        },
+        onResetClick : () => {
+            dispatch({
+                type: 'SET_PUB_FORM_DATE_RESET',
+            }) 
+        }
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(AvailabilityPicker);

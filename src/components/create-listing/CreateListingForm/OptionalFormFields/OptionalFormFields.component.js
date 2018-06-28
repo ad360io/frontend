@@ -65,9 +65,7 @@ const OptionalFormField = ({ modeFilter }) => (
 )
 
 const mapStateToProps = (state) => {
-    return {
-        modeFilter: state.MenuBarFilterReducer.modeFilter,
-    }
+    return {}
 }
 
 const mapDispatchToProps = (dispatch) => {

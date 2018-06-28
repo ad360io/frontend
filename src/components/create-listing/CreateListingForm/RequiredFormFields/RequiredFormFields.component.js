@@ -17,6 +17,8 @@ import MarketingTypeDropdown from './MarketingTypeDropdown/MarketingTypeDropdown
 
 
 const RequiredFormField = ({ modeFilter,
+                             from,
+                             to,
                              onTopicChange, 
                              onDescriptionChange 
                             }) => (<div style={{marginLeft: '2%', marginTop: '2%'}}>
@@ -24,10 +26,10 @@ const RequiredFormField = ({ modeFilter,
             <p className='control-label'>
                 Select Promotion Duration
             </p>
-            <AvailabilityPicker />
+            <AvailabilityPicker from={from} to={to} />
         </FormGroup>
 
-        <MarketingTypeDropdown />
+        <MarketingTypeDropdown modeFilter={modeFilter}/>
 
         <FormGroup controlId='control-form-topic'>
             <p className='control-label'>
@@ -71,26 +73,42 @@ const RequiredFormField = ({ modeFilter,
 
 const mapStateToProps = (state) => {
     return {
-        modeFilter: state.MenuBarFilterReducer.modeFilter,
+        from : state.CreateListingFormReducer.publisherForm.dateFrom,
+        to   : state.CreateListingFormReducer.publisherForm.dateTo
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, ownProps) => {
+    const { modeFilter } = ownProps;
     return {
         onDescriptionChange: (event) => {
-            dispatch({
-                type: 'SET_ADV_FORM_DESCRIPTION',
-                description: event.target.value
-            })
+            if(modeFilter === 'Advertiser'){
+                dispatch({
+                    type: 'SET_ADV_FORM_DESCRIPTION',
+                    description: event.target.value
+                })
+            }else {
+                dispatch({
+                    type: 'SET_PUB_FORM_DESCRIPTION',
+                    description: event.target.value
+                })
+            }
+            
         },
         onTopicChange: (event) => {
-            dispatch({
-                type: 'SET_ADV_FORM_TOPIC',
-                topic: event.target.value
-            })
+            if(modeFilter === 'Advertiser'){
+                dispatch({
+                    type: 'SET_ADV_FORM_TOPIC',
+                    topic: event.target.value
+                })
+            }else {
+                dispatch({
+                    type: 'SET_PUB_FORM_TOPIC',
+                    topic: event.target.value
+                })
+            }
+            
         }
-
-
     }
 }
 

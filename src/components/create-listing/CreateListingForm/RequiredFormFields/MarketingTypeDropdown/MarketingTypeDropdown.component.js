@@ -185,7 +185,6 @@ class MarketingTypeDropdown extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        modeFilter          : state.MenuBarFilterReducer.modeFilter,
         adv_marketingType   : state.CreateListingFormReducer.advertiserForm.marketingType,
         adv_marketingMedium : state.CreateListingFormReducer.advertiserForm.marketingMedium,
         pub_makretingType   : state.CreateListingFormReducer.publisherForm.marketingType,
@@ -193,31 +192,57 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, ownProps) => {
+    const { modeFilter } = ownProps;
+    console.log(ownProps)
     return {
         onTypeClick: (value) => {
-            if(value === 'Sponsorship'){
-                dispatch({
-                    type: 'SET_ADV_FORM_MARKETING_TYPE',
-                    marketingType: value
-                }) && dispatch({
-                    type: 'SET_ADV_FORM_MARKETING_MEDIUM',
-                    marketingMedium: 'Other'
-                })
-            }else{
-                dispatch({
-                    type: 'SET_ADV_FORM_MARKETING_TYPE',
-                    marketingType: value
-                })
+            if(modeFilter === 'Advertiser') {
+                if(value === 'Sponsorship'){
+                    dispatch({
+                        type: 'SET_ADV_FORM_MARKETING_TYPE',
+                        marketingType: value
+                    }) && dispatch({
+                        type: 'SET_ADV_FORM_MARKETING_MEDIUM',
+                        marketingMedium: 'Other'
+                    })
+                }else{
+                    dispatch({
+                        type: 'SET_ADV_FORM_MARKETING_TYPE',
+                        marketingType: value
+                    })
+                }
+            }else {
+                if(value === 'Sponsorship'){
+                    dispatch({
+                        type: 'SET_PUB_FORM_MARKETING_TYPE',
+                        marketingType: value
+                    }) && dispatch({
+                        type: 'SET_PUB_FORM_MARKETING_MEDIUM',
+                        marketingMedium: 'Other'
+                    })
+                }else{
+                    dispatch({
+                        type: 'SET_PUB_FORM_MARKETING_TYPE',
+                        marketingType: value
+                    })
+                }
             }
+           
         },
 
         onMediumClick: (value) => {
-            dispatch({
-                type: 'SET_ADV_FORM_MARKETING_MEDIUM',
-                marketingMedium: value
-            })
-
+            if(modeFilter === 'Advertiser') {
+                dispatch({
+                    type: 'SET_ADV_FORM_MARKETING_MEDIUM',
+                    marketingMedium: value
+                })
+            }else {
+                dispatch({
+                    type: 'SET_PUB_FORM_MARKETING_MEDIUM',
+                    marketingMedium: value
+                })
+            }
         }
     }
 }

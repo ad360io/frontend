@@ -84,11 +84,11 @@ class CreateListingForm extends Component {
     getStepContent(step) {
         switch (step) {
             case 0:
-                return <RequiredFormFields />;
+                return <RequiredFormFields modeFilter={this.props.modeFilter}/>;
             case 1:
-                return <OptionalFormFields />;
+                return <OptionalFormFields modeFilter={this.props.modeFilter}/>;
             case 2:
-                return <FormConfirmation />;
+                return <FormConfirmation   modeFilter={this.props.modeFilter}/>;
             default:
                 return 'Unknown step';
         }
@@ -137,6 +137,9 @@ class CreateListingForm extends Component {
                 && this.props.publisherForm.marketingMedium.length > 0
                 && this.props.publisherForm.description.length > 0
                 && this.props.publisherForm.topic.length > 0
+                && this.props.publisherForm.price.length > 0
+                && typeof this.props.publisherForm.dateFrom !== undefined
+                && typeof this.props.publisherForm.dateTo.length !== undefined
         }
     }
 
