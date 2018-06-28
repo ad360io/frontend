@@ -20,7 +20,8 @@ const RequiredFormField = ({ modeFilter,
                              from,
                              to,
                              onTopicChange, 
-                             onDescriptionChange 
+                             onDescriptionChange,
+                             onPriceChange
                             }) => (<div style={{marginLeft: '2%', marginTop: '2%'}}>
         <FormGroup hidden={modeFilter === 'Advertiser'}>
             <p className='control-label'>
@@ -42,7 +43,7 @@ const RequiredFormField = ({ modeFilter,
             <p className='control-label'>
                 Price per time unit (day/week/month/year)
                     </p>
-            <FormControl type='number' style={{ width: '50%', float: 'left' }} />
+            <FormControl type='number' onChange={onPriceChange} style={{ width: '50%', float: 'left' }} />
             <FormControl componentClass='select' style={{ width: '50%' }} required>
                 <option value='day'>per day</option>
                 <option value='week'>per week</option>
@@ -107,7 +108,12 @@ const mapDispatchToProps = (dispatch, ownProps) => {
                     topic: event.target.value
                 })
             }
-            
+        },
+        onPriceChange: (event) => {
+            dispatch({
+                type: 'SET_PUB_FORM_PRICE',
+                price: event.target.value,
+            })
         }
     }
 }
