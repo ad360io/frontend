@@ -25,16 +25,13 @@ class DetailedListingPage extends Component {
                     fetched: true,
                     listing: response.data
                 })
-                console.log(this.state)
             })
             .catch((err) => {
                 this.setState({
                     ...this.state,
                     fetched: true,
                     error: err
-                })
-                console.log(err)
-                
+                })                
         })
         // reset view
         window.scrollTo(0,0);

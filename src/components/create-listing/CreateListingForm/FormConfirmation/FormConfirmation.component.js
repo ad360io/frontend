@@ -53,7 +53,41 @@ const AdvertiserFormConfirmation = ({fields}) => (
 
 const PublisherFormConfirmation = ({fields}) => (
     <div>
-
+        <table className='table table-bordered mb-0'>
+                <tbody className='tbody-default'>
+                <tr>
+                    <td>Marketing Type </td>
+                    <td>{fields.marketingType}</td>
+                </tr>
+                <tr>
+                    <td>Marketing Medium </td>
+                    <td>{fields.marketingMedium}</td>
+                </tr>
+                <tr>
+                    <td>Description </td>
+                    <td>{fields.description}</td>
+                </tr>
+                <tr>
+                    <td>Content Topic </td>
+                    <td>{fields.topic}</td>
+                </tr>
+                <tr>
+                    <td>Image URL </td>
+                    <td>{fields.imgFile}</td>
+                </tr>
+                <tr>
+                    <td>Price</td>
+                    <td>{fields.price} {fields.timeUnit}</td>
+                </tr>
+                <tr>
+                    <td>Promotion Duration </td>
+                    <td><div style={{width: '50px', float: 'left'}}><strong>From:</strong></div> {fields.dateFrom.toString()} 
+                        <br/> 
+                        <div style={{width: '50px', float: 'left'}}><strong>To:</strong></div> {fields.dateTo.toString()}
+                    </td>
+                </tr>
+                </tbody>
+        </table>
     </div>
 )
 
