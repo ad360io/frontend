@@ -42,14 +42,44 @@ class DetailedListingPage extends Component {
         // make a request to get detailed listing info using ID
         // parse info onto the page
         return <div className='detailed-listing-container'>
-            <p>I'm a detailed listing page</p>
-            <p>ID = {this.props.match.params.id}</p>
-            <pre style={{textAlign: 'left', fontSize: '14px', fontFamily: 'sans serif', fontStretch: 'normal'}}>
-                {JSON.stringify(this.state.listing, null, 4)}
-            </pre>
+            {
+                (this.state.fetched
+                    ? ( this.state.listing.type === "request" 
+                        ? <DetailedRequestListing listing={this.state.listing} />
+                        : <DetailedContentSpaceListing listing={this.state.listing} />)
+                    : null
+                )
+            }
         </div>
     }
 }
+
+const DetailedRequestListing = ({ listing }) => (
+    <div style={{textAlign: 'left', fontSize: '14px', fontFamily: 'sans serif', fontStretch: 'normal'}}>
+        <div>Listing Type: {listing.type}</div>
+        <div>Requestor: {listing.requestor}</div>
+        <div>Currency: {listing.currency}</div>
+        <div>Marketing Type: {listing.marketingType}</div>
+        <div>Marketing Medium: {listing.medium}</div>
+        <div>Content Topic: {listing.contentTopic}</div>
+        <div>Images: {listing.images}</div>
+        <div>Ask Date: {listing.ask_date_from}</div>
+        <div>Description: {listing.requestDescription}</div>
+    </div>
+)
+
+const DetailedContentSpaceListing = ({ listing }) => (
+    <div style={{textAlign: 'left', fontSize: '14px', fontFamily: 'sans serif', fontStretch: 'normal'}}>
+        <div>Listing Type: {listing.type}</div>
+        <div>Creator: {listing.creator}</div>
+        <div>Promotion Duration: {listing.ask_date_from} - {listing.ask_date_to}</div>
+        <div>Marketing Type: {listing.marketingType}</div>
+        <div>Marketing Medium: {listing.medium}</div>
+        <div>Content Topic: {listing.contentTopic}</div>
+        <div>Pricing: {listing.pricing + " " + listing.currency + " " + listing.timeUnit}</div>
+        <div>Description: {listing.listingDescription}</div>
+    </div>
+)
 
 
 export default DetailedListingPage;

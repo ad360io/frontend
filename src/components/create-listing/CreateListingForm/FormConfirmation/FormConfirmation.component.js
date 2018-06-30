@@ -10,13 +10,13 @@ Material UI
 import Button from '@material-ui/core/Button';
 
 
-const FormConfirmation = ({ modeFilter, advertiserForm, publisherForm }) => (
+const FormConfirmation = ({ modeFilter, currencyFilter, advertiserForm, publisherForm }) => (
     <div>
     {
         (
             modeFilter === 'Advertiser' 
                 ? <AdvertiserFormConfirmation fields={advertiserForm} />
-                : <PublisherFormConfirmation  fields={publisherForm } />
+                : <PublisherFormConfirmation  fields={publisherForm } currencyFilter={currencyFilter} />
         )
     }
     </div>
@@ -51,7 +51,7 @@ const AdvertiserFormConfirmation = ({fields}) => (
     </div>
 )
 
-const PublisherFormConfirmation = ({fields}) => (
+const PublisherFormConfirmation = ({fields, currencyFilter}) => (
     <div>
         <table className='table table-bordered mb-0'>
                 <tbody className='tbody-default'>
@@ -77,7 +77,7 @@ const PublisherFormConfirmation = ({fields}) => (
                 </tr>
                 <tr>
                     <td>Price</td>
-                    <td>{fields.price} {fields.timeUnit}</td>
+                    <td><strong>{fields.price} {currencyFilter}</strong> {fields.timeUnit}</td>
                 </tr>
                 <tr>
                     <td>Promotion Duration </td>

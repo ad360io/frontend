@@ -88,7 +88,7 @@ class CreateListingForm extends Component {
             case 1:
                 return <OptionalFormFields modeFilter={this.props.modeFilter}/>;
             case 2:
-                return <FormConfirmation   modeFilter={this.props.modeFilter}/>;
+                return <FormConfirmation   modeFilter={this.props.modeFilter} currencyFilter={this.props.currencyFilter} />;
             default:
                 return 'Unknown step';
         }
