@@ -4,11 +4,6 @@ Core Libs
 import React from 'react';
 import { connect } from 'react-redux'
 
-/*
-Material UI
-*/
-import Button from '@material-ui/core/Button';
-
 
 const FormConfirmation = ({ modeFilter, currencyFilter, advertiserForm, publisherForm }) => (
     <div>

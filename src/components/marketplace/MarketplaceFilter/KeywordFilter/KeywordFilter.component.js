@@ -17,7 +17,7 @@ import './KeywordFilter.component.css';
 
 const KeywordFilter = ({onChange}) => (
     <div className='keyword-filter-container'>
-        <SearchInput className='search-input' onChange />
+        <SearchInput className='search-input' onChange={onChange} />
     </div>
 )
 

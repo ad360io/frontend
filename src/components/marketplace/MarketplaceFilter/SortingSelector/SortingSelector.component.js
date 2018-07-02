@@ -34,6 +34,7 @@ class SortingSelector extends Component {
         <DropdownButton
             className='sorting-selector-btn'
             title={this.state.title}
+            id='sorting-selector-btn'
         >
             <MenuItem onClick={() => this.handleItemClick('Price (Low - High)')}>Price (Low - High)</MenuItem>
             <MenuItem onClick={() => this.handleItemClick('Price (High - Low)')}>Price (High - Low)</MenuItem>
