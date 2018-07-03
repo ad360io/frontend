@@ -170,7 +170,7 @@ const DetailedContentSpaceListing = ({ listing, decideImage }) => (
                 "referralURI": ""
             */
         }
-        <div><img src={decideImage(null, listing.type)}></img></div>
+        <div><img src={decideImage(null, listing.marketingType)}></img></div>
         <div>Listing Type: {listing.type}</div>
         <div>Creator: {listing.creator}</div>
         <div>Promotion Duration: {listing.ask_date_from} - {listing.ask_date_to}</div>
