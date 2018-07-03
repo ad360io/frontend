@@ -18,6 +18,7 @@ class CreateListing extends Component {
 
     componentDidMount() {
         document.title = "Qchain - Create"
+        window.scrollTo(0,0)
     }
 
     render() {

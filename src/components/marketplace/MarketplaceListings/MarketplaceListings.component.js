@@ -82,10 +82,6 @@ class MarketplaceListings extends Component {
         return isEmpty + listingType + ' Available';
     }
 
-    componentDidUpdate() {
-        window.scrollTo(0,0);
-    }
-
     render() {
         const displayData = this.filterDataWithProps(this.decideDataToDisplay());
         
