@@ -214,6 +214,8 @@ class ListingCard extends Component {
                     placeholderImage={this.decidePlaceholderImage()}
                     description={this.decideDescription()}
                     ask_date_from={this.props.listing.ask_date_from}
+                    id={this.props.listing.id}
+                    handleExploreClick={this.handleExploreClick}
                 />
             }
             
@@ -284,12 +286,23 @@ const GridCardRenderer = ({
             </Card>
 )
 
-const ListingCardRenderer = ({ marginLeft, contactInfo, priceTag, title, placeholderImage, description, ask_date_from }) => (
+const ListingCardRenderer = ({ 
+                                marginLeft, 
+                                contactInfo, 
+                                priceTag, 
+                                title, 
+                                placeholderImage, 
+                                description, 
+                                ask_date_from,
+                                id,
+                                handleExploreClick
+                            }) => (
     <Card className='listing-card-container noselect' 
         style={{ 
             width: '90%',
             marginLeft,
         }}
+        onClick={()=> handleExploreClick(id)}
     >
         <div className='poster-tag'>{contactInfo} </div>
         <div className='price-tag'>{priceTag}</div>)
