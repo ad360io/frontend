@@ -3,6 +3,19 @@ import axios from 'axios';
 
 import './DetailedListingPage.component.css';
 
+/*
+Placeholder Images
+*/
+import branded_content_ph      from '../../../../assets/images/branded_content_placeholder.png';
+import influencer_marketing_ph from '../../../../assets/images/influencer_marketing_placeholder.png';
+import sponsorships_ph         from '../../../../assets/images/sponsorships_placeholder.png';
+import default_ph              from '../../../../assets/images/pug_face.jpg';
+
+import { Card, CardText, CardTitle }  from 'material-ui';
+import Divider                        from 'material-ui/Divider';
+
+import DetailedImageSlider from './DetailedImageSlider/DetailedImageSlider.component';
+
 
 class DetailedListingPage extends Component {
 
@@ -11,7 +24,35 @@ class DetailedListingPage extends Component {
         this.state = {
             fetched: false,
             error: null,
-            listing: null
+            listing: null,
+            width: window.innerWidth
+        }
+
+        // Binding functions
+        this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+        this.decideImage = this.decideImage.bind(this);
+    }
+
+    componentDidMount() {
+        this.updateWindowDimensions();
+        window.addEventListener('resize', this.updateWindowDimensions);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.updateWindowDimensions);
+    }
+
+    updateWindowDimensions() {
+        this.setState({ ...this.state, width: window.innerWidth });
+    }
+
+    decideImage(url, marketingType) {
+        if(marketingType === 'Branded Content'){
+            return branded_content_ph;
+        }else if(marketingType === 'Influencer Post'){
+            return influencer_marketing_ph;
+        }else{
+            return sponsorships_ph;
         }
     }
     
@@ -45,8 +86,15 @@ class DetailedListingPage extends Component {
             {
                 (this.state.fetched
                     ? ( this.state.listing.type === "request" 
-                        ? <DetailedRequestListing listing={this.state.listing} />
-                        : <DetailedContentSpaceListing listing={this.state.listing} />)
+                        ? <DetailedRequestListing 
+                                listing={this.state.listing}
+                                decideImage={this.decideImage}
+                          />
+                        : <DetailedContentSpaceListing 
+                                listing={this.state.listing} 
+                                decideImage={this.decideImage}
+                          />
+                      )
                     : null
                 )
             }
@@ -54,22 +102,75 @@ class DetailedListingPage extends Component {
     }
 }
 
-const DetailedRequestListing = ({ listing }) => (
+const DetailedRequestListing = ({ listing, decideImage }) => (
+    
+
     <div style={{textAlign: 'left', fontSize: '14px', fontFamily: 'sans serif', fontStretch: 'normal'}}>
-        <div>Listing Type: {listing.type}</div>
-        <div>Requestor: {listing.requestor}</div>
-        <div>Currency: {listing.currency}</div>
-        <div>Marketing Type: {listing.marketingType}</div>
-        <div>Marketing Medium: {listing.medium}</div>
-        <div>Content Topic: {listing.contentTopic}</div>
-        <div>Images: {listing.images}</div>
-        <div>Ask Date: {listing.ask_date_from}</div>
-        <div>Description: {listing.requestDescription}</div>
+        {
+            /* ********************  SCHEMA OF A REQUEST LISTING ********************
+                "id" : #,
+                "type" : "",
+                "requestor": "",
+                "currency": "",
+                "marketingType": "",
+                "medium": "",
+                "contentTopic": "",
+                "images": "",
+                "ask_date_from": "",
+                "requestDescription": ""
+            */
+        }
+        <Card className='detailed-image-container'>
+            <CardText>
+                <DetailedImageSlider imageSrc={decideImage(listing.images, listing.marketingType)} />
+            </CardText>
+        </Card>
+        
+        <Card className='listing-concrete-details-container'>
+            <CardTitle>
+            <h1>{listing.contentTopic}</h1>
+            </CardTitle>
+            <Divider />
+            <CardText>
+            <div>Marketing Type: {listing.marketingType} {listing.type}</div>
+            <div>Marketing Medium: {listing.medium}</div>
+            <br />
+            <div>{listing.requestDescription}</div>
+            </CardText>
+        </Card>
+        
+        <Card className='poster-info-container'>
+            <CardTitle>
+                <h3>Requestor Info:</h3>
+            </CardTitle>
+            <CardText>
+            <h4>{listing.requestor} trading in {listing.currency}</h4>
+            <div>Ask Date: {listing.ask_date_from}</div>
+            </CardText>
+        </Card>
     </div>
 )
 
-const DetailedContentSpaceListing = ({ listing }) => (
+const DetailedContentSpaceListing = ({ listing, decideImage }) => (
     <div style={{textAlign: 'left', fontSize: '14px', fontFamily: 'sans serif', fontStretch: 'normal'}}>
+        {
+            /* ********************  SCHEMA OF A CONTENT SPACE LISTING ********************
+                "id" : #,
+                "type" : "",
+                "creator": "",
+                "ask_date_from": "",
+                "ask_date_to": "",
+                "marketingType": "",
+                "medium": "",
+                "contentTopic": "",
+                "pricing": #,
+                "timeUnit": "",
+                "currency": "",
+                "listingDescription": "",
+                "referralURI": ""
+            */
+        }
+        <div><img src={decideImage(null, listing.type)}></img></div>
         <div>Listing Type: {listing.type}</div>
         <div>Creator: {listing.creator}</div>
         <div>Promotion Duration: {listing.ask_date_from} - {listing.ask_date_to}</div>

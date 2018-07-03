@@ -1,6 +1,35 @@
 .detailed-listing-container {
-    margin-top: 250px;
+    margin-top: 130px;
     text-align: center;
     height: 100vh;
     font-size: 30px;
+}
+
+.detailed-image-container {
+    width: 400px;
+    float: left;
+    margin: 2%;
+}
+
+.detailed-image-container > div > div {
+    padding: 0px !important;
+    width: 80%;
+    margin-left: 10%;
+}
+
+.listing-concrete-details-container {
+    float: left;
+    width: 30%;
+    min-width: 400px;
+    margin: 2%;
+    font-size: 20px;
+    font-stretch: normal;
+    line-height: 35px;
+}
+
+.poster-info-container {
+    width: 20%;
+    float: left;
+    margin: 2%;
+    line-height: 35px;  
 }
