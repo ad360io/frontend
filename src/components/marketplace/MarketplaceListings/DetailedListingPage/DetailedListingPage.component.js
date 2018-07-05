@@ -13,6 +13,7 @@ import default_ph              from '../../../../assets/images/pug_face.jpg';
 
 import { Card, CardText, CardTitle }  from 'material-ui';
 import Divider                        from 'material-ui/Divider';
+import Button                         from '@material-ui/core/Button';
 
 import DetailedImageSlider from './DetailedImageSlider/DetailedImageSlider.component';
 
@@ -51,8 +52,10 @@ class DetailedListingPage extends Component {
             return branded_content_ph;
         }else if(marketingType === 'Influencer Post'){
             return influencer_marketing_ph;
-        }else{
+        }else if(marketingType === 'Sponsorships'){
             return sponsorships_ph;
+        }else{
+            return default_ph;
         }
     }
     
@@ -117,7 +120,7 @@ const DetailedRequestListing = ({ listing, decideImage }) => (
                 "contentTopic": "",
                 "images": "",
                 "ask_date_from": "",
-                "requestDescription": ""
+                "requestDescription": "" 
             */
         }
         <Card className='detailed-image-container'>
@@ -170,15 +173,37 @@ const DetailedContentSpaceListing = ({ listing, decideImage }) => (
                 "referralURI": ""
             */
         }
-        <div><img src={decideImage(null, listing.marketingType)}></img></div>
-        <div>Listing Type: {listing.type}</div>
-        <div>Creator: {listing.creator}</div>
-        <div>Promotion Duration: {listing.ask_date_from} - {listing.ask_date_to}</div>
-        <div>Marketing Type: {listing.marketingType}</div>
-        <div>Marketing Medium: {listing.medium}</div>
-        <div>Content Topic: {listing.contentTopic}</div>
-        <div>Pricing: {listing.pricing + " " + listing.currency + " " + listing.timeUnit}</div>
-        <div>Description: {listing.listingDescription}</div>
+
+        <Card className='detailed-image-container'>
+            <CardText>
+                <DetailedImageSlider imageSrc={decideImage(listing.images, listing.marketingType)} />
+            </CardText>
+        </Card>
+        
+        <Card className='listing-concrete-details-container'>
+            <CardTitle>
+            <h1>{listing.contentTopic}</h1>
+            </CardTitle>
+            <Divider />
+            <CardText>
+            <div>Marketing Type: {listing.marketingType} {listing.type} <Button>Buy It Now</Button></div>
+            <div>Marketing Medium: {listing.medium}</div>
+            <br />
+            <div>Price: {listing.pricing} {listing.timeUnit}</div>
+            <br />
+            <div>{listing.listingDescription}</div>
+            </CardText>
+        </Card>
+        
+        <Card className='poster-info-container'>
+            <CardTitle>
+                <h3>Creator Info:</h3>
+            </CardTitle>
+            <CardText>
+            <h4>{listing.creator} trading in {listing.currency}</h4>
+            <div>Promotion Duration: <br/> {listing.ask_date_from} - {listing.ask_date_to}</div>
+            </CardText>
+        </Card>
     </div>
 )
 

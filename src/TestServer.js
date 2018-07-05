@@ -86,7 +86,7 @@ var fakeDetailedListings = [
         "medium": "Video",
         "contentTopic": "Recycling Paper",
         "pricing": 700,
-        "timeUnit": "day",
+        "timeUnit": "per day",
         "currency": "EQC",
         "listingDescription": "We have a large user base averaging 10,000 daily users, and are ready to share a sponsored content story on 2017/07/01. We are looking to write on topics related to clean energy. If you are an advertiser interested in a content piece with this topic, please check our listing.",
         "referralURI": ""
@@ -101,7 +101,7 @@ var fakeDetailedListings = [
             "medium": "Video",
             "contentTopic": "Recycling Paper",
             "pricing": 8000,
-            "timeUnit": "day",
+            "timeUnit": "per day",
             "currency": "EQC",
             "listingDescription": "We have a large user base averaging 10,000 daily users, and are ready to share a sponsored content story on 2017/07/01. We are looking to write on topics related to clean energy. If you are an advertiser interested in a content piece with this topic, please check our listing.",
             "referralURI": ""
@@ -116,7 +116,7 @@ var fakeDetailedListings = [
             "medium": "Twitter",
             "contentTopic": "Recycling Paper",
             "pricing": 8000,
-            "time_unit": "week",
+            "timeUnit": "per week",
             "currency": "XQC",
             "listingDescription": "We have a large user base averaging 10,000 daily users, and are ready to share a sponsored content story on 2017/07/01. We are looking to write on topics related to clean energy. If you are an advertiser interested in a content piece with this topic, please check our listing.",
             "referralURI": ""
@@ -158,8 +158,9 @@ var fakeData = {
             "medium": "Video",
             "contentTopic": "Recycling Paper",
             "pricing": 700,
-            "timeUnit": "day",
+            "timeUnit": "per day",
             "currency": "EQC",
+            "images": "",
             "listingDescription": "We have a large user base averaging 10,000 daily users, and are ready to share a sponsored content story on 2017/07/01. We are looking to write on topics related to clean energy. If you are an advertiser interested in a content piece with this topic, please check our listing.",
             "referralURI": ""
         },
@@ -172,7 +173,8 @@ var fakeData = {
             "medium": "Video",
             "contentTopic": "Recycling Paper",
             "pricing": 8000,
-            "timeUnit": "day",
+            "timeUnit": "per day",
+            "images": "",
             "currency": "EQC",
             "listingDescription": "We have a large user base averaging 10,000 daily users, and are ready to share a sponsored content story on 2017/07/01. We are looking to write on topics related to clean energy. If you are an advertiser interested in a content piece with this topic, please check our listing.",
             "referralURI": ""
@@ -186,7 +188,8 @@ var fakeData = {
             "medium": "Twitter",
             "contentTopic": "Recycling Paper",
             "pricing": 8000,
-            "time_unit": "week",
+            "time_unit": "per week",
+            "images": "",
             "currency": "XQC",
             "listingDescription": "We have a large user base averaging 10,000 daily users, and are ready to share a sponsored content story on 2017/07/01. We are looking to write on topics related to clean energy. If you are an advertiser interested in a content piece with this topic, please check our listing.",
             "referralURI": ""
