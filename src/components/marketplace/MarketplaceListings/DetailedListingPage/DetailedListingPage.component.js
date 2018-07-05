@@ -185,13 +185,24 @@ const DetailedContentSpaceListing = ({ listing, decideImage }) => (
             <h1>{listing.contentTopic}</h1>
             </CardTitle>
             <Divider />
-            <CardText>
-            <div>Marketing Type: {listing.marketingType} {listing.type} <Button>Buy It Now</Button></div>
-            <div>Marketing Medium: {listing.medium}</div>
+            <CardText className='listing-details-text'>
+            <div className='details-text'>
+                <p>
+                    Marketing Type: {listing.marketingType} {listing.type} 
+                </p>
+                <p>
+                    Marketing Medium: {listing.medium}
+                </p>
+                
+            </div>
+            
             <br />
-            <div>Price: {listing.pricing} {listing.timeUnit}</div>
+            <div className='buy-section'>
+                <div className='price-section'>Price: {listing.pricing} {listing.timeUnit}</div>
+                <Button className='buy-button' variant='outlined' color='primary'>Buy It Now</Button>
+            </div>
             <br />
-            <div>{listing.listingDescription}</div>
+            <div className='details-text'>{listing.listingDescription}</div>
             </CardText>
         </Card>
         
