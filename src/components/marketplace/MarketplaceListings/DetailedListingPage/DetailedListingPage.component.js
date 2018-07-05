@@ -64,6 +64,7 @@ class DetailedListingPage extends Component {
         const baseURL = "http://localhost:3000/api/listing?id=";
         axios.get(baseURL+this.props.match.params.id)
             .then((response) => {
+                document.title = `${response.data.contentTopic} - Qchain`;
                 this.setState({
                     ...this.state,
                     fetched: true,
@@ -123,11 +124,21 @@ const DetailedRequestListing = ({ listing, decideImage }) => (
                 "requestDescription": "" 
             */
         }
-        <Card className='detailed-image-container'>
-            <CardText>
-                <DetailedImageSlider imageSrc={decideImage(listing.images, listing.marketingType)} />
-            </CardText>
-        </Card>
+        <div className='detailed-image-container'>
+            <Card>
+                <CardText>
+                    <DetailedImageSlider imageSrc={decideImage(listing.images, listing.marketingType)} />
+                </CardText>
+            </Card>
+            <div className='detailed-listing-action-section'>
+                <a className='detailed-listing-action'>Save this listing</a>
+                <Divider />
+                <a className='detailed-listing-action'>Add to watch list</a>
+                <Divider />
+                <a className='detailed-listing-action'>Some other simple actions</a>
+                <Divider />
+            </div>
+        </div>
         
         <Card className='listing-concrete-details-container'>
             <CardTitle>
@@ -142,15 +153,23 @@ const DetailedRequestListing = ({ listing, decideImage }) => (
             </CardText>
         </Card>
         
-        <Card className='poster-info-container'>
-            <CardTitle>
-                <h3>Requestor Info:</h3>
-            </CardTitle>
-            <CardText>
-            <h4>{listing.requestor} trading in {listing.currency}</h4>
-            <div>Ask Date: {listing.ask_date_from}</div>
-            </CardText>
-        </Card>
+        <div className='poster-info-container'>
+            <Card>
+                <CardTitle>
+                    <h3>Requestor Info:</h3>
+                    <h4>{listing.requestor} trading in {listing.currency}</h4>
+                </CardTitle>
+                <CardText>
+                <div>Ask Date: {listing.ask_date_from}</div>
+                </CardText>
+            </Card>
+            <div className='detailed-listing-action-section'>
+                <a className='detailed-listing-action'>Add requestor to favorite</a>
+                <Divider />
+                <a className='detailed-listing-action'>Contact this requestor</a>
+                <Divider />
+            </div>
+        </div>
     </div>
 )
 
@@ -228,7 +247,7 @@ const DetailedContentSpaceListing = ({ listing, decideImage }) => (
                 </CardText>
             </Card>
             <div className='detailed-listing-action-section'>
-                <a className='detailed-listing-action'>Save this publisher</a>
+                <a className='detailed-listing-action'>Add publisher to favorite</a>
                 <Divider />
                 <a className='detailed-listing-action'>Contact this publisher</a>
                 <Divider />
