@@ -173,12 +173,24 @@ const DetailedContentSpaceListing = ({ listing, decideImage }) => (
                 "referralURI": ""
             */
         }
-
-        <Card className='detailed-image-container'>
-            <CardText>
-                <DetailedImageSlider imageSrc={decideImage(listing.images, listing.marketingType)} />
-            </CardText>
-        </Card>
+        <div className='detailed-image-container'>
+            <Card>
+                <CardText>
+                    <DetailedImageSlider imageSrc={decideImage(listing.images, listing.marketingType)} />
+                    
+                </CardText>
+            </Card>
+            <div className='detailed-listing-action-section'>
+                <a className='detailed-listing-action'>Save this listing</a>
+                <Divider />
+                <a className='detailed-listing-action'>Add to watch list</a>
+                <Divider />
+                <a className='detailed-listing-action'>Contact publisher privately</a>
+                <Divider />
+                <a className='detailed-listing-action'>Some other simple actions</a>
+                <Divider />
+            </div>
+        </div>
         
         <Card className='listing-concrete-details-container'>
             <CardTitle>
