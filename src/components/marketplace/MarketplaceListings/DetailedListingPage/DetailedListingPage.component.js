@@ -185,8 +185,6 @@ const DetailedContentSpaceListing = ({ listing, decideImage }) => (
                 <Divider />
                 <a className='detailed-listing-action'>Add to watch list</a>
                 <Divider />
-                <a className='detailed-listing-action'>Contact publisher privately</a>
-                <Divider />
                 <a className='detailed-listing-action'>Some other simple actions</a>
                 <Divider />
             </div>
@@ -218,15 +216,26 @@ const DetailedContentSpaceListing = ({ listing, decideImage }) => (
             </CardText>
         </Card>
         
-        <Card className='poster-info-container'>
-            <CardTitle>
-                <h3>Creator Info:</h3>
-            </CardTitle>
-            <CardText>
-            <h4>{listing.creator} trading in {listing.currency}</h4>
-            <div>Promotion Duration: <br/> {listing.ask_date_from} - {listing.ask_date_to}</div>
-            </CardText>
-        </Card>
+        <div className='poster-info-container'>
+            <Card>
+                <CardTitle>
+                    <h3>Creator Info:</h3>
+                    <h4>{listing.creator} trading in {listing.currency}</h4>
+                </CardTitle>
+                <CardText>
+                
+                <div>Promotion Duration: <br/> {listing.ask_date_from} - {listing.ask_date_to}</div>
+                </CardText>
+            </Card>
+            <div className='detailed-listing-action-section'>
+                <a className='detailed-listing-action'>Save this publisher</a>
+                <Divider />
+                <a className='detailed-listing-action'>Contact this publisher</a>
+                <Divider />
+            </div>
+        </div>
+
+        
     </div>
 )
 
