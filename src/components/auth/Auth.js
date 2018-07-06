@@ -34,7 +34,7 @@ export default class Auth {
         redirectUri: `${window.location.protocol}//${window.location.host}/auth-callback`,
         audience: `https://${Auth0Config.domain}/userinfo`,
         responseType: 'token id_token',
-        scope: 'openid profile email'
+        scope: 'openid profile email role'
     });
 
     login() {
