@@ -123,7 +123,7 @@ export default class Auth {
     handleProfileOnAuthenticated(accessToken){
         this.getProfile((err, profile)=>{
             if(profile) {
-                this.dispatchProfile(profile, 
+                this.dispatchProfile(profile,
                     profile['https://auth.qchain.co/user_metadata']
                 );
             }
@@ -164,11 +164,11 @@ export default class Auth {
         let myUserId = localStorage.getItem('user_id');
         auth0Manager.patchUserMetadata(
             myUserId,
-            newMetadata, 
+            newMetadata,
             (err, newProfile) => {
                 if(err) {
                     console.log(err);
-                } 
+                }
                 else {
                     this.logout();
                 }
