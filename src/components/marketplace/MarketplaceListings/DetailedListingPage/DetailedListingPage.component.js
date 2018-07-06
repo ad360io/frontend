@@ -109,7 +109,7 @@ class DetailedListingPage extends Component {
 const DetailedRequestListing = ({ listing, decideImage }) => (
     
 
-    <div style={{textAlign: 'left', fontSize: '14px', fontFamily: 'sans serif', fontStretch: 'normal'}}>
+    <div className='detailed-listing-renderer'>
         {
             /* ********************  SCHEMA OF A REQUEST LISTING ********************
                 "id" : #,
@@ -174,7 +174,7 @@ const DetailedRequestListing = ({ listing, decideImage }) => (
 )
 
 const DetailedContentSpaceListing = ({ listing, decideImage }) => (
-    <div style={{textAlign: 'left', fontSize: '14px', fontFamily: 'sans serif', fontStretch: 'normal'}}>
+    <div className='detailed-listing-renderer' >
         {
             /* ********************  SCHEMA OF A CONTENT SPACE LISTING ********************
                 "id" : #,

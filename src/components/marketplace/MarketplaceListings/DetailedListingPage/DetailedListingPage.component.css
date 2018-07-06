@@ -1,8 +1,19 @@
 .detailed-listing-container {
     margin-top: 130px;
-    text-align: center;
     height: 100vh;
     font-size: 30px;
+}
+
+.detailed-listing-renderer {
+    position: relative;
+    left:100vw;
+    animation-name: listings-slide-in-from-right;
+    animation-duration: 0.8s;
+    animation-fill-mode: forwards;
+    text-align: 'left';
+    font-size: 14px;
+    font-family: 'sans serif';
+    font-stretch: 'normal';
 }
 
 .detailed-image-container {
