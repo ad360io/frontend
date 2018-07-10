@@ -1,7 +1,17 @@
+/*
+Core Libs
+*/
 import React, { Component } from 'react';
-import axios from 'axios';
-import { connect } from 'react-redux';
+import { connect }          from 'react-redux';
 
+/*
+Networking 
+*/
+import axios from 'axios';
+
+/*
+Local CSS
+*/
 import './DetailedListingPage.component.css';
 
 /*
