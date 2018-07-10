@@ -61,7 +61,6 @@ class ListingCard extends Component {
         this.decideContactInfo = this.decideContactInfo.bind(this);
         this.decideDescription = this.decideDescription.bind(this);
         this.decidePriceTag = this.decidePriceTag.bind(this);
-        this.handleExploreClick = this.handleExploreClick.bind(this);
     }
 
     componentDidMount() {
@@ -114,7 +113,7 @@ class ListingCard extends Component {
      * Decide placeholder image based on the listing's genre
      */
     decidePlaceholderImage(){
-        switch(this.props.listing.marketingType){
+        switch(this.props.listing.type){
             case 'Branded Content':
                 return branded_content_ph;
             case 'Influencer Post':
@@ -157,38 +156,34 @@ class ListingCard extends Component {
         // Get the count of original title 
         // and the count of characters without overflowing
         // to detect if we need '...' at the end of title.
-        const numberOfCharOriginal = this.props.listing.contentTopic.length;
+        const numberOfCharOriginal = this.props.listing.name.length;
         const numberOfCharAllowed = Math.floor((this.state.width - drawerSize) * cardWidthInPercent / 13);
         const dotDotDot = (numberOfCharAllowed < numberOfCharOriginal ? '...' : '')
-        return this.props.listing.contentTopic.slice(0, numberOfCharAllowed)+dotDotDot;
+        return this.props.listing.name.slice(0, numberOfCharAllowed)+dotDotDot;
     }
 
     decideContactInfo() {
         if(this.props.modeFilter === 'Advertiser'){
-            return this.props.listing.creator
+            return this.props.listing.publisher
         }else {
-            return this.props.listing.requestor
+            return this.props.listing.advertiser
         }
     }
 
     decideDescription() {
         if(this.props.modeFilter === 'Advertiser'){
-            return this.props.listing.listingDescription;
+            return this.props.listing.description;
         }else{
-            return this.props.listing.requestDescription;
+            return this.props.listing.description;
         }
     }
 
     decidePriceTag() {
         if(this.props.modeFilter === 'Advertiser') {
-            return this.props.listing.pricing + ' ' + this.props.listing.currency.toUpperCase();
+            return this.props.listing.price + ' ' + this.props.listing.currency.toUpperCase();
         }else{
             return '';
         }
-    }
-
-    handleExploreClick(id) {
-        this.context.router.history.push(`/listing/${id}`)
     }
 
     render() {
@@ -202,7 +197,7 @@ class ListingCard extends Component {
                     title={this.decideTitleDisplayText()}
                     placeholderImage={this.decidePlaceholderImage()}
                     description={this.decideDescription()}
-                    ask_date_from={this.props.listing.ask_date_from}
+                    date_added={this.props.listing.date_added}
                     id={this.props.listing.id}
                     handleExploreClick={this.props.onExploreClick}
                 />
@@ -213,7 +208,7 @@ class ListingCard extends Component {
                     title={this.decideTitleDisplayText()}
                     placeholderImage={this.decidePlaceholderImage()}
                     description={this.decideDescription()}
-                    ask_date_from={this.props.listing.ask_date_from}
+                    date_added={this.props.listing.date_added}
                     id={this.props.listing.id}
                     handleExploreClick={this.props.onExploreClick}
                 />
@@ -256,7 +251,7 @@ const GridCardRenderer = ({
         title,
         placeholderImage, 
         description, 
-        ask_date_from,
+        date_added,
         id,
         handleExploreClick 
     }) => ( <Card className='grid-card-container noselect'
@@ -270,7 +265,7 @@ const GridCardRenderer = ({
                     
                 <CardTitle 
                     title={title} 
-                    subtitle={'Posted on: '+ ask_date_from} 
+                    subtitle={'Posted on: '+ date_added} 
                     style={{paddingBottom:'0px'}}/>
                 <img src={placeholderImage} className='grid-img' alt='listing-img'/>
                 <CardText className='grid-msg-container'>
@@ -293,7 +288,7 @@ const ListingCardRenderer = ({
                                 title, 
                                 placeholderImage, 
                                 description, 
-                                ask_date_from,
+                                date_added,
                                 id,
                                 handleExploreClick
                             }) => (
@@ -309,7 +304,7 @@ const ListingCardRenderer = ({
             
         <CardTitle 
             title={title} 
-            subtitle={'Posted on: '+ ask_date_from} 
+            subtitle={'Posted on: '+ date_added} 
             className='listing-card-title'
             style={{paddingBottom:'0px'}}/>
         <img src={placeholderImage} className='listing-img' alt='listing-img'/>

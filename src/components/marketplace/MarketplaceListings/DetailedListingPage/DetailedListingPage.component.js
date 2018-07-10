@@ -72,14 +72,14 @@ class DetailedListingPage extends Component {
     
     componentWillMount() {
         // call on start load to get data
-        const baseURL = "http://localhost:3000/api/listing?id=";
-        axios.get(baseURL+this.props.viewingId)
+        const listingURL = `https://qchain-marketplace-postgrest.herokuapp.com/listing?id=eq.${this.props.viewingId}`;
+        axios.get(listingURL)
             .then((response) => {
                 document.title = `${response.data.contentTopic} - Qchain`;
                 this.setState({
                     ...this.state,
                     fetched: true,
-                    listing: response.data
+                    listing: response.data[0]
                 })
             })
             .catch((err) => {
@@ -137,7 +137,7 @@ const DetailedRequestListing = ({ listing, decideImage }) => (
         <div className='detailed-image-container'>
             <Card>
                 <CardText>
-                    <DetailedImageSlider imageSrc={decideImage(listing.images, listing.marketingType)} />
+                    <DetailedImageSlider imageSrc={decideImage(listing.images, listing.type)} />
                 </CardText>
             </Card>
             <div className='detailed-listing-action-section'>
@@ -152,14 +152,14 @@ const DetailedRequestListing = ({ listing, decideImage }) => (
         
         <Card className='listing-concrete-details-container'>
             <CardTitle>
-            <h1>{listing.contentTopic}</h1>
+            <h1>{listing.name}</h1>
             </CardTitle>
             <Divider />
             <CardText>
-            <div>Marketing Type: {listing.marketingType} {listing.type}</div>
-            <div>Marketing Medium: {listing.medium}</div>
+            <div>Marketing Type: {listing.type} {listing.classtype}</div>
+            <div>Marketing Medium: {listing.subcategory}</div>
             <br />
-            <div>{listing.requestDescription}</div>
+            <div>{listing.description}</div>
             </CardText>
         </Card>
         
@@ -167,10 +167,10 @@ const DetailedRequestListing = ({ listing, decideImage }) => (
             <Card>
                 <CardTitle>
                     <h3>Requestor Info:</h3>
-                    <h4>{listing.requestor} trading in {listing.currency}</h4>
+                    <h4>{listing.advertiser} trading in {listing.currency}</h4>
                 </CardTitle>
                 <CardText>
-                <div>Ask Date: {listing.ask_date_from}</div>
+                <div>Ask Date: {listing.date_added}</div>
                 </CardText>
             </Card>
             <div className='detailed-listing-action-section'>
@@ -205,7 +205,7 @@ const DetailedContentSpaceListing = ({ listing, decideImage }) => (
         <div className='detailed-image-container'>
             <Card>
                 <CardText>
-                    <DetailedImageSlider imageSrc={decideImage(listing.images, listing.marketingType)} />
+                    <DetailedImageSlider imageSrc={decideImage(listing.images, listing.type)} />
                     
                 </CardText>
             </Card>
@@ -221,27 +221,27 @@ const DetailedContentSpaceListing = ({ listing, decideImage }) => (
         
         <Card className='listing-concrete-details-container'>
             <CardTitle>
-            <h1>{listing.contentTopic}</h1>
+            <h1>{listing.name}</h1>
             </CardTitle>
             <Divider />
             <CardText className='listing-details-text'>
             <div className='details-text'>
                 <p>
-                    Marketing Type: {listing.marketingType} {listing.type} 
+                    Marketing Type: {listing.type} {listing.classtype} 
                 </p>
                 <p>
-                    Marketing Medium: {listing.medium}
+                    Marketing Medium: {listing.subcategory}
                 </p>
                 
             </div>
             
             <br />
             <div className='buy-section'>
-                <div className='price-section'>Price: {listing.pricing} {listing.timeUnit}</div>
+                <div className='price-section'>Price: {listing.price} {listing.currency}</div>
                 <Button className='buy-button' variant='outlined' color='primary'>Buy It Now</Button>
             </div>
             <br />
-            <div className='details-text'>{listing.listingDescription}</div>
+            <div className='details-text'>{listing.description}</div>
             </CardText>
         </Card>
         
@@ -249,11 +249,11 @@ const DetailedContentSpaceListing = ({ listing, decideImage }) => (
             <Card>
                 <CardTitle>
                     <h3>Creator Info:</h3>
-                    <h4>{listing.creator} trading in {listing.currency}</h4>
+                    <h4>{listing.publisher} trading in {listing.currency}</h4>
                 </CardTitle>
                 <CardText>
                 
-                <div>Promotion Duration: <br/> {listing.ask_date_from} - {listing.ask_date_to}</div>
+                <div>Promotion Duration: <br/> {listing.date_added} - {listing.expiration_date}</div>
                 </CardText>
             </Card>
             <div className='detailed-listing-action-section'>

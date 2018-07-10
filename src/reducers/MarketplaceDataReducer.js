@@ -39,7 +39,10 @@ const MarketplaceDataReducer = (state = initialState, action) => {
                 fetching: false,
                 fetched: true,
                 hasError: false,
-                db: action.payload,
+                db: {
+                    requestListings : action.payload.filter(requestListing => requestListing.classtype === 'request'),
+                    contentSpaceListings: action.payload.filter(contentSpaceListing => contentSpaceListing.classtype === 'listing')
+                },
             }
         }
 

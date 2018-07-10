@@ -51,9 +51,9 @@ class MarketplaceListings extends Component {
             // we are looking at content spaces, with price and currency
             return data.filter((listing)=>{
                 if(listing.currency.toUpperCase() === this.props.currencyFilter
-                    && listing.pricing <= (this.props.budgetFilter * 1000)
+                    && listing.price <= (this.props.budgetFilter * 1000)
                     && (this.props.contentGenreFilter === 'Show All' 
-                    || listing.marketing_type === this.props.contentGenreFilter)){
+                    || listing.type === this.props.contentGenreFilter)){
                     return listing;
                 }else{
                     return null;
@@ -62,7 +62,7 @@ class MarketplaceListings extends Component {
             // we are looking at requests
             return data.filter((listing)=>{
                 if(listing.currency.toUpperCase() === this.props.currencyFilter
-                    && (this.props.contentGenreFilter === 'Show All' || listing.marketing_type === this.props.contentGenreFilter)){
+                    && (this.props.contentGenreFilter === 'Show All' || listing.type === this.props.contentGenreFilter)){
                     return listing;
                 }else{
                     return null;
