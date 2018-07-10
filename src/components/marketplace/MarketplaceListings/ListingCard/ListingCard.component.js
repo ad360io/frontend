@@ -204,7 +204,7 @@ class ListingCard extends Component {
                     description={this.decideDescription()}
                     ask_date_from={this.props.listing.ask_date_from}
                     id={this.props.listing.id}
-                    handleExploreClick={this.handleExploreClick}
+                    handleExploreClick={this.props.onExploreClick}
                 />
                 : <ListingCardRenderer
                     marginLeft={this.decideMarginLeft()}
@@ -215,7 +215,7 @@ class ListingCard extends Component {
                     description={this.decideDescription()}
                     ask_date_from={this.props.listing.ask_date_from}
                     id={this.props.listing.id}
-                    handleExploreClick={this.handleExploreClick}
+                    handleExploreClick={this.props.onExploreClick}
                 />
             }
             
@@ -330,7 +330,17 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return {}
+    return {
+        onExploreClick: (viewingId) => {
+            dispatch({
+                type: 'SET_VIEWING_ID',
+                viewingId
+            })
+            dispatch({
+                type: 'CLOSE_DRAWER'
+            })
+        }
+    }
 }
 
 

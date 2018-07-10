@@ -5,7 +5,7 @@
 }
 
 .detailed-listing-renderer {
-    position: relative;
+    position: absolute;
     left:100vw;
     animation-name: listings-slide-in-from-right;
     animation-duration: 0.8s;

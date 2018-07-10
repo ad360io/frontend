@@ -62,7 +62,7 @@ class DetailedListingPage extends Component {
     componentWillMount() {
         // call on start load to get data
         const baseURL = "http://localhost:3000/api/listing?id=";
-        axios.get(baseURL+this.props.match.params.id)
+        axios.get(baseURL+this.props.viewingId)
             .then((response) => {
                 document.title = `${response.data.contentTopic} - Qchain`;
                 this.setState({
@@ -78,8 +78,6 @@ class DetailedListingPage extends Component {
                     error: err
                 })                
         })
-        // reset view
-        window.scrollTo(0,0);
     }
 
     render() {

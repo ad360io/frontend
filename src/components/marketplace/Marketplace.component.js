@@ -25,6 +25,7 @@ Children Components
 import MarketplaceFilter   from './MarketplaceFilter/MarketplaceFilter.component';
 import MarketplaceListings from './MarketplaceListings/MarketplaceListings.component';
 import ErrorPage           from '../ErrorPage/ErrorPage.component';
+import DetailedListingPage from './MarketplaceListings/DetailedListingPage/DetailedListingPage.component';
 
 /*
 Actions
@@ -65,9 +66,14 @@ class Marketplace extends Component {
             return <ErrorPage />
         }else if (this.props.fetched){
             return <div>
-                <div className='marketplace-container'>
+                <div className='marketplace-container'> 
+                    {
+                        this.props.viewingId !== null
+                            ? <DetailedListingPage viewingId={this.props.viewingId} />
+                            : <MarketplaceListings />
+                    }
                     <MarketplaceFilter />
-                    <MarketplaceListings />
+                    
                 </div>
             </div>
         }else{
@@ -80,7 +86,8 @@ class Marketplace extends Component {
 const mapStateToProps = (state) => {
     return {
         fetched        : state.MarketplaceDataReducer.fetched,
-        hasError       : state.MarketplaceDataReducer.hasError
+        hasError       : state.MarketplaceDataReducer.hasError,
+        viewingId      : state.MarketplaceDataReducer.viewingId
     }
 }
 

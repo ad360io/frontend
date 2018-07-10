@@ -7,6 +7,7 @@ const initialState = {
         requestListings : [],
         contentSpaceListings : [],
     },
+    viewingId: null,
     error: null
 }
 
@@ -39,6 +40,13 @@ const MarketplaceDataReducer = (state = initialState, action) => {
                 fetched: true,
                 hasError: false,
                 db: action.payload,
+            }
+        }
+
+        case 'SET_VIEWING_ID': {
+            return {
+                ...state,
+                viewingId: action.viewingId
             }
         }
         default:
