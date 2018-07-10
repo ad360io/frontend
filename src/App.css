@@ -88,9 +88,9 @@
     }
 }
 
-@keyframes listings-slide-in-from-right {
+@keyframes listings-slide-in-from-left {
     from {
-        left: 100vw;
+        left: -100vw;
     }
     to {
         left: 0vw;

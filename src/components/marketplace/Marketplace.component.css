@@ -1,8 +1,7 @@
 .marketplace-container {
     margin-top: 130px; /* Match header component*/
     position: relative;
-    left: -100vw;
-    animation-name: marketplace-slide-in-from-left;
+    animation-name: fade-in;
     animation-duration: 0.8s;
     animation-fill-mode: forwards;
     z-index: 2;

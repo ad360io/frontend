@@ -69,7 +69,7 @@ class Marketplace extends Component {
                 <div className='marketplace-container'> 
                     {
                         this.props.viewingId !== null
-                            ? <DetailedListingPage viewingId={this.props.viewingId} />
+                            ? <DetailedListingPage />
                             : <MarketplaceListings />
                     }
                     <MarketplaceFilter />

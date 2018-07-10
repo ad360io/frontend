@@ -6,8 +6,8 @@
 
 .detailed-listing-renderer {
     position: absolute;
-    left:100vw;
-    animation-name: listings-slide-in-from-right;
+    left: -100vw;
+    animation-name: listings-slide-in-from-left;
     animation-duration: 0.8s;
     animation-fill-mode: forwards;
     text-align: 'left';

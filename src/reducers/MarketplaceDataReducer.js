@@ -49,6 +49,13 @@ const MarketplaceDataReducer = (state = initialState, action) => {
                 viewingId: action.viewingId
             }
         }
+
+        case 'CLOSE_LISTING': {
+            return {
+                ...state,
+                viewingId: null
+            }
+        }
         default:
             return state;
     }

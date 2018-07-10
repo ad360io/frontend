@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { connect } from 'react-redux';
 
 import './DetailedListingPage.component.css';
 
@@ -85,6 +86,7 @@ class DetailedListingPage extends Component {
         // make a request to get detailed listing info using ID
         // parse info onto the page
         return <div className='detailed-listing-container'>
+            <Button style={{fontSize:'25px'}} onClick={()=> this.props.closeListing()}>{`<`}</Button>
             {
                 (this.state.fetched
                     ? ( this.state.listing.type === "request" 
@@ -172,7 +174,7 @@ const DetailedRequestListing = ({ listing, decideImage }) => (
 )
 
 const DetailedContentSpaceListing = ({ listing, decideImage }) => (
-    <div className='detailed-listing-renderer' >
+    <div className='detailed-listing-renderer'>
         {
             /* ********************  SCHEMA OF A CONTENT SPACE LISTING ********************
                 "id" : #,
@@ -256,5 +258,27 @@ const DetailedContentSpaceListing = ({ listing, decideImage }) => (
     </div>
 )
 
+const mapStateToProps = (state) => {
+    return {
+        viewingId: state.MarketplaceDataReducer.viewingId
+    }
+}
 
-export default DetailedListingPage;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        closeListing: () => {
+            dispatch({
+                type: 'CLOSE_LISTING'
+            })
+            dispatch({
+                type: 'OPEN_DRAWER'
+            })
+        }
+    }
+}
+
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(DetailedListingPage);
