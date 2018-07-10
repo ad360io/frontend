@@ -2,7 +2,7 @@
 Core Libs
 */
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import { connect }          from 'react-redux';
 
 /*
 Local CSS
@@ -14,17 +14,18 @@ Children Components
 */
 import RequiredFormFields from './RequiredFormFields/RequiredFormFields.component';
 import OptionalFormFields from './OptionalFormFields/OptionalFormFields.component';
-import FormConfirmation from './FormConfirmation/FormConfirmation.component';
+import FormConfirmation   from './FormConfirmation/FormConfirmation.component';
+import FormSubmitButton   from './FromSubmitButton/FormSubmitButton.component';
 
 /*
 Material UI
 */
 import { withStyles } from '@material-ui/core/styles';
-import Stepper from '@material-ui/core/Stepper';
-import Step from '@material-ui/core/Step';
-import StepLabel from '@material-ui/core/StepLabel';
-import StepContent from '@material-ui/core/StepContent';
-import Button from '@material-ui/core/Button';
+import Stepper        from '@material-ui/core/Stepper';
+import Step           from '@material-ui/core/Step';
+import StepLabel      from '@material-ui/core/StepLabel';
+import StepContent    from '@material-ui/core/StepContent';
+import Button         from '@material-ui/core/Button';
 
 /*
 React Bootstrap
@@ -39,6 +40,7 @@ const styles = theme => ({
     button: {
         marginTop: theme.spacing.unit,
         marginRight: theme.spacing.unit,
+        float: 'left'
     },
     actionsContainer: {
         marginBottom: theme.spacing.unit * 2,
@@ -105,10 +107,14 @@ class CreateListingForm extends Component {
     }
 
     handleNext = () => {
-        this.setState({
-            ...this.state,
-            activeStep: this.state.activeStep + 1,
-        });
+        if(this.state.activeStep === 2){
+            this.handleSubmitForm();
+        }else {
+            this.setState({
+                ...this.state,
+                activeStep: this.state.activeStep + 1,
+            });
+        }
     };
 
     handleBack = () => {
@@ -127,10 +133,10 @@ class CreateListingForm extends Component {
 
     isFormFilled() {
         if (this.props.modeFilter === 'Advertiser') {
-            return this.props.advertiserForm.marketingType.length > 0
-                && this.props.advertiserForm.marketingMedium.length > 0
+            return this.props.advertiserForm.type.length > 0
+                && this.props.advertiserForm.subcategory.length > 0
                 && this.props.advertiserForm.description.length > 0
-                && this.props.advertiserForm.topic.length > 0
+                && this.props.advertiserForm.name.length > 0
         }
         else {
             return this.props.publisherForm.marketingType.length > 0
@@ -174,15 +180,20 @@ class CreateListingForm extends Component {
                                         >
                                             Back
                                         </Button>
-                                        <Button
-                                            variant="contained"
-                                            color="primary"
-                                            onClick={this.handleNext}
-                                            className={classes.button}
-                                        >
-                                            {activeStep === steps.length - 1 ? 'Confirm' : 'Next'}
-                                        </Button>
-
+                                        <div hidden={activeStep === steps.length - 1}>
+                                            <Button
+                                                variant="contained"
+                                                color="primary"
+                                                onClick={this.handleNext}
+                                                className={classes.button}
+                                                
+                                            >
+                                                Next
+                                            </Button>
+                                        </div>
+                                        <div hidden={activeStep !== steps.length - 1}>
+                                            <FormSubmitButton className={classes.button}/>
+                                        </div>
                                     </div>
                                     <Alert
                                         bsStyle='danger'
@@ -197,10 +208,6 @@ class CreateListingForm extends Component {
                     );
                 })}
             </Stepper>
-            <form className='create-form'>
-
-
-            </form>
         </div>;
     }
 }
