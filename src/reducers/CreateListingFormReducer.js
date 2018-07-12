@@ -1,10 +1,10 @@
 /** DEFAULT STATE */
 const defaultState = {
     advertiserForm: {
-        type: '',
-        subcategory: '',
+        marketingType: '',
+        marketingMedium: '',
         description: '',
-        name: '',
+        topic: '',
     },
     publisherForm: {
         marketingType: '',
@@ -34,7 +34,7 @@ const CreateListingFormReducer = (state = defaultState, action) => {
                 ...state,
                 advertiserForm: {
                     ...state.advertiserForm,
-                    type: action.marketingType,
+                    marketingType: action.marketingType,
                 }
             };
 
@@ -43,7 +43,7 @@ const CreateListingFormReducer = (state = defaultState, action) => {
                 ...state,
                 advertiserForm: {
                     ...state.advertiserForm,
-                    subcategory: action.marketingMedium,
+                    marketingMedium: action.marketingMedium,
                 }
             }
 
@@ -61,7 +61,7 @@ const CreateListingFormReducer = (state = defaultState, action) => {
                 ...state,
                 advertiserForm: {
                     ...state.advertiserForm,
-                    name: action.topic,
+                    topic: action.topic,
                 }
             }
 

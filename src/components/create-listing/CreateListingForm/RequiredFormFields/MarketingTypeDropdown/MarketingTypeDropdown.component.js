@@ -185,8 +185,8 @@ class MarketingTypeDropdown extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        adv_marketingType   : state.CreateListingFormReducer.advertiserForm.type,
-        adv_marketingMedium : state.CreateListingFormReducer.advertiserForm.subcategory,
+        adv_marketingType   : state.CreateListingFormReducer.advertiserForm.marketingType,
+        adv_marketingMedium : state.CreateListingFormReducer.advertiserForm.marketingMedium,
         pub_makretingType   : state.CreateListingFormReducer.publisherForm.marketingType,
         pub_marketingMedium : state.CreateListingFormReducer.publisherForm.marketingMedium
     }

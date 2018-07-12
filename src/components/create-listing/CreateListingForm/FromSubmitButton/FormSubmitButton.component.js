@@ -10,6 +10,11 @@ class FormSubmitButton extends Component{
         super(props);
         this.handleSubmitClick = this.handleSubmitClick.bind(this);
         this.createPayload = this.createPayload.bind(this);
+        this.state ={
+            posted: false,
+            finished: false,
+            err: null,
+        }
     }
     
     handleSubmitClick() {
@@ -25,20 +30,38 @@ class FormSubmitButton extends Component{
     }
 
     createPayload(){
-        return {
-            id: 3,
-            name: this.props.advertiserForm.name,
-            description: this.props.advertiserForm.description,
-            subcategory: this.props.advertiserForm.subcategory,
-            date_added: new Date().toISOString().slice(0, 10),
-            expiration_date: null,
-            url: null,
-            price: null,
-            currency: this.props.currencyFilter,
-            type: this.props.advertiserForm.type,
-            classtype: "request",
-            advertiser: "yao"
-        } 
+        if(this.props.modeFilter === 'Advertiser'){
+            return {
+                id: 3,
+                name: this.props.advertiserForm.topic,
+                description: this.props.advertiserForm.description,
+                subcategory: this.props.advertiserForm.marketingMedium,
+                date_added: new Date().toISOString().slice(0, 10),
+                expiration_date: null,
+                url: null,
+                price: null,
+                currency: this.props.currencyFilter,
+                type: this.props.advertiserForm.marketingType,
+                classtype: "request",
+                advertiser: "yao"
+            } 
+        }else {
+            return {
+                id: 4,
+                name: this.props.publisherForm.topic,
+                description: this.props.publisherForm.description,
+                subcategory: this.props.publisherForm.marketingMedium,
+                date_added: this.props.publisherForm.dateFrom,
+                expiration_date: this.props.publisherForm.dateTo,
+                url: null,
+                price: this.props.publisherForm.price,
+                currency: this.props.currencyFilter,
+                type: this.props.publisherForm.marketingType,
+                classtype: "listing",
+                publisher: "yao"
+            }
+        }
+        
     }
 
     render () {
