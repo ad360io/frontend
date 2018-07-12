@@ -43,6 +43,7 @@ class DetailedListingPage extends Component {
         // Binding functions
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
         this.decideImage = this.decideImage.bind(this);
+        this.handleCloseListing = this.handleCloseListing.bind(this);
     }
 
     componentDidMount() {
@@ -75,7 +76,7 @@ class DetailedListingPage extends Component {
         const listingURL = `https://qchain-marketplace-postgrest.herokuapp.com/listing?id=eq.${this.props.viewingId}`;
         axios.get(listingURL)
             .then((response) => {
-                document.title = `${response.data.contentTopic} - Qchain`;
+                document.title = `${response.data[0].name} - Qchain`;
                 this.setState({
                     ...this.state,
                     fetched: true,
@@ -91,12 +92,17 @@ class DetailedListingPage extends Component {
         })
     }
 
+    handleCloseListing() {
+        this.props.closeListing();
+        document.title = 'Qchain - Marketplace';
+    }
+
     render() {
         // console.log(this.props.match.params.id)
         // make a request to get detailed listing info using ID
         // parse info onto the page
         return <div className='detailed-listing-container'>
-            <Button style={{fontSize:'25px'}} onClick={()=> this.props.closeListing()}>{`<`}</Button>
+            <Button style={{fontSize:'25px'}} onClick={this.handleCloseListing}>{`<`}</Button>
             {
                 (this.state.fetched
                     ? ( this.state.listing.classtype === "request" 
