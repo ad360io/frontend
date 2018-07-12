@@ -63,7 +63,7 @@ class DetailedListingPage extends Component {
             return branded_content_ph;
         }else if(marketingType === 'Influencer Post'){
             return influencer_marketing_ph;
-        }else if(marketingType === 'Sponsorships'){
+        }else if(marketingType === 'Sponsorship'){
             return sponsorships_ph;
         }else{
             return default_ph;
@@ -99,7 +99,7 @@ class DetailedListingPage extends Component {
             <Button style={{fontSize:'25px'}} onClick={()=> this.props.closeListing()}>{`<`}</Button>
             {
                 (this.state.fetched
-                    ? ( this.state.listing.type === "request" 
+                    ? ( this.state.listing.classtype === "request" 
                         ? <DetailedRequestListing 
                                 listing={this.state.listing}
                                 decideImage={this.decideImage}
