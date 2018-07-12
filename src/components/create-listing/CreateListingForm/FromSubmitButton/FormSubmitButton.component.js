@@ -1,15 +1,64 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from 'react';
+import { connect }          from 'react-redux';
+
+import axios from 'axios';
 
 import Button from '@material-ui/core/Button';
 
-const FormSubmitButton = ({className}) => (
-    <Button color='primary' variant='raised' className={className}>Confirm</Button>
-)
+class FormSubmitButton extends Component{
+    constructor(props){
+        super(props);
+        this.handleSubmitClick = this.handleSubmitClick.bind(this);
+        this.createPayload = this.createPayload.bind(this);
+    }
+    
+    handleSubmitClick() {
+        const listingURL = "https://qchain-marketplace-postgrest.herokuapp.com/listing";
+        console.log(this.createPayload());
+        axios.post(listingURL, this.createPayload())
+                    .then((response) => {
+                        console.log(response);
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    })
+    }
+
+    createPayload(){
+        return {
+            id: 3,
+            name: this.props.advertiserForm.name,
+            description: this.props.advertiserForm.description,
+            subcategory: this.props.advertiserForm.subcategory,
+            date_added: new Date().toISOString().slice(0, 10),
+            expiration_date: null,
+            url: null,
+            price: null,
+            currency: this.props.currencyFilter,
+            type: this.props.advertiserForm.type,
+            classtype: "request",
+            advertiser: "yao"
+        } 
+    }
+
+    render () {
+        return <Button 
+                color='primary' 
+                variant='raised' 
+                className={this.props.classname}
+                onClick={()=> this.handleSubmitClick()}
+            >
+                Confirm
+            </Button>
+    }
+}
 
 const mapStateToProps = (state) => {
     return {
-
+        modeFilter      : state.MenuBarFilterReducer.modeFilter,
+        currencyFilter  : state.MenuBarFilterReducer.currencyFilter,
+        advertiserForm  : state.CreateListingFormReducer.advertiserForm,
+        publisherForm   : state.CreateListingFormReducer.publisherForm
     }
 }
 
