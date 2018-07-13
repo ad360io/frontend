@@ -139,7 +139,33 @@ const CreateListingFormReducer = (state = defaultState, action) => {
                     timeUnit: action.timeUnit,
                 }
             }
+        
+        case 'RESET_ADV_FORM':
+            return {
+                ...state,
+                advertiserForm: {
+                    marketingType: '',
+                    marketingMedium: '',
+                    description: '',
+                    topic: '',
+                }
+            }
 
+        case 'RESET_PUB_FORM':
+            return {
+                ...state,
+                publisherForm: {
+                    marketingType: '',
+                    marketingMedium: '',
+                    description: '',
+                    topic: '',
+                    imgFile: null,
+                    price: '',
+                    timeUnit: 'per day',
+                    dateFrom: undefined,
+                    dateTo: undefined,
+                }
+            }
         default:
             return state;
     }

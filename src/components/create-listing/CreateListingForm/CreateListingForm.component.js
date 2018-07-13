@@ -77,11 +77,12 @@ class CreateListingForm extends Component {
         this.decideFormTitle = this.decideFormTitle.bind(this);
         this.handleSubmitForm = this.handleSubmitForm.bind(this);
         this.getStepContent = this.getStepContent.bind(this);
-        this.isFormFilled = this.isFormFilled.bind(this)
+        this.isFormFilled = this.isFormFilled.bind(this);
+        this.onFormResetClick = this.onFormResetClick.bind(this);
     }
 
     componentWillReceiveProps() {
-        this.handleReset();
+        this.handleStepperReset();
     }
 
     getStepContent(step) {
@@ -111,7 +112,7 @@ class CreateListingForm extends Component {
         })
     }
 
-    handleNext = () => {
+    handleStepperNext = () => {
         if(this.state.activeStep === 2){
             this.handleSubmitForm();
         }else {
@@ -122,19 +123,32 @@ class CreateListingForm extends Component {
         }
     };
 
-    handleBack = () => {
+    handleStepperBack = () => {
         this.setState({
             ...this.state,
             activeStep: this.state.activeStep - 1,
         });
     };
 
-    handleReset = () => {
+    handleStepperReset = () => {
         this.setState({
             ...this.state,
             activeStep: 0,
         });
     };
+
+    onFormResetClick() {
+        this.setState({
+            activeStep: 0,
+            submited: false
+        })
+
+        if(this.props.modeFilter === 'Advertiser'){
+            this.props.resetAdvForm();
+        }else {
+            this.props.resetPubForm();
+        }
+    }
 
     isFormFilled() {
         if (this.props.modeFilter === 'Advertiser') {
@@ -175,13 +189,11 @@ class CreateListingForm extends Component {
                             <StepContent>
                                 <div>{this.getStepContent(index)}</div>
                                 <div className={classes.actionsContainer}>
-                                    <div
-                                        hidden={activeStep === 0 && !this.isFormFilled()}
-                                    >
+                                    <div hidden={activeStep === 0 && !this.isFormFilled()}>
                                         <div hidden={this.state.submited}>
                                             <Button
                                                 disabled={activeStep === 0}
-                                                onClick={this.handleBack}
+                                                onClick={this.handleStepperBack}
                                                 className={classes.button}
                                             >
                                                 Back
@@ -192,16 +204,31 @@ class CreateListingForm extends Component {
                                             <Button
                                                 variant="contained"
                                                 color="primary"
-                                                onClick={this.handleNext}
+                                                onClick={this.handleStepperNext}
                                                 className={classes.button}
                                                 
                                             >
                                                 Next
                                             </Button>
                                         </div>
+
                                         <div hidden={activeStep !== steps.length - 1}>
-                                            <FormSubmitButton onSubmit={this.handleSubmitForm} className={classes.button}/>
+                                            <FormSubmitButton 
+                                                onSubmit={this.handleSubmitForm} 
+                                                className={classes.button}
+                                            />
                                         </div>
+
+                                        <div hidden={!this.state.submited}>
+                                            Are you ready to create another listing? 
+                                            <Button 
+                                                variant='outlined'
+                                                onClick={this.onFormResetClick}
+                                            >
+                                                Yes!
+                                            </Button>
+                                        </div>
+
                                     </div>
                                     <Alert
                                         bsStyle='danger'
@@ -230,7 +257,18 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return {}
+    return {
+        resetAdvForm: () => {
+            dispatch({
+                type: 'RESET_ADV_FORM'
+            })
+        },
+        resetPubForm: () => {
+            dispatch({
+                type: 'RESET_PUB_FORM'
+            })
+        }
+    }
 }
 
 
