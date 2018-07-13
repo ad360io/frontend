@@ -19,12 +19,12 @@ class FormSubmitButton extends Component{
     
     handleSubmitClick() {
         const listingURL = "https://qchain-marketplace-postgrest.herokuapp.com/listing";
-        console.log(this.createPayload());
         axios.post(listingURL, this.createPayload())
                     .then((response) => {
-                        console.log(response);
+                        console.log("RESPONSE FROM POST API " + response);
                     })
                     .catch((err) => {
+                        console.log("ERRRRRRRRR ");
                         console.log(err);
                     })
     }
@@ -32,7 +32,6 @@ class FormSubmitButton extends Component{
     createPayload(){
         if(this.props.modeFilter === 'Advertiser'){
             return {
-                id: 3,
                 name: this.props.advertiserForm.topic,
                 description: this.props.advertiserForm.description,
                 subcategory: this.props.advertiserForm.marketingMedium,
@@ -47,7 +46,6 @@ class FormSubmitButton extends Component{
             } 
         }else {
             return {
-                id: 4,
                 name: this.props.publisherForm.topic,
                 description: this.props.publisherForm.description,
                 subcategory: this.props.publisherForm.marketingMedium,

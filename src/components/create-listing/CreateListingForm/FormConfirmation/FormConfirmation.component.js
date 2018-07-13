@@ -23,11 +23,11 @@ const AdvertiserFormConfirmation = ({fields}) => (
                 <tbody className='tbody-default'>
                 <tr>
                     <td>Marketing Type </td>
-                    <td>{fields.type}</td>
+                    <td>{fields.marketingType}</td>
                 </tr>
                 <tr>
                     <td>Marketing Medium </td>
-                    <td>{fields.subcategory}</td>
+                    <td>{fields.marketingMedium}</td>
                 </tr>
                 <tr>
                     <td>Description </td>
@@ -35,7 +35,7 @@ const AdvertiserFormConfirmation = ({fields}) => (
                 </tr>
                 <tr>
                     <td>Content Topic </td>
-                    <td>{fields.name}</td>
+                    <td>{fields.topic}</td>
                 </tr>
                 </tbody>
         </table>

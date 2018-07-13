@@ -194,7 +194,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     const { modeFilter } = ownProps;
-    console.log(ownProps)
     return {
         onTypeClick: (value) => {
             if(modeFilter === 'Advertiser') {

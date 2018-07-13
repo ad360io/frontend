@@ -21,12 +21,6 @@ class AvailabilityPicker extends Component {
         numberOfMonths: 2
     }
 
-    constructor(props){
-        super(props);
-        console.log(props);
-
-    }
-
     render() {
         const { from , to } = this.props;
         const modifiers = { start: from, end: to };
