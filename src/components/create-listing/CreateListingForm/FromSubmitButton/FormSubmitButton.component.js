@@ -4,6 +4,9 @@ import { connect }          from 'react-redux';
 import axios from 'axios';
 
 import Button from '@material-ui/core/Button';
+import CircularProgress from '@material-ui/core/CircularProgress';
+
+import { Alert } from 'react-bootstrap';
 
 class FormSubmitButton extends Component{
     constructor(props){
@@ -18,14 +21,27 @@ class FormSubmitButton extends Component{
     }
     
     handleSubmitClick() {
+        this.props.onSubmit();
+
+        this.setState({
+            ...this.state,
+            posted: true
+        });
+
         const listingURL = "https://qchain-marketplace-postgrest.herokuapp.com/listing";
         axios.post(listingURL, this.createPayload())
                     .then((response) => {
-                        console.log("RESPONSE FROM POST API " + response);
+                        this.setState({
+                            ...this.state,
+                            finished: true,
+                        })
                     })
                     .catch((err) => {
-                        console.log("ERRRRRRRRR ");
-                        console.log(err);
+                        this.setState({
+                            ...this.state,
+                            finished: true,
+                            err: err
+                        })
                     })
     }
 
@@ -63,7 +79,18 @@ class FormSubmitButton extends Component{
     }
 
     render () {
-        return <Button 
+        if (this.state.posted && this.state.finished && this.state.err === null){
+            // successfully posted to create listing
+            return <Alert bsStyle='success'>Congratulations! Your listing is successfully created.</Alert>
+        }else if (this.state.posted && this.state.finished && this.state.err !== null){
+            // there's an error catched after posting
+            return <Alert bsStyle='danger'>Oops! Something went wrong, please contact our team if the problem persist!</Alert>
+        }else if (this.state.posted && !this.state.finished){
+            // waiting for response, loading
+            return <CircularProgress />
+        }else {
+            // haven't posted yet, return the magical submit button
+            return <Button 
                 color='primary' 
                 variant='raised' 
                 className={this.props.classname}
@@ -71,6 +98,7 @@ class FormSubmitButton extends Component{
             >
                 Confirm
             </Button>
+        }
     }
 }
 

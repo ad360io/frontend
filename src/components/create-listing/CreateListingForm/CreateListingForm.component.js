@@ -70,7 +70,8 @@ class CreateListingForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            activeStep: 0
+            activeStep: 0,
+            submited: false,
         }
 
         this.decideFormTitle = this.decideFormTitle.bind(this);
@@ -103,7 +104,11 @@ class CreateListingForm extends Component {
     }
 
     handleSubmitForm() {
-        // build URL to Postgrest
+        // hide back button, reset fields provide an option to create another listing
+        this.setState({
+            ...this.state,
+            submited: true,
+        })
     }
 
     handleNext = () => {
@@ -173,13 +178,16 @@ class CreateListingForm extends Component {
                                     <div
                                         hidden={activeStep === 0 && !this.isFormFilled()}
                                     >
-                                        <Button
-                                            disabled={activeStep === 0}
-                                            onClick={this.handleBack}
-                                            className={classes.button}
-                                        >
-                                            Back
-                                        </Button>
+                                        <div hidden={this.state.submited}>
+                                            <Button
+                                                disabled={activeStep === 0}
+                                                onClick={this.handleBack}
+                                                className={classes.button}
+                                            >
+                                                Back
+                                            </Button>
+                                        </div>
+                                        
                                         <div hidden={activeStep === steps.length - 1}>
                                             <Button
                                                 variant="contained"
@@ -192,7 +200,7 @@ class CreateListingForm extends Component {
                                             </Button>
                                         </div>
                                         <div hidden={activeStep !== steps.length - 1}>
-                                            <FormSubmitButton className={classes.button}/>
+                                            <FormSubmitButton onSubmit={this.handleSubmitForm} className={classes.button}/>
                                         </div>
                                     </div>
                                     <Alert
