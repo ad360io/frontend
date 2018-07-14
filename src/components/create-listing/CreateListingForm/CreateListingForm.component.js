@@ -69,20 +69,14 @@ class CreateListingForm extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            activeStep: 0,
-            submited: false,
-        }
 
         this.decideFormTitle = this.decideFormTitle.bind(this);
         this.handleSubmitForm = this.handleSubmitForm.bind(this);
         this.getStepContent = this.getStepContent.bind(this);
         this.isFormFilled = this.isFormFilled.bind(this);
         this.onFormResetClick = this.onFormResetClick.bind(this);
-    }
-
-    componentWillReceiveProps() {
-        this.handleStepperReset();
+        this.getActiveStep = this.getActiveStep.bind(this);
+        this.getSubmitted = this.getSubmitted.bind(this);
     }
 
     getStepContent(step) {
@@ -106,43 +100,30 @@ class CreateListingForm extends Component {
 
     handleSubmitForm() {
         // hide back button, reset fields provide an option to create another listing
-        this.setState({
-            ...this.state,
-            submited: true,
-        })
+        if(this.props.modeFilter === 'Advertiser'){
+            this.props.onAdvSubmit();
+        }else {
+            this.props.onPubSubmit();
+        }
     }
 
     handleStepperNext = () => {
-        if(this.state.activeStep === 2){
-            this.handleSubmitForm();
+        if(this.props.modeFilter === 'Advertiser'){
+            this.props.advStepperNext();
         }else {
-            this.setState({
-                ...this.state,
-                activeStep: this.state.activeStep + 1,
-            });
+            this.props.pubStepperNext();
         }
     };
 
     handleStepperBack = () => {
-        this.setState({
-            ...this.state,
-            activeStep: this.state.activeStep - 1,
-        });
-    };
-
-    handleStepperReset = () => {
-        this.setState({
-            ...this.state,
-            activeStep: 0,
-        });
+        if(this.props.modeFilter === 'Advertiser'){
+            this.props.advStepperBack();
+        }else {
+            this.props.pubStepperBack();
+        }
     };
 
     onFormResetClick() {
-        this.setState({
-            activeStep: 0,
-            submited: false
-        })
-
         if(this.props.modeFilter === 'Advertiser'){
             this.props.resetAdvForm();
         }else {
@@ -168,14 +149,29 @@ class CreateListingForm extends Component {
         }
     }
 
+    getActiveStep() {
+        if(this.props.modeFilter === 'Advertiser'){
+            return this.props.advertiserActiveStep;
+        }else{
+            return this.props.publisherActiveStep;
+        }
+    }
+
+    getSubmitted() {
+        if(this.props.modeFilter === 'Advertiser') {
+            return this.props.advertiserSubmitted;
+        }else {
+            return this.props.publisherSubmitted;
+        }
+    }
+
     render() {
         const { classes } = this.props;
         const steps = getSteps();
-        const { activeStep } = this.state;
 
         return <div className={classes.root + ' create-listing-form-container'}>
             <h2 className='create-listing-form-title'>{this.decideFormTitle()}</h2>
-            <Stepper activeStep={activeStep} orientation="vertical">
+            <Stepper activeStep={this.getActiveStep()} orientation="vertical">
                 {steps.map((label, index) => {
                     return (
                         <Step key={label}>
@@ -189,10 +185,10 @@ class CreateListingForm extends Component {
                             <StepContent>
                                 <div>{this.getStepContent(index)}</div>
                                 <div className={classes.actionsContainer}>
-                                    <div hidden={activeStep === 0 && !this.isFormFilled()}>
-                                        <div hidden={this.state.submited}>
+                                    <div hidden={this.getActiveStep() === 0 && !this.isFormFilled()}>
+                                        <div hidden={this.getSubmitted()}>
                                             <Button
-                                                disabled={activeStep === 0}
+                                                disabled={this.getActiveStep() === 0}
                                                 onClick={this.handleStepperBack}
                                                 className={classes.button}
                                             >
@@ -200,7 +196,7 @@ class CreateListingForm extends Component {
                                             </Button>
                                         </div>
                                         
-                                        <div hidden={activeStep === steps.length - 1}>
+                                        <div hidden={this.getActiveStep() === steps.length - 1}>
                                             <Button
                                                 variant="contained"
                                                 color="primary"
@@ -212,14 +208,14 @@ class CreateListingForm extends Component {
                                             </Button>
                                         </div>
 
-                                        <div hidden={activeStep !== steps.length - 1}>
+                                        <div hidden={this.getActiveStep() !== steps.length - 1}>
                                             <FormSubmitButton 
                                                 onSubmit={this.handleSubmitForm} 
                                                 className={classes.button}
                                             />
                                         </div>
 
-                                        <div hidden={!this.state.submited}>
+                                        <div hidden={!this.getSubmitted()}>
                                             Are you ready to create another listing? 
                                             <Button 
                                                 variant='outlined'
@@ -249,10 +245,14 @@ class CreateListingForm extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        modeFilter      : state.MenuBarFilterReducer.modeFilter,
-        currencyFilter  : state.MenuBarFilterReducer.currencyFilter,
-        advertiserForm  : state.CreateListingFormReducer.advertiserForm,
-        publisherForm   : state.CreateListingFormReducer.publisherForm
+        modeFilter           : state.MenuBarFilterReducer.modeFilter,
+        currencyFilter       : state.MenuBarFilterReducer.currencyFilter,
+        advertiserForm       : state.CreateListingFormReducer.advertiserForm,
+        publisherForm        : state.CreateListingFormReducer.publisherForm,
+        advertiserActiveStep : state.CreateListingFormReducer.advertiserActiveStep,
+        publisherActiveStep  : state.CreateListingFormReducer.publisherActiveStep,
+        advertiserSubmitted  : state.CreateListingFormReducer.advertiserSubmitted,
+        publisherSubmitted   : state.CreateListingFormReducer.publisherSubmitted
     }
 }
 
@@ -266,6 +266,36 @@ const mapDispatchToProps = (dispatch) => {
         resetPubForm: () => {
             dispatch({
                 type: 'RESET_PUB_FORM'
+            })
+        },
+        advStepperNext: () => {
+            dispatch({
+                type: 'ADV_STEPPER_NEXT'
+            })
+        },
+        advStepperBack: () => {
+            dispatch({
+                type: 'ADV_STEPPER_BACK'
+            })
+        },
+        onAdvSubmit: () => {
+            dispatch({
+                type: 'ON_ADV_SUBMIT'
+            })
+        },
+        pubStepperNext: () => {
+            dispatch({
+                type: 'PUB_STEPPER_NEXT'
+            })
+        },
+        pubStepperBack: () => {
+            dispatch({
+                type: 'PUB_STEPPER_BACK'
+            })
+        },
+        onPubSubmit: () => {
+            dispatch({
+                type: 'ON_PUB_SUBMIT'
             })
         }
     }

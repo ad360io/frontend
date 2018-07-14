@@ -16,7 +16,11 @@ const defaultState = {
         timeUnit: 'per day',
         dateFrom: undefined,
         dateTo: undefined,
-    }
+    },
+    advertiserActiveStep: 0,
+    publisherActiveStep: 0,
+    advertiserSubmitted: false,
+    publisehrSubmitted: false,
 }
 
 /**
@@ -148,7 +152,9 @@ const CreateListingFormReducer = (state = defaultState, action) => {
                     marketingMedium: '',
                     description: '',
                     topic: '',
-                }
+                },
+                advertiserActiveStep: 0,
+                advertiserSubmitted: false
             }
 
         case 'RESET_PUB_FORM':
@@ -164,8 +170,48 @@ const CreateListingFormReducer = (state = defaultState, action) => {
                     timeUnit: 'per day',
                     dateFrom: undefined,
                     dateTo: undefined,
-                }
+                },
+                publisherActiveStep: 0,
+                publisherSubmitted: false
             }
+        
+        case 'ADV_STEPPER_NEXT':
+            return {      
+                ...state,
+                advertiserActiveStep: state.advertiserActiveStep + 1
+            }    
+            
+            
+        case 'ADV_STEPPER_BACK':
+            return {
+                ...state,
+                advertiserActiveStep: state.advertiserActiveStep - 1
+            }
+
+        case 'ON_ADV_SUBMIT':
+            return {
+                ...state,
+                advertiserSubmitted: true
+            }
+
+        case 'PUB_STEPPER_NEXT':
+            return {
+                ...state,
+                publisherActiveStep: state.publisherActiveStep + 1
+            }
+            
+        case 'PUB_STEPPER_BACK':
+            return {
+                ...state,
+                publisherActiveStep: state.publisherActiveStep - 1
+            }
+
+        case 'ON_PUB_SUBMIT':
+            return {
+                ...state,
+                publisherSubmitted: true
+            }
+        
         default:
             return state;
     }
