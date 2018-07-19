@@ -1,14 +1,14 @@
 /** DEFAULT STATE */
 const defaultState = {
     advertiserForm: {
-        marketingType: '',
-        marketingMedium: '',
+        adFormat: '',
+        medium: '',
         description: '',
         topic: '',
     },
     publisherForm: {
-        marketingType: '',
-        marketingMedium: '',
+        adFormat: '',
+        medium: '',
         description: '',
         topic: '',
         imgFile: null,
@@ -38,7 +38,7 @@ const CreateListingFormReducer = (state = defaultState, action) => {
                 ...state,
                 advertiserForm: {
                     ...state.advertiserForm,
-                    marketingType: action.marketingType,
+                    adFormat: action.adFormat,
                 }
             };
 
@@ -47,7 +47,7 @@ const CreateListingFormReducer = (state = defaultState, action) => {
                 ...state,
                 advertiserForm: {
                     ...state.advertiserForm,
-                    marketingMedium: action.marketingMedium,
+                    medium: action.medium,
                 }
             }
 
@@ -75,7 +75,7 @@ const CreateListingFormReducer = (state = defaultState, action) => {
                 ...state,
                 publisherForm: {
                     ...state.publisherForm,
-                    marketingType: action.marketingType,
+                    adFormat: action.adFormat,
                 }
             };
 
@@ -84,7 +84,7 @@ const CreateListingFormReducer = (state = defaultState, action) => {
                 ...state,
                 publisherForm: {
                     ...state.publisherForm,
-                    marketingMedium: action.marketingMedium,
+                    medium: action.medium,
                 }
             }
 
@@ -148,8 +148,8 @@ const CreateListingFormReducer = (state = defaultState, action) => {
             return {
                 ...state,
                 advertiserForm: {
-                    marketingType: '',
-                    marketingMedium: '',
+                    adFormat: '',
+                    medium: '',
                     description: '',
                     topic: '',
                 },
@@ -161,8 +161,8 @@ const CreateListingFormReducer = (state = defaultState, action) => {
             return {
                 ...state,
                 publisherForm: {
-                    marketingType: '',
-                    marketingMedium: '',
+                    adFormat: '',
+                    medium: '',
                     description: '',
                     topic: '',
                     imgFile: null,

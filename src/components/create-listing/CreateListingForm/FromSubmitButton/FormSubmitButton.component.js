@@ -30,7 +30,7 @@ class FormSubmitButton extends Component{
 
         const listingURL = "https://qchain-marketplace-postgrest.herokuapp.com/listing";
         axios.post(listingURL, this.createPayload())
-                    .then((response) => {
+                    .then(() => {
                         this.setState({
                             ...this.state,
                             finished: true,
@@ -50,13 +50,13 @@ class FormSubmitButton extends Component{
             return {
                 name: this.props.advertiserForm.topic,
                 description: this.props.advertiserForm.description,
-                subcategory: this.props.advertiserForm.marketingMedium,
+                subcategory: this.props.advertiserForm.medium,
                 date_added: new Date().toISOString().slice(0, 10),
                 expiration_date: null,
                 url: null,
                 price: null,
                 currency: this.props.currencyFilter,
-                type: this.props.advertiserForm.marketingType,
+                type: this.props.advertiserForm.adFormat,
                 classtype: "request",
                 advertiser: "yao"
             } 
@@ -64,13 +64,13 @@ class FormSubmitButton extends Component{
             return {
                 name: this.props.publisherForm.topic,
                 description: this.props.publisherForm.description,
-                subcategory: this.props.publisherForm.marketingMedium,
+                subcategory: this.props.publisherForm.medium,
                 date_added: this.props.publisherForm.dateFrom,
                 expiration_date: this.props.publisherForm.dateTo,
                 url: null,
                 price: this.props.publisherForm.price,
                 currency: this.props.currencyFilter,
-                type: this.props.publisherForm.marketingType,
+                type: this.props.publisherForm.adFormat,
                 classtype: "listing",
                 publisher: "yao"
             }
@@ -94,7 +94,7 @@ class FormSubmitButton extends Component{
                 color='primary' 
                 variant='raised' 
                 className={this.props.classname}
-                onClick={()=> this.handleSubmitClick()}
+                onClick={() => this.handleSubmitClick()}
             >
                 Confirm
             </Button>

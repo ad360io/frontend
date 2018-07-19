@@ -42,8 +42,8 @@ class MarketplaceListings extends Component {
     }
 
     /** 
-     * Filter the datasets with currencyFilter, budgetFilter, and contentGenreFilter
-     * Remember to ignore contentGenreFilter if it is Show All
+     * Filter the datasets with currencyFilter, budgetFilter, and adFormatFilter
+     * Remember to ignore adFormatFilter if it is Show All
      * @param {Array} data The full array of listings waiting to be filtered
      */
     filterDataWithProps(data){
@@ -52,8 +52,8 @@ class MarketplaceListings extends Component {
             return data.filter((listing)=>{
                 if(listing.currency.toUpperCase() === this.props.currencyFilter
                     && listing.price <= (this.props.budgetFilter * 1000)
-                    && (this.props.contentGenreFilter === 'Show All' 
-                    || listing.type === this.props.contentGenreFilter)){
+                    && (this.props.adFormatFilter === 'Show All' 
+                    || listing.type === this.props.adFormatFilter)){
                     return listing;
                 }else{
                     return null;
@@ -62,7 +62,7 @@ class MarketplaceListings extends Component {
             // we are looking at requests
             return data.filter((listing)=>{
                 if(listing.currency.toUpperCase() === this.props.currencyFilter
-                    && (this.props.contentGenreFilter === 'Show All' || listing.type === this.props.contentGenreFilter)){
+                    && (this.props.adFormatFilter === 'Show All' || listing.type === this.props.adFormatFilter)){
                     return listing;
                 }else{
                     return null;
@@ -101,7 +101,7 @@ const mapStateToProps = (state) => {
         currencyFilter       : state.MenuBarFilterReducer.currencyFilter,
         modeFilter           : state.MenuBarFilterReducer.modeFilter,
         budgetFilter         : state.MarketplaceFilterReducer.budgetFilter,
-        contentGenreFilter   : state.MarketplaceFilterReducer.contentGenreFilter,
+        adFormatFilter       : state.MarketplaceFilterReducer.adFormatFilter,
         contentSpaceListings : state.MarketplaceDataReducer.db.contentSpaceListings,
         requestListings      : state.MarketplaceDataReducer.db.requestListings
     }

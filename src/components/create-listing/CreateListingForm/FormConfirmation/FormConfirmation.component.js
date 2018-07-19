@@ -23,11 +23,11 @@ const AdvertiserFormConfirmation = ({fields}) => (
                 <tbody className='tbody-default'>
                 <tr>
                     <td>Marketing Type </td>
-                    <td>{fields.marketingType}</td>
+                    <td>{fields.adFormat}</td>
                 </tr>
                 <tr>
                     <td>Marketing Medium </td>
-                    <td>{fields.marketingMedium}</td>
+                    <td>{fields.medium}</td>
                 </tr>
                 <tr>
                     <td>Description </td>
@@ -48,11 +48,11 @@ const PublisherFormConfirmation = ({fields, currencyFilter}) => (
                 <tbody className='tbody-default'>
                 <tr>
                     <td>Marketing Type </td>
-                    <td>{fields.marketingType}</td>
+                    <td>{fields.adFormat}</td>
                 </tr>
                 <tr>
                     <td>Marketing Medium </td>
-                    <td>{fields.marketingMedium}</td>
+                    <td>{fields.medium}</td>
                 </tr>
                 <tr>
                     <td>Description </td>

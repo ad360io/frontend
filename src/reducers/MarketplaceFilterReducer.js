@@ -2,7 +2,7 @@
 const defaultState = {
    isDrawerOpen: false,       
    budgetFilter: 7.5,       
-   contentGenreFilter: 'Show All',
+   adFormatFilter: 'Show All',
    viewModeFilter: 'Grid'
 }
 
@@ -48,10 +48,10 @@ const MarketplaceFilterReducer = (state=defaultState, action) => {
                 budgetFilter: action.value
             }
             
-        case 'SET_CONTENT_GENRE':
+        case 'SET_AD_FORMAT':
             return {
                 ...state,
-                contentGenreFilter: action.value
+                adFormatFilter: action.value
             }
 
         case 'SET_VIEW_MODE':

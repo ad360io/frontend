@@ -133,14 +133,14 @@ class CreateListingForm extends Component {
 
     isFormFilled() {
         if (this.props.modeFilter === 'Advertiser') {
-            return this.props.advertiserForm.marketingType.length > 0
-                && this.props.advertiserForm.marketingMedium.length > 0
+            return this.props.advertiserForm.adFormat.length > 0
+                && this.props.advertiserForm.medium.length > 0
                 && this.props.advertiserForm.description.length > 0
                 && this.props.advertiserForm.topic.length > 0
         }
         else {
-            return this.props.publisherForm.marketingType.length > 0
-                && this.props.publisherForm.marketingMedium.length > 0
+            return this.props.publisherForm.adFormat.length > 0
+                && this.props.publisherForm.medium.length > 0
                 && this.props.publisherForm.description.length > 0
                 && this.props.publisherForm.topic.length > 0
                 && this.props.publisherForm.price.length > 0

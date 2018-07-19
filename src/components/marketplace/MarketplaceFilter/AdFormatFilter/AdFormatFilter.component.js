@@ -7,12 +7,12 @@ import { connect } from 'react-redux';
 /*
 Local CSS
 */
-import './MarketingTypeFilter.component.css';
+import './AdFormatFilter.component.css';
 
 /*
 Actions
 */
-import { setContentGenre } from '../../../../actions/MarketplaceActions';
+import { setAdFormat } from '../../../../actions/MarketplaceActions';
 
 /*
 React Bootstrap
@@ -20,12 +20,12 @@ React Bootstrap
 import { Button, SplitButton, MenuItem } from 'react-bootstrap';
 
 
-const MarketingTypeFilter = ({onMarketingTypeClick, marketingTypeFilter}) => (
+const AdFormatFilter = ({onAdFormatClick, adFormatFilter}) => (
     <div>
         <Button
             className='btn-marketing-type'
-            onClick={() => {onMarketingTypeClick('Show All')}}
-            active={marketingTypeFilter === 'Show All'}
+            onClick={() => {onAdFormatClick('Show All')}}
+            active={adFormatFilter === 'Show All'}
         >
             Show All
         </Button>
@@ -34,8 +34,8 @@ const MarketingTypeFilter = ({onMarketingTypeClick, marketingTypeFilter}) => (
             title='Branded Content'
             id='branded-content-menu'
             pullRight
-            onClick={() => onMarketingTypeClick('Branded Content')}
-            active={marketingTypeFilter === 'Branded Content'}
+            onClick={() => onAdFormatClick('Branded Content')}
+            active={adFormatFilter === 'Branded Content'}
         >
             <MenuItem >Written Piece</MenuItem>
             <MenuItem >Audio Piece</MenuItem>
@@ -46,8 +46,8 @@ const MarketingTypeFilter = ({onMarketingTypeClick, marketingTypeFilter}) => (
             title='Influencer Post'
             id='influencer-post-menu'
             pullRight
-            onClick={() => onMarketingTypeClick('Influencer Post')}
-            active={marketingTypeFilter === 'Influencer Post'}
+            onClick={() => onAdFormatClick('Influencer Post')}
+            active={adFormatFilter === 'Influencer Post'}
         >
             <MenuItem >Tweet</MenuItem>
             <MenuItem >Instagram</MenuItem>
@@ -59,8 +59,8 @@ const MarketingTypeFilter = ({onMarketingTypeClick, marketingTypeFilter}) => (
         </SplitButton>
         <Button
             className='btn-marketing-type'
-            onClick={() => onMarketingTypeClick('Sponsorship')}
-            active={marketingTypeFilter === 'Sponsorship'}
+            onClick={() => onAdFormatClick('Sponsorship')}
+            active={adFormatFilter === 'Sponsorship'}
         >
             Sponsorship
         </Button>
@@ -69,8 +69,8 @@ const MarketingTypeFilter = ({onMarketingTypeClick, marketingTypeFilter}) => (
             title='Patron Journalism'
             id='branded-content-menu'
             pullRight
-            onClick={() => onMarketingTypeClick('Patron Journalism')}
-            active={marketingTypeFilter === 'Patron Journalism'}
+            onClick={() => onAdFormatClick('Patron Journalism')}
+            active={adFormatFilter === 'Patron Journalism'}
         >
             <MenuItem >Written Piece</MenuItem>
             <MenuItem >Audio Piece</MenuItem>
@@ -81,14 +81,14 @@ const MarketingTypeFilter = ({onMarketingTypeClick, marketingTypeFilter}) => (
 
 const mapStateToProps = (state) => {
     return {
-        marketingTypeFilter: state.MarketplaceFilterReducer.contentGenreFilter,
+        adFormatFilter: state.MarketplaceFilterReducer.adFormatFilter,
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onMarketingTypeClick: (marketingType) => {
-            dispatch(setContentGenre(marketingType))
+        onAdFormatClick: (adFormat) => {
+            dispatch(setAdFormat(adFormat))
         },
     }
 }
@@ -97,4 +97,4 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(MarketingTypeFilter)
+)(AdFormatFilter)

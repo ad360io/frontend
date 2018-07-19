@@ -24,10 +24,10 @@ const closeDrawer = () => {
     }
 }
 
-const setContentGenre = (contentGenre) => {
+const setAdFormat = (adFormat) => {
     return {
-        type: 'SET_CONTENT_GENRE',
-        value: contentGenre
+        type: 'SET_AD_FORMAT',
+        value: adFormat
     }
 }
 
@@ -38,4 +38,4 @@ const setViewMode = (viewModeFilter) => {
     }
 }
 
-export { setBudget, drawerRequest, openDrawer, closeDrawer, setContentGenre, setViewMode }
+export { setBudget, drawerRequest, openDrawer, closeDrawer, setAdFormat, setViewMode }
