@@ -72,26 +72,39 @@ class DashboardCharts extends Component {
             // returning empty array at this time to serve as a test case and wait for actual data
             if(this.props.currencyFilter === 'EQC') {
                 let newState = {
-                    triggerPlaceholder: true
+                    triggerPlaceholder: this.props.fetched 
+                        && this.props.eqcContracts.length === 0
+                        && this.props.eqcContracts.length === 0
                 }
                 if(newState.triggerPlaceholder !== previousState.triggerPlaceholder){
                     this.setState(newState)
-                } 
+                }
             }else {
                 let newState = {
-                    triggerPlaceholder: true
+                    triggerPlaceholder: this.props.fetched 
+                        && this.props.xqcContracts.length === 0
+                        && this.props.xqcContracts.length === 0
                 }
                 if(newState.triggerPlaceholder !== previousState.triggerPlaceholder){
-                    this.setState(newState)
-                } 
+                     this.setState(newState)
+                }           
             }
         }
     }
 
     chooseLineChartDisplayData() {
+        
+        // *** Caution *** this is only for presentational purpose! Change when data is ready
+
+        if (this.props.modeFilter === 'Advertiser') {
             return this.props.currencyFilter === 'EQC' 
                         ? this.props.eqcContracts 
                         : this.props.xqcContracts
+        }else {
+            return this.props.currencyFilter === 'EQC'
+                        ? this.props.xqcContracts 
+                        : this.props.eqcContracts
+        }
     }
 
     /**
@@ -99,13 +112,25 @@ class DashboardCharts extends Component {
      * @param {*} k
      */
     getLineChartTitle(k){
-        switch (k){
-            case 0:
-                return 'Content Impressions Performance';
-            case 1:
-                return 'Content Referral Clicks Performance';
-            default:
-                return null;
+
+        if (this.props.modeFilter === 'Advertiser') {
+            switch (k){
+                case 0:
+                    return 'Content Impressions Performance';
+                case 1:
+                    return 'Content Conversions Performance';
+                default:
+                    return 'Unknown Key';
+            }
+        }else {
+            switch (k){
+                case 0:
+                    return 'Content Impressions Performance';
+                case 1:
+                    return 'Advertiser Revenue Performance';
+                default:
+                    return 'Unknown Key';
+            }
         }
     }
 
