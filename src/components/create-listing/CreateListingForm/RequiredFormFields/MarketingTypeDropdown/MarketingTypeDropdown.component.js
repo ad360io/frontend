@@ -60,6 +60,24 @@ class MarketingTypeDropdown extends Component {
                         Other
                 </Button>
                 </ButtonGroup>
+                <ButtonGroup>
+                    <Button
+                        className='btn-marketing-type-selector'
+                        onClick={() => this.props.onMediumClick('Webinar')}
+                        active={medium === 'Webinar'}
+                        href="#"
+                    >
+                        Webinar
+                    </Button>
+                    <Button
+                        className='btn-marketing-type-selector'
+                        onClick={() => this.props.onMediumClick('Email')}
+                        active={medium === 'Email'}
+                        href="#"
+                    >
+                        Email
+                    </Button>
+                </ButtonGroup>
             </div>
         } else if (adFormat === 'Influencer Post') {
             return <div>
