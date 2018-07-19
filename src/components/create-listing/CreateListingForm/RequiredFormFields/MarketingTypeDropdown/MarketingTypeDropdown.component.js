@@ -26,7 +26,7 @@ class MarketingTypeDropdown extends Component {
         if (adFormat === 'Branded Content' || adFormat === 'Patron Journalism') {
             return <div>
                 <p className='marketing-type-selector-title'>Select Medium</p>
-                <ButtonGroup style={{ marginBottom: '25px' }} justified >
+                <ButtonGroup justified >
                     <Button
                         className='btn-marketing-type-selector'
                         onClick={() => this.props.onMediumClick('Written Piece')}
@@ -60,7 +60,7 @@ class MarketingTypeDropdown extends Component {
                         Other
                 </Button>
                 </ButtonGroup>
-                <ButtonGroup>
+                <ButtonGroup justified style={{ marginBottom: '25px' }} >
                     <Button
                         className='btn-marketing-type-selector'
                         onClick={() => this.props.onMediumClick('Webinar')}
@@ -148,6 +148,61 @@ class MarketingTypeDropdown extends Component {
                         href="#"
                     >
                         Other
+                    </Button>
+                </ButtonGroup>
+            </div>
+        } else if ( adFormat === 'Sponsorship' ){
+            return <div>
+                <ButtonGroup justified>
+                    <Button
+                        className='btn-marketing-type-selector'
+                        onClick={() => this.props.onMediumClick('Event')}
+                        active={medium === 'Event'}
+                        href="#"
+                    >
+                        Event
+                    </Button>
+                    <Button
+                        className='btn-marketing-type-selector'
+                        onClick={() => this.props.onMediumClick('Individual')}
+                        active={medium === 'Individual'}
+                        href="#"
+                    >
+                        Individual
+                    </Button>
+                    <Button
+                        className='btn-marketing-type-selector'
+                        onClick={() => this.props.onMediumClick('Other')}
+                        active={medium === 'Other'}
+                        href="#"
+                    >
+                        Other
+                    </Button>
+                    <Button
+                        className='btn-marketing-type-selector'
+                        onClick={() => this.props.onMediumClick('Website')}
+                        active={medium === 'Website'}
+                        href="#"
+                    >
+                        Website
+                    </Button>
+                </ButtonGroup>
+                <ButtonGroup justified style={{ marginBottom: '25px' }} >
+                    <Button
+                        className='btn-marketing-type-selector'
+                        onClick={() => this.props.onMediumClick('Artistic Creation')}
+                        active={medium === 'Artistic Creation'}
+                        href="#"
+                    >
+                        Artistic Creation
+                    </Button>
+                    <Button
+                        className='btn-marketing-type-selector'
+                        onClick={() => this.props.onMediumClick('Email Newsletter')}
+                        active={medium === 'Webinar'}
+                        href="#"
+                    >
+                        Email Newsletter
                     </Button>
                 </ButtonGroup>
             </div>
