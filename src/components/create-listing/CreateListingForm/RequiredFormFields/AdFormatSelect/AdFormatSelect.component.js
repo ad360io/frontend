@@ -25,12 +25,26 @@ class AdFormatSelect extends Component {
     }
 
     showMedium() {
-        if(this.getMediumStringList() !== null){
+        let currentMediumStringList = this.getMediumStringList();
+        if(currentMediumStringList !== null){
             return <div>
                 <p className='ad-format-selector-title'>Select Medium</p>
                 <ButtonGroup justified >
                     {
-                        this.getMediumStringList().map((mediumString) => {
+                        currentMediumStringList.map((mediumString, index) => {
+                            if(index < currentMediumStringList.length / 2)
+                            return <MediumButton 
+                                currentMediumValue={this.getCurrentMediumValue()} 
+                                mediumString={mediumString} 
+                                onMediumClick={this.props.onMediumClick}
+                            />
+                        })
+                    }
+                </ButtonGroup>
+                <ButtonGroup justified style={{marginBottom: '25px'}}>
+                    {
+                        currentMediumStringList.map((mediumString, index) => {
+                            if(index >= currentMediumStringList.length / 2)
                             return <MediumButton 
                                 currentMediumValue={this.getCurrentMediumValue()} 
                                 mediumString={mediumString} 
@@ -43,7 +57,6 @@ class AdFormatSelect extends Component {
         }else {
             return null;
         }
-        
     }
 
     getCurrentAdFormatValue () {
@@ -61,12 +74,12 @@ class AdFormatSelect extends Component {
         * sp stands for -Sponsorship-
         * pj stands for -Patron Journalism-
         */
-        const bcMediumStringList = [ 'Written Piece',    'Audio Piece',      'Video Piece', 'Other',
-                                     'Webinar',          'Email'                                       ];
+        const bcMediumStringList = [ 'Written Piece',    'Audio Piece',      'Video Piece', 'Email',
+                                     'Webinar',          'Other',                                      ];
         const ipMediumStringList = [ 'Tweet',            'Instagram',        'Twitch',      'Youtube',
                                      'Facebook',         'Twitter',          'NicoNico',    'Other'    ];
-        const spMediumStringList = [ 'Event',            'Individual',       'Website',     'Other', 
-                                     'Email Newsletter', 'Artistic Creation'                           ];
+        const spMediumStringList = [ 'Event',            'Individual',       'Website',     'Artistic Creation',
+                                     'Email Newsletter',  'Other'                                      ];
         const pjMediumStringList = [ 'Written Piece',    'Audio Piece',      'Video Piece', 'Other'    ];
         
         if ( this.getCurrentAdFormatValue() === 'Branded Content' ){
