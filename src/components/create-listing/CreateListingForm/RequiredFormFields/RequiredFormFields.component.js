@@ -13,7 +13,7 @@ import { FormGroup, FormControl } from 'react-bootstrap';
 Children Components
 */
 import AvailabilityPicker from './AvailabilityPicker/AvailabilityPicker.component';
-import MarketingTypeDropdown from './MarketingTypeDropdown/MarketingTypeDropdown.component';
+import AdFormatSelect     from './AdFormatSelect/AdFormatSelect.component';
 
 
 const RequiredFormField = ({ modeFilter,
@@ -30,7 +30,7 @@ const RequiredFormField = ({ modeFilter,
             <AvailabilityPicker from={from} to={to} />
         </FormGroup>
 
-        <MarketingTypeDropdown modeFilter={modeFilter}/>
+        <AdFormatSelect modeFilter={modeFilter}/>
 
         <FormGroup controlId='control-form-topic'>
             <p className='control-label'>

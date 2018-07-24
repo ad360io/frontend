@@ -33,7 +33,7 @@ const defaultState = {
 const CreateListingFormReducer = (state = defaultState, action) => {
 
     switch (action.type) {
-        case 'SET_ADV_FORM_MARKETING_TYPE':
+        case 'SET_ADV_FORM_AD_FORMAT':
             return {
                 ...state,
                 advertiserForm: {
@@ -70,7 +70,7 @@ const CreateListingFormReducer = (state = defaultState, action) => {
             }
 
 
-        case 'SET_PUB_FORM_MARKETING_TYPE':
+        case 'SET_PUB_FORM_AD_FORMAT':
             return {
                 ...state,
                 publisherForm: {
