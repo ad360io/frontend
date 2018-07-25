@@ -3,6 +3,7 @@ Core Libs
 */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withWindowWidthListener } from '../../../../ResponsiveComponent/ResponsiveComponent';
 
 /*
 React Bootstrap
@@ -32,24 +33,32 @@ class AdFormatSelect extends Component {
                 <ButtonGroup justified >
                     {
                         currentMediumStringList.map((mediumString, index) => {
-                            if(index < currentMediumStringList.length / 2)
-                            return <MediumButton 
-                                currentMediumValue={this.getCurrentMediumValue()} 
-                                mediumString={mediumString} 
-                                onMediumClick={this.props.onMediumClick}
-                            />
+                            if(index < currentMediumStringList.length / 2){
+                                return <MediumButton 
+                                    currentMediumValue={this.getCurrentMediumValue()} 
+                                    mediumString={mediumString} 
+                                    onMediumClick={this.props.onMediumClick}
+                                    key={mediumString+"_"+index}
+                                />
+                            }else {
+                                return null;
+                            }
                         })
                     }
                 </ButtonGroup>
                 <ButtonGroup justified style={{marginBottom: '25px'}}>
                     {
                         currentMediumStringList.map((mediumString, index) => {
-                            if(index >= currentMediumStringList.length / 2)
-                            return <MediumButton 
-                                currentMediumValue={this.getCurrentMediumValue()} 
-                                mediumString={mediumString} 
-                                onMediumClick={this.props.onMediumClick}
-                            />
+                            if(index >= currentMediumStringList.length / 2) {
+                                return <MediumButton 
+                                    currentMediumValue={this.getCurrentMediumValue()} 
+                                    mediumString={mediumString} 
+                                    onMediumClick={this.props.onMediumClick}
+                                    key={mediumString+"_"+index}
+                                />
+                            }else{
+                                return null;
+                            }
                         })
                     }
                 </ButtonGroup>
@@ -98,16 +107,16 @@ class AdFormatSelect extends Component {
 
     render() {
         const adFormatStringList = ['Branded Content', 'Influencer Post', 'Sponsorship', 'Patron Journalism'];
-
         return <div>
             <p className='ad-format-selector-title'>Select Ad Format</p>
             <ButtonGroup style={{ marginBottom: '25px' }} justified >
                 {
-                    adFormatStringList.map((adFormatString) => {
+                    adFormatStringList.map((adFormatString, index) => {
                         return <AdFormatButton 
                             currentAdFormatValue={this.getCurrentAdFormatValue()} 
                             adFormatString={adFormatString} 
                             onAdFormatClick={this.props.onAdFormatClick}
+                            key={adFormatString+"_"+index}
                         />
                     })
                 }
@@ -182,7 +191,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 }
 
 
-export default connect(
+export default withWindowWidthListener(connect(
     mapStateToProps,
     mapDispatchToProps
-)(AdFormatSelect);
+)(AdFormatSelect));
