@@ -50,13 +50,13 @@ class FormSubmitButton extends Component{
             return {
                 name: this.props.advertiserForm.topic,
                 description: this.props.advertiserForm.description,
-                subcategory: this.props.advertiserForm.medium,
+                medium: this.props.advertiserForm.medium,
                 date_added: new Date().toISOString().slice(0, 10),
                 expiration_date: null,
                 url: null,
                 price: null,
                 currency: this.props.currencyFilter,
-                type: this.props.advertiserForm.adFormat,
+                ad_format: this.props.advertiserForm.adFormat,
                 classtype: "request",
                 advertiser: "yao"
             } 
@@ -64,13 +64,13 @@ class FormSubmitButton extends Component{
             return {
                 name: this.props.publisherForm.topic,
                 description: this.props.publisherForm.description,
-                subcategory: this.props.publisherForm.medium,
+                medium: this.props.publisherForm.medium,
                 date_added: this.props.publisherForm.dateFrom,
                 expiration_date: this.props.publisherForm.dateTo,
                 url: null,
                 price: this.props.publisherForm.price,
                 currency: this.props.currencyFilter,
-                type: this.props.publisherForm.adFormat,
+                ad_format: this.props.publisherForm.adFormat,
                 classtype: "listing",
                 publisher: "yao"
             }

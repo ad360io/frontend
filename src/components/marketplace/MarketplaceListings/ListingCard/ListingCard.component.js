@@ -113,7 +113,7 @@ class ListingCard extends Component {
      * Decide placeholder image based on the listing's genre
      */
     decidePlaceholderImage(){
-        switch(this.props.listing.type){
+        switch(this.props.listing.ad_format){
             case 'Branded Content':
                 return branded_content_ph;
             case 'Influencer Post':

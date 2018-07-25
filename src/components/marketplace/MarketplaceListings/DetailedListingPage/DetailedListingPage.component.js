@@ -144,7 +144,7 @@ const DetailedRequestListing = ({ listing, decideImage }) => (
         <div className='detailed-image-container'>
             <Card>
                 <CardText>
-                    <DetailedImageSlider imageSrc={decideImage(listing.images, listing.type)} />
+                    <DetailedImageSlider imageSrc={decideImage(listing.images, listing.ad_format)} />
                 </CardText>
             </Card>
             <div className='detailed-listing-action-section'>
@@ -163,8 +163,8 @@ const DetailedRequestListing = ({ listing, decideImage }) => (
             </CardTitle>
             <Divider />
             <CardText>
-            <div>Marketing Type: {listing.type} {listing.classtype}</div>
-            <div>Marketing Medium: {listing.subcategory}</div>
+            <div>Marketing Type: {listing.ad_format} {listing.classtype}</div>
+            <div>Marketing Medium: {listing.medium}</div>
             <br />
             <div>{listing.description}</div>
             </CardText>
@@ -212,7 +212,7 @@ const DetailedContentSpaceListing = ({ listing, decideImage }) => (
         <div className='detailed-image-container'>
             <Card>
                 <CardText>
-                    <DetailedImageSlider imageSrc={decideImage(listing.images, listing.type)} />
+                    <DetailedImageSlider imageSrc={decideImage(listing.images, listing.ad_format)} />
                     
                 </CardText>
             </Card>
@@ -234,10 +234,10 @@ const DetailedContentSpaceListing = ({ listing, decideImage }) => (
             <CardText className='listing-details-text'>
             <div className='details-text'>
                 <p>
-                    Marketing Type: {listing.type} {listing.classtype} 
+                    Marketing Type: {listing.ad_format} {listing.classtype} 
                 </p>
                 <p>
-                    Marketing Medium: {listing.subcategory}
+                    Marketing Medium: {listing.medium}
                 </p>
                 
             </div>
