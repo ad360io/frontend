@@ -17,33 +17,29 @@ import { setViewMode } from '../../../../actions/MarketplaceActions';
 
 class ViewModeSelector extends Component {
     render() {
-        return <ButtonGroup
-            style={{
-                display: this.props.decideHidden(), 
-                marginLeft:'25px', 
-                marginBottom:'5%',
-            }}
-        >
-            <Button 
+        return <div style={{width: '240px', marginLeft: '25px', marginButtom: '5%'}}>
+            <ButtonGroup
                 style={{
-                    paddingLeft: '25px',
-                    paddingRight: '25px'
+                    display: this.props.decideHidden(), 
                 }}
-                active={this.props.viewModeFilter === 'Grid'}
-                onClick={()=>this.props.onViewModeClick('Grid')}
+                justified
             >
+                <Button 
+                    href="#"
+                    active={this.props.viewModeFilter === 'Listing'}
+                    onClick={()=>this.props.onViewModeClick('Listing')}
+                >
+                    <i className="fas fa-align-justify"></i>Listing
+                </Button>
+                <Button 
+                    href="#"
+                    active={this.props.viewModeFilter === 'Grid'}
+                    onClick={()=>this.props.onViewModeClick('Grid')}
+                >
                     <i className="fas fa-th-large"></i>Grid
-            </Button>
-            <Button 
-                style={{
-                    paddingRight: '18px'
-                }}
-                active={this.props.viewModeFilter === 'Listing'}
-                onClick={()=>this.props.onViewModeClick('Listing')}
-            >
-                <i className="fas fa-align-justify"></i>Listing
-            </Button>
-        </ButtonGroup>
+                </Button>
+            </ButtonGroup>
+        </div>
     }
 }
 
