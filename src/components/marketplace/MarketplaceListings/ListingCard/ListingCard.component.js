@@ -1,10 +1,10 @@
 /*
 Core Libs
 */
-import React, { Component } from 'react';
-import PropTypes            from 'prop-types'
-import { connect }          from 'react-redux';
-import { withRouter }       from 'react-router-dom';
+import React, { Component }    from 'react';
+import PropTypes               from 'prop-types'
+import { connect }             from 'react-redux';
+import { withRouter, NavLink } from 'react-router-dom';
 
 /*
 Material UI Components
@@ -187,7 +187,7 @@ class ListingCard extends Component {
     }
 
     render() {
-        return <div>
+        return <NavLink to={'/listing/'+this.props.listing.id} target="_blank">
             {this.props.viewModeFilter === 'Grid'  
                 ? <GridCardRenderer
                     width={this.decideCardWidth()}
@@ -199,7 +199,6 @@ class ListingCard extends Component {
                     description={this.decideDescription()}
                     date_added={this.props.listing.date_added}
                     id={this.props.listing.id}
-                    handleExploreClick={this.props.onExploreClick}
                 />
                 : <ListingCardRenderer
                     marginLeft={this.decideMarginLeft()}
@@ -210,7 +209,6 @@ class ListingCard extends Component {
                     description={this.decideDescription()}
                     date_added={this.props.listing.date_added}
                     id={this.props.listing.id}
-                    handleExploreClick={this.props.onExploreClick}
                 />
             }
             
@@ -239,7 +237,7 @@ class ListingCard extends Component {
                     <Button onClick={this.handleHideModal}>Close</Button>
                 </Modal.Footer>
             </Modal> */}
-        </div>
+        </NavLink>
     }
 }
 
@@ -252,8 +250,7 @@ const GridCardRenderer = ({
         placeholderImage, 
         description, 
         date_added,
-        id,
-        handleExploreClick 
+        id, 
     }) => ( <Card className='grid-card-container noselect'
                 style={{ 
                     width,
@@ -274,7 +271,6 @@ const GridCardRenderer = ({
                 <Button 
                     bsStyle='primary' 
                     className='btn-contact-action' 
-                    onClick={() => handleExploreClick(id)}
                 >
                     Explore This Listing
                 </Button>
@@ -290,14 +286,12 @@ const ListingCardRenderer = ({
                                 description, 
                                 date_added,
                                 id,
-                                handleExploreClick
                             }) => (
     <Card className='listing-card-container noselect' 
         style={{ 
             width: '90%',
             marginLeft,
         }}
-        onClick={()=> handleExploreClick(id)}
     >
         <div className='poster-tag'>{contactInfo} </div>
         <div className='price-tag'>{priceTag}</div>)
@@ -325,17 +319,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return {
-        onExploreClick: (viewingId) => {
-            dispatch({
-                type: 'SET_VIEWING_ID',
-                viewingId
-            })
-            dispatch({
-                type: 'CLOSE_DRAWER'
-            })
-        }
-    }
+    return {}
 }
 
 

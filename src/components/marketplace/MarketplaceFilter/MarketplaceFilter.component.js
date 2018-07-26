@@ -58,7 +58,7 @@ class MarketplaceFilter extends Component {
     onWindowWidthUpdate() {
         // Dynamically close the drawer for small screen
         //             open  the drawer for medium to big screen
-        if( window.innerWidth <= 768 || this.props.viewingId !== null ) this.props.closeDrawer();
+        if( window.innerWidth <= 768 ) this.props.closeDrawer();
         else this.props.openDrawer();
     }
 
@@ -84,7 +84,7 @@ class MarketplaceFilter extends Component {
         return <div className='marketplace-filter-container' >
             <Button 
                 className='btn-open-filter-drawer'
-                hidden={this.props.width > 768 || this.props.viewingId !== null}
+                hidden={this.props.width > 768}
                 onClick={() => this.props.openDrawer()}
             > 
                 Click Me to Set Filters 
@@ -136,7 +136,6 @@ const mapStateToFilterProps = (state) => {
     return {   
         isDrawerOpen       : state.MarketplaceFilterReducer.isDrawerOpen,
         modeFilter         : state.MenuBarFilterReducer.modeFilter,
-        viewingId          : state.MarketplaceDataReducer.viewingId
     }
 }
 

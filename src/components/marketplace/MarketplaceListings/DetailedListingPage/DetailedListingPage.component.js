@@ -74,7 +74,7 @@ class DetailedListingPage extends Component {
     
     componentWillMount() {
         // call on start load to get data
-        const listingURL = `https://qchain-marketplace-postgrest.herokuapp.com/listing?id=eq.${this.props.viewingId}`;
+        const listingURL = `https://qchain-marketplace-postgrest.herokuapp.com/listing?id=eq.${this.props.match.params.id}`;
         axios.get(listingURL)
             .then((response) => {
                 document.title = `${response.data[0].name} - Qchain`;
@@ -103,7 +103,6 @@ class DetailedListingPage extends Component {
         // make a request to get detailed listing info using ID
         // parse info onto the page
         return <div className='detailed-listing-container'>
-            <Button style={{fontSize:'25px'}} onClick={this.handleCloseListing}>{`<`}</Button>
             {
                 (this.state.fetched
                     ? ( this.state.listing.classtype === "request" 
@@ -276,22 +275,11 @@ const DetailedContentSpaceListing = ({ listing, decideImage }) => (
 )
 
 const mapStateToProps = (state) => {
-    return {
-        viewingId: state.MarketplaceDataReducer.viewingId
-    }
+    return {}
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return {
-        closeListing: () => {
-            dispatch({
-                type: 'CLOSE_LISTING'
-            })
-            dispatch({
-                type: 'OPEN_DRAWER'
-            })
-        }
-    }
+    return {}
 }
 
 
