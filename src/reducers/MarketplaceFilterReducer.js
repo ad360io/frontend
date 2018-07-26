@@ -3,7 +3,7 @@ const defaultState = {
    isDrawerOpen: false,       
    budgetFilter: 7.5,       
    adFormatFilter: 'Show All',
-   viewModeFilter: 'Grid'
+   viewModeFilter: 'Listing'
 }
 
 /**
