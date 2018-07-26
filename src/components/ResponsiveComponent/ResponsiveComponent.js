@@ -8,7 +8,7 @@ export function withWindowWidthListener(WrappedComponent) {
             
             // Using window.innerWidth in state to acheive responsiveness
             this.state = {
-                width: window.innerWidth
+                width: window.innerWidth,
             }
 
             // Binding functions

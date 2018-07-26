@@ -1,8 +1,9 @@
 /*
 Core Libs
 */
-import React, { Component } from 'react';
-import { connect }          from 'react-redux';
+import React, { Component }        from 'react';
+import { connect }                 from 'react-redux';
+import { withWindowWidthListener } from '../../ResponsiveComponent/ResponsiveComponent';
 
 /*
 React Bootstrap Components
@@ -44,27 +45,17 @@ class MarketplaceFilter extends Component {
     constructor(props){
         super(props)
         this.state = {
-            width: window.innerWidth,
             searchTerm: ''
         }
-        this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+
+        // function binding
         this.decideTitle = this.decideTitle.bind(this);
         this.decideHidden = this.decideHidden.bind(this);
         this.searchUpdated = this.searchUpdated.bind(this);
+        this.onWindowWidthUpdate = this.onWindowWidthUpdate.bind(this);
     }
 
-    componentDidMount() {
-        this.updateWindowDimensions();
-        window.addEventListener('resize', this.updateWindowDimensions);
-    }
-      
-    componentWillUnmount() {
-        window.removeEventListener('resize', this.updateWindowDimensions);
-    }
-      
-    updateWindowDimensions() {
-        this.setState({ ...this.state, width: window.innerWidth });
-
+    onWindowWidthUpdate() {
         // Dynamically close the drawer for small screen
         //             open  the drawer for medium to big screen
         if( window.innerWidth <= 768 || this.props.viewingId !== null ) this.props.closeDrawer();
@@ -77,7 +68,7 @@ class MarketplaceFilter extends Component {
     }
 
     decideHidden() {
-        if(this.state.width <= 768) {
+        if(this.props.width <= 768) {
             return 'none';
         }else{
             return 'inline-block';
@@ -89,16 +80,17 @@ class MarketplaceFilter extends Component {
     }
 
     render() {
+        this.onWindowWidthUpdate();
         return <div className='marketplace-filter-container' >
             <Button 
                 className='btn-open-filter-drawer'
-                hidden={this.state.width > 768 || this.props.viewingId !== null}
+                hidden={this.props.width > 768 || this.props.viewingId !== null}
                 onClick={() => this.props.openDrawer()}
             > 
                 Click Me to Set Filters 
             </Button>
             <Drawer
-                docked={this.state.width > 768}
+                docked={this.props.width > 768}
                 width={300}
                 zDepth={1}
                 open={this.props.isDrawerOpen}
@@ -163,7 +155,7 @@ const mapDispatchToFilterProps = (dispatch) => {
 }
 
 
-export default connect(
+export default withWindowWidthListener(connect(
     mapStateToFilterProps,
     mapDispatchToFilterProps
-)(MarketplaceFilter)
+)(MarketplaceFilter));
