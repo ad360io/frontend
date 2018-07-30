@@ -3,7 +3,6 @@ Core Libs
 */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withWindowWidthListener } from '../../../../ResponsiveComponent/ResponsiveComponent';
 
 /*
 React Bootstrap
@@ -14,6 +13,12 @@ import { Button, ButtonGroup } from 'react-bootstrap';
 Local CSS
 */
 import './AdFormatSelect.component.css';
+
+/*
+Helper Component
+*/
+import SelectButtonGroup from './SelectButtonGroup.component';
+
 
 class AdFormatSelect extends Component {
     constructor(props) {
@@ -109,6 +114,7 @@ class AdFormatSelect extends Component {
         const adFormatStringList = ['Branded Content', 'Influencer Post', 'Sponsorship', 'Patron Journalism'];
         return <div>
             <p className='ad-format-selector-title'>Select Ad Format</p>
+            <SelectButtonGroup stringList={this.getMediumStringList()} />
             <ButtonGroup style={{ marginBottom: '25px' }} justified >
                 {
                     adFormatStringList.map((adFormatString, index) => {
@@ -191,7 +197,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 }
 
 
-export default withWindowWidthListener(connect(
+export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(AdFormatSelect));
+)(AdFormatSelect);

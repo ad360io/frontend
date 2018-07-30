@@ -33,7 +33,7 @@ export default class Auth {
         clientID: `${Auth0Config.clientID}`,
         redirectUri: `${window.location.protocol}//${window.location.host}/auth-callback`,
         responseType: 'token',
-        scope: 'openid email picture role'
+        scope: 'openid email profile picture role'
     });
 
     login() {
@@ -54,6 +54,9 @@ export default class Auth {
     setSession(authResult, propsHistory) {
         // Set the time that the Access Token will expire at
         let expiresAt = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
+        console.log(authResult)
+        console.log('id Token\n'+authResult.idToken);
+        console.log('access Token\n' + authResult.accessToken)
         localStorage.setItem('access_token', authResult.accessToken);
         localStorage.setItem('id_token', authResult.idToken);
         localStorage.setItem('expires_at', expiresAt);
@@ -131,26 +134,40 @@ export default class Auth {
     }
 
     dispatchProfile(profile, user_metadata) {
-        let name        = user_metadata.name;
-        let email       = (typeof user_metadata.email === 'undefined' || user_metadata.email === ''
+        if(typeof user_metadata === 'undefined'){
+            let value = {
+                name: profile.name,
+                email: profile.email,
+                nickname: profile.nickname,
+                avatar_url: profile.picture
+            }
+            this.store.dispatch({
+                type: 'SET_PROFILE',
+                value
+            })
+        }else{
+            let name        = user_metadata.name;
+            let email       = (typeof user_metadata.email === 'undefined' || user_metadata.email === ''
                             ? profile.email
                             : user_metadata.email);
-        let nickname    = (typeof user_metadata.nickname === 'undefined' || user_metadata.nickname === ''
+            let nickname    = (typeof user_metadata.nickname === 'undefined' || user_metadata.nickname === ''
                             ? profile.nickname
                             : user_metadata.nickname);
-        let avatar_url  = (typeof user_metadata.picture === 'undefined'  || user_metadata.picture === ''
+            let avatar_url  = (typeof user_metadata.picture === 'undefined'  || user_metadata.picture === ''
                             ? profile.picture
                             : user_metadata.picture);
-        let value = {
-            name,
-            email,
-            nickname,
-            avatar_url
+            let value = {
+                name,
+                email,
+                nickname,
+                avatar_url
+            }
+            this.store.dispatch({
+                type: 'SET_PROFILE',
+                value
+            })
         }
-        this.store.dispatch({
-            type: 'SET_PROFILE',
-            value
-        })
+        
     }
 
     updateUserMetadata(newMetadata){
