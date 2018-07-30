@@ -32,9 +32,8 @@ export default class Auth {
         domain: `${Auth0Config.domain}`,
         clientID: `${Auth0Config.clientID}`,
         redirectUri: `${window.location.protocol}//${window.location.host}/auth-callback`,
-        audience: `https://${Auth0Config.domain}/userinfo`,
-        responseType: 'token id_token',
-        scope: 'openid profile email role'
+        responseType: 'token',
+        scope: 'openid email picture role'
     });
 
     login() {
