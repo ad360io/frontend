@@ -16,9 +16,15 @@ class ActiveContract extends Component {
             err: null,
             activeListing: []
         }
+        this.loadData();
+        this.loadData = this.loadData.bind(this);
     }
 
-    componentWillMount() {
+    componentWillReceiveProps() {
+        this.loadData();
+    }
+
+    loadData() {
         const activeContractURL = "https://qchain-marketplace-postgrest.herokuapp.com/my_active_contract_view";
         const config = {
             headers: { Authorization: "Bearer " + localStorage.getItem('id_token')}

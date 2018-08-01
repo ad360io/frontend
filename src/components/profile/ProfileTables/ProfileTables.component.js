@@ -52,16 +52,16 @@ class ProfileTables extends Component {
                 >
 
                 <Tab eventKey={0} title='Offers'>
-                    <OfferList />
+                    <OfferList activeTabKey={this.state.activeTabKey}/>
                 </Tab>
                 <Tab eventKey={1} title='Active Listing'>
-                    <ActiveListing />
+                    <ActiveListing activeTabKey={this.state.activeTabKey} />
                 </Tab>
                 <Tab eventKey={2} title='Active Request'>
-                    <ActiveRequest />
+                    <ActiveRequest activeTabKey={this.state.activeTabKey} />
                 </Tab>
                 <Tab eventKey={3} title='Active Contracts'>
-                    <ActiveContract />
+                    <ActiveContract activeTabKey={this.state.activeTabKey} />
                 </Tab>
 
                 

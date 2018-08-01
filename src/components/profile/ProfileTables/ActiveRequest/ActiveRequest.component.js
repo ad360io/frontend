@@ -17,9 +17,15 @@ class ActiveRequest extends Component {
             err: null,
             activeListing: []
         }
+        this.loadData();
+        this.loadData = this.loadData.bind(this);
     }
 
-    componentWillMount() {
+    componentWillReceiveProps() {
+        this.loadData();
+    }
+
+    loadData() {
         const activeListingURL = "https://qchain-marketplace-postgrest.herokuapp.com/my_active_content_request";
         const config = {
             headers: { Authorization: "Bearer " + localStorage.getItem('id_token')}
@@ -40,6 +46,10 @@ class ActiveRequest extends Component {
                             err: err
                         })
                     })
+    }
+
+    componentWillMount() {
+        
     }
 
     render() { 

@@ -9,6 +9,7 @@ React Bootstrap Components
 */
 import { Button }                  from 'react-bootstrap';
 import { Popover, OverlayTrigger } from 'react-bootstrap';
+import { Alert }                   from 'react-bootstrap';
 
 
 /**
@@ -22,12 +23,22 @@ class OfferList extends Component {
         this.state = {
             finished: false,
             err: null,
-            activeOffers: []
+            activeOffers: [],
+            doingAction: [{}],
         }
         this.loadData = this.loadData.bind(this);
         this.loadData();
         this.handleDeclineOffer = this.handleDeclineOffer.bind(this);
         this.handleAcceptOffer = this.handleAcceptOffer.bind(this);
+        this.isOfferDoingAction = this.isOfferDoingAction.bind(this);
+    }
+
+    isOfferDoingAction(offer) {
+        return this.state.doingAction.includes(offer);
+    }
+
+    componentWillReceiveProps() {
+        this.loadData();
     }
 
     loadData() {
@@ -54,24 +65,16 @@ class OfferList extends Component {
     }
 
     handleAcceptOffer(offer) {
+        let newDoingAction = this.state.doingAction.concat(offer);
+        this.setState({
+            ...this.state,
+            doingAction: newDoingAction
+        })
         const createContractURL = "https://qchain-marketplace-postgrest.herokuapp.com/contract";
         const config = {
             headers: { Authorization: "Bearer " + localStorage.getItem('id_token')}
         };
-        axios.post(createContractURL, this.createContractPayload(offer), config)
-                    .then(() => {
-                        // success
-                        this.patchListing(offer.listing_id);
-                        this.deleteOffer(offer.id);
-                    })
-                    .catch((err) => {
-                        console.log("CREATE CONTRACT ERR")
-                        console.log(err);
-                    })
-    }
-
-    createContractPayload(offer) {
-        return {
+        const payload = {
             name: offer.topic,
             advertiser: localStorage.getItem('role'),
             publisher: offer.sender,
@@ -82,6 +85,17 @@ class OfferList extends Component {
             contentlisting: offer.listing_id,
             contentspacelisting: null
         }
+        console.log(payload);
+        axios.post(createContractURL, payload, config)
+                    .then(() => {
+                        // success
+                        this.patchListing(offer.listing_id);
+                        this.deleteOffer(offer.id);
+                    })
+                    .catch((err) => {
+                        console.log("CREATE CONTRACT ERR")
+                        console.log(err);
+                    })
     }
 
     patchListing(listingId) {
@@ -114,6 +128,7 @@ class OfferList extends Component {
         axios.delete(deleteOfferURL, config)
                     .then(() => {
                         // success
+                        this.loadData();
                     })
                     .catch((err) => {
                         console.log("DELETE OFFER ERR")
@@ -122,7 +137,6 @@ class OfferList extends Component {
     }
 
     render() {
-        this.loadData();
         return <div className='invite-list-container'>
             <div className='table-responsive' style={{height: '320px', margin:'2%'}}>
                 {
@@ -146,6 +160,7 @@ class OfferList extends Component {
                                     <OfferRenderer offerList={this.state.activeOffers}
                                         onAccept={this.handleAcceptOffer}
                                         onDecline={this.handleDeclineOffer}
+                                        doingAction={this.isOfferDoingAction}
                                     />
                                 }      
                                 </tbody>
@@ -165,7 +180,7 @@ class OfferList extends Component {
  * Dynamically generate dummy data, 
  * can take in props in future to create all invite listings.
  */
-const OfferRenderer = ({offerList, onAccept, onDecline}) => (
+const OfferRenderer = ({offerList, onAccept, onDecline, doingAction}) => (
     
     offerList.map((offer, i) => {
         const infoPopover = (
@@ -183,8 +198,15 @@ const OfferRenderer = ({offerList, onAccept, onDecline}) => (
                         </OverlayTrigger> 
                     </td>
                     <td style={{textAlign: 'center'}}>
-                        <Button bsStyle='success' onClick={() => onAccept(offer)} style={{marginRight: '10px'}}>Accept</Button>
-                        <Button bsStyle='danger' onClick={() => onDecline(offer.id)}>Decline</Button>
+                    {
+                        (doingAction(offer))
+                            ? <span style={{color: '#777777'}}>Processing Action...</span>
+                            : <div>
+                                <Button bsStyle='success' onClick={() => onAccept(offer)} style={{marginRight: '10px'}}>Accept</Button>
+                                <Button bsStyle='danger' onClick={() => onDecline(offer.id)}>Decline</Button>
+                            </div>
+                    }
+                        
                     </td>
                 </tr>
         )

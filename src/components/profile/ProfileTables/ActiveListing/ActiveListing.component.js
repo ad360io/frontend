@@ -16,9 +16,15 @@ class ActiveListing extends Component {
             err: null,
             activeListing: []
         }
+        this.loadData();
+        this.loadData = this.loadData.bind(this);
     }
 
-    componentWillMount() {
+    componentWillReceiveProps() {
+        this.loadData();
+    }
+
+    loadData() {
         const activeListingURL = "https://qchain-marketplace-postgrest.herokuapp.com/my_active_contentspace_listing";
         const config = {
             headers: { Authorization: "Bearer " + localStorage.getItem('id_token')}
