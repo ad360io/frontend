@@ -5,9 +5,10 @@ import React, { Component } from 'react';
 import axios                from 'axios';
 
 /**
- * ActiveContract Component
+ * ActiveRequest Component
+ * @param {string} listingType passed by props to decide label  
  */
-class ActiveContract extends Component {
+class ActiveRequest extends Component {
     
     constructor(props){
         super(props);
@@ -19,16 +20,16 @@ class ActiveContract extends Component {
     }
 
     componentWillMount() {
-        const activeContractURL = "https://qchain-marketplace-postgrest.herokuapp.com/my_active_contract_view";
+        const activeListingURL = "https://qchain-marketplace-postgrest.herokuapp.com/my_active_content_request";
         const config = {
             headers: { Authorization: "Bearer " + localStorage.getItem('id_token')}
         };
-        axios.get(activeContractURL, config)
+        axios.get(activeListingURL, config)
                     .then((response) => {
                         this.setState({
                             ...this.state,
                             finished: true,
-                            activeContract: response.data
+                            activeListing: response.data
                         })
                     })
                     .catch((err) => {
@@ -44,35 +45,30 @@ class ActiveContract extends Component {
     render() { 
         return <div className='active-listing-container'>
             <div className='table-responsive' style={{height: '320px', margin:'2%'}}>
+                
                 {
-                    (this.state.finished && this.state.err === null && this.state.activeContract.length === 0)
-                        ? (<p style={{textAlign: 'center'}}>There is currently no active contract...</p>)
+                    (this.state.finished && this.state.err === null && this.state.activeListing.length === 0)
+                        ? (<p style={{textAlign: 'center'}}>There is currently no active request...</p>)
                         : null
                 }
 
                 {
-                    (this.state.finished && this.state.err === null && this.state.activeContract.length > 0)
+                    (this.state.finished && this.state.err === null && this.state.activeListing.length > 0)
                         ? (<table className='table table-bordered mb-0'>
                                 <thead className='thead-default'>
                                 <tr>
-                                    <th>Contract Title</th>
-                                    <th>Advertiser</th>
-                                    <th>Publisher</th>
-                                    <th>Start Date</th>
-                                    <th>End Date</th>
-                                    <th>Price</th>
+                                    <th>Content Space Title</th>
+                                    <th>Ad Format</th>
+                                    <th>Medium</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                     {
-                                        this.state.activeContract.map((contract, i)=>{
-                                            return (<tr key={'contracttr' + i}>
-                                                <td>{contract.name}</td>
-                                                <td>{contract.advertiser_name}</td>
-                                                <td>{contract.publisher_name}</td>
-                                                <td>{contract.start_date}</td>
-                                                <td>{contract.end_date}</td>
-                                                <td>{contract.payout_cap} {contract.currency}</td>
+                                        this.state.activeListing.map((listing, i)=>{
+                                            return (<tr key={'listingtr' + i}>
+                                                <td>{listing.name}</td>
+                                                <td>{listing.ad_format}</td>
+                                                <td>{listing.medium}</td>
                                             </tr>)
                                         })
                                     }
@@ -88,4 +84,4 @@ class ActiveContract extends Component {
 }
 
 
-export default ActiveContract;
+export default ActiveRequest;

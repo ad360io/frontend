@@ -105,7 +105,7 @@ class ListingCard extends Component {
         if(this.state.width >= 1200) {
             return '2%';
         }else{
-            return '10%';
+            return '7%';
         }
     }
 
@@ -163,11 +163,7 @@ class ListingCard extends Component {
     }
 
     decideContactInfo() {
-        if(this.props.modeFilter === 'Advertiser'){
-            return this.props.listing.publisher
-        }else {
-            return this.props.listing.advertiser
-        }
+        return this.props.listing.owner_name;
     }
 
     decideDescription() {
@@ -291,6 +287,7 @@ const ListingCardRenderer = ({
         style={{ 
             width: '90%',
             marginLeft,
+            marginRIght: '2%'
         }}
     >
         <div className='poster-tag'>{contactInfo} </div>

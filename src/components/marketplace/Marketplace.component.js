@@ -44,7 +44,7 @@ import { fetch_MarketplaceData_Fulfilled,
 class Marketplace extends Component {
     constructor(props) {
         super(props);
-        props.onStartLoadData();
+        props.onStartLoadData(props.idToken);
     }
 
     componentDidMount() {
@@ -87,18 +87,22 @@ const mapStateToProps = (state) => {
     return {
         fetched        : state.MarketplaceDataReducer.fetched,
         hasError       : state.MarketplaceDataReducer.hasError,
-        viewingId      : state.MarketplaceDataReducer.viewingId
+        viewingId      : state.MarketplaceDataReducer.viewingId,
+        idToken        : state.ProfileReducer.idToken
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
-    const TestServerURL = "https://qchain-marketplace-postgrest.herokuapp.com/listing";
+    const TestServerURL = "https://qchain-marketplace-postgrest.herokuapp.com/detailed_listing_view";
     return {
-        onStartLoadData: () => {
+        onStartLoadData: (idToken) => {
+            const config = {
+                headers: {Authorization: "Bearer " + localStorage.getItem('id_token')}
+            };
             dispatch((dispatch) => {
-                
+                console.log(localStorage.getItem('id_token'));
                 dispatch(fetch_MarketplaceData_Pending())
-                axios.get(TestServerURL)
+                axios.get(TestServerURL, config)
                     .then((response) => {
                         dispatch(fetch_MarketplaceData_Fulfilled(response.data))
                     })

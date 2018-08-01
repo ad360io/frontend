@@ -33,7 +33,7 @@ export default class Auth {
         clientID: `${Auth0Config.clientID}`,
         redirectUri: `${window.location.protocol}//${window.location.host}/auth-callback`,
         responseType: 'token',
-        scope: 'openid email profile picture role'
+        scope: 'openid email profile role'
     });
 
     login() {
@@ -54,14 +54,17 @@ export default class Auth {
     setSession(authResult, propsHistory) {
         // Set the time that the Access Token will expire at
         let expiresAt = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
-        console.log(authResult)
-        console.log('id Token\n'+authResult.idToken);
-        console.log('access Token\n' + authResult.accessToken)
+        console.log(authResult.idTokenPayload);
         localStorage.setItem('access_token', authResult.accessToken);
         localStorage.setItem('id_token', authResult.idToken);
         localStorage.setItem('expires_at', expiresAt);
         localStorage.setItem('user_id', authResult.idTokenPayload.sub);
+        localStorage.setItem('role', authResult.idTokenPayload.app_metadata.role);
         this.handleProfileOnAuthenticated(authResult.accessToken);
+        this.store.dispatch({
+            type: 'SET_ID_TOKEN',
+            value: authResult.idToken
+        })
         propsHistory.replace('/dashboard');
         propsHistory.push('/dashboard')
         this.scheduleRenewal();
@@ -72,6 +75,7 @@ export default class Auth {
         localStorage.removeItem('access_token');
         localStorage.removeItem('id_token');
         localStorage.removeItem('expires_at');
+        localStorage.removeItem('role');
         window.location.reload();
         clearTimeout(this.tokenRenewalTimeout);
     }

@@ -5,7 +5,8 @@ const defaultState = {
         nickname: 'Nickname',    
         email: 'Email',         
         avatar_url: ''          
-    }
+    },
+    idToken: null,
 }
 
 /**
@@ -25,6 +26,12 @@ const ProfileReducer = (state=defaultState, action) => {
                 profile: action.value
             };
                    
+        case 'SET_ID_TOKEN':
+            return {
+                ...state,
+                idToken: action.value
+            }
+            
         default:
             return state;
     }
