@@ -24,17 +24,9 @@ class OfferList extends Component {
             finished: false,
             err: null,
             activeOffers: [],
-            doingAction: [{}],
         }
         this.loadData = this.loadData.bind(this);
         this.loadData();
-        this.handleDeclineOffer = this.handleDeclineOffer.bind(this);
-        this.handleAcceptOffer = this.handleAcceptOffer.bind(this);
-        this.isOfferDoingAction = this.isOfferDoingAction.bind(this);
-    }
-
-    isOfferDoingAction(offer) {
-        return this.state.doingAction.includes(offer);
     }
 
     componentWillReceiveProps() {
@@ -64,78 +56,6 @@ class OfferList extends Component {
                     })
     }
 
-    handleAcceptOffer(offer) {
-        let newDoingAction = this.state.doingAction.concat(offer);
-        this.setState({
-            ...this.state,
-            doingAction: newDoingAction
-        })
-        const createContractURL = "https://qchain-marketplace-postgrest.herokuapp.com/contract";
-        const config = {
-            headers: { Authorization: "Bearer " + localStorage.getItem('id_token')}
-        };
-        const payload = {
-            name: offer.topic,
-            advertiser: localStorage.getItem('role'),
-            publisher: offer.sender,
-            start_date: offer.date_added,
-            end_date: offer.expiration_date,
-            currency: offer.currency,
-            payout_cap: offer.price,
-            contentlisting: offer.listing_id,
-            contentspacelisting: null
-        }
-        console.log(payload);
-        axios.post(createContractURL, payload, config)
-                    .then(() => {
-                        // success
-                        this.patchListing(offer.listing_id);
-                        this.deleteOffer(offer.id);
-                    })
-                    .catch((err) => {
-                        console.log("CREATE CONTRACT ERR")
-                        console.log(err);
-                    })
-    }
-
-    patchListing(listingId) {
-        const patchListingURL = "https://qchain-marketplace-postgrest.herokuapp.com/listing?id=eq."+listingId;
-        const config = {
-            headers: { Authorization: "Bearer " + localStorage.getItem('id_token')}
-        };
-        const payload = {
-            isactive: false
-        }
-        axios.patch(patchListingURL,payload, config)
-                    .then(() => {
-                        // success
-                    })
-                    .catch((err) => {
-                        console.log("PATCH LISTING ERR")
-                        console.log(err);
-                    })
-    }
-
-    handleDeclineOffer(offerId) {
-        this.deleteOffer(offerId);
-    }
-
-    deleteOffer(offerId) {
-        const deleteOfferURL = "https://qchain-marketplace-postgrest.herokuapp.com/offer?id=eq."+offerId;
-        const config = {
-            headers: { Authorization: "Bearer " + localStorage.getItem('id_token')}
-        };
-        axios.delete(deleteOfferURL, config)
-                    .then(() => {
-                        // success
-                        this.loadData();
-                    })
-                    .catch((err) => {
-                        console.log("DELETE OFFER ERR")
-                        console.log(err);
-                    })
-    }
-
     render() {
         return <div className='invite-list-container'>
             <div className='table-responsive' style={{height: '320px', margin:'2%'}}>
@@ -157,11 +77,9 @@ class OfferList extends Component {
                                 </thead>
                                 <tbody>
                                 {
-                                    <OfferRenderer offerList={this.state.activeOffers}
-                                        onAccept={this.handleAcceptOffer}
-                                        onDecline={this.handleDeclineOffer}
-                                        doingAction={this.isOfferDoingAction}
-                                    />
+                                    this.state.activeOffers.map((offer) => {
+                                        return <OfferRenderer offer={offer} refreshData={this.loadData} />
+                                    })
                                 }      
                                 </tbody>
                             </table>
@@ -176,42 +94,198 @@ class OfferList extends Component {
     
 }
 
-/**
- * Dynamically generate dummy data, 
- * can take in props in future to create all invite listings.
- */
-const OfferRenderer = ({offerList, onAccept, onDecline, doingAction}) => (
-    
-    offerList.map((offer, i) => {
-        const infoPopover = (
-            <Popover title={ offer.sender_name + ' sent you an offer!'} id={'popover'+i}>
-                <strong>Ad Format</strong> {offer.ad_format} <br/>
-                <strong>Date Added</strong> {offer.date_added} <br/>
-                <strong>Pricing</strong> {offer.price} {offer.currency}
-            </Popover>
-        )
+class OfferRenderer extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            isProcessing: false,
+            actionInfo: ''
+        }
+        this.getInfoPopover = this.getInfoPopover.bind(this);
+        this.handleDeclineOffer = this.handleDeclineOffer.bind(this);
+        this.handleAcceptOffer = this.handleAcceptOffer.bind(this);
+        this.makePayment = this.makePayment.bind(this);
+        this.createContractAfterBalanceCheck = this.createContractAfterBalanceCheck.bind(this);
+        this.handleOkayClick = this.handleOkayClick.bind(this);
+    }
+
+    makePayment(existingBalance, currencyType, price) {
+        const listingURL = `https://qchain-marketplace-postgrest.herokuapp.com/wallet_view`;
+        const config = {
+            headers: {Authorization: "Bearer " + localStorage.getItem('id_token')}
+        };
+        const payload = (currencyType === 'EQC')
+                            ? { eqc_balance: (existingBalance - price) }
+                            : { xqc_balance: (existingBalance - price) }
+        axios.patch(listingURL, payload, config)
+            .then(() => {
+                //success, toggle isactive on this listing to false
+            })
+            .catch((err) => {
+                console.log("INACTIVATE ERR");
+                console.log(err);                
+        })
+    }
+
+
+    handleAcceptOffer() {
+        this.setState({
+            ...this.state,
+            isProcessing: true
+        })
+        const walletURL = `https://qchain-marketplace-postgrest.herokuapp.com/wallet_view`;
+        const config = {
+            headers: {Authorization: "Bearer " + localStorage.getItem('id_token')}
+        };
+        
+        axios.get(walletURL, config)
+            .then((response) => {
+                //success, response.data[0]
+                if(this.props.offer.currency === 'EQC'){
+                    if(response.data[0].eqc_balance >= this.props.offer.price){
+                        this.createContractAfterBalanceCheck(response.data[0].eqc_balance)
+                    }else{
+                        this.setState({
+                            ...this.state,
+                            isProcessing: false,
+                            actionInfo: 'Insufficient EQC'
+                        })
+                    }
+                }else{
+                    if(response.data[0].xqc_balance >= this.props.offer.price){
+                        this.createContractAfterBalanceCheck(response.data[0].xqc_balance)
+                    }else{
+                        this.setState({
+                            ...this.state,
+                            isProcessing: false,
+                            actionInfo: 'Insufficient XQC'
+                        })
+                    }
+                }
+            })
+            .catch((err) => {
+                console.log("BUY IT NOW ERR");
+                console.log(err);                
+        })
+       
+    }
+
+    createContractAfterBalanceCheck(existingBalance) {
+        const createContractURL = "https://qchain-marketplace-postgrest.herokuapp.com/contract";
+        const config = {
+            headers: { Authorization: "Bearer " + localStorage.getItem('id_token')}
+        };
+        const payload = {
+            name: this.props.offer.topic,
+            advertiser: localStorage.getItem('role'),
+            publisher: this.props.offer.sender,
+            start_date: this.props.offer.date_added,
+            end_date: this.props.offer.expiration_date,
+            currency: this.props.offer.currency,
+            payout_cap: this.props.offer.price,
+            contentlisting: this.props.offer.listing_id,
+            contentspacelisting: null
+        }
+        console.log(payload);
+        axios.post(createContractURL, payload, config)
+                    .then(() => {
+                        // success
+                        this.patchListing();
+                        this.deleteOffer();
+                        this.makePayment(existingBalance);
+                    })
+                    .catch((err) => {
+                        console.log("CREATE CONTRACT ERR")
+                        console.log(err);
+                    })
+    }
+
+    patchListing() {
+        const patchListingURL = "https://qchain-marketplace-postgrest.herokuapp.com/listing?id=eq."+this.props.offer.listing_id;
+        const config = {
+            headers: { Authorization: "Bearer " + localStorage.getItem('id_token')}
+        };
+        const payload = {
+            isactive: false
+        }
+        axios.patch(patchListingURL,payload, config)
+                    .then(() => {
+                        // success
+                    })
+                    .catch((err) => {
+                        console.log("PATCH LISTING ERR")
+                        console.log(err);
+                    })
+    }
+
+    handleDeclineOffer() {
+        this.deleteOffer();
+    }
+
+    deleteOffer() {
+        const deleteOfferURL = "https://qchain-marketplace-postgrest.herokuapp.com/offer?id=eq."+this.props.offer.id;
+        const config = {
+            headers: { Authorization: "Bearer " + localStorage.getItem('id_token')}
+        };
+        axios.delete(deleteOfferURL, config)
+                    .then(() => {
+                        // success
+                        this.props.refreshData();
+                    })
+                    .catch((err) => {
+                        console.log("DELETE OFFER ERR")
+                        console.log(err);
+                    })
+    }
+
+    getInfoPopover() {
         return (
-            <tr key={'offer-tr'+i}>
+                    <Popover title={ this.props.offer.sender_name + ' sent you an offer!'} id={'popover'+this.props.offer.id}>
+                        <strong>Ad Format</strong> {this.props.offer.ad_format} <br/>
+                        <strong>Date Added</strong> {this.props.offer.date_added} <br/>
+                        <strong>Pricing</strong> {this.props.offer.price} {this.props.offer.currency}
+                    </Popover>
+                )
+    }
+
+    handleOkayClick() {
+        this.setState({
+            ...this.state,
+            actionInfo: ''
+        })
+    }
+
+    render() {
+        return <tr className='offer-renderer-tr'>
                     <td>
-                        <OverlayTrigger trigger={['hover', 'focus']} placement='right' overlay={infoPopover}>
-                            <a style={{cursor: 'pointer'}}> {offer.topic} ({offer.currency}) - {offer.sender_name}</a>
+                        <OverlayTrigger trigger={['hover', 'focus']} placement='right' overlay={this.getInfoPopover()}>
+                            <a style={{cursor: 'pointer'}}> {this.props.offer.topic} ({this.props.offer.currency}) - {this.props.offer.sender_name}</a>
                         </OverlayTrigger> 
                     </td>
                     <td style={{textAlign: 'center'}}>
-                    {
-                        (doingAction(offer))
-                            ? <span style={{color: '#777777'}}>Processing Action...</span>
-                            : <div>
-                                <Button bsStyle='success' onClick={() => onAccept(offer)} style={{marginRight: '10px'}}>Accept</Button>
-                                <Button bsStyle='danger' onClick={() => onDecline(offer.id)}>Decline</Button>
-                            </div>
-                    }
-                        
+                        {
+                            (this.state.isProcessing)
+                                ? <span style={{color: '#777777'}}>Processing Action...</span>
+                                : <div>
+                                    {
+                                        (this.state.actionInfo.length > 0)
+                                            ? <div>{this.state.actionInfo} <Button onClick={this.handleOkayClick}>okay...</Button></div>
+                                            : ( <div>
+                                                <Button 
+                                                    bsStyle='success'
+                                                    onClick={() => this.handleAcceptOffer()} 
+                                                    style={{marginRight: '10px'}}
+                                                > Accept </Button>
+                                                <Button bsStyle='danger' onClick={() => this.handleDeclineOffer()}>Decline</Button>
+                                            </div> )
+                                    }
+                                </div>
+                        }
                     </td>
-                </tr>
-        )
-    })
-)
+        </tr>
+    }
+    
+}
 
 
 export default OfferList;

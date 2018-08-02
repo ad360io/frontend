@@ -64,7 +64,8 @@ class FormSubmitButton extends Component{
                 classtype: "request",
                 advertiser: localStorage.getItem('role'),
                 publisher: 'none',
-                owner: localStorage.getItem('role')
+                owner: localStorage.getItem('role'),
+                isactive: true
             } 
         }else {
             return {

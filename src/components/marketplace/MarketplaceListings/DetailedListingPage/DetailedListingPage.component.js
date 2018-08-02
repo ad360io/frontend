@@ -46,6 +46,7 @@ class DetailedListingPage extends Component {
             processing: false,
             emptyResponse: false,
             offerAmount: -1,
+            actionInfo: '',
         }
 
         // Binding functions
@@ -57,6 +58,7 @@ class DetailedListingPage extends Component {
         this.handleOfferChange = this.handleOfferChange.bind(this);
         this.getBadOffer = this.getBadOffer.bind(this);
         this.makeOfferClick = this.makeOfferClick.bind(this);
+        this.createContractAfterBalanceCheck = this.createContractAfterBalanceCheck.bind(this);
     }
 
     componentDidMount() {
@@ -121,11 +123,48 @@ class DetailedListingPage extends Component {
     }
 
     handleBuyItNow() {
-        // call on start load to get data
+        // check balance
         this.setState({
             ...this.state,
             processing: true,
         })
+        const walletURL = `https://qchain-marketplace-postgrest.herokuapp.com/wallet_view`;
+        const config = {
+            headers: {Authorization: "Bearer " + localStorage.getItem('id_token')}
+        };
+        
+        axios.get(walletURL, config)
+            .then((response) => {
+                //success, response.data[0]
+                if(this.state.listing.currency === 'EQC'){
+                    if(response.data[0].eqc_balance >= this.state.listing.price){
+                        this.createContractAfterBalanceCheck(response.data[0].eqc_balance)
+                    }else{
+                        this.setState({
+                            ...this.state,
+                            processing: false,
+                            actionInfo: 'Insufficient EQC on your account'
+                        })
+                    }
+                }else{
+                    if(response.data[0].xqc_balance >= this.state.listing.price){
+                        this.createContractAfterBalanceCheck(response.data[0].xqc_balance)
+                    }else{
+                        this.setState({
+                            ...this.state,
+                            processing: false,
+                            actionInfo: 'Insufficient XQC on your account'
+                        })
+                    }
+                }
+            })
+            .catch((err) => {
+                console.log("BUY IT NOW ERR");
+                console.log(err);                
+        })
+    }
+
+    createContractAfterBalanceCheck(balance){
         const listingURL = `https://qchain-marketplace-postgrest.herokuapp.com/contract`;
         const config = {
             headers: {Authorization: "Bearer " + localStorage.getItem('id_token')}
@@ -149,6 +188,7 @@ class DetailedListingPage extends Component {
                     bought: true
                 })
                 this.inactivateListing();
+                this.makePayment(balance);
             })
             .catch((err) => {
                 console.log("BUY IT NOW ERR");
@@ -164,6 +204,24 @@ class DetailedListingPage extends Component {
         const payload = {
             isactive: false
         }
+        axios.patch(listingURL, payload, config)
+            .then(() => {
+                //success, toggle isactive on this listing to false
+            })
+            .catch((err) => {
+                console.log("INACTIVATE ERR");
+                console.log(err);                
+        })
+    }
+
+    makePayment(existingBalance) {
+        const listingURL = `https://qchain-marketplace-postgrest.herokuapp.com/wallet_view`;
+        const config = {
+            headers: {Authorization: "Bearer " + localStorage.getItem('id_token')}
+        };
+        const payload = (this.state.listing.currency === 'EQC')
+                            ? { eqc_balance: (existingBalance - this.state.listing.price) }
+                            : { xqc_balance: (existingBalance - this.state.listing.price) }
         axios.patch(listingURL, payload, config)
             .then(() => {
                 //success, toggle isactive on this listing to false
@@ -241,6 +299,7 @@ class DetailedListingPage extends Component {
                         onBuy={this.handleBuyItNow}
                         bought={this.state.bought}
                         processing={this.state.processing}
+                        issue={this.state.actionInfo}
                     />
                 </div>
             }
@@ -336,7 +395,7 @@ const DetailedRequestListing = ({ listing, decideImage, onOfferChange, badOffer,
     </div>
 )
 
-const DetailedContentSpaceListing = ({ listing, decideImage, onBuy, bought, processing }) => (
+const DetailedContentSpaceListing = ({ listing, decideImage, onBuy, bought, processing, issue}) => (
     <div className='detailed-listing-renderer'>
         {
             /* ********************  SCHEMA OF A CONTENT SPACE LISTING ********************
@@ -399,9 +458,13 @@ const DetailedContentSpaceListing = ({ listing, decideImage, onBuy, bought, proc
                                 onClick={()=>onBuy()} 
                                 variant='outlined' 
                                 color='primary'
-                                disabled={processing}
+                                disabled={processing || issue.length > 0}
                             >
-                                Buy It Now
+                                {
+                                    (issue.length > 0 )
+                                        ? issue
+                                        : 'Buy It Now!'
+                                }
                             </Button> 
                     </div>
                 }
