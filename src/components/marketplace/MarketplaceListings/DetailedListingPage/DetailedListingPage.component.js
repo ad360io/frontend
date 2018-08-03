@@ -31,6 +31,7 @@ import DetailedImageSlider from './DetailedImageSlider/DetailedImageSlider.compo
 
 import { Alert, FormControl } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
+import MakeOfferSection from './MakeOfferSection/MakeOfferSection.component';
 
 
 class DetailedListingPage extends Component {
@@ -55,9 +56,6 @@ class DetailedListingPage extends Component {
         this.inactivateListing = this.inactivateListing.bind(this);
         this.handleBuyItNow = this.handleBuyItNow.bind(this);
         this.loadDetail = this.loadDetail.bind(this);
-        this.handleOfferChange = this.handleOfferChange.bind(this);
-        this.getBadOffer = this.getBadOffer.bind(this);
-        this.makeOfferClick = this.makeOfferClick.bind(this);
         this.createContractAfterBalanceCheck = this.createContractAfterBalanceCheck.bind(this);
     }
 
@@ -232,48 +230,6 @@ class DetailedListingPage extends Component {
         })
     }
 
-    getBadOffer() {
-        return !(Number.parseInt(this.state.offerAmount) > 0);
-    }
-
-    handleOfferChange (event) {
-        this.setState({
-            ...this.state,
-            offerAmount: event.target.value
-        })
-    }
-
-    makeOfferClick() {
-        this.setState({
-            ...this.state,
-            processing: true,
-        })
-        const offerURL = `https://qchain-marketplace-postgrest.herokuapp.com/offer`;
-        const config = {
-            headers: {Authorization: "Bearer " + localStorage.getItem('id_token')}
-        };
-        const payload = {
-            listing_id: this.state.listing.id,
-            currency: this.state.listing.currency,
-            price: this.state.offerAmount,
-            sender: localStorage.getItem('role'),
-            receiver: this.state.listing.owner,
-            owner: this.state.listing.owner
-        }
-        axios.post(offerURL, payload, config)
-            .then(() => {
-                //success, toggle isactive on this listing to false
-                this.setState({
-                    ...this.state,
-                    bought: true
-                })
-            })
-            .catch((err) => {
-                console.log("MAKE OFFER ERR");
-                console.log(err);                
-        })
-    }
-
     render() {
         // console.log(this.props.match.params.id)
         // make a request to get detailed listing info using ID
@@ -284,11 +240,6 @@ class DetailedListingPage extends Component {
                     <DetailedRequestListing 
                         listing={this.state.listing}
                         decideImage={this.decideImage}
-                        onOfferChange={this.handleOfferChange}
-                        badOffer={this.getBadOffer()}
-                        makeOfferClick={this.makeOfferClick}
-                        bought={this.state.bought}
-                        processing={this.state.processing}
                     />
                 </div>
             }else {
@@ -315,20 +266,6 @@ const DetailedRequestListing = ({ listing, decideImage, onOfferChange, badOffer,
     
 
     <div className='detailed-listing-renderer'>
-        {
-            /* ********************  SCHEMA OF A REQUEST LISTING ********************
-                "id" : #,
-                "type" : "",
-                "requestor": "",
-                "currency": "",
-                "marketingType": "",
-                "medium": "",
-                "contentTopic": "",
-                "images": "",
-                "ask_date_from": "",
-                "requestDescription": "" 
-            */
-        }
         <div className='detailed-image-container'>
             <Card>
                 <CardText>
@@ -361,15 +298,7 @@ const DetailedRequestListing = ({ listing, decideImage, onOfferChange, badOffer,
                 
             </div>
             <br /> 
-            {
-                (bought)
-                    ? <Alert bsStyle='success'>Congratulations! You've made the offer!</Alert>
-                    : <div className='buy-section'>
-                        <FormControl onChange={onOfferChange} placeholder='Enter Offer Price' type='number' min='1' step='1' style={{width: '50%', float: 'left'}} />
-                        <Button disabled={badOffer || processing} onClick={makeOfferClick} className='buy-button' variant='outlined' color='primary'>Make Offer</Button>
-                    </div>
-            }
-            
+                <MakeOfferSection listing={listing}/>
             <br />
             <div className='details-text'>{listing.description}</div>
             </CardText>
@@ -397,23 +326,6 @@ const DetailedRequestListing = ({ listing, decideImage, onOfferChange, badOffer,
 
 const DetailedContentSpaceListing = ({ listing, decideImage, onBuy, bought, processing, issue}) => (
     <div className='detailed-listing-renderer'>
-        {
-            /* ********************  SCHEMA OF A CONTENT SPACE LISTING ********************
-                "id" : #,
-                "type" : "",
-                "creator": "",
-                "ask_date_from": "",
-                "ask_date_to": "",
-                "marketingType": "",
-                "medium": "",
-                "contentTopic": "",
-                "pricing": #,
-                "timeUnit": "",
-                "currency": "",
-                "listingDescription": "",
-                "referralURI": ""
-            */
-        }
         <div className='detailed-image-container'>
             <Card>
                 <CardText>
