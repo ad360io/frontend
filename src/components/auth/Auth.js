@@ -3,11 +3,11 @@ Auth0 Libs
 */
 import { Auth0Config } from './auth0-config';
 import auth0 from 'auth0-js';
-
+import axios from 'axios';
 
 export default class Auth {
 
-    constructor(store){
+    constructor(store) {
         this.store = store;
         this.login = this.login.bind(this);
         this.handleAuthentication = this.handleAuthentication.bind(this);
@@ -42,14 +42,14 @@ export default class Auth {
 
     handleAuthentication(propsHistory) {
         this.auth0.parseHash((err, authResult) => {
-          if (authResult && authResult.accessToken && authResult.idToken) {
-            this.setSession(authResult, propsHistory);
-          } else if (err) {
-            propsHistory.push('/');
-            console.log(err);
-          }
+            if (authResult && authResult.accessToken && authResult.idToken) {
+                this.setSession(authResult, propsHistory);
+            } else if (err) {
+                propsHistory.push('/');
+                console.log(err);
+            }
         });
-      }
+    }
 
     setSession(authResult, propsHistory) {
         // Set the time that the Access Token will expire at
@@ -90,11 +90,11 @@ export default class Auth {
     renewToken() {
         this.auth0.checkSession({}, (err, result) => {
             if (err) {
-              console.log(err);
+                console.log(err);
             } else {
-              this.setSession(result);
+                this.setSession(result);
             }
-          }
+        }
         );
     }
 
@@ -102,16 +102,16 @@ export default class Auth {
         const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
         const delay = expiresAt - Date.now();
         if (delay > 0) {
-          this.tokenRenewalTimeout = setTimeout(() => {
-            this.renewToken();
-          }, delay);
+            this.tokenRenewalTimeout = setTimeout(() => {
+                this.renewToken();
+            }, delay);
         }
     }
 
     getAccessToken() {
         const accessToken = localStorage.getItem('access_token');
         if (!accessToken) {
-          throw new Error('No Access Token found');
+            throw new Error('No Access Token found');
         }
         return accessToken;
     }
@@ -119,26 +119,26 @@ export default class Auth {
     getProfile(cb) {
         let accessToken = this.getAccessToken();
         this.auth0.client.userInfo(accessToken, (err, profile) => {
-          if (profile) {
-            this.userProfile = profile;
-          }
-          cb(err, profile);
+            if (profile) {
+                this.userProfile = profile;
+            }
+            cb(err, profile);
         });
     }
 
-    handleProfileOnAuthenticated(accessToken){
-        this.getProfile((err, profile)=>{
-            if(profile) {
+    handleProfileOnAuthenticated(accessToken) {
+        this.getProfile((err, profile) => {
+            if (profile) {
                 this.dispatchProfile(profile,
                     profile['https://auth.qchain.co/user_metadata']
                 );
             }
-            if(err) console.log(err)
+            if (err) console.log(err)
         })
     }
 
     dispatchProfile(profile, user_metadata) {
-        if(typeof user_metadata === 'undefined'){
+        if (typeof user_metadata === 'undefined') {
             let value = {
                 name: profile.name,
                 email: profile.email,
@@ -149,17 +149,17 @@ export default class Auth {
                 type: 'SET_PROFILE',
                 value
             })
-        }else{
-            let name        = user_metadata.name;
-            let email       = (typeof user_metadata.email === 'undefined' || user_metadata.email === ''
-                            ? profile.email
-                            : user_metadata.email);
-            let nickname    = (typeof user_metadata.nickname === 'undefined' || user_metadata.nickname === ''
-                            ? profile.nickname
-                            : user_metadata.nickname);
-            let avatar_url  = (typeof user_metadata.picture === 'undefined'  || user_metadata.picture === ''
-                            ? profile.picture
-                            : user_metadata.picture);
+        } else {
+            let name = user_metadata.name;
+            let email = (typeof user_metadata.email === 'undefined' || user_metadata.email === ''
+                ? profile.email
+                : user_metadata.email);
+            let nickname = (typeof user_metadata.nickname === 'undefined' || user_metadata.nickname === ''
+                ? profile.nickname
+                : user_metadata.nickname);
+            let avatar_url = (typeof user_metadata.picture === 'undefined' || user_metadata.picture === ''
+                ? profile.picture
+                : user_metadata.picture);
             let value = {
                 name,
                 email,
@@ -171,10 +171,10 @@ export default class Auth {
                 value
             })
         }
-        
+
     }
 
-    updateUserMetadata(newMetadata){
+    updateUserMetadata(newMetadata) {
         let myIdToken = localStorage.getItem('id_token');
         let auth0Manager = new auth0.Management({
             domain: `${Auth0Config.domain}`,
@@ -186,14 +186,29 @@ export default class Auth {
             myUserId,
             newMetadata,
             (err, newProfile) => {
-                if(err) {
+                if (err) {
                     console.log(err);
                 }
                 else {
-                    this.logout();
+                    const nameURL = `https://qchain-marketplace-postgrest.herokuapp.com/account?role=eq.${localStorage.getItem('role')}`;
+                    const config = {
+                        headers: { Authorization: "Bearer " + localStorage.getItem('id_token') }
+                    };
+                    const payload = {
+                        name: newMetadata.nickname
+                    }
+                    axios.patch(nameURL, payload, config)
+                        .then(() => {
+                            // success, logout to reload view
+                            this.logout();
+                        })
+                        .catch((err) => {
+                            console.log("SET NAME ERR");
+                            console.log(err);
+                        })
+                    
                 }
             }
         )
     }
-
 }
