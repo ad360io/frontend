@@ -179,8 +179,8 @@ class OfferRenderer extends Component {
             name: this.props.offer.topic,
             advertiser: localStorage.getItem('role'),
             publisher: this.props.offer.sender,
-            start_date: this.props.offer.date_added,
-            end_date: this.props.offer.expiration_date,
+            start_date: this.props.offer.start_date,
+            end_date: this.props.offer.end_date,
             currency: this.props.offer.currency,
             payout_cap: this.props.offer.price,
             contentlisting: this.props.offer.listing_id,
@@ -242,8 +242,11 @@ class OfferRenderer extends Component {
         return (
                     <Popover title={ this.props.offer.sender_name + ' sent you an offer!'} id={'popover'+this.props.offer.id}>
                         <strong>Ad Format</strong> {this.props.offer.ad_format} <br/>
-                        <strong>Date Added</strong> {this.props.offer.date_added} <br/>
-                        <strong>Pricing</strong> {this.props.offer.price} {this.props.offer.currency}
+                        <strong>Start Date</strong> {this.props.offer.start_date} <br/>
+                        <strong>End Date</strong> {this.props.offer.end_date} <br/>
+                        <strong>Pricing</strong> {this.props.offer.price} {this.props.offer.currency} <br/>
+                        <strong>Message</strong><br/>
+                        {this.props.offer.message}
                     </Popover>
                 )
     }
