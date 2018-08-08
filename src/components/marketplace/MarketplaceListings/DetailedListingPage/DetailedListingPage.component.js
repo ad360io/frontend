@@ -29,7 +29,7 @@ import Button                         from '@material-ui/core/Button';
 
 import DetailedImageSlider from './DetailedImageSlider/DetailedImageSlider.component';
 
-import { Alert, FormControl } from 'react-bootstrap';
+import { Alert } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
 import MakeOfferSection from './MakeOfferSection/MakeOfferSection.component';
 

@@ -23,12 +23,12 @@ import CircularProgress from 'material-ui/CircularProgress';
 /*
 Networking
 */
-import axios from 'axios';
+//import axios from 'axios';
 
 /*
 Actions
 */
-import { fetch_DashboardData_Fulfilled, fetch_DashboardData_Pending, fetch_DashboardData_Rejected } from '../../actions/DatabaseRequestActions';
+import { fetch_DashboardData_Fulfilled } from '../../actions/DatabaseRequestActions';
 
 /*
 Custom Components
@@ -121,7 +121,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    const TestServerURL = "http://localhost:3000/api/dashboard";
+    //const TestServerURL = "http://localhost:3000/api/dashboard";
     return {
         onStartLoadData: () => {
             dispatch((dispatch) => {

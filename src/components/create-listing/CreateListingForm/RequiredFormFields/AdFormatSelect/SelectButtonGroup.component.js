@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 /*
 React Bootstrap
 */
-import { ButtonGroup } from 'react-bootstrap';
+//import { ButtonGroup } from 'react-bootstrap';
 
 
 class SelectButtonGroup extends Component {
