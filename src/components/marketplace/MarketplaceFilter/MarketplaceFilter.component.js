@@ -98,7 +98,7 @@ class MarketplaceFilter extends Component {
                 className='filter-drawer'
             >
                 <Paper style={{
-                    height: 130,
+                    height: 64,
                     width: 300,
                     margin: 0,
                     display: 'inline-block',

@@ -78,8 +78,8 @@ class OfferList extends Component {
                                 </thead>
                                 <tbody>
                                 {
-                                    this.state.activeOffers.map((offer) => {
-                                        return <OfferRenderer offer={offer} refreshData={this.loadData} />
+                                    this.state.activeOffers.map((offer, i) => {
+                                        return <OfferRenderer offer={offer} refreshData={this.loadData} key={'offer'+i}/>
                                     })
                                 }      
                                 </tbody>

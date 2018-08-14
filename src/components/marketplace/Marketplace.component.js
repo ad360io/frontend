@@ -77,7 +77,7 @@ class Marketplace extends Component {
                 </div>
             </div>
         }else{
-            return <CircularProgress size={100} thickness={6} />
+            return <div className='loading-container'><CircularProgress size={100} thickness={6} style={{marginTop: '40vh'}} /> </div>
         }
     }
     

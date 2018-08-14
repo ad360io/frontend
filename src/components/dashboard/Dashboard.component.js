@@ -34,7 +34,6 @@ import { fetch_DashboardData_Fulfilled } from '../../actions/DatabaseRequestActi
 Custom Components
 */
 import Footer          from '../footer/Footer.component';
-import DashboardWallet from './DashboardWallet/DashboardWallet.component';
 import DashboardStats  from './DashboardStats/DashboardStats.component';
 import DashboardCharts from './DashboardCharts/DashboardCharts.component';
 import ErrorPage       from '../ErrorPage/ErrorPage.component';
@@ -87,7 +86,6 @@ const DashboardRenderer = ({ modeFilter, currencyFilter }) => (
         <Grid className='dashboard-grid'>
             <Row>
                 <Col xs={12} lg={5} sm={8} className='dashboard-left'>
-                    <DashboardWallet className='wallet-div' />
                     <DashboardStats
                         modeFilter={modeFilter}
                         currencyFilter={currencyFilter}

@@ -86,7 +86,7 @@ class MarketplaceListings extends Component {
         const displayData = this.filterDataWithProps(this.decideDataToDisplay());
         
         return <div className='marketplace-listings-container' ref={(ref) => this._containerDiv = ref}>
-            <h2 className='marketplace-title'>{this.decideTitle(displayData.length)}</h2>
+            <h3 className='marketplace-title'>{this.decideTitle(displayData.length)}</h3>
             {
                 displayData.map((listing, i)=>{
                     return <ListingCard key={'listingCard'+i} listing={listing} modeFilter={this.props.modeFilter}/>
