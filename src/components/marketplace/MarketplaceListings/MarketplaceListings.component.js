@@ -3,6 +3,7 @@ Core Libs
 */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { createFilter } from 'react-search-input';
 
 /*
 Local CSS
@@ -13,6 +14,7 @@ import './MarketplaceListings.component.css';
 Children Component
 */
 import ListingCard from './ListingCard/ListingCard.component';
+import { create } from 'domain';
 
 
 /**
@@ -47,9 +49,11 @@ class MarketplaceListings extends Component {
      * @param {Array} data The full array of listings waiting to be filtered
      */
     filterDataWithProps(data) {
+        const KEYS_TO_FILTER = ['name', 'classtype', 'description', 'ad_format', 'medium'];
+        const keywordFilteredData = data.filter(createFilter(this.props.keywordFilter, KEYS_TO_FILTER));
         if (this.props.modeFilter === 'Advertiser') {
             // we are looking at content spaces, with price and currency
-            return data.filter((listing) => {
+            return keywordFilteredData.filter((listing) => {
                 if (listing.currency.toUpperCase() === this.props.currencyFilter
                     && listing.price <= (this.props.budgetFilter * 1000)
                     && (this.props.adFormatFilter === 'Show All' || listing.ad_format === this.props.adFormatFilter)
@@ -61,7 +65,7 @@ class MarketplaceListings extends Component {
             })
         } else {
             // we are looking at requests
-            return data.filter((listing) => {
+            return keywordFilteredData.filter((listing) => {
                 if (listing.currency.toUpperCase() === this.props.currencyFilter
                     && (this.props.adFormatFilter === 'Show All' || listing.ad_format === this.props.adFormatFilter)
                     && (this.props.mediumFilter === '' || listing.medium === this.props.mediumFilter)) {
@@ -107,7 +111,8 @@ const mapStateToProps = (state) => {
         adFormatFilter: state.MarketplaceFilterReducer.adFormatFilter,
         mediumFilter: state.MarketplaceFilterReducer.mediumFilter,
         contentSpaceListings: state.MarketplaceDataReducer.db.contentSpaceListings,
-        requestListings: state.MarketplaceDataReducer.db.requestListings
+        requestListings: state.MarketplaceDataReducer.db.requestListings,
+        keywordFilter: state.MarketplaceFilterReducer.keywordFilter,
     }
 }
 

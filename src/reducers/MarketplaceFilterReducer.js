@@ -4,7 +4,8 @@ const defaultState = {
    budgetFilter: 7.5,       
    adFormatFilter: 'Show All',
    mediumFilter: '',
-   viewModeFilter: 'Listing'
+   viewModeFilter: 'Listing',
+   keywordFilter: ''
 }
 
 /**
@@ -71,6 +72,12 @@ const MarketplaceFilterReducer = (state=defaultState, action) => {
             return {
                 ...state,
                 mediumFilter: ''
+            }
+
+        case 'SET_KEYWORD': 
+            return {
+                ...state,
+                keywordFilter: action.value
             }
 
         default:

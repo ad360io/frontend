@@ -20,7 +20,7 @@ import Drawer from 'material-ui/Drawer';
 /*
 Action
 */
-import { openDrawer, closeDrawer, drawerRequest }   from '../../../actions/MarketplaceActions';
+import { openDrawer, closeDrawer, drawerRequest, setKeyword }   from '../../../actions/MarketplaceActions';
 
 /*
 Local CSS
@@ -44,14 +44,10 @@ class MarketplaceFilter extends Component {
 
     constructor(props){
         super(props)
-        this.state = {
-            searchTerm: ''
-        }
 
         // function binding
         this.decideTitle = this.decideTitle.bind(this);
         this.decideHidden = this.decideHidden.bind(this);
-        this.searchUpdated = this.searchUpdated.bind(this);
         this.onWindowWidthUpdate = this.onWindowWidthUpdate.bind(this);
     }
 
@@ -73,10 +69,6 @@ class MarketplaceFilter extends Component {
         }else{
             return 'inline-block';
         }
-    }
-
-    searchUpdated (term) {
-        this.setState({...this.state, searchTerm: term});
     }
 
     render() {
@@ -113,7 +105,7 @@ class MarketplaceFilter extends Component {
                 <FilterDivider />
                 
                 <h4 className='filter-title'>Keyword Search</h4>
-                <KeywordFilter onChange={this.searchUpdated}/>
+                <KeywordFilter onChange={this.props.onKeywordChange}/>
                 <FilterDivider />
 
                 <h4 className='filter-title'>Max Purchase:</h4>
@@ -149,6 +141,9 @@ const mapDispatchToFilterProps = (dispatch) => {
         },
         openDrawer: () => {
             dispatch(openDrawer())
+        },
+        onKeywordChange: (keyword) => {
+            dispatch(setKeyword(keyword));
         }
     }
 }

@@ -53,4 +53,11 @@ const clearMedium = () => {
     }
 }
 
-export { setBudget, drawerRequest, openDrawer, closeDrawer, setAdFormat, setViewMode, setMedium }
+const setKeyword = (keyword) => {
+    return {
+        type: 'SET_KEYWORD',
+        value: keyword
+    }
+}
+
+export { setBudget, drawerRequest, openDrawer, closeDrawer, setAdFormat, setViewMode, setMedium, setKeyword }
