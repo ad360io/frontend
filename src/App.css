@@ -1,7 +1,6 @@
 .app-container {
     background: white;
     width: 100%;
-    overflow-x: hidden;
     overflow-y: auto;
 }
 

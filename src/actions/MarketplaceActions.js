@@ -24,7 +24,8 @@ const closeDrawer = () => {
     }
 }
 
-const setAdFormat = (adFormat) => {
+const setAdFormat = (adFormat, dispatch) => {
+    dispatch(clearMedium());
     return {
         type: 'SET_AD_FORMAT',
         value: adFormat
@@ -38,4 +39,18 @@ const setViewMode = (viewModeFilter) => {
     }
 }
 
-export { setBudget, drawerRequest, openDrawer, closeDrawer, setAdFormat, setViewMode }
+const setMedium = (mediumFilter, dispatch, adFormat) => {
+    dispatch(setAdFormat(adFormat, dispatch));
+    return {
+        type: 'SET_MEDIUM_FILTER',
+        value: mediumFilter
+    }
+}
+
+const clearMedium = () => {
+    return {
+        type: 'CLEAR_MEDIUM_FILTER',
+    }
+}
+
+export { setBudget, drawerRequest, openDrawer, closeDrawer, setAdFormat, setViewMode, setMedium }

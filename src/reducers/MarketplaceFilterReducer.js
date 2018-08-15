@@ -3,6 +3,7 @@ const defaultState = {
    isDrawerOpen: false,       
    budgetFilter: 7.5,       
    adFormatFilter: 'Show All',
+   mediumFilter: '',
    viewModeFilter: 'Listing'
 }
 
@@ -58,6 +59,18 @@ const MarketplaceFilterReducer = (state=defaultState, action) => {
             return {
                 ...state,
                 viewModeFilter: action.value
+            }
+        
+        case 'SET_MEDIUM_FILTER': 
+            return {
+                ...state,
+                mediumFilter: action.value
+            }
+
+        case 'CLEAR_MEDIUM_FILTER':
+            return {
+                ...state,
+                mediumFilter: ''
             }
 
         default:

@@ -48,8 +48,6 @@ class TinyWallet extends Component {
                     xqc_balance: `${response.data[0].xqc_balance} XQC`,
                     eqc_balance: `${response.data[0].eqc_balance} EQC`
                 })
-
-                console.log(response.data[0])
             })
             .catch((err) => {
                 console.log(err);
