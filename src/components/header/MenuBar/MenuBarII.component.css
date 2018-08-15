@@ -15,7 +15,7 @@
     z-index: 6;
     padding: 0;
     background-color: white;
-    border-bottom: 1px solid #03000013;
+    border-bottom: 1px solid #03000041;
     display: grid;
     grid-gap: 5px;
     grid-template-columns: 140px auto 0px 24px 137px 15px 64px 24px;
