@@ -20,18 +20,18 @@ const CurrencySelector = ({ currencyFilter, onClick }) => (
     
         <ButtonGroup bsSize='small' className='currency-selector'>
             <Button
-                active={currencyFilter === 'EQC'}
-                onClick={() => onClick('EQC')}
-                style={{width: 98}}
-            >
-                EQC
-            </Button>
-            <Button
                 active={currencyFilter === 'XQC'}
                 onClick={() => onClick('XQC')}
                 style={{width: 98}}
             >
                 XQC
+            </Button>
+            <Button
+                active={currencyFilter === 'EQC'}
+                onClick={() => onClick('EQC')}
+                style={{width: 98}}
+            >
+                EQC
             </Button>
         </ButtonGroup>
     
