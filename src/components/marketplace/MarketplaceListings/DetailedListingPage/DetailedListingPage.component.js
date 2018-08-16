@@ -311,7 +311,7 @@ const DetailedRequestListing = ({ listing, decideImage, onOfferChange, badOffer,
                     <span>{listing.owner_name} trading in {listing.currency}</span>
                 </CardTitle>
                 <CardText>
-                <div>Ask Date: {listing.date_added}</div>
+                <div>Ask Date: {listing.date_added.slice(0,10)}</div>
                 </CardText>
             </Card>
             <div className='detailed-listing-action-section'>
@@ -394,7 +394,7 @@ const DetailedContentSpaceListing = ({ listing, decideImage, onBuy, bought, proc
                 </CardTitle>
                 <CardText>
                 
-                <div>Promotion Duration: <br/> {listing.date_added} - {listing.expiration_date}</div>
+                <div>Promotion Duration: <br/> {listing.date_added.slice(0,10)} to {listing.expiration_date}</div>
                 </CardText>
             </Card>
             <div className='detailed-listing-action-section'>
