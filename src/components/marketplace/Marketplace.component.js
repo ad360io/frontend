@@ -100,7 +100,6 @@ const mapDispatchToProps = (dispatch) => {
                 headers: {Authorization: "Bearer " + localStorage.getItem('id_token')}
             };
             dispatch((dispatch) => {
-                console.log(localStorage.getItem('id_token'));
                 dispatch(fetch_MarketplaceData_Pending())
                 axios.get(TestServerURL, config)
                     .then((response) => {
