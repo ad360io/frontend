@@ -2,7 +2,7 @@
 Core Libs
 */
 import React, { Component } from 'react';
-import { connect }          from 'react-redux';
+import { connect } from 'react-redux';
 
 /*
 Local CSS
@@ -14,18 +14,18 @@ Children Components
 */
 import RequiredFormFields from './RequiredFormFields/RequiredFormFields.component';
 import OptionalFormFields from './OptionalFormFields/OptionalFormFields.component';
-import FormConfirmation   from './FormConfirmation/FormConfirmation.component';
-import FormSubmitButton   from './FromSubmitButton/FormSubmitButton.component';
+import FormConfirmation from './FormConfirmation/FormConfirmation.component';
+import FormSubmitButton from './FromSubmitButton/FormSubmitButton.component';
 
 /*
 Material UI
 */
 import { withStyles } from '@material-ui/core/styles';
-import Stepper        from '@material-ui/core/Stepper';
-import Step           from '@material-ui/core/Step';
-import StepLabel      from '@material-ui/core/StepLabel';
-import StepContent    from '@material-ui/core/StepContent';
-import Button         from '@material-ui/core/Button';
+import Stepper from '@material-ui/core/Stepper';
+import Step from '@material-ui/core/Step';
+import StepLabel from '@material-ui/core/StepLabel';
+import StepContent from '@material-ui/core/StepContent';
+import Button from '@material-ui/core/Button';
 
 /*
 React Bootstrap
@@ -82,11 +82,11 @@ class CreateListingForm extends Component {
     getStepContent(step) {
         switch (step) {
             case 0:
-                return <RequiredFormFields modeFilter={this.props.modeFilter}/>;
+                return <RequiredFormFields modeFilter={this.props.modeFilter} />;
             case 1:
-                return <OptionalFormFields modeFilter={this.props.modeFilter}/>;
+                return <OptionalFormFields modeFilter={this.props.modeFilter} />;
             case 2:
-                return <FormConfirmation   modeFilter={this.props.modeFilter} currencyFilter={this.props.currencyFilter} />;
+                return <FormConfirmation modeFilter={this.props.modeFilter} currencyFilter={this.props.currencyFilter} />;
             default:
                 return 'Unknown step';
         }
@@ -100,33 +100,33 @@ class CreateListingForm extends Component {
 
     handleSubmitForm() {
         // hide back button, reset fields provide an option to create another listing
-        if(this.props.modeFilter === 'Advertiser'){
+        if (this.props.modeFilter === 'Advertiser') {
             this.props.onAdvSubmit();
-        }else {
+        } else {
             this.props.onPubSubmit();
         }
     }
 
     handleStepperNext = () => {
-        if(this.props.modeFilter === 'Advertiser'){
+        if (this.props.modeFilter === 'Advertiser') {
             this.props.advStepperNext();
-        }else {
+        } else {
             this.props.pubStepperNext();
         }
     };
 
     handleStepperBack = () => {
-        if(this.props.modeFilter === 'Advertiser'){
+        if (this.props.modeFilter === 'Advertiser') {
             this.props.advStepperBack();
-        }else {
+        } else {
             this.props.pubStepperBack();
         }
     };
 
     onFormResetClick() {
-        if(this.props.modeFilter === 'Advertiser'){
+        if (this.props.modeFilter === 'Advertiser') {
             this.props.resetAdvForm();
-        }else {
+        } else {
             this.props.resetPubForm();
         }
     }
@@ -139,28 +139,28 @@ class CreateListingForm extends Component {
                 && this.props.advertiserForm.topic.length > 0
         }
         else {
-            return this.props.publisherForm.adFormat.length > 0
+            return typeof this.props.publisherForm.dateFrom !== 'undefined'
+                && typeof this.props.publisherForm.dateTo !== 'undefined' 
+                && this.props.publisherForm.adFormat.length > 0
                 && this.props.publisherForm.medium.length > 0
                 && this.props.publisherForm.description.length > 0
                 && this.props.publisherForm.topic.length > 0
                 && this.props.publisherForm.price.length > 0
-                && typeof this.props.publisherForm.dateFrom !== undefined
-                && typeof this.props.publisherForm.dateTo.length !== undefined
         }
     }
 
     getActiveStep() {
-        if(this.props.modeFilter === 'Advertiser'){
+        if (this.props.modeFilter === 'Advertiser') {
             return this.props.advertiserActiveStep;
-        }else{
+        } else {
             return this.props.publisherActiveStep;
         }
     }
 
     getSubmitted() {
-        if(this.props.modeFilter === 'Advertiser') {
+        if (this.props.modeFilter === 'Advertiser') {
             return this.props.advertiserSubmitted;
-        }else {
+        } else {
             return this.props.publisherSubmitted;
         }
     }
@@ -195,32 +195,32 @@ class CreateListingForm extends Component {
                                                 Back
                                             </Button>
                                         </div>
-                                        
+
                                         <div hidden={this.getActiveStep() === steps.length - 1}>
                                             <Button
                                                 variant="contained"
                                                 color="primary"
                                                 onClick={this.handleStepperNext}
                                                 className={classes.button}
-                                                
+
                                             >
                                                 Next
                                             </Button>
                                         </div>
 
                                         <div hidden={this.getActiveStep() !== steps.length - 1}>
-                                            <FormSubmitButton 
-                                                onSubmit={this.handleSubmitForm} 
+                                            <FormSubmitButton
+                                                onSubmit={this.handleSubmitForm}
                                                 className={classes.button}
                                             />
                                         </div>
 
                                         <div hidden={!this.getSubmitted()}>
-                                            Are you ready to create another listing? 
-                                            <Button 
+                                            Are you ready to create another listing?
+                                            <Button
                                                 variant='outlined'
                                                 onClick={this.onFormResetClick}
-                                                style={{marginLeft: '10px'}}
+                                                style={{ marginLeft: '10px' }}
                                             >
                                                 Yes!
                                             </Button>
@@ -230,7 +230,7 @@ class CreateListingForm extends Component {
                                     <Alert
                                         bsStyle='danger'
                                         hidden={this.isFormFilled()}
-                                        style={{marginLeft: '2%'}}
+                                        style={{ marginLeft: '2%' }}
                                     >
                                         All information above is required to proceed to next step!
                                     </Alert>
@@ -246,14 +246,14 @@ class CreateListingForm extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        modeFilter           : state.MenuBarFilterReducer.modeFilter,
-        currencyFilter       : state.MenuBarFilterReducer.currencyFilter,
-        advertiserForm       : state.CreateListingFormReducer.advertiserForm,
-        publisherForm        : state.CreateListingFormReducer.publisherForm,
-        advertiserActiveStep : state.CreateListingFormReducer.advertiserActiveStep,
-        publisherActiveStep  : state.CreateListingFormReducer.publisherActiveStep,
-        advertiserSubmitted  : state.CreateListingFormReducer.advertiserSubmitted,
-        publisherSubmitted   : state.CreateListingFormReducer.publisherSubmitted
+        modeFilter: state.MenuBarFilterReducer.modeFilter,
+        currencyFilter: state.MenuBarFilterReducer.currencyFilter,
+        advertiserForm: state.CreateListingFormReducer.advertiserForm,
+        publisherForm: state.CreateListingFormReducer.publisherForm,
+        advertiserActiveStep: state.CreateListingFormReducer.advertiserActiveStep,
+        publisherActiveStep: state.CreateListingFormReducer.publisherActiveStep,
+        advertiserSubmitted: state.CreateListingFormReducer.advertiserSubmitted,
+        publisherSubmitted: state.CreateListingFormReducer.publisherSubmitted
     }
 }
 
