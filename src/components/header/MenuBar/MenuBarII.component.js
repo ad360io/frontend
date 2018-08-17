@@ -10,7 +10,7 @@ import { withWindowWidthListener } from '../../ResponsiveComponent/ResponsiveCom
 Local CSS
 */
 import './MenuBarII.component.css';
-import qchain_logo from '../../../assets/images/Qchain_logo.png';
+import qchain_logo from '../../../assets/images/logo_option1.png';
 
 
 /*
@@ -58,7 +58,7 @@ class MenuBarII extends Component {
         return (
             <div className='menu-container'>
                 <a href='/dashboard' className='logo-redirect'>
-                    <img src={qchain_logo} className='logo_img' alt='logo' />
+                    <img src={qchain_logo} style={{width: '135px'}} className='logo_img' alt='logo' />
                 </a>
                 <InAppNavBarII {...this.props}/>
                 <div className='menu-flex-for-profile-accessor'>
