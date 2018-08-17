@@ -183,7 +183,7 @@ class ListingCard extends Component {
     }
 
     render() {
-        return <NavLink to={'/listing/'+this.props.listing.id} target="_blank">
+        return <NavLink to={'/listing/'+this.props.listing.id} >
             {this.props.viewModeFilter === 'Grid'  
                 ? <GridCardRenderer
                     width={this.decideCardWidth()}
@@ -193,8 +193,8 @@ class ListingCard extends Component {
                     title={this.decideTitleDisplayText()}
                     placeholderImage={this.decidePlaceholderImage()}
                     description={this.decideDescription()}
-                    date_added={this.props.listing.date_added}
                     id={this.props.listing.id}
+                    dateAdded={this.props.listing.date_added}
                 />
                 : <ListingCardRenderer
                     marginLeft={this.decideMarginLeft()}
@@ -203,7 +203,7 @@ class ListingCard extends Component {
                     title={this.decideTitleDisplayText()}
                     placeholderImage={this.decidePlaceholderImage()}
                     description={this.decideDescription()}
-                    date_added={this.props.listing.date_added}
+                    dateAdded={this.props.listing.date_added}
                     id={this.props.listing.id}
                 />
             }
@@ -245,7 +245,7 @@ const GridCardRenderer = ({
         title,
         placeholderImage, 
         description, 
-        date_added,
+        dateAdded,
         id, 
     }) => ( <Card className='grid-card-container noselect'
                 style={{ 
@@ -257,7 +257,7 @@ const GridCardRenderer = ({
                 <div className='price-tag'>{priceTag}</div>)   
                 <CardTitle 
                     title={title} 
-                    subtitle={'Posted on: '+ date_added.slice(0,10)} 
+                    subtitle={'Posted on: '+ dateAdded.slice(0,10)} 
                     style={{paddingBottom:'0px'}}/>
                 <img src={placeholderImage} className='grid-img' alt='listing-img'/>
                 <CardText className='grid-msg-container'>
@@ -279,7 +279,7 @@ const ListingCardRenderer = ({
                                 title, 
                                 placeholderImage, 
                                 description, 
-                                date_added,
+                                dateAdded,
                                 id,
                             }) => (
     <Card className='listing-card-container noselect' 
@@ -294,7 +294,7 @@ const ListingCardRenderer = ({
             
         <CardTitle 
             title={title} 
-            subtitle={'Posted on: '+ date_added.slice(0,10)} 
+            subtitle={'Posted on: '+ dateAdded.slice(0,10)} 
             className='listing-card-title'
             style={{paddingBottom:'0px'}}/>
         <img src={placeholderImage} className='listing-img' alt='listing-img'/>
