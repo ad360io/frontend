@@ -9,7 +9,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
 import { withStyles } from '@material-ui/core/styles';
 import Divider from '@material-ui/core/Divider';
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import ExitToAppIcon from '@material-ui/icons/ExitToAppRounded';
+import AccessibilityIcon from '@material-ui/icons/AccessibilityNewRounded';
 
 import { NavLink } from 'react-router-dom';
 
@@ -133,14 +134,20 @@ class ProfileAccessor extends React.Component {
                                                     onMouseEnter={(e) => e.target.style.backgroundColor = 'transparent'}
                                                     onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
                                                 >
-                                                    <NavLink style={{ textDecoration: 'none' }} to='/profile'>View / Edit Profile</NavLink>
+                                                <div>
+                                                    <NavLink style={{ textDecoration: 'none' }} to='/profile'>
+                                                        <AccessibilityIcon style={{ display: 'inline-flex', verticalAlign: 'middle', fontSize: 18, marginRight: '25px'}} />
+                                                        View / Edit Profile
+                                                    </NavLink>
+                                                </div>
+                                                    
                                                 </MenuItem>
                                                 <Divider />
                                                 <MenuItem
                                                     className={classes.menuItem}
                                                     onClick={() => this.props.onLogout()}
                                                 >
-                                                    <ExitToAppIcon style={{ fontSize: 16, marginRight: '5p' }} />
+                                                    <ExitToAppIcon style={{ fontSize: 16, marginRight: '25px' }} />
                                                     Logout
                                                 </MenuItem>
                                             </MenuList>

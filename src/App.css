@@ -1,7 +1,5 @@
 .app-container {
     background: white;
-    width: 100%;
-    overflow-y: auto;
 }
 
 @keyframes fade-in {
