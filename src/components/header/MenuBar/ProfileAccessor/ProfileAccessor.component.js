@@ -9,6 +9,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
 import { withStyles } from '@material-ui/core/styles';
 import Divider from '@material-ui/core/Divider';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 import { NavLink } from 'react-router-dom';
 
@@ -117,18 +118,31 @@ class ProfileAccessor extends React.Component {
                                                 <MenuItem
                                                     disableRipple
                                                     disableTouchRipple
+                                                    style={{ cursor: 'default' }}
                                                     onMouseEnter={(e) => e.target.style.backgroundColor = 'transparent'}
                                                     onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
                                                     className={classes.filterSection}
                                                     children={FilterRenderer}>
                                                 </MenuItem>
-                                                
+
                                                 <Divider />
-                                                <MenuItem className={classes.menuItem} onClick={this.handleClose}>
+                                                <MenuItem
+                                                    className={classes.menuItem}
+                                                    onClick={this.handleClose}
+                                                    style={{ cursor: 'default' }}
+                                                    onMouseEnter={(e) => e.target.style.backgroundColor = 'transparent'}
+                                                    onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
+                                                >
                                                     <NavLink style={{ textDecoration: 'none' }} to='/profile'>View / Edit Profile</NavLink>
                                                 </MenuItem>
                                                 <Divider />
-                                                <MenuItem className={classes.menuItem} onClick={() => this.props.onLogout()}>Logout</MenuItem>
+                                                <MenuItem
+                                                    className={classes.menuItem}
+                                                    onClick={() => this.props.onLogout()}
+                                                >
+                                                    <ExitToAppIcon style={{ fontSize: 16, marginRight: '5p' }} />
+                                                    Logout
+                                                </MenuItem>
                                             </MenuList>
                                         </ClickAwayListener>
                                     </Paper>
@@ -149,7 +163,7 @@ const FilterRenderer = (
     <div>
         <p>I am...</p>
         <ModeSelector />
-        <p style={{marginTop: 5}}> currently trading in... </p>
+        <p style={{ marginTop: 5 }}> currently trading in... </p>
         <CurrencySelector />
     </div>
 )

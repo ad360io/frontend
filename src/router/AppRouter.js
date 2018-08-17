@@ -48,7 +48,7 @@ const handleAuthentication = (nextState, replace, history) => {
  */
 const AppRouter = () => (
 
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Switch>    
             <Route exact path='/' render={(props)=><Login auth={auth} {...props}/>} />
             <PrivateRoute exact path='/dashboard'    component={ Dashboard }           auth={auth} />
