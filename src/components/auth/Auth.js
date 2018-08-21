@@ -4,6 +4,7 @@ Auth0 Libs
 import { Auth0Config } from './auth0-config';
 import auth0 from 'auth0-js';
 import axios from 'axios';
+import { setCurrency, setMode } from '../../actions/HeaderActions';
 
 export default class Auth {
 
@@ -21,6 +22,7 @@ export default class Auth {
         this.handleProfileOnAuthenticated = this.handleProfileOnAuthenticated.bind(this);
         this.dispatchProfile = this.dispatchProfile.bind(this);
         this.updateUserMetadata = this.updateUserMetadata.bind(this);
+        this.patchUserMetadata = this.patchUserMetadata.bind(this);
 
         this.scheduleRenewal();
     }
@@ -143,7 +145,11 @@ export default class Auth {
                 name: profile.name,
                 email: profile.email,
                 nickname: profile.nickname,
-                avatar_url: profile.picture
+                avatar_url: profile.picture,
+                nem_address: '',
+                eth_address: '',
+                currency: 'XQC',
+                mode: 'Advertiser'
             }
             this.store.dispatch({
                 type: 'SET_PROFILE',
@@ -160,16 +166,33 @@ export default class Auth {
             let avatar_url = (typeof user_metadata.picture === 'undefined' || user_metadata.picture === ''
                 ? profile.picture
                 : user_metadata.picture);
+            let nem_address = (typeof user_metadata.nem_address === 'undefined' || user_metadata.nem_address === ''
+                ? ''
+                : user_metadata.nem_address);
+            let eth_address = (typeof user_metadata.eth_address === 'undefined' || user_metadata.eth_address === ''
+                ? ''
+                : user_metadata.eth_address);
+            let currency = (typeof user_metadata.currency === 'undefined' || user_metadata.currency === ''
+                ? 'XQC'
+                : user_metadata.currency);
+            let mode = (typeof user_metadata.mode === 'undefined' || user_metadata.mode === ''
+                ? 'Advertiser'
+                : user_metadata.mode);
+
             let value = {
                 name,
                 email,
                 nickname,
-                avatar_url
+                avatar_url,
+                nem_address,
+                eth_address
             }
             this.store.dispatch({
                 type: 'SET_PROFILE',
                 value
             })
+            this.store.dispatch(setCurrency(currency));
+            this.store.dispatch(setMode(mode));
         }
 
     }
@@ -206,9 +229,32 @@ export default class Auth {
                             console.log("SET NAME ERR");
                             console.log(err);
                         })
-                    
+
                 }
             }
+        )
+    }
+
+    patchUserMetadata(newMetadata) {
+        let idToken = localStorage.getItem('id_token');
+        let auth0Manager = new auth0.Management({
+            domain: `${Auth0Config.domain}`,
+            token: idToken,
+            _sendTelemetry: false,
+        });
+        let userId = localStorage.getItem('user_id');
+        auth0Manager.patchUserMetadata(
+            userId,
+            newMetadata,
+            (err, newProfile) => {
+                if (err) {
+                    console.log(err);
+                }
+                else {
+                    console.log(newProfile)
+                }
+            }
+
         )
     }
 }

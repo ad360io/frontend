@@ -16,26 +16,33 @@ import { ButtonGroup, Button } from 'react-bootstrap';
 import { setCurrency } from '../../../../actions/HeaderActions';
 
 
-const CurrencySelector = ({ currencyFilter, onClick }) => (
-    
-        <ButtonGroup bsSize='small' className='currency-selector'>
+class CurrencySelector extends React.Component {
+    handleCurrencyClick = (currency) => {
+        const { patchUserMetadata } = this.props.auth;
+        let newUserMetadata = { currency };
+        patchUserMetadata(newUserMetadata);
+        this.props.onClick(currency)
+    }
+
+    render() {
+        return <ButtonGroup bsSize='small' className='currency-selector'>
             <Button
-                active={currencyFilter === 'XQC'}
-                onClick={() => onClick('XQC')}
-                style={{width: 98}}
+                active={this.props.currencyFilter === 'XQC'}
+                onClick={() => this.handleCurrencyClick('XQC')}
+                style={{ width: 98 }}
             >
                 XQC
-            </Button>
+        </Button>
             <Button
-                active={currencyFilter === 'EQC'}
-                onClick={() => onClick('EQC')}
-                style={{width: 98}}
+                active={this.props.currencyFilter === 'EQC'}
+                onClick={() => this.handleCurrencyClick('EQC')}
+                style={{ width: 98 }}
             >
                 EQC
-            </Button>
+        </Button>
         </ButtonGroup>
-    
-)
+    }
+}
 
 const mapStateToProps = (state) => {
     return {

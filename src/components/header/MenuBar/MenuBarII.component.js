@@ -54,7 +54,7 @@ class MenuBarII extends Component {
     }
 
     render() {
-
+        console.log(this.props)
         return (
             <div className='menu-container'>
                 <a href='/dashboard' className='logo-redirect'>
@@ -62,7 +62,7 @@ class MenuBarII extends Component {
                 </a>
                 <InAppNavBarII {...this.props}/>
                 <div className='menu-flex-for-profile-accessor'>
-                    <ProfileAccessor profile={this.props.profile} onLogout={this.handleLogout}/>
+                    <ProfileAccessor profile={this.props.profile} onLogout={this.handleLogout} auth={this.props.auth}/>
                 </div>
                 <TinyWallet {...this.props} />
                 <BottomNavOnSmScreen {...this.props}/>

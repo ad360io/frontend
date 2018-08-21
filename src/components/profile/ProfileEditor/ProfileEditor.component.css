@@ -4,6 +4,10 @@
     cursor: pointer;
 }
 
-.fa-pen-square:hover{
+.fa-pen-square:hover {
     color: rgb(31, 31, 31);
+}
+
+.profile-editor-icon {
+    margin-left: 10px;
 }

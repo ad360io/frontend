@@ -16,26 +16,35 @@ import { ButtonGroup, Button } from 'react-bootstrap';
 import { setMode } from '../../../../actions/HeaderActions';
 
 
-const ModeSelector = ({ modeFilter, onClick }) => (
-    
-        <ButtonGroup bsSize='small' className='mode-selector'>
+class ModeSelector extends React.Component {
+
+    handleModeClick = (mode) => {
+        this.props.onModeClick(mode);
+        const { patchUserMetadata } = this.props.auth;
+        let newMetadata = { mode };
+        patchUserMetadata(newMetadata);
+    }
+
+    render() {
+
+        return <ButtonGroup bsSize='small' className='mode-selector'>
             <Button
-                active={modeFilter === 'Advertiser'}
-                onClick={() => onClick('Advertiser')}
-                style={{width: 98}}
+                active={this.props.modeFilter === 'Advertiser'}
+                onClick={() => this.handleModeClick('Advertiser')}
+                style={{ width: 98 }}
             >
                 an advertiser
             </Button>
             <Button
-                active={modeFilter === 'Publisher'}
-                onClick={() => onClick('Publisher')}
-                style={{width: 98}}
+                active={this.props.modeFilter === 'Publisher'}
+                onClick={() => this.handleModeClick('Publisher')}
+                style={{ width: 98 }}
             >
                 a publisher
             </Button>
         </ButtonGroup>
-    
-)
+    }
+}
 
 const mapStateToProps = (state) => {
     return {
@@ -45,7 +54,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onClick: (mode) => {
+        onModeClick: (mode) => {
             dispatch(setMode(mode))
         },
     }

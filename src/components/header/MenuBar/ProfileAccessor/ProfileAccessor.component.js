@@ -75,18 +75,10 @@ class ProfileAccessor extends React.Component {
 
     }
 
-    hiClicked = () => {
-        console.log('hi clicked');
-    }
-
-    boiClicked = () => {
-        console.log('boi clicked');
-    }
-
     render() {
         const { classes } = this.props;
         const { open } = this.state;
-        if (this.props.profile.avatar_url.length > 0) {
+        if (typeof this.props.profile !== 'undefined' && this.props.profile.avatar_url.length > 0) {
             return (
                 <div className={classes.root}>
                     <div>
@@ -123,7 +115,8 @@ class ProfileAccessor extends React.Component {
                                                     onMouseEnter={(e) => e.target.style.backgroundColor = 'transparent'}
                                                     onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
                                                     className={classes.filterSection}
-                                                    children={FilterRenderer}>
+                                                >
+                                                    <FilterRenderer auth={this.props.auth} />
                                                 </MenuItem>
 
                                                 <Divider />
@@ -134,13 +127,13 @@ class ProfileAccessor extends React.Component {
                                                     onMouseEnter={(e) => e.target.style.backgroundColor = 'transparent'}
                                                     onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
                                                 >
-                                                <div>
-                                                    <NavLink style={{ textDecoration: 'none' }} to='/profile'>
-                                                        <AccessibilityIcon style={{ display: 'inline-flex', verticalAlign: 'middle', fontSize: 18, marginRight: '25px'}} />
-                                                        View / Edit Profile
+                                                    <div>
+                                                        <NavLink style={{ textDecoration: 'none' }} to='/profile'>
+                                                            <AccessibilityIcon style={{ display: 'inline-flex', verticalAlign: 'middle', fontSize: 18, marginRight: '25px' }} />
+                                                            View / Edit Profile
                                                     </NavLink>
-                                                </div>
-                                                    
+                                                    </div>
+
                                                 </MenuItem>
                                                 <Divider />
                                                 <MenuItem
@@ -166,12 +159,12 @@ class ProfileAccessor extends React.Component {
 }
 
 
-const FilterRenderer = (
+const FilterRenderer = ({ auth }) => (
     <div>
         <p>I am...</p>
-        <ModeSelector />
+        <ModeSelector auth={auth} />
         <p style={{ marginTop: 5 }}> currently trading in... </p>
-        <CurrencySelector />
+        <CurrencySelector auth={auth} />
     </div>
 )
 
