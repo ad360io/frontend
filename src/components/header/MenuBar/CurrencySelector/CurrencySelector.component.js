@@ -3,6 +3,7 @@ Core Libs
 */
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 /*
 Local CSS
@@ -20,8 +21,7 @@ class CurrencySelector extends React.Component {
     handleCurrencyClick = (currency) => {
         const { patchUserMetadata } = this.props.auth;
         let newUserMetadata = { currency };
-        patchUserMetadata(newUserMetadata);
-        this.props.onClick(currency)
+        patchUserMetadata(newUserMetadata, this.props.history);
     }
 
     render() {
@@ -58,7 +58,7 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(
+export default withRouter(connect(
     mapStateToProps,
     mapDispatchToProps
-)(CurrencySelector);
+)(CurrencySelector));

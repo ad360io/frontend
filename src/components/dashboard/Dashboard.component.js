@@ -38,6 +38,7 @@ import DashboardStats  from './DashboardStats/DashboardStats.component';
 import DashboardCharts from './DashboardCharts/DashboardCharts.component';
 import ErrorPage       from '../ErrorPage/ErrorPage.component';
 import fakeData        from './DummyData';
+import DashboardNavigation from './DashboardNavigation/DashboardNavigation.component';
 
 /**
  * Dashboard container manages the layout of each children components
@@ -83,7 +84,7 @@ class Dashboard extends Component {
 const DashboardRenderer = ({ modeFilter, currencyFilter }) => (
     <div className='dashboard-container'>
         <Alert className='dashboard-alert' bsStyle='info'>Analytics and data tracking are work in progress, stay tuned.</Alert>
-        <Grid className='dashboard-grid'>
+        {/* <Grid className='dashboard-grid'>
             <Row>
                 <Col xs={12} lg={5} sm={8} className='dashboard-left'>
                     <DashboardStats
@@ -98,7 +99,8 @@ const DashboardRenderer = ({ modeFilter, currencyFilter }) => (
                         currencyFilter={currencyFilter} />
                 </Col>
             </Row>
-        </Grid>
+        </Grid> */}
+        <DashboardNavigation />
         <Footer />
     </div>
 )

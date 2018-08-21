@@ -54,7 +54,6 @@ class MenuBarII extends Component {
     }
 
     render() {
-        console.log(this.props)
         return (
             <div className='menu-container'>
                 <a href='/dashboard' className='logo-redirect'>

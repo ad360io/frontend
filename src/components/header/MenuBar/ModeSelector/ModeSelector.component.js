@@ -3,6 +3,7 @@ Core Libs
 */
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 /*
 Local CSS
@@ -19,10 +20,9 @@ import { setMode } from '../../../../actions/HeaderActions';
 class ModeSelector extends React.Component {
 
     handleModeClick = (mode) => {
-        this.props.onModeClick(mode);
         const { patchUserMetadata } = this.props.auth;
         let newMetadata = { mode };
-        patchUserMetadata(newMetadata);
+        patchUserMetadata(newMetadata, this.props.history);
     }
 
     render() {
@@ -60,7 +60,7 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(
+export default withRouter(connect(
     mapStateToProps,
     mapDispatchToProps
-)(ModeSelector);
+)(ModeSelector));

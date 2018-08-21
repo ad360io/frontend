@@ -51,12 +51,13 @@ const AppRouter = () => (
       <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Switch>    
             <Route exact path='/' render={(props)=><Login auth={auth} {...props}/>} />
-            <PrivateRoute exact path='/dashboard'    component={ Dashboard }           auth={auth} />
-            <PrivateRoute exact path='/marketplace'  component={ Marketplace }         auth={auth} />
-            <PrivateRoute exact path='/create'       component={ CreateListing }       auth={auth} />
-            <PrivateRoute       path='/listing/:id'  component={ DetailedListingPage } auth={auth} />
-            <PrivateRoute exact path='/profile'      component={ Profile }             auth={auth} />
-            <PrivateRoute       path='/q/:userId'    component={ ProfileReader }       auth={auth} />
+            <PrivateRoute exact path='/dashboard'       component={ Dashboard }           auth={auth} />
+            <PrivateRoute exact path='/dashboard/:type' component={ Dashboard }        auth={auth} />
+            <PrivateRoute exact path='/marketplace'     component={ Marketplace }         auth={auth} />
+            <PrivateRoute exact path='/create'          component={ CreateListing }       auth={auth} />
+            <PrivateRoute       path='/listing/:id'     component={ DetailedListingPage } auth={auth} />
+            <PrivateRoute exact path='/profile'         component={ Profile }             auth={auth} />
+            <PrivateRoute       path='/q/:userId'       component={ ProfileReader }       auth={auth} />
             <Route path='/auth-callback' render={ (props) => {
                 handleAuthentication(props, null, props.history);
                 return <AuthCallback auth={auth} {...props} /> 

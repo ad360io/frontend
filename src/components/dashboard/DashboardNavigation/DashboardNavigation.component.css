@@ -1,0 +1,26 @@
+.dashboard-navigation-container {
+    position: fixed;
+    width: 250px;
+    height: calc(100vh - 64px);
+    background: white;
+    left: 0;
+    padding: 6px;
+    padding-left: 20px;
+}
+
+.dashboard-nav-item {
+    padding: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #666666;
+}
+
+.material-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    margin: 12px;
+    font-size: 8px;
+    padding: 2px;
+}

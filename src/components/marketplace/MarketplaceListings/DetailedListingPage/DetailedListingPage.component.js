@@ -57,6 +57,8 @@ class DetailedListingPage extends Component {
         this.handleBuyItNow = this.handleBuyItNow.bind(this);
         this.loadDetail = this.loadDetail.bind(this);
         this.createContractAfterBalanceCheck = this.createContractAfterBalanceCheck.bind(this);
+        this.getContract = this.getContract.bind(this);
+        this.createInvoiceAfterContract = this.createInvoiceAfterContract.bind(this);
     }
 
     componentDidMount() {
@@ -163,7 +165,7 @@ class DetailedListingPage extends Component {
     }
 
     createContractAfterBalanceCheck(balance){
-        const listingURL = `https://qchain-marketplace-postgrest.herokuapp.com/contract`;
+        const contractURL = `https://qchain-marketplace-postgrest.herokuapp.com/contract`;
         const config = {
             headers: {Authorization: "Bearer " + localStorage.getItem('id_token')}
         };
@@ -178,7 +180,7 @@ class DetailedListingPage extends Component {
             contentspacelisting: this.state.listing.id,
             contentlisting: null
         }
-        axios.post(listingURL, payload, config)
+        axios.post(contractURL, payload, config)
             .then(() => {
                 //success, toggle isactive on this listing to false
                 this.setState({
@@ -187,9 +189,50 @@ class DetailedListingPage extends Component {
                 })
                 this.inactivateListing();
                 this.makePayment(balance);
+                this.getContract();
             })
             .catch((err) => {
                 console.log("BUY IT NOW ERR");
+                console.log(err);                
+        })
+    }
+
+    getContract(){
+        const contractURL = `https://qchain-marketplace-postgrest.herokuapp.com/contract?contentspacelisting=eq.${this.state.listing.id}`;
+        const config = {
+            headers: {Authorization: "Bearer " + localStorage.getItem('id_token')}
+        };
+        axios.get(contractURL, config)
+            .then((response) => {
+                //success, proceed to create contract
+                this.createInvoiceAfterContract(response.data[0])
+            })
+            .catch((err) => {
+                console.log("GET CONTRACT ERR");
+                console.log(err);                
+        })
+    }
+
+    createInvoiceAfterContract(contract) {
+        const invoiceURL = `https://qchain-marketplace-postgrest.herokuapp.com/invoice`;
+        const config = {
+            headers: {Authorization: "Bearer " + localStorage.getItem('id_token')}
+        };
+        const payload = {
+            contract: contract.number,
+            currency: contract.currency,
+            amount: Number.parseFloat(contract.payout_cap),
+            due_date: contract.end_date,
+            tx_hash: 'somehash'
+        }
+        axios.post(invoiceURL, payload, config)
+            .then(() => {
+                //success, toggle isactive on this listing to false
+                console.log("created invoice")
+            })
+            .catch((err) => {
+                console.log("CREATE INVOICE ERR");
+                console.log(payload);
                 console.log(err);                
         })
     }

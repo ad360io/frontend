@@ -43,6 +43,7 @@ export default class Auth {
     }
 
     handleAuthentication(propsHistory) {
+        console.log('im called;')
         this.auth0.parseHash((err, authResult) => {
             if (authResult && authResult.accessToken && authResult.idToken) {
                 this.setSession(authResult, propsHistory);
@@ -187,6 +188,7 @@ export default class Auth {
                 nem_address,
                 eth_address
             }
+
             this.store.dispatch({
                 type: 'SET_PROFILE',
                 value
@@ -235,7 +237,7 @@ export default class Auth {
         )
     }
 
-    patchUserMetadata(newMetadata) {
+    patchUserMetadata(newMetadata, history) {
         let idToken = localStorage.getItem('id_token');
         let auth0Manager = new auth0.Management({
             domain: `${Auth0Config.domain}`,
@@ -251,7 +253,10 @@ export default class Auth {
                     console.log(err);
                 }
                 else {
-                    console.log(newProfile)
+                    // update access / id token in local storage
+                    this.handleAuthentication(history);
+                    // dispatch new profile to store
+                    this.dispatchProfile(newProfile, newProfile['user_metadata']);
                 }
             }
 
