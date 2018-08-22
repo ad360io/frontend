@@ -5,9 +5,9 @@ import React, { Component } from 'react';
 import axios                from 'axios';
 
 /**
- * ActiveContract Component
+ * InactiveContract Component
  */
-class ActiveContract extends Component {
+class InactiveContract extends Component {
     
     constructor(props){
         super(props);
@@ -52,7 +52,7 @@ class ActiveContract extends Component {
             <div className='table-responsive' style={{height: '320px', margin:'2%'}}>
                 {
                     (this.state.finished && this.state.err === null && this.state.inactiveContract.length === 0)
-                        ? (<p style={{textAlign: 'center'}}>There is currently no active contract...</p>)
+                        ? (<p style={{textAlign: 'center'}}>There is currently no inactive contract...</p>)
                         : null
                 }
 
@@ -94,4 +94,4 @@ class ActiveContract extends Component {
 }
 
 
-export default ActiveContract;
+export default InactiveContract;

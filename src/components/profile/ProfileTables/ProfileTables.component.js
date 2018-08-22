@@ -16,6 +16,7 @@ import ActiveRequest  from './ActiveRequest/ActiveRequest.component';
 import ActiveContract from './ActiveContract/ActiveContract.component';
 import OfferList      from './OfferList/OfferList.component';
 import InactiveContract from './InactiveContract/InactiveContract.component';
+import Invoice          from './Invoice/Invoice.component';
 
 /*
 React Bootstrap
@@ -66,6 +67,9 @@ class ProfileTables extends Component {
                 </Tab>
                 <Tab eventKey={4} title='Inactive Contracts'>
                     <InactiveContract activeTabKey={this.state.activeTabKey} />
+                </Tab>
+                <Tab eventKey={5} title='Invoices'>
+                    <Invoice activeTabKey={this.state.activeTabKey} />
                 </Tab>
 
                 
