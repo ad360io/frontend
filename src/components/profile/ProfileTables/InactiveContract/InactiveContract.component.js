@@ -14,7 +14,7 @@ class ActiveContract extends Component {
         this.state = {
             finished: false,
             err: null,
-            activeListing: []
+            inactiveContract: []
         }
         this.loadData();
         this.loadData = this.loadData.bind(this);
@@ -25,16 +25,16 @@ class ActiveContract extends Component {
     }
 
     loadData() {
-        const activeContractURL = "https://qchain-marketplace-postgrest.herokuapp.com/active_contract_view";
+        const inactiveContractURL = "https://qchain-marketplace-postgrest.herokuapp.com/inactive_contract_view";
         const config = {
             headers: { Authorization: "Bearer " + localStorage.getItem('id_token')}
         };
-        axios.get(activeContractURL, config)
+        axios.get(inactiveContractURL, config)
                     .then((response) => {
                         this.setState({
                             ...this.state,
                             finished: true,
-                            activeContract: response.data
+                            inactiveContract: response.data
                         })
                     })
                     .catch((err) => {
@@ -51,13 +51,13 @@ class ActiveContract extends Component {
         return <div className='active-listing-container'>
             <div className='table-responsive' style={{height: '320px', margin:'2%'}}>
                 {
-                    (this.state.finished && this.state.err === null && this.state.activeContract.length === 0)
+                    (this.state.finished && this.state.err === null && this.state.inactiveContract.length === 0)
                         ? (<p style={{textAlign: 'center'}}>There is currently no active contract...</p>)
                         : null
                 }
 
                 {
-                    (this.state.finished && this.state.err === null && this.state.activeContract.length > 0)
+                    (this.state.finished && this.state.err === null && this.state.inactiveContract.length > 0)
                         ? (<table className='table table-bordered mb-0'>
                                 <thead className='thead-default'>
                                 <tr>
@@ -71,7 +71,7 @@ class ActiveContract extends Component {
                                 </thead>
                                 <tbody>
                                     {
-                                        this.state.activeContract.map((contract, i)=>{
+                                        this.state.inactiveContract.map((contract, i)=>{
                                             return (<tr key={'contracttr' + i}>
                                                 <td>{contract.name}</td>
                                                 <td>{contract.advertiser_name}</td>
