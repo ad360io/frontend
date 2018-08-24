@@ -113,9 +113,9 @@ class MarketplaceFilter extends Component {
                     display: 'inline-block',
                 }} zDepth={0} />
 
-                <h4 className='filter-title'>View Mode</h4>
+                {/* <h4 className='filter-title'>View Mode</h4>
                 <ViewModeSelector decideHidden={this.decideHidden} style={{ marginBotton: '5%' }} />
-                <FilterDivider />
+                <FilterDivider /> */}
 
                 <h4 className='filter-title'>{this.decideTitle()} Listings</h4>
                 <AdFormatFilter />

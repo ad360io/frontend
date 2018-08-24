@@ -58,24 +58,24 @@ class DashboardLineChart extends Component {
             labels : this.prepareLineChartXaxisLabels(this.props.dataset),
             datasets: [
               {
-                label: this.props.legend,
+                label: this.props.contractTitle,
                 fill: true,
-                lineTension: 0.05,
+                lineTension: 0.2,
                 backgroundColor: gradient,
-                borderColor: 'rgba(20,78,170,1)',
+                borderColor: 'purple',
                 borderCapStyle: 'butt',
                 borderDash: [],
                 borderDashOffset: 0.0,
                 borderJoinStyle: 'miter',
-                pointBorderColor: 'rgba(20,78,170,0.4)',
-                pointBackgroundColor: 'rgba(20,78,170,0.4)',
+                pointBorderColor: 'purple',
+                pointBackgroundColor: 'purple',
                 pointBorderWidth: 1,
                 pointHoverRadius: 5,
-                pointHoverBackgroundColor: 'rgba(20,78,170,1)',
-                pointHoverBorderColor: 'rgba(20,78,170,1)',
+                pointHoverBackgroundColor: 'purple',
+                pointHoverBorderColor: 'purple',
                 pointHoverBorderWidth: 2,
-                pointRadius: 3,
-                pointHitRadius: 10,
+                pointRadius: 1,
+                pointHitRadius: 1,
                  /* only get the first 30 element if the dataset is more than 30 elements*/
                 data: this.props.dataset.slice(0, (this.props.dataset.length > 30 
                         ? 30 
@@ -95,10 +95,11 @@ class DashboardLineChart extends Component {
 const DashboardLineChartRenderer = ({data}) => (
     <div className='dashboard-line-chart-container'>
         <Line   data={data}
-                height={280}
+                height='180'
+                width='400'
                 options={{
                     maintainAspectRatio: false,
-                    responsive: true,
+                    responsive: false,
                     animation: false,
                     legend: {
                         labels: {
@@ -109,9 +110,9 @@ const DashboardLineChartRenderer = ({data}) => (
                         yAxes: [{
                             ticks: {
                                 fontColor: "rgba(0,0,0,0.5)",
-                                fontStyle: "bold",
+                                fontStyle: 'bold',
                                 beginAtZero: true,
-                                maxTicksLimit: 5,
+                                maxTicksLimit: 3,
                                 padding: 20
                             },
                             gridLines: {

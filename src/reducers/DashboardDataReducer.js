@@ -4,34 +4,34 @@ const initialState = {
     fetched: false,
     hasError: false,
     db: {
-        advertiserDailyData: {
-            "Impressions": 0,
-            "Impressions_trend": "0",
-            "Clicks": 0,
-            "Clicks_trend": "",
-            "Total_Spend": "0",
-            "Total_Spend_trend": "",
-            "Balance": "0",
-            "Balance_trend": "",
-            "Purchased_Contract": "0",
-            "Purchased_Contract_trend": "",
-            "Total_Invoice_Due": "0"
-        },
-        publisherDailyData: {
-            "Impressions": 0,
-            "Impressions_trend": "0",
-            "Clicks": 0,
-            "Clicks_trend": "",
-            "Total_Spend": "0",
-            "Total_Spend_trend": "",
-            "Balance": "0",
-            "Balance_trend": "",
-            "Purchased_Contract": "0",
-            "Purchased_Contract_trend": "",
-            "Total_Invoice_Due": "0"
-        },
-        "xqcContracts": [],
-        "eqcContracts": []
+        // advertiserDailyData: {
+        //     "Impressions": 0,
+        //     "Impressions_trend": "0",
+        //     "Clicks": 0,
+        //     "Clicks_trend": "",
+        //     "Total_Spend": "0",
+        //     "Total_Spend_trend": "",
+        //     "Balance": "0",
+        //     "Balance_trend": "",
+        //     "Purchased_Contract": "0",
+        //     "Purchased_Contract_trend": "",
+        //     "Total_Invoice_Due": "0"
+        // },
+        // publisherDailyData: {
+        //     "Impressions": 0,
+        //     "Impressions_trend": "0",
+        //     "Clicks": 0,
+        //     "Clicks_trend": "",
+        //     "Total_Spend": "0",
+        //     "Total_Spend_trend": "",
+        //     "Balance": "0",
+        //     "Balance_trend": "",
+        //     "Purchased_Contract": "0",
+        //     "Purchased_Contract_trend": "",
+        //     "Total_Invoice_Due": "0"
+        // },
+        // "xqcContracts": [],
+        // "eqcContracts": []
     },
     error: null
 }

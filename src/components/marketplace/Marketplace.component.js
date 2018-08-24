@@ -2,7 +2,7 @@
 Core Libs
 */
 import React, { Component } from 'react';
-import { connect }          from 'react-redux';
+import { connect } from 'react-redux';
 
 /*
 Networking
@@ -22,17 +22,19 @@ import './Marketplace.component.css';
 /*
 Children Components
 */
-import MarketplaceFilter   from './MarketplaceFilter/MarketplaceFilter.component';
+import MarketplaceFilter from './MarketplaceFilter/MarketplaceFilter.component';
 import MarketplaceListings from './MarketplaceListings/MarketplaceListings.component';
-import ErrorPage           from '../ErrorPage/ErrorPage.component';
+import ErrorPage from '../ErrorPage/ErrorPage.component';
 import DetailedListingPage from './MarketplaceListings/DetailedListingPage/DetailedListingPage.component';
 
 /*
 Actions
 */
-import { fetch_MarketplaceData_Fulfilled,
-         fetch_MarketplaceData_Pending, 
-         fetch_MarketplaceData_Rejected } from '../../actions/DatabaseRequestActions';
+import {
+    fetch_MarketplaceData_Fulfilled,
+    fetch_MarketplaceData_Pending,
+    fetch_MarketplaceData_Rejected
+} from '../../actions/DatabaseRequestActions';
 
 
 /**
@@ -61,34 +63,34 @@ class Marketplace extends Component {
         this.loadDataInterval = 0;
     }
 
-    render(){
-        if(this.props.hasError) {
+    render() {
+        if (this.props.hasError) {
             return <ErrorPage />
-        }else if (this.props.fetched){
+        } else if (this.props.fetched) {
             return <div>
-                <div className='marketplace-container'> 
+                <div className='marketplace-container'>
                     {
                         this.props.viewingId !== null
                             ? <DetailedListingPage />
                             : <MarketplaceListings />
                     }
                     <MarketplaceFilter />
-                    
+
                 </div>
             </div>
-        }else{
-            return <div className='loading-container'><CircularProgress size={100} thickness={6} style={{marginTop: '40vh'}} /> </div>
+        } else {
+            return <div className='loading-container'><CircularProgress size={100} thickness={6} style={{ marginTop: '40vh' }} /> </div>
         }
     }
-    
+
 }
 
 const mapStateToProps = (state) => {
     return {
-        fetched        : state.MarketplaceDataReducer.fetched,
-        hasError       : state.MarketplaceDataReducer.hasError,
-        viewingId      : state.MarketplaceDataReducer.viewingId,
-        idToken        : state.ProfileReducer.idToken
+        fetched: state.MarketplaceDataReducer.fetched,
+        hasError: state.MarketplaceDataReducer.hasError,
+        viewingId: state.MarketplaceDataReducer.viewingId,
+        idToken: state.ProfileReducer.idToken
     }
 }
 
@@ -97,13 +99,17 @@ const mapDispatchToProps = (dispatch) => {
     return {
         onStartLoadData: (idToken) => {
             const config = {
-                headers: {Authorization: "Bearer " + localStorage.getItem('id_token')}
+                headers: {
+                    Authorization: "Bearer " + localStorage.getItem('id_token'),
+                    Prefer: "count=exact",
+                    Range: "0-4"
+                }
             };
             dispatch((dispatch) => {
                 dispatch(fetch_MarketplaceData_Pending())
                 axios.get(TestServerURL, config)
                     .then((response) => {
-                        dispatch(fetch_MarketplaceData_Fulfilled(response.data))
+                        dispatch(fetch_MarketplaceData_Fulfilled(response))
                     })
                     .catch((err) => {
                         console.log(err)

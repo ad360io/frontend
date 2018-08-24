@@ -24,10 +24,10 @@ const fetch_MarketplaceData_Pending = () => {
     }
 }
 
-const fetch_MarketplaceData_Fulfilled = (data) => {
+const fetch_MarketplaceData_Fulfilled = (response) => {
     return {
         type: 'FETCH_MARKETPLACE_DATA_FULFILLED',
-        payload: data
+        payload: response
     }
 }
 
