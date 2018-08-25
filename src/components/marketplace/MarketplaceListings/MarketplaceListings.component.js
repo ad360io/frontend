@@ -19,7 +19,7 @@ import { Pagination } from 'react-bootstrap';
 import ErrorPage from '../../ErrorPage/ErrorPage.component';
 import CircularProgress from 'material-ui/CircularProgress';
 
-
+const pageSize = 5;
 /**
  * Marketplace Listings contains array of Listing Cards
  * Filtering of data is done here, which isn't ideal
@@ -94,7 +94,7 @@ class MarketplaceListings extends Component {
 
     render() {
         const displayData = this.filterDataWithProps(this.decideDataToDisplay());
-        let pages = Math.ceil(this.props.totalListingCount / 20);
+        let pages = Math.ceil(this.props.totalListingCount / pageSize);
         let items = [];
         if (this.props.totalListingCount > 0) {
             for (let i = 1; i < pages + 1; i++) {

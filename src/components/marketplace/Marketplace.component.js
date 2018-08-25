@@ -43,7 +43,7 @@ import {
  *      filters set in MarketplaceFilter is sent to Redux state.
  *          Future Task: * Dynamic loading the listing (automate pagination)
  */
-const pageSize = 20;
+const pageSize = 5;
 
 class Marketplace extends Component {
     constructor(props) {

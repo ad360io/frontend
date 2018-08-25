@@ -63,6 +63,7 @@ class DetailedListingPage extends Component {
 
     componentDidMount() {
         this.updateWindowDimensions();
+        this.loadDetail();
         window.addEventListener('resize', this.updateWindowDimensions);
     }
 
@@ -84,10 +85,6 @@ class DetailedListingPage extends Component {
         }else{
             return default_ph;
         }
-    }
-
-    componentDidMount() {
-        this.loadDetail();
     }
 
     loadDetail() {
