@@ -6,8 +6,10 @@
 }
 
 .listing-card-container {
-    margin-left: 2%;    
+    margin-left: 5vw;  
+    width: 90%;  
     float: left;
+    margin-right: 5vw;
     margin-bottom: 2vh;
     border: 1px solid white;
 }
