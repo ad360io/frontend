@@ -48,7 +48,7 @@ const pageSize = 20;
 class Marketplace extends Component {
     constructor(props) {
         super(props);
-        const onStartURL = "https://qchain-marketplace-postgrest.herokuapp.com/detailed_listing_view";
+        const onStartURL = "https://qchain-marketplace-postgrest.herokuapp.com/detailed_listing_view?"+this.getModeCurrencyURLQuery();
         const config = {
             headers: {
                 Authorization: "Bearer " + localStorage.getItem('id_token'),
@@ -63,9 +63,27 @@ class Marketplace extends Component {
         document.title = "Qchain - Marketplace";
     }
 
+    getModeCurrencyURLQuery = () => {
+        let modeQuery = '';
+        let currencyQuery = '';
+        if (this.props.modeFilter === 'Advertiser') {
+            modeQuery = `classtype=eq.listing`
+        } else {
+            modeQuery = `classtype=eq.request`
+        }
+
+        if (this.props.currencyFilter === 'EQC') {
+            currencyQuery = '&currency=eq.EQC'
+        } else {
+            currencyQuery = '&currency=eq.XQC'
+        }
+
+        return modeQuery + currencyQuery;
+    }
+
     componentDidUpdate(prevProps) {
         if (prevProps.pageNumber !== this.props.pageNumber) {
-            const searchedURL = `https://qchain-marketplace-postgrest.herokuapp.com/detailed_listing_view?or=(name.ilike.*${this.props.keyword}*,owner_name.ilike.*${this.props.keyword}*,description.ilike.*${this.props.keyword}*)`
+            const searchedURL = `https://qchain-marketplace-postgrest.herokuapp.com/detailed_listing_view?or=(name.ilike.*${this.props.keyword}*,owner_name.ilike.*${this.props.keyword}*,description.ilike.*${this.props.keyword}*)&${this.getModeCurrencyURLQuery()}`
             const config = {
                 headers: {
                     Authorization: "Bearer " + localStorage.getItem('id_token'),
@@ -76,13 +94,25 @@ class Marketplace extends Component {
             this.props.loadData(searchedURL, config);
         }
 
-        if (prevProps.keyword != this.props.keyword) {
-            const searchedURL = `https://qchain-marketplace-postgrest.herokuapp.com/detailed_listing_view?or=(name.ilike.*${this.props.keyword}*,owner_name.ilike.*${this.props.keyword}*,description.ilike.*${this.props.keyword}*)`
+        if (prevProps.keyword !== this.props.keyword) {
+            const searchedURL = `https://qchain-marketplace-postgrest.herokuapp.com/detailed_listing_view?or=(name.ilike.*${this.props.keyword}*,owner_name.ilike.*${this.props.keyword}*,description.ilike.*${this.props.keyword}*)&${this.getModeCurrencyURLQuery()}`
             const config = {
                 headers: {
                     Authorization: "Bearer " + localStorage.getItem('id_token'),
                     Prefer: "count=exact",
-                    Range: `${2 * (this.props.pageNumber - 1)}-${2 * this.props.pageNumber - 1}`
+                    Range: `${pageSize * (this.props.pageNumber - 1)}-${pageSize * this.props.pageNumber - 1}`
+                }
+            };
+            this.props.loadData(searchedURL, config);
+        }
+
+        if(prevProps.modeFilter !== this.props.modeFilter || prevProps.currencyFilter !== this.props.currencyFilter) {
+            const searchedURL = `https://qchain-marketplace-postgrest.herokuapp.com/detailed_listing_view?or=(name.ilike.*${this.props.keyword}*,owner_name.ilike.*${this.props.keyword}*,description.ilike.*${this.props.keyword}*)&${this.getModeCurrencyURLQuery()}`
+            const config = {
+                headers: {
+                    Authorization: "Bearer " + localStorage.getItem('id_token'),
+                    Prefer: "count=exact",
+                    Range: `${pageSize * (this.props.pageNumber - 1)}-${pageSize * this.props.pageNumber - 1}`
                 }
             };
             this.props.loadData(searchedURL, config);
@@ -103,6 +133,8 @@ class Marketplace extends Component {
 
 const mapStateToProps = (state) => {
     return {
+        modeFilter: state.MenuBarFilterReducer.modeFilter,
+        currencyFilter: state.MenuBarFilterReducer.currencyFilter,
         fetched: state.MarketplaceDataReducer.fetched,
         hasError: state.MarketplaceDataReducer.hasError,
         keyword: state.MarketplaceFilterReducer.keywordFilter,

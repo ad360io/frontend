@@ -96,15 +96,18 @@ class MarketplaceListings extends Component {
         const displayData = this.filterDataWithProps(this.decideDataToDisplay());
         let pages = Math.ceil(this.props.totalListingCount / 20);
         let items = [];
-        for (let i = 1; i < pages + 1; i++) {
-            items.push(<Pagination.Item
-                key={'listingPage' + i}
-                active={i === this.props.currentPageNumber}
-                onClick={() => this.props.onPageItemClick(i)}
-            >
-                {i}
-            </Pagination.Item>);
+        if (this.props.totalListingCount > 0) {
+            for (let i = 1; i < pages + 1; i++) {
+                items.push(<Pagination.Item
+                    key={'listingPage' + i}
+                    active={i === this.props.currentPageNumber}
+                    onClick={() => this.props.onPageItemClick(i)}
+                >
+                    {i}
+                </Pagination.Item>);
+            }
         }
+
 
         if (this.props.hasError) {
             return <ErrorPage />
