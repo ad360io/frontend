@@ -2,6 +2,7 @@
 Core Libs
 */
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 /*
 React Bootstrap
@@ -16,34 +17,48 @@ import './SortingSelector.component.css';
 
 class SortingSelector extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
             title: 'Date Added'
         }
-
-        this.handleItemClick = this.handleItemClick.bind(this);
     }
 
-    handleItemClick(value) {
-        this.setState({ title : value})
-    }
-
-    render () {
+    render() {
         return <div>
-        <DropdownButton
-            className='sorting-selector-btn'
-            title={this.state.title}
-            id='sorting-selector-btn'
-        >
-            <MenuItem onClick={() => this.handleItemClick('Relevance')}>Date Added</MenuItem>
-            <MenuItem onClick={() => this.handleItemClick('Price (Low - High)')}>Price (Low - High)</MenuItem>
-            <MenuItem onClick={() => this.handleItemClick('Price (High - Low)')}>Price (High - Low)</MenuItem>
-            
-        </DropdownButton>
-    </div>
+            <DropdownButton
+                className='sorting-selector-btn'
+                title={this.props.sortingType}
+                id='sorting-selector-btn'
+            >
+                <MenuItem onClick={() => this.props.handleItemClick('Date Added')}>Date Added</MenuItem>
+                <MenuItem onClick={() => this.props.handleItemClick('Price (Low - High)')}>Price (Low - High)</MenuItem>
+                <MenuItem onClick={() => this.props.handleItemClick('Price (High - Low)')}>Price (High - Low)</MenuItem>
+
+            </DropdownButton>
+        </div>
+    }
+}
+
+const mapStateToProps = (state) => {
+    return {
+        sortingType: state.MarketplaceFilterReducer.sortingType
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        handleItemClick: (sortingType) => {
+            dispatch({
+                type: 'SET_SORTING_TYPE',
+                value: sortingType,
+            })
+        }
     }
 }
 
 
-export default SortingSelector;
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(SortingSelector);

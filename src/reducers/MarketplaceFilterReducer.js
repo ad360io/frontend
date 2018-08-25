@@ -1,12 +1,13 @@
 /** DEFAULT STATE */
 const defaultState = {
-   isDrawerOpen: false,       
-   budgetFilter: 7.5,       
-   adFormatFilter: 'Show All',
-   mediumFilter: '',
-   viewModeFilter: 'Listing',
-   keywordFilter: '',
-   currentPageNumber: 1,
+    isDrawerOpen: false,
+    budgetFilter: 7.5,
+    adFormatFilter: 'Show All',
+    mediumFilter: '',
+    viewModeFilter: 'Listing',
+    keywordFilter: '',
+    currentPageNumber: 1,
+    sortingType: 'Date Added'
 }
 
 /**
@@ -17,16 +18,15 @@ const defaultState = {
  * @param { Object } state   Current state fetched from the store.
  * @param { Object } action  String or Enumerators to represent the desired operations.
  */
-const MarketplaceFilterReducer = (state=defaultState, action) => {
-    
-    switch(action.type)
-    {
+const MarketplaceFilterReducer = (state = defaultState, action) => {
+
+    switch (action.type) {
         case 'OPEN_DRAWER':
             return {
                 ...state,
                 isDrawerOpen: true
             };
-        
+
         case 'CLOSE_DRAWER':
             return {
                 ...state,
@@ -50,7 +50,7 @@ const MarketplaceFilterReducer = (state=defaultState, action) => {
                 ...state,
                 budgetFilter: action.value
             }
-            
+
         case 'SET_AD_FORMAT':
             return {
                 ...state,
@@ -62,8 +62,8 @@ const MarketplaceFilterReducer = (state=defaultState, action) => {
                 ...state,
                 viewModeFilter: action.value
             }
-        
-        case 'SET_MEDIUM_FILTER': 
+
+        case 'SET_MEDIUM_FILTER':
             return {
                 ...state,
                 mediumFilter: action.value
@@ -75,7 +75,7 @@ const MarketplaceFilterReducer = (state=defaultState, action) => {
                 mediumFilter: ''
             }
 
-        case 'SET_KEYWORD': 
+        case 'SET_KEYWORD':
             return {
                 ...state,
                 keywordFilter: action.value
@@ -85,6 +85,12 @@ const MarketplaceFilterReducer = (state=defaultState, action) => {
             return {
                 ...state,
                 currentPageNumber: action.value
+            }
+
+        case 'SET_SORTING_TYPE':
+            return {
+                ...state,
+                sortingType: action.value
             }
 
         default:

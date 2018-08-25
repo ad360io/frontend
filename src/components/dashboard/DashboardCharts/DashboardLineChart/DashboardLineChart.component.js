@@ -95,8 +95,8 @@ class DashboardLineChart extends Component {
 const DashboardLineChartRenderer = ({data}) => (
     <div className='dashboard-line-chart-container'>
         <Line   data={data}
-                height='180'
-                width='400'
+                height={180}
+                width={400}
                 options={{
                     maintainAspectRatio: false,
                     responsive: false,
