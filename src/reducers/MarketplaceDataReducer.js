@@ -23,7 +23,8 @@ const MarketplaceDataReducer = (state = initialState, action) => {
         case 'FETCH_MARKETPLACE_DATA_PENDING': {
             return {
                 ...state,
-                fetching: true
+                fetching: true,
+                fetched: false,
             }
         }
         case 'FETCH_MARKETPLACE_DATA_REJECTED': {

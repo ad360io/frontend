@@ -15,6 +15,10 @@ Children Component
 */
 import ListingCard from './ListingCard/ListingCard.component';
 
+import { Pagination } from 'react-bootstrap';
+import ErrorPage from '../../ErrorPage/ErrorPage.component';
+import CircularProgress from 'material-ui/CircularProgress';
+
 
 /**
  * Marketplace Listings contains array of Listing Cards
@@ -90,15 +94,37 @@ class MarketplaceListings extends Component {
 
     render() {
         const displayData = this.filterDataWithProps(this.decideDataToDisplay());
+        let pages = Math.ceil(this.props.totalListingCount / 20);
+        let items = [];
+        for (let i = 1; i < pages + 1; i++) {
+            items.push(<Pagination.Item
+                key={'listingPage' + i}
+                active={i === this.props.currentPageNumber}
+                onClick={() => this.props.onPageItemClick(i)}
+            >
+                {i}
+            </Pagination.Item>);
+        }
 
-        return <div className='marketplace-listings-container' ref={(ref) => this._containerDiv = ref}>
-            <h3 className='marketplace-title'>{this.decideTitle(displayData.length)}</h3>
-            {
-                displayData.map((listing, i) => {
-                    return <ListingCard key={'listingCard' + i} listing={listing} modeFilter={this.props.modeFilter} />
-                })
-            }
-        </div>
+        if (this.props.hasError) {
+            return <ErrorPage />
+        } else if (this.props.fetched && !this.props.hasError) {
+            return <div className='marketplace-listings-container' ref={(ref) => this._containerDiv = ref}>
+                <h3 className='marketplace-title'>{this.decideTitle(displayData.length)}</h3>
+                {
+                    displayData.map((listing, i) => {
+                        return <ListingCard key={'listingCard' + i} listing={listing} modeFilter={this.props.modeFilter} />
+                    })
+                }
+                <div style={{ textAlign: 'center', marginBottom: '96px' }}>
+                    <Pagination className='listing-pages' bsStyle='small'>{items}</Pagination>
+                </div>
+
+            </div>
+        } else {
+            return <div className='loading-container'><CircularProgress className='marketplace-listing-loading' size={100} thickness={6} /> </div>
+        }
+
     }
 }
 
@@ -112,11 +138,23 @@ const mapStateToProps = (state) => {
         contentSpaceListings: state.MarketplaceDataReducer.db.contentSpaceListings,
         requestListings: state.MarketplaceDataReducer.db.requestListings,
         keywordFilter: state.MarketplaceFilterReducer.keywordFilter,
+        totalListingCount: state.MarketplaceDataReducer.total,
+        currentPageNumber: state.MarketplaceFilterReducer.currentPageNumber,
+        fetched: state.MarketplaceDataReducer.fetched,
+        fetching: state.MarketplaceDataReducer.fetching,
+        hasError: state.MarketplaceDataReducer.hasError
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return {}
+    return {
+        onPageItemClick: (page) => {
+            dispatch({
+                type: 'SET_PAGE_NUMBER',
+                value: page
+            })
+        }
+    }
 }
 
 

@@ -19,7 +19,7 @@ class SortingSelector extends Component {
     constructor(props){
         super(props);
         this.state = {
-            title: 'Price (Low - High)'
+            title: 'Date Added'
         }
 
         this.handleItemClick = this.handleItemClick.bind(this);
@@ -36,9 +36,10 @@ class SortingSelector extends Component {
             title={this.state.title}
             id='sorting-selector-btn'
         >
+            <MenuItem onClick={() => this.handleItemClick('Relevance')}>Date Added</MenuItem>
             <MenuItem onClick={() => this.handleItemClick('Price (Low - High)')}>Price (Low - High)</MenuItem>
             <MenuItem onClick={() => this.handleItemClick('Price (High - Low)')}>Price (High - Low)</MenuItem>
-            <MenuItem onClick={() => this.handleItemClick('Relevance')}>Relevance</MenuItem>
+            
         </DropdownButton>
     </div>
     }

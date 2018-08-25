@@ -5,7 +5,8 @@ const defaultState = {
    adFormatFilter: 'Show All',
    mediumFilter: '',
    viewModeFilter: 'Listing',
-   keywordFilter: ''
+   keywordFilter: '',
+   currentPageNumber: 1,
 }
 
 /**
@@ -78,6 +79,12 @@ const MarketplaceFilterReducer = (state=defaultState, action) => {
             return {
                 ...state,
                 keywordFilter: action.value
+            }
+
+        case 'SET_PAGE_NUMBER':
+            return {
+                ...state,
+                currentPageNumber: action.value
             }
 
         default:

@@ -86,7 +86,7 @@ class DetailedListingPage extends Component {
         }
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.loadDetail();
     }
 
