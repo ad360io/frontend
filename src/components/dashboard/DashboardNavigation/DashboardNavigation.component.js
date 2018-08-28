@@ -6,8 +6,7 @@ import ShareIcon from '@material-ui/icons/ShareRounded';
 import PlayArrowIcon from '@material-ui/icons/PlayArrowRounded';
 import MoneyIcon from '@material-ui/icons/AttachMoneyRounded';
 import RevenueIcon from '@material-ui/icons/TrendingUpRounded';
-import InvoiceIcon from '@material-ui/icons/CalendarTodayRounded';
-import GeneralIcon from '@material-ui/icons/InsertChartSharp';
+
 
 class DashboardNavigation extends React.Component {
 
@@ -66,23 +65,6 @@ class DashboardNavigation extends React.Component {
                     </div>
             }
 
-            {/* <div className='dashboard-nav-item noselect'>
-                <p
-                    className={this.isActiveStyle('General')}
-                    onClick={() => this.props.onNavItemClick('General')}>
-                    <GeneralIcon className='material-icon' />
-                    General
-                </p>
-            </div> */}
-            {/* <div className='dashboard-nav-item noselect'>
-                <p
-                    className={this.isActiveStyle('TotalInvoice')}
-                    onClick={() => this.onNavItemClick('TotalInvoice')}
-                >
-                    <InvoiceIcon className='material-icon'/>
-                    Total Invoice Due
-                </p>
-            </div> */}
         </div>
     }
 }

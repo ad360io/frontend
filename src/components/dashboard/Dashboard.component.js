@@ -12,7 +12,6 @@ import './Dashboard.component.css';
 /*
 React Bootstrap Components
 */
-import { Col, Row, Grid } from 'react-bootstrap';
 import { Alert } from 'react-bootstrap';
 
 /*
@@ -33,17 +32,12 @@ import { fetch_DashboardData_Fulfilled, fetch_DashboardData_Pending, fetch_Dashb
 /*
 Custom Components
 */
-import Footer from '../footer/Footer.component';
-import DashboardStats from './DashboardStats/DashboardStats.component';
-import DashboardCharts from './DashboardCharts/DashboardCharts.component';
 import ErrorPage from '../ErrorPage/ErrorPage.component';
-import fakeData from './DummyData';
 import DashboardNavigation from './DashboardNavigation/DashboardNavigation.component';
 import DashboardDetail from './DashboardDetail/DashboardDetail.component';
 
 /**
  * Dashboard container manages the layout of each children components
- * ! Caution: when changing css, be aware dashboard-right may overlap to left on screen resize
  */
 class Dashboard extends Component {
 
@@ -85,22 +79,6 @@ class Dashboard extends Component {
 const DashboardRenderer = ({ modeFilter, currencyFilter }) => (
     <div className='dashboard-container'>
         <Alert className='dashboard-alert' bsStyle='info'>Analytics and data tracking are work in progress, stay tuned.</Alert>
-        {/* <Grid className='dashboard-grid'>
-            <Row>
-                <Col xs={12} lg={5} sm={8} className='dashboard-left'>
-                    <DashboardStats
-                        modeFilter={modeFilter}
-                        currencyFilter={currencyFilter}
-                        className='stats-div' />
-                </Col>
-
-                <Col xs={12} lg={7} sm={4} className='dashboard-right'>
-                    <DashboardCharts
-                        modeFilter={modeFilter}
-                        currencyFilter={currencyFilter} />
-                </Col>
-            </Row>
-        </Grid> */}
         <DashboardNavigation modeFilter={modeFilter} />
         <DashboardDetail />
     </div>
@@ -141,13 +119,6 @@ const mapDispatchToProps = (dispatch) => {
             })
         }
     }
-}
-
-const fakeResponseData = {
-    advertiserDailyData: fakeData.advertiserDailyData,
-    publisherDailyData: fakeData.publisherDailyData,
-    xqcContracts: fakeData.xqcContracts,
-    eqcContracts: fakeData.eqcContracts
 }
 
 

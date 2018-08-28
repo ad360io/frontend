@@ -27,6 +27,7 @@ const MarketplaceDataReducer = (state = initialState, action) => {
                 fetched: false,
             }
         }
+
         case 'FETCH_MARKETPLACE_DATA_REJECTED': {
             return {
                 ...state,
@@ -35,6 +36,7 @@ const MarketplaceDataReducer = (state = initialState, action) => {
                 hasError: true,
             }
         }
+
         case 'FETCH_MARKETPLACE_DATA_FULFILLED': {
             return {
                 ...state,
@@ -45,25 +47,13 @@ const MarketplaceDataReducer = (state = initialState, action) => {
                     requestListings : action.payload.data.filter(requestListing => requestListing.classtype === 'request'),
                     contentSpaceListings: action.payload.data.filter(contentSpaceListing => contentSpaceListing.classtype === 'listing')
                 },
-                total: Number.parseInt(action.payload.headers['content-range'].split('/')[1]),
+                total: Number.parseInt(action.payload.headers['content-range'].split('/')[1], 10),
             }
         }
 
-        case 'SET_VIEWING_ID': {
-            return {
-                ...state,
-                viewingId: action.viewingId
-            }
-        }
-
-        case 'CLOSE_LISTING': {
-            return {
-                ...state,
-                viewingId: null
-            }
-        }
-        default:
+        default: {
             return state;
+        }
     }
 }
 

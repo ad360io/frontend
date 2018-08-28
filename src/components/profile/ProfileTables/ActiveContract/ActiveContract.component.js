@@ -14,7 +14,7 @@ class ActiveContract extends Component {
         this.state = {
             finished: false,
             err: null,
-            activeListing: []
+            activeContract: []
         }
         this.loadData();
         this.loadData = this.loadData.bind(this);

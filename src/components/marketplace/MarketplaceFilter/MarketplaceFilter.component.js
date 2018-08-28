@@ -30,7 +30,6 @@ import './MarketplaceFilter.component.css';
 /*
 Children Components
 */
-import ViewModeSelector from './ViewModeSelector/ViewModeSelector.component';
 import AdFormatFilter from './AdFormatFilter/AdFormatFilter.component';
 import PurchaseRangeSelector from './PurchaseRangeSelector/PurchaseRangeSelector.component';
 import KeywordFilter from './KeywordFilter/KeywordFilter.component';
@@ -112,10 +111,6 @@ class MarketplaceFilter extends Component {
                     margin: 0,
                     display: 'inline-block',
                 }} zDepth={0} />
-
-                {/* <h4 className='filter-title'>View Mode</h4>
-                <ViewModeSelector decideHidden={this.decideHidden} style={{ marginBotton: '5%' }} />
-                <FilterDivider /> */}
 
                 <h4 className='filter-title'>{this.decideTitle()} Listings</h4>
                 <AdFormatFilter />

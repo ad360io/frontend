@@ -10,11 +10,6 @@ Networking
 import axios from 'axios';
 
 /*
-Material UI
-*/
-import CircularProgress from 'material-ui/CircularProgress';
-
-/*
 Local CSS
 */
 import './Marketplace.component.css';
@@ -24,8 +19,6 @@ Children Components
 */
 import MarketplaceFilter from './MarketplaceFilter/MarketplaceFilter.component';
 import MarketplaceListings from './MarketplaceListings/MarketplaceListings.component';
-import ErrorPage from '../ErrorPage/ErrorPage.component';
-import DetailedListingPage from './MarketplaceListings/DetailedListingPage/DetailedListingPage.component';
 
 /*
 Actions

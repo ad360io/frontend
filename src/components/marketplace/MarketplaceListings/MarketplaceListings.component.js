@@ -111,7 +111,7 @@ class MarketplaceListings extends Component {
 
         if (this.props.hasError) {
             return <ErrorPage />
-        } else if (this.props.fetched && !this.props.hasError) {
+        } else if ((this.props.fetched && !this.props.hasError)) {
             return <div className='marketplace-listings-container' ref={(ref) => this._containerDiv = ref}>
                 <h3 className='marketplace-title'>{this.decideTitle(displayData.length)}</h3>
                 {

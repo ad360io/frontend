@@ -8,9 +8,6 @@ import DashboardLineChart from '../DashboardCharts/DashboardLineChart/DashboardL
 import PirateBird from '../../../assets/images/pirate-bird-vector-clipart.png';
 
 class DashboardDetail extends React.Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         const KEYS_TO_FILTER = ['name', 'publisher_name', 'advertiser_name'];
@@ -31,8 +28,8 @@ class DashboardDetail extends React.Component {
 const NoData = () => (
     <div className='empty-stat-container'>
         <p>You are not involved in any contract that matches the filter...</p>
-        <img className='dashboard-detail-empty' src={PirateBird} width='200' />
-        <p>Chirrrrrp! Where's yer contracts?<br/> Move yer fingertip and start working!</p>
+        <img className='dashboard-detail-empty' src={PirateBird} width='200' alt='dashboard empty state' />
+        <p>Chirrrrrp! Where's yer contracts?<br /> Move yer fingertip and start working!</p>
     </div>
 )
 
