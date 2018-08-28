@@ -27,7 +27,8 @@ const PurchaseRangeSelector = ({budgetFilter, currencyFilter, onSliderChange}) =
             value={budgetFilter}
             min={0.1}
             max={10}
-            step={0.1} />
+            step={0.1}
+            style={{color: 'purple'}} />
         <h4 className='budget-value'> {budgetFilter} k {currencyFilter}</h4>
     </div>
 )

@@ -12,12 +12,6 @@ Local CSS
 import './Header.component.css';
 import qchain_logo from '../../assets/images/logo_option1.png';
 
-
-/*
-Actions
-*/
-import { setMode, setCurrency } from '../../actions/HeaderActions';
-
 /*
 Children Components
 */
@@ -27,13 +21,8 @@ import BottomNavOnSmScreen from './InAppNavBar/BottomNavOnSmScreen.component';
 import TinyWallet from './TinyWallet/TinyWallet.component';
 
 
-
 /**
  * The bar that is at the very top of each component
- * Has a selection of actions that are not navigation, hence called menu
- *
- * -Caution: When changing css, be aware of the signout part that might extend to next line
- * --------- causing blockage to InAppNavBar.
  */
 class Header extends Component {
     constructor(props) {
@@ -57,14 +46,14 @@ class Header extends Component {
         return (
             <div className='header-container'>
                 <a href='/dashboard' className='logo-redirect'>
-                    <img src={qchain_logo} style={{width: '135px'}} className='logo_img' alt='logo' />
+                    <img src={qchain_logo} style={{ width: '135px' }} className='logo_img' alt='logo' />
                 </a>
-                <InAppNavBar {...this.props}/>
+                <InAppNavBar {...this.props} />
                 <div className='menu-flex-for-profile-accessor'>
-                    <ProfileAccessor history={this.props.history} profile={this.props.profile} onLogout={this.handleLogout} auth={this.props.auth}/>
+                    <ProfileAccessor history={this.props.history} profile={this.props.profile} onLogout={this.handleLogout} auth={this.props.auth} />
                 </div>
                 <TinyWallet {...this.props} />
-                <BottomNavOnSmScreen {...this.props}/>
+                <BottomNavOnSmScreen {...this.props} />
             </div>
         );
     }
@@ -79,14 +68,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return {
-        onModeClick: (mode) => {
-            dispatch(setMode(mode))
-        },
-        onCurrencyClick: (currency) => {
-            dispatch(setCurrency(currency))
-        }
-    }
+    return {}
 }
 
 

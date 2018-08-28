@@ -57,10 +57,7 @@ class MarketplaceListings extends Component {
         if (this.props.modeFilter === 'Advertiser') {
             // we are looking at content spaces, with price and currency
             return keywordFilteredData.filter((listing) => {
-                if (listing.currency.toUpperCase() === this.props.currencyFilter
-                    && listing.price <= (this.props.budgetFilter * 1000)
-                    && (this.props.adFormatFilter === 'Show All' || listing.ad_format === this.props.adFormatFilter)
-                    && (this.props.mediumFilter === '' || listing.medium === this.props.mediumFilter)) {
+                if (listing.price <= (this.props.budgetFilter * 1000)) {
                     return listing;
                 } else {
                     return null;
@@ -68,15 +65,7 @@ class MarketplaceListings extends Component {
             })
         } else {
             // we are looking at requests
-            return keywordFilteredData.filter((listing) => {
-                if (listing.currency.toUpperCase() === this.props.currencyFilter
-                    && (this.props.adFormatFilter === 'Show All' || listing.ad_format === this.props.adFormatFilter)
-                    && (this.props.mediumFilter === '' || listing.medium === this.props.mediumFilter)) {
-                    return listing;
-                } else {
-                    return null;
-                }
-            })
+            return keywordFilteredData
         }
 
     }

@@ -84,17 +84,31 @@ class Marketplace extends Component {
         }
     }
 
+    getAdFormatMediumQuery = () => {
+        if (this.props.adFormatFilter === 'Show All') {
+            return ''
+        }
+        else if (this.props.mediumFilter === '') {
+            return `&ad_format=eq.${encodeURIComponent(this.props.adFormatFilter)}`
+        } else {
+            return `&ad_format=eq.${encodeURIComponent(this.props.adFormatFilter)}&medium=eq.${encodeURIComponent(this.props.mediumFilter)}`
+        }
+    }
+
     componentDidUpdate(prevProps) {
         if (prevProps.modeFilter !== this.props.modeFilter
             || prevProps.currencyFilter !== this.props.currencyFilter
             || prevProps.keyword !== this.props.keyword
             || prevProps.pageNumber !== this.props.pageNumber
-            || prevProps.sortingType !== this.props.sortingType) {
+            || prevProps.sortingType !== this.props.sortingType
+            || prevProps.adFormatFilter !== this.props.adFormatFilter
+            || prevProps.mediumFilter !== this.props.mediumFilter) {
             const searchedURL = "https://qchain-marketplace-postgrest.herokuapp.com/detailed_listing_view?or=("
                 + "name.ilike.*" + this.props.keyword + "*,"
                 + "owner_name.ilike.*" + this.props.keyword + "*,"
                 + "description.ilike.*" + this.props.keyword + "*)"
                 + "&" + this.getModeCurrencyURLQuery()
+                + this.getAdFormatMediumQuery()
                 + this.getSortingQuery()
             const config = {
                 headers: {
@@ -126,7 +140,9 @@ const mapStateToProps = (state) => {
         hasError: state.MarketplaceDataReducer.hasError,
         keyword: state.MarketplaceFilterReducer.keywordFilter,
         pageNumber: state.MarketplaceFilterReducer.currentPageNumber,
-        sortingType: state.MarketplaceFilterReducer.sortingType
+        sortingType: state.MarketplaceFilterReducer.sortingType,
+        adFormatFilter: state.MarketplaceFilterReducer.adFormatFilter,
+        mediumFilter: state.MarketplaceFilterReducer.mediumFilter
     }
 }
 
