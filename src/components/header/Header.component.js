@@ -13,7 +13,7 @@ import './Header.component.css';
 Children Components
 */
 
-import MenuBarII          from './MenuBar/MenuBarII.component';
+import MenuBar          from './MenuBar/MenuBar.component';
 
 /**
  * The header that is only to be served on private components
@@ -21,7 +21,7 @@ import MenuBarII          from './MenuBar/MenuBarII.component';
  */
 const Header = ({auth}) => (
     <div>
-        <MenuBarII auth={auth}/>
+        <MenuBar auth={auth}/>
     </div>
 )
 

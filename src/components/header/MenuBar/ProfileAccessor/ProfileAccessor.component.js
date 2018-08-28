@@ -71,8 +71,8 @@ class ProfileAccessor extends React.Component {
     };
 
     handleViewProfile = () => {
-        this.handleClose();
-
+        this.handleClose({target: null});
+        this.props.history.push('/profile');
     }
 
     render() {
@@ -122,7 +122,7 @@ class ProfileAccessor extends React.Component {
                                                 <Divider />
                                                 <MenuItem
                                                     className={classes.menuItem}
-                                                    onClick={this.handleClose}
+                                                    onClick={this.handleViewProfile}
                                                     style={{ cursor: 'default' }}
                                                     onMouseEnter={(e) => e.target.style.backgroundColor = 'transparent'}
                                                     onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}

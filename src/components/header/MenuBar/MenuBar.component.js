@@ -2,18 +2,16 @@
 Core Libs
 */
 import React, { Component } from 'react';
-import { connect }          from 'react-redux';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { withWindowWidthListener } from '../../ResponsiveComponent/ResponsiveComponent';
 
 /*
 Local CSS
 */
 import './MenuBar.component.css';
-import qchain_logo from '../../../assets/images/Qchain_logo.png';
+import qchain_logo from '../../../assets/images/logo_option1.png';
 
-/*
-React-Bootstrap Components
-*/
-import { Navbar, Nav, NavItem }        from 'react-bootstrap';
 
 /*
 Actions
@@ -23,8 +21,11 @@ import { setMode, setCurrency } from '../../../actions/HeaderActions';
 /*
 Children Components
 */
-import CurrencySelector from './CurrencySelector/CurrencySelector.component';
-import ModeSelector from './ModeSelector/ModeSelector.component';
+import InAppNavBar from '../InAppNavBar/InAppNavBar.component';
+import ProfileAccessor from './ProfileAccessor/ProfileAccessor.component';
+import BottomNavOnSmScreen from '../InAppNavBar/BottomNavOnSmScreen.component';
+import TinyWallet from './TinyWallet/TinyWallet.component';
+
 
 
 /**
@@ -34,8 +35,8 @@ import ModeSelector from './ModeSelector/ModeSelector.component';
  * -Caution: When changing css, be aware of the signout part that might extend to next line
  * --------- causing blockage to InAppNavBar.
  */
-class MenuBar extends Component {
-    constructor(props){
+class MenuBarII extends Component {
+    constructor(props) {
         super(props);
         this.handleLogout = this.handleLogout.bind(this);
     }
@@ -46,54 +47,24 @@ class MenuBar extends Component {
     }
 
     componentWillMount() {
-        if(this.props.profile.name === 'User Name'){
+        if (this.props.profile.name === 'User Name') {
             const { handleProfileOnAuthenticated, getAccessToken } = this.props.auth;
             handleProfileOnAuthenticated(getAccessToken());
         }
     }
 
     render() {
-
         return (
-            <div>
-            <Navbar collapseOnSelect className='menu-container'>
-
-                {/*Start of Logo section */}
-                <Navbar.Header className='menu-header'>
-                    <Navbar.Brand>
-                        <a href='/dashboard' className='logo-redirect'>
-                            <img src={qchain_logo} className='logo_img' alt='logo'/>
-                        </a>
-                    </Navbar.Brand>
-                    <Navbar.Toggle className='burger-button'/>
-                </Navbar.Header>
-                {/* End of Logo section */}
-
-                <Navbar.Collapse> {/* Any children inside Collapse will be stored in hamburger menu on small screen */}
-
-                    <CurrencySelector 
-                        currencyFilter={this.props.currencyFilter} 
-                        onClick={this.props.onCurrencyClick} 
-                    />
-
-                    <ModeSelector
-                        modeFilter={this.props.modeFilter}
-                        onClick={this.props.onModeClick}
-                    />
-
-                    {/* Start of Sign Out section */}
-                    <Nav pullRight className='logout-container'>
-                        <NavItem className='logout-label' onClick={this.handleLogout} href='/'>
-                            <div className='menu-user-action'>
-                                <i className='fas fa-sign-out-alt'></i>Sign Out
-                            </div>
-                        </NavItem>
-                    </Nav>
-                    {/* End of Sign Out section */}
-
-                </Navbar.Collapse>
-
-            </Navbar>
+            <div className='menu-container'>
+                <a href='/dashboard' className='logo-redirect'>
+                    <img src={qchain_logo} style={{width: '135px'}} className='logo_img' alt='logo' />
+                </a>
+                <InAppNavBar {...this.props}/>
+                <div className='menu-flex-for-profile-accessor'>
+                    <ProfileAccessor history={this.props.history} profile={this.props.profile} onLogout={this.handleLogout} auth={this.props.auth}/>
+                </div>
+                <TinyWallet {...this.props} />
+                <BottomNavOnSmScreen {...this.props}/>
             </div>
         );
     }
@@ -101,15 +72,15 @@ class MenuBar extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        modeFilter    : state.MenuBarFilterReducer.modeFilter,
+        modeFilter: state.MenuBarFilterReducer.modeFilter,
         currencyFilter: state.MenuBarFilterReducer.currencyFilter,
-        profile       : state.ProfileReducer.profile
+        profile: state.ProfileReducer.profile
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onModeClick: (mode)=>{
+        onModeClick: (mode) => {
             dispatch(setMode(mode))
         },
         onCurrencyClick: (currency) => {
@@ -119,7 +90,7 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 
-export default connect(
+export default withWindowWidthListener(withRouter(connect(
     mapStateToProps,
     mapDispatchToProps
-)(MenuBar);
+)(MenuBarII)));
