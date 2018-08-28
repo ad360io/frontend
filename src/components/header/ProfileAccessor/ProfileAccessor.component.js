@@ -14,8 +14,8 @@ import AccessibilityIcon from '@material-ui/icons/AccessibilityNewRounded';
 
 import { NavLink } from 'react-router-dom';
 
-import CurrencySelector from '../CurrencySelector/CurrencySelector.component';
-import ModeSelector from '../ModeSelector/ModeSelector.component';
+import CurrencySelector from './CurrencySelector/CurrencySelector.component';
+import ModeSelector from './ModeSelector/ModeSelector.component';
 
 const styles = theme => ({
     root: {
