@@ -71,7 +71,11 @@ class Marketplace extends Component {
             currencyQuery = '&currency=eq.XQC'
         }
 
-        return modeQuery + currencyQuery;
+        return modeQuery + currencyQuery + this.getPurchaseRangeQuery();
+    }
+
+    getPurchaseRangeQuery = () => {
+        return `&price=lte.${this.props.budgetFilter * 1000}`
     }
 
     getSortingQuery = () => {
@@ -102,7 +106,8 @@ class Marketplace extends Component {
             || prevProps.pageNumber !== this.props.pageNumber
             || prevProps.sortingType !== this.props.sortingType
             || prevProps.adFormatFilter !== this.props.adFormatFilter
-            || prevProps.mediumFilter !== this.props.mediumFilter) {
+            || prevProps.mediumFilter !== this.props.mediumFilter
+            || prevProps.budgetFilter !== this.props.budgetFilter) {
             const searchedURL = "https://qchain-marketplace-postgrest.herokuapp.com/detailed_listing_view?or=("
                 + "name.ilike.*" + this.props.keyword + "*,"
                 + "owner_name.ilike.*" + this.props.keyword + "*,"
@@ -142,7 +147,8 @@ const mapStateToProps = (state) => {
         pageNumber: state.MarketplaceFilterReducer.currentPageNumber,
         sortingType: state.MarketplaceFilterReducer.sortingType,
         adFormatFilter: state.MarketplaceFilterReducer.adFormatFilter,
-        mediumFilter: state.MarketplaceFilterReducer.mediumFilter
+        mediumFilter: state.MarketplaceFilterReducer.mediumFilter,
+        budgetFilter: state.MarketplaceFilterReducer.budgetFilter
     }
 }
 

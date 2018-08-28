@@ -5,8 +5,7 @@ const initialState = {
     hasError: false,
     total: 0,
     db: {
-        requestListings : [],
-        contentSpaceListings : [],
+        listings: []
     },
     viewingId: null,
     error: null
@@ -44,8 +43,7 @@ const MarketplaceDataReducer = (state = initialState, action) => {
                 fetched: true,
                 hasError: false,
                 db: {
-                    requestListings : action.payload.data.filter(requestListing => requestListing.classtype === 'request'),
-                    contentSpaceListings: action.payload.data.filter(contentSpaceListing => contentSpaceListing.classtype === 'listing')
+                    listings: action.payload.data    
                 },
                 total: Number.parseInt(action.payload.headers['content-range'].split('/')[1], 10),
             }
