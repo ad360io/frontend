@@ -12,6 +12,7 @@
 
 .btn-open-filter-drawer{
     left: 0;
+    top: 40;
     position: fixed;
     -webkit-transform-origin: bottom left;
        -moz-transform-origin: bottom left;
@@ -32,4 +33,8 @@
 
 .divider {
     margin-top: 5%;
+}
+
+.filter-drawer {
+    z-index: 5;
 }

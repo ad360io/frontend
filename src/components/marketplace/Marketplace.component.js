@@ -110,8 +110,8 @@ class Marketplace extends Component {
     render() {
         return <div>
             <div className='marketplace-container'>
-                <MarketplaceListings />
                 <MarketplaceFilter />
+                <MarketplaceListings />
             </div>
         </div>
     }

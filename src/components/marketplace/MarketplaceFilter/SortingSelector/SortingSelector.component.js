@@ -28,8 +28,11 @@ class SortingSelector extends Component {
         return <div>
             <DropdownButton
                 className='sorting-selector-btn'
-                title={this.props.sortingType}
+                title={this.props.sortingType+""}
                 id='sorting-selector-btn'
+                dropup={this.props.dropup}
+                pullRight
+                style={{marginLeft: (this.props.dropup? 25: 0)}}
             >
                 <MenuItem onClick={() => this.props.handleItemClick('Date Added')}>Date Added</MenuItem>
                 <MenuItem onClick={() => this.props.handleItemClick('Price (Low - High)')}>Price (Low - High)</MenuItem>

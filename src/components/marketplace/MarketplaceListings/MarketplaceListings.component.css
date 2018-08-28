@@ -1,5 +1,5 @@
 .marketplace-listings-container {
-    margin-left: 0px;   /* Drawer gets closed and docked on small screen */
+    margin-left: 12px;   /* Drawer gets closed and docked on small screen */
 }
 
 .marketplace-title {
