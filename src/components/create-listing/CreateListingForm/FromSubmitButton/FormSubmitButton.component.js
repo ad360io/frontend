@@ -52,13 +52,17 @@ class FormSubmitButton extends Component {
     }
 
     createPayload() {
+
         if (this.props.modeFilter === 'Advertiser') {
+            let expirationDate = new Date(); // today
+            let numberOfDaysToAdd = 14;       // number of days to delay expiration
+            expirationDate.setDate(expirationDate.getDate() + numberOfDaysToAdd);
             return {
                 name: this.props.advertiserForm.topic,
                 description: this.props.advertiserForm.description,
                 medium: this.props.advertiserForm.medium,
                 date_added: new Date().toISOString().slice(0, 10),
-                expiration_date: null,
+                expiration_date: expirationDate,
                 url: null,
                 price: null,
                 currency: this.props.currencyFilter,
@@ -93,18 +97,18 @@ class FormSubmitButton extends Component {
         if (this.props.posted) {
             // successfully posted to create listing
             return <Alert bsStyle='success'>Congratulations! Your listing is successfully created.</Alert>
-        } 
-        
+        }
+
         if (this.props.postHasError) {
             // there's an error catched after posting
             return <Alert bsStyle='danger'>Oops! Something went wrong, please contact our team if the problem persist!</Alert>
         }
-        
+
         if (this.props.posting) {
             // waiting for response, loading
             return <CircularProgress />
         }
-        
+
         if (!this.props.posted && !this.props.posting && !this.props.hasError) {
             // haven't posted yet, return the magical submit button
             return <Button
@@ -133,7 +137,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onSubmitRequest : (payload) => {
+        onSubmitRequest: (payload) => {
             const listingURL = "https://qchain-marketplace-postgrest.herokuapp.com/listing";
             const config = {
                 headers: { Authorization: "Bearer " + localStorage.getItem('id_token') }

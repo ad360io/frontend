@@ -3,7 +3,6 @@ Core Libs
 */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { createFilter } from 'react-search-input';
 
 /*
 Local CSS
@@ -46,7 +45,7 @@ class MarketplaceListings extends Component {
     render() {
         let pages = Math.ceil(this.props.totalListingCount / pageSize);
         let items = [];
-        if (this.props.totalListingCount > 0) {
+        if (pages > 1) {
             for (let i = 1; i < pages + 1; i++) {
                 items.push(<Pagination.Item
                     key={'listingPage' + i}

@@ -2,7 +2,7 @@
 Core Libs
 */
 import React, { Component } from 'react';
-import { connect }          from 'react-redux';
+import { connect } from 'react-redux';
 
 /*
 Local CSS
@@ -17,9 +17,9 @@ import { Media } from 'react-bootstrap';
 /*
 Children Component
 */
-import ProfileTables   from './ProfileTables/ProfileTables.component';
-import ProfileEditor   from './ProfileEditor/ProfileEditor.component';
-import Footer          from '../footer/Footer.component';
+import ProfileTables from './ProfileTables/ProfileTables.component';
+import ProfileEditor from './ProfileEditor/ProfileEditor.component';
+import Footer from '../footer/Footer.component';
 
 
 /**
@@ -30,7 +30,7 @@ class Profile extends Component {
 
     componentDidMount() {
         document.title = "Qchain - Profile";
-        window.scrollTo(0,0);
+        window.scrollTo(0, 0);
     }
 
     render() {
@@ -39,24 +39,24 @@ class Profile extends Component {
             <div className='profile-header'>
                 <Media style={mediaStyle}>
                     <Media.Left align='middle'>
-                    <img src={this.props.profile.avatar_url} style={{marginRight: '3vw'}} width='120' height='120' alt='user-avatar' />
+                        <img src={this.props.profile.avatar_url} style={{ marginRight: '3vw' }} width='120' height='120' alt='user-avatar' />
                     </Media.Left>
                     <Media.Body>
-                    <Media.Heading style={mediaHeadingStyle}>
-                        <p style={{float:'left'}}>{this.props.profile.nickname}</p>
-                        <ProfileEditor auth={this.props.auth}/>
-                    </Media.Heading>
-                    Personal Contact:<br /> {this.props.profile.email}
+                        <Media.Heading style={mediaHeadingStyle}>
+                            <p style={{ float: 'left' }}>{this.props.profile.nickname}</p>
+                            <ProfileEditor auth={this.props.auth} />
+                        </Media.Heading>
+                        Personal Contact:<br /> {this.props.profile.email}
                     </Media.Body>
                 </Media>
             </div>
-            
+
             <ProfileTables />
             <Footer />
 
         </div>
     }
-} 
+}
 
 const mediaStyle = {
     marginTop: '235px',
@@ -65,7 +65,7 @@ const mediaStyle = {
 
 const mediaHeadingStyle = {
     marginBottom: '15px',
-    fontSize:'2em',
+    fontSize: '2em',
     marginTop: '25px',
 }
 
