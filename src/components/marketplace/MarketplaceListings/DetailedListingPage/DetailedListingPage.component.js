@@ -2,8 +2,8 @@
 Core Libs
 */
 import React, { Component } from 'react';
-import { connect }          from 'react-redux';
-import { withRouter }       from 'react-router-dom';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 /*
 Networking 
@@ -18,14 +18,14 @@ import './DetailedListingPage.component.css';
 /*
 Placeholder Images
 */
-import branded_content_ph      from '../../../../assets/images/branded_content_placeholder.png';
+import branded_content_ph from '../../../../assets/images/branded_content_placeholder.png';
 import influencer_marketing_ph from '../../../../assets/images/influencer_marketing_placeholder.png';
-import sponsorships_ph         from '../../../../assets/images/sponsorships_placeholder.png';
-import default_ph              from '../../../../assets/images/pug_face.jpg';
+import sponsorships_ph from '../../../../assets/images/sponsorships_placeholder.png';
+import default_ph from '../../../../assets/images/pug_face.jpg';
 
-import { Card, CardText, CardTitle }  from 'material-ui';
-import Divider                        from 'material-ui/Divider';
-import Button                         from '@material-ui/core/Button';
+import { Card, CardText, CardTitle } from 'material-ui';
+import Divider from 'material-ui/Divider';
+import Button from '@material-ui/core/Button';
 
 import DetailedImageSlider from './DetailedImageSlider/DetailedImageSlider.component';
 
@@ -43,7 +43,7 @@ class DetailedListingPage extends Component {
             error: null,
             listing: null,
             width: window.innerWidth,
-            bought: false, 
+            bought: false,
             processing: false,
             emptyResponse: false,
             offerAmount: -1,
@@ -76,13 +76,13 @@ class DetailedListingPage extends Component {
     }
 
     decideImage(url, marketingType) {
-        if(marketingType === 'Branded Content'){
+        if (marketingType === 'Branded Content') {
             return branded_content_ph;
-        }else if(marketingType === 'Influencer Post'){
+        } else if (marketingType === 'Influencer Post') {
             return influencer_marketing_ph;
-        }else if(marketingType === 'Sponsorship'){
+        } else if (marketingType === 'Sponsorship') {
             return sponsorships_ph;
-        }else{
+        } else {
             return default_ph;
         }
     }
@@ -91,32 +91,38 @@ class DetailedListingPage extends Component {
         // call on start load to get data
         const listingURL = `https://qchain-marketplace-postgrest.herokuapp.com/detailed_listing_view?id=eq.${this.props.match.params.id}`;
         const config = {
-            headers: {Authorization: "Bearer " + localStorage.getItem('id_token')}
+            headers: { Authorization: "Bearer " + localStorage.getItem('id_token') }
         };
         axios.get(listingURL, config)
             .then((response) => {
-                if(response.data.length < 1){
+                if (response.data.length < 1) {
                     this.setState({
                         ...this.state,
                         emptyResponse: true,
                         fetched: true
                     })
-                }else {
+                } else {
                     document.title = `${response.data[0].name} - Qchain`;
                     this.setState({
                         ...this.state,
                         fetched: true,
                         listing: response.data[0]
                     })
-                } 
+                }
             })
             .catch((err) => {
                 this.setState({
                     ...this.state,
                     fetched: true,
                     error: err
-                })                
-        })
+                })
+            })
+    }
+
+    getPayoutCap = () => {
+        let startDate = new Date(this.state.listing.date_added);
+        let endDate = new Date(this.state.listing.expiration_date);
+        return { amount: this.state.listing.price * dateDiffInDays(startDate, endDate), days: dateDiffInDays(startDate, endDate) };
     }
 
     handleBuyItNow() {
@@ -127,26 +133,28 @@ class DetailedListingPage extends Component {
         })
         const walletURL = `https://qchain-marketplace-postgrest.herokuapp.com/wallet_view`;
         const config = {
-            headers: {Authorization: "Bearer " + localStorage.getItem('id_token')}
+            headers: { Authorization: "Bearer " + localStorage.getItem('id_token') }
         };
-        
+
         axios.get(walletURL, config)
             .then((response) => {
                 //success, response.data[0]
-                if(this.state.listing.currency === 'EQC'){
-                    if(response.data[0].eqc_balance >= this.state.listing.price){
+                let startDate = new Date(this.state.listing.date_added);
+                let endDate = new Date(this.state.listing.expiration_date);
+                if (this.state.listing.currency === 'EQC') {
+                    if (response.data[0].eqc_balance >= this.state.listing.price * dateDiffInDays(startDate, endDate)) {
                         this.createContractAfterBalanceCheck(response.data[0].eqc_balance)
-                    }else{
+                    } else {
                         this.setState({
                             ...this.state,
                             processing: false,
                             actionInfo: 'Insufficient EQC on your account'
                         })
                     }
-                }else{
-                    if(response.data[0].xqc_balance >= this.state.listing.price){
+                } else {
+                    if (response.data[0].xqc_balance >= this.state.listing.price * dateDiffInDays(startDate, endDate)) {
                         this.createContractAfterBalanceCheck(response.data[0].xqc_balance)
-                    }else{
+                    } else {
                         this.setState({
                             ...this.state,
                             processing: false,
@@ -157,15 +165,18 @@ class DetailedListingPage extends Component {
             })
             .catch((err) => {
                 console.log("BUY IT NOW ERR");
-                console.log(err);                
-        })
+                console.log(err);
+            })
     }
 
-    createContractAfterBalanceCheck(balance){
+    createContractAfterBalanceCheck(balance) {
         const contractURL = `https://qchain-marketplace-postgrest.herokuapp.com/contract`;
         const config = {
-            headers: {Authorization: "Bearer " + localStorage.getItem('id_token')}
+            headers: { Authorization: "Bearer " + localStorage.getItem('id_token') }
         };
+        let startDate = new Date(this.state.listing.date_added);
+        let endDate = new Date(this.state.listing.expiration_date);
+
         const payload = {
             name: this.state.listing.name,
             advertiser: localStorage.getItem('role'),
@@ -173,7 +184,7 @@ class DetailedListingPage extends Component {
             start_date: this.state.listing.date_added,
             end_date: this.state.listing.expiration_date,
             currency: this.state.listing.currency,
-            payout_cap: this.state.listing.price,
+            payout_cap: this.state.listing.price * dateDiffInDays(startDate, endDate),
             contentspacelisting: this.state.listing.id,
             contentlisting: null
         }
@@ -185,19 +196,19 @@ class DetailedListingPage extends Component {
                     bought: true
                 })
                 this.inactivateListing();
-                this.makePayment(balance);
+                this.makePayment(balance, payload.payout_cap);
                 this.getContract();
             })
             .catch((err) => {
                 console.log("BUY IT NOW ERR");
-                console.log(err);                
-        })
+                console.log(err);
+            })
     }
 
-    getContract(){
+    getContract() {
         const contractURL = `https://qchain-marketplace-postgrest.herokuapp.com/contract?contentspacelisting=eq.${this.state.listing.id}`;
         const config = {
-            headers: {Authorization: "Bearer " + localStorage.getItem('id_token')}
+            headers: { Authorization: "Bearer " + localStorage.getItem('id_token') }
         };
         axios.get(contractURL, config)
             .then((response) => {
@@ -206,14 +217,14 @@ class DetailedListingPage extends Component {
             })
             .catch((err) => {
                 console.log("GET CONTRACT ERR");
-                console.log(err);                
-        })
+                console.log(err);
+            })
     }
 
     createInvoiceAfterContract(contract) {
         const invoiceURL = `https://qchain-marketplace-postgrest.herokuapp.com/invoice`;
         const config = {
-            headers: {Authorization: "Bearer " + localStorage.getItem('id_token')}
+            headers: { Authorization: "Bearer " + localStorage.getItem('id_token') }
         };
         const payload = {
             contract: contract.number,
@@ -230,14 +241,14 @@ class DetailedListingPage extends Component {
             .catch((err) => {
                 console.log("CREATE INVOICE ERR");
                 console.log(payload);
-                console.log(err);                
-        })
+                console.log(err);
+            })
     }
 
     inactivateListing() {
         const listingURL = `https://qchain-marketplace-postgrest.herokuapp.com/listing?id=eq.${this.state.listing.id}`;
         const config = {
-            headers: {Authorization: "Bearer " + localStorage.getItem('id_token')}
+            headers: { Authorization: "Bearer " + localStorage.getItem('id_token') }
         };
         const payload = {
             isactive: false
@@ -248,62 +259,63 @@ class DetailedListingPage extends Component {
             })
             .catch((err) => {
                 console.log("INACTIVATE ERR");
-                console.log(err);                
-        })
+                console.log(err);
+            })
     }
 
-    makePayment(existingBalance) {
+    makePayment(existingBalance, payoutCap) {
         const listingURL = `https://qchain-marketplace-postgrest.herokuapp.com/wallet_view`;
         const config = {
-            headers: {Authorization: "Bearer " + localStorage.getItem('id_token')}
+            headers: { Authorization: "Bearer " + localStorage.getItem('id_token') }
         };
         const payload = (this.state.listing.currency === 'EQC')
-                            ? { eqc_balance: (existingBalance - this.state.listing.price) }
-                            : { xqc_balance: (existingBalance - this.state.listing.price) }
+            ? { eqc_balance: (existingBalance - payoutCap) }
+            : { xqc_balance: (existingBalance - payoutCap) }
         axios.patch(listingURL, payload, config)
             .then(() => {
                 //success, toggle isactive on this listing to false
             })
             .catch((err) => {
-                console.log("INACTIVATE ERR");
-                console.log(err);                
-        })
+                console.log("MAKE PAYMENT ERR");
+                console.log(err);
+            })
     }
 
     render() {
         // console.log(this.props.match.params.id)
         // make a request to get detailed listing info using ID
         // parse info onto the page
-        if(this.state.fetched && !this.state.emptyResponse) {
+        if (this.state.fetched && !this.state.emptyResponse) {
             if (this.state.listing.classtype === "request") {
                 return <div className='detailed-listing-container'>
-                    <DetailedRequestListing 
+                    <DetailedRequestListing
                         listing={this.state.listing}
                         decideImage={this.decideImage}
                     />
                 </div>
-            }else {
+            } else {
                 return <div className='detailed-listing-container'>
-                    <DetailedContentSpaceListing 
-                        listing={this.state.listing} 
+                    <DetailedContentSpaceListing
+                        listing={this.state.listing}
                         decideImage={this.decideImage}
                         onBuy={this.handleBuyItNow}
                         bought={this.state.bought}
                         processing={this.state.processing}
                         issue={this.state.actionInfo}
+                        getPayoutCap={this.getPayoutCap}
                     />
                 </div>
             }
-        }else if (this.state.fetched && this.state.emptyResponse) {
+        } else if (this.state.fetched && this.state.emptyResponse) {
             return <Redirect to='/marketplace' />
-        }else {
+        } else {
             return <div></div>
         }
     }
 }
 
 const DetailedRequestListing = ({ listing, decideImage, onOfferChange, badOffer, makeOfferClick, bought, processing }) => (
-    
+
 
     <div className='detailed-listing-renderer'>
         <div className='detailed-image-container'>
@@ -321,29 +333,29 @@ const DetailedRequestListing = ({ listing, decideImage, onOfferChange, badOffer,
                 <Divider />
             </div>
         </div>
-        
+
         <Card className='listing-concrete-details-container'>
             <CardTitle>
-            <h1>{listing.name}</h1>
+                <h1>{listing.name}</h1>
             </CardTitle>
             <Divider />
             <CardText className='listing-details-text'>
-            <div className='details-text'>
-                <p>
-                    Ad Format: {listing.ad_format} {listing.classtype} 
-                </p>
-                <p>
-                    Marketing Medium: {listing.medium}
-                </p>
-                
-            </div>
-            <br /> 
-                <MakeOfferSection listing={listing}/>
-            <br />
-            <div className='details-text'>{listing.description}</div>
+                <div className='details-text'>
+                    <p>
+                        Ad Format: {listing.ad_format} {listing.classtype}
+                    </p>
+                    <p>
+                        Marketing Medium: {listing.medium}
+                    </p>
+
+                </div>
+                <br />
+                <MakeOfferSection listing={listing} />
+                <br />
+                <div className='details-text'>{listing.description}</div>
             </CardText>
         </Card>
-        
+
         <div className='poster-info-container'>
             <Card>
                 <CardTitle>
@@ -351,7 +363,7 @@ const DetailedRequestListing = ({ listing, decideImage, onOfferChange, badOffer,
                     <span>{listing.owner_name} trading in {listing.currency}</span>
                 </CardTitle>
                 <CardText>
-                <div>Ask Date: {listing.date_added.slice(0,10)}</div>
+                    <div>Ask Date: {listing.date_added.slice(0, 10)}</div>
                 </CardText>
             </Card>
             <div className='detailed-listing-action-section'>
@@ -364,13 +376,13 @@ const DetailedRequestListing = ({ listing, decideImage, onOfferChange, badOffer,
     </div>
 )
 
-const DetailedContentSpaceListing = ({ listing, decideImage, onBuy, bought, processing, issue}) => (
+const DetailedContentSpaceListing = ({ listing, decideImage, onBuy, bought, processing, issue, getPayoutCap }) => (
     <div className='detailed-listing-renderer'>
         <div className='detailed-image-container'>
             <Card>
                 <CardText>
                     <DetailedImageSlider imageSrc={decideImage(listing.images, listing.ad_format)} />
-                    
+
                 </CardText>
             </Card>
             <div className='detailed-listing-action-section'>
@@ -382,50 +394,56 @@ const DetailedContentSpaceListing = ({ listing, decideImage, onBuy, bought, proc
                 <Divider />
             </div>
         </div>
-        
+
         <Card className='listing-concrete-details-container'>
             <CardTitle>
-            <h1>{listing.name}</h1>
+                <h1>{listing.name}</h1>
             </CardTitle>
             <Divider />
             <CardText className='listing-details-text'>
-            <div className='details-text'>
-                <p>
-                    Ad Format: {listing.ad_format} {listing.classtype} 
-                </p>
-                <p>
-                    Marketing Medium: {listing.medium}
-                </p>
-                
-            </div>
-            
-            <br />
-            
+                <div className='details-text'>
+                    <p>
+                        Ad Format: {listing.ad_format} {listing.classtype}
+                    </p>
+                    <p>
+                        Marketing Medium: {listing.medium}
+                    </p>
+
+                </div>
+
+                <br />
+
                 {
                     (bought)
-                    ? <Alert bsStyle='success'>Congratulations! You've bought this listing!</Alert>
-                    :<div className='buy-section'>
-                        <div className='price-section'>Price: {listing.price} {listing.currency}</div>
-                            <Button className='buy-button' 
-                                onClick={()=>onBuy()} 
-                                variant='outlined' 
-                                color='primary'
-                                disabled={processing || issue.length > 0}
-                            >
-                                {
-                                    (issue.length > 0 )
-                                        ? issue
-                                        : 'Buy It Now!'
-                                }
-                            </Button> 
-                    </div>
+                        ? <Alert bsStyle='success'>Congratulations! You've bought this listing!</Alert>
+                        : <div className='buy-section'>
+                            <div className='price-section'>
+                                <span>Price: {listing.price} {listing.currency} per day</span>
+                                <br />
+                                <span><strong>Total</strong>: {getPayoutCap().amount} {listing.currency} in {getPayoutCap().days} day(s)</span>
+                            </div>
+                            <div className='buy-btn-section'>
+                                <Button className='buy-button'
+                                    onClick={() => onBuy()}
+                                    variant='outlined'
+                                    color='primary'
+                                    disabled={processing || issue.length > 0}
+                                >
+                                    {
+                                        (issue.length > 0)
+                                            ? issue
+                                            : 'Buy It Now!'
+                                    }
+                                </Button>
+                            </div>
+                        </div>
                 }
-            
-            <br />
-            <div className='details-text'>{listing.description}</div>
+
+                <br />
+                <div className='details-text'>{listing.description}</div>
             </CardText>
         </Card>
-        
+
         <div className='poster-info-container'>
             <Card>
                 <CardTitle>
@@ -433,8 +451,8 @@ const DetailedContentSpaceListing = ({ listing, decideImage, onBuy, bought, proc
                     <h4>{listing.owner_name} trading in {listing.currency}</h4>
                 </CardTitle>
                 <CardText>
-                
-                <div>Promotion Duration: <br/> {listing.date_added.slice(0,10)} to {listing.expiration_date}</div>
+
+                    <div>Promotion Duration: <br /> {listing.date_added.slice(0, 10)} to {listing.expiration_date}</div>
                 </CardText>
             </Card>
             <div className='detailed-listing-action-section'>
@@ -445,7 +463,7 @@ const DetailedContentSpaceListing = ({ listing, decideImage, onBuy, bought, proc
             </div>
         </div>
 
-        
+
     </div>
 )
 
@@ -457,6 +475,16 @@ const mapDispatchToProps = (dispatch) => {
     return {}
 }
 
+const _MS_PER_DAY = 1000 * 60 * 60 * 24;
+
+// a and b are javascript Date objects
+function dateDiffInDays(a, b) {
+    // Discard the time and time-zone information.
+    const utc1 = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
+    const utc2 = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
+
+    return Math.ceil((utc2 - utc1) / _MS_PER_DAY) + 2;
+}
 
 export default withRouter(connect(
     mapStateToProps,
