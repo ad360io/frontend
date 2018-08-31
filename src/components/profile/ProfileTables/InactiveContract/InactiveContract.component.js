@@ -68,7 +68,7 @@ class InactiveContract extends Component {
 
     render() {
         return <div className='active-listing-container'>
-            <div className='table-responsive' style={{ height: '320px', margin: '2%' }}>
+            <div className='table-responsive' style={{ height: '100%', margin: '2%' }}>
                 {
                     (this.state.finished && this.state.err === null && this.state.inactiveContract.length === 0)
                         ? (<p style={{ textAlign: 'center' }}>There is currently no inactive contract...</p>)
@@ -97,7 +97,7 @@ class InactiveContract extends Component {
                                         onClick={() => this.handleThClick('end_date')}>End Date</th>
                                     <th
                                         className='inactive-contract-th'
-                                        onClick={() => this.handleThClick('payout_cap')}>Price</th>
+                                        onClick={() => this.handleThClick('payout_cap')}>Payout Cap</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -107,8 +107,8 @@ class InactiveContract extends Component {
                                             <td>{contract.name}</td>
                                             <td>{contract.advertiser_name}</td>
                                             <td>{contract.publisher_name}</td>
-                                            <td>{contract.start_date}</td>
-                                            <td>{contract.end_date}</td>
+                                            <td>{contract.start_date.slice(0, 10)}</td>
+                                            <td>{contract.end_date.slice(0, 10)}</td>
                                             <td>{contract.payout_cap} {contract.currency}</td>
                                         </tr>)
                                     })

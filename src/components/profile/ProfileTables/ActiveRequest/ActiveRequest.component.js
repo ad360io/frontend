@@ -73,7 +73,7 @@ class ActiveRequest extends Component {
 
     render() {
         return <div className='active-listing-container'>
-            <div className='table-responsive' style={{ height: '320px', margin: '2%' }}>
+            <div className='table-responsive' style={{ height: '100%', margin: '2%' }}>
 
                 {
                     (this.state.finished && this.state.err === null && this.state.activeListing.length === 0)

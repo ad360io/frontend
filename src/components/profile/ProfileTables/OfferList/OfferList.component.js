@@ -59,7 +59,7 @@ class OfferList extends Component {
 
     render() {
         return <div className='invite-list-container'>
-            <div className='table-responsive' style={{ height: '320px', margin: '2%' }}>
+            <div className='table-responsive' style={{ height: '100%', margin: '2%' }}>
                 {
                     (this.state.finished && this.state.err === null && this.state.activeOffers.length === 0)
                         ? (<p style={{ textAlign: 'center' }}>There is currently no offering...</p>)
@@ -306,7 +306,7 @@ function dateDiffInDays(a, b) {
     const utc1 = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
     const utc2 = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
 
-    return Math.ceil((utc2 - utc1) / _MS_PER_DAY) + 1;
+    return (Math.ceil((utc2 - utc1) / _MS_PER_DAY) + 1 === 0 ? 1 : Math.ceil((utc2 - utc1) / _MS_PER_DAY) + 1);
 }
 
 export default OfferList;
