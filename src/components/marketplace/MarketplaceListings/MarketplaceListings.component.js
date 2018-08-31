@@ -73,7 +73,7 @@ class MarketplaceListings extends Component {
 
             </div>
         } else {
-            return <div className='loading-container'><CircularProgress className='marketplace-listing-loading' size={100} thickness={6} /> </div>
+            return <div className='loading-container'><CircularProgress className='marketplace-listing-loading' size={100} thickness={6} color="purple"/> </div>
         }
 
     }
