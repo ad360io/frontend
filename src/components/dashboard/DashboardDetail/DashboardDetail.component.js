@@ -29,7 +29,7 @@ const NoData = () => (
     <div className='empty-stat-container'>
         <p>You are not involved in any contract that matches the filter...</p>
         <img className='dashboard-detail-empty' src={PirateBird} width='200' alt='dashboard empty state' />
-        <p>Chirrrrrp! Where's yer contracts?<br /> Move yer fingertip and start working!</p>
+        <p>Where's yer contracts?<br /> Move yer fingertip and start working!</p>
     </div>
 )
 

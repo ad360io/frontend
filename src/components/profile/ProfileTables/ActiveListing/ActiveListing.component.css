@@ -1,7 +1,7 @@
-.inactive-contract-th {
+.active-listing-th {
     cursor: pointer;
 }
 
-.inactive-contract-th:hover {
+.active-listing-th:hover {
     background-color: #00000009;
 }

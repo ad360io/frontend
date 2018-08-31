@@ -2,19 +2,22 @@
 Core Libs
 */
 import React, { Component } from 'react';
-import axios                from 'axios';
+import axios from 'axios';
+
+import './InactiveContract.component.css';
 
 /**
  * InactiveContract Component
  */
 class InactiveContract extends Component {
-    
-    constructor(props){
+
+    constructor(props) {
         super(props);
         this.state = {
             finished: false,
             err: null,
-            inactiveContract: []
+            inactiveContract: [],
+            order: ''
         }
         this.loadData();
         this.loadData = this.loadData.bind(this);
@@ -25,67 +28,95 @@ class InactiveContract extends Component {
     }
 
     loadData() {
-        const inactiveContractURL = "https://qchain-marketplace-postgrest.herokuapp.com/inactive_contract_view";
+        const inactiveContractURL = "https://qchain-marketplace-postgrest.herokuapp.com/inactive_contract_view" + this.state.order;
         const config = {
-            headers: { Authorization: "Bearer " + localStorage.getItem('id_token')}
+            headers: { Authorization: "Bearer " + localStorage.getItem('id_token') }
         };
         axios.get(inactiveContractURL, config)
-                    .then((response) => {
-                        this.setState({
-                            ...this.state,
-                            finished: true,
-                            inactiveContract: response.data
-                        })
-                    })
-                    .catch((err) => {
-                        console.log(err);
-                        this.setState({
-                            ...this.state,
-                            finished: true,
-                            err: err
-                        })
-                    })
+            .then((response) => {
+                this.setState({
+                    ...this.state,
+                    finished: true,
+                    inactiveContract: response.data
+                })
+            })
+            .catch((err) => {
+                console.log(err);
+                this.setState({
+                    ...this.state,
+                    finished: true,
+                    err: err
+                })
+            })
     }
 
-    render() { 
+    handleThClick = (header) => {
+        new Promise((resolve) => {
+            if (this.state.order.includes(header)) {
+                if (this.state.order.includes(".desc")) {
+                    resolve(this.setState({ ...this.state, order: `?order=${header}` }))
+                } else {
+                    resolve(this.setState({ ...this.state, order: `?order=${header}.desc` }))
+                }
+            } else {
+                resolve(this.setState({ ...this.state, order: `?order=${header}` }))
+            }
+        }).then(() => {
+            this.loadData();
+        })
+    }
+
+    render() {
         return <div className='active-listing-container'>
-            <div className='table-responsive' style={{height: '320px', margin:'2%'}}>
+            <div className='table-responsive' style={{ height: '320px', margin: '2%' }}>
                 {
                     (this.state.finished && this.state.err === null && this.state.inactiveContract.length === 0)
-                        ? (<p style={{textAlign: 'center'}}>There is currently no inactive contract...</p>)
+                        ? (<p style={{ textAlign: 'center' }}>There is currently no inactive contract...</p>)
                         : null
                 }
 
                 {
                     (this.state.finished && this.state.err === null && this.state.inactiveContract.length > 0)
                         ? (<table className='table table-bordered mb-0'>
-                                <thead className='thead-default'>
+                            <thead className='thead-default'>
                                 <tr>
-                                    <th>Contract Title</th>
-                                    <th>Advertiser</th>
-                                    <th>Publisher</th>
-                                    <th>Start Date</th>
-                                    <th>End Date</th>
-                                    <th>Price</th>
+                                    <th
+                                        className='inactive-contract-th'
+                                        onClick={() => this.handleThClick('name')}>Contract Title</th>
+                                    <th
+                                        className='inactive-contract-th'
+                                        onClick={() => this.handleThClick('advertiser_name')}>Advertiser</th>
+                                    <th
+                                        className='inactive-contract-th'
+                                        onClick={() => this.handleThClick('publisher_name')}>Publisher</th>
+                                    <th
+                                        className='inactive-contract-th'
+                                        onClick={() => this.handleThClick('start_date')}>Start Date</th>
+                                    <th
+                                        className='inactive-contract-th'
+                                        onClick={() => this.handleThClick('end_date')}>End Date</th>
+                                    <th
+                                        className='inactive-contract-th'
+                                        onClick={() => this.handleThClick('payout_cap')}>Price</th>
                                 </tr>
-                                </thead>
-                                <tbody>
-                                    {
-                                        this.state.inactiveContract.map((contract, i)=>{
-                                            return (<tr key={'contracttr' + i}>
-                                                <td>{contract.name}</td>
-                                                <td>{contract.advertiser_name}</td>
-                                                <td>{contract.publisher_name}</td>
-                                                <td>{contract.start_date}</td>
-                                                <td>{contract.end_date}</td>
-                                                <td>{contract.payout_cap} {contract.currency}</td>
-                                            </tr>)
-                                        })
-                                    }
-                                </tbody>
-                                
-                            </table>
-                            )
+                            </thead>
+                            <tbody>
+                                {
+                                    this.state.inactiveContract.map((contract, i) => {
+                                        return (<tr key={'contracttr' + i}>
+                                            <td>{contract.name}</td>
+                                            <td>{contract.advertiser_name}</td>
+                                            <td>{contract.publisher_name}</td>
+                                            <td>{contract.start_date}</td>
+                                            <td>{contract.end_date}</td>
+                                            <td>{contract.payout_cap} {contract.currency}</td>
+                                        </tr>)
+                                    })
+                                }
+                            </tbody>
+
+                        </table>
+                        )
                         : null
                 }
             </div>

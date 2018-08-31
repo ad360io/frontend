@@ -5,6 +5,10 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Modal, Alert } from 'react-bootstrap';
 import { Divider } from 'material-ui';
+
+import './Invoice.component.css';
+
+
 /**
  * ActiveContract Component
  */
@@ -17,7 +21,8 @@ class Invoice extends Component {
             err: null,
             invoices: [],
             show: false,
-            modalInvoice: {}
+            modalInvoice: {},
+            order: ''
         }
         this.loadData();
         this.loadData = this.loadData.bind(this);
@@ -43,8 +48,24 @@ class Invoice extends Component {
         })
     }
 
+    handleThClick = (header) => {
+        new Promise((resolve) => {
+            if (this.state.order.includes(header)) {
+                if (this.state.order.includes(".desc")) {
+                    resolve(this.setState({ ...this.state, order: `?order=${header}` }))
+                } else {
+                    resolve(this.setState({ ...this.state, order: `?order=${header}.desc` }))
+                }
+            } else {
+                resolve(this.setState({ ...this.state, order: `?order=${header}` }))
+            }
+        }).then(() => {
+            this.loadData();
+        })
+    }
+
     loadData() {
-        const invoicesURL = "https://qchain-marketplace-postgrest.herokuapp.com/my_invoices";
+        const invoicesURL = "https://qchain-marketplace-postgrest.herokuapp.com/my_invoices" + this.state.order;
         const config = {
             headers: { Authorization: "Bearer " + localStorage.getItem('id_token') }
         };
@@ -66,7 +87,7 @@ class Invoice extends Component {
             })
     }
 
-    
+
 
     render() {
         return <div className='active-listing-container'>
@@ -82,20 +103,26 @@ class Invoice extends Component {
                         ? (<table className='table table-bordered mb-0'>
                             <thead className='thead-default'>
                                 <tr>
-                                    <th>Listing Title</th>
-                                    <th>Publisher</th>
-                                    <th>Amount</th>
+                                    <th
+                                        className='invoice-th'
+                                        onClick={() => this.handleThClick('listing_title')}>Listing Title</th>
+                                    <th
+                                        className='invoice-th'
+                                        onClick={() => this.handleThClick('publisher_name')}>Publisher</th>
+                                    <th
+                                        className='invoice-th'
+                                        onClick={() => this.handleThClick('amount')}>Amount</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {
                                     this.state.invoices.map((invoice, i) => {
                                         return (<tr key={'invoices' + i}>
-                                            <td 
-                                            onClick={() => this.handleShowModal(invoice)}
-                                            style={{color: '#3366BB', cursor: 'pointer'}}
+                                            <td
+                                                onClick={() => this.handleShowModal(invoice)}
+                                                style={{ color: '#3366BB', cursor: 'pointer' }}
                                             >
-                                            {invoice.listing_title}
+                                                {invoice.listing_title}
                                             </td>
                                             <td>{invoice.publisher_name}</td>
                                             <td>{invoice.amount} {invoice.currency}</td>
