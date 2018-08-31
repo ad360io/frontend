@@ -17,7 +17,7 @@ class ActiveContract extends Component {
             finished: false,
             err: null,
             activeContract: [],
-            order: ''
+            order: '?order=name.asc'
         }
         this.loadData = this.loadData.bind(this);
     }
@@ -73,7 +73,6 @@ class ActiveContract extends Component {
     }
 
     render() {
-
         return <div className='active-listing-container'>
             <div className='table-responsive' style={{ height: '100%', margin: '2%' }}>
                 {

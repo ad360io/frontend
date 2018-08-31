@@ -46,7 +46,8 @@ class Header extends Component {
         return (
             <div className='header-container'>
                 <a href='/dashboard' className='logo-redirect'>
-                    <img src={qchain_logo} style={{ width: '135px' }} className='logo_img' alt='logo' />
+                    <img src='https://qchain.co/img/core/qchain_logo2018_icon.png' style={{ width: '45px', float: 'left', marginTop: '9px'}} alt='logo' />
+                    <img src='https://qchain.co/img/core/qchainText2018UNBOLD.png' style={{ width: '90px', marginTop: '20px' }} alt='logo text' />
                 </a>
                 <InAppNavBar {...this.props} />
                 <div className='menu-flex-for-profile-accessor'>

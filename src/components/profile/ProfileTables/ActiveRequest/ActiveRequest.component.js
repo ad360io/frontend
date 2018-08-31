@@ -18,7 +18,7 @@ class ActiveRequest extends Component {
             finished: false,
             err: null,
             activeListing: [],
-            order: ''
+            order: '?order=name.asc'
         }
         this.loadData();
         this.loadData = this.loadData.bind(this);

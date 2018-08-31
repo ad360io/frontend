@@ -17,7 +17,7 @@ class InactiveContract extends Component {
             finished: false,
             err: null,
             inactiveContract: [],
-            order: ''
+            order: '?order=name.asc'
         }
         this.loadData();
         this.loadData = this.loadData.bind(this);

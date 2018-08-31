@@ -22,7 +22,7 @@ class Invoice extends Component {
             invoices: [],
             show: false,
             modalInvoice: {},
-            order: ''
+            order: '?order=listing_title.asc'
         }
         this.loadData();
         this.loadData = this.loadData.bind(this);
