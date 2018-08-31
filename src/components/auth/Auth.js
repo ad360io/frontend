@@ -150,7 +150,8 @@ export default class Auth {
                 nem_address: '',
                 eth_address: '',
                 currency: 'XQC',
-                mode: 'Advertiser'
+                mode: 'Advertiser',
+                email_verified: false
             }
             this.store.dispatch({
                 type: 'SET_PROFILE',
@@ -186,7 +187,8 @@ export default class Auth {
                 nickname,
                 avatar_url,
                 nem_address,
-                eth_address
+                eth_address,
+                email_verified: profile.email_verified
             }
 
             this.store.dispatch({

@@ -10,7 +10,6 @@ import { withWindowWidthListener } from '../ResponsiveComponent/ResponsiveCompon
 Local CSS
 */
 import './Header.component.css';
-import qchain_logo from '../../assets/images/logo_option1.png';
 
 /*
 Children Components

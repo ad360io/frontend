@@ -74,7 +74,7 @@ class ActiveContract extends Component {
 
     render() {
         return <div className='active-listing-container'>
-            <div className='table-responsive' style={{ height: '100%', margin: '2%' }}>
+            <div className='table-responsive' style={{ height: '100%', margin: '2%', minHeight: '320px' }}>
                 {
                     (this.state.finished && this.state.err === null && this.state.activeContract.length === 0)
                         ? (<p style={{ textAlign: 'center' }}>There is currently no active contract...</p>)

@@ -49,7 +49,7 @@ class DetailedListingPage extends Component {
             offerAmount: -1,
             actionInfo: '',
         }
-
+        
         // Binding functions
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
         this.decideImage = this.decideImage.bind(this);
@@ -303,6 +303,7 @@ class DetailedListingPage extends Component {
                         processing={this.state.processing}
                         issue={this.state.actionInfo}
                         getPayoutCap={this.getPayoutCap}
+                        emailVerified={this.props.email_verified}
                     />
                 </div>
             }
@@ -315,8 +316,6 @@ class DetailedListingPage extends Component {
 }
 
 const DetailedRequestListing = ({ listing, decideImage, onOfferChange, badOffer, makeOfferClick, bought, processing }) => (
-
-
     <div className='detailed-listing-renderer'>
         <div className='detailed-image-container'>
             <Card>
@@ -376,7 +375,7 @@ const DetailedRequestListing = ({ listing, decideImage, onOfferChange, badOffer,
     </div>
 )
 
-const DetailedContentSpaceListing = ({ listing, decideImage, onBuy, bought, processing, issue, getPayoutCap }) => (
+const DetailedContentSpaceListing = ({ listing, decideImage, onBuy, bought, processing, issue, getPayoutCap, emailVerified }) => (
     <div className='detailed-listing-renderer'>
         <div className='detailed-image-container'>
             <Card>
@@ -427,7 +426,7 @@ const DetailedContentSpaceListing = ({ listing, decideImage, onBuy, bought, proc
                                     onClick={() => onBuy()}
                                     variant='outlined'
                                     color='primary'
-                                    disabled={processing || issue.length > 0}
+                                    disabled={processing || issue.length > 0 || emailVerified === false}
                                 >
                                     {
                                         (issue.length > 0)
@@ -462,13 +461,13 @@ const DetailedContentSpaceListing = ({ listing, decideImage, onBuy, bought, proc
                 <Divider />
             </div>
         </div>
-
-
     </div>
 )
 
 const mapStateToProps = (state) => {
-    return {}
+    return {
+        email_verified: state.ProfileReducer.profile.email_verified
+    }
 }
 
 const mapDispatchToProps = (dispatch) => {

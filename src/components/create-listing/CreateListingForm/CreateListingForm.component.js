@@ -140,7 +140,7 @@ class CreateListingForm extends Component {
         }
         else {
             return typeof this.props.publisherForm.dateFrom !== 'undefined'
-                && typeof this.props.publisherForm.dateTo !== 'undefined' 
+                && typeof this.props.publisherForm.dateTo !== 'undefined'
                 && this.props.publisherForm.adFormat.length > 0
                 && this.props.publisherForm.medium.length > 0
                 && this.props.publisherForm.description.length > 0
@@ -202,7 +202,7 @@ class CreateListingForm extends Component {
                                                 color="primary"
                                                 onClick={this.handleStepperNext}
                                                 className={classes.button}
-
+                                                disabled={!this.props.email_verifed}
                                             >
                                                 Next
                                             </Button>
@@ -253,7 +253,8 @@ const mapStateToProps = (state) => {
         advertiserActiveStep: state.CreateListingFormReducer.advertiserActiveStep,
         publisherActiveStep: state.CreateListingFormReducer.publisherActiveStep,
         advertiserSubmitted: state.CreateListingFormReducer.advertiserSubmitted,
-        publisherSubmitted: state.CreateListingFormReducer.publisherSubmitted
+        publisherSubmitted: state.CreateListingFormReducer.publisherSubmitted,
+        email_verifed: state.ProfileReducer.profile.email_verifed
     }
 }
 

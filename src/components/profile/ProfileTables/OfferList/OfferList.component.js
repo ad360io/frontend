@@ -14,7 +14,7 @@ import Divider from 'material-ui/Divider';
 
 
 /**
- * InviteList Component
+ * OfferList Component
  * User should be able to create a new smart contract when accepting a invite
  * Invite listing should be removed from list after action is performed.
  */
@@ -59,7 +59,7 @@ class OfferList extends Component {
 
     render() {
         return <div className='invite-list-container'>
-            <div className='table-responsive' style={{ height: '100%', margin: '2%' }}>
+            <div className='table-responsive' style={{ height: '100%', margin: '2%', minHeight: '320px' }}>
                 {
                     (this.state.finished && this.state.err === null && this.state.activeOffers.length === 0)
                         ? (<p style={{ textAlign: 'center' }}>There is currently no offering...</p>)
@@ -268,7 +268,7 @@ class OfferRenderer extends Component {
 
     render() {
         return <tr className='offer-renderer-tr'>
-            <td>
+            <td style={{paddingTop: '16px'}}>
                 <OverlayTrigger trigger={['hover', 'focus']} placement='right' overlay={this.getInfoPopover()}>
                     <a style={{ cursor: 'pointer' }}> {this.props.offer.topic} ({this.props.offer.currency}) - {this.props.offer.sender_name}</a>
                 </OverlayTrigger>
@@ -280,7 +280,7 @@ class OfferRenderer extends Component {
                         : <div>
                             {
                                 (this.state.actionInfo.length > 0)
-                                    ? <div>{this.state.actionInfo} <Button onClick={this.handleOkayClick}>okay...</Button></div>
+                                    ? <div>{this.state.actionInfo} <Button style={{marginLeft: '5px'}} onClick={this.handleOkayClick}>okay...</Button></div>
                                     : (<div>
                                         <Button
                                             bsStyle='success'
