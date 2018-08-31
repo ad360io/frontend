@@ -1,7 +1,7 @@
 .stats-card-container {
     border-style: solid;
     border-width: 2px;
-    border-color: rgba(220,220,220,0.6);
+    border-color: rgba(220, 220, 220, 0.6);
     padding: 5px 10px 5px 10px;
     margin-bottom: 10px;
     border-radius: 10px;
@@ -45,7 +45,7 @@
 }
 
 .stats-card-trend {
-     float : right;
+    float: right;
 }
 
 .stats-card-title {

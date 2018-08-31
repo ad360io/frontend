@@ -23,7 +23,7 @@ import SelectButtonGroup from './SelectButtonGroup.component';
 class AdFormatSelect extends Component {
     constructor(props) {
         super(props);
-        
+
         this.showMedium = this.showMedium.bind(this);
         this.getCurrentAdFormatValue = this.getCurrentAdFormatValue.bind(this);
         this.getCurrentMediumValue = this.getCurrentMediumValue.bind(this);
@@ -32,79 +32,79 @@ class AdFormatSelect extends Component {
 
     showMedium() {
         let currentMediumStringList = this.getMediumStringList();
-        if(currentMediumStringList !== null){
+        if (currentMediumStringList !== null) {
             return <div>
                 <p className='ad-format-selector-title'>Select Medium</p>
                 <ButtonGroup justified >
                     {
                         currentMediumStringList.map((mediumString, index) => {
-                            if(index < currentMediumStringList.length / 2){
-                                return <MediumButton 
-                                    currentMediumValue={this.getCurrentMediumValue()} 
-                                    mediumString={mediumString} 
+                            if (index < currentMediumStringList.length / 2) {
+                                return <MediumButton
+                                    currentMediumValue={this.getCurrentMediumValue()}
+                                    mediumString={mediumString}
                                     onMediumClick={this.props.onMediumClick}
-                                    key={mediumString+"_"+index}
+                                    key={mediumString + "_" + index}
                                 />
-                            }else {
+                            } else {
                                 return null;
                             }
                         })
                     }
                 </ButtonGroup>
-                <ButtonGroup justified style={{marginBottom: '25px'}}>
+                <ButtonGroup justified style={{ marginBottom: '25px' }}>
                     {
                         currentMediumStringList.map((mediumString, index) => {
-                            if(index >= currentMediumStringList.length / 2) {
-                                return <MediumButton 
-                                    currentMediumValue={this.getCurrentMediumValue()} 
-                                    mediumString={mediumString} 
+                            if (index >= currentMediumStringList.length / 2) {
+                                return <MediumButton
+                                    currentMediumValue={this.getCurrentMediumValue()}
+                                    mediumString={mediumString}
                                     onMediumClick={this.props.onMediumClick}
-                                    key={mediumString+"_"+index}
+                                    key={mediumString + "_" + index}
                                 />
-                            }else{
+                            } else {
                                 return null;
                             }
                         })
                     }
                 </ButtonGroup>
             </div>
-        }else {
+        } else {
             return null;
         }
     }
 
-    getCurrentAdFormatValue () {
+    getCurrentAdFormatValue() {
         return this.props.modeFilter === 'Advertiser' ? this.props.adv_adFormat : this.props.pub_adFormat;
     }
 
-    getCurrentMediumValue () {
+    getCurrentMediumValue() {
         return this.props.modeFilter === 'Advertiser' ? this.props.adv_medium : this.props.pub_medium;
     }
 
-    getMediumStringList () {
+    getMediumStringList() {
         /* Variable Naming Abbreviation
         * bc stands for -Braned Content-
         * ip stands for -Influencer Post-
         * sp stands for -Sponsorship-
         * pj stands for -Patron Journalism-
         */
-        const bcMediumStringList = [ 'Written Piece',    'Audio Piece',      'Video Piece', 'Email',
-                                     'Webinar',          'Other',                                      ];
-        const ipMediumStringList = [ 'Tweet',            'Instagram',        'Twitch',      'Youtube',
-                                     'Facebook',         'Twitter',          'NicoNico',    'Other'    ];
-        const spMediumStringList = [ 'Event',            'Individual',       'Website',     'Artistic Creation',
-                                     'Email Newsletter',  'Other'                                      ];
-        const pjMediumStringList = [ 'Written Piece',    'Audio Piece',      'Video Piece', 'Other'    ];
-        
-        if ( this.getCurrentAdFormatValue() === 'Branded Content' ){
+        const bcMediumStringList = ['Written Piece', 'Audio Piece', 'Video Piece', 'Email',
+            'Webinar', 'Other',];
+        const ipMediumStringList = ['Tweet', 'Instagram', 'Twitch', 'Youtube',
+            'Facebook', 'Twitter', 'NicoNico', 'Other'];
+        const spMediumStringList = ['Event', 'Individual', 'Website', 'Artistic Creation',
+            'Email Newsletter', 'Other'];
+        const pjMediumStringList = ['Written Piece', 'Audio Piece', 'Video Piece', 'Other'];
+
+        if (this.getCurrentAdFormatValue() === 'Branded Content') {
             return bcMediumStringList;
-        }else if ( this.getCurrentAdFormatValue() === 'Influencer Post'){
+        } else if (this.getCurrentAdFormatValue() === 'Influencer Post') {
             return ipMediumStringList;
-        }else if ( this.getCurrentAdFormatValue() === 'Sponsorship') {
+        } else if (this.getCurrentAdFormatValue() === 'Sponsorship') {
             return spMediumStringList;
-        }else if ( this.getCurrentAdFormatValue() === 'Patron Journalism') {
+        } else if (this.getCurrentAdFormatValue() === 'Patron Journalism') {
             return pjMediumStringList;
-        }else {
+        } else {
             return null;
         }
 
@@ -118,11 +118,11 @@ class AdFormatSelect extends Component {
             <ButtonGroup style={{ marginBottom: '25px' }} justified >
                 {
                     adFormatStringList.map((adFormatString, index) => {
-                        return <AdFormatButton 
-                            currentAdFormatValue={this.getCurrentAdFormatValue()} 
-                            adFormatString={adFormatString} 
+                        return <AdFormatButton
+                            currentAdFormatValue={this.getCurrentAdFormatValue()}
+                            adFormatString={adFormatString}
                             onAdFormatClick={this.props.onAdFormatClick}
-                            key={adFormatString+"_"+index}
+                            key={adFormatString + "_" + index}
                         />
                     })
                 }
@@ -156,10 +156,10 @@ const AdFormatButton = ({ currentAdFormatValue, adFormatString, onAdFormatClick 
 
 const mapStateToProps = (state) => {
     return {
-        adv_adFormat        : state.CreateListingFormReducer.advertiserForm.adFormat,
-        adv_medium          : state.CreateListingFormReducer.advertiserForm.medium,
-        pub_adFormat        : state.CreateListingFormReducer.publisherForm.adFormat,
-        pub_medium          : state.CreateListingFormReducer.publisherForm.medium
+        adv_adFormat: state.CreateListingFormReducer.advertiserForm.adFormat,
+        adv_medium: state.CreateListingFormReducer.advertiserForm.medium,
+        pub_adFormat: state.CreateListingFormReducer.publisherForm.adFormat,
+        pub_medium: state.CreateListingFormReducer.publisherForm.medium
     }
 }
 
@@ -167,12 +167,12 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     const { modeFilter } = ownProps;
     return {
         onAdFormatClick: (value) => {
-            if(modeFilter === 'Advertiser') {
+            if (modeFilter === 'Advertiser') {
                 dispatch({
                     type: 'SET_ADV_FORM_AD_FORMAT',
                     adFormat: value
                 })
-            }else {
+            } else {
                 dispatch({
                     type: 'SET_PUB_FORM_AD_FORMAT',
                     adFormat: value
@@ -181,12 +181,12 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         },
 
         onMediumClick: (value) => {
-            if(modeFilter === 'Advertiser') {
+            if (modeFilter === 'Advertiser') {
                 dispatch({
                     type: 'SET_ADV_FORM_MARKETING_MEDIUM',
                     medium: value
                 })
-            }else {
+            } else {
                 dispatch({
                     type: 'SET_PUB_FORM_MARKETING_MEDIUM',
                     medium: value

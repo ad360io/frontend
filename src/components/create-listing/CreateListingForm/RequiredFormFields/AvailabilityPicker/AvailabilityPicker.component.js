@@ -22,23 +22,23 @@ class AvailabilityPicker extends Component {
     }
 
     render() {
-        const { from , to } = this.props;
+        const { from, to } = this.props;
         const modifiers = { start: from, end: to };
         return <div>
             <div className="date-range-container">
                 <DayPicker
                     className='Selectable'
                     numberOfMonths={this.props.numberOfMonths}
-                    selectedDays={[from, { from , to }]}
+                    selectedDays={[from, { from, to }]}
                     modifiers={modifiers}
                     onDayClick={this.props.onDayClick}
                 />
                 <p className='selected-range-label'>
-                    { !from && !to && 'Please select the first day' }
-                    {  from && !to && 'Please select the last day'  }
-                    { from && to &&  `Selected from ${from.toLocaleDateString()}
+                    {!from && !to && 'Please select the first day'}
+                    {from && !to && 'Please select the last day'}
+                    {from && to && `Selected from ${from.toLocaleDateString()}
                         to ${to.toLocaleDateString()}`}{'  '}
-                    { from && to && (
+                    {from && to && (
                         <button className='link' onClick={this.props.onResetClick}>
                             Reset
                         </button>
@@ -56,16 +56,16 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        onDayClick : (day) => {
+        onDayClick: (day) => {
             dispatch({
                 type: 'SET_PUB_FORM_DATE_RANGE',
                 range: DateUtils.addDayToRange(day, ownProps)
             })
         },
-        onResetClick : () => {
+        onResetClick: () => {
             dispatch({
                 type: 'SET_PUB_FORM_DATE_RESET',
-            }) 
+            })
         }
     }
 }

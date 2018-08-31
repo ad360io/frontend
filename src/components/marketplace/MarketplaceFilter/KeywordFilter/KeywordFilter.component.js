@@ -15,7 +15,7 @@ Local CSS
 import './KeywordFilter.component.css';
 
 
-const KeywordFilter = ({onChange}) => (
+const KeywordFilter = ({ onChange }) => (
     <div className='keyword-filter-container'>
         <SearchInput className='search-input' onChange={onChange} />
     </div>
@@ -23,13 +23,13 @@ const KeywordFilter = ({onChange}) => (
 
 const mapStateToProps = (state) => {
     return {
-       
+
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        
+
     }
 }
 

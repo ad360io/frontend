@@ -1,7 +1,7 @@
 var fakeData = {
     "requestListings": [
         {
-            "id" : 1,
+            "id": 1,
             "requestor": "User8",
             "currency": "EQC",
             "marketingType": "Branded Content",
@@ -25,7 +25,7 @@ var fakeData = {
     ],
     "contentSpaceListings": [
         {
-            "id" : 3,
+            "id": 3,
             "creator": "CoolUser17",
             "ask_date_from": "2017-07-01",
             "ask_date_to": "2018-07-01",
@@ -40,7 +40,7 @@ var fakeData = {
             "referralURI": ""
         },
         {
-            "id" : 4,
+            "id": 4,
             "creator": "CoolUser17",
             "ask_date_from": "2017-07-01",
             "ask_date_to": "2018-07-01",
@@ -55,7 +55,7 @@ var fakeData = {
             "referralURI": ""
         },
         {
-            "id" : 5,
+            "id": 5,
             "creator": "CoolUser17",
             "ask_date_from": "2017-07-01",
             "ask_date_to": "2018-07-01",

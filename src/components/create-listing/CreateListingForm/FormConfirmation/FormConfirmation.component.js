@@ -7,20 +7,20 @@ import { connect } from 'react-redux'
 
 const FormConfirmation = ({ modeFilter, currencyFilter, advertiserForm, publisherForm }) => (
     <div>
-    {
-        (
-            modeFilter === 'Advertiser' 
-                ? <AdvertiserFormConfirmation fields={advertiserForm} />
-                : <PublisherFormConfirmation  fields={publisherForm } currencyFilter={currencyFilter} />
-        )
-    }
+        {
+            (
+                modeFilter === 'Advertiser'
+                    ? <AdvertiserFormConfirmation fields={advertiserForm} />
+                    : <PublisherFormConfirmation fields={publisherForm} currencyFilter={currencyFilter} />
+            )
+        }
     </div>
 )
 
-const AdvertiserFormConfirmation = ({fields}) => (
+const AdvertiserFormConfirmation = ({ fields }) => (
     <div>
         <table className='table table-bordered mb-0'>
-                <tbody className='tbody-default'>
+            <tbody className='tbody-default'>
                 <tr>
                     <td>Marketing Type </td>
                     <td>{fields.adFormat}</td>
@@ -37,15 +37,15 @@ const AdvertiserFormConfirmation = ({fields}) => (
                     <td>Content Topic </td>
                     <td>{fields.topic}</td>
                 </tr>
-                </tbody>
+            </tbody>
         </table>
     </div>
 )
 
-const PublisherFormConfirmation = ({fields, currencyFilter}) => (
+const PublisherFormConfirmation = ({ fields, currencyFilter }) => (
     <div>
         <table className='table table-bordered mb-0'>
-                <tbody className='tbody-default'>
+            <tbody className='tbody-default'>
                 <tr>
                     <td>Marketing Type </td>
                     <td>{fields.adFormat}</td>
@@ -72,21 +72,21 @@ const PublisherFormConfirmation = ({fields, currencyFilter}) => (
                 </tr>
                 <tr>
                     <td>Promotion Duration </td>
-                    <td><div style={{width: '50px', float: 'left'}}><strong>From:</strong></div> {fields.dateFrom.toString()} 
-                        <br/> 
-                        <div style={{width: '50px', float: 'left'}}><strong>To:</strong></div> {fields.dateTo.toString()}
+                    <td><div style={{ width: '50px', float: 'left' }}><strong>From:</strong></div> {fields.dateFrom.toString()}
+                        <br />
+                        <div style={{ width: '50px', float: 'left' }}><strong>To:</strong></div> {fields.dateTo.toString()}
                     </td>
                 </tr>
-                </tbody>
+            </tbody>
         </table>
     </div>
 )
 
 const mapStateToProps = (state) => {
     return {
-        modeFilter      : state.MenuBarFilterReducer.modeFilter,
-        advertiserForm  : state.CreateListingFormReducer.advertiserForm,
-        publisherForm   : state.CreateListingFormReducer.publisherForm
+        modeFilter: state.MenuBarFilterReducer.modeFilter,
+        advertiserForm: state.CreateListingFormReducer.advertiserForm,
+        publisherForm: state.CreateListingFormReducer.publisherForm
     }
 }
 

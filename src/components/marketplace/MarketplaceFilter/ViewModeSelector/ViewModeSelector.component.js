@@ -19,24 +19,24 @@ import './ViewModeSelector.component.css';
 
 class ViewModeSelector extends Component {
     render() {
-        return <div style={{width: '240px', marginLeft: '25px', marginButtom: '5%'}}>
+        return <div style={{ width: '240px', marginLeft: '25px', marginButtom: '5%' }}>
             <ButtonGroup
                 style={{
-                    display: this.props.decideHidden(), 
+                    display: this.props.decideHidden(),
                 }}
                 justified
             >
-                <Button 
+                <Button
                     href="#"
                     active={this.props.viewModeFilter === 'Listing'}
-                    onClick={()=>this.props.onViewModeClick('Listing')}
+                    onClick={() => this.props.onViewModeClick('Listing')}
                 >
                     <i className="fas fa-align-justify view-mode-icon"></i>Listing
                 </Button>
-                <Button 
+                <Button
                     href="#"
                     active={this.props.viewModeFilter === 'Grid'}
-                    onClick={()=>this.props.onViewModeClick('Grid')}
+                    onClick={() => this.props.onViewModeClick('Grid')}
                 >
                     <i className="fas fa-th-large view-mode-icon"></i>Grid
                 </Button>

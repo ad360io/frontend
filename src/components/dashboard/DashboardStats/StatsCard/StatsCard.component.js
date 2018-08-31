@@ -2,7 +2,7 @@
 Core Libs and Children Components
 */
 import React, { Component } from 'react';
-import PropTypes            from 'prop-types';
+import PropTypes from 'prop-types';
 
 /*
 Local CSS
@@ -16,30 +16,30 @@ import './StatsCard.component.css'
  */
 class StatsCard extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
         this.getTrendingHrStyle = this.getTrendingHrStyle.bind(this);
         this.getTrendingLabelStyle = this.getTrendingLabelStyle.bind(this);
     }
 
-    getTrendingHrStyle(){
+    getTrendingHrStyle() {
         let trendInNumber = Number.parseInt(this.props.trend, 10);
-        if(trendInNumber > 0) {
+        if (trendInNumber > 0) {
             return 'green-hr';
-        }else if(trendInNumber < 0) {
+        } else if (trendInNumber < 0) {
             return 'red-hr';
-        }else {
+        } else {
             return 'neutral-hr';
         }
     }
 
-    getTrendingLabelStyle(){
+    getTrendingLabelStyle() {
         let trendInNumber = Number.parseInt(this.props.trend, 10);
-        if(trendInNumber > 0) {
+        if (trendInNumber > 0) {
             return 'green-label';
-        }else if(trendInNumber < 0) {
+        } else if (trendInNumber < 0) {
             return 'red-label';
-        }else {
+        } else {
             return '';
         }
     }
@@ -51,12 +51,12 @@ class StatsCard extends Component {
     render() {
         return <div className='stats-card-container'>
             <div className='stats-card'>
-                    <div>
-                        <span className='stats-card-title'> { this.sanitizeTitle(this.props.title) } </span>
-                        <span className={this.getTrendingLabelStyle()+' stats-card-trend'}> { this.props.trend } </span>
-                    </div>
-                    <hr className={this.getTrendingHrStyle()} />
-                    <span className='stats-card-value'> { this.props.value } </span>
+                <div>
+                    <span className='stats-card-title'> {this.sanitizeTitle(this.props.title)} </span>
+                    <span className={this.getTrendingLabelStyle() + ' stats-card-trend'}> {this.props.trend} </span>
+                </div>
+                <hr className={this.getTrendingHrStyle()} />
+                <span className='stats-card-value'> {this.props.value} </span>
             </div>
         </div>
     }

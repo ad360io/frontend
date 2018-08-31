@@ -49,7 +49,7 @@ class DetailedListingPage extends Component {
             offerAmount: -1,
             actionInfo: '',
         }
-        
+
         // Binding functions
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
         this.decideImage = this.decideImage.bind(this);

@@ -13,11 +13,7 @@
     font-weight: 200;
 }
 
-.btn-marketing-type:global(.active),
-.btn-marketing-type:global(.active):hover,
-.btn-marketing-type:global(.active):focus,
-.btn-marketing-type:focus
-{
+.btn-marketing-type:global(.active), .btn-marketing-type:global(.active):hover, .btn-marketing-type:global(.active):focus, .btn-marketing-type:focus {
     background-color: rgba(49, 0, 128, 0.3) !important;
     font-weight: 200;
     font-stretch: normal;
@@ -29,11 +25,7 @@
     outline: none !important;
 }
 
-.split-btn-marketing-type:global(.active),
-.split-btn-marketing-type:global(.active):hover,
-.split-btn-marketing-type:global(.active):focus,
-.split-btn-marketing-type:focus
-{
+.split-btn-marketing-type:global(.active), .split-btn-marketing-type:global(.active):hover, .split-btn-marketing-type:global(.active):focus, .split-btn-marketing-type:focus {
     background-color: rgba(49, 0, 128, 0.3) !important;
     font-weight: 200;
     font-stretch: normal;
@@ -45,9 +37,7 @@
     outline: none !important;
 }
 
-.split-btn-marketing-type ~ button:hover,
-.split-btn-marketing-type ~ button:focus
-{
+.split-btn-marketing-type ~ button:hover, .split-btn-marketing-type ~ button:focus {
     background-color: rgba(49, 0, 128, 0.1) !important;
     outline: none !important;
 }

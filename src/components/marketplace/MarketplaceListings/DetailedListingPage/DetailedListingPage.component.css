@@ -49,7 +49,7 @@
     width: 55%;
 }
 
-.buy-section{
+.buy-section {
     background: #ececec;
     height: 80px;
     padding-top: 2%;
@@ -65,7 +65,7 @@
 }
 
 .buy-button {
-     width: 100%;
+    width: 100%;
 }
 
 .listing-details-text {
@@ -90,44 +90,42 @@
     cursor: pointer;
 }
 
+
 /*
 MEDIUM SCREEN
 */
-@media only screen and (min-width: 768px) {
 
+@media only screen and (min-width: 768px) {
     .listing-concrete-details-container {
         width: 45vw;
-        float: left; 
+        float: left;
         margin: 2%;
     }
-    
     .poster-info-container {
         width: 45vw;
         margin: 2%;
     }
-
     .detailed-image-container {
         width: 45vw;
         margin: 2%;
     }
 }
 
+
 /*
 MEDIUM SCREEN
 */
-@media only screen and (min-width: 1000px) {
 
+@media only screen and (min-width: 1000px) {
     .listing-concrete-details-container {
         width: 30%;
-        float: left; 
+        float: left;
         margin: 2%;
     }
-    
     .poster-info-container {
         width: 250px;
         margin: 2%;
     }
-
     .detailed-image-container {
         width: 330px;
         margin: 2%;

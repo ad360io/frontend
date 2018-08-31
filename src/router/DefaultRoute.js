@@ -1,8 +1,8 @@
 /*
 Core Libs
 */
-import React                from 'react';
-import { Route, Redirect }  from 'react-router-dom';
+import React from 'react';
+import { Route, Redirect } from 'react-router-dom';
 
 
 /**
@@ -15,11 +15,11 @@ const DefaultRoute = ({ component: Component, auth: Auth, ...rest }) => (
     <Route
         {...rest}
         render={props => {
-                const { isAuthenticated } = Auth;
-                return isAuthenticated() 
-                ? ( <Redirect to={{pathname:'/dashboard'}} /> ) 
-                : ( <Redirect to={{pathname:'/'}} /> )
-            }
+            const { isAuthenticated } = Auth;
+            return isAuthenticated()
+                ? (<Redirect to={{ pathname: '/dashboard' }} />)
+                : (<Redirect to={{ pathname: '/' }} />)
+        }
         }
     />
 );

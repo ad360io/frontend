@@ -143,7 +143,7 @@ const CreateListingFormReducer = (state = defaultState, action) => {
                     timeUnit: action.timeUnit,
                 }
             }
-        
+
         case 'RESET_ADV_FORM':
             return {
                 ...state,
@@ -174,14 +174,14 @@ const CreateListingFormReducer = (state = defaultState, action) => {
                 publisherActiveStep: 0,
                 publisherSubmitted: false
             }
-        
+
         case 'ADV_STEPPER_NEXT':
-            return {      
+            return {
                 ...state,
                 advertiserActiveStep: state.advertiserActiveStep + 1
-            }    
-            
-            
+            }
+
+
         case 'ADV_STEPPER_BACK':
             return {
                 ...state,
@@ -199,7 +199,7 @@ const CreateListingFormReducer = (state = defaultState, action) => {
                 ...state,
                 publisherActiveStep: state.publisherActiveStep + 1
             }
-            
+
         case 'PUB_STEPPER_BACK':
             return {
                 ...state,
@@ -211,7 +211,7 @@ const CreateListingFormReducer = (state = defaultState, action) => {
                 ...state,
                 publisherSubmitted: true
             }
-        
+
         default:
             return state;
     }

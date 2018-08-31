@@ -15,9 +15,9 @@ import './AuthCallback.css';
 
 
 const AuthCallback = () => (
-    <div className="auth-callback-container"> 
-        <CircularProgress size={60} thickness={7} style={{margin: 'auto'}} />
+    <div className="auth-callback-container">
+        <CircularProgress size={60} thickness={7} style={{ margin: 'auto' }} />
     </div>
-) 
+)
 
 export default AuthCallback;

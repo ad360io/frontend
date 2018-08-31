@@ -20,9 +20,9 @@ import './DashboardPlaceholder.component.css';
 
 
 const DashboardPlaceholder = () => (
-    <Card className="dashboard-placeholder-container"> 
+    <Card className="dashboard-placeholder-container">
         <CardText>
-            <h2 className="dashboard-placeholder-text">No analytical data available for your account yet.</h2> <br/>
+            <h2 className="dashboard-placeholder-text">No analytical data available for your account yet.</h2> <br />
             <h3 className="dashboard-placeholder-text">Get Started:  </h3>
             <ul className="dashboard-placeholder-text">
                 <li className="dashboard-placeholder-li">Pop into our <Link to="/marketplace">Marketplace</Link> to start shopping.</li>
@@ -31,7 +31,7 @@ const DashboardPlaceholder = () => (
             </ul>
         </CardText>
     </Card>
-    
+
 )
 
 

@@ -71,7 +71,7 @@ class ProfileAccessor extends React.Component {
     };
 
     handleViewProfile = () => {
-        this.handleClose({target: null});
+        this.handleClose({ target: null });
         this.props.history.push('/profile');
     }
 

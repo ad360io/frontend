@@ -19,11 +19,11 @@ import './App.css';
 
 const muiTheme = getMuiTheme({
     slider: {
-      trackColor: 'rgba(15,15,15,0.3)',
-      selectionColor: '#22a571',
-      rippleColor: 'purple'
+        trackColor: 'rgba(15,15,15,0.3)',
+        selectionColor: '#22a571',
+        rippleColor: 'purple'
     },
-  });
+});
 
 /**
  * Application container
@@ -34,7 +34,7 @@ const App = () => (
         <Provider store={store}>
             {/* MuiThemeProvider is required to use Material UI components */}
             <MuiThemeProvider muiTheme={muiTheme}>
-                    <AppRouter/>
+                <AppRouter />
             </MuiThemeProvider>
         </Provider>
     </div>

@@ -19,13 +19,13 @@ React Bootstrap
 */
 import { Button, SplitButton, MenuItem } from 'react-bootstrap';
 
-const bcMediumStringList = [ 'Written Piece',    'Audio Piece',      'Video Piece', 'Email',
-                             'Webinar',          'Other',                                      ];
-const ipMediumStringList = [ 'Tweet',            'Instagram',        'Twitch',      'Youtube',
-                             'Facebook',         'Twitter',          'NicoNico',    'Other'    ];
-const spMediumStringList = [ 'Event',            'Individual',       'Website',     'Artistic Creation',
-                             'Email Newsletter',  'Other'                                      ];
-const pjMediumStringList = [ 'Written Piece',    'Audio Piece',      'Video Piece', 'Other'    ];
+const bcMediumStringList = ['Written Piece', 'Audio Piece', 'Video Piece', 'Email',
+    'Webinar', 'Other',];
+const ipMediumStringList = ['Tweet', 'Instagram', 'Twitch', 'Youtube',
+    'Facebook', 'Twitter', 'NicoNico', 'Other'];
+const spMediumStringList = ['Event', 'Individual', 'Website', 'Artistic Creation',
+    'Email Newsletter', 'Other'];
+const pjMediumStringList = ['Written Piece', 'Audio Piece', 'Video Piece', 'Other'];
 
 const AdFormatFilter = ({ onAdFormatClick, adFormatFilter, mediumFilter, onMediumClick }) => (
     <div>

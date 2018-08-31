@@ -75,12 +75,12 @@ class Marketplace extends Component {
     }
 
     getPurchaseRangeQuery = () => {
-        if(this.props.modeFilter === 'Advertiser'){
+        if (this.props.modeFilter === 'Advertiser') {
             return `&price=lte.${this.props.budgetFilter * 1000}`
-        }else {
+        } else {
             return '';
         }
-        
+
     }
 
     getSortingQuery = () => {

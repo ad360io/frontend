@@ -1,7 +1,7 @@
 /*
 Core Libs
 */
-import React, { Component }        from 'react';
+import React, { Component } from 'react';
 
 /*
 Chart.js
@@ -15,20 +15,20 @@ import { Card, CardText } from 'material-ui/Card';
 import Divider from 'material-ui/Divider';
 
 
-const DashboardDoughnutSingleton = ({data}) => (
-        <Doughnut   data={data}
-                    height={300}
-                    options={{
-                        maintainAspectRatio: false,
-                        responsive: true,
-                        legend: {
-                            position: 'bottom'
-                        }
-        }}/>
+const DashboardDoughnutSingleton = ({ data }) => (
+    <Doughnut data={data}
+        height={300}
+        options={{
+            maintainAspectRatio: false,
+            responsive: true,
+            legend: {
+                position: 'bottom'
+            }
+        }} />
 )
 
 class DashboardDoughnut extends Component {
-    
+
     chooseDoughnutDataset() {
         // TODO(ahuszagh): fix, shouldn't be hard-coded.
         return {
@@ -55,19 +55,19 @@ class DashboardDoughnut extends Component {
 
     render() {
         return <Card className='dashboard-charts-card doughnut-card'>
-                <h2 className='chart-title'> Highest Grossing Contracts </h2>
-                <Divider style={{width: '75%'}}/>
-                <CardText>
-                    <div className='highest-gross-card-left'>
-                        <DashboardDoughnutSingleton data={this.chooseDoughnutDataset()} />
-                    </div>
-                    <div className='highest-gross-card-right'>
+            <h2 className='chart-title'> Highest Grossing Contracts </h2>
+            <Divider style={{ width: '75%' }} />
+            <CardText>
+                <div className='highest-gross-card-left'>
+                    <DashboardDoughnutSingleton data={this.chooseDoughnutDataset()} />
+                </div>
+                <div className='highest-gross-card-right'>
                     {/* Build this info dynamically after we are pulling real data*/}
-                        The <a>Contract Uno</a> is the best deal you've done!
+                    The <a>Contract Uno</a> is the best deal you've done!
                         <span className='quick-maf'> 66.6</span>% of your total grossing are generated here!
                     </div>
-                </CardText>
-            </Card>
+            </CardText>
+        </Card>
     }
 }
 

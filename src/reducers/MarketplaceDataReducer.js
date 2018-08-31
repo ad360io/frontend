@@ -43,7 +43,7 @@ const MarketplaceDataReducer = (state = initialState, action) => {
                 fetched: true,
                 hasError: false,
                 db: {
-                    listings: action.payload.data    
+                    listings: action.payload.data
                 },
                 total: Number.parseInt(action.payload.headers['content-range'].split('/')[1], 10),
             }

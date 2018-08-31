@@ -1,8 +1,8 @@
 /*
 Core Libs
 */
-import React                from 'react';
-import { Route, Redirect }  from 'react-router-dom';
+import React from 'react';
+import { Route, Redirect } from 'react-router-dom';
 
 /*
 Other Components
@@ -21,8 +21,8 @@ const PrivateRoute = ({ component: Component, auth: Auth, ...rest }) => (
         render={props => {
             const { isAuthenticated } = Auth;
             return isAuthenticated()
-                        ? PrivateContent(props, Component, Auth)
-                        : <Redirect to={{pathname: '/'}}/>
+                ? PrivateContent(props, Component, Auth)
+                : <Redirect to={{ pathname: '/' }} />
         }}
     />
 );
@@ -35,7 +35,7 @@ const PrivateRoute = ({ component: Component, auth: Auth, ...rest }) => (
  */
 const PrivateContent = (props, Component, Auth) => (
     <div>
-        <Header    auth={Auth} />
+        <Header auth={Auth} />
         <Component auth={Auth} {...props} />
     </div>
 );

@@ -6,12 +6,12 @@ import { combineReducers } from 'redux';
 /*
 Other Reducers
 */
-import MenuBarFilterReducer     from './MenuBarFilterReducer';
+import MenuBarFilterReducer from './MenuBarFilterReducer';
 import MarketplaceFilterReducer from './MarketplaceFilterReducer';
-import ProfileReducer           from './ProfileReducer';
-import DashboardDataReducer     from './DashboardDataReducer';
-import DashboardFilterReducer   from './DashboardFilterReducer';
-import MarketplaceDataReducer   from './MarketplaceDataReducer';
+import ProfileReducer from './ProfileReducer';
+import DashboardDataReducer from './DashboardDataReducer';
+import DashboardFilterReducer from './DashboardFilterReducer';
+import MarketplaceDataReducer from './MarketplaceDataReducer';
 import CreateListingFormReducer from './CreateListingFormReducer';
 import CreateListingDataReducer from './CreateListingDataReducer';
 

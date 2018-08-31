@@ -13,7 +13,7 @@ class Login extends Component {
         this.props.auth.login();
     }
 
-    render(){
+    render() {
         return (
             <div className='cover-login'>
             </div>

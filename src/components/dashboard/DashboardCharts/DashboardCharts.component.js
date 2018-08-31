@@ -2,7 +2,7 @@
 Core Libs
 */
 import React, { Component } from 'react';
-import { connect }          from 'react-redux';
+import { connect } from 'react-redux';
 
 /*
 Local CSS
@@ -13,13 +13,13 @@ import './DashboardCharts.component.css';
 Material UI Components
 */
 import { Card, CardText } from 'material-ui/Card';
-import  Divider           from 'material-ui/Divider';
+import Divider from 'material-ui/Divider';
 
 /*
 Children Components
 */
-import DashboardLineChart   from './DashboardLineChart/DashboardLineChart.component';
-import LineChartSlider      from './LineChartSlider/LineChartSlider.component';
+import DashboardLineChart from './DashboardLineChart/DashboardLineChart.component';
+import LineChartSlider from './LineChartSlider/LineChartSlider.component';
 // import DashboardDoughnut    from './DashboardDoughnut/DashboardDoughnut.component';
 import DashboardPlaceholder from '../DashboardPlaceholder/DashboardPlaceholder.component';
 
@@ -29,7 +29,7 @@ import DashboardPlaceholder from '../DashboardPlaceholder/DashboardPlaceholder.c
  */
 class DashboardCharts extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
             triggerPlaceholder: false
@@ -45,65 +45,65 @@ class DashboardCharts extends Component {
      * @param {*} previousState 
      */
     componentDidUpdate(previousProps, previousState) {
-        
-        if(this.props.modeFilter === 'Advertiser'){
+
+        if (this.props.modeFilter === 'Advertiser') {
             // Advertiser charts (Clicks, Impressions)
-            if(this.props.currencyFilter === 'EQC') {
+            if (this.props.currencyFilter === 'EQC') {
                 let newState = {
-                    triggerPlaceholder: this.props.fetched 
+                    triggerPlaceholder: this.props.fetched
                         && this.props.eqcContracts.length === 0
                         && this.props.eqcContracts.length === 0
                 }
-                if(newState.triggerPlaceholder !== previousState.triggerPlaceholder){
+                if (newState.triggerPlaceholder !== previousState.triggerPlaceholder) {
                     this.setState(newState)
                 }
-            }else {
+            } else {
                 let newState = {
-                    triggerPlaceholder: this.props.fetched 
+                    triggerPlaceholder: this.props.fetched
                         && this.props.xqcContracts.length === 0
                         && this.props.xqcContracts.length === 0
                 }
-                if(newState.triggerPlaceholder !== previousState.triggerPlaceholder){
-                     this.setState(newState)
-                }           
+                if (newState.triggerPlaceholder !== previousState.triggerPlaceholder) {
+                    this.setState(newState)
+                }
             }
-        }else {
+        } else {
             // Publisher charts  (Clicks, Impression, RPM, Revenue)
             // returning empty array at this time to serve as a test case and wait for actual data
-            if(this.props.currencyFilter === 'EQC') {
+            if (this.props.currencyFilter === 'EQC') {
                 let newState = {
-                    triggerPlaceholder: this.props.fetched 
+                    triggerPlaceholder: this.props.fetched
                         && this.props.eqcContracts.length === 0
                         && this.props.eqcContracts.length === 0
                 }
-                if(newState.triggerPlaceholder !== previousState.triggerPlaceholder){
+                if (newState.triggerPlaceholder !== previousState.triggerPlaceholder) {
                     this.setState(newState)
                 }
-            }else {
+            } else {
                 let newState = {
-                    triggerPlaceholder: this.props.fetched 
+                    triggerPlaceholder: this.props.fetched
                         && this.props.xqcContracts.length === 0
                         && this.props.xqcContracts.length === 0
                 }
-                if(newState.triggerPlaceholder !== previousState.triggerPlaceholder){
-                     this.setState(newState)
-                }           
+                if (newState.triggerPlaceholder !== previousState.triggerPlaceholder) {
+                    this.setState(newState)
+                }
             }
         }
     }
 
     chooseLineChartDisplayData() {
-        
+
         // *** Caution *** this is only for presentational purpose! Change when data is ready
 
         if (this.props.modeFilter === 'Advertiser') {
-            return this.props.currencyFilter === 'EQC' 
-                        ? this.props.eqcContracts 
-                        : this.props.xqcContracts
-        }else {
             return this.props.currencyFilter === 'EQC'
-                        ? this.props.xqcContracts 
-                        : this.props.eqcContracts
+                ? this.props.eqcContracts
+                : this.props.xqcContracts
+        } else {
+            return this.props.currencyFilter === 'EQC'
+                ? this.props.xqcContracts
+                : this.props.eqcContracts
         }
     }
 
@@ -111,10 +111,10 @@ class DashboardCharts extends Component {
      * Definitely Need Refactoring after database ( API ) is ready
      * @param {*} k
      */
-    getLineChartTitle(k){
+    getLineChartTitle(k) {
 
         if (this.props.modeFilter === 'Advertiser') {
-            switch (k){
+            switch (k) {
                 case 0:
                     return 'Content Impressions Performance';
                 case 1:
@@ -122,8 +122,8 @@ class DashboardCharts extends Component {
                 default:
                     return 'Unknown Key';
             }
-        }else {
-            switch (k){
+        } else {
+            switch (k) {
                 case 0:
                     return 'Content Impressions Performance';
                 case 1:
@@ -140,14 +140,14 @@ class DashboardCharts extends Component {
 
         this.chooseLineChartDisplayData().map((contract, key) => {
 
-            return impressionCharts.push(<DashboardLineChart 
-                                            legend={contract['content_topic']} 
-                                            dataset={contract['impressions_by_days']} 
-                                            key={key+'impChart'}/>)
-                && referralClicksCharts.push(<DashboardLineChart 
-                                            legend={contract['content_topic']}
-                                            dataset={contract['referral_clicks_by_days']} 
-                                            key={key+'refChart'}/>)
+            return impressionCharts.push(<DashboardLineChart
+                legend={contract['content_topic']}
+                dataset={contract['impressions_by_days']}
+                key={key + 'impChart'} />)
+                && referralClicksCharts.push(<DashboardLineChart
+                    legend={contract['content_topic']}
+                    dataset={contract['referral_clicks_by_days']}
+                    key={key + 'refChart'} />)
         })
 
         return [impressionCharts, referralClicksCharts];
@@ -158,28 +158,28 @@ class DashboardCharts extends Component {
             {
                 (this.state.triggerPlaceholder
                     ? <DashboardPlaceholder />
-                    : <DashboardChartsRenderer 
-                        sliderProps={this.prepareLineChartSliderProps()} 
+                    : <DashboardChartsRenderer
+                        sliderProps={this.prepareLineChartSliderProps()}
                         getLineChartTitle={this.getLineChartTitle}
-                      />
-                ) 
+                    />
+                )
             }
         </div>;
     }
 }
 
-const DashboardChartsRenderer = ({sliderProps, getLineChartTitle}) => (
+const DashboardChartsRenderer = ({ sliderProps, getLineChartTitle }) => (
     <div>
-        {   
-            sliderProps.map((itemList, i)=>{
-                return <Card key={'itemList'+i} className='dashboard-charts-card'>
-                            <h2 className='chart-title'>{getLineChartTitle(i)}</h2>
-                            <Divider style={{width: '75%'}}/>
-                            <CardText>
-                                <LineChartSlider itemList={itemList} />
-                            </CardText>
-                        </Card>
-                })
+        {
+            sliderProps.map((itemList, i) => {
+                return <Card key={'itemList' + i} className='dashboard-charts-card'>
+                    <h2 className='chart-title'>{getLineChartTitle(i)}</h2>
+                    <Divider style={{ width: '75%' }} />
+                    <CardText>
+                        <LineChartSlider itemList={itemList} />
+                    </CardText>
+                </Card>
+            })
         }
         {/* Not using doughnut chart in MVP, save it though */}
         {/* <DashboardDoughnut/> */}
@@ -188,9 +188,9 @@ const DashboardChartsRenderer = ({sliderProps, getLineChartTitle}) => (
 
 const mapStateToProps = (state) => {
     return {
-        eqcContracts      : state.DashboardDataReducer.db.eqcContracts,
-        xqcContracts      : state.DashboardDataReducer.db.xqcContracts,
-        fetched           : state.DashboardDataReducer.fetched
+        eqcContracts: state.DashboardDataReducer.db.eqcContracts,
+        xqcContracts: state.DashboardDataReducer.db.xqcContracts,
+        fetched: state.DashboardDataReducer.fetched
     }
 }
 

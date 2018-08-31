@@ -19,8 +19,8 @@ const DetailedImageSlider = ({ imageSrc }) => {
     /* iterate through the imageList prop to render */
     return (
         <Slider {...settings}>
-           <div><img className='detailed-image' src={imageSrc} alt='detailed-listing'></img></div>
-           <div><img className='detailed-image' src={imageSrc} alt='detailed-listing'></img></div>
+            <div><img className='detailed-image' src={imageSrc} alt='detailed-listing'></img></div>
+            <div><img className='detailed-image' src={imageSrc} alt='detailed-listing'></img></div>
         </Slider>
     );
 }

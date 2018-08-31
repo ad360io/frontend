@@ -268,7 +268,7 @@ class OfferRenderer extends Component {
 
     render() {
         return <tr className='offer-renderer-tr'>
-            <td style={{paddingTop: '16px'}}>
+            <td style={{ paddingTop: '16px' }}>
                 <OverlayTrigger trigger={['hover', 'focus']} placement='right' overlay={this.getInfoPopover()}>
                     <a style={{ cursor: 'pointer' }}> {this.props.offer.topic} ({this.props.offer.currency}) - {this.props.offer.sender_name}</a>
                 </OverlayTrigger>
@@ -280,7 +280,7 @@ class OfferRenderer extends Component {
                         : <div>
                             {
                                 (this.state.actionInfo.length > 0)
-                                    ? <div>{this.state.actionInfo} <Button style={{marginLeft: '5px'}} onClick={this.handleOkayClick}>okay...</Button></div>
+                                    ? <div>{this.state.actionInfo} <Button style={{ marginLeft: '5px' }} onClick={this.handleOkayClick}>okay...</Button></div>
                                     : (<div>
                                         <Button
                                             bsStyle='success'

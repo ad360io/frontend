@@ -1,13 +1,13 @@
 .grid-card-container {
-    margin-left: 2%;    
+    margin-left: 2%;
     float: left;
     position: relative;
     margin-bottom: 2%;
 }
 
 .listing-card-container {
-    margin-left: 5vw;  
-    width: 90%;  
+    margin-left: 5vw;
+    width: 90%;
     float: left;
     margin-right: 5vw;
     margin-bottom: 2vh;
@@ -40,7 +40,7 @@
 .poster-tag {
     height: 20px;
     font-size: 12px;
-    float:left;
+    float: left;
     width: 50%;
     padding-left: 3%;
     margin-top: 4px;
@@ -62,7 +62,7 @@
 }
 
 .grid-img {
-    width: 40%;   
+    width: 40%;
     float: left;
     margin-left: 1%;
     margin-right: 2%;

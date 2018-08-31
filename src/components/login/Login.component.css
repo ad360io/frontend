@@ -1,9 +1,10 @@
 .btn-login {
-    letter-spacing: 1px; 
-    padding: 12px 0 12px 4px; 
+    letter-spacing: 1px;
+    padding: 12px 0 12px 4px;
     color: white;
-    width: 316px; 
-    font-size: 14px; font-weight: 400
+    width: 316px;
+    font-size: 14px;
+    font-weight: 400
 }
 
 .cover-login {
@@ -12,9 +13,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  
-.card-login{
+}
+
+.card-login {
     padding: 32px;
     border-radius: 5px;
     -moz-border-radius: 5px;

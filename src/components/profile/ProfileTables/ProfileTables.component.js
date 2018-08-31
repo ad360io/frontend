@@ -11,21 +11,21 @@ import './ProfileTables.component.css';
 /*
 Children Components
 */
-import ActiveListing  from './ActiveListing/ActiveListing.component';
-import ActiveRequest  from './ActiveRequest/ActiveRequest.component';
+import ActiveListing from './ActiveListing/ActiveListing.component';
+import ActiveRequest from './ActiveRequest/ActiveRequest.component';
 import ActiveContract from './ActiveContract/ActiveContract.component';
-import OfferList      from './OfferList/OfferList.component';
+import OfferList from './OfferList/OfferList.component';
 import InactiveContract from './InactiveContract/InactiveContract.component';
-import Invoice          from './Invoice/Invoice.component';
+import Invoice from './Invoice/Invoice.component';
 
 /*
 React Bootstrap
 */
-import { Tabs, Tab }  from 'react-bootstrap';
+import { Tabs, Tab } from 'react-bootstrap';
 
 
 class ProfileTables extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
             activeTabKey: 0
@@ -40,21 +40,21 @@ class ProfileTables extends Component {
     }
 
     handleTabOnSelect(key) {
-        this.setState({activeTabKey: key})
+        this.setState({ activeTabKey: key })
     }
 
-    render(){
-        return <div className='dashboard-tables-container'>    
+    render() {
+        return <div className='dashboard-tables-container'>
             <h2 className='dashboard-tables-title'>Participating Activities</h2>
-                <Tabs activeKey={this.state.activeTabKey}
-                    onSelect={this.handleTabOnSelect}
-                    id='dashboard-tables-tabs'
-                    style={{paddingLeft: '10%', paddingRight:'10%'}}
-                    className='table-tabs'
-                >
+            <Tabs activeKey={this.state.activeTabKey}
+                onSelect={this.handleTabOnSelect}
+                id='dashboard-tables-tabs'
+                style={{ paddingLeft: '10%', paddingRight: '10%' }}
+                className='table-tabs'
+            >
 
                 <Tab eventKey={0} title='Offers'>
-                    <OfferList activeTabKey={this.state.activeTabKey}/>
+                    <OfferList activeTabKey={this.state.activeTabKey} />
                 </Tab>
                 <Tab eventKey={1} title='Active Listing'>
                     <ActiveListing activeTabKey={this.state.activeTabKey} />
@@ -72,8 +72,8 @@ class ProfileTables extends Component {
                     <Invoice activeTabKey={this.state.activeTabKey} />
                 </Tab>
 
-                
-            </Tabs>  
+
+            </Tabs>
         </div>
     }
 }

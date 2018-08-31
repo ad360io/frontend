@@ -4,8 +4,8 @@ export function withWindowWidthListener(WrappedComponent) {
     return class extends Component {
 
         constructor(props) {
-            super(props); 
-            
+            super(props);
+
             // Using window.innerWidth in state to acheive responsiveness
             this.state = {
                 width: window.innerWidth,

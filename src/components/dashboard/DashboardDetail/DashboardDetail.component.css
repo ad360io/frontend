@@ -148,13 +148,7 @@
     grid-template-columns: 2vw 80px 80px 80px 80px;
     grid-template-rows: 19px, 19px, 19px, 19px, 19px, 19px, 19px;
     justify-items: stretch;
-    grid-template-areas: ". title title title title" 
-    ". today today week week" 
-    ". tonum tonum wnum wnum"
-    ". tonum tonum wnum wnum"
-    ". .  stat  .  stat2"
-    ". advlb advlb publb publb"
-    ". advname advname pubname pubname";
+    grid-template-areas: ". title title title title" ". today today week week" ". tonum tonum wnum wnum" ". tonum tonum wnum wnum" ". .  stat  .  stat2" ". advlb advlb publb publb" ". advname advname pubname pubname";
 }
 
 .dashboard-detail-empty {
@@ -195,7 +189,6 @@
         margin-left: 10px;
         width: calc(100% - 250px);
     }
-
     .detail-stat-info {
         margin-left: 2vw;
     }

@@ -124,7 +124,7 @@ class MarketplaceFilter extends Component {
                 <FilterDivider />
 
                 <h4 className='filter-title' style={{ textAlign: 'left', marginLeft: '25px' }}>Sort By:</h4>
-                <SortingSelector dropup={this.props.width <= 768}/>
+                <SortingSelector dropup={this.props.width <= 768} />
                 <FilterDivider />
             </Drawer>
         </div>

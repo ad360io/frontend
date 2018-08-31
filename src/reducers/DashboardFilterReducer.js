@@ -11,16 +11,15 @@ const defaultState = {
  * @param { Object } state   Current state fetched from the store.
  * @param { Object } action  String or Enumerators to represent the desired operations.
  */
-const DashboardFilterReducer = (state=defaultState, action) => {
-    
-    switch(action.type)
-    {
+const DashboardFilterReducer = (state = defaultState, action) => {
+
+    switch (action.type) {
         case 'SET_ACTIVE_STAT':
             return {
                 ...state,
                 activeStat: action.value
             };
-        
+
         case 'SET_KEYWORD':
             return {
                 ...state,

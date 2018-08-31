@@ -20,43 +20,43 @@ import './StatsTimeRangeSelector.component.css';
 
 
 class StatsTimeRangeSelector extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
-        this.state= {
+        this.state = {
             selectedTimeRange: 'Last 24 Hours'
         }
         this.handleTimeRangeItemClick = this.handleTimeRangeItemClick.bind(this);
     }
 
     handleTimeRangeItemClick(value) {
-        this.setState({selectedTimeRange: value});
+        this.setState({ selectedTimeRange: value });
     }
 
     render() {
         return <div>
             <SplitButton id='time-range-selector' bsSize='large' className='time-range-selector' title={this.state.selectedTimeRange}>
-                <MenuItem 
-                    onClick={() => this.handleTimeRangeItemClick('Last 24 Hours')} 
+                <MenuItem
+                    onClick={() => this.handleTimeRangeItemClick('Last 24 Hours')}
                     className='stats-time-range-item'
                 >
                     Last 24 Hours
                 </MenuItem>
-                <Divider/>
-                <MenuItem 
+                <Divider />
+                <MenuItem
                     onClick={() => this.handleTimeRangeItemClick('Last Week')}
                     className='stats-time-range-item'
                 >
                     Last Week
                 </MenuItem>
-                <Divider/>
-                <MenuItem 
+                <Divider />
+                <MenuItem
                     className='stats-time-range-item'
-                    onClick={() => this.handleTimeRangeItemClick('Last Month')}    
+                    onClick={() => this.handleTimeRangeItemClick('Last Month')}
                 >
                     Last Month
                 </MenuItem>
-                <Divider/>
-                <MenuItem 
+                <Divider />
+                <MenuItem
                     className='stats-time-range-item'
                     onClick={() => this.handleTimeRangeItemClick('Last Year')}
                 >

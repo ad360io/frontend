@@ -5,7 +5,7 @@
 
 .doughnut-card {
     height: 400px;
-    overflow:hidden;
+    overflow: hidden;
 }
 
 .chart-title {
@@ -42,10 +42,12 @@
     font-size: 28px;
 }
 
+
 /*
 FOR SMALL SIZE SCREENS
 */
-@media only screen and (max-width: 768px){
+
+@media only screen and (max-width: 768px) {
     .dashboard-charts-card {
         width: 100vw;
     }
