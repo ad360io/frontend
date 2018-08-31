@@ -21,16 +21,8 @@ import SelectButtonGroup from './SelectButtonGroup.component';
 
 
 class AdFormatSelect extends Component {
-    constructor(props) {
-        super(props);
-
-        this.showMedium = this.showMedium.bind(this);
-        this.getCurrentAdFormatValue = this.getCurrentAdFormatValue.bind(this);
-        this.getCurrentMediumValue = this.getCurrentMediumValue.bind(this);
-        this.getMediumStringList = this.getMediumStringList.bind(this);
-    }
-
-    showMedium() {
+    
+    showMedium = () => {
         let currentMediumStringList = this.getMediumStringList();
         if (currentMediumStringList !== null) {
             return <div>
@@ -73,15 +65,15 @@ class AdFormatSelect extends Component {
         }
     }
 
-    getCurrentAdFormatValue() {
+    getCurrentAdFormatValue = () => {
         return this.props.modeFilter === 'Advertiser' ? this.props.adv_adFormat : this.props.pub_adFormat;
     }
 
-    getCurrentMediumValue() {
+    getCurrentMediumValue = () => {
         return this.props.modeFilter === 'Advertiser' ? this.props.adv_medium : this.props.pub_medium;
     }
 
-    getMediumStringList() {
+    getMediumStringList = () => {
         /* Variable Naming Abbreviation
         * bc stands for -Braned Content-
         * ip stands for -Influencer Post-

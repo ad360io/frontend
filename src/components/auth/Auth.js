@@ -1,11 +1,22 @@
 /*
 Auth0 Libs
 */
-import { Auth0Config } from './auth0-config';
 import auth0 from 'auth0-js';
+
+/*
+Networking
+*/
 import axios from 'axios';
+
+/*
+Actions
+*/
 import { setCurrency, setMode } from '../../actions/HeaderActions';
 
+
+/**
+ * Component that handles all auth0 operations.
+ */
 export default class Auth {
 
     constructor(store) {
@@ -31,8 +42,8 @@ export default class Auth {
     userProfile;
 
     auth0 = new auth0.WebAuth({
-        domain: `${Auth0Config.domain}`,
-        clientID: `${Auth0Config.clientID}`,
+        domain: 'qchain.auth0.com',
+        clientID: 'ip3jdlT8udp8hVobDn5Q2k67eEDvSSIj',
         redirectUri: `${window.location.protocol}//${window.location.host}/auth-callback`,
         responseType: 'token',
         scope: 'openid email profile role'
@@ -43,7 +54,6 @@ export default class Auth {
     }
 
     handleAuthentication(propsHistory) {
-        console.log('im called;')
         this.auth0.parseHash((err, authResult) => {
             if (authResult && authResult.accessToken && authResult.idToken) {
                 this.setSession(authResult, propsHistory);
@@ -63,18 +73,18 @@ export default class Auth {
         localStorage.setItem('expires_at', expiresAt);
         localStorage.setItem('user_id', authResult.idTokenPayload.sub);
         localStorage.setItem('role', authResult.idTokenPayload.app_metadata.role);
+
+        // Push auth0 profile info to redux
         this.handleProfileOnAuthenticated(authResult.accessToken);
-        this.store.dispatch({
-            type: 'SET_ID_TOKEN',
-            value: authResult.idToken
-        })
+
+        // Redirect to /dashboard after authenticated.
         propsHistory.replace('/dashboard');
         propsHistory.push('/dashboard')
         this.scheduleRenewal();
     }
 
     logout() {
-        // Clear Access Token and ID Token from local storage
+        // Clear info from local storage
         localStorage.removeItem('access_token');
         localStorage.removeItem('id_token');
         localStorage.removeItem('expires_at');
@@ -140,8 +150,16 @@ export default class Auth {
         })
     }
 
+    /**
+     * Dispatch auth0 profile info to Redux store
+     * @param {Object} profile       Served from getProfile method
+     * @param {Object} user_metadata Served from profile object's user_metadata field
+     */
     dispatchProfile(profile, user_metadata) {
+
+        // For some reasons, there are cases where user created on auth0 doesn't have user_metadata field
         if (typeof user_metadata === 'undefined') {
+            // Declare placeholding fields for UI
             let value = {
                 name: profile.name,
                 email: profile.email,
@@ -158,6 +176,7 @@ export default class Auth {
                 value
             })
         } else {
+            // Some fields desired for profile page is undefined, check and use placeholding values if needed.
             let name = user_metadata.name;
             let email = (typeof user_metadata.email === 'undefined' || user_metadata.email === ''
                 ? profile.email
@@ -181,6 +200,7 @@ export default class Auth {
                 ? 'Advertiser'
                 : user_metadata.mode);
 
+            // Group profile related values and dispatch using SET_PROFILE.
             let value = {
                 name,
                 email,
@@ -190,24 +210,32 @@ export default class Auth {
                 eth_address,
                 email_verified: profile.email_verified
             }
-
             this.store.dispatch({
                 type: 'SET_PROFILE',
                 value
             })
+
+            // Dispatch currency and mode separately since they are not directly related to profile
             this.store.dispatch(setCurrency(currency));
             this.store.dispatch(setMode(mode));
         }
-
     }
 
+    /**
+     * Provide a user_metadata object to be updated into auth0 scope ( THIS CALL SIGNS USER OUT AFTER UPDATE )
+     * This method is used on ProfileEditor component.
+     * @param {Object} newMetadata object with already declared fields will update values, undeclared fields will be appended.
+     */
     updateUserMetadata(newMetadata) {
+        // Instantiate Auth0 Management API endpoint
         let myIdToken = localStorage.getItem('id_token');
         let auth0Manager = new auth0.Management({
-            domain: `${Auth0Config.domain}`,
+            domain: 'qchain.auth0.com',
             token: myIdToken,
             _sendTelemetry: false,
         })
+
+        // Target user by using user_id, and each users should only have their own user_id and not others'.
         let myUserId = localStorage.getItem('user_id');
         auth0Manager.patchUserMetadata(
             myUserId,
@@ -217,6 +245,7 @@ export default class Auth {
                     console.log(err);
                 }
                 else {
+                    // Update PostgreSQL account name with new nickname from profile editor.
                     const nameURL = `https://qchain-marketplace-postgrest.herokuapp.com/account?role=eq.${localStorage.getItem('role')}`;
                     const config = {
                         headers: { Authorization: "Bearer " + localStorage.getItem('id_token') }
@@ -232,17 +261,22 @@ export default class Auth {
                         .catch((err) => {
                             console.log("SET NAME ERR");
                             console.log(err);
-                        })
-
+                        }
+                    )
                 }
             }
         )
     }
 
+    /**
+     * Similar to updateUserMetadata, but this doesn't log users out
+     * @param {*} newMetadata new user_metadata object to be updated in auth0 scope.
+     * @param {*} history     history from BrowserRouter to update access / id token to avoid relogging in.
+     */
     patchUserMetadata(newMetadata, history) {
         let idToken = localStorage.getItem('id_token');
         let auth0Manager = new auth0.Management({
-            domain: `${Auth0Config.domain}`,
+            domain: 'qchain.auth0.com',
             token: idToken,
             _sendTelemetry: false,
         });

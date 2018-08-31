@@ -16,9 +16,7 @@ class SelectButtonGroup extends Component {
     render() {
         console.log(this.props.items);
         return <div className='select-btn-group-container'>
-
         </div>
-
     }
 }
 

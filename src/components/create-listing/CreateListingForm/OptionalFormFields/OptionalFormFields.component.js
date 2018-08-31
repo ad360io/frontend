@@ -25,14 +25,14 @@ const OptionalFormField = ({ modeFilter }) => (
         <FormGroup controlId='control-form-image' hidden={modeFilter === 'Publisher'}>
             <p className='control-label'>
                 Content Samples and Inspiration (optional)
-                    </p>
+            </p>
             <FormControl type='file' />
         </FormGroup>
 
         <FormGroup controlId='control-form-additional' hidden={modeFilter === 'Advertiser'}>
             <p className='control-label noselect'>
                 Additional Services (optional)
-                    </p>
+            </p>
             <div style={{ width: '10%', float: 'left', marginTop: '12px' }}>
                 <Checkbox color="default" />
             </div>
@@ -52,7 +52,6 @@ const OptionalFormField = ({ modeFilter }) => (
                 <Checkbox color="default" />
             </div>
             <div style={{ width: '90%', height: '48px', marginTop: '9px' }}>Other</div>
-
         </FormGroup>
 
         <FormGroup controlId='control-form-referral' hidden={modeFilter === 'Advertiser'}>

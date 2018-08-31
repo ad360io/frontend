@@ -4,7 +4,9 @@ Core Libs
 import React from 'react';
 import { connect } from 'react-redux'
 
-
+/**
+ * Fully presentational component for users to confirm form inputs before submitting
+ */
 const FormConfirmation = ({ modeFilter, currencyFilter, advertiserForm, publisherForm }) => (
     <div>
         {

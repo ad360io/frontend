@@ -32,7 +32,9 @@ React Bootstrap
 */
 import { Alert } from 'react-bootstrap';
 
-
+/*
+Style classes for Material UI Components
+*/
 const styles = theme => ({
     root: {
         width: '90%',
@@ -58,28 +60,18 @@ const styles = theme => ({
     }
 });
 
+// Steps for material UI stepper
 function getSteps() {
     return ['Required Information', 'Optional Information', 'Confirmation'];
 }
+
 
 /**
  * Create Listing Form Component
  */
 class CreateListingForm extends Component {
 
-    constructor(props) {
-        super(props);
-
-        this.decideFormTitle = this.decideFormTitle.bind(this);
-        this.handleSubmitForm = this.handleSubmitForm.bind(this);
-        this.getStepContent = this.getStepContent.bind(this);
-        this.isFormFilled = this.isFormFilled.bind(this);
-        this.onFormResetClick = this.onFormResetClick.bind(this);
-        this.getActiveStep = this.getActiveStep.bind(this);
-        this.getSubmitted = this.getSubmitted.bind(this);
-    }
-
-    getStepContent(step) {
+    getStepContent = (step) => {
         switch (step) {
             case 0:
                 return <RequiredFormFields modeFilter={this.props.modeFilter} />;
@@ -91,14 +83,14 @@ class CreateListingForm extends Component {
                 return 'Unknown step';
         }
     }
-    decideFormTitle() {
+    decideFormTitle = () => {
         return (this.props.modeFilter === 'Advertiser'
             ? 'Request Content Space Availability'
             : 'Create Content Space Listings'
         );
     }
 
-    handleSubmitForm() {
+    handleSubmitForm = () => {
         // hide back button, reset fields provide an option to create another listing
         if (this.props.modeFilter === 'Advertiser') {
             this.props.onAdvSubmit();
@@ -123,7 +115,7 @@ class CreateListingForm extends Component {
         }
     };
 
-    onFormResetClick() {
+    onFormResetClick = () => {
         if (this.props.modeFilter === 'Advertiser') {
             this.props.resetAdvForm();
         } else {
@@ -131,7 +123,7 @@ class CreateListingForm extends Component {
         }
     }
 
-    isFormFilled() {
+    isFormFilled = () => {
         if (this.props.modeFilter === 'Advertiser') {
             return this.props.advertiserForm.adFormat.length > 0
                 && this.props.advertiserForm.medium.length > 0
@@ -149,7 +141,7 @@ class CreateListingForm extends Component {
         }
     }
 
-    getActiveStep() {
+    getActiveStep = () => {
         if (this.props.modeFilter === 'Advertiser') {
             return this.props.advertiserActiveStep;
         } else {
@@ -157,7 +149,7 @@ class CreateListingForm extends Component {
         }
     }
 
-    getSubmitted() {
+    getSubmitted = () => {
         if (this.props.modeFilter === 'Advertiser') {
             return this.props.advertiserSubmitted;
         } else {

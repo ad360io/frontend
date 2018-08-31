@@ -1,61 +1,45 @@
+/*
+Core Libs
+*/
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+/*
+Networking
+*/
 import axios from 'axios';
 
+/*
+Material UI
+*/
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
+/*
+React Bootstrap
+*/
 import { Alert } from 'react-bootstrap';
+
+/*
+Actions
+*/
 import { post_CreateListingData_Pending, post_CreateListingeData_Fulfilled } from '../../../../actions/DatabaseRequestActions';
 
+
 class FormSubmitButton extends Component {
-    constructor(props) {
-        super(props);
-        this.handleSubmitClick = this.handleSubmitClick.bind(this);
-        this.createPayload = this.createPayload.bind(this);
-        // this.state = {
-        //     posted: false,
-        //     finished: false,
-        //     err: null,
-        // }
-    }
 
-    handleSubmitClick() {
+    handleSubmitClick = () => {
+        // onSubmit is passed from CreateListingForm component, this controls the UI update.
         this.props.onSubmit();
+        // onSubmitRequest makes HTTP Request rather than managing UI, both are important.
         this.props.onSubmitRequest(this.createPayload());
-
-        // this.setState({
-        //     ...this.state,
-        //     posted: true
-        // });
-
-        // const listingURL = "https://qchain-marketplace-postgrest.herokuapp.com/listing";
-        // const config = {
-        //     headers: { Authorization: "Bearer " + localStorage.getItem('id_token') }
-        // };
-        // axios.post(listingURL, this.createPayload(), config)
-        //     .then(() => {
-        //         this.setState({
-        //             ...this.state,
-        //             finished: true,
-        //         })
-        //     })
-        //     .catch((err) => {
-        //         console.log(err);
-        //         this.setState({
-        //             ...this.state,
-        //             finished: true,
-        //             err: err
-        //         })
-        //     })
     }
 
-    createPayload() {
-
+    createPayload = () => {
         if (this.props.modeFilter === 'Advertiser') {
-            let expirationDate = new Date(); // today
+            let expirationDate = new Date();  // today
             let numberOfDaysToAdd = 14;       // number of days to delay expiration
+            // For advertisers requests, make the listing expire in 2 weeks (14 days) from current day.
             expirationDate.setDate(expirationDate.getDate() + numberOfDaysToAdd);
             return {
                 name: this.props.advertiserForm.topic,
@@ -90,7 +74,6 @@ class FormSubmitButton extends Component {
                 owner: localStorage.getItem('role')
             }
         }
-
     }
 
     render() {
@@ -156,6 +139,7 @@ const mapDispatchToProps = (dispatch) => {
         }
     }
 }
+
 
 export default connect(
     mapStateToProps,

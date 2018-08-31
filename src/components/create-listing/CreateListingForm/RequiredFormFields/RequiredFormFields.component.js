@@ -16,61 +16,56 @@ import AvailabilityPicker from './AvailabilityPicker/AvailabilityPicker.componen
 import AdFormatSelect from './AdFormatSelect/AdFormatSelect.component';
 
 
-const RequiredFormField = ({ modeFilter,
-    from,
-    to,
-    onTopicChange,
-    onDescriptionChange,
-    onPriceChange
-}) => (<div style={{ marginLeft: '2%', marginTop: '2%' }}>
-    <FormGroup hidden={modeFilter === 'Advertiser'}>
-        <p className='control-label'>
-            Select Promotion Duration
+const RequiredFormField = ({ modeFilter, from, to, onTopicChange, onDescriptionChange, onPriceChange }) => (
+    <div style={{ marginLeft: '2%', marginTop: '2%' }}>
+        <FormGroup hidden={modeFilter === 'Advertiser'}>
+            <p className='control-label'>
+                Select Promotion Duration
             </p>
-        <AvailabilityPicker from={from} to={to} />
-    </FormGroup>
+            <AvailabilityPicker from={from} to={to} />
+        </FormGroup>
 
-    <AdFormatSelect modeFilter={modeFilter} />
+        <AdFormatSelect modeFilter={modeFilter} />
 
-    <FormGroup controlId='control-form-topic'>
-        <p className='control-label'>
-            Content Topic
+        <FormGroup controlId='control-form-topic'>
+            <p className='control-label'>
+                Content Topic
         </p>
-        <FormControl type='text' onChange={onTopicChange} required />
-    </FormGroup>
+            <FormControl type='text' onChange={onTopicChange} required />
+        </FormGroup>
 
-    <FormGroup controlId='control-form-price' hidden={modeFilter === 'Advertiser'}>
-        <p className='control-label'>
-            Price per time unit (day/week/month/year)
+        <FormGroup controlId='control-form-price' hidden={modeFilter === 'Advertiser'}>
+            <p className='control-label'>
+                Price per time unit (day/week/month/year)
         </p>
-        <FormControl type='number' min='1' step='1' onChange={onPriceChange} style={{ width: '50%', float: 'left' }} />
-        <FormControl componentClass='select' style={{ width: '50%' }} required>
-            <option value='day'>per day</option>
-            <option value='week'>per week</option>
-            <option value='month'>per month</option>
-            <option value='year'>per year</option>
-        </FormControl>
+            <FormControl type='number' min='1' step='1' onChange={onPriceChange} style={{ width: '50%', float: 'left' }} />
+            <FormControl componentClass='select' style={{ width: '50%' }} required>
+                <option value='day'>per day</option>
+                <option value='week'>per week</option>
+                <option value='month'>per month</option>
+                <option value='year'>per year</option>
+            </FormControl>
 
-    </FormGroup>
+        </FormGroup>
 
-    <FormGroup controlId='control-form-pitch'>
-        <p className='control-label'>
-            {
-                modeFilter === 'Advertiser'
-                    ? "Content Description"
-                    : "Listing Description"
-            }
-        </p>
-        <FormControl componentClass='textarea'
-            maxLength={280}
-            rows={8}
-            style={{ resize: 'vertical' }}
-            onChange={onDescriptionChange}
-            required
-        />
-    </FormGroup>
-</div>
-    )
+        <FormGroup controlId='control-form-pitch'>
+            <p className='control-label'>
+                {
+                    modeFilter === 'Advertiser'
+                        ? "Content Description"
+                        : "Listing Description"
+                }
+            </p>
+            <FormControl componentClass='textarea'
+                maxLength={280}
+                rows={8}
+                style={{ resize: 'vertical' }}
+                onChange={onDescriptionChange}
+                required
+            />
+        </FormGroup>
+    </div>
+)
 
 const mapStateToProps = (state) => {
     return {

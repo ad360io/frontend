@@ -47,7 +47,6 @@ class AvailabilityPicker extends Component {
             </div>
         </div>
     }
-
 }
 
 const mapStateToProps = (state) => {
@@ -69,6 +68,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         }
     }
 }
+
 
 export default connect(
     mapStateToProps,
