@@ -71,7 +71,7 @@ class Marketplace extends Component {
             currencyQuery = '&currency=eq.XQC'
         }
 
-        return modeQuery + currencyQuery + this.getPurchaseRangeQuery();
+        return modeQuery + currencyQuery + this.getPurchaseRangeQuery() + this.getSortingQuery();
     }
 
     getPurchaseRangeQuery = () => {
@@ -85,7 +85,7 @@ class Marketplace extends Component {
 
     getSortingQuery = () => {
         if (this.props.sortingType === 'Date Added') {
-            return ''
+            return '&order=id.desc'
         } else if (this.props.sortingType === 'Price (Low - High)') {
             return '&order=price'
         } else if (this.props.sortingType === 'Price (High - Low)') {

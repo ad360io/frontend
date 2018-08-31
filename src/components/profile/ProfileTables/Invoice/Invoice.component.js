@@ -150,7 +150,7 @@ class Invoice extends Component {
                     <Divider />
                     <h4>Invoice Due Date</h4><h5>{this.state.modalInvoice.due_date}</h5>
                 </Modal.Body>
-                <Alert bsStyle={(this.state.modalInvoice.paid ? 'success' : 'danger')}>
+                <Alert bsStyle={(this.state.modalInvoice.paid ? 'success' : 'success')}>
                     <p>
                         This invoice is {(this.state.modalInvoice.paid ? 'already paid!' : 'not paid yet!')}
                     </p>
