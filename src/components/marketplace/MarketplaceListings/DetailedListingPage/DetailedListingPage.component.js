@@ -281,6 +281,10 @@ class DetailedListingPage extends Component {
             })
     }
 
+    handlePathToOwnerProfile = () => {
+        this.props.history.push('/q/' + this.state.listing.owner)
+    }
+
     render() {
         // console.log(this.props.match.params.id)
         // make a request to get detailed listing info using ID
@@ -291,6 +295,7 @@ class DetailedListingPage extends Component {
                     <DetailedRequestListing
                         listing={this.state.listing}
                         decideImage={this.decideImage}
+                        pathToOwnerProfile={this.handlePathToOwnerProfile}
                     />
                 </div>
             } else {
@@ -304,6 +309,7 @@ class DetailedListingPage extends Component {
                         issue={this.state.actionInfo}
                         getPayoutCap={this.getPayoutCap}
                         emailVerified={this.props.email_verified}
+                        pathToOwnerProfile={this.handlePathToOwnerProfile}
                     />
                 </div>
             }
@@ -315,7 +321,7 @@ class DetailedListingPage extends Component {
     }
 }
 
-const DetailedRequestListing = ({ listing, decideImage, onOfferChange, badOffer, makeOfferClick, bought, processing }) => (
+const DetailedRequestListing = ({ listing, decideImage, pathToOwnerProfile }) => (
     <div className='detailed-listing-renderer'>
         <div className='detailed-image-container'>
             <Card>
@@ -335,7 +341,7 @@ const DetailedRequestListing = ({ listing, decideImage, onOfferChange, badOffer,
 
         <Card className='listing-concrete-details-container'>
             <CardTitle>
-                <h1>{listing.name}</h1>
+                <h1 className='listing-title'>{listing.name}</h1>
             </CardTitle>
             <Divider />
             <CardText className='listing-details-text'>
@@ -359,7 +365,7 @@ const DetailedRequestListing = ({ listing, decideImage, onOfferChange, badOffer,
             <Card>
                 <CardTitle>
                     <h3>Requestor Info:</h3>
-                    <span>{listing.owner_name} trading in {listing.currency}</span>
+                    <span style={{fontWeight: 300}}><span className='owner-profile-link'onClick={() => pathToOwnerProfile()}>{listing.owner_name}</span> trading in {listing.currency}</span>
                 </CardTitle>
                 <CardText>
                     <div>Ask Date: {listing.date_added.slice(0, 10)}</div>
@@ -375,7 +381,7 @@ const DetailedRequestListing = ({ listing, decideImage, onOfferChange, badOffer,
     </div>
 )
 
-const DetailedContentSpaceListing = ({ listing, decideImage, onBuy, bought, processing, issue, getPayoutCap, emailVerified }) => (
+const DetailedContentSpaceListing = ({ listing, decideImage, onBuy, bought, processing, issue, getPayoutCap, emailVerified, pathToOwnerProfile }) => (
     <div className='detailed-listing-renderer'>
         <div className='detailed-image-container'>
             <Card>
@@ -396,7 +402,7 @@ const DetailedContentSpaceListing = ({ listing, decideImage, onBuy, bought, proc
 
         <Card className='listing-concrete-details-container'>
             <CardTitle>
-                <h1>{listing.name}</h1>
+                <h1 className='listing-title'>{listing.name}</h1>
             </CardTitle>
             <Divider />
             <CardText className='listing-details-text'>
@@ -447,7 +453,7 @@ const DetailedContentSpaceListing = ({ listing, decideImage, onBuy, bought, proc
             <Card>
                 <CardTitle>
                     <h3>Creator Info:</h3>
-                    <h4>{listing.owner_name} trading in {listing.currency}</h4>
+                    <h4 style={{fontWeight: 300}}><span className='owner-profile-link' onClick={() => pathToOwnerProfile()}>{listing.owner_name}</span> trading in {listing.currency}</h4>
                 </CardTitle>
                 <CardText>
 

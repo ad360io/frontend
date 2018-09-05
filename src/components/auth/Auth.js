@@ -251,7 +251,9 @@ export default class Auth {
                         headers: { Authorization: "Bearer " + localStorage.getItem('id_token') }
                     };
                     const payload = {
-                        name: newMetadata.nickname
+                        name: newMetadata.nickname,
+                        email: newMetadata.email,
+                        picture: newMetadata.picture
                     }
                     axios.patch(nameURL, payload, config)
                         .then(() => {

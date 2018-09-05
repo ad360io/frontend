@@ -20,16 +20,30 @@ class ActiveRequest extends Component {
             activeListing: [],
             order: '?order=name.asc'
         }
-        this.loadData();
-        this.loadData = this.loadData.bind(this);
     }
 
-    componentWillReceiveProps() {
+    componentWillMount() {
         this.loadData();
     }
 
-    loadData() {
-        const activeListingURL = "https://qchain-marketplace-postgrest.herokuapp.com/my_active_content_request" + this.state.order;
+    componentWillUpdate(prevProps){
+        if(prevProps.reader !== this.props.reader 
+        || prevProps.userId !== this.props.userId){
+            this.loadData();
+        }
+    }
+
+    decideURL = () => {
+        if(this.props.reader) {
+            return "https://qchain-marketplace-postgrest.herokuapp.com/active_content_request" + this.state.order + `&owner=eq.${this.props.userId}`;
+        }
+        else {
+            return "https://qchain-marketplace-postgrest.herokuapp.com/my_active_content_request" + this.state.order;
+        }
+    }
+
+    loadData = () => {
+        const activeListingURL = this.decideURL();
         const config = {
             headers: { Authorization: "Bearer " + localStorage.getItem('id_token') }
         };
@@ -49,10 +63,6 @@ class ActiveRequest extends Component {
                     err: err
                 })
             })
-    }
-
-    componentWillMount() {
-
     }
 
     handleThClick = (header) => {

@@ -90,6 +90,16 @@
     cursor: pointer;
 }
 
+.owner-profile-link {
+    cursor: pointer;
+    color: #0645AD;
+    font-weight: 300;
+    text-decoration: underline;
+}
+
+.listing-title {
+    font-weight: 400;
+}
 
 /*
 MEDIUM SCREEN

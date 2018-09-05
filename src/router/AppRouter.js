@@ -19,7 +19,6 @@ import Marketplace from '../components/marketplace/Marketplace.component';
 import CreateListing from '../components/create-listing/CreateListing.component';
 import Profile from '../components/profile/Profile.component';
 import DetailedListingPage from '../components/marketplace/MarketplaceListings/DetailedListingPage/DetailedListingPage.component';
-import ProfileReader from '../components/profile/ProfileReader/ProfileReader.component';
 
 import AuthCallback from '../components/auth-callback/AuthCallback';
 import Auth from '../components/auth/Auth';
@@ -57,7 +56,7 @@ const AppRouter = () => (
       <PrivateRoute exact path='/create' component={CreateListing} auth={auth} />
       <PrivateRoute path='/listing/:id' component={DetailedListingPage} auth={auth} />
       <PrivateRoute exact path='/profile' component={Profile} auth={auth} />
-      <PrivateRoute path='/q/:userId' component={ProfileReader} auth={auth} />
+      <PrivateRoute path='/q/:userId' component={Profile} auth={auth} />
       <Route path='/auth-callback' render={(props) => {
         handleAuthentication(props, null, props.history);
         return <AuthCallback auth={auth} {...props} />

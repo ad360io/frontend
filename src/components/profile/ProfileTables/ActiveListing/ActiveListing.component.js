@@ -19,16 +19,29 @@ class ActiveListing extends Component {
             activeListing: [],
             order: '?order=name.asc'
         }
-        this.loadData();
-        this.loadData = this.loadData.bind(this);
     }
 
-    componentWillReceiveProps() {
+    componentWillUpdate(prevProps) {
+        if(this.props.reader !== prevProps.reader 
+        || this.props.userId !== prevProps.userId){
+            this.loadData();
+        }
+    }
+
+    componentDidMount() {
         this.loadData();
     }
 
-    loadData() {
-        const activeListingURL = "https://qchain-marketplace-postgrest.herokuapp.com/my_active_contentspace_listing" + this.state.order;
+    decideURL = () => {
+        if(this.props.reader) {
+            return "https://qchain-marketplace-postgrest.herokuapp.com/active_contentspace_listing" + this.state.order + `&owner=eq.${this.props.userId}`;
+        }else {
+            return "https://qchain-marketplace-postgrest.herokuapp.com/my_active_contentspace_listing" + this.state.order;
+        }
+    }
+
+    loadData = () => {
+        const activeListingURL = this.decideURL();
         const config = {
             headers: { Authorization: "Bearer " + localStorage.getItem('id_token') }
         };

@@ -19,20 +19,30 @@ class ActiveContract extends Component {
             activeContract: [],
             order: '?order=name.asc'
         }
-        this.loadData = this.loadData.bind(this);
     }
 
-    componentWillReceiveProps() {
-        this.loadData();
+    componentDidUpdate(prevProps) {
+        if (prevProps.reader !== this.props.reader
+            || prevProps.userId !== this.props.userId) {
+                this.loadData();
+        }
     }
 
     componentDidMount() {
         this.loadData();
     }
 
-    loadData() {
+    decideURL = () => {
+        if (this.props.reader) {
+            return "https://qchain-marketplace-postgrest.herokuapp.com/active_contract_view" + this.state.order + `&or=(publisher.eq.${this.props.userId},advertiser.eq.${this.props.userId})`;
+        } else {
+            return "https://qchain-marketplace-postgrest.herokuapp.com/my_active_contract_view" + this.state.order;
+        }
+    }
+
+    loadData = () => {
         this.setState({ ...this.state, fetching: true })
-        const activeContractURL = "https://qchain-marketplace-postgrest.herokuapp.com/active_contract_view" + this.state.order;
+        const activeContractURL = this.decideURL();
         const config = {
             headers: { Authorization: "Bearer " + localStorage.getItem('id_token') }
         };

@@ -35,6 +35,12 @@ class ProfileTables extends Component {
         this.handleTabOnSelect = this.handleTabOnSelect.bind(this);
     }
 
+    componentDidMount() {
+        if (this.props.reader === true) {
+            this.setState({ ...this.state, activeTabKey: 1 });
+        }
+    }
+
     getListingType() {
         return this.props.modeFilter === 'Advertiser' ? 'Ad' : 'Adspace';
     }
@@ -52,25 +58,38 @@ class ProfileTables extends Component {
                 style={{ paddingLeft: '10%', paddingRight: '10%' }}
                 className='table-tabs'
             >
-
-                <Tab eventKey={0} title='Offers'>
-                    <OfferList activeTabKey={this.state.activeTabKey} />
-                </Tab>
+                {
+                    this.props.reader
+                        ? null
+                        : <Tab eventKey={0} title='Offers'>
+                            <OfferList activeTabKey={this.state.activeTabKey} />
+                        </Tab>
+                }
                 <Tab eventKey={1} title='Active Listing'>
-                    <ActiveListing activeTabKey={this.state.activeTabKey} />
+                    <ActiveListing activeTabKey={this.state.activeTabKey} reader={this.props.reader} userId={this.props.userId} />
                 </Tab>
                 <Tab eventKey={2} title='Active Request'>
-                    <ActiveRequest activeTabKey={this.state.activeTabKey} />
+                    <ActiveRequest activeTabKey={this.state.activeTabKey} reader={this.props.reader} userId={this.props.userId} />
                 </Tab>
                 <Tab eventKey={3} title='Active Contracts'>
-                    <ActiveContract activeTabKey={this.state.activeTabKey} />
+                    <ActiveContract activeTabKey={this.state.activeTabKey} reader={this.props.reader} userId={this.props.userId} />
                 </Tab>
-                <Tab eventKey={4} title='Inactive Contracts'>
-                    <InactiveContract activeTabKey={this.state.activeTabKey} />
-                </Tab>
-                <Tab eventKey={5} title='Invoices'>
-                    <Invoice activeTabKey={this.state.activeTabKey} />
-                </Tab>
+                {
+                    this.props.reader
+                        ? null
+                        : <Tab eventKey={4} title='Inactive Contracts'>
+                            <InactiveContract activeTabKey={this.state.activeTabKey} />
+                        </Tab>
+                }
+
+                {
+                    this.props.reader
+                        ? null
+                        : <Tab eventKey={5} title='Invoices'>
+                            <Invoice activeTabKey={this.state.activeTabKey} />
+                        </Tab>
+
+                }
 
 
             </Tabs>
