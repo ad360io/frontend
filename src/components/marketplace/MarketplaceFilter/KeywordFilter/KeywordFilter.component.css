@@ -20,11 +20,14 @@
 
 .search-input > input {
   width: 240px;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 22px;
   padding: 5px 10px 5px 25px;
   height: 32px;
   position: relative;
+  background-color: #fefefe;
+  border-radius: 5px;
+
 }
 
 .search-input > input:focus {

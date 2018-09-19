@@ -9,6 +9,7 @@
     padding: 5px;
     height: 50px;
     position: relative;
+    margin-bottom: 8px;
 }
 
 .detail-stat-flex-container {
@@ -33,7 +34,7 @@
     z-index: 1;
     height: 15px;
     font-size: 20px;
-    top: 6px;
+    top: 9px;
     left: 16px;
     line-height: 32px;
     opacity: 0.6;
@@ -47,14 +48,15 @@
 }
 
 .dashboard-detail-search-input > input {
-    width: 90%;
-    font-size: 18px;
+    /*width: 90%;*/
+    font-size: 16px;
     line-height: 22px;
-    padding: 5px 10px 5px 25px;
-    height: 32px;
+    padding: 5px 10px 5px 30px;
+    height: 40px;
     position: relative;
     box-shadow: none !important;
-    background-color: transparent
+    background-color: #fefefe;
+    border-radius: 5px;
 }
 
 .detail-stat-title {

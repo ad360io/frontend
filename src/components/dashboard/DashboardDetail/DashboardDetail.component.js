@@ -12,8 +12,11 @@ class DashboardDetail extends React.Component {
     render() {
         const KEYS_TO_FILTER = ['name', 'publisher_name', 'advertiser_name'];
         const filteredContracts = this.props.db.filter(createFilter(this.props.keywordFilter, KEYS_TO_FILTER));
+
         return <div className='dashboard-detail-container'>
-            <p className='search-input-label'>Filter Through Contracts: </p><SearchInput className='dashboard-detail-search-input' onChange={this.props.onKeywordChange} />
+            {/* <p className='search-input-label'>Filter Through Contracts: </p> */}
+            <p className='search-input-label'></p>
+            <SearchInput className='dashboard-detail-search-input' onChange={this.props.onKeywordChange} />
 
             {
                 (filteredContracts.length === 0
@@ -27,9 +30,9 @@ class DashboardDetail extends React.Component {
 
 const NoData = () => (
     <div className='empty-stat-container'>
-        <p>You are not involved in any contract that matches the filter...</p>
+        <p>You do not have any active contracts that match the filter.</p>
         <img className='dashboard-detail-empty' src={PirateBird} width='200' alt='dashboard empty state' />
-        <p>Where's yer contracts?<br /> Move yer fingertip and start working!</p>
+        <p>Where's your contracts?<br /> Move your fingertip and start working!</p>
     </div>
 )
 

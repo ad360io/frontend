@@ -10,6 +10,16 @@ Local CSS
 */
 import './TinyWallet.component.css'
 
+/*
+React Bootstrap
+*/
+import { OverlayTrigger, Tooltip } from 'react-bootstrap';
+
+/*
+Children Component
+*/
+import NemEndpoint from '../../nem-endpoint/NemEndpoint.component';
+
 
 /**
  * Wallet Component should display accurate balances
@@ -60,21 +70,30 @@ class TinyWallet extends Component {
     }
 
     render() {
-        return <div className='tiny-wallet-container'>
+        return (
+            <LinkWithTooltip
+                tooltip_body={
+                    (this.props.currencyFilter === 'EQC'
+                        ? <span><strong>ETH address:</strong> {this.props.profile.eth_address}</span>
+                        // : <span><strong>NEM address:</strong> {this.props.profile.nem_address}</span>
+                        : <span><strong>NEM address:</strong> {NemEndpoint.get_XQC_balance(this.props.profile.nem_address)}</span>
+                    )
+                }
+            >
 
-            <p className='tiny-wallet-title'>CURRENT BALANCE</p>
+                <div className='tiny-wallet-container'>
+                    <p className='tiny-wallet-title'>CURRENT BALANCE</p>
 
+                    {
+                        (this.props.currencyFilter === 'EQC'
+                            ? <WalletEqcRenderer balance={this.state.eqc_balance} />
+                            : <WalletXqcRenderer balance={this.state.xqc_balance} />
+                        )
+                    }
+                </div>
 
-            {
-                (this.props.currencyFilter === 'EQC'
-                    ? <WalletEqcRenderer balance={this.state.eqc_balance} />
-                    : <WalletXqcRenderer balance={this.state.xqc_balance} />
-                )
-            }
-
-
-
-        </div>
+            </LinkWithTooltip>
+        );
     }
 }
 
@@ -92,7 +111,8 @@ const WalletXqcRenderer = ({ balance }) => (
 
 const mapStateToProps = (state) => {
     return {
-        currencyFilter: state.MenuBarFilterReducer.currencyFilter
+        currencyFilter: state.MenuBarFilterReducer.currencyFilter,
+        profile: state.ProfileReducer.profile,
     }
 }
 
@@ -100,6 +120,13 @@ const mapDispatchToProps = (dispatch) => {
     return {}
 }
 
+function LinkWithTooltip({ tooltip_body, children }) {
+    return (
+        <OverlayTrigger placement="bottom" overlay={<Tooltip>{tooltip_body}</Tooltip>}>
+            {children}
+        </OverlayTrigger>
+    );
+}
 
 export default connect(
     mapStateToProps,

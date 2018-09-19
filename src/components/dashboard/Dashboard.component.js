@@ -78,7 +78,7 @@ class Dashboard extends Component {
 
 const DashboardRenderer = ({ modeFilter, currencyFilter }) => (
     <div className='dashboard-container'>
-        <Alert className='dashboard-alert' bsStyle='info'>Analytics and data tracking are work in progress, stay tuned.</Alert>
+        <Alert className='dashboard-alert' bsStyle='info'>Analytics and data tracking are a work in progress.</Alert>
         <DashboardNavigation modeFilter={modeFilter} />
         <DashboardDetail />
     </div>

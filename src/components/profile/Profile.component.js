@@ -12,7 +12,7 @@ import './Profile.component.css';
 /*
 React Bootstrap
 */
-import { Media } from 'react-bootstrap';
+import { Media, Modal, Button } from 'react-bootstrap';
 
 /*
 Children Component
@@ -118,7 +118,7 @@ class Profile extends Component {
 
     getNickname = () => {
         return this.state.reader
-            ? this.state.profile.name
+            ? this.props.profile.name
             : this.props.profile.nickname
     }
 
@@ -153,7 +153,15 @@ class Profile extends Component {
                             }
 
                         </Media.Heading>
-                        Personal Contact:<br /> {this.getEmail()}
+
+                        {this.getEmail()}
+                        <br />
+                        {
+                            (this.props.currencyFilter === 'EQC'
+                                ? 'ETH address: ' + this.props.profile.eth_address
+                                : 'NEM address: ' + this.props.profile.nem_address
+                            )
+                        }
                     </Media.Body>
                 </Media>
             </div>
@@ -168,6 +176,7 @@ class Profile extends Component {
 const mediaStyle = {
     marginTop: '235px',
     marginLeft: '8vw',
+    fontSize: '14px',
 }
 
 const mediaHeadingStyle = {
@@ -178,7 +187,8 @@ const mediaHeadingStyle = {
 
 const mapStateToProps = (state) => {
     return {
-        profile: state.ProfileReducer.profile
+        currencyFilter: state.MenuBarFilterReducer.currencyFilter,
+        profile: state.ProfileReducer.profile,
     }
 }
 
@@ -190,4 +200,4 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(Profile) 
+)(Profile)
