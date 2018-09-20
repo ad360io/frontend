@@ -16,6 +16,11 @@ React Bootstrap
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 /*
+NEM SDK
+*/
+// import nem from 'nem-sdk';
+
+/*
 Children Component
 */
 import NemEndpoint from '../../nem-endpoint/NemEndpoint.component';
@@ -77,6 +82,7 @@ class TinyWallet extends Component {
                         ? <span><strong>ETH address:</strong> {this.props.profile.eth_address}</span>
                         // : <span><strong>NEM address:</strong> {this.props.profile.nem_address}</span>
                         : <span><strong>NEM address:</strong> {NemEndpoint.get_XQC_balance(this.props.profile.nem_address)}</span>
+                        // : <span><strong>NEM address:</strong> {NemEndpoint.endpoint.host}</span>
                     )
                 }
             >

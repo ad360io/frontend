@@ -7,7 +7,8 @@ import { connect } from 'react-redux';
 /*
 NEM SDK
 */
-import nem from 'nem-sdk';
+// import nem from 'nem-sdk';
+var nem = require("nem-sdk").default;
 
 /*
 Children Component
@@ -37,26 +38,33 @@ class NemEndpoint extends Component {
 
 
         /* Create connection to NIS supernode */
-        // this.endpoint = nem.model.objects.create('endpoint')(this.NEM_node_URI, this.NEM_port);
-        this.endpoint = nem.model.objects.create('endpoint')('http://192.3.61.243', 7890);
+        this.endpoint = nem.model.objects.create('endpoint')(this.NEM_node_URI, this.NEM_port);
+        // this.endpoint = nem.model.objects.create('endpoint')('http://192.3.61.243', 7890);
 
     }
 
-    get_XQC_balance(address) {
+    get_XQC_balance = (address) => {
         // get mosaics owned by account
-        var mosaics = null;
+        var mosaics;
 
-        nem.com.requests.account.mosaics.owned(this.endpoint, 'TABCP73ZM4HIXITP6SZMYVB3EPX7OSHKP5PCEJQY').then(function(res) {
-        // nem.com.requests.account.mosaics.owned(this.endpoint, address).then(function(res) {
+        console.log(mosaics);
+        console.log(address.replace('-', ''));
+
+        // nem.com.requests.account.mosaics.owned(this.endpoint, 'TABCP73ZM4HIXITP6SZMYVB3EPX7OSHKP5PCEJQY').then(function(res) {
+        nem.com.requests.account.mosaics.owned(this.endpoint, address.replace('-', '')).then(function(res) {
             mosaics = res.data;
         }, function(err) {
             console.error(err);
         })
 
-        // filter XQC variable
-        var xqc = mosaics.filter(i => i.mosaicId.namespaceId === 'qchain' && i.mosaicId.name === 'xqc')[0];
+        console.log(nem);
+        console.log(this.endpoint);
+        console.log(mosaics);
 
-        return xqc.quantity;
+        // filter XQC variable
+        // var xqc = mosaics.filter(i => i.mosaicId.namespaceId === 'qchain' && i.mosaicId.name === 'xqc')[0];
+
+        // return xqc.quantity;
     }
 
     read_base64_wallet(wlt_txt_base64) {
