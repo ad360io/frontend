@@ -124,4 +124,4 @@ class NemEndpoint extends Component {
 // )(NemEndpoint);
 
 // export default NemEndpoint;
-export default new NemEndpoint();
+// export default new NemEndpoint();

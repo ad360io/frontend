@@ -19,7 +19,7 @@ import './ProfileEditor.component.css';
 /*
 Children Component
 */
-import NemEndpoint from '../../nem-endpoint/NemEndpoint.component';
+// import NemEndpoint from '../../nem-endpoint/NemEndpoint.component';
 
 /*
 NEM SDK
@@ -62,6 +62,30 @@ class ProfileEditor extends Component {
         this.NEM_wlt_base64_txt = [];
         this.handleNemPasswordChange = this.handleNemPasswordChange.bind(this);
         this.handleNemPasswordSubmit = this.handleNemPasswordSubmit.bind(this);
+
+
+
+
+
+        /* CONFIG */
+        this.mainnet_NIS = 'http://san.nem.ninja';
+        this.testnet_NIS = 'http://192.3.61.243';
+
+        this.NEM_port = 7890;
+
+        this.NEM_mainnet_networkId = 104;
+        this.NEM_testnet_networkId = -104;
+
+        // this.NEM_node_URI = mainnet_NIS;
+        this.NEM_node_URI = this.testnet_NIS;
+
+        // this.NEM_networkId = nem.model.network.data.mainnet.id;
+        this.NEM_networkId = nem.model.network.data.testnet.id;
+
+
+        /* Create connection to NIS supernode */
+        this.endpoint = nem.model.objects.create('endpoint')(this.NEM_node_URI, this.NEM_port);
+
     }
 
     handleShowModal() {
@@ -153,7 +177,6 @@ class ProfileEditor extends Component {
 
     handleNemPasswordSubmit(event) {
         console.log('asdf ' + this.state.NEM_password + ' 123');
-        // alert('asdf ' + this.state.NEM_password + ' 123');
         event.preventDefault();
     }
 
@@ -263,4 +286,3 @@ export default connect(
     mapStateToProps,
     mapDispatchToProps
 )(ProfileEditor);
-

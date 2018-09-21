@@ -18,12 +18,12 @@ import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 /*
 NEM SDK
 */
-// import nem from 'nem-sdk';
+import nem from 'nem-sdk';
 
 /*
 Children Component
 */
-import NemEndpoint from '../../nem-endpoint/NemEndpoint.component';
+// import NemEndpoint from '../../nem-endpoint/NemEndpoint.component';
 
 
 /**
@@ -38,7 +38,9 @@ class TinyWallet extends Component {
             finished: false,
             err: null,
             xqc_balance: '----------',
-            eqc_balance: '----------'
+            eqc_balance: '----------',
+            nem_address: this.props.profile.nem_address,
+            eth_address: this.props.profile.eth_address
         }
     }
 
@@ -50,18 +52,53 @@ class TinyWallet extends Component {
         this.getWalletInfo();
     }
 
+    // getWalletInfo = () => {
+    //     const walletURL = "https://qchain-marketplace-postgrest.herokuapp.com/wallet_view";
+    //     const config = {
+    //         headers: { Authorization: "Bearer " + localStorage.getItem('id_token') }
+    //     };
+    //     axios.get(walletURL, config)
+    //         .then((response) => {
+    //             this.setState({
+    //                 ...this.state,
+    //                 finished: true,
+    //                 xqc_balance: `${response.data[0].xqc_balance} XQC`,
+    //                 eqc_balance: `${response.data[0].eqc_balance} EQC`
+    //             })
+    //         })
+    //         .catch((err) => {
+    //             console.log(err);
+    //             this.setState({
+    //                 ...this.state,
+    //                 finished: true,
+    //                 err: err
+    //             })
+    //         })
+    // }
+
     getWalletInfo = () => {
-        const walletURL = "https://qchain-marketplace-postgrest.herokuapp.com/wallet_view";
-        const config = {
-            headers: { Authorization: "Bearer " + localStorage.getItem('id_token') }
-        };
-        axios.get(walletURL, config)
+        // var walletURL = "http://192.3.61.243:7890/account/mosaic/owned?address=";
+
+        // walletURL += this.props.profile.nem_address.split('-').join('');
+
+        var walletURL = "http://192.3.61.243:7890/account/mosaic/owned?address=TABCP73ZM4HIXITP6SZMYVB3EPX7OSHKP5PCEJQY";
+
+        // const config = {
+        //     headers: { Authorization: "Bearer " + localStorage.getItem('id_token') }
+        // };
+
+        console.log('asdfasdf');
+        console.log(this.state);
+        console.log(this.props);
+
+        axios.get(walletURL)
+        // axios.get(walletURL, config)
             .then((response) => {
                 this.setState({
                     ...this.state,
                     finished: true,
-                    xqc_balance: `${response.data[0].xqc_balance} XQC`,
-                    eqc_balance: `${response.data[0].eqc_balance} EQC`
+                    xqc_balance: `${response.data.data.filter(i => i.mosaicId.namespaceId === 'qchain' && i.mosaicId.name === 'xqc')[0].quantity} XQC`,
+                    // eqc_balance: `${response.data[0].eqc_balance} EQC`
                 })
             })
             .catch((err) => {
@@ -74,15 +111,33 @@ class TinyWallet extends Component {
             })
     }
 
+    // get_XQC_balance() {
+    //     const Http = new XMLHttpRequest();
+    //     const url='http://192.3.61.243:7890/account/mosaic/owned?address=TABCP73ZM4HIXITP6SZMYVB3EPX7OSHKP5PCEJQY';
+
+    //     Http.open('GET', url);
+    //     Http.send();
+
+    //     var mosaics;
+    //     var xqc;
+
+    //     Http.onreadystatechange = (e) => {
+    //         mosaics = JSON.parse(Http.responseText).data;
+    //         // console.log(mosaics);
+
+    //     var xqc = mosaics.filter(i => i.mosaicId.namespaceId === 'qchain' && i.mosaicId.name === 'xqc')[0].quantity;
+    //     }
+
+    //     this.setState({xqc_balance: xqc});
+    // }
+
     render() {
         return (
             <LinkWithTooltip
                 tooltip_body={
                     (this.props.currencyFilter === 'EQC'
                         ? <span><strong>ETH address:</strong> {this.props.profile.eth_address}</span>
-                        // : <span><strong>NEM address:</strong> {this.props.profile.nem_address}</span>
-                        : <span><strong>NEM address:</strong> {NemEndpoint.get_XQC_balance(this.props.profile.nem_address)}</span>
-                        // : <span><strong>NEM address:</strong> {NemEndpoint.endpoint.host}</span>
+                        : <span><strong>NEM address:</strong> {this.props.profile.nem_address}</span>
                     )
                 }
             >
@@ -119,6 +174,8 @@ const mapStateToProps = (state) => {
     return {
         currencyFilter: state.MenuBarFilterReducer.currencyFilter,
         profile: state.ProfileReducer.profile,
+        nem_address: state.ProfileReducer.profile.nem_address,
+        eth_address: state.ProfileReducer.profile.eth_address
     }
 }
 
