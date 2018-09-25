@@ -18,7 +18,7 @@ import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 /*
 NEM SDK
 */
-import nem from 'nem-sdk';
+// import nem from 'nem-sdk';
 
 /*
 Children Component
