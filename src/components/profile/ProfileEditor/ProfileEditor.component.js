@@ -41,12 +41,15 @@ class ProfileEditor extends Component {
             avatar_url: this.props.avatar_url,
             show: false,
             nem_address: this.props.nem_address,
+            nem_wlt_name: this.props.nem_wlt_name,
+            nem_pk_enc: this.props.nem_pk_enc,
+
+            NEM_password: '',
+
             eth_address: this.props.eth_address,
 
             // eth_addressa: this.props.eth_addressa,
 
-            nem_wlt_name: this.props.nem_wlt_name,
-            nem_pk_enc: this.props.nem_pk_enc,
         }
 
         this.handleHideModal = this.handleHideModal.bind(this);
@@ -64,7 +67,6 @@ class ProfileEditor extends Component {
         this.NEM_wlt_base64_txt = null;
         this.NEM_wlt_JSON = null;
 
-        this.NEM_password = null;
         this.handleNemPasswordChange = this.handleNemPasswordChange.bind(this);
         this.handleNemPasswordSubmit = this.handleNemPasswordSubmit.bind(this);
 
@@ -220,11 +222,14 @@ class ProfileEditor extends Component {
     }
 
     handleNemPasswordSubmit(event) {
-        console.log('asdf ' + this.NEM_password + ' 123');
         event.preventDefault();
 
+        // console.log('asdf ' + this.state.NEM_password + ' 123');
+
         // create variable to store password/private key object
-        var common = nem.model.objects.create('common')(this.NEM_password, '');
+        var common = nem.model.objects.create('common')(this.state.NEM_password, '');
+
+        // console.log(common);
 
         // select primary account of wallet
         var walletAccount = this.NEM_wlt_JSON.accounts[0];
@@ -234,6 +239,8 @@ class ProfileEditor extends Component {
 
         // get private key
         var privateKey = common.privateKey;
+
+        // console.log(privateKey);
 
         // create key pair
         var keyPair = nem.crypto.keyPair.create(privateKey);
@@ -246,10 +253,29 @@ class ProfileEditor extends Component {
         var isValid = nem.model.address.isValid(address);
         var isFromNetwork = nem.model.address.isFromNetwork(address, this.NEM_networkId);
 
-        if (isValid && isFromNetwork) {
-            // AES encrypt private key with wallet password
-            nem.crypto.js.AES.encrypt(common.privateKey, this.NEM_password).toString();
+        var i;
+        var len;
+        var address_ = [];
 
+        for (i = 0, len = address.length; i < len; i += 6) {
+            address_.push(address.substr(i, 6));
+        }
+
+        address = address_.join('-');
+
+        console.log(address);
+
+        if (isValid && isFromNetwork) {
+            this.setState({nem_address: address});
+
+            // console.log('asdf');
+            // console.log(this.state.nem_address);
+
+            // AES encrypt private key with wallet password
+            var nem_pk_enc = nem.crypto.js.AES.encrypt(common.privateKey, this.state.NEM_password).toString();
+            this.setState({nem_pk_enc: nem_pk_enc});
+
+            // console.log(this.state.nem_pk_enc);
 
             var NEM_wlt_input = document.getElementById('NEM_wlt_input');
             NEM_wlt_input.style.display = 'none';
@@ -257,12 +283,70 @@ class ProfileEditor extends Component {
             var NEM_password_input = document.getElementById('NEM_password_input');
             NEM_password_input.style.display = 'none';
 
+            var NEM_wlt_subtext = document.getElementById('NEM_wlt_subtext');
+            NEM_wlt_subtext.style.display = 'none';
+
+            var NEM_wlt_name_address = document.getElementById('NEM_wlt_name_address');
+            NEM_wlt_name_address.style.display = 'initial';
+
         } else {
-            alert('This wallet file does not contain a valid NEM mainnet account. Please try another wallet file.');
+            alert('This wallet file does not contain a valid NEM account. Please try another wallet file.');
         }
     }
 
     render() {
+        let NEM_wlt_formgroup;
+
+        if (this.state.nem_pk_enc) {
+            NEM_wlt_formgroup = <FormGroup controlId='control-form-title'>
+                <h4>NEM Account</h4>
+                <p id="NEM_wlt_subtext" style={{ 'margin': '-6px 0 12px 0', 'fontSize': '13px', 'fontStyle': 'italic' }}>Only standard (i.e. password/brain) wallets are supported.</p>
+
+                <input id="NEM_wlt_input" style={{ 'fontSize': '12px' }} type="file" accept=".wlt" onChange={this.read_NEM_wlt_file} />
+
+                <form id="NEM_password_input" style={{ 'display': 'none', 'fontSize': '14px', 'marginTop': '24px' }} onSubmit={this.handleNemPasswordSubmit}>
+                    <label>
+                        Password:&nbsp;&nbsp;
+                        <input type="text" style={{ 'fontWeight': 'normal', 'borderRadius': '3px' }} value={this.state.NEM_password} onChange={this.handleNemPasswordChange} />
+                    </label>
+
+                    <input type="submit" value="Submit" />
+                </form>
+
+                <p id="NEM_wlt_name_address" style={{ 'display': 'none', 'fontSize': '13px' }}>
+                    NEM wallet name: {this.state.nem_wlt_name}
+                    <br />
+                    NEM address: {this.state.nem_address}
+                </p>
+            </FormGroup>
+        } else {
+            NEM_wlt_formgroup = <FormGroup controlId='control-form-title'>
+                <h4>NEM Account</h4>
+                <p id="NEM_wlt_subtext" style={{ 'margin': '-6px 0 12px 0', 'fontSize': '13px', 'fontStyle': 'italic' }}>Only standard (i.e. password/brain) wallets are supported.</p>
+
+                <p id="NEM_wlt_name_address" style={{ 'fontSize': '13px' }}>
+                    {/* NEM wallet name: {this.state.nem_wlt_name}
+                    <br /> */}
+                    NEM address: {this.state.nem_address}
+
+                    <br />
+                    <br />
+                    To change your NEM account:
+                </p>
+
+                <input id="NEM_wlt_input" style={{ 'fontSize': '12px' }} type="file" accept=".wlt" onChange={this.read_NEM_wlt_file} />
+
+                <form id="NEM_password_input" style={{ 'display': 'none', 'fontSize': '14px', 'marginTop': '24px' }} onSubmit={this.handleNemPasswordSubmit}>
+                    <label>
+                        Password:&nbsp;&nbsp;
+                        <input type="text" style={{ 'fontWeight': 'normal', 'borderRadius': '3px' }} value={this.state.NEM_password} onChange={this.handleNemPasswordChange} />
+                    </label>
+
+                    <input type="submit" value="Submit" />
+                </form>
+            </FormGroup>
+        }
+
         return <div>
             <i className="fas fa-pen-square profile-editor-icon" onClick={this.handleShowModal}></i>
             <Modal show={this.state.show} onHide={this.handleHideModal}>
@@ -295,13 +379,13 @@ class ProfileEditor extends Component {
                         />
                     </FormGroup>
 
-                    <FormGroup controlId='control-form-title'>
+                    {/* <FormGroup controlId='control-form-title'>
                         <h4>NEM Address</h4>
                         <FormControl type='text'
                             defaultValue={this.state.nem_address}
                             onChange={this.handleNemAddressChange}
                         />
-                    </FormGroup>
+                    </FormGroup> */}
 
                     {/* <FormGroup controlId='control-form-title'>
                         <h4>ETH Address</h4>
@@ -311,24 +395,7 @@ class ProfileEditor extends Component {
                         />
                     </FormGroup> */}
 
-                    <FormGroup controlId='control-form-title'>
-                        <h4>NEM Account</h4>
-                        <p style={{ 'margin': '-6px 0 12px 0', 'fontSize': '13px' }}>Only standard (i.e. password/brain) wallets are supported.</p>
-
-                        <input id="NEM_wlt_input" style={{ 'fontSize': '12px' }} type="file" accept=".wlt" onChange={this.read_NEM_wlt_file} />
-
-                        <form id="NEM_password_input" style={{ 'display': 'none', 'fontSize': '14px', 'marginTop': '24px' }} onSubmit={this.handleNemPasswordSubmit}>
-                            <label>
-                                Password:&nbsp;&nbsp;
-                                <input type="text" style={{ 'fontWeight': 'normal', 'borderRadius': '3px' }} value={this.state.NEM_password} onChange={this.handleNemPasswordChange} />
-                            </label>
-
-                            <input type="submit" value="Submit" />
-                        </form>
-
-                        <p>NEM wallet name: {this.state.nem_wlt_name}</p>
-                        <p>NEM address: {this.state.nem_address}</p>
-                    </FormGroup>
+                    {NEM_wlt_formgroup}
 
                 </Modal.Body>
 
@@ -354,12 +421,13 @@ const mapStateToProps = (state) => {
         email: state.ProfileReducer.profile.email,
         avatar_url: state.ProfileReducer.profile.avatar_url,
         nem_address: state.ProfileReducer.profile.nem_address,
+        nem_wlt_name: state.ProfileReducer.profile.nem_wlt_name,
+        nem_pk_enc: state.ProfileReducer.profile.nem_pk_enc,
+
         eth_address: state.ProfileReducer.profile.eth_address,
 
         // eth_addressa: state.ProfileReducer.profile.eth_addressa,
 
-        nem_wlt_name: state.ProfileReducer.profile.nem_wlt_name,
-        nem_pk_enc: state.ProfileReducer.profile.nem_pk_enc,
     }
 }
 
