@@ -57,7 +57,7 @@ class TinyWallet extends Component {
     }
 
     // getWalletInfo = () => {
-    //     const walletURL = "https://qchain-marketplace-postgrest.herokuapp.com/wallet_view";
+    //     const walletURL = "https://marketplacedb.qchain.co/wallet_view";
     //     const config = {
     //         headers: { Authorization: "Bearer " + localStorage.getItem('id_token') }
     //     };

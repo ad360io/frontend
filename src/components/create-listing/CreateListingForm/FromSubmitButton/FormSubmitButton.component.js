@@ -121,7 +121,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onSubmitRequest: (payload) => {
-            const listingURL = "https://qchain-marketplace-postgrest.herokuapp.com/listing";
+            const listingURL = "https://marketplacedb.qchain.co/listing";
             const config = {
                 headers: { Authorization: "Bearer " + localStorage.getItem('id_token') }
             };

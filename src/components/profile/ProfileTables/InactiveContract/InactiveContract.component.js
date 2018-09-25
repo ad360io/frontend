@@ -28,7 +28,7 @@ class InactiveContract extends Component {
     }
 
     loadData() {
-        const inactiveContractURL = "https://qchain-marketplace-postgrest.herokuapp.com/inactive_contract_view" + this.state.order;
+        const inactiveContractURL = "https://marketplacedb.qchain.co/inactive_contract_view" + this.state.order;
         const config = {
             headers: { Authorization: "Bearer " + localStorage.getItem('id_token') }
         };

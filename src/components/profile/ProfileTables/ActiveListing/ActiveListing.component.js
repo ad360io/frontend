@@ -22,7 +22,7 @@ class ActiveListing extends Component {
     }
 
     componentWillUpdate(prevProps) {
-        if(this.props.reader !== prevProps.reader 
+        if(this.props.reader !== prevProps.reader
         || this.props.userId !== prevProps.userId){
             this.loadData();
         }
@@ -34,9 +34,9 @@ class ActiveListing extends Component {
 
     decideURL = () => {
         if(this.props.reader) {
-            return "https://qchain-marketplace-postgrest.herokuapp.com/active_contentspace_listing" + this.state.order + `&owner=eq.${this.props.userId}`;
+            return "https://marketplacedb.qchain.co/active_contentspace_listing" + this.state.order + `&owner=eq.${this.props.userId}`;
         }else {
-            return "https://qchain-marketplace-postgrest.herokuapp.com/my_active_contentspace_listing" + this.state.order;
+            return "https://marketplacedb.qchain.co/my_active_contentspace_listing" + this.state.order;
         }
     }
 

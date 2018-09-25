@@ -246,7 +246,7 @@ export default class Auth {
                 }
                 else {
                     // Update PostgreSQL account name with new nickname from profile editor.
-                    const nameURL = `https://qchain-marketplace-postgrest.herokuapp.com/account?role=eq.${localStorage.getItem('role')}`;
+                    const nameURL = `https://marketplacedb.qchain.co/account?role=eq.${localStorage.getItem('role')}`;
                     const config = {
                         headers: { Authorization: "Bearer " + localStorage.getItem('id_token') }
                     };

@@ -35,7 +35,7 @@ class OfferList extends Component {
     }
 
     loadData() {
-        const activeListingURL = "https://qchain-marketplace-postgrest.herokuapp.com/my_offers_view";
+        const activeListingURL = "https://marketplacedb.qchain.co/my_offers_view";
         const config = {
             headers: { Authorization: "Bearer " + localStorage.getItem('id_token') }
         };
@@ -111,7 +111,7 @@ class OfferRenderer extends Component {
     }
 
     makePayment(existingBalance, currencyType, price) {
-        const listingURL = `https://qchain-marketplace-postgrest.herokuapp.com/wallet_view`;
+        const listingURL = `https://marketplacedb.qchain.co/wallet_view`;
         const config = {
             headers: { Authorization: "Bearer " + localStorage.getItem('id_token') }
         };
@@ -134,7 +134,7 @@ class OfferRenderer extends Component {
             ...this.state,
             isProcessing: true
         })
-        const walletURL = `https://qchain-marketplace-postgrest.herokuapp.com/wallet_view`;
+        const walletURL = `https://marketplacedb.qchain.co/wallet_view`;
         const config = {
             headers: { Authorization: "Bearer " + localStorage.getItem('id_token') }
         };
@@ -174,7 +174,7 @@ class OfferRenderer extends Component {
     }
 
     createContractAfterBalanceCheck(existingBalance, payoutCap) {
-        const createContractURL = "https://qchain-marketplace-postgrest.herokuapp.com/contract";
+        const createContractURL = "https://marketplacedb.qchain.co/contract";
         const config = {
             headers: { Authorization: "Bearer " + localStorage.getItem('id_token') }
         };
@@ -203,7 +203,7 @@ class OfferRenderer extends Component {
     }
 
     patchListing() {
-        const patchListingURL = "https://qchain-marketplace-postgrest.herokuapp.com/listing?id=eq." + this.props.offer.listing_id;
+        const patchListingURL = "https://marketplacedb.qchain.co/listing?id=eq." + this.props.offer.listing_id;
         const config = {
             headers: { Authorization: "Bearer " + localStorage.getItem('id_token') }
         };
@@ -225,7 +225,7 @@ class OfferRenderer extends Component {
     }
 
     deleteOffer() {
-        const deleteOfferURL = "https://qchain-marketplace-postgrest.herokuapp.com/offer?id=eq." + this.props.offer.id;
+        const deleteOfferURL = "https://marketplacedb.qchain.co/offer?id=eq." + this.props.offer.id;
         const config = {
             headers: { Authorization: "Bearer " + localStorage.getItem('id_token') }
         };

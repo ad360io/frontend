@@ -38,7 +38,7 @@ class MakeOfferSection extends Component {
             ...this.state,
             processing: true,
         })
-        const offerURL = `https://qchain-marketplace-postgrest.herokuapp.com/offer`;
+        const offerURL = `https://marketplacedb.qchain.co/offer`;
         const config = {
             headers: { Authorization: "Bearer " + localStorage.getItem('id_token') }
         };

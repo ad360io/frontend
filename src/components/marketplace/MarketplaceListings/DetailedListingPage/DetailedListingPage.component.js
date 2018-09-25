@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 /*
-Networking 
+Networking
 */
 import axios from 'axios';
 
@@ -89,7 +89,7 @@ class DetailedListingPage extends Component {
 
     loadDetail() {
         // call on start load to get data
-        const listingURL = `https://qchain-marketplace-postgrest.herokuapp.com/detailed_listing_view?id=eq.${this.props.match.params.id}`;
+        const listingURL = `https://marketplacedb.qchain.co/detailed_listing_view?id=eq.${this.props.match.params.id}`;
         const config = {
             headers: { Authorization: "Bearer " + localStorage.getItem('id_token') }
         };
@@ -131,7 +131,7 @@ class DetailedListingPage extends Component {
             ...this.state,
             processing: true,
         })
-        const walletURL = `https://qchain-marketplace-postgrest.herokuapp.com/wallet_view`;
+        const walletURL = `https://marketplacedb.qchain.co/wallet_view`;
         const config = {
             headers: { Authorization: "Bearer " + localStorage.getItem('id_token') }
         };
@@ -170,7 +170,7 @@ class DetailedListingPage extends Component {
     }
 
     createContractAfterBalanceCheck(balance) {
-        const contractURL = `https://qchain-marketplace-postgrest.herokuapp.com/contract`;
+        const contractURL = `https://marketplacedb.qchain.co/contract`;
         const config = {
             headers: { Authorization: "Bearer " + localStorage.getItem('id_token') }
         };
@@ -206,7 +206,7 @@ class DetailedListingPage extends Component {
     }
 
     getContract() {
-        const contractURL = `https://qchain-marketplace-postgrest.herokuapp.com/contract?contentspacelisting=eq.${this.state.listing.id}`;
+        const contractURL = `https://marketplacedb.qchain.co/contract?contentspacelisting=eq.${this.state.listing.id}`;
         const config = {
             headers: { Authorization: "Bearer " + localStorage.getItem('id_token') }
         };
@@ -222,7 +222,7 @@ class DetailedListingPage extends Component {
     }
 
     createInvoiceAfterContract(contract) {
-        const invoiceURL = `https://qchain-marketplace-postgrest.herokuapp.com/invoice`;
+        const invoiceURL = `https://marketplacedb.qchain.co/invoice`;
         const config = {
             headers: { Authorization: "Bearer " + localStorage.getItem('id_token') }
         };
@@ -246,7 +246,7 @@ class DetailedListingPage extends Component {
     }
 
     inactivateListing() {
-        const listingURL = `https://qchain-marketplace-postgrest.herokuapp.com/listing?id=eq.${this.state.listing.id}`;
+        const listingURL = `https://marketplacedb.qchain.co/listing?id=eq.${this.state.listing.id}`;
         const config = {
             headers: { Authorization: "Bearer " + localStorage.getItem('id_token') }
         };
@@ -264,7 +264,7 @@ class DetailedListingPage extends Component {
     }
 
     makePayment(existingBalance, payoutCap) {
-        const listingURL = `https://qchain-marketplace-postgrest.herokuapp.com/wallet_view`;
+        const listingURL = `https://marketplacedb.qchain.co/wallet_view`;
         const config = {
             headers: { Authorization: "Bearer " + localStorage.getItem('id_token') }
         };

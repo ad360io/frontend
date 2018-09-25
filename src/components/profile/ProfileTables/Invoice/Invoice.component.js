@@ -65,7 +65,7 @@ class Invoice extends Component {
     }
 
     loadData() {
-        const invoicesURL = "https://qchain-marketplace-postgrest.herokuapp.com/my_invoices" + this.state.order;
+        const invoicesURL = "https://marketplacedb.qchain.co/my_invoices" + this.state.order;
         const config = {
             headers: { Authorization: "Bearer " + localStorage.getItem('id_token') }
         };

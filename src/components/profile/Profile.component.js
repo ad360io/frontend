@@ -63,7 +63,7 @@ class Profile extends Component {
     loadProfileData = () => {
         this.setState({ ...this.state, fetching: true, hasError: false });
 
-        const accountURL = "https://qchain-marketplace-postgrest.herokuapp.com/account?select=email,name,picture&role=eq." + this.props.match.params.userId;
+        const accountURL = "https://marketplacedb.qchain.co/account?select=email,name,picture&role=eq." + this.props.match.params.userId;
         const config = {
             headers: { Authorization: "Bearer " + localStorage.getItem('id_token') }
         };

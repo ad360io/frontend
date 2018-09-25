@@ -41,7 +41,7 @@ const pageSize = 5;
 class Marketplace extends Component {
     constructor(props) {
         super(props);
-        const onStartURL = "https://qchain-marketplace-postgrest.herokuapp.com/detailed_listing_view?" + this.getModeCurrencyURLQuery();
+        const onStartURL = "https://marketplacedb.qchain.co/detailed_listing_view?" + this.getModeCurrencyURLQuery();
         const config = {
             headers: {
                 Authorization: "Bearer " + localStorage.getItem('id_token'),
@@ -113,7 +113,7 @@ class Marketplace extends Component {
             || prevProps.adFormatFilter !== this.props.adFormatFilter
             || prevProps.mediumFilter !== this.props.mediumFilter
             || prevProps.budgetFilter !== this.props.budgetFilter) {
-            const searchedURL = "https://qchain-marketplace-postgrest.herokuapp.com/detailed_listing_view?or=("
+            const searchedURL = "https://marketplacedb.qchain.co/detailed_listing_view?or=("
                 + "name.ilike.*" + this.props.keyword + "*,"
                 + "owner_name.ilike.*" + this.props.keyword + "*,"
                 + "description.ilike.*" + this.props.keyword + "*)"

@@ -34,9 +34,9 @@ class ActiveContract extends Component {
 
     decideURL = () => {
         if (this.props.reader) {
-            return "https://qchain-marketplace-postgrest.herokuapp.com/active_contract_view" + this.state.order + `&or=(publisher.eq.${this.props.userId},advertiser.eq.${this.props.userId})`;
+            return "https://marketplacedb.qchain.co/active_contract_view" + this.state.order + `&or=(publisher.eq.${this.props.userId},advertiser.eq.${this.props.userId})`;
         } else {
-            return "https://qchain-marketplace-postgrest.herokuapp.com/my_active_contract_view" + this.state.order;
+            return "https://marketplacedb.qchain.co/my_active_contract_view" + this.state.order;
         }
     }
 

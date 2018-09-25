@@ -8,7 +8,7 @@ import './ActiveRequest.component.css';
 
 /**
  * ActiveRequest Component
- * @param {string} listingType passed by props to decide label  
+ * @param {string} listingType passed by props to decide label
  */
 class ActiveRequest extends Component {
 
@@ -27,7 +27,7 @@ class ActiveRequest extends Component {
     }
 
     componentWillUpdate(prevProps){
-        if(prevProps.reader !== this.props.reader 
+        if(prevProps.reader !== this.props.reader
         || prevProps.userId !== this.props.userId){
             this.loadData();
         }
@@ -35,10 +35,10 @@ class ActiveRequest extends Component {
 
     decideURL = () => {
         if(this.props.reader) {
-            return "https://qchain-marketplace-postgrest.herokuapp.com/active_content_request" + this.state.order + `&owner=eq.${this.props.userId}`;
+            return "https://marketplacedb.qchain.co/active_content_request" + this.state.order + `&owner=eq.${this.props.userId}`;
         }
         else {
-            return "https://qchain-marketplace-postgrest.herokuapp.com/my_active_content_request" + this.state.order;
+            return "https://marketplacedb.qchain.co/my_active_content_request" + this.state.order;
         }
     }
 

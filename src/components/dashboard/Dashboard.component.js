@@ -100,7 +100,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    const TestServerURL = "https://qchain-marketplace-postgrest.herokuapp.com/active_contract_view";
+    const TestServerURL = "https://marketplacedb.qchain.co/active_contract_view";
     return {
         onStartLoadData: () => {
             const config = {
