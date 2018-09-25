@@ -151,10 +151,15 @@ class TinyWallet extends Component {
 
                 axios.get(walletURL)
                     .then((response) => {
+                        var xqc_balance_1e6 = response.data.data.filter(i => i.mosaicId.namespaceId === 'qchain' && i.mosaicId.name === 'xqc')[0].quantity;
+                        xqc_balance_1e6 = parseInt(xqc_balance_1e6, 10) / 1e6;
+                        xqc_balance_1e6 = xqc_balance_1e6.toString() + ' XQC';
+
                         self.setState({
                             ...self.state,
                             finished: true,
-                            xqc_balance: `${response.data.data.filter(i => i.mosaicId.namespaceId === 'qchain' && i.mosaicId.name === 'xqc')[0].quantity} XQC`,
+                            xqc_balance: xqc_balance_1e6,
+                            // xqc_balance: `${response.data.data.filter(i => i.mosaicId.namespaceId === 'qchain' && i.mosaicId.name === 'xqc')[0].quantity} XQC`,
                         })
                     })
                     .catch((err) => {
@@ -174,7 +179,7 @@ class TinyWallet extends Component {
             clearInterval(check_undef);
         }
 
-        // console.log(this.state.xqc_balance);
+        console.log(this.state.xqc_balance);
 
         return this.state.xqc_balance;
     }
