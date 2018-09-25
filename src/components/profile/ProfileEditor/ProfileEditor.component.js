@@ -99,8 +99,11 @@ class ProfileEditor extends Component {
             eth_address: this.props.eth_address
 
             // eth_addressa: this.props.eth_addressa
-
         });
+
+        // console.log('123456');
+        // console.log(this.state);
+        // console.log(this.props);
     }
 
     handleHideModal() {
@@ -232,14 +235,14 @@ class ProfileEditor extends Component {
 
                     <FormGroup controlId='control-form-title'>
                         <h4>NEM Account</h4>
-                        <p style={{ 'margin': '-6px 0 12px 0', 'font-size': '13px' }}>Only standard (i.e. password/brain) wallets are supported.</p>
+                        <p style={{ 'margin': '-6px 0 12px 0', 'fontSize': '13px' }}>Only standard (i.e. password/brain) wallets are supported.</p>
 
-                        <input id="NEM_wlt_input" style={{ 'font-size': '12px' }} type="file" accept=".wlt" onChange={this.read_NEM_wlt_file} />
+                        <input id="NEM_wlt_input" style={{ 'fontSize': '12px' }} type="file" accept=".wlt" onChange={this.read_NEM_wlt_file} />
 
-                        <form id="NEM_password_input" style={{ 'display': 'none', 'font-size': '14px', 'margin-top': '12px' }} onSubmit={this.handleNemPasswordSubmit}>
+                        <form id="NEM_password_input" style={{ 'display': 'none', 'fontSize': '14px', 'marginTop': '12px' }} onSubmit={this.handleNemPasswordSubmit}>
                             <label>
                                 Password:&nbsp;&nbsp;
-                                <input type="text" style={{ 'font-weight': 'normal' }} value={this.state.NEM_password} onChange={this.handleNemPasswordChange} />
+                                <input type="text" style={{ 'fontWeight': 'normal' }} value={this.state.NEM_password} onChange={this.handleNemPasswordChange} />
                             </label>
 
                             <input type="submit" value="Submit" />
@@ -249,7 +252,7 @@ class ProfileEditor extends Component {
                 </Modal.Body>
 
                 <Alert bsStyle="danger">
-                    <p style={{ marginBottom: '10px', 'font-size': '13px' }}>
+                    <p style={{ marginBottom: '10px', 'fontSize': '13px' }}>
                         Any changes to the profile require you to login again to take effect.
                     </p>
 

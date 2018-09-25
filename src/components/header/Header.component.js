@@ -53,6 +53,7 @@ class Header extends Component {
                     <ProfileAccessor history={this.props.history} profile={this.props.profile} onLogout={this.handleLogout} auth={this.props.auth} />
                 </div>
                 <TinyWallet {...this.props} />
+                {/* <TinyWallet auth={this.props.auth} /> */}
                 <BottomNavOnSmScreen {...this.props} />
             </div>
         );

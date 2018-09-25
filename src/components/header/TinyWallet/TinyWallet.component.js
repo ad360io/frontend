@@ -39,17 +39,21 @@ class TinyWallet extends Component {
             err: null,
             xqc_balance: '----------',
             eqc_balance: '----------',
-            nem_address: this.props.profile.nem_address,
-            eth_address: this.props.profile.eth_address
+            nem_address: this.props.nem_address,
+            eth_address: this.props.eth_address
         }
+
+        // console.log('hithere');
+        // console.log(this.props);
+        // console.log(JSON.stringify(this.props.profile));
     }
 
     componentWillMount() {
-        this.getWalletInfo();
+        // this.getWalletInfo();
     }
 
     componentWillReceiveProps() {
-        this.getWalletInfo();
+        // this.getWalletInfo();
     }
 
     // getWalletInfo = () => {
@@ -76,20 +80,33 @@ class TinyWallet extends Component {
     //         })
     // }
 
-    getWalletInfo = () => {
-        // var walletURL = "http://192.3.61.243:7890/account/mosaic/owned?address=";
+    sleep(milliseconds) {
+        console.log('sleeping');
+
+        var start = new Date().getTime();
+
+        for (var i = 0; i < 1e7; i++) {
+            if ((new Date().getTime() - start) > milliseconds){
+                break;
+            }
+        }
+    }
+
+    getWalletInfo(address) {
+        // var walletURL = "http://192.3.61.243:7890/account/mosaic/owned?address=TABCP73ZM4HIXITP6SZMYVB3EPX7OSHKP5PCEJQY";
+
+        var walletURL = "http://192.3.61.243:7890/account/mosaic/owned?address=";
 
         // walletURL += this.props.profile.nem_address.split('-').join('');
-
-        var walletURL = "http://192.3.61.243:7890/account/mosaic/owned?address=TABCP73ZM4HIXITP6SZMYVB3EPX7OSHKP5PCEJQY";
+        walletURL += address.split('-').join('');
 
         // const config = {
         //     headers: { Authorization: "Bearer " + localStorage.getItem('id_token') }
         // };
 
-        console.log('asdfasdf');
-        console.log(this.state);
-        console.log(this.props);
+        // console.log('asdfasdf');
+        // console.log(this.state);
+        // console.log(this.props);
 
         axios.get(walletURL)
         // axios.get(walletURL, config)
@@ -108,7 +125,63 @@ class TinyWallet extends Component {
                     finished: true,
                     err: err
                 })
-            })
+            });
+    }
+
+    get_XQC_balance(address) {
+        var walletURL = "http://192.3.61.243:7890/account/mosaic/owned?address=";
+        // walletURL += address.split('-').join('');
+
+        // var walletURL = "http://192.3.61.243:7890/account/mosaic/owned?address=TABCP73ZM4HIXITP6SZMYVB3EPX7OSHKP5PCEJQY";
+
+        var self = this;
+
+        var check_undef = setInterval(function() {
+            if (typeof(address) != 'undefined') {
+            //     // console.log('not yet');
+            //     // this.sleep(2000);
+            // } else {
+                // console.log('k ready now');
+
+                address = address.split('-').join('');
+                // console.log(address);
+
+                walletURL += address.split('-').join('');
+                // console.log(walletURL);
+
+                axios.get(walletURL)
+                    .then((response) => {
+                        self.setState({
+                            ...self.state,
+                            finished: true,
+                            xqc_balance: `${response.data.data.filter(i => i.mosaicId.namespaceId === 'qchain' && i.mosaicId.name === 'xqc')[0].quantity} XQC`,
+                        })
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                        self.setState({
+                            ...self.state,
+                            finished: true,
+                            err: err
+                        })
+                    });
+
+                clearInterval(check_undef);
+            }
+        }, 1000);
+
+        if (this.state.xqc_balance != '----------') {
+            clearInterval(check_undef);
+        }
+
+        // console.log(this.state.xqc_balance);
+
+        return this.state.xqc_balance;
+    }
+
+    asdf(asdf) {
+        // console.log(asdf + 'yo');
+        return asdf + 'yo';
     }
 
     // get_XQC_balance() {
@@ -136,8 +209,10 @@ class TinyWallet extends Component {
             <LinkWithTooltip
                 tooltip_body={
                     (this.props.currencyFilter === 'EQC'
-                        ? <span><strong>ETH address:</strong> {this.props.profile.eth_address}</span>
+                        ? <span><strong>ETH address:</strong> {this.props.eth_address}</span>
                         : <span><strong>NEM address:</strong> {this.props.profile.nem_address}</span>
+                        // : <span><strong>NEM address:</strong> {JSON.stringify(this.props.profile)}</span>
+                        // : <span><strong>NEM address:</strong> {this.props.nem_address}</span>
                     )
                 }
             >
@@ -148,7 +223,8 @@ class TinyWallet extends Component {
                     {
                         (this.props.currencyFilter === 'EQC'
                             ? <WalletEqcRenderer balance={this.state.eqc_balance} />
-                            : <WalletXqcRenderer balance={this.state.xqc_balance} />
+                            : <WalletXqcRenderer balance={this.get_XQC_balance(this.props.profile.nem_address)} />
+                            // : <WalletXqcRenderer balance={this.state.xqc_balance} />
                         )
                     }
                 </div>
@@ -174,8 +250,8 @@ const mapStateToProps = (state) => {
     return {
         currencyFilter: state.MenuBarFilterReducer.currencyFilter,
         profile: state.ProfileReducer.profile,
-        nem_address: state.ProfileReducer.profile.nem_address,
-        eth_address: state.ProfileReducer.profile.eth_address
+        // nem_address: state.ProfileReducer.profile.nem_address,
+        // eth_address: state.ProfileReducer.profile.eth_address,
     }
 }
 
@@ -185,7 +261,7 @@ const mapDispatchToProps = (dispatch) => {
 
 function LinkWithTooltip({ tooltip_body, children }) {
     return (
-        <OverlayTrigger placement="bottom" overlay={<Tooltip>{tooltip_body}</Tooltip>}>
+        <OverlayTrigger placement="bottom" overlay={<Tooltip id="NEM or ETH address">{tooltip_body}</Tooltip>}>
             {children}
         </OverlayTrigger>
     );
