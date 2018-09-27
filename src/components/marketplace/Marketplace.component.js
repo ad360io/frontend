@@ -42,7 +42,11 @@ const pageSize = 5;
 class Marketplace extends Component {
     constructor(props) {
         super(props);
-        const onStartURL = "https://marketplacedb.qchain.co/detailed_listing_view?" + this.getModeCurrencyURLQuery();
+
+        console.log(this.getModeCurrencyURLQuery());
+        const onStartURL = "https://marketplacedb.qchain.co/listing?" + this.getModeCurrencyURLQuery();
+        // const onStartURL = "https://marketplacedb.qchain.co/detailed_listing_view?" + this.getModeCurrencyURLQuery();
+
         const config = {
             headers: {
                 Authorization: "Bearer " + localStorage.getItem('id_token'),
@@ -50,7 +54,20 @@ class Marketplace extends Component {
                 Range: `${pageSize * (this.props.pageNumber - 1)}-${pageSize * this.props.pageNumber - 1}`
             }
         };
-        props.loadData(onStartURL, config);
+
+        // props.loadData(onStartURL, config);
+
+        var marketplace_data;
+
+        axios.get(onStartURL, config)
+            .then((response) => {
+                marketplace_data = response;
+
+                props.loadData(marketplace_data);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
     }
 
     componentDidMount() {
@@ -60,16 +77,17 @@ class Marketplace extends Component {
     getModeCurrencyURLQuery = () => {
         let modeQuery = '';
         let currencyQuery = '';
-        if (this.props.modeFilter === 'Advertiser') {
-            modeQuery = `classtype=eq.listing`
-        } else {
-            modeQuery = `classtype=eq.request`
-        }
+
+        // if (this.props.modeFilter === 'Advertiser') {
+        //     modeQuery = `classtype=eq.listing`
+        // } else {
+        //     modeQuery = `classtype=eq.request`
+        // }
 
         if (this.props.currencyFilter === 'EQC') {
-            currencyQuery = '&currency=eq.EQC'
+            currencyQuery = 'currency=eq.EQC';
         } else {
-            currencyQuery = '&currency=eq.XQC'
+            currencyQuery = 'currency=eq.XQC';
         }
 
         return modeQuery + currencyQuery + this.getPurchaseRangeQuery() + this.getSortingQuery();
@@ -77,7 +95,7 @@ class Marketplace extends Component {
 
     getPurchaseRangeQuery = () => {
         if (this.props.modeFilter === 'Advertiser') {
-            return `&price=lte.${this.props.budgetFilter * 1000}`
+            return `&price=lte.${this.props.budgetFilter * 1000}`;
         } else {
             return '';
         }
@@ -86,22 +104,22 @@ class Marketplace extends Component {
 
     getSortingQuery = () => {
         if (this.props.sortingType === 'Date Added') {
-            return '&order=id.desc'
+            return '&order=id.desc';
         } else if (this.props.sortingType === 'Price (Low - High)') {
-            return '&order=price'
+            return '&order=price';
         } else if (this.props.sortingType === 'Price (High - Low)') {
-            return '&order=price.desc'
+            return '&order=price.desc';
         }
     }
 
     getAdFormatMediumQuery = () => {
         if (this.props.adFormatFilter === 'Show All') {
-            return ''
+            return '';
         }
         else if (this.props.mediumFilter === '') {
-            return `&ad_format=eq.${encodeURIComponent(this.props.adFormatFilter)}`
+            return `&ad_format=eq.${encodeURIComponent(this.props.adFormatFilter)}`;
         } else {
-            return `&ad_format=eq.${encodeURIComponent(this.props.adFormatFilter)}&medium=eq.${encodeURIComponent(this.props.mediumFilter)}`
+            return `&ad_format=eq.${encodeURIComponent(this.props.adFormatFilter)}&medium=eq.${encodeURIComponent(this.props.mediumFilter)}`;
         }
     }
 
@@ -114,7 +132,8 @@ class Marketplace extends Component {
             || prevProps.adFormatFilter !== this.props.adFormatFilter
             || prevProps.mediumFilter !== this.props.mediumFilter
             || prevProps.budgetFilter !== this.props.budgetFilter) {
-            const searchedURL = "https://marketplacedb.qchain.co/detailed_listing_view?or=("
+            // const searchedURL = "https://marketplacedb.qchain.co/detailed_listing_view?or=("
+            const searchedURL = "https://marketplacedb.qchain.co/listing?or=("
                 + "name.ilike.*" + this.props.keyword + "*,"
                 + "owner_name.ilike.*" + this.props.keyword + "*,"
                 + "description.ilike.*" + this.props.keyword + "*)"
@@ -128,17 +147,32 @@ class Marketplace extends Component {
                     Range: `${pageSize * (this.props.pageNumber - 1)}-${pageSize * this.props.pageNumber - 1}`
                 }
             };
-            this.props.loadData(searchedURL, config);
+
+            // this.props.loadData(searchedURL, config);
+
+            var marketplace_data;
+
+            axios.get(searchedURL, config)
+                .then((response) => {
+                    marketplace_data = response;
+
+                    this.props.loadData(marketplace_data);
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
         }
     }
 
     render() {
         return (
-            <div>
+            <div style={{ 'position': 'relative' }}>
                 <div className='marketplace-container'>
                     <MarketplaceFilter />
                     <MarketplaceListings />
                 </div>
+
+                <br /><br /><br /><br />
 
                 <Footer />
             </div>
@@ -163,22 +197,31 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-
     return {
-        loadData: (url, config) => {
+        loadData: (marketplace_data) => {
             dispatch((dispatch) => {
-                dispatch(fetch_MarketplaceData_Pending())
-                axios.get(url, config)
-                    .then((response) => {
-                        dispatch(fetch_MarketplaceData_Fulfilled(response))
-                    })
-                    .catch((err) => {
-                        console.log(err)
-                        dispatch(fetch_MarketplaceData_Rejected(err))
-                    })
+                dispatch(fetch_MarketplaceData_Pending());
+
+                dispatch(fetch_MarketplaceData_Fulfilled(marketplace_data));
             })
         }
     }
+
+    // return {
+    //     loadData: (url, config) => {
+    //         dispatch((dispatch) => {
+    //             dispatch(fetch_MarketplaceData_Pending())
+    //             axios.get(url, config)
+    //                 .then((response) => {
+    //                     dispatch(fetch_MarketplaceData_Fulfilled(response))
+    //                 })
+    //                 .catch((err) => {
+    //                     console.log(err)
+    //                     dispatch(fetch_MarketplaceData_Rejected(err))
+    //                 })
+    //         })
+    //     }
+    // }
 }
 
 

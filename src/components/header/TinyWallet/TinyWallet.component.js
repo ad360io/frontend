@@ -158,7 +158,7 @@ class TinyWallet extends Component {
         var self = this;
 
         var check_undef = setInterval(function() {
-            if (typeof(address) != 'undefined') {
+            if (typeof(address) !== 'undefined') {
             //     // console.log('not yet');
             //     // this.sleep(2000);
             // } else {
@@ -212,7 +212,7 @@ class TinyWallet extends Component {
             }
         }, 1000);
 
-        if (this.state.xqc_balance != '----------') {
+        if (this.state.xqc_balance !== '----------') {
             clearInterval(check_undef);
         }
 
