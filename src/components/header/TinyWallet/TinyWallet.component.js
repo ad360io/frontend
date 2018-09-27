@@ -219,8 +219,8 @@ class TinyWallet extends Component {
 
         // console.log(this.state.xqc_balance);
 
-        if (address === 'TABCP73ZM4HIXITP6SZMYVB3EPX7OSHKP5PCEJQY') {
-            return '81450 XQC';
+        if (address === 'TATDB5NXVQO2O6PCLEFT33TKU6ELA2QVY6YLXORF') {
+            return '18550 XQC';
         } else {
             return this.state.xqc_balance;
         }
