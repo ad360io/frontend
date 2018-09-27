@@ -112,41 +112,41 @@ class TinyWallet extends Component {
         }
     }
 
-    getWalletInfo(address) {
-        // var walletURL = "http://192.3.61.243:7890/account/mosaic/owned?address=TABCP73ZM4HIXITP6SZMYVB3EPX7OSHKP5PCEJQY";
+    // getWalletInfo(address) {
+    //     // var walletURL = "http://192.3.61.243:7890/account/mosaic/owned?address=TABCP73ZM4HIXITP6SZMYVB3EPX7OSHKP5PCEJQY";
 
-        var walletURL = "http://192.3.61.243:7890/account/mosaic/owned?address=";
+    //     var walletURL = "http://192.3.61.243:7890/account/mosaic/owned?address=";
 
-        // walletURL += this.props.profile.nem_address.split('-').join('');
-        walletURL += address.split('-').join('');
+    //     // walletURL += this.props.profile.nem_address.split('-').join('');
+    //     walletURL += address.split('-').join('');
 
-        // const config = {
-        //     headers: { Authorization: "Bearer " + localStorage.getItem('id_token') }
-        // };
+    //     // const config = {
+    //     //     headers: { Authorization: "Bearer " + localStorage.getItem('id_token') }
+    //     // };
 
-        // console.log('asdfasdf');
-        // console.log(this.state);
-        // console.log(this.props);
+    //     // console.log('asdfasdf');
+    //     // console.log(this.state);
+    //     // console.log(this.props);
 
-        axios.get(walletURL)
-        // axios.get(walletURL, config)
-            .then((response) => {
-                this.setState({
-                    ...this.state,
-                    finished: true,
-                    xqc_balance: `${response.data.data.filter(i => i.mosaicId.namespaceId === 'qchain' && i.mosaicId.name === 'xqc')[0].quantity} XQC`,
-                    // eqc_balance: `${response.data[0].eqc_balance} EQC`
-                })
-            })
-            .catch((err) => {
-                console.log(err);
-                this.setState({
-                    ...this.state,
-                    finished: true,
-                    err: err
-                })
-            });
-    }
+    //     axios.get(walletURL)
+    //     // axios.get(walletURL, config)
+    //         .then((response) => {
+    //             this.setState({
+    //                 ...this.state,
+    //                 finished: true,
+    //                 xqc_balance: `${response.data.data.filter(i => i.mosaicId.namespaceId === 'qchain' && i.mosaicId.name === 'xqc')[0].quantity} XQC`,
+    //                 // eqc_balance: `${response.data[0].eqc_balance} EQC`
+    //             })
+    //         })
+    //         .catch((err) => {
+    //             console.log(err);
+    //             this.setState({
+    //                 ...this.state,
+    //                 finished: true,
+    //                 err: err
+    //             })
+    //         });
+    // }
 
     get_XQC_balance(address) {
         // var walletURL = "http://104.248.232.29:7890/account/mosaic/owned?address=";
