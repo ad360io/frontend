@@ -19,7 +19,8 @@ const Footer = () =>
                 <p>Copyright &copy; 2017 Qchain Co.</p>
                 <p>Irvine, CA</p>
                 <p><a href='mailto:team@qchain.co'>team@qchain.co</a></p>
-                <p><a href='https://qchain.co/privacy'>Privacy Policy</a></p>
+                <p><a href='/termsofservice.pdf'>Terms of Service</a></p>
+                <p><a href='/privacypolicy.pdf'>Privacy Policy</a></p>
             </div>
         </footer>
     </div>

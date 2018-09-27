@@ -35,6 +35,7 @@ Custom Components
 import ErrorPage from '../ErrorPage/ErrorPage.component';
 import DashboardNavigation from './DashboardNavigation/DashboardNavigation.component';
 import DashboardDetail from './DashboardDetail/DashboardDetail.component';
+import Footer from '../footer/Footer.component';
 
 /**
  * Dashboard container manages the layout of each children components
@@ -81,6 +82,8 @@ const DashboardRenderer = ({ modeFilter, currencyFilter }) => (
         <Alert className='dashboard-alert' bsStyle='info'>Analytics and data tracking are a work in progress.</Alert>
         <DashboardNavigation modeFilter={modeFilter} />
         <DashboardDetail />
+
+        <Footer />
     </div>
 )
 

@@ -18,7 +18,7 @@ import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 /*
 NEM SDK
 */
-// import nem from 'nem-sdk';
+import nem from 'nem-sdk';
 
 /*
 Children Component
@@ -46,6 +46,26 @@ class TinyWallet extends Component {
         // console.log('hithere');
         // console.log(this.props);
         // console.log(JSON.stringify(this.props.profile));
+
+
+        /* CONFIG */
+        this.mainnet_NIS = 'http://san.nem.ninja';
+        this.testnet_NIS = 'http://192.3.61.243';
+
+        this.NEM_port = 7890;
+
+        this.NEM_mainnet_networkId = 104;
+        this.NEM_testnet_networkId = -104;
+
+        // this.NEM_node_URI = mainnet_NIS;
+        this.NEM_node_URI = this.testnet_NIS;
+
+        // this.NEM_networkId = nem.model.network.data.mainnet.id;
+        this.NEM_networkId = nem.model.network.data.testnet.id;
+
+
+        /* Create connection to NIS supernode */
+        this.endpoint = nem.model.objects.create('endpoint')(this.NEM_node_URI, this.NEM_port);
     }
 
     componentWillMount() {
@@ -129,7 +149,8 @@ class TinyWallet extends Component {
     }
 
     get_XQC_balance(address) {
-        var walletURL = "http://192.3.61.243:7890/account/mosaic/owned?address=";
+        // var walletURL = "http://104.248.232.29:7890/account/mosaic/owned?address=";
+        // var walletURL = "http://192.3.61.243:7890/account/mosaic/owned?address=";
         // walletURL += address.split('-').join('');
 
         // var walletURL = "http://192.3.61.243:7890/account/mosaic/owned?address=TABCP73ZM4HIXITP6SZMYVB3EPX7OSHKP5PCEJQY";
@@ -146,30 +167,46 @@ class TinyWallet extends Component {
                 address = address.split('-').join('');
                 // console.log(address);
 
-                walletURL += address.split('-').join('');
+                // walletURL += address.split('-').join('');
                 // console.log(walletURL);
 
-                axios.get(walletURL)
-                    .then((response) => {
-                        var xqc_balance_1e6 = response.data.data.filter(i => i.mosaicId.namespaceId === 'qchain' && i.mosaicId.name === 'xqc')[0].quantity;
-                        xqc_balance_1e6 = parseInt(xqc_balance_1e6, 10) / 1e6;
-                        xqc_balance_1e6 = xqc_balance_1e6.toString() + ' XQC';
 
-                        self.setState({
-                            ...self.state,
-                            finished: true,
-                            xqc_balance: xqc_balance_1e6,
-                            // xqc_balance: `${response.data.data.filter(i => i.mosaicId.namespaceId === 'qchain' && i.mosaicId.name === 'xqc')[0].quantity} XQC`,
-                        })
-                    })
-                    .catch((err) => {
-                        console.log(err);
-                        self.setState({
-                            ...self.state,
-                            finished: true,
-                            err: err
-                        })
-                    });
+                // axios.get(walletURL)
+                //     .then((response) => {
+                //         var xqc_balance_1e6 = response.data.data.filter(i => i.mosaicId.namespaceId === 'qchain' && i.mosaicId.name === 'xqc')[0].quantity;
+                //         xqc_balance_1e6 = parseInt(xqc_balance_1e6, 10) / 1e6;
+                //         xqc_balance_1e6 = xqc_balance_1e6.toString() + ' XQC';
+
+                //         self.setState({
+                //             ...self.state,
+                //             finished: true,
+                //             xqc_balance: xqc_balance_1e6,
+                //             // xqc_balance: `${response.data.data.filter(i => i.mosaicId.namespaceId === 'qchain' && i.mosaicId.name === 'xqc')[0].quantity} XQC`,
+                //         })
+                //     })
+                //     .catch((err) => {
+                //         console.log(err);
+                //         self.setState({
+                //             ...self.state,
+                //             finished: true,
+                //             err: err
+                //         })
+                //     });
+
+
+                nem.com.requests.account.mosaics.owned(self.endpoint, address).then(function(res) {
+                    // get mosaics owned by account
+                    var mosaics = res.data;
+
+                    // filter XQC variable
+                    var xqc_balance = mosaics.filter(i => i.mosaicId.namespaceId === 'qchain' && i.mosaicId.name === 'xqc')[0].quantity;
+                    xqc_balance = parseInt(xqc_balance, 10) / 1e6;
+                    xqc_balance = xqc_balance.toString() + ' XQC';
+
+                    self.setState({xqc_balance: xqc_balance});
+                }, function(err) {
+                    console.error(err);
+                })
 
                 clearInterval(check_undef);
             }
@@ -179,7 +216,7 @@ class TinyWallet extends Component {
             clearInterval(check_undef);
         }
 
-        console.log(this.state.xqc_balance);
+        // console.log(this.state.xqc_balance);
 
         return this.state.xqc_balance;
     }

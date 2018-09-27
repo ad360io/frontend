@@ -19,6 +19,7 @@ Children Components
 */
 import MarketplaceFilter from './MarketplaceFilter/MarketplaceFilter.component';
 import MarketplaceListings from './MarketplaceListings/MarketplaceListings.component';
+import Footer from '../footer/Footer.component';
 
 /*
 Actions
@@ -132,12 +133,16 @@ class Marketplace extends Component {
     }
 
     render() {
-        return <div>
-            <div className='marketplace-container'>
-                <MarketplaceFilter />
-                <MarketplaceListings />
+        return (
+            <div>
+                <div className='marketplace-container'>
+                    <MarketplaceFilter />
+                    <MarketplaceListings />
+                </div>
+
+                <Footer />
             </div>
-        </div>
+        )
     }
 
 }

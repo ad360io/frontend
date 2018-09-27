@@ -163,7 +163,7 @@ const FilterRenderer = ({ auth }) => (
     <div>
         <p>I am...</p>
         <ModeSelector auth={auth} />
-        <p style={{ marginTop: 5 }}> currently trading in... </p>
+        <p style={{ marginTop: 5 }}> currently using in... </p>
         <CurrencySelector auth={auth} />
     </div>
 )
