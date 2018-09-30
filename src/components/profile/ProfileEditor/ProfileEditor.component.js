@@ -84,16 +84,17 @@ class ProfileEditor extends Component {
         this.NEM_mainnet_networkId = 104;
         this.NEM_testnet_networkId = -104;
 
-        // this.NEM_node_URI = mainnet_NIS;
-        this.NEM_node_URI = this.testnet_NIS;
+        this.NEM_node_URI = this.mainnet_NIS;
+        // this.NEM_node_URI = this.testnet_NIS;
 
-        // this.NEM_networkId = nem.model.network.data.mainnet.id;
-        this.NEM_networkId = nem.model.network.data.testnet.id;
+        this.NEM_networkId = nem.model.network.data.mainnet.id;
+        // this.NEM_networkId = nem.model.network.data.testnet.id;
 
 
         /* Create connection to NIS supernode */
         this.endpoint = nem.model.objects.create('endpoint')(this.NEM_node_URI, this.NEM_port);
 
+        console.log(this.endpoint);
     }
 
     handleShowModal() {
@@ -283,8 +284,8 @@ class ProfileEditor extends Component {
             var NEM_password_input = document.getElementById('NEM_password_input');
             NEM_password_input.style.display = 'none';
 
-            var NEM_wlt_subtext = document.getElementById('NEM_wlt_subtext');
-            NEM_wlt_subtext.style.display = 'none';
+            // var NEM_wlt_subtext = document.getElementById('NEM_wlt_subtext');
+            // NEM_wlt_subtext.style.display = 'none';
 
             var NEM_wlt_name_address = document.getElementById('NEM_wlt_name_address');
             NEM_wlt_name_address.style.display = 'initial';
@@ -297,10 +298,11 @@ class ProfileEditor extends Component {
     render() {
         let NEM_wlt_formgroup;
 
-        if (this.state.nem_pk_enc) {
+        // if (this.state.nem_pk_enc === 'undefined' || this.state.nem_pk_enc === '') {
+        if (this.state.nem_address === 'undefined' || this.state.nem_address === '') {
             NEM_wlt_formgroup = <FormGroup controlId='control-form-title'>
                 <h4>NEM Account</h4>
-                <p id="NEM_wlt_subtext" style={{ 'margin': '-6px 0 12px 0', 'fontSize': '13px', 'fontStyle': 'italic' }}>Only standard (i.e. password/brain) wallets are supported.</p>
+                {/* <p id="NEM_wlt_subtext" style={{ 'margin': '-6px 0 12px 0', 'fontSize': '13px', 'fontStyle': 'italic' }}>Only standard (i.e. password/brain) wallets are supported.</p> */}
 
                 <input id="NEM_wlt_input" style={{ 'fontSize': '12px' }} type="file" accept=".wlt" onChange={this.read_NEM_wlt_file} />
 
@@ -322,7 +324,7 @@ class ProfileEditor extends Component {
         } else {
             NEM_wlt_formgroup = <FormGroup controlId='control-form-title'>
                 <h4>NEM Account</h4>
-                <p id="NEM_wlt_subtext" style={{ 'margin': '-6px 0 12px 0', 'fontSize': '13px', 'fontStyle': 'italic' }}>Only standard (i.e. password/brain) wallets are supported.</p>
+                {/* <p id="NEM_wlt_subtext" style={{ 'margin': '-6px 0 12px 0', 'fontSize': '13px', 'fontStyle': 'italic' }}>Only standard (i.e. password/brain) wallets are supported.</p> */}
 
                 <p id="NEM_wlt_name_address" style={{ 'fontSize': '13px' }}>
                     {/* NEM wallet name: {this.state.nem_wlt_name}

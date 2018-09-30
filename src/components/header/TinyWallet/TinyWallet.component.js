@@ -57,7 +57,7 @@ class TinyWallet extends Component {
         this.NEM_mainnet_networkId = 104;
         this.NEM_testnet_networkId = -104;
 
-        // this.NEM_node_URI = mainnet_NIS;
+        // this.NEM_node_URI = this.mainnet_NIS;
         this.NEM_node_URI = this.testnet_NIS;
 
         // this.NEM_networkId = nem.model.network.data.mainnet.id;
@@ -149,8 +149,13 @@ class TinyWallet extends Component {
     // }
 
     get_XQC_balance(address) {
-        // var walletURL = "http://104.248.232.29:7890/account/mosaic/owned?address=";
-        var walletURL = "http://192.3.61.243:7890/account/mosaic/owned?address=";
+        if (address === 'undefined' || address === '') {
+            return this.state.xqc_balance;
+        }
+
+        var walletURL = "https://nis.qchain.co/account/mosaic/owned?address=";
+
+        // var walletURL = "http://192.3.61.243:7890/account/mosaic/owned?address=";
         // walletURL += address.split('-').join('');
 
         // var walletURL = "http://192.3.61.243:7890/account/mosaic/owned?address=TABCP73ZM4HIXITP6SZMYVB3EPX7OSHKP5PCEJQY";
@@ -173,7 +178,9 @@ class TinyWallet extends Component {
 
                 axios.get(walletURL)
                     .then((response) => {
-                        var xqc_balance_1e6 = response.data.data.filter(i => i.mosaicId.namespaceId === 'qchain' && i.mosaicId.name === 'xqc')[0].quantity;
+                        var xqc_balance_1e6 = '0 XQC'
+
+                        xqc_balance_1e6 = response.data.data.filter(i => i.mosaicId.namespaceId === 'qchain' && i.mosaicId.name === 'xqc')[0].quantity;
                         xqc_balance_1e6 = parseInt(xqc_balance_1e6, 10) / 1e6;
                         xqc_balance_1e6 = xqc_balance_1e6.toString() + ' XQC';
 
@@ -217,13 +224,16 @@ class TinyWallet extends Component {
             clearInterval(check_undef);
         }
 
+        return this.state.xqc_balance;
+
+
         // console.log(this.state.xqc_balance);
 
-        if (address === 'TATDB5NXVQO2O6PCLEFT33TKU6ELA2QVY6YLXORF') {
-            return '18550 XQC';
-        } else {
-            return this.state.xqc_balance;
-        }
+        // if (address === 'TATDB5NXVQO2O6PCLEFT33TKU6ELA2QVY6YLXORF') {
+        //     return '18550 XQC';
+        // } else {
+        //     return this.state.xqc_balance;
+        // }
     }
 
     asdf(asdf) {

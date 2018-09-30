@@ -136,7 +136,16 @@ class Profile extends Component {
 
 
     render() {
-        return <div className='profile-container'>
+        // let nem_address_field;
+
+        // if (this.props.profile.nem_address === 'undefined' || this.props.profile.nem_address === '') {
+        //     nem_address_field = <em>'asdf'</em>
+        // } else {
+        //     nem_address_field = <em>{this.props.profile.nem_address}</em>
+        // }
+
+        return (
+        <div className='profile-container'>
 
             <div className='profile-header'>
                 <Media style={mediaStyle}>
@@ -159,6 +168,7 @@ class Profile extends Component {
                         {
                             (this.props.currencyFilter === 'EQC'
                                 ? 'ETH address: ' + this.props.profile.eth_address
+                                // : 'NEM address: ' + nem_address_field
                                 : 'NEM address: ' + this.props.profile.nem_address
                             )
                         }
@@ -170,6 +180,7 @@ class Profile extends Component {
             <Footer />
 
         </div>
+        )
     }
 }
 
