@@ -70,6 +70,9 @@ export default class Auth {
         console.log(authResult.idTokenPayload);
         localStorage.setItem('access_token', authResult.accessToken);
         localStorage.setItem('id_token', authResult.idToken);
+        console.log('---');
+        console.log(authResult.idToken);
+        console.log('000');
         localStorage.setItem('expires_at', expiresAt);
         localStorage.setItem('user_id', authResult.idTokenPayload.sub);
         localStorage.setItem('role', authResult.idTokenPayload.app_metadata.role);
@@ -79,7 +82,7 @@ export default class Auth {
 
         // Redirect to /dashboard after authenticated.
         propsHistory.replace('/dashboard');
-        propsHistory.push('/dashboard')
+        propsHistory.push('/dashboard');
         this.scheduleRenewal();
     }
 
@@ -127,6 +130,14 @@ export default class Auth {
             throw new Error('No Access Token found');
         }
         return accessToken;
+    }
+
+    getAuthorizationToken = () => {
+        const token = localStorage.getItem('id_token');
+        if (!token) {
+            return null;
+        }
+        return token;
     }
 
     getProfile(cb) {

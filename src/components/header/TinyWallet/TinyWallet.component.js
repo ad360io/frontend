@@ -162,66 +162,66 @@ class TinyWallet extends Component {
 
         var self = this;
 
-        var check_undef = setInterval(function() {
-            if (typeof(address) !== 'undefined') {
-            //     // console.log('not yet');
-            //     // this.sleep(2000);
-            // } else {
-                // console.log('k ready now');
-
-                address = address.split('-').join('');
-                // console.log(address);
-
-                walletURL += address.split('-').join('');
-                // console.log(walletURL);
-
-
-                axios.get(walletURL)
-                    .then((response) => {
-                        var xqc_balance_1e6 = '0 XQC'
-
-                        xqc_balance_1e6 = response.data.data.filter(i => i.mosaicId.namespaceId === 'qchain' && i.mosaicId.name === 'xqc')[0].quantity;
-                        xqc_balance_1e6 = parseInt(xqc_balance_1e6, 10) / 1e6;
-                        xqc_balance_1e6 = xqc_balance_1e6.toString() + ' XQC';
-
-                        self.setState({
-                            ...self.state,
-                            finished: true,
-                            xqc_balance: xqc_balance_1e6,
-                            // xqc_balance: `${response.data.data.filter(i => i.mosaicId.namespaceId === 'qchain' && i.mosaicId.name === 'xqc')[0].quantity} XQC`,
-                        })
-                    })
-                    .catch((err) => {
-                        console.log(err);
-                        self.setState({
-                            ...self.state,
-                            finished: true,
-                            err: err
-                        })
-                    });
-
-
-                // nem.com.requests.account.mosaics.owned(self.endpoint, address).then(function(res) {
-                //     // get mosaics owned by account
-                //     var mosaics = res.data;
-
-                //     // filter XQC variable
-                //     var xqc_balance = mosaics.filter(i => i.mosaicId.namespaceId === 'qchain' && i.mosaicId.name === 'xqc')[0].quantity;
-                //     xqc_balance = parseInt(xqc_balance, 10) / 1e6;
-                //     xqc_balance = xqc_balance.toString() + ' XQC';
-
-                //     self.setState({xqc_balance: xqc_balance});
-                // }, function(err) {
-                //     console.error(err);
-                // })
-
-
-                clearInterval(check_undef);
-            }
-        }, 1000);
+        // var check_undef = setInterval(function() {
+        //     if (typeof(address) !== 'undefined') {
+        //     //     // console.log('not yet');
+        //     //     // this.sleep(2000);
+        //     // } else {
+        //         // console.log('k ready now');
+        //
+        //         address = address.split('-').join('');
+        //         // console.log(address);
+        //
+        //         walletURL += address.split('-').join('');
+        //         // console.log(walletURL);
+        //
+        //
+        //         axios.get(walletURL)
+        //             .then((response) => {
+        //                 var xqc_balance_1e6 = '0 XQC'
+        //
+        //                 xqc_balance_1e6 = response.data.data.filter(i => i.mosaicId.namespaceId === 'qchain' && i.mosaicId.name === 'xqc')[0].quantity;
+        //                 xqc_balance_1e6 = parseInt(xqc_balance_1e6, 10) / 1e6;
+        //                 xqc_balance_1e6 = xqc_balance_1e6.toString() + ' XQC';
+        //
+        //                 self.setState({
+        //                     ...self.state,
+        //                     finished: true,
+        //                     xqc_balance: xqc_balance_1e6,
+        //                     // xqc_balance: `${response.data.data.filter(i => i.mosaicId.namespaceId === 'qchain' && i.mosaicId.name === 'xqc')[0].quantity} XQC`,
+        //                 })
+        //             })
+        //             .catch((err) => {
+        //                 console.log(err);
+        //                 self.setState({
+        //                     ...self.state,
+        //                     finished: true,
+        //                     err: err
+        //                 })
+        //             });
+        //
+        //
+        //         // nem.com.requests.account.mosaics.owned(self.endpoint, address).then(function(res) {
+        //         //     // get mosaics owned by account
+        //         //     var mosaics = res.data;
+        //
+        //         //     // filter XQC variable
+        //         //     var xqc_balance = mosaics.filter(i => i.mosaicId.namespaceId === 'qchain' && i.mosaicId.name === 'xqc')[0].quantity;
+        //         //     xqc_balance = parseInt(xqc_balance, 10) / 1e6;
+        //         //     xqc_balance = xqc_balance.toString() + ' XQC';
+        //
+        //         //     self.setState({xqc_balance: xqc_balance});
+        //         // }, function(err) {
+        //         //     console.error(err);
+        //         // })
+        //
+        //
+        //         clearInterval(check_undef);
+        //     }
+        // }, 1000);
 
         if (this.state.xqc_balance !== '----------') {
-            clearInterval(check_undef);
+            // clearInterval(check_undef);
         }
 
         return this.state.xqc_balance;

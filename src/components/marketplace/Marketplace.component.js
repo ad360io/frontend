@@ -29,6 +29,7 @@ import {
     fetch_MarketplaceData_Pending,
     fetch_MarketplaceData_Rejected
 } from '../../actions/DatabaseRequestActions';
+import {marketplaceApi} from "../../common/api/services/marketplace-api";
 
 
 /**
@@ -42,6 +43,10 @@ const pageSize = 5;
 class Marketplace extends Component {
     constructor(props) {
         super(props);
+
+        console.log('0000');
+        console.log(props);
+        console.log('----');
 
         console.log(this.getModeCurrencyURLQuery());
         const onStartURL = "https://marketplacedb.qchain.co/listing?" + this.getModeCurrencyURLQuery();
@@ -68,7 +73,23 @@ class Marketplace extends Component {
             .catch((err) => {
                 console.log(err);
             });
+
+        //Sample
+        this.getData();
     }
+
+    getData = async() => {
+        const { allApis : {getJson} } = this.props;
+        let params = {currency : "eq.EQC"};
+        let headers = {
+            Prefer: "count=exact",
+            Range: `0-10`
+        };
+
+        let resp = await marketplaceApi.getListing(getJson, params, headers);
+
+        console.log(resp);
+    };
 
     componentDidMount() {
         document.title = "Qchain - Marketplace";
