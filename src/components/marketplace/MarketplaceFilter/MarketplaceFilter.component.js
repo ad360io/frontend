@@ -89,6 +89,8 @@ class MarketplaceFilter extends Component {
     }
 
     render() {
+        const { filters, onChange } = this.props;
+
         return <div className='marketplace-filter-container' >
             <Button
                 className='btn-open-filter-drawer'
@@ -112,19 +114,36 @@ class MarketplaceFilter extends Component {
                 }} zDepth={0} />
 
                 <h4 className='filter-title'>{this.decideTitle()} Listings</h4>
-                <AdFormatFilter />
+                <AdFormatFilter {...{filters, onChange}} />
                 <FilterDivider />
 
                 <h4 className='filter-title'>Keyword Search</h4>
-                <KeywordFilter onChange={this.props.onKeywordChange} />
+                <KeywordFilter
+                    {... {
+                        onChange: (value) => onChange({...filters, keyword: value})
+                    }}
+                    // onChange={this.props.onKeywordChange}
+                />
                 <FilterDivider />
 
                 <h4 className='filter-title'>Max Purchase:</h4>
-                <PurchaseRangeSelector />
+                <PurchaseRangeSelector
+                    {...{
+                        filters,
+                        onChange: (budget) => onChange({...filters, budget})
+                    }}
+                />
                 <FilterDivider />
 
                 <h4 className='filter-title' style={{ textAlign: 'left', marginLeft: '25px' }}>Sort By:</h4>
-                <SortingSelector dropup={this.props.width <= 768} />
+                <SortingSelector
+                    dropup={this.props.width <= 768}
+                    {...{
+                        filters,
+                        onChange: (sortingType) => onChange({...filters, sortingType})
+                    }}
+
+                />
                 <FilterDivider />
             </Drawer>
         </div>

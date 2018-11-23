@@ -5,7 +5,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 /*
-Material UI 
+Material UI
 */
 import Slider from 'material-ui/Slider';
 
@@ -19,18 +19,33 @@ Local CSS
 */
 import './PurchaseRangeSelector.component.css';
 
+class PurchaseRangeSelector extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            value: props.filters.budget
+        }
+    }
 
-const PurchaseRangeSelector = ({ budgetFilter, currencyFilter, onSliderChange }) => (
-    <div className='range-selector'>
-        <Slider className='range-slider'
-            onChange={onSliderChange}
-            value={budgetFilter}
-            min={0.1}
-            max={10}
-            step={0.1} />
-        <h4 className='budget-value'> {budgetFilter} k {currencyFilter}</h4>
-    </div>
-)
+
+    render() {
+        let { filters, onChange, currencyFilter } = this.props;
+        let { value } = this.state;
+
+        return (
+            <div className='range-selector'>
+                <Slider className='range-slider'
+                        onChange={(e, value) => this.setState({value})}
+                        onDragStop={() => onChange(value)}
+                        value={value}
+                        min={0.1}
+                        max={10}
+                        step={0.1}/>
+                <h4 className='budget-value'> {value} k {currencyFilter}</h4>
+            </div>
+        );
+    }
+}
 
 const mapStateToProps = (state) => {
     return {

@@ -70,9 +70,6 @@ export default class Auth {
         console.log(authResult.idTokenPayload);
         localStorage.setItem('access_token', authResult.accessToken);
         localStorage.setItem('id_token', authResult.idToken);
-        console.log('---');
-        console.log(authResult.idToken);
-        console.log('000');
         localStorage.setItem('expires_at', expiresAt);
         localStorage.setItem('user_id', authResult.idTokenPayload.sub);
         localStorage.setItem('role', authResult.idTokenPayload.app_metadata.role);

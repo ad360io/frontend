@@ -27,73 +27,84 @@ const spMediumStringList = ['Event', 'Individual', 'Website', 'Artistic Creation
     'Email Newsletter', 'Other'];
 const pjMediumStringList = ['Written Piece', 'Audio Piece', 'Video Piece', 'Other'];
 
-const AdFormatFilter = ({ onAdFormatClick, adFormatFilter, mediumFilter, onMediumClick }) => (
-    <div>
-        <Button
-            className='btn-marketing-type'
-            onClick={() => { onAdFormatClick('Show All') }}
-            active={adFormatFilter === 'Show All'}
-        >
-            Show All
-        </Button>
-        <SplitButton
-            className='split-btn-marketing-type'
-            title='Branded Content'
-            id='branded-content-menu'
-            pullRight
-            onClick={() => onAdFormatClick('Branded Content')}
-            active={adFormatFilter === 'Branded Content'}
-        >
-            {
-                bcMediumStringList.map((bcMedium, key) => {
-                    return MediumFilterMenuItem('Branded Content', bcMedium, mediumFilter, onMediumClick, key);
-                })
-            }
-        </SplitButton>
-        <SplitButton
-            className='split-btn-marketing-type'
-            title='Influencer Post'
-            id='influencer-post-menu'
-            pullRight
-            onClick={() => onAdFormatClick('Influencer Post')}
-            active={adFormatFilter === 'Influencer Post'}
-        >
-            {
-                ipMediumStringList.map((ipMedium, key) => {
-                    return MediumFilterMenuItem('Influencer Post', ipMedium, mediumFilter, onMediumClick, key);
-                })
-            }
-        </SplitButton>
-        <SplitButton
-            className='split-btn-marketing-type'
-            title='Sponsorship'
-            id='sponsorship-menu'
-            pullRight
-            onClick={() => onAdFormatClick('Sponsorship')}
-            active={adFormatFilter === 'Sponsorship'}
-        >
-            {
-                spMediumStringList.map((spMedium, key) => {
-                    return MediumFilterMenuItem('Sponsorship', spMedium, mediumFilter, onMediumClick, key);
-                })
-            }
-        </SplitButton>
-        <SplitButton
-            className='split-btn-marketing-type'
-            title='Patron Journalism'
-            id='branded-content-menu'
-            pullRight
-            onClick={() => onAdFormatClick('Patron Journalism')}
-            active={adFormatFilter === 'Patron Journalism'}
-        >
-            {
-                pjMediumStringList.map((pjMedium, key) => {
-                    return MediumFilterMenuItem('Patron Journalism', pjMedium, mediumFilter, onMediumClick, key);
-                })
-            }
-        </SplitButton>
-    </div>
-)
+const AdFormatFilter = ({ filters, onChange }) => {
+
+    let adFormatFilter = filters.adFormatFilter;
+    let mediumFilter = filters.mediumFilter;
+
+    let onAdFormatClick = (adFormatFilter) => onChange({...filters, adFormatFilter});
+    let onMediumClick = (adFormatFilter, mediumFilter) => onChange({...filters, adFormatFilter, mediumFilter});
+
+    return (
+        <div>
+            <Button
+                className='btn-marketing-type'
+                onClick={() => {
+                    onAdFormatClick('Show All')
+                }}
+                active={adFormatFilter === 'Show All'}
+            >
+                Show All
+            </Button>
+            <SplitButton
+                className='split-btn-marketing-type'
+                title='Branded Content'
+                id='branded-content-menu'
+                pullRight
+                onClick={() => onAdFormatClick('Branded Content')}
+                active={adFormatFilter === 'Branded Content'}
+            >
+                {
+                    bcMediumStringList.map((bcMedium, key) => {
+                        return MediumFilterMenuItem('Branded Content', bcMedium, mediumFilter, onMediumClick, key);
+                    })
+                }
+            </SplitButton>
+            <SplitButton
+                className='split-btn-marketing-type'
+                title='Influencer Post'
+                id='influencer-post-menu'
+                pullRight
+                onClick={() => onAdFormatClick('Influencer Post')}
+                active={adFormatFilter === 'Influencer Post'}
+            >
+                {
+                    ipMediumStringList.map((ipMedium, key) => {
+                        return MediumFilterMenuItem('Influencer Post', ipMedium, mediumFilter, onMediumClick, key);
+                    })
+                }
+            </SplitButton>
+            <SplitButton
+                className='split-btn-marketing-type'
+                title='Sponsorship'
+                id='sponsorship-menu'
+                pullRight
+                onClick={() => onAdFormatClick('Sponsorship')}
+                active={adFormatFilter === 'Sponsorship'}
+            >
+                {
+                    spMediumStringList.map((spMedium, key) => {
+                        return MediumFilterMenuItem('Sponsorship', spMedium, mediumFilter, onMediumClick, key);
+                    })
+                }
+            </SplitButton>
+            <SplitButton
+                className='split-btn-marketing-type'
+                title='Patron Journalism'
+                id='branded-content-menu'
+                pullRight
+                onClick={() => onAdFormatClick('Patron Journalism')}
+                active={adFormatFilter === 'Patron Journalism'}
+            >
+                {
+                    pjMediumStringList.map((pjMedium, key) => {
+                        return MediumFilterMenuItem('Patron Journalism', pjMedium, mediumFilter, onMediumClick, key);
+                    })
+                }
+            </SplitButton>
+        </div>
+    );
+};
 
 const MediumFilterMenuItem = (adFormat, medium, mediumFilter, onMediumClick, key) => (
     <MenuItem

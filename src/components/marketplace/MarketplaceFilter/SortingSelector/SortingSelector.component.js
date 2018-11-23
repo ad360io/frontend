@@ -25,18 +25,24 @@ class SortingSelector extends Component {
     }
 
     render() {
+        let { filters, onChange } = this.props;
+
+        let sortingType = filters.sortingType;
+
         return <div>
             <DropdownButton
                 className='sorting-selector-btn'
-                title={this.props.sortingType + ""}
+                title={sortingType + ""}
                 id='sorting-selector-btn'
                 dropup={this.props.dropup}
                 pullRight
                 style={{ marginLeft: (this.props.dropup ? 25 : 0) }}
             >
-                <MenuItem onClick={() => this.props.handleItemClick('Date Added')}>Date Added</MenuItem>
-                <MenuItem onClick={() => this.props.handleItemClick('Price (Low - High)')}>Price (Low - High)</MenuItem>
-                <MenuItem onClick={() => this.props.handleItemClick('Price (High - Low)')}>Price (High - Low)</MenuItem>
+                {['Date Added', 'Price (Low - High)', 'Price (High - Low)'].map((item, key) => (
+                    <MenuItem key={key} onClick={() => onChange(item)}>{item}</MenuItem>
+                ))}
+                {/*<MenuItem onClick={() => this.props.handleItemClick('Price (Low - High)')}>Price (Low - High)</MenuItem>*/}
+                {/*<MenuItem onClick={() => this.props.handleItemClick('Price (High - Low)')}>Price (High - Low)</MenuItem>*/}
 
             </DropdownButton>
         </div>
