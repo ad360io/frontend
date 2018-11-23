@@ -1,5 +1,8 @@
-export const getJson = (url, {data, authToken, headers}) => {
-    return fetch(`${url}${data ? `?${buildQuery1(data)}` : ``}`, {
+import axios from "axios";
+
+export const getJson = (url, {queryParams, authToken, headers}) => {
+    return axios({
+        url: `${url}${queryParams ? `?${buildQuery1(queryParams)}` : ``}`,
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${authToken}`,
@@ -12,6 +15,6 @@ const buildQuery = (data) => {
     return Object.keys(data).filter((key) => data[key] != null).map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])).join("&")
 };
 
-const buildQuery1 = (data) => {
+export const buildQuery1 = (data) => {
     return Object.keys(data).filter((key) => data[key] != null).map((key) => key + "=" + data[key]).join("&")
 };

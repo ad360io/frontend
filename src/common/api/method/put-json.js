@@ -1,4 +1,4 @@
 import {withPayloadJson} from "./with-payload-json";
 
-export const putJson = withPayloadJson("PUT");
+export const putJson = withPayloadJson("put");
 

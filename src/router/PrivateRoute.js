@@ -8,7 +8,7 @@ import { Route, Redirect } from 'react-router-dom';
 Other Components
 */
 import Header from '../components/header/Header.component';
-import {createFetcher} from "../common/api/fetcher";
+import {createAsyncHandling} from "../common/api/async-handling";
 
 
 /**
@@ -56,7 +56,7 @@ class Loader extends React.Component {
     loader = () => {
         const {auth} = this.props;
         let token = auth && auth.getAuthorizationToken ? auth.getAuthorizationToken() : null;
-        this.allApis = createFetcher(token, () => console.log('error+++'))
+        this.allApis = createAsyncHandling(token, () => console.log('error+++'))
     };
 
     render() {

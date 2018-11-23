@@ -79,14 +79,14 @@ class Marketplace extends Component {
         const { allApis : {getJson} } = this.props;
         const { currentPageNum } = this.state;
 
-        let params = this.getParamQuery();
+        let queryParams = this.getParamQuery();
 
         let headers = {
             Prefer: "count=exact",
             Range: `${pageSize * (currentPageNum - 1)}-${(pageSize * currentPageNum) - 1}`
         };
 
-        let resp = await marketplaceApi.getListing(getJson, params, headers);
+        let resp = await marketplaceApi(getJson, {queryParams, headers});
 
         let total = +resp.headers['content-range'].split('/')[1];
 

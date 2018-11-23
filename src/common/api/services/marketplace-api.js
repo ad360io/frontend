@@ -1,3 +1,1 @@
-export const marketplaceApi = {
-    getListing: (method, data, headers) => method(`/listing`, data, headers)
-};
+export const marketplaceApi = (method, args) => method(`/listing`, args);
