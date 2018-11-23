@@ -1,29 +1,29 @@
 /*
 Core Libs
 */
-import React, { Component }    from 'react';
-import PropTypes               from 'prop-types'
-import { connect }             from 'react-redux';
-import { withRouter, NavLink } from 'react-router-dom';
+import React, {Component} from 'react';
+import PropTypes from 'prop-types'
+import {connect} from 'react-redux';
+import {withRouter, NavLink} from 'react-router-dom';
 
 /*
 Material UI Components
 */
-import { Card, CardText, CardTitle } from 'material-ui/Card';
+import {Card, CardText, CardTitle} from 'material-ui/Card';
 
 /*
 React Bootstrap
 */
 //import { Modal, Button, FormGroup, FormControl } from 'react-bootstrap';
-import { Button } from 'react-bootstrap';
+import {Button} from 'react-bootstrap';
 
 /*
 Placeholder Images
 */
-import branded_content_ph      from '../../../../assets/images/branded_content_placeholder.png';
+import branded_content_ph from '../../../../assets/images/branded_content_placeholder.png';
 import influencer_marketing_ph from '../../../../assets/images/influencer_marketing_placeholder.png';
-import sponsorships_ph         from '../../../../assets/images/sponsorships_placeholder.png';
-import default_ph              from '../../../../assets/images/pug_face.jpg';
+import sponsorships_ph from '../../../../assets/images/sponsorships_placeholder.png';
+import default_ph from '../../../../assets/images/pug_face.jpg';
 
 /*
 Local CSS
@@ -36,11 +36,11 @@ import './ListingCard.component.css';
  *      requires a props of a single listing object.
  */
 class ListingCard extends Component {
-    
+
     static contextTypes = {
         router: PropTypes.object
     }
-    
+
     constructor(props) {
         super(props)
 
@@ -73,15 +73,15 @@ class ListingCard extends Component {
     }
 
     updateWindowDimensions() {
-        this.setState({ ...this.state, width: window.innerWidth });
+        this.setState({...this.state, width: window.innerWidth});
     }
 
-    handleShowModal(){
-        this.setState({ ...this.state, show: true });
+    handleShowModal() {
+        this.setState({...this.state, show: true});
     }
 
-    handleHideModal(){
-        this.setState({ ...this.state, show: false });
+    handleHideModal() {
+        this.setState({...this.state, show: false});
     }
 
     /**
@@ -89,11 +89,11 @@ class ListingCard extends Component {
      * to avoid too many white spaces on the card
      */
     decideCardWidth() {
-        if(this.state.width >= 1550){
+        if (this.state.width >= 1550) {
             return '30%';
-        }else if(this.state.width >= 1200){
+        } else if (this.state.width >= 1200) {
             return '45%';
-        }else{
+        } else {
             return '80%';
         }
     }
@@ -101,10 +101,10 @@ class ListingCard extends Component {
     /**
      * On medium to small screens, save space from margin-left
      */
-    decideMarginLeft(){
-        if(this.state.width >= 1200) {
+    decideMarginLeft() {
+        if (this.state.width >= 1200) {
             return '2%';
-        }else{
+        } else {
             return '7%';
         }
     }
@@ -112,8 +112,8 @@ class ListingCard extends Component {
     /**
      * Decide placeholder image based on the listing's genre
      */
-    decidePlaceholderImage(){
-        switch(this.props.listing.ad_format){
+    decidePlaceholderImage() {
+        switch (this.props.listing.ad_format) {
             case 'Branded Content':
                 return branded_content_ph;
             case 'Influencer Post':
@@ -134,32 +134,32 @@ class ListingCard extends Component {
         // Each character in CardTitle is around 10-13px
         let cardWidthInPercent;
         let drawerSize = 300;
-        
-        if(this.state.width >= 1440){
+
+        if (this.state.width >= 1440) {
             // In 3 column mode, each card is 30% of the (full window width - drawer size)
             // To guarantee no visual bug, assume each character is 13px
             cardWidthInPercent = .3
-            
-        }else if(this.state.width >= 1200){
+
+        } else if (this.state.width >= 1200) {
             // In 2 column mode, each card is 45% of the full window width - drawer size
             cardWidthInPercent = .45
-        }else{
+        } else {
             // Single column mode, each card is 80% of the full window width
             cardWidthInPercent = .8
         }
 
         // Drawer closes at small screen, take into account
-        if(this.state.width <= 768){
+        if (this.state.width <= 768) {
             drawerSize = 0;
         }
 
-        // Get the count of original title 
+        // Get the count of original title
         // and the count of characters without overflowing
         // to detect if we need '...' at the end of title.
         const numberOfCharOriginal = this.props.listing.name.length;
         const numberOfCharAllowed = Math.floor((this.state.width - drawerSize) * cardWidthInPercent / 13);
         const dotDotDot = (numberOfCharAllowed < numberOfCharOriginal ? '...' : '')
-        return this.props.listing.name.slice(0, numberOfCharAllowed)+dotDotDot;
+        return this.props.listing.name.slice(0, numberOfCharAllowed) + dotDotDot;
     }
 
     decideContactInfo() {
@@ -167,24 +167,24 @@ class ListingCard extends Component {
     }
 
     decideDescription() {
-        if(this.props.modeFilter === 'Advertiser'){
+        if (this.props.modeFilter === 'Advertiser') {
             return this.props.listing.description;
-        }else{
+        } else {
             return this.props.listing.description;
         }
     }
 
     decidePriceTag() {
-        if(this.props.modeFilter === 'Advertiser') {
-            return this.props.listing.price + ' ' + this.props.listing.currency.toUpperCase();
-        }else{
+        if (this.props.modeFilter === 'Advertiser') {
+            return (this.props.listing.price ? this.props.listing.price : 0) + ' ' + this.props.listing.currency.toUpperCase();
+        } else {
             return '';
         }
     }
 
     render() {
-        return <NavLink to={'/listing/'+this.props.listing.id} >
-            {this.props.viewModeFilter === 'Grid'  
+        return <NavLink to={'/listing/' + this.props.listing.id}>
+            {this.props.viewModeFilter === 'Grid'
                 ? <GridCardRenderer
                     width={this.decideCardWidth()}
                     marginLeft={this.decideMarginLeft()}
@@ -207,7 +207,7 @@ class ListingCard extends Component {
                     id={this.props.listing.id}
                 />
             }
-            
+
             {/* <Modal show={this.state.show} onHide={this.handleHideModal}>
                 <Modal.Header closeButton>
                     <Modal.Title>Invite to {this.props.listing.contentTopic}</Modal.Title>
@@ -221,9 +221,9 @@ class ListingCard extends Component {
                     <br />
                     <h3>Additional Info</h3>
                     <FormGroup controlId='control-form-additional-info'>
-                        <FormControl componentClass='textarea' 
-                            placeholder='Is there anything that you want them to know?' 
-                            maxLength={280} 
+                        <FormControl componentClass='textarea'
+                            placeholder='Is there anything that you want them to know?'
+                            maxLength={280}
                             rows={8}
                             style={{resize: 'vertical'}}/>
                     </FormGroup>
@@ -237,66 +237,68 @@ class ListingCard extends Component {
     }
 }
 
-const GridCardRenderer = ({ 
-        width, 
-        marginLeft, 
-        contactInfo, 
-        priceTag, 
-        title,
-        placeholderImage, 
-        description, 
-        dateAdded,
-        id, 
-    }) => ( <Card className='grid-card-container noselect'
-                style={{ 
-                    width,
-                    marginLeft,
-                }}
-            >
-                <div className='poster-tag'>{contactInfo} </div>
-                <div className='price-tag'>{priceTag}</div>)   
-                <CardTitle 
-                    title={title} 
-                    subtitle={'Posted on: '+ dateAdded.slice(0,10)} 
-                    style={{paddingBottom:'0px'}}/>
-                <img src={placeholderImage} className='grid-img' alt='listing-img'/>
-                <CardText className='grid-msg-container'>
-                    <span className="listing-msg">{description}</span>
-                </CardText>
-                <Button 
-                    bsStyle='primary' 
-                    className='btn-contact-action' 
-                >
-                    Explore This Listing
-                </Button>
-            </Card>
-)
-
-const ListingCardRenderer = ({ 
-                                marginLeft, 
-                                contactInfo, 
-                                priceTag, 
-                                title, 
-                                placeholderImage, 
-                                description, 
-                                dateAdded,
-                                id,
-                            }) => (
-    <Card className='listing-card-container noselect' 
-        style={{ 
-            width: '90%',
-            marginLeft,
-            marginRIght: '2%'
-        }}
+const GridCardRenderer = ({
+                              width,
+                              marginLeft,
+                              contactInfo,
+                              priceTag,
+                              title,
+                              placeholderImage,
+                              description,
+                              dateAdded,
+                              id,
+                          }) => (<Card className='grid-card-container noselect'
+                                       style={{
+                                           width,
+                                           marginLeft,
+                                       }}
     >
         <div className='poster-tag'>{contactInfo} </div>
-        <div className='price-tag'>{priceTag}</div>)
-            
-        <CardTitle 
-            title={title} 
-            subtitle={'Posted on: '+ dateAdded.slice(0,10)} 
+        <div className='price-tag'>{priceTag}</div>
+        )
+        <CardTitle
+            title={title}
+            subtitle={'Posted on: ' + dateAdded.slice(0, 10)}
+            style={{paddingBottom: '0px'}}/>
+        <img src={placeholderImage} className='grid-img' alt='listing-img'/>
+        <CardText className='grid-msg-container'>
+            <span className="listing-msg">{description}</span>
+        </CardText>
+        <Button
+            bsStyle='primary'
+            className='btn-contact-action'
+        >
+            Explore This Listing
+        </Button>
+    </Card>
+)
+
+const ListingCardRenderer = ({
+                                 marginLeft,
+                                 contactInfo,
+                                 priceTag,
+                                 title,
+                                 placeholderImage,
+                                 description,
+                                 dateAdded,
+                                 id,
+                             }) => (
+    <Card className='listing-card-container noselect'
+          style={{
+              width: '90%',
+              marginLeft,
+              marginRIght: '2%'
+          }}
+    >
+        <div className='poster-tag'>{contactInfo} </div>
+        <div className='price-tag'>{priceTag}</div>
+        )
+
+        <CardTitle
+            title={title}
+            subtitle={'Posted on: ' + dateAdded.slice(0, 10)}
             className='listing-card-title'
-            style={{paddingBottom:'0px'}}/>
+            style={{paddingBottom: '0px'}}/>
         <img src={placeholderImage} className='listing-img' alt='listing-img'/>
         <CardText className='listing-msg-container'>
             <span className="listing-msg">{description}</span>
@@ -310,7 +312,7 @@ ListingCard.propTypes = {
 
 const mapStateToProps = (state) => {
     return {
-        viewModeFilter : state.MarketplaceFilterReducer.viewModeFilter
+        viewModeFilter: state.MarketplaceFilterReducer.viewModeFilter
     }
 }
 

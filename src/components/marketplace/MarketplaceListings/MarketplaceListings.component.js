@@ -52,7 +52,7 @@ class MarketplaceListings extends Component {
             <div className='marketplace-listings-container'>
                 <h3 className='marketplace-title'>{this.getTitle(total)}</h3>
                 { listing.map((listing, i) => (
-                        <ListingCard key={'listingCard' + i} listing={listing} modeFilter={this.props.modeFilter} />
+                    <ListingCard key={'listingCard' + i} listing={listing} modeFilter={this.props.modeFilter} />
                 ))}
 
                 <div style={{ textAlign: 'center' }}>

@@ -44,11 +44,7 @@ class Marketplace extends Component {
     constructor(props) {
         super(props);
 
-        console.log('0000');
-        console.log(props);
-        console.log('----');
-
-        console.log(this.getModeCurrencyURLQuery());
+        /*
         const onStartURL = "https://marketplacedb.qchain.co/listing?" + this.getModeCurrencyURLQuery();
         // const onStartURL = "https://marketplacedb.qchain.co/detailed_listing_view?" + this.getModeCurrencyURLQuery();
 
@@ -74,6 +70,7 @@ class Marketplace extends Component {
             .catch((err) => {
                 console.log(err);
             });
+        */
 
         //Sample
 
