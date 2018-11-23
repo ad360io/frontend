@@ -46,7 +46,7 @@ class Marketplace extends Component {
 
     getParamQuery = () => {
         const { modeFilter, currencyFilter } = this.props;
-        const { filters : {budget, sortingType, adFormatFilter, mediumFilter} } = this.state;
+        const { filters : {budget, sortingType, adFormatFilter, mediumFilter, keyword} } = this.state;
 
         let sortValue = {
             'Date Added'           : 'id.desc',
@@ -54,17 +54,24 @@ class Marketplace extends Component {
             'Price (High - Low)'   : 'price.desc'
         }[sortingType] || null;
 
+
+        // or=("
+        //     + "name.ilike.*" + this.props.keyword + "*,"
+        //     + "owner_name.ilike.*" + this.props.keyword + "*,"
+        //     + "description.ilike.*" + this.props.keyword + "*)"
+
         return {
             // ...( modeFilter === "Advertiser" && { }),
-            ...( sortValue == null ? {} : {order : sortValue} ),
-            ...( adFormatFilter === 'Show All' ? {} :
+            ...(!isEmpty(keyword) && {or: `(name.ilike.*${keyword}*,description.ilike.*${keyword}*)`}),
+            ...( sortValue != null && {order : sortValue} ),
+            ...( adFormatFilter !== 'Show All' &&
                 {
                     ad_format: `eq.${encodeURIComponent(this.props.adFormatFilter)}`,
                     ...(!isEmpty(mediumFilter) ? { medium: `eq.${encodeURIComponent(this.props.mediumFilter)}`} : {})
                 }
             ),
             currency: `eq.${currencyFilter}`,
-            price: `lte.${budget * 1000}`
+            price: `lte.${budget * 1000}`,
         }
     };
 
@@ -99,19 +106,21 @@ class Marketplace extends Component {
             listing, total, currentPageNum
         } = this.state;
 
+        console.log(listing);
+
         return (
             <div style={{ 'position': 'relative' }}>
                 <div className='marketplace-container'>
                     <MarketplaceFilter
                         {...{
                             filters,
-                            onChange: (filters) => this.setState({filters}, () => this.getData())
+                            onChange: (filters) => this.setState({ filters, listing: null }, () => this.getData())
                         }}
                     />
                     <MarketplaceListings
                         {...{
                             listing, total, currentPageNum,
-                            onChangePage: (page) => this.setState({currentPageNum: page}, () => this.getData())
+                            onChangePage: (page) => this.setState({ currentPageNum: page }, () => this.getData())
                         }}
                     />
                 </div>

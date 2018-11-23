@@ -2,39 +2,44 @@
 Core Libs
 */
 import React from 'react';
-import { connect } from 'react-redux';
-
-/*
-Search Input
-*/
-import SearchInput from 'react-search-input';
-
 /*
 Local CSS
 */
 import './KeywordFilter.component.css';
+import { keywordFilterCss } from "./KeywordFilter.style";
 
 
-const KeywordFilter = ({ onChange }) => (
-    <div className='keyword-filter-container'>
-        <SearchInput className='search-input' onChange={onChange} />
-    </div>
-)
+class KeywordFilter extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            value: ''
+        }
+    }
 
-const mapStateToProps = (state) => {
-    return {
+    render() {
+        let { value } = this.state;
+        let { onChange } = this.props;
 
+        return (
+            <div className={keywordFilterCss}>
+                <div className="input-icon">
+                    <i className="material-icons">search</i>
+                    <input
+                        type="text"
+                        value={value}
+                        onChange={(e) => this.setState({value: e.target.value})}
+                    />
+                </div>
+                <button
+                    className="search-btn"
+                    onClick={() => onChange(value)}
+                >
+                    Search
+                </button>
+            </div>
+        )
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-
-    }
-}
-
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(KeywordFilter);
+export default KeywordFilter;
