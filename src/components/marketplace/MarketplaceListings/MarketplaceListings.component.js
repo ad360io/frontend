@@ -25,56 +25,83 @@ const pageSize = 5;
  *         Future Task: * auto load on scroll should happen here
  */
 class MarketplaceListings extends Component {
-
     constructor(props) {
         super(props);
-        this.decideTitle = this.decideTitle.bind(this);
     }
 
     /**
      * Display Title of Listings Component
-     * Purely for presentational purposes 
+     * Purely for presentational purposes
      * @param {Number} listingSize size of the listing array after filtering
      */
-    decideTitle(listingSize) {
+    getTitle = (listingSize) => {
         const listingType = (this.props.modeFilter === 'Advertiser' ? 'Content Spaces' : 'Contents');
         const isEmpty = (listingSize > 0 ? '' : 'No ')
         return isEmpty + listingType + ' Available';
     }
 
     render() {
-        let pages = Math.ceil(this.props.totalListingCount / pageSize);
-        let items = [];
-        if (pages > 1) {
-            for (let i = 1; i < pages + 1; i++) {
-                items.push(<Pagination.Item
-                    key={'listingPage' + i}
-                    active={i === this.props.currentPageNumber}
-                    onClick={() => this.props.onPageItemClick(i)}
-                >
-                    {i}
-                </Pagination.Item>);
-            }
-        }
+        //TODO: error page
+        const { listing, total, currentPageNum, onChangePage } = this.props;
 
-        if (this.props.hasError) {
-            return <ErrorPage />
-        } else if ((this.props.fetched && !this.props.hasError)) {
-            return <div className='marketplace-listings-container' ref={(ref) => this._containerDiv = ref}>
-                <h3 className='marketplace-title'>{this.decideTitle(this.props.totalListingCount)}</h3>
-                {
-                    this.props.listings.map((listing, i) => {
-                        return <ListingCard key={'listingCard' + i} listing={listing} modeFilter={this.props.modeFilter} />
-                    })
-                }
-                <div style={{ textAlign: 'center', marginBottom: '96px' }}>
-                    <Pagination className='listing-pages' bsStyle='small'>{items}</Pagination>
+        if(listing == null) return <div className='loading-container'><CircularProgress className='marketplace-listing-loading' size={100} thickness={6} color="purple"/> </div>;
+
+        let pages = Math.ceil(total / pageSize);
+
+        return (
+            <div className='marketplace-listings-container'>
+                <h3 className='marketplace-title'>{this.getTitle(total)}</h3>
+                { listing.map((listing, i) => (
+                        <ListingCard key={'listingCard' + i} listing={listing} modeFilter={this.props.modeFilter} />
+                ))}
+
+                <div style={{ textAlign: 'center' }}>
+                    <Pagination className='listing-pages' bsStyle='small'>
+                        { Array(pages).fill(1).map((_, i) => (
+                            <Pagination.Item
+                                key={'listingPage' + i}
+                                active={i + 1 === currentPageNum}
+                                onClick={() => onChangePage(i + 1)}
+                            >
+                                {i + 1}
+                            </Pagination.Item>
+                        ))}
+                    </Pagination>
                 </div>
-
             </div>
-        } else {
-            return <div className='loading-container'><CircularProgress className='marketplace-listing-loading' size={100} thickness={6} color="purple"/> </div>
-        }
+        );
+
+        // let items = [];
+        // if (pages > 1) {
+        //     for (let i = 1; i < pages + 1; i++) {
+        //         items.push(<Pagination.Item
+        //             key={'listingPage' + i}
+        //             active={i === this.props.currentPageNumber}
+        //             onClick={() => this.props.onPageItemClick(i)}
+        //         >
+        //             {i}
+        //         </Pagination.Item>);
+        //     }
+        // }
+        //
+        // if (this.props.hasError) {
+        //     return <ErrorPage />
+        // } else if ((this.props.fetched && !this.props.hasError)) {
+        //     return <div className='marketplace-listings-container' ref={(ref) => this._containerDiv = ref}>
+        //         <h3 className='marketplace-title'>{this.decideTitle(this.props.totalListingCount)}</h3>
+        //         {
+        //             this.props.listings.map((listing, i) => {
+        //                 return <ListingCard key={'listingCard' + i} listing={listing} modeFilter={this.props.modeFilter} />
+        //             })
+        //         }
+        //         <div style={{ textAlign: 'center', marginBottom: '96px' }}>
+        //             <Pagination className='listing-pages' bsStyle='small'>{items}</Pagination>
+        //         </div>
+        //
+        //     </div>
+        // } else {
+        //     return <div className='loading-container'><CircularProgress className='marketplace-listing-loading' size={100} thickness={6} color="purple"/> </div>
+        // }
 
     }
 }

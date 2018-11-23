@@ -60,6 +60,7 @@ class Marketplace extends Component {
             }
         };
 
+
         // props.loadData(onStartURL, config);
 
         var marketplace_data;
@@ -75,20 +76,32 @@ class Marketplace extends Component {
             });
 
         //Sample
+
+        this.state = {
+            listing: null,
+            total: 0,
+            currentPageNum: 1
+        };
+
         this.getData();
     }
 
     getData = async() => {
         const { allApis : {getJson} } = this.props;
+        const { currentPageNum } = this.state;
+
         let params = {currency : "eq.EQC"};
+
         let headers = {
             Prefer: "count=exact",
-            Range: `0-10`
+            Range: `${pageSize * (currentPageNum - 1)}-${(pageSize * currentPageNum) - 1}`
         };
 
         let resp = await marketplaceApi.getListing(getJson, params, headers);
 
-        console.log(resp);
+        let total = +resp.headers['content-range'].split('/')[1];
+
+        this.setState({listing: resp.data, total})
     };
 
     componentDidMount() {
@@ -186,16 +199,23 @@ class Marketplace extends Component {
     }
 
     render() {
+        const { listing, total, currentPageNum } = this.state;
+
         return (
             <div style={{ 'position': 'relative' }}>
                 <div className='marketplace-container'>
                     <MarketplaceFilter />
-                    <MarketplaceListings />
+                    <MarketplaceListings
+                        {...{
+                            listing, total, currentPageNum,
+                            onChangePage: (page) => this.setState({currentPageNum: page}, () => this.getData())
+                        }}
+                    />
                 </div>
 
                 <br /><br /><br /><br />
 
-                <Footer />
+                {/*<Footer />*/}
             </div>
         )
     }

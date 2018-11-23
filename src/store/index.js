@@ -14,7 +14,7 @@ import RootReducer from '../reducers/RootReducer';
 // Middleware
 const middleware = [thunk];
 if (process.env.NODE_ENV !== 'production') {
-  middleware.push(createLogger());
+  // middleware.push(createLogger());
 }
 
 // Store
