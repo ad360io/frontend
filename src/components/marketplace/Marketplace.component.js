@@ -106,8 +106,6 @@ class Marketplace extends Component {
             listing, total, currentPageNum
         } = this.state;
 
-        console.log(listing);
-
         return (
             <div style={{ 'position': 'relative' }}>
                 <div className='marketplace-container'>
@@ -124,10 +122,6 @@ class Marketplace extends Component {
                         }}
                     />
                 </div>
-
-                {/*<br /><br /><br /><br />*/}
-
-                {/*<Footer />*/}
             </div>
         )
     }

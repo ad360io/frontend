@@ -12,6 +12,7 @@ import { Popover, OverlayTrigger } from 'react-bootstrap';
 
 import Divider from 'material-ui/Divider';
 import {myOffersViewApi} from "../../../../common/api/services/my-offers-view-api";
+import {LoadingPanel} from "../../../../common/components/LoadingPanel";
 
 
 /**
@@ -25,7 +26,7 @@ class OfferList extends Component {
         this.state = {
             finished: false,
             err: null,
-            activeOffers: [],
+            activeOffers: null,
         };
     }
 
@@ -69,7 +70,7 @@ class OfferList extends Component {
     render() {
         let { activeOffers } = this.state;
 
-        if( activeOffers == null ) return <div/>;
+        if( activeOffers == null ) return <LoadingPanel/>;
 
         return (
             <div className='invite-list-container'>

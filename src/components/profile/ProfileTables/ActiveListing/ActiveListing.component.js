@@ -5,6 +5,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import './ActiveListing.component.css';
+import {contentspaceListingApi} from "../../../../common/api/services/contentspace-listing-api";
+import {LoadingPanel} from "../../../../common/components/LoadingPanel";
 
 /**
  * ActiveListing Component
@@ -16,7 +18,7 @@ class ActiveListing extends Component {
         this.state = {
             finished: false,
             err: null,
-            activeListing: [],
+            activeListing: null,
             order: '?order=name.asc'
         }
     }
@@ -40,7 +42,14 @@ class ActiveListing extends Component {
         }
     }
 
-    loadData = () => {
+    loadData = async () => {
+        const { allApis: {getJson} } = this.props;
+
+        let resp = await contentspaceListingApi(getJson, { queryParams: { order: `name.asc`} });
+
+        this.setState({activeListing: resp.data});
+
+        /*
         const activeListingURL = this.decideURL();
         const config = {
             headers: { Authorization: "Bearer " + localStorage.getItem('id_token') }
@@ -61,7 +70,9 @@ class ActiveListing extends Component {
                     err: err
                 })
             })
-    }
+
+        */
+    };
 
     handleThClick = (header) => {
         new Promise((resolve) => {
@@ -77,20 +88,19 @@ class ActiveListing extends Component {
         }).then(() => {
             this.loadData();
         })
-    }
+    };
 
     render() {
-        return <div className='active-listing-container'>
-            <div className='table-responsive' style={{ height: '100%', margin: '2%', minHeight: '320px' }}>
-                {
-                    (this.state.finished && this.state.err === null && this.state.activeListing.length === 0)
-                        ? (<p style={{ textAlign: 'center' }}>There is currently no active listing...</p>)
-                        : null
-                }
+        const {activeListing} = this.state;
 
-                {
-                    (this.state.finished && this.state.err === null && this.state.activeListing.length > 0)
-                        ? (<table className='table table-bordered mb-0'>
+        if(activeListing == null) return <LoadingPanel/>;
+
+        return (
+            <div className='active-listing-container'>
+                <div className='table-responsive' style={{ height: '100%', margin: '2%', minHeight: '320px' }}>
+                    { (activeListing.length === 0)
+                        ? (<p style={{ textAlign: 'center' }}>There is currently no active listing...</p>)
+                        : (<table className='table table-bordered mb-0'>
                             <thead className='thead-default'>
                                 <tr>
                                     <th
@@ -105,23 +115,20 @@ class ActiveListing extends Component {
                                 </tr>
                             </thead>
                             <tbody>
-                                {
-                                    this.state.activeListing.map((listing, i) => {
-                                        return (<tr key={'listingtr' + i}>
-                                            <td>{listing.name}</td>
-                                            <td>{listing.ad_format}</td>
-                                            <td>{listing.medium}</td>
-                                        </tr>)
-                                    })
-                                }
+                            { activeListing.map((listing, i) => (
+                                <tr key={'listingtr' + i}>
+                                    <td>{listing.name}</td>
+                                    <td>{listing.ad_format}</td>
+                                    <td>{listing.medium}</td>
+                                </tr>
+                            ))}
                             </tbody>
-
                         </table>
                         )
-                        : null
-                }
+                    }
+                </div>
             </div>
-        </div>
+        )
     }
 }
 

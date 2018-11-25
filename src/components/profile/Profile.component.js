@@ -91,7 +91,7 @@ class Profile extends Component {
 
     componentDidMount() {
         document.title = "Qchain - Profile";
-        window.scrollTo(0, 0);
+        // window.scrollTo(0, 0);
     }
 
     componentDidUpdate(prevProps) {

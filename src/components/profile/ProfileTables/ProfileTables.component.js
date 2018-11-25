@@ -72,7 +72,10 @@ class ProfileTables extends Component {
                         </Tab>
                 }
                 <Tab eventKey={1} title='Active Listing'>
-                    <ActiveListing reader={this.props.reader} userId={this.props.userId} />
+                    <ActiveListing
+                        { ...{ allApis } }
+                        reader={this.props.reader} userId={this.props.userId}
+                    />
                 </Tab>
                 <Tab eventKey={2} title='Active Request'>
                     <ActiveRequest reader={this.props.reader} userId={this.props.userId} />
@@ -84,7 +87,7 @@ class ProfileTables extends Component {
                     this.props.reader
                         ? null
                         : <Tab eventKey={4} title='Inactive Contracts'>
-                            <InactiveContract />
+                            <InactiveContract { ...{ allApis } } />
                         </Tab>
                 }
 
