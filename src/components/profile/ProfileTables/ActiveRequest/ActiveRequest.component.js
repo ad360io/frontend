@@ -5,6 +5,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import './ActiveRequest.component.css';
+import {LoadingPanel} from "../../../../common/components/LoadingPanel";
+import isEqual from "lodash/isEqual";
 
 /**
  * ActiveRequest Component
@@ -15,23 +17,51 @@ class ActiveRequest extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            finished: false,
-            err: null,
-            activeListing: [],
-            order: '?order=name.asc'
+            // finished: false,
+            // err: null,
+            activeListing: null,
+            order: '?order=name.asc',
+
+            orderBy: {
+                value: 'name',
+                asc: true
+            }
+        }
+
+        this.loadData(this.state.orderBy);
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if(!isEqual(prevState.orderBy, this.state.orderBy)) {
+            this.loadData(this.state.orderBy);
         }
     }
 
-    componentWillMount() {
-        this.loadData();
-    }
+    toggleSort = (sortValue) => {
+        let { orderBy } = this.state;
 
-    componentWillUpdate(prevProps){
-        if(prevProps.reader !== this.props.reader
-        || prevProps.userId !== this.props.userId){
-            this.loadData();
+        if (orderBy == null || orderBy.value !== sortValue) {
+            this.setState({orderBy: {value: sortValue, asc: true}});
+        } else {
+            if (orderBy.asc) {
+                this.setState({orderBy: {value: sortValue, asc: false}});
+            } else {
+                this.setState({orderBy: {value: sortValue, asc: true}});
+            }
         }
-    }
+    };
+
+
+    // componentWillMount() {
+    //     this.loadData();
+    // }
+    //
+    // componentWillUpdate(prevProps){
+    //     if(prevProps.reader !== this.props.reader
+    //     || prevProps.userId !== this.props.userId){
+    //         this.loadData();
+    //     }
+    // }
 
     decideURL = () => {
         if(this.props.reader) {
@@ -42,7 +72,16 @@ class ActiveRequest extends Component {
         }
     }
 
-    loadData = () => {
+    loadData = async (orderBy) => {
+        let { allApis : { getJson }} = this.props;
+
+        let queryParams = orderBy ? { order: `${orderBy.value}.${orderBy.asc ? `asc` : `desc`}`} : {};
+
+        let resp = await getJson(`/my_active_content_request`, {queryParams} );
+
+        this.setState({activeListing: resp.data});
+
+        /*
         const activeListingURL = this.decideURL();
         const config = {
             headers: { Authorization: "Bearer " + localStorage.getItem('id_token') }
@@ -63,65 +102,46 @@ class ActiveRequest extends Component {
                     err: err
                 })
             })
-    }
 
-    handleThClick = (header) => {
-        new Promise((resolve) => {
-            if (this.state.order.includes(header)) {
-                if (this.state.order.includes(".desc")) {
-                    resolve(this.setState({ ...this.state, order: `?order=${header}` }))
-                } else {
-                    resolve(this.setState({ ...this.state, order: `?order=${header}.desc` }))
-                }
-            } else {
-                resolve(this.setState({ ...this.state, order: `?order=${header}` }))
-            }
-        }).then(() => {
-            this.loadData();
-        })
+        */
     }
 
     render() {
+        const {activeListing} = this.state;
+
+        if(activeListing == null) return <LoadingPanel/>;
+
         return <div className='active-listing-container'>
             <div className='table-responsive' style={{ height: '100%', margin: '2%', minHeight: '320px' }}>
 
-                {
-                    (this.state.finished && this.state.err === null && this.state.activeListing.length === 0)
-                        ? (<p style={{ textAlign: 'center' }}>There is currently no active request...</p>)
-                        : null
-                }
-
-                {
-                    (this.state.finished && this.state.err === null && this.state.activeListing.length > 0)
-                        ? (<table className='table table-bordered mb-0'>
-                            <thead className='thead-default'>
-                                <tr>
-                                    <th
-                                        className='active-request-th'
-                                        onClick={() => this.handleThClick('name')}>Content Space Title</th>
-                                    <th
-                                        className='active-request-th'
-                                        onClick={() => this.handleThClick('ad_format')}>Ad Format</th>
-                                    <th
-                                        className='active-request-th'
-                                        onClick={() => this.handleThClick('medium')}>Medium</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {
-                                    this.state.activeListing.map((listing, i) => {
-                                        return (<tr key={'listingtr' + i}>
-                                            <td>{listing.name}</td>
-                                            <td>{listing.ad_format}</td>
-                                            <td>{listing.medium}</td>
-                                        </tr>)
-                                    })
-                                }
-                            </tbody>
-
-                        </table>
-                        )
-                        : null
+                {(activeListing.length === 0)
+                    ? (<p style={{ textAlign: 'center' }}>There is currently no active request...</p>)
+                    : (<table className='table table-bordered mb-0'>
+                        <thead className='thead-default'>
+                            <tr>
+                                <th
+                                    className='active-request-th'
+                                    onClick={() => this.toggleSort('name')}>Content Space Title</th>
+                                <th
+                                    className='active-request-th'
+                                    onClick={() => this.toggleSort('ad_format')}>Ad Format</th>
+                                <th
+                                    className='active-request-th'
+                                    onClick={() => this.toggleSort('medium')}>Medium</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        { activeListing.map((listing, i) => (
+                            <tr key={'listingtr' + i}>
+                                <td>{listing.name}</td>
+                                <td>{listing.ad_format}</td>
+                                <td>{listing.medium}</td>
+                            </tr>
+                        ))
+                        }
+                        </tbody>
+                    </table>
+                )
                 }
             </div>
         </div>

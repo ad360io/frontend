@@ -7,6 +7,7 @@ import axios from 'axios';
 import './ActiveListing.component.css';
 import {contentspaceListingApi} from "../../../../common/api/services/contentspace-listing-api";
 import {LoadingPanel} from "../../../../common/components/LoadingPanel";
+import isEqual from "lodash/isEqual";
 
 /**
  * ActiveListing Component
@@ -19,20 +20,36 @@ class ActiveListing extends Component {
             finished: false,
             err: null,
             activeListing: null,
-            order: '?order=name.asc'
+            order: '?order=name.asc',
+
+            orderBy: {
+                value: 'name',
+                asc: true
+            }
+        };
+
+        this.loadData(this.state.orderBy);
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if(!isEqual(prevState.orderBy, this.state.orderBy)) {
+            this.loadData(this.state.orderBy);
         }
     }
 
-    componentWillUpdate(prevProps) {
-        if(this.props.reader !== prevProps.reader
-        || this.props.userId !== prevProps.userId){
-            this.loadData();
-        }
-    }
+    toggleSort = (sortValue) => {
+        let { orderBy } = this.state;
 
-    componentDidMount() {
-        this.loadData();
-    }
+        if (orderBy == null || orderBy.value !== sortValue) {
+            this.setState({orderBy: {value: sortValue, asc: true}});
+        } else {
+            if (orderBy.asc) {
+                this.setState({orderBy: {value: sortValue, asc: false}});
+            } else {
+                this.setState({orderBy: {value: sortValue, asc: true}});
+            }
+        }
+    };
 
     decideURL = () => {
         if(this.props.reader) {
@@ -42,10 +59,12 @@ class ActiveListing extends Component {
         }
     }
 
-    loadData = async () => {
+    loadData = async (orderBy) => {
         const { allApis: {getJson} } = this.props;
 
-        let resp = await contentspaceListingApi(getJson, { queryParams: { order: `name.asc`} });
+        let queryParams = orderBy ? { order: `${orderBy.value}.${orderBy.asc ? `asc` : `desc`}`} : {};
+
+        let resp = await contentspaceListingApi(getJson, { queryParams });
 
         this.setState({activeListing: resp.data});
 
@@ -74,22 +93,6 @@ class ActiveListing extends Component {
         */
     };
 
-    handleThClick = (header) => {
-        new Promise((resolve) => {
-            if (this.state.order.includes(header)) {
-                if (this.state.order.includes(".desc")) {
-                    resolve(this.setState({ ...this.state, order: `?order=${header}` }))
-                } else {
-                    resolve(this.setState({ ...this.state, order: `?order=${header}.desc` }))
-                }
-            } else {
-                resolve(this.setState({ ...this.state, order: `?order=${header}` }))
-            }
-        }).then(() => {
-            this.loadData();
-        })
-    };
-
     render() {
         const {activeListing} = this.state;
 
@@ -105,13 +108,13 @@ class ActiveListing extends Component {
                                 <tr>
                                     <th
                                         className='active-listing-th'
-                                        onClick={() => this.handleThClick('name')}>Content Space Title</th>
+                                        onClick={() => this.toggleSort('name')}>Content Space Title</th>
                                     <th
                                         className='active-listing-th'
-                                        onClick={() => this.handleThClick('ad_format')}>Ad Format</th>
+                                        onClick={() => this.toggleSort('ad_format')}>Ad Format</th>
                                     <th
                                         className='active-listing-th'
-                                        onClick={() => this.handleThClick('medium')}>Medium</th>
+                                        onClick={() => this.toggleSort('medium')}>Medium</th>
                                 </tr>
                             </thead>
                             <tbody>

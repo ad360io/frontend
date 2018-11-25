@@ -78,10 +78,15 @@ class ProfileTables extends Component {
                     />
                 </Tab>
                 <Tab eventKey={2} title='Active Request'>
-                    <ActiveRequest reader={this.props.reader} userId={this.props.userId} />
+                    <ActiveRequest
+                        { ...{ allApis } }
+                        reader={this.props.reader} userId={this.props.userId}
+                    />
                 </Tab>
                 <Tab eventKey={3} title='Active Contracts'>
-                    <ActiveContract reader={this.props.reader} userId={this.props.userId} />
+                    <ActiveContract
+                        { ...{ allApis } }
+                        reader={this.props.reader} userId={this.props.userId} />
                 </Tab>
                 {
                     this.props.reader
