@@ -95,7 +95,7 @@ class ProfileTables extends Component {
                     this.props.reader
                         ? null
                         : <Tab eventKey={5} title='Invoices'>
-                            <Invoice />
+                            <Invoice { ...{ allApis } }/>
                         </Tab>
 
                 }
