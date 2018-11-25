@@ -83,7 +83,7 @@ const DashboardRenderer = ({ modeFilter, currencyFilter }) => (
         <DashboardNavigation modeFilter={modeFilter} />
         <DashboardDetail />
 
-        <Footer />
+        {/*<Footer />*/}
     </div>
 )
 

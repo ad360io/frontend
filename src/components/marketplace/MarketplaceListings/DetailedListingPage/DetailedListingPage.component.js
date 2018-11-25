@@ -125,7 +125,7 @@ class DetailedListingPage extends Component {
             </div>
         );
 
-
+        /*
         if (this.state.fetched && !this.state.emptyResponse) {
             if (this.state.listing.classtype === "request") {
                 return (
@@ -159,6 +159,8 @@ class DetailedListingPage extends Component {
         } else {
             return <div></div>
         }
+
+        */
     }
 }
 
@@ -166,7 +168,7 @@ const mapStateToProps = (state) => {
     return {
         email_verified: state.ProfileReducer.profile.email_verified
     }
-}
+};
 
 export default withRouter(connect(
     mapStateToProps,

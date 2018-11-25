@@ -9,6 +9,8 @@ Other Components
 */
 import Header from '../components/header/Header.component';
 import {createAsyncHandling} from "../common/api/async-handling";
+import Footer from "../components/footer/Footer.component";
+import {Layout} from "../common/components/Layout";
 
 
 /**
@@ -37,10 +39,11 @@ const PrivateRoute = ({ component: Component, auth: Auth, ...rest }) => (
 const PrivateContent = (props, Component, Auth) => (
     <Loader {...{auth: Auth}}>
         {({allApis}) => (
-            <div>
-                <Header auth={Auth}/>
-                <Component auth={Auth} {...{...props, allApis}} />
-            </div>
+            <Layout
+                header={ <Header auth={Auth}/> }
+                content={ <Component auth={Auth} {...{...props, allApis}} /> }
+                footer={ <Footer/> }
+            />
         )}
     </Loader>
 );

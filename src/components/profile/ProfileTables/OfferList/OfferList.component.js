@@ -11,6 +11,7 @@ import { Button } from 'react-bootstrap';
 import { Popover, OverlayTrigger } from 'react-bootstrap';
 
 import Divider from 'material-ui/Divider';
+import {myOffersViewApi} from "../../../../common/api/services/my-offers-view-api";
 
 
 /**
@@ -25,16 +26,22 @@ class OfferList extends Component {
             finished: false,
             err: null,
             activeOffers: [],
-        }
-        this.loadData = this.loadData.bind(this);
+        };
+    }
+
+    componentDidMount() {
         this.loadData();
     }
 
-    componentWillReceiveProps() {
-        this.loadData();
-    }
+    loadData = async () => {
+        const { allApis: {getJson}} = this.props;
 
-    loadData() {
+        let resp = await myOffersViewApi(getJson);
+
+        this.setState({activeOffers: resp.data});
+
+        /*
+
         const activeListingURL = "https://marketplacedb.qchain.co/my_offers_view";
         const config = {
             headers: { Authorization: "Bearer " + localStorage.getItem('id_token') }
@@ -55,42 +62,38 @@ class OfferList extends Component {
                     err: err
                 })
             })
-    }
+
+        */
+    };
 
     render() {
-        return <div className='invite-list-container'>
-            <div className='table-responsive' style={{ height: '100%', margin: '2%', minHeight: '320px' }}>
-                {
-                    (this.state.finished && this.state.err === null && this.state.activeOffers.length === 0)
-                        ? (<p style={{ textAlign: 'center' }}>There is currently no offering...</p>)
-                        : null
-                }
+        let { activeOffers } = this.state;
 
-                {
-                    (this.state.finished && this.state.err === null && this.state.activeOffers.length > 0)
-                        ? (
-                            <table className='table table-bordered mb-0'>
-                                <thead className='thead-default'>
-                                    <tr>
-                                        <th>Offer Detail</th>
-                                        <th style={{ width: '25%', textAlign: 'center' }}>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {
-                                        this.state.activeOffers.map((offer, i) => {
-                                            return <OfferRenderer offer={offer} refreshData={this.loadData} key={'offer' + i} />
-                                        })
-                                    }
-                                </tbody>
-                            </table>
+        if( activeOffers == null ) return <div/>;
+
+        return (
+            <div className='invite-list-container'>
+                <div className='table-responsive' style={{ height: '100%', margin: '2%', minHeight: '320px' }}>
+                    {(activeOffers.length === 0) ?
+                        <p style={{ textAlign: 'center' }}>There is currently no offering...</p> :
+                        ( <table className='table table-bordered mb-0'>
+                            <thead className='thead-default'>
+                            <tr>
+                                <th>Offer Detail</th>
+                                <th style={{ width: '25%', textAlign: 'center' }}>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            { activeOffers.map((offer, i) =>
+                                <OfferRenderer offer={offer} refreshData={this.loadData} key={'offer' + i} />
+                            )}
+                            </tbody>
+                        </table>
                         )
-                        : null
-                }
-
-
+                    }
+                </div>
             </div>
-        </div>
+        );
     }
 
 }
@@ -101,7 +104,7 @@ class OfferRenderer extends Component {
         this.state = {
             isProcessing: false,
             actionInfo: ''
-        }
+        };
         this.getInfoPopover = this.getInfoPopover.bind(this);
         this.handleDeclineOffer = this.handleDeclineOffer.bind(this);
         this.handleAcceptOffer = this.handleAcceptOffer.bind(this);

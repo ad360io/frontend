@@ -9,8 +9,8 @@
 }
 
 .header-container {
-    position: fixed;
-    top: 0;
+    /*position: fixed;*/
+    /*top: 0;*/
     width: 100vw;
     animation-name: fade-in;
     animation-fill-mode: forwards;

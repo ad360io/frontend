@@ -61,6 +61,7 @@ class Profile extends Component {
     }
 
     loadProfileData = () => {
+        console.log('1231');
         this.setState({ ...this.state, fetching: true, hasError: false });
 
         const accountURL = "https://marketplacedb.qchain.co/account?select=email,name,picture&role=eq." + this.props.match.params.userId;
@@ -136,6 +137,8 @@ class Profile extends Component {
 
 
     render() {
+        const { allApis } = this.props;
+
         // let nem_address_field;
 
         // if (this.props.profile.nem_address === 'undefined' || this.props.profile.nem_address === '') {
@@ -155,12 +158,7 @@ class Profile extends Component {
                     <Media.Body>
                         <Media.Heading style={mediaHeadingStyle}>
                             <p style={{ float: 'left' }}>{this.getNickname()}</p>
-                            {
-                                (this.state.reader)
-                                    ? <br />
-                                    : <ProfileEditor auth={this.props.auth} />
-                            }
-
+                            <ProfileEditor auth={this.props.auth} />
                         </Media.Heading>
 
                         {this.getEmail()}
@@ -168,7 +166,6 @@ class Profile extends Component {
                         {
                             (this.props.currencyFilter === 'EQC'
                                 ? 'ETH address: ' + this.props.profile.eth_address
-                                // : 'NEM address: ' + nem_address_field
                                 : 'NEM address: ' + this.props.profile.nem_address
                             )
                         }
@@ -176,9 +173,11 @@ class Profile extends Component {
                 </Media>
             </div>
 
-            <ProfileTables reader={this.state.reader} userId={this.props.match.params.userId} />
-            <Footer />
-
+            <ProfileTables
+                reader={this.state.reader}
+                userId={this.props.match.params.userId}
+                {...{allApis}}
+            />
         </div>
         )
     }

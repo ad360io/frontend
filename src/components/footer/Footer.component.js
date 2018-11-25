@@ -18,9 +18,9 @@ const Footer = () =>
             <div className='footer-content-container'>
                 <p>Copyright &copy; 2017 Qchain Co.</p>
                 <p>Irvine, CA</p>
-                <p><a href='mailto:team@qchain.co'>team@qchain.co</a></p>
-                <p><a href='/termsofservice.pdf'>Terms of Service</a></p>
-                <p><a href='/privacypolicy.pdf'>Privacy Policy</a></p>
+                <span><a href='mailto:team@qchain.co'>team@qchain.co</a></span> &nbsp;
+                <span><a href='/termsofservice.pdf'>Terms of Service</a></span> &nbsp;
+                <span><a href='/privacypolicy.pdf'>Privacy Policy</a></span>
             </div>
         </footer>
     </div>

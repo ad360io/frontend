@@ -31,10 +31,6 @@ class CreateListing extends Component {
                 <div className='create-container'>
                     <CreateListingForm />
                 </div>
-
-                <br /><br /><br /><br /><br /><br /><br /><br /><br />
-
-                <Footer />
             </div>
         )
     }

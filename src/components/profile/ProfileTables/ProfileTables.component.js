@@ -29,7 +29,7 @@ class ProfileTables extends Component {
         super(props);
         this.state = {
             activeTabKey: 0
-        }
+        };
 
         this.getListingType = this.getListingType.bind(this);
         this.handleTabOnSelect = this.handleTabOnSelect.bind(this);
@@ -50,35 +50,41 @@ class ProfileTables extends Component {
     }
 
     render() {
+        const { allApis } = this.props;
+
         return <div className='dashboard-tables-container'>
             <h2 className='dashboard-tables-title'>Participating Activities</h2>
-            <Tabs activeKey={this.state.activeTabKey}
+            <Tabs
+                activeKey={this.state.activeTabKey}
                 onSelect={this.handleTabOnSelect}
                 id='dashboard-tables-tabs'
                 style={{ paddingLeft: '10%', paddingRight: '10%' }}
                 className='table-tabs'
+                unmountOnExit={true}
             >
                 {
                     this.props.reader
                         ? null
                         : <Tab eventKey={0} title='Offers'>
-                            <OfferList activeTabKey={this.state.activeTabKey} />
+                            <OfferList
+                                { ...{ allApis } }
+                            />
                         </Tab>
                 }
                 <Tab eventKey={1} title='Active Listing'>
-                    <ActiveListing activeTabKey={this.state.activeTabKey} reader={this.props.reader} userId={this.props.userId} />
+                    <ActiveListing reader={this.props.reader} userId={this.props.userId} />
                 </Tab>
                 <Tab eventKey={2} title='Active Request'>
-                    <ActiveRequest activeTabKey={this.state.activeTabKey} reader={this.props.reader} userId={this.props.userId} />
+                    <ActiveRequest reader={this.props.reader} userId={this.props.userId} />
                 </Tab>
                 <Tab eventKey={3} title='Active Contracts'>
-                    <ActiveContract activeTabKey={this.state.activeTabKey} reader={this.props.reader} userId={this.props.userId} />
+                    <ActiveContract reader={this.props.reader} userId={this.props.userId} />
                 </Tab>
                 {
                     this.props.reader
                         ? null
                         : <Tab eventKey={4} title='Inactive Contracts'>
-                            <InactiveContract activeTabKey={this.state.activeTabKey} />
+                            <InactiveContract />
                         </Tab>
                 }
 
@@ -86,12 +92,10 @@ class ProfileTables extends Component {
                     this.props.reader
                         ? null
                         : <Tab eventKey={5} title='Invoices'>
-                            <Invoice activeTabKey={this.state.activeTabKey} />
+                            <Invoice />
                         </Tab>
 
                 }
-
-
             </Tabs>
         </div>
     }
