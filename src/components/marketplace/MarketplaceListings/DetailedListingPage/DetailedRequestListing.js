@@ -1,7 +1,9 @@
 import React from "react";
-import {Card, CardText, CardTitle} from "material-ui";
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import Divider from '@material-ui/core/Divider';
+
 import DetailedImageSlider from "./DetailedImageSlider/DetailedImageSlider.component";
-import Divider from "material-ui/Divider/index";
 import MakeOfferSection from "./MakeOfferSection/MakeOfferSection.component";
 
 export class DetailedRequestListing extends React.Component {
@@ -12,9 +14,9 @@ export class DetailedRequestListing extends React.Component {
             <div className='detailed-listing-renderer'>
                 <div className='detailed-image-container'>
                     <Card>
-                        <CardText>
+                        <CardContent>
                             <DetailedImageSlider imageSrc={decideImage(item.images, item.ad_format)} />
-                        </CardText>
+                        </CardContent>
                     </Card>
                     <div className='detailed-listing-action-section'>
                         <a className='detailed-listing-action'>Save this listing</a>
@@ -27,11 +29,11 @@ export class DetailedRequestListing extends React.Component {
                 </div>
 
                 <Card className='listing-concrete-details-container'>
-                    <CardTitle>
+                    <div>
                         <h1 className='listing-title'>{item.name}</h1>
-                    </CardTitle>
+                    </div>
                     <Divider />
-                    <CardText className='listing-details-text'>
+                    <CardContent className='listing-details-text'>
                         <div className='details-text'>
                             <p>
                                 Ad Format: {item.ad_format} {item.classtype}
@@ -45,18 +47,18 @@ export class DetailedRequestListing extends React.Component {
                         <MakeOfferSection listing={item} />
                         <br />
                         <div className='details-text'>{item.description}</div>
-                    </CardText>
+                    </CardContent>
                 </Card>
 
                 <div className='poster-info-container'>
                     <Card>
-                        <CardTitle>
+                        <div>
                             <h3>Requestor Info:</h3>
                             <span style={{fontWeight: 300}}><span className='owner-profile-link'onClick={() => pathToOwnerProfile()}>{item.owner_name}</span> trading in {item.currency}</span>
-                        </CardTitle>
-                        <CardText>
+                        </div>
+                        <CardContent>
                             <div>Ask Date: {item.date_added.slice(0, 10)}</div>
-                        </CardText>
+                        </CardContent>
                     </Card>
                     <div className='detailed-listing-action-section'>
                         <a className='detailed-listing-action'>Add requestor to favorite</a>

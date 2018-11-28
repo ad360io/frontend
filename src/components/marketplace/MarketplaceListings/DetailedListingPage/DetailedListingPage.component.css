@@ -1,6 +1,6 @@
 .detailed-listing-container {
     margin-top: 64px;
-    height: 100vh;
+    height: 100%;
     font-size: 30px;
 }
 
@@ -13,7 +13,7 @@
     animation-fill-mode: forwards;
     text-align: 'left';
     font-size: 14px;
-    font-family: 'sans serif';
+    /*font-family: 'sans serif';*/
     font-stretch: 'normal';
 }
 
@@ -33,7 +33,7 @@
     float: left;
     width: 90%;
     margin: 4%;
-    font-size: 20px;
+    /*font-size: 20px;*/
     font-stretch: normal;
     line-height: 35px;
 }

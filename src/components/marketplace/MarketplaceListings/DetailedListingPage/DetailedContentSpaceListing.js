@@ -1,7 +1,9 @@
 import React from "react";
-import {Card, CardText, CardTitle} from "material-ui";
+// import {Card, CardText, CardTitle} from "material-ui";
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import Divider from '@material-ui/core/Divider';
 import DetailedImageSlider from "./DetailedImageSlider/DetailedImageSlider.component";
-import Divider from "material-ui/Divider/index";
 import {Alert} from "react-bootstrap";
 import Button from "@material-ui/core/Button";
 import {walletApi} from "../../../../common/api/services/wallet-api";
@@ -9,6 +11,7 @@ import {DateUtils} from "../../../../common/utils/date-utils";
 import {contractApi} from "../../../../common/api/services/contract-api";
 import {marketplaceApi} from "../../../../common/api/services/marketplace-api";
 import {invoiceApi} from "../../../../common/api/services/invoice-api";
+import CardHeader from "@material-ui/core/CardHeader";
 
 export class DetailedContentSpaceListing extends React.Component {
 
@@ -115,10 +118,10 @@ export class DetailedContentSpaceListing extends React.Component {
             <div className='detailed-listing-renderer'>
                 <div className='detailed-image-container'>
                     <Card>
-                        <CardText>
+                        <CardContent>
                             <DetailedImageSlider imageSrc={decideImage(item.images, item.ad_format)} />
 
-                        </CardText>
+                        </CardContent>
                     </Card>
                     <div className='detailed-listing-action-section'>
                         <a className='detailed-listing-action'>Save this listing</a>
@@ -131,11 +134,12 @@ export class DetailedContentSpaceListing extends React.Component {
                 </div>
 
                 <Card className='listing-concrete-details-container'>
-                    <CardTitle>
-                        <h1 className='listing-title'>{item.name}</h1>
-                    </CardTitle>
+                    <CardHeader
+                        title={item.name}
+                    />
+                        {/*<div className='listing-title'>{item.name}</div>*/}
                     <Divider />
-                    <CardText className='listing-details-text'>
+                    <CardContent className='listing-details-text'>
                         <div className='details-text'>
                             <p>
                                 Ad Format: {item.ad_format} {item.classtype}
@@ -176,19 +180,20 @@ export class DetailedContentSpaceListing extends React.Component {
 
                         <br />
                         <div className='details-text'>{item.description}</div>
-                    </CardText>
+                    </CardContent>
                 </Card>
 
                 <div className='poster-info-container'>
                     <Card>
-                        <CardTitle>
-                            <h3>Creator Info:</h3>
-                            <h4 style={{fontWeight: 300}}><span className='owner-profile-link' onClick={() => pathToOwnerProfile()}>{item.owner_name}</span> trading in {item.currency}</h4>
-                        </CardTitle>
-                        <CardText>
+                        <CardHeader
+                            title={`Creator Info: trading in ${item.currency}`}
+                        />
+                            {/*<h4 style={{fontWeight: 300}}><span className='owner-profile-link' onClick={() => pathToOwnerProfile()}>{item.owner_name}</span> trading in {item.currency}</h4>*/}
+                        {/*</CardHeader>*/}
+                        <CardContent>
 
                             <div>Promotion Duration: <br /> {item.date_added.slice(0, 10)} to {item.expiration_date}</div>
-                        </CardText>
+                        </CardContent>
                     </Card>
                     <div className='detailed-listing-action-section'>
                         <a className='detailed-listing-action'>Add publisher to favorite</a>
