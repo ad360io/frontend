@@ -12,6 +12,14 @@ let appLayout = css`
     
     .app-content {
         flex: 1;
+        margin-bottom: 73px;
+    }
+    
+    .app-footer {
+        position: fixed;
+        bottom: 0;
+        z-index: 50;
+        width: 100%;
     }
 `;
 

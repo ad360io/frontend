@@ -34,9 +34,9 @@ class SortingSelector extends Component {
                 className='sorting-selector-btn'
                 title={sortingType + ""}
                 id='sorting-selector-btn'
-                dropup={this.props.dropup}
+                dropup={true}
                 pullRight
-                style={{ marginLeft: (this.props.dropup ? 25 : 0) }}
+                style={{ marginLeft: (25) }}
             >
                 {['Date Added', 'Price (Low - High)', 'Price (High - Low)'].map((item, key) => (
                     <MenuItem key={key} onClick={() => onChange(item)}>{item}</MenuItem>

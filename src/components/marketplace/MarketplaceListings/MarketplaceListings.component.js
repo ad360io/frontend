@@ -16,7 +16,7 @@ import ListingCard from './ListingCard/ListingCard.component';
 
 import { Pagination } from 'react-bootstrap';
 import ErrorPage from '../../ErrorPage/ErrorPage.component';
-import CircularProgress from 'material-ui/CircularProgress';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const pageSize = 5;
 /**
@@ -44,7 +44,7 @@ class MarketplaceListings extends Component {
         //TODO: error page
         const { listing, total, currentPageNum, onChangePage } = this.props;
 
-        if(listing == null) return <div className='loading-container'><CircularProgress className='marketplace-listing-loading' size={100} thickness={6} color="purple"/> </div>;
+        if(listing == null) return <div className='loading-container'><CircularProgress className='marketplace-listing-loading' size={100}/> </div>;
 
         let pages = Math.ceil(total / pageSize);
 

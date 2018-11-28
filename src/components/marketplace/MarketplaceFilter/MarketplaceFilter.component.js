@@ -13,9 +13,9 @@ import { Button } from 'react-bootstrap';
 /*
 Material UI Components
 */
-import Paper from 'material-ui/Paper';
-import Divider from 'material-ui/Divider';
-import Drawer from 'material-ui/Drawer';
+// import Paper from '@material-ui/core/Paper';
+import Divider from '@material-ui/core/Divider';
+import Drawer from '@material-ui/core/Drawer';
 
 /*
 Action
@@ -34,6 +34,7 @@ import AdFormatFilter from './AdFormatFilter/AdFormatFilter.component';
 import PurchaseRangeSelector from './PurchaseRangeSelector/PurchaseRangeSelector.component';
 import KeywordFilter from './KeywordFilter/KeywordFilter.component';
 import SortingSelector from './SortingSelector/SortingSelector.component';
+import {withStyles} from "@material-ui/core";
 
 
 /**
@@ -89,64 +90,104 @@ class MarketplaceFilter extends Component {
     }
 
     render() {
-        const { filters, onChange } = this.props;
+        const { filters, onChange, classes } = this.props;
 
-        return <div className='marketplace-filter-container' >
-            <Button
-                className='btn-open-filter-drawer'
-                onClick={() => this.props.openDrawer()}
-            >
-                Click Me to Set Filters
-            </Button>
-            <Drawer
-                docked={this.props.width > 768}
-                width={300}
-                zDepth={1}
-                open={this.props.isDrawerOpen}
-                onRequestChange={this.props.onDrawerRequestChange}
-                className='filter-drawer'
-            >
-                <Paper style={{
-                    height: 64,
-                    width: 300,
-                    margin: 0,
-                    display: 'inline-block',
-                }} zDepth={0} />
-
-                <h4 className='filter-title'>{this.decideTitle()} Listings</h4>
-                <AdFormatFilter {...{filters, onChange}} />
-                <FilterDivider />
-
-                <h4 className='filter-title'>Keyword Search</h4>
-                <KeywordFilter
-                    {... {
-                        onChange: (value) => onChange({...filters, keyword: value})
+        return (
+            <div className='marketplace-filter-container' >
+                <Button
+                    className='btn-open-filter-drawer'
+                    onClick={() => this.props.openDrawer()}
+                >
+                    Click Me to Set Filters
+                </Button>
+                <Drawer
+                    // docked={true}
+                    ModalProps={{
+                        keepMounted: true, // Better open performance on mobile.
+                        hideBackdrop: true
                     }}
-                    // onChange={this.props.onKeywordChange}
-                />
-                <FilterDivider />
+                    // width={300}
+                    // zDepth={1}
+                    // onRequestChange={this.props.onDrawerRequestChange}
+                    // className='filter-drawer'
+                    variant="permanent"
+                    open={this.props.isDrawerOpen}
+                    classes={{
+                        paper: classes.drawerPaper,
+                    }}
+                >
+                    {/*
 
-                <h4 className='filter-title'>Max Purchase:</h4>
-                <PurchaseRangeSelector
-                    {...{
-                        filters,
-                        onChange: (budget) => onChange({...filters, budget})
+                <Paper
+                    style={{
+                        height: 64,
+                        width: 300,
+                        margin: 0,
+                        display: 'inline-block',
                     }}
                 />
-                <FilterDivider />
 
-                <h4 className='filter-title' style={{ textAlign: 'left', marginLeft: '25px' }}>Sort By:</h4>
-                <SortingSelector
-                    dropup={this.props.width <= 768}
-                    {...{
-                        filters,
-                        onChange: (sortingType) => onChange({...filters, sortingType})
+                */}
+
+
+                    <h4 className='filter-title'>{this.decideTitle()} Listings</h4>
+                    <AdFormatFilter {...{filters, onChange}} />
+                    <FilterDivider />
+
+                    <div>
+                        <h4 className='filter-title'>Keyword Search</h4>
+                        <KeywordFilter
+                            {... {
+                                onChange: (value) => onChange({...filters, keyword: value})
+                            }}
+                            // onChange={this.props.onKeywordChange}
+                        />
+                        <FilterDivider />
+                    </div>
+
+
+                    <div>
+                        <h4 className='filter-title'>Max Purchase:</h4>
+                        <PurchaseRangeSelector
+                            {...{
+                                filters,
+                                onChange: (budget) => onChange({...filters, budget})
+                            }}
+                        />
+                        <FilterDivider />
+                    </div>
+
+                    <div>
+                        <h4 className='filter-title' style={{ textAlign: 'left', marginLeft: '25px' }}>Sort By:</h4>
+                        <SortingSelector
+                            dropup={this.props.width <= 768}
+                            {...{
+                                filters,
+                                onChange: (sortingType) => onChange({...filters, sortingType})
+                            }}
+
+                        />
+                        <FilterDivider />
+                    </div>
+
+
+
+                    {/*
+                <Paper
+                    style={{-
+                        height: 69,
+                        width: 300,
+                        margin: 0,
+                        display: 'inline-block',
                     }}
-
                 />
-                <FilterDivider />
-            </Drawer>
-        </div>
+
+                */}
+
+
+                </Drawer>
+            </div>
+        )
     }
 }
 
@@ -176,10 +217,18 @@ const mapDispatchToFilterProps = (dispatch) => {
             dispatch(setKeyword(keyword));
         }
     }
-}
+};
+
+const styles = theme => ({
+    drawerPaper: {
+        width: 300,
+        marginTop: 64,
+        height: `calc(100% - 64px - 73px)`
+    }
+});
 
 
-export default withWindowWidthListener(connect(
+export default withStyles(styles)(withWindowWidthListener(connect(
     mapStateToFilterProps,
     mapDispatchToFilterProps
-)(MarketplaceFilter));
+)(MarketplaceFilter)));

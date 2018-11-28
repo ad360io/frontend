@@ -6,7 +6,7 @@ import React from 'react';
 /*
 Material UI Components
 */
-import CircularProgress from 'material-ui/CircularProgress';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 /*
 Local CSS
@@ -16,7 +16,7 @@ import './AuthCallback.css';
 
 const AuthCallback = () => (
     <div className="auth-callback-container">
-        <CircularProgress size={60} thickness={7} style={{ margin: 'auto' }} />
+        <CircularProgress size={60} style={{ margin: 'auto' }} />
     </div>
 )
 

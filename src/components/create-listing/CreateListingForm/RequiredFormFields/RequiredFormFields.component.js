@@ -14,58 +14,116 @@ Children Components
 */
 import AvailabilityPicker from './AvailabilityPicker/AvailabilityPicker.component';
 import AdFormatSelect from './AdFormatSelect/AdFormatSelect.component';
+import {AdFormatSelection} from "./AdFormatSelect/AdFormatSelection";
+import {isEmpty} from "lodash";
 
+export let getRequiredData;
 
-const RequiredFormField = ({ modeFilter, from, to, onTopicChange, onDescriptionChange, onPriceChange }) => (
-    <div style={{ marginLeft: '2%', marginTop: '2%' }}>
-        <FormGroup hidden={modeFilter === 'Advertiser'}>
-            <p className='control-label'>
-                Select Promotion Duration
-            </p>
-            <AvailabilityPicker from={from} to={to} />
-        </FormGroup>
+class RequiredFormField extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            from: props.newListing.from || null,
+            to: props.newListing.to || null,
+            adFormat: props.newListing.adFormat || null,
+            mediumFormat: props.newListing.mediumFormat || null,
+            price: props.newListing.price || '',
+            description: props.newListing.description || '',
+            topic: props.newListing.topic || ''
+        };
 
-        <AdFormatSelect modeFilter={modeFilter} />
+        getRequiredData = this.getData;
+    };
 
-        <FormGroup controlId='control-form-topic'>
-            <p className='control-label'>
-                Content Topic
-        </p>
-            <FormControl type='text' onChange={onTopicChange} required />
-        </FormGroup>
+    valid = () => {
+        for (let key in this.state) {
+            const value = this.state[key];
+            if(value == null || (typeof value === "string" && isEmpty(value))) return false;
+        }
+        return true;
+    };
 
-        <FormGroup controlId='control-form-price' hidden={modeFilter === 'Advertiser'}>
-            <p className='control-label'>
-                Price per time unit (day/week/month/year)
-        </p>
-            <FormControl type='number' min='1' step='1' onChange={onPriceChange} style={{ width: '50%', float: 'left' }} />
-            <FormControl componentClass='select' style={{ width: '50%' }} required>
-                <option value='day'>per day</option>
-                <option value='week'>per week</option>
-                <option value='month'>per month</option>
-                <option value='year'>per year</option>
-            </FormControl>
+    getData = () => this.state;
 
-        </FormGroup>
+    render() {
+        let { modeFilter = 'Advertiser1', formInfo } = this.props;
+        let { from, to, adFormat, mediumFormat, price, description, topic } = this.state;
 
-        <FormGroup controlId='control-form-pitch'>
-            <p className='control-label'>
-                {
-                    modeFilter === 'Advertiser'
-                        ? "Content Description"
-                        : "Listing Description"
-                }
-            </p>
-            <FormControl componentClass='textarea'
-                maxLength={280}
-                rows={8}
-                style={{ resize: 'vertical' }}
-                onChange={onDescriptionChange}
-                required
-            />
-        </FormGroup>
-    </div>
-)
+        formInfo && formInfo({valid: this.valid()});
+
+        return (
+            <div style={{marginLeft: '2%', marginTop: '2%'}}>
+
+                { modeFilter !== 'Advertiser' && (
+                    <FormGroup>
+                        <p className='control-label'>
+                            Select Promotion Duration
+                        </p>
+                        <AvailabilityPicker
+                            {...{
+                                from, to,
+                                onChange: ({ from, to }) => this.setState({ from, to })
+                            }}
+                        />
+                    </FormGroup>
+                )}
+
+                <AdFormatSelection
+                    { ... { adFormat, mediumFormat, onChange: (value) => this.setState(value) }}
+                />
+
+                <FormGroup controlId='control-form-topic'>
+                    <p className='control-label'>
+                        Content Topic
+                    </p>
+                    <FormControl
+                        type='text'
+                        onChange={(e) => this.setState({topic: e.target.value})}
+                        required
+                        value={topic}
+                    />
+                </FormGroup>
+
+                { modeFilter !== 'Advertiser' && (
+                    <FormGroup controlId='control-form-price' >
+                        <p className='control-label'>
+                            Price per time unit (day/week/month/year)
+                        </p>
+                        <FormControl
+                            value={price}
+                            type='number' min='1' step='1' onChange={(e) => this.setState({price: e.target.value})}
+                            style={{width: '50%', float: 'left'}}
+                        />
+                        <FormControl componentClass='select' style={{width: '50%'}} required>
+                            <option value='day'>per day</option>
+                            <option value='week'>per week</option>
+                            <option value='month'>per month</option>
+                            <option value='year'>per year</option>
+                        </FormControl>
+                    </FormGroup>
+                )}
+
+                <FormGroup controlId='control-form-pitch'>
+                    <p className='control-label'>
+                        {
+                            modeFilter === 'Advertiser'
+                                ? "Content Description"
+                                : "Listing Description"
+                        }
+                    </p>
+                    <FormControl componentClass='textarea'
+                                 value={description}
+                                 maxLength={280}
+                                 rows={8}
+                                 style={{resize: 'vertical'}}
+                                 onChange={(e) => this.setState({description: e.target.value})}
+                                 required
+                    />
+                </FormGroup>
+            </div>
+        );
+    }
+}
 
 const mapStateToProps = (state) => {
     return {
@@ -114,7 +172,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 }
 
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(RequiredFormField);
+export default RequiredFormField;

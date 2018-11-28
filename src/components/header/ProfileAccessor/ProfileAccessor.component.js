@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import Grow from '@material-ui/core/Grow';
-import Paper from '@material-ui/core/Paper';
+// import Paper from '@material-ui/core/Paper';
 import Popper from '@material-ui/core/Popper';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
@@ -11,6 +11,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Divider from '@material-ui/core/Divider';
 import ExitToAppIcon from '@material-ui/icons/ExitToAppRounded';
 import AccessibilityIcon from '@material-ui/icons/AccessibilityNewRounded';
+import Paper from '@material-ui/core/Paper';
 
 import { NavLink } from 'react-router-dom';
 
@@ -106,45 +107,45 @@ class ProfileAccessor extends React.Component {
                                     style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}
                                 >
                                     <Paper>
-                                        <ClickAwayListener onClickAway={this.handleClose}>
-                                            <MenuList className={classes.menuList}>
-                                                <MenuItem
-                                                    disableRipple
-                                                    disableTouchRipple
-                                                    style={{ cursor: 'default' }}
-                                                    onMouseEnter={(e) => e.target.style.backgroundColor = 'transparent'}
-                                                    onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
-                                                    className={classes.filterSection}
-                                                >
-                                                    <FilterRenderer auth={this.props.auth} />
-                                                </MenuItem>
+                                    <ClickAwayListener onClickAway={this.handleClose}>
+                                        <MenuList className={classes.menuList}>
+                                            <MenuItem
+                                                disableRipple
+                                                disableTouchRipple
+                                                style={{ cursor: 'default' }}
+                                                onMouseEnter={(e) => e.target.style.backgroundColor = 'transparent'}
+                                                onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
+                                                className={classes.filterSection}
+                                            >
+                                                <FilterRenderer auth={this.props.auth} />
+                                            </MenuItem>
 
-                                                <Divider />
-                                                <MenuItem
-                                                    className={classes.menuItem}
-                                                    onClick={this.handleViewProfile}
-                                                    style={{ cursor: 'default' }}
-                                                    onMouseEnter={(e) => e.target.style.backgroundColor = 'transparent'}
-                                                    onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
-                                                >
-                                                    <div>
-                                                        <NavLink style={{ textDecoration: 'none' }} to='/profile'>
-                                                            <AccessibilityIcon style={{ display: 'inline-flex', verticalAlign: 'middle', fontSize: 18, marginRight: '25px' }} />
-                                                            View / Edit Profile
+                                            <Divider />
+                                            <MenuItem
+                                                className={classes.menuItem}
+                                                onClick={this.handleViewProfile}
+                                                style={{ cursor: 'default' }}
+                                                onMouseEnter={(e) => e.target.style.backgroundColor = 'transparent'}
+                                                onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
+                                            >
+                                                <div>
+                                                    <NavLink style={{ textDecoration: 'none' }} to='/profile'>
+                                                        <AccessibilityIcon style={{ display: 'inline-flex', verticalAlign: 'middle', fontSize: 18, marginRight: '25px' }} />
+                                                        View / Edit Profile
                                                     </NavLink>
-                                                    </div>
+                                                </div>
 
-                                                </MenuItem>
-                                                <Divider />
-                                                <MenuItem
-                                                    className={classes.menuItem}
-                                                    onClick={() => this.props.onLogout()}
-                                                >
-                                                    <ExitToAppIcon style={{ fontSize: 16, marginRight: '25px' }} />
-                                                    Logout
-                                                </MenuItem>
-                                            </MenuList>
-                                        </ClickAwayListener>
+                                            </MenuItem>
+                                            <Divider />
+                                            <MenuItem
+                                                className={classes.menuItem}
+                                                onClick={() => this.props.onLogout()}
+                                            >
+                                                <ExitToAppIcon style={{ fontSize: 16, marginRight: '25px' }} />
+                                                Logout
+                                            </MenuItem>
+                                        </MenuList>
+                                    </ClickAwayListener>
                                     </Paper>
                                 </Grow>
                             )}

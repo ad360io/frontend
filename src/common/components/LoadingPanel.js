@@ -1,6 +1,6 @@
 import React from "react";
 import {css} from "emotion";
-import CircularProgress from "material-ui/CircularProgress";
+import CircularProgress from '@material-ui/core/CircularProgress'
 
 let loadingPanelCss = css`
     min-height: 320px;

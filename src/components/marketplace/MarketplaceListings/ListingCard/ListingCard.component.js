@@ -9,7 +9,11 @@ import {withRouter, NavLink} from 'react-router-dom';
 /*
 Material UI Components
 */
-import {Card, CardText, CardTitle} from 'material-ui/Card';
+// import {Card, CardText, CardTitle} from 'material-ui/Card';
+
+import Card from '@material-ui/core/Card';
+import CardHeader from '@material-ui/core/CardHeader';
+import CardContent from '@material-ui/core/CardContent';
 
 /*
 React Bootstrap
@@ -256,14 +260,14 @@ const GridCardRenderer = ({
         <div className='poster-tag'>{contactInfo} </div>
         <div className='price-tag'>{priceTag}</div>
         )
-        <CardTitle
+        <CardHeader
             title={title}
             subtitle={'Posted on: ' + dateAdded.slice(0, 10)}
             style={{paddingBottom: '0px'}}/>
         <img src={placeholderImage} className='grid-img' alt='listing-img'/>
-        <CardText className='grid-msg-container'>
+        <CardContent className='grid-msg-container'>
             <span className="listing-msg">{description}</span>
-        </CardText>
+        </CardContent>
         <Button
             bsStyle='primary'
             className='btn-contact-action'
@@ -292,17 +296,26 @@ const ListingCardRenderer = ({
     >
         <div className='poster-tag'>{contactInfo} </div>
         <div className='price-tag'>{priceTag}</div>
-        )
 
-        <CardTitle
-            title={title}
-            subtitle={'Posted on: ' + dateAdded.slice(0, 10)}
-            className='listing-card-title'
-            style={{paddingBottom: '0px'}}/>
+        <div className='listing-card-title'>
+            {title}
+
+            <div>
+                Posted on: {dateAdded.slice(0, 10)}
+            </div>
+        </div>
+
+
+        {/*<div*/}
+            {/*title={title}*/}
+            {/*subtitle={'Posted on: ' + dateAdded.slice(0, 10)}*/}
+            {/*className='listing-card-title'*/}
+            {/*style={{paddingBottom: '0px'}}*/}
+        {/*/>*/}
         <img src={placeholderImage} className='listing-img' alt='listing-img'/>
-        <CardText className='listing-msg-container'>
+        <CardContent className='listing-msg-container'>
             <span className="listing-msg">{description}</span>
-        </CardText>
+        </CardContent>
     </Card>
 )
 

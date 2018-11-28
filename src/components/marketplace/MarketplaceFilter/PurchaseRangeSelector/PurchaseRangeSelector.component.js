@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 /*
 Material UI
 */
-import Slider from 'material-ui/Slider';
+import Slider from '@material-ui/lab/Slider';
 
 /*
 Actions
@@ -35,13 +35,13 @@ class PurchaseRangeSelector extends React.Component {
         return (
             <div className='range-selector'>
                 <Slider className='range-slider'
-                        onChange={(e, value) => this.setState({value})}
-                        onDragStop={() => onChange(value)}
+                        onChange={(e, value) => this.setState({value : +value.toFixed(2)})}
+                        onDragEnd={() => onChange(value)}
                         value={value}
                         min={0.1}
                         max={10}
                         step={0.1}/>
-                <h4 className='budget-value'> {value} k {currencyFilter}</h4>
+                <div className='budget-value'> {value} k {currencyFilter}</div>
             </div>
         );
     }

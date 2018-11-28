@@ -1,78 +1,87 @@
 /*
 Core Libs
 */
-import React from 'react';
-import { connect } from 'react-redux';
-
+import React, {Fragment} from 'react';
 /*
 Bootstrap
 */
-import { FormGroup, FormControl } from 'react-bootstrap';
-
+import {FormControl, FormGroup} from 'react-bootstrap';
 /*
 Material UI
 */
-import Checkbox from 'material-ui/Checkbox';
-
+import Checkbox from '@material-ui/core/Checkbox';
 /*
 Local CSS
 */
 import './OptionalFormFields.component.css'
+import FormControlLabel from "@material-ui/core/FormControlLabel";
 
 
-const OptionalFormField = ({ modeFilter }) => (
-    <div>
-        <FormGroup controlId='control-form-image' hidden={modeFilter === 'Publisher'}>
-            <p className='control-label'>
-                Content Samples and Inspiration (optional)
-            </p>
-            <FormControl type='file' />
-        </FormGroup>
+class OptionalFormField extends React.Component {
 
-        <FormGroup controlId='control-form-additional' hidden={modeFilter === 'Advertiser'}>
-            <p className='control-label noselect'>
-                Additional Services (optional)
-            </p>
-            <div style={{ width: '10%', float: 'left', marginTop: '12px' }}>
-                <Checkbox color="default" />
+    render() {
+        const { modeFilter, formInfo } = this.props;
+
+        formInfo && formInfo({valid: true});
+
+        return (
+            <div>
+                { modeFilter === 'Publisher' && (
+                    <FormGroup controlId='control-form-image'>
+                        <p className='control-label'>
+                            Content Samples and Inspiration (optional)
+                        </p>
+                        <FormControl type='file' />
+                    </FormGroup>
+                )}
+
+                { modeFilter === 'Advertiser' && (
+                    <Fragment>
+                        <FormGroup controlId='control-form-additional'>
+                            <p className='control-label noselect'>
+                                Additional Services (optional)
+                            </p>
+
+                            <FormControlLabel
+                                control={
+                                    <Checkbox color="default"/>
+                                }
+                                label="Banner"
+                            />
+
+                            <FormControlLabel
+                                control={
+                                    <Checkbox color="default"/>
+                                }
+                                label="Fullscreen Overlay"
+                            />
+
+                            <FormControlLabel
+                                control={
+                                    <Checkbox color="default"/>
+                                }
+                                label="Custom Art"
+                            />
+
+                            <FormControlLabel
+                                control={
+                                    <Checkbox color="default"/>
+                                }
+                                label="Other"
+                            />
+                        </FormGroup>
+
+                        <FormGroup controlId='control-form-referral'>
+                            <p className='control-label'>
+                                Referral URI (optional)
+                            </p>
+                            <FormControl type='text' />
+                        </FormGroup>
+                    </Fragment>
+                )}
             </div>
-            <div style={{ width: '90%', height: '48px', marginTop: '9px' }}>Banner</div>
-
-            <div style={{ width: '10%', float: 'left', marginTop: '12px' }}>
-                <Checkbox color="default" />
-            </div>
-            <div style={{ width: '90%', height: '48px', marginTop: '9px' }}>Fullscreen Overlay</div>
-
-            <div style={{ width: '10%', float: 'left', marginTop: '12px' }}>
-                <Checkbox color="default" />
-            </div>
-            <div style={{ width: '90%', height: '48px', marginTop: '9px' }}>Custom Art</div>
-
-            <div style={{ width: '10%', float: 'left', marginTop: '12px' }}>
-                <Checkbox color="default" />
-            </div>
-            <div style={{ width: '90%', height: '48px', marginTop: '9px' }}>Other</div>
-        </FormGroup>
-
-        <FormGroup controlId='control-form-referral' hidden={modeFilter === 'Advertiser'}>
-            <p className='control-label'>
-                Referral URI (optional)
-            </p>
-            <FormControl type='text' />
-        </FormGroup>
-    </div>
-)
-
-const mapStateToProps = (state) => {
-    return {}
+        )
+    }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {}
-}
-
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(OptionalFormField);
+export default OptionalFormField;

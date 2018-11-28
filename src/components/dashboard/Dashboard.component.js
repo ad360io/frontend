@@ -17,7 +17,7 @@ import { Alert } from 'react-bootstrap';
 /*
 Material UI
 */
-import CircularProgress from 'material-ui/CircularProgress';
+import CircularProgress from '@material-ui/core/CircularProgress'
 
 /*
 Networking
@@ -89,7 +89,7 @@ const DashboardRenderer = ({ modeFilter, currencyFilter }) => (
 
 const ProgressRenderer = () => (
     <div className="progress-renderer">
-        <CircularProgress size={100} thickness={6} color="purple"/>
+        <CircularProgress size={100}/>
     </div>
 )
 

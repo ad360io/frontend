@@ -1,5 +1,5 @@
 .range-slider {
-    width: 80%;
+    width: 80% !important;
     margin-left: 25px;
 }
 
@@ -16,7 +16,9 @@ Overwriting Material UI Slider's default margin
 .budget-value {
     text-align: right;
     margin-right: 33px;
-    margin-bottom: 0px;
+    font-size: 15px;
+    padding-top: 10px;
+    /*margin-bottom: 0px;*/
     font-weight: 400;
     color: #22a571;
 }

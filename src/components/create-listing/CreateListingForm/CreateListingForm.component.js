@@ -56,7 +56,7 @@ const styles = theme => ({
         marginRight: '3px',
     },
     label: {
-        fontSize: '18px'
+        // fontSize: '18px'
     }
 });
 
@@ -161,6 +161,13 @@ class CreateListingForm extends Component {
         const { classes } = this.props;
         const steps = getSteps();
 
+
+        console.log(this.props.advertiserSubmitted);
+
+        console.log(this.props.publisherSubmitted);
+
+
+
         return <div className={classes.root + ' create-listing-form-container'}>
             <h2 className='create-listing-form-title'>{this.decideFormTitle()}</h2>
             <Stepper activeStep={this.getActiveStep()} orientation="vertical">
@@ -194,7 +201,7 @@ class CreateListingForm extends Component {
                                                 color="primary"
                                                 onClick={this.handleStepperNext}
                                                 className={classes.button}
-                                                disabled={!this.props.email_verifed}
+                                                // disabled={!this.props.email_verifed}
                                             >
                                                 Next
                                             </Button>
