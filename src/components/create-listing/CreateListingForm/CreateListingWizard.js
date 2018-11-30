@@ -78,7 +78,7 @@ class CreateListingWizard extends React.Component {
 
     render () {
         const { activeStep, formInfo } = this.state;
-        const { classes, steps, success, loading, onReset, title } = this.props;
+        const { classes, steps, success, loading, onReset, title, modeFilter, currencyFilter} = this.props;
 
         return (
             <div className={classes.root + ' create-listing-form-container'}>
@@ -95,7 +95,9 @@ class CreateListingWizard extends React.Component {
                             </StepLabel>
                             <StepContent>
                                 <div>
-                                    { React.cloneElement(step.render({formInfo}))}
+                                    { React.cloneElement(step.render({formInfo}), {
+                                        modeFilter, currencyFilter
+                                    })}
                                 </div>
 
                                 <Functionize

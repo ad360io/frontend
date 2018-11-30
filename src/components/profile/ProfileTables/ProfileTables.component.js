@@ -28,82 +28,85 @@ class ProfileTables extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            activeTabKey: 0
+            activeIdx: 0
         };
 
-        this.getListingType = this.getListingType.bind(this);
-        this.handleTabOnSelect = this.handleTabOnSelect.bind(this);
+        // this.getListingType = this.getListingType.bind(this);
+        // this.handleTabOnSelect = this.handleTabOnSelect.bind(this);
     }
 
-    componentDidMount() {
-        if (this.props.reader === true) {
-            this.setState({ ...this.state, activeTabKey: 1 });
+    // componentDidMount() {
+    //     if (this.props.reader === true) {
+    //         this.setState({ ...this.state, activeTabKey: 1 });
+    //     }
+    // }
+
+    // getListingType() {
+    //     return this.props.modeFilter === 'Advertiser' ? 'Ad' : 'Adspace';
+    // }
+
+    componentDidUpdate(prevProps) {
+        if(prevProps.modeFilter !== this.props.modeFilter) {
+            this.setState({activeIdx: 0})
         }
     }
 
-    getListingType() {
-        return this.props.modeFilter === 'Advertiser' ? 'Ad' : 'Adspace';
-    }
-
-    handleTabOnSelect(key) {
-        this.setState({ activeTabKey: key })
-    }
-
     render() {
-        const { allApis } = this.props;
+        const { allApis, modeFilter } = this.props;
+        const { activeIdx } = this.state;
+
+        let list = [
+            {
+                title: "Offers",
+                render: () => <OfferList/>,
+                condition: modeFilter === "Advertiser"
+            },
+            {
+                title: "Active Listing",
+                render: () => <ActiveListing/>,
+                condition: true
+            },
+            {
+                title: "Active Request",
+                render: () => <ActiveRequest/>,
+                condition: true
+            },
+            {
+                title: "Active Contracts",
+                render: () => <ActiveContract/>,
+                condition: true
+            },
+            {
+                title: "Inactive Contracts",
+                render: () => <InactiveContract/>,
+                condition: true
+            },
+            {
+                title: "Invoices",
+                render: () => <Invoice/>,
+                condition: true
+            },
+        ];
 
         return <div className='dashboard-tables-container'>
             <h2 className='dashboard-tables-title'>Participating Activities</h2>
             <Tabs
-                activeKey={this.state.activeTabKey}
-                onSelect={this.handleTabOnSelect}
+                activeKey={activeIdx}
+                onSelect={(activeIdx) => this.setState({ activeIdx })}
                 id='dashboard-tables-tabs'
                 style={{ paddingLeft: '10%', paddingRight: '10%' }}
                 className='table-tabs'
                 unmountOnExit={true}
             >
-                {
-                    this.props.reader
-                        ? null
-                        : <Tab eventKey={0} title='Offers'>
-                            <OfferList
-                                { ...{ allApis } }
-                            />
+                { list
+                    .filter((l) => l.condition)
+                    .map((l, key) => (
+                        <Tab eventKey={key} title={l.title}>
+                            {React.cloneElement(l.render(), { allApis })}
                         </Tab>
-                }
-                <Tab eventKey={1} title='Active Listing'>
-                    <ActiveListing
-                        { ...{ allApis } }
-                        reader={this.props.reader} userId={this.props.userId}
-                    />
-                </Tab>
-                <Tab eventKey={2} title='Active Request'>
-                    <ActiveRequest
-                        { ...{ allApis } }
-                        reader={this.props.reader} userId={this.props.userId}
-                    />
-                </Tab>
-                <Tab eventKey={3} title='Active Contracts'>
-                    <ActiveContract
-                        { ...{ allApis } }
-                        reader={this.props.reader} userId={this.props.userId} />
-                </Tab>
-                {
-                    this.props.reader
-                        ? null
-                        : <Tab eventKey={4} title='Inactive Contracts'>
-                            <InactiveContract { ...{ allApis } } />
-                        </Tab>
+                    ))
                 }
 
-                {
-                    this.props.reader
-                        ? null
-                        : <Tab eventKey={5} title='Invoices'>
-                            <Invoice { ...{ allApis } }/>
-                        </Tab>
-
-                }
             </Tabs>
         </div>
     }

@@ -79,7 +79,7 @@ class CreateListing extends Component {
             ...(modeFilter === 'Advertiser' ? {
                 date_added: new Date().toISOString().slice(0, 10),
                 expiration_date: expirationDate,
-                price: null,
+                price: 0,
                 classtype: "request",
                 advertiser: localStorage.getItem('role'),
                 publisher: 'none',
@@ -105,7 +105,7 @@ class CreateListing extends Component {
 
     render() {
         const { success, loading } = this.state;
-        const { modeFilter } = this.props;
+        const { modeFilter, currencyFilter } = this.props;
 
         return (
             <div style={{ 'position': 'relative' }}>
@@ -114,6 +114,7 @@ class CreateListing extends Component {
 
                     <CreateListingWizard
                         {...{
+                            modeFilter, currencyFilter,
                             success, loading,
                             title: modeFilter === 'Advertiser' ? 'Request Content Space Availability' : 'Create Content Space Listings',
                             steps: this.steps,

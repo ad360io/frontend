@@ -23,11 +23,14 @@ class RequiredFormField extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            from: props.newListing.from || null,
-            to: props.newListing.to || null,
+            ...(props.modeFilter !== 'Advertiser' && {
+                from: props.newListing.from || null,
+                to: props.newListing.to || null,
+                price: props.newListing.price || '',
+            }),
+
             adFormat: props.newListing.adFormat || null,
             mediumFormat: props.newListing.mediumFormat || null,
-            price: props.newListing.price || '',
             description: props.newListing.description || '',
             topic: props.newListing.topic || ''
         };
@@ -46,7 +49,7 @@ class RequiredFormField extends React.Component {
     getData = () => this.state;
 
     render() {
-        let { modeFilter = 'Advertiser1', formInfo } = this.props;
+        let { modeFilter = 'Advertiser', formInfo } = this.props;
         let { from, to, adFormat, mediumFormat, price, description, topic } = this.state;
 
         formInfo && formInfo({valid: this.valid()});

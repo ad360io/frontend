@@ -122,6 +122,9 @@ class MakeOfferSection extends Component {
     render() {
         const { from, to } = this.state.offerDateRange;
         const modifiers = { start: from, end: to };
+
+
+
         return <div className='make-offer-button-container'>
 
             {

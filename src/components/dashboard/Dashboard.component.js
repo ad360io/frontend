@@ -89,7 +89,7 @@ const DashboardRenderer = ({ modeFilter, currencyFilter }) => (
 
 const ProgressRenderer = () => (
     <div className="progress-renderer">
-        <CircularProgress size={100}/>
+        <CircularProgress size={70}/>
     </div>
 )
 

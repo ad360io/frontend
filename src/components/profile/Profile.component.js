@@ -137,7 +137,7 @@ class Profile extends Component {
 
 
     render() {
-        const { allApis } = this.props;
+        const { allApis, modeFilter } = this.props;
 
         // let nem_address_field;
 
@@ -176,7 +176,7 @@ class Profile extends Component {
             <ProfileTables
                 reader={this.state.reader}
                 userId={this.props.match.params.userId}
-                {...{allApis}}
+                {...{allApis, modeFilter}}
             />
         </div>
         )
@@ -198,6 +198,7 @@ const mediaHeadingStyle = {
 const mapStateToProps = (state) => {
     return {
         currencyFilter: state.MenuBarFilterReducer.currencyFilter,
+        modeFilter: state.MenuBarFilterReducer.modeFilter,
         profile: state.ProfileReducer.profile,
     }
 }

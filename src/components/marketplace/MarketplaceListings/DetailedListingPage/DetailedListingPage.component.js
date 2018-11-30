@@ -97,6 +97,8 @@ class DetailedListingPage extends Component {
 
         if( detailedItem == null ) return <div/>;
 
+        console.log(detailedItem);
+
         if( detailedItem.classtype === "request" ) {
             return (
                 <div className='detailed-listing-container'>
