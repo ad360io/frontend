@@ -103,6 +103,7 @@ class DetailedListingPage extends Component {
             return (
                 <div className='detailed-listing-container'>
                     <DetailedRequestListing
+                        {...{allApis}}
                         item={detailedItem}
                         decideImage={this.decideImage}
                         pathToOwnerProfile={this.handlePathToOwnerProfile}

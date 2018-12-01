@@ -8,7 +8,7 @@ import MakeOfferSection from "./MakeOfferSection/MakeOfferSection.component";
 
 export class DetailedRequestListing extends React.Component {
     render() {
-        const { item, decideImage, pathToOwnerProfile } = this.props;
+        const { item, decideImage, pathToOwnerProfile, allApis } = this.props;
 
         return (
             <div className='detailed-listing-renderer'>
@@ -44,7 +44,7 @@ export class DetailedRequestListing extends React.Component {
 
                         </div>
                         <br />
-                        <MakeOfferSection listing={item} />
+                        <MakeOfferSection listing={item} {...{allApis}} />
                         <br />
                         <div className='details-text'>{item.description}</div>
                     </CardContent>
