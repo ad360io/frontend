@@ -5,13 +5,18 @@ import Divider from '@material-ui/core/Divider';
 
 import DetailedImageSlider from "./DetailedImageSlider/DetailedImageSlider.component";
 import MakeOfferSection from "./MakeOfferSection/MakeOfferSection.component";
+import {Cancel} from "@material-ui/icons";
 
 export class DetailedRequestListing extends React.Component {
     render() {
-        const { item, decideImage, pathToOwnerProfile, allApis } = this.props;
+        const { item, decideImage, pathToOwnerProfile, allApis, onBack } = this.props;
 
         return (
             <div className='detailed-listing-renderer'>
+                <div className='cancel-button' onClick={() => onBack()}>
+                    <Cancel/>
+                </div>
+
                 <div className='detailed-image-container'>
                     <Card>
                         <CardContent>

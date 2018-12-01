@@ -97,13 +97,12 @@ class DetailedListingPage extends Component {
 
         if( detailedItem == null ) return <div/>;
 
-        console.log(detailedItem);
-
         if( detailedItem.classtype === "request" ) {
             return (
                 <div className='detailed-listing-container'>
                     <DetailedRequestListing
                         {...{allApis}}
+                        onBack={() => this.props.history.push(`/marketplace`)}
                         item={detailedItem}
                         decideImage={this.decideImage}
                         pathToOwnerProfile={this.handlePathToOwnerProfile}
@@ -117,6 +116,7 @@ class DetailedListingPage extends Component {
                 <DetailedContentSpaceListing
                     {...{allApis}}
                     item={detailedItem}
+                    onBack={() => this.props.history.push(`/marketplace`)}
 
                     decideImage={this.decideImage}
                     bought={this.state.bought}

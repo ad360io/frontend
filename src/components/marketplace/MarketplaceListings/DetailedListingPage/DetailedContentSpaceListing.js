@@ -12,6 +12,7 @@ import {contractApi} from "../../../../common/api/services/contract-api";
 import {marketplaceApi} from "../../../../common/api/services/marketplace-api";
 import {invoiceApi} from "../../../../common/api/services/invoice-api";
 import CardHeader from "@material-ui/core/CardHeader";
+import {Cancel} from "@material-ui/icons";
 
 export class DetailedContentSpaceListing extends React.Component {
 
@@ -110,12 +111,16 @@ export class DetailedContentSpaceListing extends React.Component {
     };
 
     render () {
-        const { item, decideImage, bought, processing, issue, emailVerified, pathToOwnerProfile } = this.props;
+        const { item, decideImage, bought, processing, issue, emailVerified, pathToOwnerProfile, onBack } = this.props;
 
         let payoutCap = this.getPayoutCap();
 
         return (
             <div className='detailed-listing-renderer'>
+                <div className='cancel-button' onClick={() => onBack()}>
+                    <Cancel/>
+                </div>
+
                 <div className='detailed-image-container'>
                     <Card>
                         <CardContent>
