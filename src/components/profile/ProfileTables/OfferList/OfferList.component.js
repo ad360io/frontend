@@ -10,7 +10,7 @@ React Bootstrap Components
 import { Button } from 'react-bootstrap';
 import { Popover, OverlayTrigger } from 'react-bootstrap';
 
-import Divider from 'material-ui/Divider';
+import Divider from '@material-ui/core/Divider';
 import {myOffersViewApi} from "../../../../common/api/services/my-offers-view-api";
 import {LoadingPanel} from "../../../../common/components/LoadingPanel";
 

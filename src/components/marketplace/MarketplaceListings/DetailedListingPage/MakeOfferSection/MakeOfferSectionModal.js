@@ -101,7 +101,7 @@ export class MakeOfferSectionModal extends React.Component {
                         onClick={async () => {
                             this.setState({loading: true});
 
-                            let resp = await onMakeOffer();
+                            let resp = await onMakeOffer(this.state);
 
                             if(resp) this.toggleModal();
                         }}

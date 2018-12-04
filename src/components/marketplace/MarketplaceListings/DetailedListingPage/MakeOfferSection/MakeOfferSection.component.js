@@ -13,9 +13,9 @@ class MakeOfferSection extends Component {
         }
     }
 
-    makeOffer = async () => {
+    makeOffer = async (options) => {
         const { allApis: { postJson }, listing } = this.props;
-        const { offerAmount, offerDateRange, offerMessage } = this.state;
+        const { offerAmount, offerDateRange, offerMessage } = options;
 
         const payload = {
             listing_id: listing.id,

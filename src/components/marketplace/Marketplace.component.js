@@ -60,7 +60,7 @@ class Marketplace extends Component {
         //     + "description.ilike.*" + this.props.keyword + "*)"
 
         return {
-            ...( modeFilter === "Advertiser" ? { classtype: `eq.request` } : { classtype: `eq.listing`}),
+            ...( modeFilter === "Advertiser" ? { classtype: `eq.listing` } : { classtype: `eq.request`}),
             ...(!isEmpty(keyword) && {or: `(name.ilike.*${keyword}*,description.ilike.*${keyword}*)`}),
             ...( sortValue != null && {order : sortValue} ),
             ...( adFormatFilter !== 'Show All' &&
