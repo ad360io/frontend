@@ -9,7 +9,7 @@ import {Cancel} from "@material-ui/icons";
 
 export class DetailedRequestListing extends React.Component {
     render() {
-        const { item, decideImage, pathToOwnerProfile, allApis, onBack } = this.props;
+        const { item, decideImage, pathToOwnerProfile, allApis, onBack, modeFilter } = this.props;
 
         return (
             <div className='detailed-listing-renderer'>
@@ -49,7 +49,7 @@ export class DetailedRequestListing extends React.Component {
 
                         </div>
                         <br />
-                        <MakeOfferSection listing={item} {...{allApis}} />
+                        <MakeOfferSection listing={item} {...{ allApis, modeFilter }} />
                         <br />
                         <div className='details-text'>{item.description}</div>
                     </CardContent>

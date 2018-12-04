@@ -53,12 +53,15 @@
 }
 
 .price-section {
-    float: left;
-    width: 55%;
+    /*float: left;*/
+    /*width: 55%;*/
 }
 
 .buy-section {
     background: #ececec;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     /*height: 80px;*/
     padding: 5%;
     /*padding-top: 2%;*/
@@ -68,9 +71,9 @@
 }
 
 .buy-btn-section {
-    width: 35%;
-    float: right;
-    padding-top: 12px;
+    /*width: 35%;*/
+    /*float: right;*/
+    /*padding-top: 12px;*/
 }
 
 .buy-button {

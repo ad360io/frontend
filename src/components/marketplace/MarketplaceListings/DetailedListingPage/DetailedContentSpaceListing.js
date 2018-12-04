@@ -111,7 +111,7 @@ export class DetailedContentSpaceListing extends React.Component {
     };
 
     render () {
-        const { item, decideImage, bought, processing, issue, emailVerified, pathToOwnerProfile, onBack } = this.props;
+        const { item, decideImage, bought, processing, issue, emailVerified, pathToOwnerProfile, onBack, modeFilter } = this.props;
 
         let payoutCap = this.getPayoutCap();
 
@@ -171,7 +171,7 @@ export class DetailedContentSpaceListing extends React.Component {
                                                 onClick={() => this.buyItem()}
                                                 variant='outlined'
                                                 color='primary'
-                                                disabled={processing || issue.length > 0 || emailVerified === false}
+                                                disabled={processing || issue.length > 0 || emailVerified === false || modeFilter !== "Advertiser"}
                                         >
                                             {
                                                 (issue.length > 0)

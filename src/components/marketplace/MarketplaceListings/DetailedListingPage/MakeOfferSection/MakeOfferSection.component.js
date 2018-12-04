@@ -13,7 +13,6 @@ class MakeOfferSection extends Component {
         }
     }
 
-
     makeOffer = async () => {
         const { allApis: { postJson }, listing } = this.props;
         const { offerAmount, offerDateRange, offerMessage } = this.state;
@@ -43,6 +42,7 @@ class MakeOfferSection extends Component {
 
     render() {
         const { isOffered } = this.state;
+        const { modeFilter } = this.props;
 
         return (
             <div className='make-offer-button-container'>
@@ -54,6 +54,7 @@ class MakeOfferSection extends Component {
                             className='buy-button'
                             variant='outlined'
                             color='primary'
+                            disabled={modeFilter !== "Publisher"}
                         >
                             Make Offer
                         </Button>

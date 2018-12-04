@@ -54,14 +54,13 @@ class Marketplace extends Component {
             'Price (High - Low)'   : 'price.desc'
         }[sortingType] || null;
 
-
         // or=("
         //     + "name.ilike.*" + this.props.keyword + "*,"
         //     + "owner_name.ilike.*" + this.props.keyword + "*,"
         //     + "description.ilike.*" + this.props.keyword + "*)"
 
         return {
-            // ...( modeFilter === "Advertiser" && { }),
+            ...( modeFilter === "Advertiser" ? { classtype: `eq.request` } : { classtype: `eq.listing`}),
             ...(!isEmpty(keyword) && {or: `(name.ilike.*${keyword}*,description.ilike.*${keyword}*)`}),
             ...( sortValue != null && {order : sortValue} ),
             ...( adFormatFilter !== 'Show All' &&
@@ -88,6 +87,8 @@ class Marketplace extends Component {
 
         let resp = await marketplaceApi(getJson, {queryParams, headers});
 
+
+
         let total = +resp.headers['content-range'].split('/')[1];
 
         this.setState({listing: resp.data, total})
@@ -97,14 +98,19 @@ class Marketplace extends Component {
         document.title = "Qchain - Marketplace";
     }
 
-
-    componentDidUpdate(prevProps) {}
+    componentDidUpdate(prevProps) {
+        if(prevProps.modeFilter !== this.props.modeFilter) {
+            this.getData();
+        }
+    }
 
     render() {
         const {
             filters,
             listing, total, currentPageNum
         } = this.state;
+
+        console.log(listing);
 
         return (
             <div style={{ 'position': 'relative' }}>

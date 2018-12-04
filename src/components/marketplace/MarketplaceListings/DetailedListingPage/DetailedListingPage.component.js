@@ -92,7 +92,7 @@ class DetailedListingPage extends Component {
         // make a request to get detailed listing info using ID
         // parse info onto the page
 
-        const { allApis } = this.props;
+        const { allApis, modeFilter } = this.props;
         const { detailedItem } = this.state;
 
         if( detailedItem == null ) return <div/>;
@@ -101,7 +101,7 @@ class DetailedListingPage extends Component {
             return (
                 <div className='detailed-listing-container'>
                     <DetailedRequestListing
-                        {...{allApis}}
+                        {...{allApis, modeFilter}}
                         onBack={() => this.props.history.push(`/marketplace`)}
                         item={detailedItem}
                         decideImage={this.decideImage}
@@ -114,7 +114,7 @@ class DetailedListingPage extends Component {
         return (
             <div className='detailed-listing-container'>
                 <DetailedContentSpaceListing
-                    {...{allApis}}
+                    {...{allApis, modeFilter}}
                     item={detailedItem}
                     onBack={() => this.props.history.push(`/marketplace`)}
 
@@ -169,6 +169,7 @@ class DetailedListingPage extends Component {
 
 const mapStateToProps = (state) => {
     return {
+        modeFilter: state.MenuBarFilterReducer.modeFilter,
         email_verified: state.ProfileReducer.profile.email_verified
     }
 };
