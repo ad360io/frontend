@@ -1,5 +1,5 @@
 import React from "react";
-import {Divider} from "material-ui";
+import Divider from '@material-ui/core/Divider';
 import {Alert, Modal} from "react-bootstrap";
 
 export let invoiceModal = { openModal: null };

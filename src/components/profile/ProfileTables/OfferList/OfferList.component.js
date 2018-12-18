@@ -192,7 +192,8 @@ class OfferRenderer extends Component {
             payout_cap: payoutCap,
             contentlisting: this.props.offer.listing_id,
             contentspacelisting: null
-        }
+        };
+
         axios.post(createContractURL, payload, config)
             .then(() => {
                 // success

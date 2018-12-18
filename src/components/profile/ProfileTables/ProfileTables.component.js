@@ -22,6 +22,7 @@ import Invoice from './Invoice/Invoice.component';
 React Bootstrap
 */
 import { Tabs, Tab } from 'react-bootstrap';
+import {PendingContract} from "./PendingContract/PendingContract";
 
 
 class ProfileTables extends Component {
@@ -77,8 +78,13 @@ class ProfileTables extends Component {
                 condition: true
             },
             {
-                title: "Inactive Contracts",
+                title: "Past Contracts",
                 render: () => <InactiveContract/>,
+                condition: true
+            },
+            {
+                title: "Pending Contracts",
+                render: () => <PendingContract/>,
                 condition: true
             },
             {

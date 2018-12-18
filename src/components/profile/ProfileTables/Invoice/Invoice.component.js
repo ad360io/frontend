@@ -64,6 +64,8 @@ class Invoice extends Component {
 
         if( invoices == null ) return <LoadingPanel/>;
 
+        console.log(invoices);
+
         return (
             <div className='active-listing-container'>
                 <div className='table-responsive' style={{ height: '100%', margin: '2%', minHeight: '320px' }}>
@@ -81,6 +83,9 @@ class Invoice extends Component {
                                     <th
                                         className='invoice-th'
                                         onClick={() => this.toggleSort('amount')}>Amount</th>
+                                    <th
+                                        className='invoice-th'
+                                        onClick={() => {}}>Paid</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -94,6 +99,7 @@ class Invoice extends Component {
                                         </td>
                                         <td>{invoice.publisher_name}</td>
                                         <td>{invoice.amount} {invoice.currency}</td>
+                                        <td>{invoice.paid ? `Paid` : `Unpaid`}</td>
                                     </tr>
                                 ))}
                                 </tbody>
