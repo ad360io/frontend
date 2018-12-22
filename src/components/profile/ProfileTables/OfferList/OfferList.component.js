@@ -1,7 +1,7 @@
 /*
 Core Libs
 */
-import React, { Component } from 'react';
+import React, {Component, Fragment} from 'react';
 import axios from 'axios';
 
 /*
@@ -16,6 +16,10 @@ import {LoadingPanel} from "../../../../common/components/LoadingPanel";
 import {walletApi} from "../../../../common/api/services/wallet-api";
 import {DateUtils} from "../../../../common/utils/date-utils";
 import {contractApi} from "../../../../common/api/services/contract-api";
+import {
+    OfferDialogConfirmation,
+    offerDialogConfirmationService
+} from "./OfferDialogConfirmation";
 
 
 /**
@@ -103,6 +107,7 @@ class OfferList extends Component {
                         </table>
                         )
                     }
+                    <OfferDialogConfirmation/>
                 </div>
             </div>
         );
@@ -137,7 +142,19 @@ class OfferRenderer extends Component {
         let newBalance = balance[`${offer.currency.toLowerCase()}_balance`] - (offer.price * DateUtils.dateDiffInDays(startDate, endDate));
 
         if(newBalance >= 0) {
-            this.makeContract(newBalance);
+            offerDialogConfirmationService.openModal({
+                open: true,
+                options: {
+                    title: "Confirmation",
+                    content: "Are you sure to accept this offer?",
+                    btnTitle: "Accept",
+                    btnAction: () => this.makeContract(newBalance),
+                    btnType: "success"
+                }
+            });
+
+            // this.makeContract(newBalance)
+
         } else {
             this.setState({
                 isProcessing: false,
@@ -219,38 +236,59 @@ class OfferRenderer extends Component {
 
     render() {
         return (
-            <tr className='offer-renderer-tr'>
-                <td style={{paddingTop: '16px'}}>
-                    <OverlayTrigger trigger={['hover', 'focus']} placement='right' overlay={this.getInfoPopover()}>
-                        <a style={{cursor: 'pointer'}}> {this.props.offer.topic} ({this.props.offer.currency})
-                            - {this.props.offer.sender_name}</a>
-                    </OverlayTrigger>
-                </td>
-                <td style={{textAlign: 'center'}}>
-                    {
-                        (this.state.isProcessing)
-                            ? <span style={{color: '#777777'}}>Processing Action...</span>
-                            : <div>
-                                {
-                                    (this.state.actionInfo.length > 0) ?
-                                        <div>
-                                            {this.state.actionInfo}
-                                            <Button style={{marginLeft: '5px'}}
-                                                    onClick={() => this.handleOkayClick()}>okay...</Button>
-                                        </div>
-                                        : (<div>
-                                            <Button
-                                                bsStyle='success'
-                                                onClick={() => this.acceptOffer()}
-                                                style={{marginRight: '10px'}}
-                                            > Accept </Button>
-                                            <Button bsStyle='danger' onClick={() => this.handleDeclineOffer()}>Decline</Button>
-                                        </div>)
-                                }
-                            </div>
-                    }
-                </td>
-            </tr>
+            <Fragment>
+
+                <tr className='offer-renderer-tr'>
+                    <td style={{paddingTop: '16px'}}>
+                        <OverlayTrigger trigger={['hover', 'focus']} placement='right' overlay={this.getInfoPopover()}>
+                            <a style={{cursor: 'pointer'}}> {this.props.offer.topic} ({this.props.offer.currency})
+                                - {this.props.offer.sender_name}</a>
+                        </OverlayTrigger>
+                    </td>
+                    <td style={{textAlign: 'center'}}>
+                        {
+                            (this.state.isProcessing)
+                                ? <span style={{color: '#777777'}}>Processing Action...</span>
+                                : <div>
+                                    {
+                                        (this.state.actionInfo.length > 0) ?
+                                            <div>
+                                                {this.state.actionInfo}
+                                                <Button style={{marginLeft: '5px'}}
+                                                        onClick={() => this.handleOkayClick()}>okay...</Button>
+                                            </div>
+                                            : (<div>
+                                                <Button
+                                                    bsStyle='success'
+                                                    onClick={() => this.acceptOffer()}
+                                                    style={{marginRight: '10px'}}
+                                                > Accept </Button>
+                                                <Button
+                                                    bsStyle='danger'
+                                                    onClick={() => {
+                                                        // this.handleDeclineOffer()
+                                                        offerDialogConfirmationService.openModal({
+                                                            open: true,
+                                                            options: {
+                                                                title: "Confirmation",
+                                                                content: "Are you sure to decline this offer?",
+                                                                btnTitle: "Decline",
+                                                                btnAction: () => this.handleDeclineOffer(),
+                                                                btnType: "danger"
+                                                            }
+                                                        });
+                                                    }}
+                                                >
+                                                    Decline
+                                                </Button>
+                                            </div>)
+                                    }
+                                </div>
+                        }
+                    </td>
+                </tr>
+
+            </Fragment>
         )
     }
 }
