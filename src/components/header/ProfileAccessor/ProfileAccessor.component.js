@@ -108,7 +108,7 @@ class ProfileAccessor extends React.Component {
                                 >
                                     <Paper>
                                     <ClickAwayListener onClickAway={this.handleClose}>
-                                        <MenuList className={classes.menuList}>
+                                            <MenuList className={classes.menuList}>
                                             <MenuItem
                                                 disableRipple
                                                 disableTouchRipple

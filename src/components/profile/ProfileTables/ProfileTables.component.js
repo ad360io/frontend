@@ -107,12 +107,15 @@ class ProfileTables extends Component {
                 { list
                     .filter((l) => l.condition)
                     .map((l, key) => (
-                        <Tab eventKey={key} title={l.title} key={key}>
-                            {React.cloneElement(l.render(), { allApis })}
+                        <Tab
+                            eventKey={key}
+                            title={l.title}
+                            key={key}
+                        >
+                            { React.cloneElement(l.render(), { allApis }) }
                         </Tab>
                     ))
                 }
-
             </Tabs>
         </div>
     }
