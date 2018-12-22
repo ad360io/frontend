@@ -3,6 +3,7 @@ import {postJson} from './method/post-json';
 import {putJson} from './method/put-json';
 import {mapValues} from '../utils/utils';
 import {patchJson} from "./method/patch-json";
+import {delJson} from "./method/del-json";
 
 let baseUrl = 'https://marketplacedb.qchain.co';
 
@@ -29,7 +30,7 @@ export const createAsyncHandling = (authToken, onUnauthorized) => {
     };
 
     return mapValues(
-        { getJson, postJson, putJson, patchJson },
+        { getJson, postJson, putJson, patchJson, delJson },
         (method) => (url, {queryParams = null, payload = null, headers = {}}) =>
             method(`${baseUrl}${url}`, {queryParams, payload, authToken, headers})
                 .then(jsonResp)
