@@ -6,10 +6,14 @@ import React, {Component} from 'react';
 import './InactiveContract.component.css';
 import {LoadingPanel} from "../../../../common/components/LoadingPanel";
 import isEqual from 'lodash/isEqual';
+import {Pagination} from "react-bootstrap";
 
 /**
  * InactiveContract Component
  */
+
+let pageSize = 10;
+
 class InactiveContract extends Component {
     constructor(props) {
         super(props);
@@ -22,7 +26,8 @@ class InactiveContract extends Component {
             orderBy: {
                 value: 'name',
                 asc: true
-            }
+            },
+            currentPageNum: 1
         };
 
         this.loadData(this.state.orderBy);
@@ -31,11 +36,19 @@ class InactiveContract extends Component {
 
     loadData = async (orderBy) => {
         let { allApis : { getJson } } = this.props;
+        const { currentPageNum } = this.state;
+
+        let headers = {
+            Prefer: "count=exact",
+            Range: `${pageSize * (currentPageNum - 1)}-${(pageSize * currentPageNum) - 1}`
+        };
+
         let queryParams = orderBy ? { order: `${orderBy.value}.${orderBy.asc ? `asc` : `desc`}`} : {};
 
-        let resp = await getJson(`/inactive_contract_view`, { queryParams });
+        let resp = await getJson(`/inactive_contract_view`, { queryParams, headers });
+        let total = +resp.headers['content-range'].split('/')[1];
 
-        this.setState({inactiveContract: resp.data});
+        this.setState({inactiveContract: resp.data, total});
     };
 
     componentDidUpdate(prevProps, prevState) {
@@ -59,9 +72,11 @@ class InactiveContract extends Component {
     };
 
     render() {
-        let { inactiveContract } = this.state;
+        let { inactiveContract, total, currentPageNum } = this.state;
 
         if(inactiveContract == null) return <LoadingPanel/>;
+
+        let pages = Math.ceil(total / pageSize);
 
         return (
             <div className='active-listing-container'>
@@ -106,6 +121,20 @@ class InactiveContract extends Component {
                             </table>
                         )
                     }
+
+                    <Pagination bsSize="small">
+                        { Array(pages).fill(1).map((item, key) => (
+                            <Pagination.Item
+                                key={key}
+                                active={key + 1 === currentPageNum}
+                                onClick={() =>
+                                    this.setState({currentPageNum: key + 1}, () => this.loadData(this.state.orderBy))
+                                }
+                            >
+                                {key + 1}
+                            </Pagination.Item>
+                        ))}
+                    </Pagination>
                 </div>
             </div>
         )
