@@ -48,13 +48,15 @@ class ProfileEditor extends Component {
 
             eth_address: this.props.eth_address,
 
+            updated_success: false
+
             // eth_addressa: this.props.eth_addressa,
 
         }
 
-        this.handleHideModal = this.handleHideModal.bind(this);
+        // this.handleHideModal = this.handleHideModal.bind(this);
         this.handleShowModal = this.handleShowModal.bind(this);
-        this.handleConfirmEdit = this.handleConfirmEdit.bind(this);
+        // this.handleConfirmEdit = this.handleConfirmEdit.bind(this);
         this.handleNicknameChange = this.handleNicknameChange.bind(this);
         this.handleEmailChange = this.handleEmailChange.bind(this);
         this.handleAvatarUrlChange = this.handleAvatarUrlChange.bind(this);
@@ -115,11 +117,11 @@ class ProfileEditor extends Component {
         // console.log(this.props);
     }
 
-    handleHideModal() {
+    handleHideModal = () => {
         this.setState({ ...this.state, show: false });
     }
 
-    handleConfirmEdit() {
+    handleConfirmEdit = () => {
         const { updateUserMetadata } = this.props.auth;
         let newMetadata = {
             name: this.state.name,
@@ -133,9 +135,15 @@ class ProfileEditor extends Component {
 
             nem_wlt_name: this.state.nem_wlt_name,
             nem_pk_enc: this.state.nem_pk_enc,
-        }
-        updateUserMetadata(newMetadata);
-        this.handleHideModal();
+        };
+
+
+        updateUserMetadata(newMetadata).then(() => {
+            this.setState({updated_success: true}, () => {
+                setTimeout(() => this.handleHideModal(), 4 * 1000)
+            })
+        });
+        // this.handleHideModal();
     }
 
     handleNicknameChange(e) {
@@ -399,6 +407,13 @@ class ProfileEditor extends Component {
 
                     {NEM_wlt_formgroup}
 
+                    {this.state.updated_success && (
+                        <Alert bsStyle="success">
+                            <p style={{'fontSize': '13px' }}>
+                                Update successfully. We will proceed to login page in 5s ...
+                            </p>
+                        </Alert>
+                    )}
                 </Modal.Body>
 
                 <Alert bsStyle="danger">

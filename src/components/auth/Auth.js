@@ -32,7 +32,7 @@ export default class Auth {
         this.getProfile = this.getProfile.bind(this);
         this.handleProfileOnAuthenticated = this.handleProfileOnAuthenticated.bind(this);
         this.dispatchProfile = this.dispatchProfile.bind(this);
-        this.updateUserMetadata = this.updateUserMetadata.bind(this);
+        // this.updateUserMetadata = this.updateUserMetadata.bind(this);
         this.patchUserMetadata = this.patchUserMetadata.bind(this);
 
         this.scheduleRenewal();
@@ -234,7 +234,7 @@ export default class Auth {
      * This method is used on ProfileEditor component.
      * @param {Object} newMetadata object with already declared fields will update values, undeclared fields will be appended.
      */
-    updateUserMetadata(newMetadata) {
+    updateUserMetadata = (newMetadata) => {
         // Instantiate Auth0 Management API endpoint
         let myIdToken = localStorage.getItem('id_token');
         let auth0Manager = new auth0.Management({
@@ -245,38 +245,44 @@ export default class Auth {
 
         // Target user by using user_id, and each users should only have their own user_id and not others'.
         let myUserId = localStorage.getItem('user_id');
-        auth0Manager.patchUserMetadata(
-            myUserId,
-            newMetadata,
-            (err, newProfile) => {
-                if (err) {
-                    console.log(err);
-                }
-                else {
-                    // Update PostgreSQL account name with new nickname from profile editor.
-                    const nameURL = `https://marketplacedb.qchain.co/account?role=eq.${localStorage.getItem('role')}`;
-                    const config = {
-                        headers: { Authorization: "Bearer " + localStorage.getItem('id_token') }
-                    };
-                    const payload = {
-                        name: newMetadata.nickname,
-                        email: newMetadata.email,
-                        picture: newMetadata.picture
+
+        return new Promise((resolve, reject) => {
+            auth0Manager.patchUserMetadata(
+                myUserId,
+                newMetadata,
+                (err, newProfile) => {
+                    if (err) {
+                        console.log(err);
                     }
-                    axios.patch(nameURL, payload, config)
-                        .then(() => {
-                            // success, logout to reload view
-                            this.logout();
-                        })
-                        .catch((err) => {
-                            console.log("SET NAME ERR");
-                            console.log(err);
-                        }
-                    )
+                    else {
+                        // Update PostgreSQL account name with new nickname from profile editor.
+                        const nameURL = `https://marketplacedb.qchain.co/account?role=eq.${localStorage.getItem('role')}`;
+                        const config = {
+                            headers: { Authorization: "Bearer " + localStorage.getItem('id_token') }
+                        };
+                        const payload = {
+                            name: newMetadata.nickname,
+                            email: newMetadata.email,
+                            picture: newMetadata.picture
+                        };
+
+                        axios.patch(nameURL, payload, config)
+                            .then((resp) => {
+                                setTimeout(() => this.logout(), 5 * 1000);
+                                resolve();
+                                // success, logout to reload view
+                                // this.logout();
+                            })
+                            .catch((err) => {
+                                console.log("SET NAME ERR");
+                                console.log(err);
+                                reject(err);
+                            })
+                    }
                 }
-            }
-        )
-    }
+            )
+        })
+    };
 
     /**
      * Similar to updateUserMetadata, but this doesn't log users out

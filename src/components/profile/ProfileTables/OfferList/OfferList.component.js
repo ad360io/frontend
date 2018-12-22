@@ -153,19 +153,19 @@ class OfferRenderer extends Component {
         let endDate = new Date(offer.end_date);
 
         const payload = {
-            name: offer.name,
+            name: offer.topic,
             advertiser: localStorage.getItem('role'),
             publisher: offer.owner,
             start_date: offer.start_date,
             end_date: offer.end_date,
             currency: offer.currency,
             payout_cap: offer.price * DateUtils.dateDiffInDays(startDate, endDate),
-            contentspacelisting: offer.id,
-            contentlisting: null,
+            contentlisting: offer.listing_id,
+            contentspacelisting: null,
             status: "Pending"
         };
 
-        await contractApi(postJson, {payload});
+        let resp = await contractApi(postJson, {payload});
 
         this.patchListing();
         this.deleteOffer();
