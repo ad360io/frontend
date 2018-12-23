@@ -31,7 +31,7 @@ class CurrencySelector extends React.Component {
                 <Button
                     active={this.props.currencyFilter === 'XQC'}
                     onClick={() => this.handleCurrencyClick('XQC')}
-                    style={{ width: 98 }}
+                    style={{ width: 65 }}
                 >
                     XQC
                 </Button>
@@ -42,9 +42,21 @@ class CurrencySelector extends React.Component {
                     <Button
                         active={this.props.currencyFilter === 'EQC'}
                         // onClick={() => this.handleCurrencyClick('EQC')}
-                        style={{ width: 98 }}
+                        style={{ width: 65 }}
                     >
                         EQC
+                    </Button>
+                </LinkWithTooltip>
+
+                <LinkWithTooltip
+                    tooltip_body={'We are planning to integrate PayPal as a payment method in the future.'}
+                >
+                    <Button
+                        // active={this.props.currencyFilter === 'PayPal'}
+                        // onClick={() => this.handleCurrencyClick('PayPal')}
+                        style={{ width: 65 }}
+                    >
+                        PayPal
                     </Button>
                 </LinkWithTooltip>
             </ButtonGroup>

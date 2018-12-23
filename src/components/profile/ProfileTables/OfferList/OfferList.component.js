@@ -2,6 +2,7 @@
 Core Libs
 */
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import axios from 'axios';
 
 /*
@@ -13,6 +14,12 @@ import { Popover, OverlayTrigger } from 'react-bootstrap';
 import Divider from '@material-ui/core/Divider';
 import {myOffersViewApi} from "../../../../common/api/services/my-offers-view-api";
 import {LoadingPanel} from "../../../../common/components/LoadingPanel";
+
+/*
+Named Exports
+*/
+// import { ProfileConnectedOfferRenderer } from "./OfferList";
+
 
 
 /**
@@ -65,6 +72,12 @@ class OfferList extends Component {
             })
 
         */
+
+        this.setState({nem_address: this.props.nem_address});
+        this.setState({eth_address: this.props.eth_address});
+
+        console.log(this.props.nem_address);
+        console.log(this.state.nem_address);
     };
 
     render() {
@@ -76,7 +89,7 @@ class OfferList extends Component {
             <div className='invite-list-container'>
                 <div className='table-responsive' style={{ height: '100%', margin: '2%', minHeight: '320px' }}>
                     {(activeOffers.length === 0) ?
-                        <p style={{ textAlign: 'center' }}>There is currently no offering...</p> :
+                        <p style={{ textAlign: 'center' }}>You don't have any offers right now.</p> :
                         ( <table className='table table-bordered mb-0'>
                             <thead className='thead-default'>
                             <tr>
@@ -114,14 +127,31 @@ class OfferRenderer extends Component {
         this.handleOkayClick = this.handleOkayClick.bind(this);
     }
 
+    componentDidMount() {
+        this.loadData();
+    }
+
+    loadData = async () => {
+        this.setState({nem_address: this.props.nem_address});
+        this.setState({eth_address: this.props.eth_address});
+
+        console.log('asf');
+        console.log(this.props.nem_address);
+        console.log(this.state.nem_address);
+        console.log('bsd');
+    };
+
     makePayment(existingBalance, currencyType, price) {
         const listingURL = `https://marketplacedb.qchain.co/wallet_view`;
+
         const config = {
             headers: { Authorization: "Bearer " + localStorage.getItem('id_token') }
         };
+
         const payload = (currencyType === 'EQC')
             ? { eqc_balance: (existingBalance - price) }
             : { xqc_balance: (existingBalance - price) }
+
         axios.patch(listingURL, payload, config)
             .then(() => {
                 //success, toggle isactive on this listing to false
@@ -138,16 +168,25 @@ class OfferRenderer extends Component {
             ...this.state,
             isProcessing: true
         })
-        const walletURL = `https://marketplacedb.qchain.co/wallet_view`;
+
+        const walletURL_ = `https://marketplacedb.qchain.co/wallet_view`;
         const config = {
             headers: { Authorization: "Bearer " + localStorage.getItem('id_token') }
         };
 
-        axios.get(walletURL, config)
+        var walletURL = "https://nis.qchain.co/account/mosaic/owned?address=";
+
+        var self = this;
+
+        console.log('hi');
+        console.log(this.state.nem_address);
+
+        axios.get(walletURL_, config)
             .then((response) => {
                 //success, response.data[0]
                 let startDate = new Date(this.props.offer.start_date);
                 let endDate = new Date(this.props.offer.end_date);
+
                 if (this.props.offer.currency === 'EQC') {
                     if (response.data[0].eqc_balance >= this.props.offer.price * dateDiffInDays(startDate, endDate)) {
                         this.createContractAfterBalanceCheck(response.data[0].eqc_balance, this.props.offer.price * dateDiffInDays(startDate, endDate))
@@ -161,17 +200,21 @@ class OfferRenderer extends Component {
                 } else {
                     if (response.data[0].xqc_balance >= this.props.offer.price * dateDiffInDays(startDate, endDate)) {
                         this.createContractAfterBalanceCheck(response.data[0].xqc_balance, this.props.offer.price * dateDiffInDays(startDate, endDate))
+
+                        console.log(self.state.nem_address);
                     } else {
                         this.setState({
                             ...this.state,
                             isProcessing: false,
                             actionInfo: 'Insufficient XQC'
                         })
+
+                        console.log(self.state.nem_address);
                     }
                 }
             })
             .catch((err) => {
-                console.log("BUY IT NOW ERR");
+                console.log("ACCEPT OFFER ERR");
                 console.log(err);
             })
 
@@ -285,7 +328,7 @@ class OfferRenderer extends Component {
                         : <div>
                             {
                                 (this.state.actionInfo.length > 0)
-                                    ? <div>{this.state.actionInfo} <Button style={{ marginLeft: '5px' }} onClick={this.handleOkayClick}>okay...</Button></div>
+                                    ? <div>{this.state.actionInfo} <Button style={{ marginLeft: '5px' }} onClick={this.handleOkayClick}>OK</Button></div>
                                     : (<div>
                                         <Button
                                             bsStyle='success'
@@ -314,4 +357,18 @@ function dateDiffInDays(a, b) {
     return (Math.ceil((utc2 - utc1) / _MS_PER_DAY) + 1 === 0 ? 1 : Math.ceil((utc2 - utc1) / _MS_PER_DAY) + 1);
 }
 
-export default OfferList;
+const mapStateToProps = (state) => {
+    return {
+        profile: state.ProfileReducer.profile,
+        nem_address: state.ProfileReducer.profile.nem_address,
+        eth_address: state.ProfileReducer.profile.eth_address,
+    }
+}
+
+export default connect(
+    mapStateToProps
+)(OfferList);
+
+export const ProfileConnectedOfferRenderer = connect(
+    mapStateToProps
+)(OfferRenderer);

@@ -153,7 +153,7 @@ class Profile extends Component {
             <div className='profile-header'>
                 <Media style={mediaStyle}>
                     <Media.Left align='middle'>
-                        <img src={this.getAvatarSrc()} style={{ marginRight: '3vw' }} width='120' height='120' alt='user-avatar' />
+                        <img src={this.getAvatarSrc()} style={{ marginRight: '1vw' }} width='120' height='120' alt='user-avatar' />
                     </Media.Left>
                     <Media.Body>
                         <Media.Heading style={mediaHeadingStyle}>
@@ -185,7 +185,7 @@ class Profile extends Component {
 
 const mediaStyle = {
     marginTop: '235px',
-    marginLeft: '8vw',
+    marginLeft: '10vw',
     fontSize: '14px',
 }
 

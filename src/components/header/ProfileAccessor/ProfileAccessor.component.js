@@ -23,15 +23,17 @@ const styles = theme => ({
         display: 'flex',
     },
     profileImage: {
-        backgroundColor: 'rgb(145,53,161)',
-        borderRadius: '25px',
-        padding: '1px',
-        width: '36px',
-        margin: 'auto'
+        backgroundColor: '#D6DBDF',
+        borderRadius: '5px',
+        padding: '2px',
+        height: '42px',
+        marginTop: '-2px'
     },
     profileButton: {
-        height: '64px',
-        borderRadius: '45px'
+        // borderColor: '##34495E',
+        height: '52px',
+        marginTop: '6px',
+        borderRadius: '5px',
     },
     menuItem: {
         width: '200px',
@@ -94,7 +96,7 @@ class ProfileAccessor extends React.Component {
                         >
 
                             <div className='profile-accessor-image'>
-                                <img src={this.props.profile.avatar_url} className={classes.profileImage} alt='x' />
+                                <img src={this.props.profile.avatar_url} className={classes.profileImage} alt='Profile image' />
                             </div>
 
 
@@ -162,9 +164,9 @@ class ProfileAccessor extends React.Component {
 
 const FilterRenderer = ({ auth }) => (
     <div>
-        <p>I am...</p>
+        <p>I am</p>
         <ModeSelector auth={auth} />
-        <p style={{ marginTop: 5 }}> currently using in... </p>
+        <p style={{ marginTop: 5 }}> currently using</p>
         <CurrencySelector auth={auth} />
     </div>
 )

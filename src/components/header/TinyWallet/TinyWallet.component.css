@@ -1,7 +1,7 @@
 .tiny-wallet-container {
     grid-area: wallet;
     height: 50px;
-    min-width: 140px;
+    min-width: 142px;
     margin-top: 7px;
     border-left: 1px solid #ddd;
     padding-left: 12px;

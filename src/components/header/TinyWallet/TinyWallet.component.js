@@ -37,10 +37,8 @@ class TinyWallet extends Component {
         this.state = {
             finished: false,
             err: null,
-            xqc_balance: '----------',
-            eqc_balance: '----------',
-            nem_address: this.props.nem_address,
-            eth_address: this.props.eth_address
+            xqc_balance: 'Loading...',
+            eqc_balance: 'Loading...',
         }
 
         // console.log('hithere');
@@ -162,43 +160,56 @@ class TinyWallet extends Component {
 
         var self = this;
 
-        // var check_undef = setInterval(function() {
-        //     if (typeof(address) !== 'undefined') {
+        var check_undef = setInterval(function() {
+            if (typeof(address) !== 'undefined') {
         //     //     // console.log('not yet');
         //     //     // this.sleep(2000);
         //     // } else {
         //         // console.log('k ready now');
         //
-        //         address = address.split('-').join('');
+                address = address.split('-').join('');
         //         // console.log(address);
         //
-        //         walletURL += address.split('-').join('');
+                walletURL += address.split('-').join('');
         //         // console.log(walletURL);
         //
         //
-        //         axios.get(walletURL)
-        //             .then((response) => {
-        //                 var xqc_balance_1e6 = '0 XQC'
-        //
-        //                 xqc_balance_1e6 = response.data.data.filter(i => i.mosaicId.namespaceId === 'qchain' && i.mosaicId.name === 'xqc')[0].quantity;
-        //                 xqc_balance_1e6 = parseInt(xqc_balance_1e6, 10) / 1e6;
-        //                 xqc_balance_1e6 = xqc_balance_1e6.toString() + ' XQC';
-        //
-        //                 self.setState({
-        //                     ...self.state,
-        //                     finished: true,
-        //                     xqc_balance: xqc_balance_1e6,
+                axios.get(walletURL)
+                    .then((response) => {
+                        var xqc_balance_1e6 = '0 XQC'
+
+                        xqc_balance_1e6 = response.data.data.filter(i => i.mosaicId.namespaceId === 'qchain' && i.mosaicId.name === 'xqc')[0].quantity;
+                        xqc_balance_1e6 = parseInt(xqc_balance_1e6, 10) / 1e6;
+
+                        var num_digits = xqc_balance_1e6.toString().replace('.', '').length;
+
+                        if (num_digits > 9) {
+                            var num_int_digits = Math.trunc(xqc_balance_1e6).toString().length;
+
+                            if (num_int_digits >= 9) {
+                                xqc_balance_1e6 = Math.trunc(xqc_balance_1e6);
+                            } else {
+                                xqc_balance_1e6 = xqc_balance_1e6.toFixed(9 - num_int_digits);
+                            }
+                        }
+
+                        xqc_balance_1e6 = xqc_balance_1e6.toString() + ' XQC';
+
+                        self.setState({
+                            ...self.state,
+                            finished: true,
+                            xqc_balance: xqc_balance_1e6,
         //                     // xqc_balance: `${response.data.data.filter(i => i.mosaicId.namespaceId === 'qchain' && i.mosaicId.name === 'xqc')[0].quantity} XQC`,
-        //                 })
-        //             })
-        //             .catch((err) => {
-        //                 console.log(err);
-        //                 self.setState({
-        //                     ...self.state,
-        //                     finished: true,
-        //                     err: err
-        //                 })
-        //             });
+                        })
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                        self.setState({
+                            ...self.state,
+                            finished: true,
+                            err: err
+                        })
+                    });
         //
         //
         //         // nem.com.requests.account.mosaics.owned(self.endpoint, address).then(function(res) {
@@ -216,12 +227,12 @@ class TinyWallet extends Component {
         //         // })
         //
         //
-        //         clearInterval(check_undef);
-        //     }
-        // }, 1000);
+                clearInterval(check_undef);
+            }
+        }, 1000);
 
-        if (this.state.xqc_balance !== '----------') {
-            // clearInterval(check_undef);
+        if (this.state.xqc_balance !== 'Loading...') {
+            clearInterval(check_undef);
         }
 
         return this.state.xqc_balance;
@@ -277,13 +288,15 @@ class TinyWallet extends Component {
                 <div className='tiny-wallet-container'>
                     <p className='tiny-wallet-title'>CURRENT BALANCE</p>
 
-                    {
+                    {/* {
                         (this.props.currencyFilter === 'EQC'
-                            ? <WalletEqcRenderer balance={this.state.eqc_balance} />
-                            : <WalletXqcRenderer balance={this.get_XQC_balance(this.props.profile.nem_address)} />
+                            ? <WalletBalanceRenderer balance={this.state.eqc_balance} />
+                            : <WalletBalanceRenderer balance={this.get_XQC_balance(this.props.profile.nem_address)} />
                             // : <WalletXqcRenderer balance={this.state.xqc_balance} />
                         )
-                    }
+                    } */}
+                    <WalletBalanceRenderer balance={this.props.currencyFilter === 'EQC' ? this.state.eqc_balance : this.get_XQC_balance(this.props.profile.nem_address)}/>
+
                 </div>
 
             </LinkWithTooltip>
@@ -291,24 +304,19 @@ class TinyWallet extends Component {
     }
 }
 
-const WalletEqcRenderer = ({ balance }) => (
+const WalletBalanceRenderer = ({ balance }) => (
     <p className='tiny-currency-item'>
-        <span className='tiny-wallet-currency-label'>{balance} </span>
+        <span className='tiny-wallet-currency-label'>{balance}</span>
     </p>
 )
 
-const WalletXqcRenderer = ({ balance }) => (
-    <p className='tiny-currency-item'>
-        <span className='tiny-wallet-currency-label'>{balance} </span>
-    </p>
-)
 
 const mapStateToProps = (state) => {
     return {
         currencyFilter: state.MenuBarFilterReducer.currencyFilter,
         profile: state.ProfileReducer.profile,
-        // nem_address: state.ProfileReducer.profile.nem_address,
-        // eth_address: state.ProfileReducer.profile.eth_address,
+        nem_address: state.ProfileReducer.profile.nem_address,
+        eth_address: state.ProfileReducer.profile.eth_address,
     }
 }
 

@@ -27,6 +27,9 @@ export class InvoiceViewModal extends React.Component {
 
         if(invoice == null) return <div/>;
 
+        const invoice_date = invoice.date.split('T')[0];
+        const invoice_due_date = invoice.due_date.split('T')[0];
+
         return (
             <Modal show={open} onHide={() => this.setState({open: false, invoice: null})}>
                 <Modal.Header closeButton>
@@ -35,15 +38,15 @@ export class InvoiceViewModal extends React.Component {
                 <Modal.Body>
                     <h4>Publisher</h4><h5>{invoice.publisher_name}</h5>
                     <Divider />
-                    <h4>Date Created</h4><h5>{invoice.date}</h5>
+                    <h4>Date Created</h4><h5>{invoice_date}</h5>
                     <Divider />
                     <h4>Amount Due</h4><h5>{invoice.amount} {invoice.currency}</h5>
                     <Divider />
-                    <h4>Invoice Due Date</h4><h5>{invoice.due_date}</h5>
+                    <h4>Invoice Due Date</h4><h5>{invoice_due_date}</h5>
                 </Modal.Body>
                 <Alert bsStyle={(invoice.paid ? 'success' : 'success')}>
                     <p>
-                        This invoice is {(invoice.paid ? 'already paid!' : 'not paid yet!')}
+                        This invoice has {(invoice.paid ? 'already been paid.' : 'not been paid yet!')}
                     </p>
                 </Alert>
             </Modal>
