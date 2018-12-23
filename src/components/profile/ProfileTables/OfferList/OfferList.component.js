@@ -1,11 +1,8 @@
 /*
 Core Libs
 */
-
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-
 import React, {Component, Fragment} from 'react';
+import { connect } from 'react-redux';
 
 import axios from 'axios';
 
@@ -25,12 +22,6 @@ import {
     OfferDialogConfirmation,
     offerDialogConfirmationService
 } from "./OfferDialogConfirmation";
-
-/*
-Named Exports
-*/
-// import { ProfileConnectedOfferRenderer } from "./OfferList";
-
 
 
 /**
@@ -138,27 +129,6 @@ class OfferRenderer extends Component {
         };
     }
 
-    makePayment(existingBalance, currencyType, price) {
-        const listingURL = `https://marketplacedb.qchain.co/wallet_view`;
-
-        const config = {
-            headers: { Authorization: "Bearer " + localStorage.getItem('id_token') }
-        };
-
-        const payload = (currencyType === 'EQC')
-            ? { eqc_balance: (existingBalance - price) }
-            : { xqc_balance: (existingBalance - price) }
-
-        axios.patch(listingURL, payload, config)
-            .then(() => {
-                //success, toggle isactive on this listing to false
-            })
-            .catch((err) => {
-                console.log("INACTIVATE ERR");
-                console.log(err);
-            })
-    }
-
     makePayment = async(newBalance) => {
         const { allApis : { patchJson }, offer } = this.props;
         return await walletApi(patchJson, { payload : { [`${offer.currency.toLowerCase()}_balance`] :  newBalance} })
@@ -168,47 +138,7 @@ class OfferRenderer extends Component {
         const { allApis: { getJson }, offer } = this.props;
         this.setState({isProcessing: true});
 
-    handleAcceptOffer() {
-        this.setState({
-            ...this.state,
-            isProcessing: true
-        })
-
-        const walletURL_ = `https://marketplacedb.qchain.co/wallet_view`;
-        const config = {
-            headers: { Authorization: "Bearer " + localStorage.getItem('id_token') }
-        };
-
-        var walletURL = "https://nis.qchain.co/account/mosaic/owned?address=";
-
-        axios.get(walletURL_, config)
-            .then((response) => {
-                //success, response.data[0]
-                let startDate = new Date(this.props.offer.start_date);
-                let endDate = new Date(this.props.offer.end_date);
-
-                if (this.props.offer.currency === 'EQC') {
-                    if (response.data[0].eqc_balance >= this.props.offer.price * dateDiffInDays(startDate, endDate)) {
-                        this.createContractAfterBalanceCheck(response.data[0].eqc_balance, this.props.offer.price * dateDiffInDays(startDate, endDate))
-                    } else {
-                        this.setState({
-                            ...this.state,
-                            isProcessing: false,
-                            actionInfo: 'Insufficient EQC'
-                        })
-                    }
-                } else {
-                    if (response.data[0].xqc_balance >= this.props.offer.price * dateDiffInDays(startDate, endDate)) {
-                        this.createContractAfterBalanceCheck(response.data[0].xqc_balance, this.props.offer.price * dateDiffInDays(startDate, endDate))
-                    } else {
-                        this.setState({
-                            ...this.state,
-                            isProcessing: false,
-                            actionInfo: 'Insufficient XQC'
-                        })
-                    }
-                }
-            })
+        // const walletURL = `https://marketplacedb.qchain.co/wallet_view`;
 
         let resp = await walletApi(getJson);
         let balance = resp.data[0];
@@ -236,10 +166,6 @@ class OfferRenderer extends Component {
             this.setState({
                 isProcessing: false,
                 actionInfo: `Insufficient ${offer.currency}`
-            })
-            .catch((err) => {
-                console.log("ACCEPT OFFER ERR");
-                console.log(err);
             })
         }
     };
@@ -316,34 +242,6 @@ class OfferRenderer extends Component {
     };
 
     render() {
-        return <tr className='offer-renderer-tr'>
-            <td style={{ paddingTop: '16px' }}>
-                <OverlayTrigger trigger={['hover', 'focus']} placement='right' overlay={this.getInfoPopover()}>
-                    <a style={{ cursor: 'pointer' }}> {this.props.offer.topic} ({this.props.offer.currency}) - {this.props.offer.sender_name}</a>
-                </OverlayTrigger>
-            </td>
-            <td style={{ textAlign: 'center' }}>
-                {
-                    (this.state.isProcessing)
-                        ? <span style={{ color: '#777777' }}>Processing Action...</span>
-                        : <div>
-                            {
-                                (this.state.actionInfo.length > 0)
-                                    ? <div>{this.state.actionInfo} <Button style={{ marginLeft: '5px' }} onClick={this.handleOkayClick}>OK</Button></div>
-                                    : (<div>
-                                        <Button
-                                            bsStyle='success'
-                                            onClick={() => this.handleAcceptOffer()}
-                                            style={{ marginRight: '10px' }}
-                                        > Accept </Button>
-                                        <Button bsStyle='danger' onClick={() => this.handleDeclineOffer()}>Decline</Button>
-                                    </div>)
-                            }
-                        </div>
-                }
-            </td>
-        </tr>
-
         return (
             <Fragment>
 
@@ -424,7 +322,3 @@ const mapStateToProps = (state) => {
 export default connect(
     mapStateToProps
 )(OfferList);
-
-export const ProfileConnectedOfferRenderer = connect(
-    mapStateToProps
-)(OfferRenderer);
