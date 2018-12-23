@@ -87,8 +87,6 @@ class Marketplace extends Component {
 
         let resp = await marketplaceApi(getJson, {queryParams, headers});
 
-
-
         let total = +resp.headers['content-range'].split('/')[1];
 
         this.setState({listing: resp.data, total})

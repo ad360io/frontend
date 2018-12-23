@@ -41,7 +41,7 @@ class CurrencySelector extends React.Component {
                 >
                     <Button
                         active={this.props.currencyFilter === 'EQC'}
-                        // onClick={() => this.handleCurrencyClick('EQC')}
+                        onClick={() => this.handleCurrencyClick('EQC')}
                         style={{ width: 65 }}
                     >
                         EQC

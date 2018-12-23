@@ -1,8 +1,12 @@
 /*
 Core Libs
 */
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+
+import React, {Component, Fragment} from 'react';
+
 import axios from 'axios';
 
 /*
@@ -14,6 +18,13 @@ import { Popover, OverlayTrigger } from 'react-bootstrap';
 import Divider from '@material-ui/core/Divider';
 import {myOffersViewApi} from "../../../../common/api/services/my-offers-view-api";
 import {LoadingPanel} from "../../../../common/components/LoadingPanel";
+import {walletApi} from "../../../../common/api/services/wallet-api";
+import {DateUtils} from "../../../../common/utils/date-utils";
+import {contractApi} from "../../../../common/api/services/contract-api";
+import {
+    OfferDialogConfirmation,
+    offerDialogConfirmationService
+} from "./OfferDialogConfirmation";
 
 /*
 Named Exports
@@ -75,13 +86,11 @@ class OfferList extends Component {
 
         this.setState({nem_address: this.props.nem_address});
         this.setState({eth_address: this.props.eth_address});
-
-        console.log(this.props.nem_address);
-        console.log(this.state.nem_address);
     };
 
     render() {
         let { activeOffers } = this.state;
+        const { allApis } = this.props;
 
         if( activeOffers == null ) return <LoadingPanel/>;
 
@@ -99,12 +108,20 @@ class OfferList extends Component {
                             </thead>
                             <tbody>
                             { activeOffers.map((offer, i) =>
-                                <OfferRenderer offer={offer} refreshData={this.loadData} key={'offer' + i} />
+                                <OfferRenderer
+                                    key={'offer' + i}
+                                    {...{
+                                        allApis,
+                                        offer,
+                                        onRemoveOffer: (id) => this.setState({activeOffers: activeOffers.filter((a) => a.id !== id)}),
+                                    }}
+                                />
                             )}
                             </tbody>
                         </table>
                         )
                     }
+                    <OfferDialogConfirmation/>
                 </div>
             </div>
         );
@@ -119,27 +136,7 @@ class OfferRenderer extends Component {
             isProcessing: false,
             actionInfo: ''
         };
-        this.getInfoPopover = this.getInfoPopover.bind(this);
-        this.handleDeclineOffer = this.handleDeclineOffer.bind(this);
-        this.handleAcceptOffer = this.handleAcceptOffer.bind(this);
-        this.makePayment = this.makePayment.bind(this);
-        this.createContractAfterBalanceCheck = this.createContractAfterBalanceCheck.bind(this);
-        this.handleOkayClick = this.handleOkayClick.bind(this);
     }
-
-    componentDidMount() {
-        this.loadData();
-    }
-
-    loadData = async () => {
-        this.setState({nem_address: this.props.nem_address});
-        this.setState({eth_address: this.props.eth_address});
-
-        console.log('asf');
-        console.log(this.props.nem_address);
-        console.log(this.state.nem_address);
-        console.log('bsd');
-    };
 
     makePayment(existingBalance, currencyType, price) {
         const listingURL = `https://marketplacedb.qchain.co/wallet_view`;
@@ -162,6 +159,14 @@ class OfferRenderer extends Component {
             })
     }
 
+    makePayment = async(newBalance) => {
+        const { allApis : { patchJson }, offer } = this.props;
+        return await walletApi(patchJson, { payload : { [`${offer.currency.toLowerCase()}_balance`] :  newBalance} })
+    };
+
+    acceptOffer = async () => {
+        const { allApis: { getJson }, offer } = this.props;
+        this.setState({isProcessing: true});
 
     handleAcceptOffer() {
         this.setState({
@@ -175,11 +180,6 @@ class OfferRenderer extends Component {
         };
 
         var walletURL = "https://nis.qchain.co/account/mosaic/owned?address=";
-
-        var self = this;
-
-        console.log('hi');
-        console.log(this.state.nem_address);
 
         axios.get(walletURL_, config)
             .then((response) => {
@@ -200,95 +200,96 @@ class OfferRenderer extends Component {
                 } else {
                     if (response.data[0].xqc_balance >= this.props.offer.price * dateDiffInDays(startDate, endDate)) {
                         this.createContractAfterBalanceCheck(response.data[0].xqc_balance, this.props.offer.price * dateDiffInDays(startDate, endDate))
-
-                        console.log(self.state.nem_address);
                     } else {
                         this.setState({
                             ...this.state,
                             isProcessing: false,
                             actionInfo: 'Insufficient XQC'
                         })
-
-                        console.log(self.state.nem_address);
                     }
                 }
+            })
+
+        let resp = await walletApi(getJson);
+        let balance = resp.data[0];
+
+        let startDate = new Date(offer.start_date);
+        let endDate = new Date(offer.end_date);
+
+        let newBalance = balance[`${offer.currency.toLowerCase()}_balance`] - (offer.price * DateUtils.dateDiffInDays(startDate, endDate));
+
+        if(newBalance >= 0) {
+            offerDialogConfirmationService.openModal({
+                open: true,
+                options: {
+                    title: "Confirmation",
+                    content: "Are you sure to accept this offer?",
+                    btnTitle: "Accept",
+                    btnAction: () => this.makeContract(newBalance),
+                    btnType: "success"
+                }
+            });
+
+            // this.makeContract(newBalance)
+
+        } else {
+            this.setState({
+                isProcessing: false,
+                actionInfo: `Insufficient ${offer.currency}`
             })
             .catch((err) => {
                 console.log("ACCEPT OFFER ERR");
                 console.log(err);
             })
-
-    }
-
-    createContractAfterBalanceCheck(existingBalance, payoutCap) {
-        const createContractURL = "https://marketplacedb.qchain.co/contract";
-        const config = {
-            headers: { Authorization: "Bearer " + localStorage.getItem('id_token') }
-        };
-        const payload = {
-            name: this.props.offer.topic,
-            advertiser: localStorage.getItem('role'),
-            publisher: this.props.offer.sender,
-            start_date: this.props.offer.start_date,
-            end_date: this.props.offer.end_date,
-            currency: this.props.offer.currency,
-            payout_cap: payoutCap,
-            contentlisting: this.props.offer.listing_id,
-            contentspacelisting: null
-        };
-
-        axios.post(createContractURL, payload, config)
-            .then(() => {
-                // success
-                this.patchListing();
-                this.deleteOffer();
-                this.makePayment(existingBalance);
-            })
-            .catch((err) => {
-                console.log("CREATE CONTRACT ERR")
-                console.log(err);
-            })
-    }
-
-    patchListing() {
-        const patchListingURL = "https://marketplacedb.qchain.co/listing?id=eq." + this.props.offer.listing_id;
-        const config = {
-            headers: { Authorization: "Bearer " + localStorage.getItem('id_token') }
-        };
-        const payload = {
-            isactive: false
         }
-        axios.patch(patchListingURL, payload, config)
-            .then(() => {
-                // success
-            })
-            .catch((err) => {
-                console.log("PATCH LISTING ERR")
-                console.log(err);
-            })
-    }
+    };
+
+    makeContract = async (newBalance) => {
+        const { allApis : { postJson }, offer } = this.props;
+
+        let startDate = new Date(offer.start_date);
+        let endDate = new Date(offer.end_date);
+
+        const payload = {
+            name: offer.topic,
+            advertiser: localStorage.getItem('role'),
+            publisher: offer.owner,
+            start_date: offer.start_date,
+            end_date: offer.end_date,
+            currency: offer.currency,
+            payout_cap: offer.price * DateUtils.dateDiffInDays(startDate, endDate),
+            contentlisting: offer.listing_id,
+            contentspacelisting: null,
+            status: "Pending"
+        };
+
+        let resp = await contractApi(postJson, {payload});
+
+        this.patchListing();
+        this.deleteOffer();
+        this.makePayment(newBalance);
+    };
+
+    patchListing = async() => {
+        const { allApis: { patchJson }, offer } = this.props;
+        return await patchJson(`/listing`, { queryParams: { id: `eq.${offer.listing_id}` }, payload: { isactive: false } });
+    };
 
     handleDeclineOffer() {
         this.deleteOffer();
     }
 
-    deleteOffer() {
-        const deleteOfferURL = "https://marketplacedb.qchain.co/offer?id=eq." + this.props.offer.id;
-        const config = {
-            headers: { Authorization: "Bearer " + localStorage.getItem('id_token') }
-        };
-        axios.delete(deleteOfferURL, config)
-            .then(() => {
-                // success
-                this.props.refreshData();
-            })
-            .catch((err) => {
-                console.log("DELETE OFFER ERR")
-                console.log(err);
-            })
-    }
+    deleteOffer = async () => {
+        const { allApis: { delJson }, offer, onRemoveOffer } = this.props;
 
-    getInfoPopover() {
+        let resp = await delJson(`/offer`, { queryParams: { id: `eq.${offer.id}` } });
+
+        if(resp) {
+            onRemoveOffer(offer.id)
+        }
+    };
+
+    getInfoPopover = () => {
         let startDate = new Date(this.props.offer.start_date);
         let endDate = new Date(this.props.offer.end_date);
         return (
@@ -307,12 +308,12 @@ class OfferRenderer extends Component {
         )
     }
 
-    handleOkayClick() {
+    handleOkayClick = () => {
         this.setState({
             ...this.state,
             actionInfo: ''
         })
-    }
+    };
 
     render() {
         return <tr className='offer-renderer-tr'>
@@ -342,8 +343,63 @@ class OfferRenderer extends Component {
                 }
             </td>
         </tr>
-    }
 
+        return (
+            <Fragment>
+
+                <tr className='offer-renderer-tr'>
+                    <td style={{paddingTop: '16px'}}>
+                        <OverlayTrigger trigger={['hover', 'focus']} placement='right' overlay={this.getInfoPopover()}>
+                            <a style={{cursor: 'pointer'}}> {this.props.offer.topic} ({this.props.offer.currency})
+                                - {this.props.offer.sender_name}</a>
+                        </OverlayTrigger>
+                    </td>
+                    <td style={{textAlign: 'center'}}>
+                        {
+                            (this.state.isProcessing)
+                                ? <span style={{color: '#777777'}}>Processing Action...</span>
+                                : <div>
+                                    {
+                                        (this.state.actionInfo.length > 0) ?
+                                            <div>
+                                                {this.state.actionInfo}
+                                                <Button style={{marginLeft: '5px'}}
+                                                        onClick={() => this.handleOkayClick()}>okay...</Button>
+                                            </div>
+                                            : (<div>
+                                                <Button
+                                                    bsStyle='success'
+                                                    onClick={() => this.acceptOffer()}
+                                                    style={{marginRight: '10px'}}
+                                                > Accept </Button>
+                                                <Button
+                                                    bsStyle='danger'
+                                                    onClick={() => {
+                                                        // this.handleDeclineOffer()
+                                                        offerDialogConfirmationService.openModal({
+                                                            open: true,
+                                                            options: {
+                                                                title: "Confirmation",
+                                                                content: "Are you sure to decline this offer?",
+                                                                btnTitle: "Decline",
+                                                                btnAction: () => this.handleDeclineOffer(),
+                                                                btnType: "danger"
+                                                            }
+                                                        });
+                                                    }}
+                                                >
+                                                    Decline
+                                                </Button>
+                                            </div>)
+                                    }
+                                </div>
+                        }
+                    </td>
+                </tr>
+
+            </Fragment>
+        )
+    }
 }
 
 const _MS_PER_DAY = 1000 * 60 * 60 * 24;

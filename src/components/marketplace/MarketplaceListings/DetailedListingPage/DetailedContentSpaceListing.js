@@ -51,7 +51,8 @@ export class DetailedContentSpaceListing extends React.Component {
             currency: item.currency,
             payout_cap: item.price * DateUtils.dateDiffInDays(startDate, endDate),
             contentspacelisting: item.id,
-            contentlisting: null
+            contentlisting: null,
+            status: "Pending"
         };
 
         let resp = await contractApi(postJson, {payload});
