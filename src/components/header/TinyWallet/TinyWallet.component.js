@@ -19,6 +19,11 @@ import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 NEM SDK
 */
 import nem from 'nem-sdk';
+import {formatNumberAbbr} from "../../../common/format";
+import {walletState} from "../../../common/wallet-state";
+import {FComponent} from "../../../common/f-component";
+import {isEqual} from "lodash";
+import {getJson} from "../../../common/api/method/get-json";
 
 /*
 Children Component
@@ -31,7 +36,7 @@ Children Component
  *         Work to be done:
  *              - Pull data on componentsWillMount
  */
-class TinyWallet extends Component {
+class TinyWallet extends FComponent {
     constructor(props) {
         super(props);
         this.state = {
@@ -64,14 +69,24 @@ class TinyWallet extends Component {
 
         /* Create connection to NIS supernode */
         this.endpoint = nem.model.objects.create('endpoint')(this.NEM_node_URI, this.NEM_port);
+
+        this.onUnmount(walletState.onChange(() => this.forceUpdate()));
+
+
     }
 
-    componentWillMount() {
-        // this.getWalletInfo();
-    }
+    // componentWillMount() {
+    //     // this.getWalletInfo();
+    // }
+    //
+    // componentWillReceiveProps() {
+    //     // this.getWalletInfo();
+    // }
 
-    componentWillReceiveProps() {
-        // this.getWalletInfo();
+    componentDidUpdate(prevProps) {
+        if(!isEqual(prevProps.profile, this.props.profile)) {
+            this.getBalance(this.props.profile.nem_address);
+        }
     }
 
     // getWalletInfo = () => {
@@ -146,106 +161,122 @@ class TinyWallet extends Component {
     //         });
     // }
 
-    get_XQC_balance(address) {
-        if (address === 'undefined' || address === '') {
-            return this.state.xqc_balance;
+    getBalance = async (address) => {
+        // const { allApis: { getJson } } = this.props;
+        let walletUrl = `https://nis.qchain.co/account/mosaic/owned`;
+
+        let resp = await getJson(walletUrl, { queryParams: { address: address.split('-').join('')}, fromBaseUrl: false});
+
+        if(resp.data) {
+            let balance = resp.data.data.find(i => i.mosaicId.namespaceId === 'qchain' && i.mosaicId.name === 'xqc').quantity;
+            walletState.setState(balance);
         }
+    };
 
-        var walletURL = "https://nis.qchain.co/account/mosaic/owned?address=";
-
-        // var walletURL = "http://192.3.61.243:7890/account/mosaic/owned?address=";
-        // walletURL += address.split('-').join('');
-
-        // var walletURL = "http://192.3.61.243:7890/account/mosaic/owned?address=TABCP73ZM4HIXITP6SZMYVB3EPX7OSHKP5PCEJQY";
-
-        var self = this;
-
-        var check_undef = setInterval(function() {
-            if (typeof(address) !== 'undefined') {
-        //     //     // console.log('not yet');
-        //     //     // this.sleep(2000);
-        //     // } else {
-        //         // console.log('k ready now');
-        //
-                address = address.split('-').join('');
-        //         // console.log(address);
-        //
-                walletURL += address.split('-').join('');
-        //         // console.log(walletURL);
-        //
-        //
-                axios.get(walletURL)
-                    .then((response) => {
-                        var xqc_balance_1e6 = '0 XQC'
-
-                        xqc_balance_1e6 = response.data.data.filter(i => i.mosaicId.namespaceId === 'qchain' && i.mosaicId.name === 'xqc')[0].quantity;
-                        xqc_balance_1e6 = parseInt(xqc_balance_1e6, 10) / 1e6;
-
-                        var num_digits = xqc_balance_1e6.toString().replace('.', '').length;
-
-                        if (num_digits > 9) {
-                            var num_int_digits = Math.trunc(xqc_balance_1e6).toString().length;
-
-                            if (num_int_digits >= 9) {
-                                xqc_balance_1e6 = Math.trunc(xqc_balance_1e6);
-                            } else {
-                                xqc_balance_1e6 = xqc_balance_1e6.toFixed(9 - num_int_digits);
-                            }
-                        }
-
-                        xqc_balance_1e6 = xqc_balance_1e6.toString() + ' XQC';
-
-                        self.setState({
-                            ...self.state,
-                            finished: true,
-                            xqc_balance: xqc_balance_1e6,
-        //                     // xqc_balance: `${response.data.data.filter(i => i.mosaicId.namespaceId === 'qchain' && i.mosaicId.name === 'xqc')[0].quantity} XQC`,
-                        })
-                    })
-                    .catch((err) => {
-                        console.log(err);
-                        self.setState({
-                            ...self.state,
-                            finished: true,
-                            err: err
-                        })
-                    });
-        //
-        //
-        //         // nem.com.requests.account.mosaics.owned(self.endpoint, address).then(function(res) {
-        //         //     // get mosaics owned by account
-        //         //     var mosaics = res.data;
-        //
-        //         //     // filter XQC variable
-        //         //     var xqc_balance = mosaics.filter(i => i.mosaicId.namespaceId === 'qchain' && i.mosaicId.name === 'xqc')[0].quantity;
-        //         //     xqc_balance = parseInt(xqc_balance, 10) / 1e6;
-        //         //     xqc_balance = xqc_balance.toString() + ' XQC';
-        //
-        //         //     self.setState({xqc_balance: xqc_balance});
-        //         // }, function(err) {
-        //         //     console.error(err);
-        //         // })
-        //
-        //
-                clearInterval(check_undef);
-            }
-        }, 1000);
-
-        if (this.state.xqc_balance !== 'Loading...') {
-            clearInterval(check_undef);
-        }
-
-        return this.state.xqc_balance;
-
-
-        // console.log(this.state.xqc_balance);
-
-        // if (address === 'TATDB5NXVQO2O6PCLEFT33TKU6ELA2QVY6YLXORF') {
-        //     return '18550 XQC';
-        // } else {
-        //     return this.state.xqc_balance;
-        // }
-    }
+    // get_XQC_balance(address) {
+    //     if (address === 'undefined' || address === '') {
+    //         return this.state.xqc_balance;
+    //     }
+    //
+    //     var walletURL = "https://nis.qchain.co/account/mosaic/owned?address=";
+    //
+    //     // var walletURL = "http://192.3.61.243:7890/account/mosaic/owned?address=";
+    //     // walletURL += address.split('-').join('');
+    //
+    //     // var walletURL = "http://192.3.61.243:7890/account/mosaic/owned?address=TABCP73ZM4HIXITP6SZMYVB3EPX7OSHKP5PCEJQY";
+    //
+    //     var self = this;
+    //
+    //     var check_undef = setInterval(function() {
+    //         if (typeof(address) !== 'undefined') {
+    //     //     //     // console.log('not yet');
+    //     //     //     // this.sleep(2000);
+    //     //     // } else {
+    //     //         // console.log('k ready now');
+    //     //
+    //             address = address.split('-').join('');
+    //     //         // console.log(address);
+    //     //
+    //             walletURL += address.split('-').join('');
+    //     //         // console.log(walletURL);
+    //     //
+    //     //
+    //             axios.get(walletURL)
+    //                 .then((response) => {
+    //                     var xqc_balance_1e6 = '0 XQC'
+    //
+    //
+    //
+    //                     xqc_balance_1e6 = response.data.data.filter(i => i.mosaicId.namespaceId === 'qchain' && i.mosaicId.name === 'xqc')[0].quantity;
+    //                     console.log(formatNumberAbbr(xqc_balance_1e6, 2));
+    //
+    //                     xqc_balance_1e6 = parseInt(xqc_balance_1e6, 10) / 1e6;
+    //
+    //                     var num_digits = xqc_balance_1e6.toString().replace('.', '').length;
+    //
+    //                     if (num_digits > 9) {
+    //                         var num_int_digits = Math.trunc(xqc_balance_1e6).toString().length;
+    //
+    //                         if (num_int_digits >= 9) {
+    //                             xqc_balance_1e6 = Math.trunc(xqc_balance_1e6);
+    //                         } else {
+    //                             xqc_balance_1e6 = xqc_balance_1e6.toFixed(9 - num_int_digits);
+    //                         }
+    //                     }
+    //
+    //                     xqc_balance_1e6 = xqc_balance_1e6.toString() + ' XQC';
+    //
+    //                     self.setState({
+    //                         ...self.state,
+    //                         finished: true,
+    //                         xqc_balance: xqc_balance_1e6,
+    //     //                     // xqc_balance: `${response.data.data.filter(i => i.mosaicId.namespaceId === 'qchain' && i.mosaicId.name === 'xqc')[0].quantity} XQC`,
+    //                     })
+    //                 })
+    //                 .catch((err) => {
+    //                     console.log(err);
+    //                     self.setState({
+    //                         ...self.state,
+    //                         finished: true,
+    //                         err: err
+    //                     })
+    //                 });
+    //     //
+    //     //
+    //     //         // nem.com.requests.account.mosaics.owned(self.endpoint, address).then(function(res) {
+    //     //         //     // get mosaics owned by account
+    //     //         //     var mosaics = res.data;
+    //     //
+    //     //         //     // filter XQC variable
+    //     //         //     var xqc_balance = mosaics.filter(i => i.mosaicId.namespaceId === 'qchain' && i.mosaicId.name === 'xqc')[0].quantity;
+    //     //         //     xqc_balance = parseInt(xqc_balance, 10) / 1e6;
+    //     //         //     xqc_balance = xqc_balance.toString() + ' XQC';
+    //     //
+    //     //         //     self.setState({xqc_balance: xqc_balance});
+    //     //         // }, function(err) {
+    //     //         //     console.error(err);
+    //     //         // })
+    //     //
+    //     //
+    //             clearInterval(check_undef);
+    //         }
+    //     }, 1000);
+    //
+    //     if (this.state.xqc_balance !== 'Loading...') {
+    //         clearInterval(check_undef);
+    //     }
+    //
+    //     return this.state.xqc_balance;
+    //
+    //
+    //     // console.log(this.state.xqc_balance);
+    //
+    //     // if (address === 'TATDB5NXVQO2O6PCLEFT33TKU6ELA2QVY6YLXORF') {
+    //     //     return '18550 XQC';
+    //     // } else {
+    //     //     return this.state.xqc_balance;
+    //     // }
+    // }
 
     asdf(asdf) {
         // console.log(asdf + 'yo');
@@ -273,6 +304,10 @@ class TinyWallet extends Component {
     // }
 
     render() {
+        let _walletBalance = walletState.getState();
+
+        console.log(_walletBalance);
+
         return (
             <LinkWithTooltip
                 tooltip_body={
@@ -295,7 +330,10 @@ class TinyWallet extends Component {
                             // : <WalletXqcRenderer balance={this.state.xqc_balance} />
                         )
                     } */}
-                    <WalletBalanceRenderer balance={this.props.currencyFilter === 'EQC' ? this.state.eqc_balance : this.get_XQC_balance(this.props.profile.nem_address)}/>
+                    {/*this.props.currencyFilter === 'EQC' ? this.state.eqc_balance : this.get_XQC_balance(this.props.profile.nem_address)*/}
+
+                    <WalletBalanceRenderer
+                        balance={!_walletBalance ? `Loading...` : `${formatNumberAbbr(_walletBalance, 1)} ${this.props.currencyFilter}`}/>
 
                 </div>
 
@@ -305,9 +343,9 @@ class TinyWallet extends Component {
 }
 
 const WalletBalanceRenderer = ({ balance }) => (
-    <p className='tiny-currency-item'>
+    <div className='tiny-currency-item'>
         <span className='tiny-wallet-currency-label'>{balance}</span>
-    </p>
+    </div>
 )
 
 

@@ -5,7 +5,7 @@ export const getJson = (url, {queryParams, authToken, headers}) => {
         url: `${url}${queryParams ? `?${buildQuery1(queryParams)}` : ``}`,
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${authToken}`,
+            ...(authToken && {'Authorization': `Bearer ${authToken}`}),
             ...headers
         }
     });

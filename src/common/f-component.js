@@ -7,9 +7,9 @@ export class FComponent extends React.Component {
     onMounts = [];
     mounted = false;
 
-    constructor(props, context, updater) {
-        super(props, context, updater);
-    }
+    // constructor(props, context, updater) {
+    //     super(props, context, updater);
+    // }
 
     componentDidMount() {
         this.mounted = true;
@@ -21,9 +21,9 @@ export class FComponent extends React.Component {
         this.onUnmounts.forEach((l) => l());
     }
 
-    componentDidUpdate(prevProps) {
-        this.onChangeds.forEach((l) => l(prevProps));
-    }
+    // componentDidUpdate(prevProps) {
+    //     this.onChangeds.forEach((l) => l(prevProps));
+    // }
 
     setState(newState, cb) {
         if (this.mounted) {

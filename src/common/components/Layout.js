@@ -24,6 +24,7 @@ let appLayout = css`
 `;
 
 export class Layout extends React.Component {
+
     render () {
         const { header, content, footer } = this.props;
 

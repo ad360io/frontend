@@ -40,7 +40,8 @@ const PrivateContent = (props, Component, Auth) => (
     <Loader {...{auth: Auth}}>
         {({allApis}) => (
             <Layout
-                header={ <Header auth={Auth}/> }
+                {...{auth: Auth, allApis}}
+                header={ <Header {...{auth: Auth, allApis}}/> }
                 content={ <Component auth={Auth} {...{...props, allApis}} /> }
                 footer={ <Footer/> }
             />

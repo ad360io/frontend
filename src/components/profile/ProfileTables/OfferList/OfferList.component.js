@@ -22,6 +22,7 @@ import {
     OfferDialogConfirmation,
     offerDialogConfirmationService
 } from "./OfferDialogConfirmation";
+import {walletState} from "../../../../common/wallet-state";
 
 
 /**
@@ -130,8 +131,9 @@ class OfferRenderer extends Component {
     }
 
     makePayment = async(newBalance) => {
-        const { allApis : { patchJson }, offer } = this.props;
-        return await walletApi(patchJson, { payload : { [`${offer.currency.toLowerCase()}_balance`] :  newBalance} })
+        return await walletState.setState(newBalance);
+        // const { allApis : { patchJson }, offer } = this.props;
+        // return await walletApi(patchJson, { payload : { [`${offer.currency.toLowerCase()}_balance`] :  newBalance} })
     };
 
     acceptOffer = async () => {
@@ -140,34 +142,42 @@ class OfferRenderer extends Component {
 
         // const walletURL = `https://marketplacedb.qchain.co/wallet_view`;
 
-        let resp = await walletApi(getJson);
-        let balance = resp.data[0];
+        let _walletBalance = walletState.getState();
+
+        // let resp = await walletApi(getJson);
+        // let balance = resp.data[0];
 
         let startDate = new Date(offer.start_date);
         let endDate = new Date(offer.end_date);
 
-        let newBalance = balance[`${offer.currency.toLowerCase()}_balance`] - (offer.price * DateUtils.dateDiffInDays(startDate, endDate));
+        if(_walletBalance) {
+            let newBalance = _walletBalance - (offer.price * DateUtils.dateDiffInDays(startDate, endDate));
+            console.log(_walletBalance);
+            console.log(newBalance);
+            return;
 
-        if(newBalance >= 0) {
-            offerDialogConfirmationService.openModal({
-                open: true,
-                options: {
-                    title: "Confirmation",
-                    content: "Are you sure to accept this offer?",
-                    btnTitle: "Accept",
-                    btnAction: () => this.makeContract(newBalance),
-                    btnType: "success"
-                }
-            });
+            if(newBalance >= 0) {
+                offerDialogConfirmationService.openModal({
+                    open: true,
+                    options: {
+                        title: "Confirmation",
+                        content: "Are you sure to accept this offer?",
+                        btnTitle: "Accept",
+                        btnAction: () => this.makeContract(newBalance),
+                        btnType: "success"
+                    }
+                });
 
-            // this.makeContract(newBalance)
+                // this.makeContract(newBalance)
 
-        } else {
-            this.setState({
-                isProcessing: false,
-                actionInfo: `Insufficient ${offer.currency}`
-            })
+            } else {
+                this.setState({
+                    isProcessing: false,
+                    actionInfo: `Insufficient ${offer.currency}`
+                })
+            }
         }
+
     };
 
     makeContract = async (newBalance) => {

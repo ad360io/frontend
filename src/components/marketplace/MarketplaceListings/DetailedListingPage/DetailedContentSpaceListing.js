@@ -13,26 +13,31 @@ import {marketplaceApi} from "../../../../common/api/services/marketplace-api";
 import {invoiceApi} from "../../../../common/api/services/invoice-api";
 import CardHeader from "@material-ui/core/CardHeader";
 import {Cancel} from "@material-ui/icons";
+import {walletState} from "../../../../common/wallet-state";
 
 export class DetailedContentSpaceListing extends React.Component {
 
     buyItem = async () => {
         const { allApis : { getJson }, item } = this.props;
-        let resp = await walletApi(getJson);
+        // let resp = await walletApi(getJson);
+
+        let _walletBalance = walletState.getState();
         //wallet balance
-        let balance = resp.data[0];
+        // let balance = resp.data[0];
 
         let startDate = new Date(item.date_added);
         let endDate = new Date(item.expiration_date);
 
-        let newBalance = balance[`${item.currency.toLowerCase()}_balance`] - (item.price * DateUtils.dateDiffInDays(startDate, endDate));
+        if(_walletBalance) {
+            let newBalance = _walletBalance - (item.price * DateUtils.dateDiffInDays(startDate, endDate));
 
-        if(newBalance >= 0) {
-            this.makeContract(newBalance);
-        } else {
-            this.setState({
-                issue: ''
-            })
+            if(newBalance >= 0) {
+                this.makeContract(newBalance);
+            } else {
+                this.setState({
+                    issue: ''
+                })
+            }
         }
     };
 
@@ -71,8 +76,10 @@ export class DetailedContentSpaceListing extends React.Component {
     };
 
     makePayment = async (newBalance) => {
-        const { allApis : { patchJson }, item } = this.props;
-        return await walletApi(patchJson, { payload : { [`${item.currency.toLowerCase()}_balance`] :  newBalance} })
+        walletState.setState(newBalance);
+
+        // const { allApis : { patchJson }, item } = this.props;
+        // return await walletApi(patchJson, { payload : { [`${item.currency.toLowerCase()}_balance`] :  newBalance} })
     };
 
     getContract = async () => {
