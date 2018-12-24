@@ -65,12 +65,12 @@ class ActivitiesTables extends Component {
             {
                 title: "Active Listings",
                 render: () => <ActiveListing/>,
-                condition: true
+                condition: modeFilter !== "Advertiser"
             },
             {
                 title: "Active Requests",
                 render: () => <ActiveRequest/>,
-                condition: true
+                condition: modeFilter === "Advertiser"
             },
             {
                 title: "Active Contracts",
