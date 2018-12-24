@@ -154,13 +154,13 @@ const mediaStyle = {
     marginTop: '235px',
     marginLeft: '10vw',
     fontSize: '14px',
-}
+};
 
 const mediaHeadingStyle = {
     marginBottom: '15px',
     fontSize: '2em',
     marginTop: '25px',
-}
+};
 
 const mapStateToProps = (state) => {
     return {
