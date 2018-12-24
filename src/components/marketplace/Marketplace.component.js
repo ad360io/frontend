@@ -65,8 +65,8 @@ class Marketplace extends Component {
             ...( sortValue != null && {order : sortValue} ),
             ...( adFormatFilter !== 'Show All' &&
                 {
-                    ad_format: `eq.${encodeURIComponent(this.props.adFormatFilter)}`,
-                    ...(!isEmpty(mediumFilter) ? { medium: `eq.${encodeURIComponent(this.props.mediumFilter)}`} : {})
+                    ad_format: `eq.${encodeURIComponent(adFormatFilter)}`,
+                    ...(!isEmpty(mediumFilter) ? { medium: `eq.${encodeURIComponent(mediumFilter)}`} : {})
                 }
             ),
             currency: `eq.${currencyFilter}`,
@@ -107,8 +107,6 @@ class Marketplace extends Component {
             filters,
             listing, total, currentPageNum
         } = this.state;
-
-        console.log(listing);
 
         return (
             <div style={{ 'position': 'relative' }}>
