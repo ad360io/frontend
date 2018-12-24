@@ -1,6 +1,7 @@
 import React from "react";
 import {css} from 'emotion';
-import { Button, Modal } from "react-bootstrap";
+import {Button, ControlLabel, Modal} from "react-bootstrap";
+import { FormGroup, FormControl } from 'react-bootstrap';
 
 export class PendingContractModal extends React.Component {
     constructor(props) {
@@ -44,6 +45,10 @@ export class PendingContractModal extends React.Component {
                     <p>
                         You’re about to send {selectedItem.payout_cap} {selectedItem.currency} to ‘$PUBLISHER_NEM/ETH_ADDRESS’ for {selectedItem.name}.
                     </p>
+                    <FormGroup>
+                        <div>Password</div>
+                        <FormControl type="password"/>
+                    </FormGroup>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button onClick={() => this.toggle()}>Close</Button>
