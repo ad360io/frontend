@@ -139,7 +139,7 @@ class Activities extends Component {
         const { allApis, modeFilter } = this.props;
 
         return (
-            <div className='profile-container'>
+            <div className=''>
                 <ProfileTables
                     reader={this.state.reader}
                     userId={this.props.match.params.userId}
