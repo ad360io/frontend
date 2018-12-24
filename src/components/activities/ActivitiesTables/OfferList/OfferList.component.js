@@ -150,11 +150,21 @@ class OfferRenderer extends Component {
         let startDate = new Date(offer.start_date);
         let endDate = new Date(offer.end_date);
 
+
+        offerDialogConfirmationService.openModal({
+            open: true,
+            options: {
+                title: "Confirmation",
+                content: "Are you sure to accept this offer?",
+                btnTitle: "Accept",
+                btnAction: () => this.makeContract(),
+                btnType: "success"
+            }
+        });
+
+        /*
         if(_walletBalance) {
             let newBalance = _walletBalance - (offer.price * DateUtils.dateDiffInDays(startDate, endDate));
-            console.log(_walletBalance);
-            console.log(newBalance);
-            return;
 
             if(newBalance >= 0) {
                 offerDialogConfirmationService.openModal({
@@ -177,10 +187,10 @@ class OfferRenderer extends Component {
                 })
             }
         }
-
+        */
     };
 
-    makeContract = async (newBalance) => {
+    makeContract = async () => {
         const { allApis : { postJson }, offer } = this.props;
 
         let startDate = new Date(offer.start_date);
@@ -203,7 +213,7 @@ class OfferRenderer extends Component {
 
         this.patchListing();
         this.deleteOffer();
-        this.makePayment(newBalance);
+        // this.makePayment();
     };
 
     patchListing = async() => {

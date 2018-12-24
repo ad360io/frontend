@@ -150,6 +150,10 @@ export default class Auth {
     handleProfileOnAuthenticated(accessToken) {
         this.getProfile((err, profile) => {
             if (profile) {
+                console.log('00000');
+                console.log(profile);
+                console.log('-----');
+
                 this.dispatchProfile(profile,
                     profile['https://auth.qchain.co/user_metadata']
                 );
