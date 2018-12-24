@@ -89,19 +89,23 @@ class Invoice extends Component {
                                 </tr>
                                 </thead>
                                 <tbody>
-                                { invoices.map((invoice, i) => (
-                                    <tr key={'invoices' + i}>
-                                        <td
-                                            onClick={() => invoiceModal.openModal(invoice)}
-                                            style={{ color: '#3366BB', cursor: 'pointer' }}
-                                        >
-                                            {invoice.listing_title}
-                                        </td>
-                                        <td>{invoice.publisher_name}</td>
-                                        <td>{invoice.amount} {invoice.currency}</td>
-                                        <td>{invoice.paid ? `Paid` : `Unpaid`}</td>
-                                    </tr>
-                                ))}
+                                { invoices
+                                    .filter((inv) => inv.paid)
+                                    .filter((inv) => (new Date(inv.due_date).getTime() - new Date().getTime()) > 0)
+                                    .map((invoice, i) => (
+                                        <tr key={'invoices' + i}>
+                                            <td
+                                                onClick={() => invoiceModal.openModal(invoice)}
+                                                style={{ color: '#3366BB', cursor: 'pointer' }}
+                                            >
+                                                {invoice.listing_title}
+                                            </td>
+                                            <td>{invoice.publisher_name}</td>
+                                            <td>{invoice.amount} {invoice.currency}</td>
+                                            <td>{invoice.paid ? `Paid` : `Unpaid`}</td>
+                                        </tr>
+                                    ))
+                                }
                                 </tbody>
                             </table>
                         )
