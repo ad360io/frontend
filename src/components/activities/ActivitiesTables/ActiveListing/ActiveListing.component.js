@@ -67,36 +67,15 @@ class ActiveListing extends Component {
         let resp = await contentspaceListingApi(getJson, { queryParams });
 
         this.setState({activeListing: resp.data});
-
-        /*
-        const activeListingURL = this.decideURL();
-        const config = {
-            headers: { Authorization: "Bearer " + localStorage.getItem('id_token') }
-        };
-        axios.get(activeListingURL, config)
-            .then((response) => {
-                this.setState({
-                    ...this.state,
-                    finished: true,
-                    activeListing: response.data
-                })
-            })
-            .catch((err) => {
-                console.log(err);
-                this.setState({
-                    ...this.state,
-                    finished: true,
-                    err: err
-                })
-            })
-
-        */
     };
 
     render() {
         const {activeListing} = this.state;
+        const { history } = this.props;
 
         if(activeListing == null) return <LoadingPanel/>;
+
+        console.log(activeListing);
 
         return (
             <div className='active-listing-container'>
@@ -120,7 +99,7 @@ class ActiveListing extends Component {
                             <tbody>
                             { activeListing.map((listing, i) => (
                                 <tr key={'listingtr' + i}>
-                                    <td>{listing.name}</td>
+                                    <td style={{ color: '#3366BB', cursor: 'pointer' }} onClick={() => history.push(`/listing/${listing.id}`)}>{listing.name}</td>
                                     <td>{listing.ad_format}</td>
                                     <td>{listing.medium}</td>
                                 </tr>

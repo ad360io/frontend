@@ -53,7 +53,7 @@ class ActivitiesTables extends Component {
     }
 
     render() {
-        const { allApis, modeFilter } = this.props;
+        const { allApis, modeFilter, history } = this.props;
         const { activeIdx } = this.state;
 
         let list = [
@@ -117,7 +117,7 @@ class ActivitiesTables extends Component {
                             title={l.title}
                             key={key}
                         >
-                            { React.cloneElement(l.render(), { allApis }) }
+                            { React.cloneElement(l.render(), { allApis, history }) }
                         </Tab>
                     ))
                 }

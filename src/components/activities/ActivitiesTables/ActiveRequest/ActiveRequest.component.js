@@ -108,6 +108,7 @@ class ActiveRequest extends Component {
 
     render() {
         const {activeListing} = this.state;
+        const { history } = this.props;
 
         if(activeListing == null) return <LoadingPanel/>;
 
@@ -133,7 +134,7 @@ class ActiveRequest extends Component {
                         <tbody>
                         { activeListing.map((listing, i) => (
                             <tr key={'listingtr' + i}>
-                                <td>{listing.name}</td>
+                                <td style={{ color: '#3366BB', cursor: 'pointer' }} onClick={() => history.push(`/listing/${listing.id}`)}>{listing.name}</td>
                                 <td>{listing.ad_format}</td>
                                 <td>{listing.medium}</td>
                             </tr>
