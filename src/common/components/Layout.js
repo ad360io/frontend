@@ -4,6 +4,7 @@ import {css} from "emotion"
 let appLayout = css`
     display: flex;
     flex-direction: column;
+    height: 100vh;
     
     .app-header {
         position: fixed;
@@ -16,10 +17,10 @@ let appLayout = css`
     }
     
     .app-footer {
-        position: fixed;
-        bottom: 0;
-        z-index: 50;
-        width: 100%;
+        // position: fixed;
+        // bottom: 0;
+        // z-index: 50;
+        // width: 100%;
     }
 `;
 
