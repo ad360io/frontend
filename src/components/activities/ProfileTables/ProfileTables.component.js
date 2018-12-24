@@ -90,7 +90,12 @@ class ProfileTables extends Component {
             {
                 title: "Invoices",
                 render: () => <Invoice/>,
-                condition: true
+                condition: modeFilter === "Advertiser"
+            },
+            {
+                title: "Payments",
+                render: () => <Invoice isPublisher/>,
+                condition: modeFilter !== "Advertiser"
             },
         ];
 

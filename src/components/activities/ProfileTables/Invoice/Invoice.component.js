@@ -61,6 +61,7 @@ class Invoice extends Component {
 
     render() {
         let { invoices } = this.state;
+        const { isPublisher } = this.props;
 
         if( invoices == null ) return <LoadingPanel/>;
 
@@ -77,15 +78,24 @@ class Invoice extends Component {
                                     <th
                                         className='invoice-th'
                                         onClick={() => this.toggleSort('listing_title')}>Listing Title</th>
-                                    <th
-                                        className='invoice-th'
-                                        onClick={() => this.toggleSort('publisher_name')}>Publisher</th>
+                                    { isPublisher ? (
+                                        <th
+                                            className='invoice-th'
+                                            onClick={() => this.toggleSort('advertiser_name')}>Advertiser</th>
+                                    ): (
+                                        <th
+                                            className='invoice-th'
+                                            onClick={() => this.toggleSort('publisher_name')}>Publisher</th>
+                                    )}
                                     <th
                                         className='invoice-th'
                                         onClick={() => this.toggleSort('amount')}>Amount</th>
                                     <th
                                         className='invoice-th'
                                         onClick={() => {}}>Paid</th>
+                                    <th
+                                        className='invoice-th'
+                                        onClick={() => {}}>Due Date</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -100,9 +110,10 @@ class Invoice extends Component {
                                             >
                                                 {invoice.listing_title}
                                             </td>
-                                            <td>{invoice.publisher_name}</td>
+                                            {isPublisher ? (<td>{invoice.publisher_name}</td>) : (<td>{invoice.advertiser_name}</td>)}
                                             <td>{invoice.amount} {invoice.currency}</td>
                                             <td>{invoice.paid ? `Paid` : `Unpaid`}</td>
+                                            <td>{invoice.due_date.split('T')[0]}</td>
                                         </tr>
                                     ))
                                 }

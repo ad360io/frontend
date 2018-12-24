@@ -24,9 +24,6 @@ export class InvoiceViewModal extends React.Component {
 
     render () {
         const {invoice, open} = this.state;
-
-        console.log(invoice);
-
         if(invoice == null) return <div/>;
 
         const invoice_date = invoice.date.split('T')[0];
