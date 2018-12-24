@@ -63,7 +63,7 @@ export class PendingContract extends React.Component {
                                             )
                                         }}
                                     >
-                                        <td>{contract.name}</td>
+                                        <td style={{ color: '#3366BB', cursor: 'pointer' }}>{contract.name}</td>
                                         <td>{contract.advertiser_name}</td>
                                         <td>{contract.publisher_name}</td>
                                         <td>{contract.start_date.slice(0, 10)}</td>
