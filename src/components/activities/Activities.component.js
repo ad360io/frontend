@@ -17,7 +17,7 @@ import { Media, Modal, Button } from 'react-bootstrap';
 /*
 Children Component
 */
-import ProfileTables from './ProfileTables/ProfileTables.component';
+import ActivitiesTables from './ActivitiesTables/ActivitiesTables.component';
 import Footer from '../footer/Footer.component';
 
 /*
@@ -139,8 +139,8 @@ class Activities extends Component {
         const { allApis, modeFilter } = this.props;
 
         return (
-            <div className=''>
-                <ProfileTables
+            <div style={{ marginTop: '100px' }}>
+                <ActivitiesTables
                     reader={this.state.reader}
                     userId={this.props.match.params.userId}
                     {...{allApis, modeFilter}}

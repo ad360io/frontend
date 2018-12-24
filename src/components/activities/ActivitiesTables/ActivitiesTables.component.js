@@ -6,7 +6,7 @@ import React, { Component } from 'react';
 /*
 Local CSS
 */
-import './ProfileTables.component.css';
+import './ActivitiesTables.component.css';
 
 /*
 Children Components
@@ -25,7 +25,7 @@ import { Tabs, Tab } from 'react-bootstrap';
 import {PendingContract} from "./PendingContract/PendingContract";
 
 
-class ProfileTables extends Component {
+class ActivitiesTables extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -127,4 +127,4 @@ class ProfileTables extends Component {
 }
 
 
-export default ProfileTables;
+export default ActivitiesTables;

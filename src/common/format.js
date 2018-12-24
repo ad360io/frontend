@@ -46,7 +46,7 @@ export const formatNumberAbbr = (balance, currency) => {
         'USD': 2
     };
 
-    let number = balance / (10 ** currencyDivisibility[currency])
+    let number = balance / (10 ** currencyDivisibility[currency]);
 
     let num_digits = number.toString().replace('.', '').length;
 
