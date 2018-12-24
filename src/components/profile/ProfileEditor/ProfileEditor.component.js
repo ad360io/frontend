@@ -98,6 +98,8 @@ class ProfileEditor extends Component {
 
     componentWillMount() {
         this.setState({
+            profile: this.props.auth.userProfile.user_metadata,
+
             name: this.props.name,
             nickname: this.props.nickname,
             email: this.props.email,
@@ -146,7 +148,7 @@ class ProfileEditor extends Component {
 
         updateUserMetadata(newMetadata).then(() => {
             this.setState({updated_success: true}, () => {
-                setTimeout(() => this.handleHideModal(), 4 * 1000)
+                setTimeout(() => this.handleHideModal(), 2 * 1000)
             })
         });
         // this.handleHideModal();
@@ -334,12 +336,12 @@ class ProfileEditor extends Component {
                 {/* <p id="NEM_wlt_subtext" style={{ 'margin': '-6px 0 12px 0', 'fontSize': '13px', 'fontStyle': 'italic' }}>Only standard (i.e. password/brain) wallets are supported.</p> */}
 
                 <p id="NEM_wlt_name_address" style={{ 'fontSize': '13px' }}>
-                    {/* NEM wallet name: {this.state.nem_wlt_name}
+                    NEM wallet name: {this.state.profile.nem_wlt_name}
                     <br />
                     NEM address: {this.state.nem_address}
 
                     <br />
-                    <br /> */}
+                    <br />
                     To change your NEM account:
                 </p>
 
@@ -357,7 +359,7 @@ class ProfileEditor extends Component {
         }
 
         return (
-            <div style={{ maxWidth: '600px', margin: '40px 0 110px 142px' }}>
+            <div style={{ maxWidth: '600px', margin: '40px 0 110px 145px' }}>
 {/*                 <i className="fas fa-pen-square profile-editor-icon" onClick={this.handleShowModal}></i> */}
 {/*                 <Modal show={this.state.show} onHide={this.handleHideModal}> */}
 {/*                     <Modal.Header closeButton> */}
@@ -382,7 +384,7 @@ class ProfileEditor extends Component {
                         </FormGroup>
 
                         <FormGroup controlId='control-form-title'>
-                            <h4>Avatar URL</h4>
+                            <h4>Profile Picture URL</h4>
                             <FormControl type='text'
                                 defaultValue={this.state.avatar_url}
                                 onChange={this.handleAvatarUrlChange}
@@ -407,6 +409,8 @@ class ProfileEditor extends Component {
 
                         {NEM_wlt_formgroup}
 
+                        <div style={{ height: '25px' }}></div>
+
                         {this.state.updated_success && (
                             <Alert bsStyle="success">
                                 <p style={{'fontSize': '13px' }}>
@@ -416,14 +420,16 @@ class ProfileEditor extends Component {
                         )}
 {/*                     </Modal.Body> */}
 
-                    <Alert bsStyle="danger" style={{ marginTop: '10px' }}>
-                        <p style={{ marginBottom: '10px', 'fontSize': '13px' }}>
-                            Any changes to the profile require you to log in again to take effect.
-                        </p>
+                    {! this.state.updated_success && (
+                        <Alert bsStyle="danger">
+                            <p style={{ marginBottom: '10px', 'fontSize': '13px' }}>
+                                Any changes to the profile require you to log in again to take effect.
+                            </p>
 
-                        <Button bsStyle="danger" onClick={this.handleConfirmEdit}>Save</Button>
-{/*                         <Button style={{ marginLeft: '10px' }} onClick={this.handleHideModal}>Cancel</Button> */}
-                    </Alert>
+                            <Button bsStyle="danger" onClick={this.handleConfirmEdit}>Save</Button>
+{/*                             <Button style={{ marginLeft: '10px' }} onClick={this.handleHideModal}>Cancel</Button> */}
+                        </Alert>
+                    )}
 
 
 {/*                 </Modal> */}
