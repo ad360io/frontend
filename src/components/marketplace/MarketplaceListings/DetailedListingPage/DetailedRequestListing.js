@@ -1,11 +1,12 @@
 import React from "react";
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
+import CardHeader from "@material-ui/core/CardHeader";
 import Divider from '@material-ui/core/Divider';
+import {Cancel} from "@material-ui/icons";
 
 import DetailedImageSlider from "./DetailedImageSlider/DetailedImageSlider.component";
 import MakeOfferSection from "./MakeOfferSection/MakeOfferSection.component";
-import {Cancel} from "@material-ui/icons";
 
 export class DetailedRequestListing extends React.Component {
     render() {
@@ -24,51 +25,48 @@ export class DetailedRequestListing extends React.Component {
                         </CardContent>
                     </Card>
                     <div className='detailed-listing-action-section'>
-                        <a className='detailed-listing-action'>Save this listing</a>
-                        <Divider />
+                        {/* <a className='detailed-listing-action'>Save this listing</a>
+                        <Divider /> */}
                         <a className='detailed-listing-action'>Add to watch list</a>
-                        <Divider />
-                        <a className='detailed-listing-action'>Some other simple actions</a>
                         <Divider />
                     </div>
                 </div>
 
                 <Card className='listing-concrete-details-container'>
-                    <div>
-                        <h1 className='listing-title'>{item.name}</h1>
-                    </div>
+                    <CardHeader
+                        title={item.name}
+                    />
+
                     <Divider />
+
                     <CardContent className='listing-details-text'>
                         <div className='details-text'>
-                            <p>
-                                Ad Format: {item.ad_format} {item.classtype}
-                            </p>
-                            <p>
-                                Marketing Medium: {item.medium}
-                            </p>
+                            <p>Ad Format: {item.ad_format} {item.classtype}</p>
 
+                            <p>Marketing Medium: {item.medium}</p>
+
+                            <p>Ask Date: {item.date_added.slice(0, 10)}</p>
                         </div>
-                        <br />
+
                         <MakeOfferSection listing={item} {...{ allApis, modeFilter }} />
-                        <br />
-                        <div className='details-text'>{item.description}</div>
+
+                        <div className='details-text' style={{ marginTop: '24px' }}>{item.description}</div>
                     </CardContent>
                 </Card>
 
                 <div className='poster-info-container'>
                     <Card>
-                        <div>
-                            <h3>Requestor Info:</h3>
-                            <span style={{fontWeight: 300}}><span className='owner-profile-link'onClick={() => pathToOwnerProfile()}>{item.owner_name}</span> trading in {item.currency}</span>
-                        </div>
+                        <CardHeader
+                            title={`Advertiser`}
+                        />
                         <CardContent>
-                            <div>Ask Date: {item.date_added.slice(0, 10)}</div>
+                            <p>$PUBLISHER_NAME</p>
                         </CardContent>
                     </Card>
                     <div className='detailed-listing-action-section'>
-                        <a className='detailed-listing-action'>Add requestor to favorite</a>
+                        <a className='detailed-listing-action'>Add advertiser to favorites</a>
                         <Divider />
-                        <a className='detailed-listing-action'>Contact this requestor</a>
+                        <a className='detailed-listing-action'>Contact this advertiser</a>
                         <Divider />
                     </div>
                 </div>

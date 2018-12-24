@@ -110,7 +110,7 @@ class ProfileAccessor extends React.Component {
                                 >
                                     <Paper>
                                     <ClickAwayListener onClickAway={this.handleClose}>
-                                            <MenuList className={classes.menuList}>
+                                        <MenuList className={classes.menuList}>
                                             <MenuItem
                                                 disableRipple
                                                 disableTouchRipple
@@ -123,12 +123,10 @@ class ProfileAccessor extends React.Component {
                                             </MenuItem>
 
                                             <Divider />
+
                                             <MenuItem
                                                 className={classes.menuItem}
                                                 onClick={this.handleViewProfile}
-                                                style={{ cursor: 'default' }}
-                                                onMouseEnter={(e) => e.target.style.backgroundColor = 'transparent'}
-                                                onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
                                             >
                                                 <div>
                                                     <NavLink style={{ textDecoration: 'none' }} to='/profile'>
@@ -136,9 +134,10 @@ class ProfileAccessor extends React.Component {
                                                         View / Edit Profile
                                                     </NavLink>
                                                 </div>
-
                                             </MenuItem>
+
                                             <Divider />
+
                                             <MenuItem
                                                 className={classes.menuItem}
                                                 onClick={() => this.props.onLogout()}

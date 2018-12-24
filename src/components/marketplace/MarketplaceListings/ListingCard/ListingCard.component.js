@@ -251,15 +251,17 @@ const GridCardRenderer = ({
                               description,
                               dateAdded,
                               id,
-                          }) => (<Card className='grid-card-container noselect'
-                                       style={{
-                                           width,
-                                           marginLeft,
-                                       }}
+                          }) => (
+    <Card className='grid-card-container noselect'
+        style={{
+            width,
+            marginLeft,
+        }}
     >
-        <div className='poster-tag'>{contactInfo} </div>
+        <div className='poster-tag'>{title} </div>
+        {/* <div className='poster-tag'>{contactInfo} </div> */}
         <div className='price-tag'>{priceTag}</div>
-        )
+
         <CardHeader
             title={title}
             subtitle={'Posted on: ' + dateAdded.slice(0, 10)}
@@ -275,7 +277,7 @@ const GridCardRenderer = ({
             Explore This Listing
         </Button>
     </Card>
-)
+);
 
 const ListingCardRenderer = ({
                                  marginLeft,
@@ -290,19 +292,15 @@ const ListingCardRenderer = ({
     <Card className='listing-card-container noselect'
           style={{
               width: '90%',
-              marginLeft,
-              marginRIght: '2%'
+              // marginLeft,
+              marginRight: '2%'
           }}
     >
-        <div className='poster-tag'>{contactInfo} </div>
+        <div className='title-tag'>{title}</div>
         <div className='price-tag'>{priceTag}</div>
 
-        <div className='listing-card-title'>
-            {title}
-
-            <div>
-                Posted on: {dateAdded.slice(0, 10)}
-            </div>
+        <div className='listing-date'>
+            Posted on {dateAdded.slice(0, 10)}
         </div>
 
 

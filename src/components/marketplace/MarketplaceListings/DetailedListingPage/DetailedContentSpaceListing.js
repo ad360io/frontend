@@ -1,17 +1,18 @@
 import React from "react";
 // import {Card, CardText, CardTitle} from "material-ui";
+import Button from "@material-ui/core/Button";
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
+import CardHeader from "@material-ui/core/CardHeader";
 import Divider from '@material-ui/core/Divider';
-import DetailedImageSlider from "./DetailedImageSlider/DetailedImageSlider.component";
 import {Alert} from "react-bootstrap";
-import Button from "@material-ui/core/Button";
+
+import DetailedImageSlider from "./DetailedImageSlider/DetailedImageSlider.component";
 import {walletApi} from "../../../../common/api/services/wallet-api";
 import {DateUtils} from "../../../../common/utils/date-utils";
 import {contractApi} from "../../../../common/api/services/contract-api";
 import {marketplaceApi} from "../../../../common/api/services/marketplace-api";
 import {invoiceApi} from "../../../../common/api/services/invoice-api";
-import CardHeader from "@material-ui/core/CardHeader";
 import {Cancel} from "@material-ui/icons";
 import {walletState} from "../../../../common/wallet-state";
 
@@ -137,11 +138,9 @@ export class DetailedContentSpaceListing extends React.Component {
                         </CardContent>
                     </Card>
                     <div className='detailed-listing-action-section'>
-                        <a className='detailed-listing-action'>Save this listing</a>
-                        <Divider />
+                        {/* <a className='detailed-listing-action'>Save this listing</a>
+                        <Divider /> */}
                         <a className='detailed-listing-action'>Add to watch list</a>
-                        <Divider />
-                        <a className='detailed-listing-action'>Some other simple actions</a>
                         <Divider />
                     </div>
                 </div>
@@ -150,20 +149,17 @@ export class DetailedContentSpaceListing extends React.Component {
                     <CardHeader
                         title={item.name}
                     />
-                        {/*<div className='listing-title'>{item.name}</div>*/}
+
                     <Divider />
+
                     <CardContent className='listing-details-text'>
                         <div className='details-text'>
-                            <p>
-                                Ad Format: {item.ad_format} {item.classtype}
-                            </p>
-                            <p>
-                                Marketing Medium: {item.medium}
-                            </p>
+                            <p>Ad Format: {item.ad_format} {item.classtype}</p>
 
+                            <p>Marketing Medium: {item.medium}</p>
+
+                            <p>Promotion Duration: {item.date_added.slice(0, 10)} to {item.expiration_date}</p>
                         </div>
-
-                        <br />
 
                         {
                             (bought)
@@ -172,7 +168,8 @@ export class DetailedContentSpaceListing extends React.Component {
                                     <div className='price-section'>
                                         <span>Price: {item.price} {item.currency} per day</span>
                                         <br/>
-                                        <span><strong>Total</strong>: {payoutCap.amount} {item.currency} in {payoutCap.days} day(s)</span>
+                                        <span><strong>Total</strong>: {payoutCap.amount} {item.currency}</span>
+                                        { (payoutCap.days > 1) && (<span> for {payoutCap.days} days</span>) }
                                     </div>
                                     <div className='buy-btn-section'>
                                         <Button className='buy-button'
@@ -191,25 +188,21 @@ export class DetailedContentSpaceListing extends React.Component {
                                 </div>
                         }
 
-                        <br />
-                        <div className='details-text'>{item.description}</div>
+                        <div className='details-text' style={{ marginTop: '24px' }}>{item.description}</div>
                     </CardContent>
                 </Card>
 
                 <div className='poster-info-container'>
                     <Card>
                         <CardHeader
-                            title={`Creator Info: trading in ${item.currency}`}
+                            title={`Publisher`}
                         />
-                            {/*<h4 style={{fontWeight: 300}}><span className='owner-profile-link' onClick={() => pathToOwnerProfile()}>{item.owner_name}</span> trading in {item.currency}</h4>*/}
-                        {/*</CardHeader>*/}
                         <CardContent>
-
-                            <div>Promotion Duration: <br /> {item.date_added.slice(0, 10)} to {item.expiration_date}</div>
+                            <p>$PUBLISHER_NAME</p>
                         </CardContent>
                     </Card>
                     <div className='detailed-listing-action-section'>
-                        <a className='detailed-listing-action'>Add publisher to favorite</a>
+                        <a className='detailed-listing-action'>Add publisher to favorites</a>
                         <Divider />
                         <a className='detailed-listing-action'>Contact this publisher</a>
                         <Divider />

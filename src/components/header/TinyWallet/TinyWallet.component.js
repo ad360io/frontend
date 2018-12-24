@@ -321,7 +321,7 @@ class TinyWallet extends FComponent {
                 }
             >
 
-                <div className='tiny-wallet-container'>
+                <div className='tiny-wallet-container' style={{ cursor: 'default' }}>
                     <p className='tiny-wallet-title'>CURRENT BALANCE</p>
 
                     {/* {

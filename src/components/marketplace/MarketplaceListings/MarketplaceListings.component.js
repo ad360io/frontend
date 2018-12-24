@@ -35,7 +35,7 @@ class MarketplaceListings extends Component {
      * @param {Number} listingSize size of the listing array after filtering
      */
     getTitle = (listingSize) => {
-        const listingType = (this.props.modeFilter === 'Advertiser' ? 'Content Spaces' : 'Contents');
+        const listingType = (this.props.modeFilter === 'Advertiser' ? 'Content Spaces' : 'Content Listings');
         const isEmpty = (listingSize > 0 ? '' : 'No ')
         return isEmpty + listingType + ' Available';
     }
@@ -55,7 +55,7 @@ class MarketplaceListings extends Component {
                     <ListingCard key={'listingCard' + i} listing={listing} modeFilter={this.props.modeFilter} />
                 ))}
 
-                <div style={{ textAlign: 'center' }}>
+                <div style={{ textAlign: 'left', marginLeft: '5vw' }}>
                     <Pagination className='listing-pages' bsStyle='small'>
                         { Array(pages).fill(1).map((_, i) => (
                             <Pagination.Item
