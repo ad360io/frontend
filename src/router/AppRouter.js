@@ -17,6 +17,7 @@ import Login from '../components/login/Login.component';
 import Dashboard from '../components/dashboard/Dashboard.component';
 import Marketplace from '../components/marketplace/Marketplace.component';
 import CreateListing from '../components/create-listing/CreateListing.component';
+import Activities from '../components/activities/Activities.component';
 import Profile from '../components/profile/Profile.component';
 import DetailedListingPage
     from '../components/marketplace/MarketplaceListings/DetailedListingPage/DetailedListingPage.component';
@@ -55,6 +56,7 @@ const AppRouter = () => (
             <PrivateRoute exact path='/marketplace' component={Marketplace} auth={auth}/>
             <PrivateRoute exact path='/create' component={CreateListing} auth={auth}/>
             <PrivateRoute path='/listing/:id' component={DetailedListingPage} auth={auth}/>
+            <PrivateRoute exact path='/activities' component={Activities} auth={auth}/>
             <PrivateRoute exact path='/profile' component={Profile} auth={auth}/>
             <PrivateRoute path='/q/:userId' component={Profile} auth={auth}/>
             <Route path='/auth-callback' render={(props) => {

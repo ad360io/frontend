@@ -162,14 +162,20 @@ class TinyWallet extends FComponent {
     // }
 
     getBalance = async (address) => {
-        // const { allApis: { getJson } } = this.props;
-        let walletUrl = `https://nis.qchain.co/account/mosaic/owned`;
+        if (this.props.currencyFilter === 'XQC') {
+            // const { allApis: { getJson } } = this.props;
+            let walletUrl = `https://nis.qchain.co/account/mosaic/owned`;
 
-        let resp = await getJson(walletUrl, { queryParams: { address: address.split('-').join('')}, fromBaseUrl: false});
+            let resp = await getJson(walletUrl, { queryParams: { address: address.split('-').join('')}, fromBaseUrl: false});
 
-        if(resp.data) {
-            let balance = resp.data.data.find(i => i.mosaicId.namespaceId === 'qchain' && i.mosaicId.name === 'xqc').quantity;
-            walletState.setState(balance);
+            if(resp.data) {
+                let balance = resp.data.data.find(i => i.mosaicId.namespaceId === 'qchain' && i.mosaicId.name === 'xqc').quantity;
+                walletState.setState(balance);
+            }
+        } else if (this.props.currencyFilter === 'EQC') {
+
+        } else {
+
         }
     };
 
@@ -278,11 +284,6 @@ class TinyWallet extends FComponent {
     //     // }
     // }
 
-    asdf(asdf) {
-        // console.log(asdf + 'yo');
-        return asdf + 'yo';
-    }
-
     // get_XQC_balance() {
     //     const Http = new XMLHttpRequest();
     //     const url='http://192.3.61.243:7890/account/mosaic/owned?address=TABCP73ZM4HIXITP6SZMYVB3EPX7OSHKP5PCEJQY';
@@ -306,7 +307,7 @@ class TinyWallet extends FComponent {
     render() {
         let _walletBalance = walletState.getState();
 
-        console.log(_walletBalance);
+        // console.log(_walletBalance);
 
         return (
             <LinkWithTooltip
@@ -333,7 +334,7 @@ class TinyWallet extends FComponent {
                     {/*this.props.currencyFilter === 'EQC' ? this.state.eqc_balance : this.get_XQC_balance(this.props.profile.nem_address)*/}
 
                     <WalletBalanceRenderer
-                        balance={!_walletBalance ? `Loading...` : `${formatNumberAbbr(_walletBalance, 1)} ${this.props.currencyFilter}`}/>
+                        balance={!_walletBalance ? `Loading...` : `${formatNumberAbbr(_walletBalance, this.props.currencyFilter)} ${this.props.currencyFilter}`}/>
 
                 </div>
 

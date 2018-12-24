@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 /*
 Local CSS
 */
-import './Profile.component.css';
+import './Activities.component.css';
 
 /*
 React Bootstrap
@@ -17,7 +17,7 @@ import { Media, Modal, Button } from 'react-bootstrap';
 /*
 Children Component
 */
-import ProfileEditor from './ProfileEditor/ProfileEditor.component';
+import ProfileTables from './ProfileTables/ProfileTables.component';
 import Footer from '../footer/Footer.component';
 
 /*
@@ -27,10 +27,10 @@ import axios from 'axios';
 
 
 /**
- * Profile Component
+ * Activities Component
  *      represents user and display related activities.
  */
-class Profile extends Component {
+class Activities extends Component {
 
     constructor(props) {
         super(props);
@@ -53,8 +53,8 @@ class Profile extends Component {
             this.setState({
                 ...this.state,
                 reader: false
-            });
-        } else {
+            })
+        }else {
             this.loadProfileData();
         }
     }
@@ -138,43 +138,14 @@ class Profile extends Component {
     render() {
         const { allApis, modeFilter } = this.props;
 
-        // let nem_address_field;
-
-        // if (this.props.profile.nem_address === 'undefined' || this.props.profile.nem_address === '') {
-        //     nem_address_field = <em>'asdf'</em>
-        // } else {
-        //     nem_address_field = <em>{this.props.profile.nem_address}</em>
-        // }
-
         return (
-        <div className='profile-container'>
-
-            <div className='profile-header'>
-                <Media style={mediaStyle}>
-                    <Media.Left align='middle'>
-                        <img src={this.getAvatarSrc()} style={{ marginRight: '1vw' }} width='120' height='120' alt='user-avatar' />
-                    </Media.Left>
-                    <Media.Body>
-                        <Media.Heading style={mediaHeadingStyle}>
-                            <p style={{ float: 'left' }}>{this.getNickname()}</p>
-                            <br />
-                        </Media.Heading>
-
-                        {this.getEmail()}
-                        <br />
-                        {
-                            (this.props.currencyFilter === 'EQC'
-                                ? 'ETH address: ' + this.props.profile.eth_address
-                                : 'NEM address: ' + this.props.profile.nem_address
-                            )
-                        }
-                    </Media.Body>
-
-                    <ProfileEditor auth={this.props.auth} />
-                </Media>
+            <div className='profile-container'>
+                <ProfileTables
+                    reader={this.state.reader}
+                    userId={this.props.match.params.userId}
+                    {...{allApis, modeFilter}}
+                />
             </div>
-
-        </div>
         )
     }
 }
@@ -207,4 +178,4 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(Profile)
+)(Activities)

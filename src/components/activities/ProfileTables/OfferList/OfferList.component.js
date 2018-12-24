@@ -88,7 +88,7 @@ class OfferList extends Component {
 
         return (
             <div className='invite-list-container'>
-                <div className='table-responsive' style={{ height: '100%', margin: '2%', minHeight: '320px' }}>
+                <div className='table-responsive' style={{ height: '100%', margin: '2% 0 2% 0', minHeight: '320px' }}>
                     {(activeOffers.length === 0) ?
                         <p style={{ textAlign: 'center' }}>You don't have any offers right now.</p> :
                         ( <table className='table table-bordered mb-0'>

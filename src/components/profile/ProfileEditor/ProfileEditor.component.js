@@ -49,9 +49,6 @@ class ProfileEditor extends Component {
             eth_address: this.props.eth_address,
 
             updated_success: false
-
-            // eth_addressa: this.props.eth_addressa,
-
         }
 
         // this.handleHideModal = this.handleHideModal.bind(this);
@@ -99,6 +96,18 @@ class ProfileEditor extends Component {
         console.log(this.endpoint);
     }
 
+    componentWillMount() {
+        this.setState({
+            name: this.props.name,
+            nickname: this.props.nickname,
+            email: this.props.email,
+            avatar_url: this.props.avatar_url,
+            show: true,
+            nem_address: this.props.nem_address,
+            eth_address: this.props.eth_address,
+        });
+    }
+
     handleShowModal() {
         this.setState({
             name: this.props.name,
@@ -108,8 +117,6 @@ class ProfileEditor extends Component {
             show: true,
             nem_address: this.props.nem_address,
             eth_address: this.props.eth_address,
-
-            // eth_addressa: this.props.eth_addressa,
         });
 
         // console.log('123456');
@@ -128,13 +135,12 @@ class ProfileEditor extends Component {
             nickname: this.state.nickname,
             email: this.state.email,
             picture: this.state.avatar_url,
+
             nem_address: this.state.nem_address,
-            eth_address: this.state.eth_address,
-
-            // eth_addressa: this.state.eth_addressa,
-
             nem_wlt_name: this.state.nem_wlt_name,
             nem_pk_enc: this.state.nem_pk_enc,
+
+            eth_address: this.state.eth_address,
         };
 
 
@@ -165,13 +171,6 @@ class ProfileEditor extends Component {
     handleEthAddressChange(e) {
         this.setState({ ...this.state, eth_address: e.target.value });
     }
-
-
-    // handleEthAddressChange(e) {
-    //     this.setState({ ...this.state, eth_addressa: e.target.value });
-    // }
-
-
 
     read_NEM_wlt_file(e) {
         var input = e.target.files[0];
@@ -336,11 +335,11 @@ class ProfileEditor extends Component {
 
                 <p id="NEM_wlt_name_address" style={{ 'fontSize': '13px' }}>
                     {/* NEM wallet name: {this.state.nem_wlt_name}
-                    <br /> */}
+                    <br />
                     NEM address: {this.state.nem_address}
 
                     <br />
-                    <br />
+                    <br /> */}
                     To change your NEM account:
                 </p>
 
@@ -357,77 +356,79 @@ class ProfileEditor extends Component {
             </FormGroup>
         }
 
-        return <div>
-            <i className="fas fa-pen-square profile-editor-icon" onClick={this.handleShowModal}></i>
-            <Modal show={this.state.show} onHide={this.handleHideModal}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Edit Profile</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
+        return (
+            <div style={{ maxWidth: '600px', margin: '40px 0 110px 142px' }}>
+{/*                 <i className="fas fa-pen-square profile-editor-icon" onClick={this.handleShowModal}></i> */}
+{/*                 <Modal show={this.state.show} onHide={this.handleHideModal}> */}
+{/*                     <Modal.Header closeButton> */}
+{/*                         <Modal.Title>Edit Profile</Modal.Title> */}
+{/*                     </Modal.Header> */}
+{/*                     <Modal.Body> */}
 
-                    <FormGroup controlId='control-form-title'>
-                        <h4>Preferred Nickname</h4>
-                        <FormControl type='text'
-                            defaultValue={this.state.nickname}
-                            onChange={this.handleNicknameChange}
-                        />
-                    </FormGroup>
+                        <FormGroup controlId='control-form-title'>
+                            <h4>Preferred Nickname</h4>
+                            <FormControl type='text'
+                                defaultValue={this.state.nickname}
+                                onChange={this.handleNicknameChange}
+                            />
+                        </FormGroup>
 
-                    <FormGroup controlId='control-form-title'>
-                        <h4>Email</h4>
-                        <FormControl type='text'
-                            defaultValue={this.state.email}
-                            onChange={this.handleEmailChange}
-                        />
-                    </FormGroup>
+                        <FormGroup controlId='control-form-title'>
+                            <h4>Email</h4>
+                            <FormControl type='text'
+                                defaultValue={this.state.email}
+                                onChange={this.handleEmailChange}
+                            />
+                        </FormGroup>
 
-                    <FormGroup controlId='control-form-title'>
-                        <h4>Avatar URL</h4>
-                        <FormControl type='text'
-                            defaultValue={this.state.avatar_url}
-                            onChange={this.handleAvatarUrlChange}
-                        />
-                    </FormGroup>
+                        <FormGroup controlId='control-form-title'>
+                            <h4>Avatar URL</h4>
+                            <FormControl type='text'
+                                defaultValue={this.state.avatar_url}
+                                onChange={this.handleAvatarUrlChange}
+                            />
+                        </FormGroup>
 
-                    {/* <FormGroup controlId='control-form-title'>
-                        <h4>NEM Address</h4>
-                        <FormControl type='text'
-                            defaultValue={this.state.nem_address}
-                            onChange={this.handleNemAddressChange}
-                        />
-                    </FormGroup> */}
+                        {/* <FormGroup controlId='control-form-title'>
+                            <h4>NEM Address</h4>
+                            <FormControl type='text'
+                                defaultValue={this.state.nem_address}
+                                onChange={this.handleNemAddressChange}
+                            />
+                        </FormGroup> */}
 
-                    {/* <FormGroup controlId='control-form-title'>
-                        <h4>ETH Address</h4>
-                        <FormControl type='text'
-                            defaultValue={this.state.eth_addressa}
-                            onChange={this.handleEthAddressChange}
-                        />
-                    </FormGroup> */}
+                        {/* <FormGroup controlId='control-form-title'>
+                            <h4>ETH Address</h4>
+                            <FormControl type='text'
+                                defaultValue={this.state.eth_addressa}
+                                onChange={this.handleEthAddressChange}
+                            />
+                        </FormGroup> */}
 
-                    {NEM_wlt_formgroup}
+                        {NEM_wlt_formgroup}
 
-                    {this.state.updated_success && (
-                        <Alert bsStyle="success">
-                            <p style={{'fontSize': '13px' }}>
-                                Update successfully. We will proceed to login page in 5s ...
-                            </p>
-                        </Alert>
-                    )}
-                </Modal.Body>
+                        {this.state.updated_success && (
+                            <Alert bsStyle="success">
+                                <p style={{'fontSize': '13px' }}>
+                                    Profile updated successfully. Redirecting to the login page...
+                                </p>
+                            </Alert>
+                        )}
+{/*                     </Modal.Body> */}
 
-                <Alert bsStyle="danger">
-                    <p style={{ marginBottom: '10px', 'fontSize': '13px' }}>
-                        Any changes to the profile require you to login again to take effect.
-                    </p>
+                    <Alert bsStyle="danger" style={{ marginTop: '10px' }}>
+                        <p style={{ marginBottom: '10px', 'fontSize': '13px' }}>
+                            Any changes to the profile require you to log in again to take effect.
+                        </p>
 
-                    <Button bsStyle="danger" onClick={this.handleConfirmEdit}>Save</Button>
-                    <Button style={{ marginLeft: '10px' }} onClick={this.handleHideModal}>Cancel</Button>
-                </Alert>
+                        <Button bsStyle="danger" onClick={this.handleConfirmEdit}>Save</Button>
+{/*                         <Button style={{ marginLeft: '10px' }} onClick={this.handleHideModal}>Cancel</Button> */}
+                    </Alert>
 
 
-            </Modal>
-        </div>
+{/*                 </Modal> */}
+            </div>
+        );
     }
 }
 
@@ -442,9 +443,6 @@ const mapStateToProps = (state) => {
         nem_pk_enc: state.ProfileReducer.profile.nem_pk_enc,
 
         eth_address: state.ProfileReducer.profile.eth_address,
-
-        // eth_addressa: state.ProfileReducer.profile.eth_addressa,
-
     }
 }
 

@@ -6,7 +6,7 @@ app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
   });
-  
+
 
 app.get('/api/db', (req, res, next) => {
     res.send(fakeData)
@@ -41,11 +41,11 @@ app.get('/api/listing', (req, res, next) => {
 })
 
 app.listen(3000, () => {
-    console.log('-------------------------------------')
+    console.log('--------------------------------------')
     console.log('* TEST SERVER listening on port 3000 *')
-    console.log('* -----------------------------------')
+    console.log('* ------------------------------------')
     console.log('End points: ')
-    console.log('\t* GET /api/db         : The whole shit.');
+    console.log('\t* GET /api/db         : Entire database.');
     console.log('\t* GET /api/dashboard  : Daily stats + XQC contracts + EQC contracts.');
     console.log('\t* GET /api/marketplace: RequestListings + contentSpaceListings.');
     console.log('\t* GET /api/listing?id : Detailed listing object provided listing ID.');
@@ -63,7 +63,7 @@ var fakeDetailedListings = [
         "images": "",
         "ask_date_from": "2017-09-17",
         "requestDescription": "This is a product you will be thrilled to show your users .Feature us on your website."
-    }, 
+    },
     {
         "id" : 2,
         "type" : "request",

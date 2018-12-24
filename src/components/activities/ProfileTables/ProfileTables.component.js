@@ -63,12 +63,12 @@ class ProfileTables extends Component {
                 condition: modeFilter === "Advertiser"
             },
             {
-                title: "Active Listing",
+                title: "Active Listings",
                 render: () => <ActiveListing/>,
                 condition: true
             },
             {
-                title: "Active Request",
+                title: "Active Requests",
                 render: () => <ActiveRequest/>,
                 condition: true
             },

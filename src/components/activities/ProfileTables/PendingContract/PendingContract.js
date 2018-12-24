@@ -28,7 +28,7 @@ export class PendingContract extends React.Component {
 
         return (
             <div className='active-listing-container'>
-                <div className='table-responsive' style={{ height: '100%', margin: '2%', minHeight: '320px' }}>
+                <div className='table-responsive' style={{ height: '100%', margin: '2% 0 2% 0', minHeight: '320px' }}>
                     { (pendingContract.length === 0)
                         ? (<p style={{ textAlign: 'center' }}>There is currently no inactive contract...</p>)
                         : (<table className='table table-bordered mb-0'>
