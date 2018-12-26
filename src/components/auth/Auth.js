@@ -153,20 +153,25 @@ export default class Auth {
     handleProfileOnAuthenticated = (authorizationToken) => {
         this.getProfile((err, profile) => {
             if (profile) {
-                let headers = { Authorization: `Bearer ${authorizationToken}`};
-                getJson(`https://marketplacedb.qchain.co/account?role=eq.${profile.app_metadata.role}`, {headers})
-                    .then((resp) => {
-                        let p = resp.data[0];
-                        if(isEmpty(p.nem_address)) {
-                            patchJson(`https://marketplacedb.qchain.co/account?role=eq.${profile.app_metadata.role}`,
-                                { payload: {nem_address: profile['https://auth.qchain.co/user_metadata'].nem_address}, headers})
-                        }
+                // let headers = { Authorization: `Bearer ${authorizationToken}`};
+                // getJson(`https://marketplacedb.qchain.co/account?role=eq.${profile.app_metadata.role}`, {headers})
+                //     .then((resp) => {
+                //         let p = resp.data[0];
+                //         if(isEmpty(p.nem_address)) {
+                //             patchJson(`https://marketplacedb.qchain.co/account?role=eq.${profile.app_metadata.role}`,
+                //                 { payload: {nem_address: profile['https://auth.qchain.co/user_metadata'].nem_address}, headers})
+                //         }
+                //
+                //         this.dispatchProfile(profile, {
+                //             ...profile['https://auth.qchain.co/user_metadata'],
+                //             // nem_address: p.nem_address
+                //         });
+                //     });
 
-                        this.dispatchProfile(profile, {
-                            ...profile['https://auth.qchain.co/user_metadata'],
-                            nem_address: p.nem_address
-                        });
-                    });
+                this.dispatchProfile(profile, {
+                    ...profile['https://auth.qchain.co/user_metadata'],
+                    // nem_address: p.nem_address
+                });
             }
             if (err) console.log(err)
         })
@@ -282,7 +287,7 @@ export default class Auth {
                             name: newMetadata.nickname,
                             email: newMetadata.email,
                             picture: newMetadata.picture,
-                            nem_address: newMetadata.nem_address
+                            // nem_address: newMetadata.nem_address
                         };
 
                         axios.patch(nameURL, payload, config)

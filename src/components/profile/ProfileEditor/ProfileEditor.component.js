@@ -307,58 +307,61 @@ class ProfileEditor extends Component {
     }
 
     render() {
-        // let NEM_wlt_formgroup;
+        console.log(this.state);
+
+
+        let NEM_wlt_formgroup;
         //
-        // // if (this.state.nem_pk_enc === 'undefined' || this.state.nem_pk_enc === '') {
-        // if (this.state.nem_address === 'undefined' || this.state.nem_address === '') {
-        //     NEM_wlt_formgroup = <FormGroup controlId='control-form-title'>
-        //         <h4>NEM Account</h4>
-        //         {/* <p id="NEM_wlt_subtext" style={{ 'margin': '-6px 0 12px 0', 'fontSize': '13px', 'fontStyle': 'italic' }}>Only standard (i.e. password/brain) wallets are supported.</p> */}
-        //
-        //         <input id="NEM_wlt_input" style={{ 'fontSize': '12px' }} type="file" accept=".wlt" onChange={this.read_NEM_wlt_file} />
-        //
-        //         <form id="NEM_password_input" style={{ 'display': 'none', 'fontSize': '14px', 'marginTop': '24px' }} onSubmit={this.handleNemPasswordSubmit}>
-        //             <label>
-        //                 Password:&nbsp;&nbsp;
-        //                 <input type="text" style={{ 'fontWeight': 'normal', 'borderRadius': '3px' }} value={this.state.NEM_password} onChange={this.handleNemPasswordChange} />
-        //             </label>
-        //
-        //             <input type="submit" value="Submit" />
-        //         </form>
-        //
-        //         <p id="NEM_wlt_name_address" style={{ 'display': 'none', 'fontSize': '13px' }}>
-        //             NEM wallet name: {this.state.nem_wlt_name}
-        //             <br />
-        //             NEM address: {this.state.nem_address}
-        //         </p>
-        //     </FormGroup>
-        // } else {
-        //     NEM_wlt_formgroup = <FormGroup controlId='control-form-title'>
-        //         <h4>NEM Account</h4>
-        //         {/* <p id="NEM_wlt_subtext" style={{ 'margin': '-6px 0 12px 0', 'fontSize': '13px', 'fontStyle': 'italic' }}>Only standard (i.e. password/brain) wallets are supported.</p> */}
-        //
-        //         <p id="NEM_wlt_name_address" style={{ 'fontSize': '13px' }}>
-        //             NEM wallet name: {this.state.profile.nem_wlt_name}
-        //             <br />
-        //             NEM address: {this.state.nem_address}
-        //
-        //             <br />
-        //             <br />
-        //             To change your NEM account:
-        //         </p>
-        //
-        //         <input id="NEM_wlt_input" style={{ 'fontSize': '12px' }} type="file" accept=".wlt" onChange={this.read_NEM_wlt_file} />
-        //
-        //         <form id="NEM_password_input" style={{ 'display': 'none', 'fontSize': '14px', 'marginTop': '24px' }} onSubmit={this.handleNemPasswordSubmit}>
-        //             <label>
-        //                 Password:&nbsp;&nbsp;
-        //                 <input type="text" style={{ 'fontWeight': 'normal', 'borderRadius': '3px' }} value={this.state.NEM_password} onChange={this.handleNemPasswordChange} />
-        //             </label>
-        //
-        //             <input type="submit" value="Submit" />
-        //         </form>
-        //     </FormGroup>
-        // }
+        // if (this.state.nem_pk_enc === 'undefined' || this.state.nem_pk_enc === '') {
+        if (this.state.nem_address === 'undefined' || this.state.nem_address === '') {
+            NEM_wlt_formgroup = <FormGroup controlId='control-form-title'>
+                <h4>NEM Account</h4>
+                {/* <p id="NEM_wlt_subtext" style={{ 'margin': '-6px 0 12px 0', 'fontSize': '13px', 'fontStyle': 'italic' }}>Only standard (i.e. password/brain) wallets are supported.</p> */}
+
+                <input id="NEM_wlt_input" style={{ 'fontSize': '12px' }} type="file" accept=".wlt" onChange={this.read_NEM_wlt_file} />
+
+                <form id="NEM_password_input" style={{ 'display': 'none', 'fontSize': '14px', 'marginTop': '24px' }} onSubmit={this.handleNemPasswordSubmit}>
+                    <label>
+                        Password:&nbsp;&nbsp;
+                        <input type="text" style={{ 'fontWeight': 'normal', 'borderRadius': '3px' }} value={this.state.NEM_password} onChange={this.handleNemPasswordChange} />
+                    </label>
+
+                    <input type="submit" value="Submit" />
+                </form>
+
+                <p id="NEM_wlt_name_address" style={{ 'display': 'none', 'fontSize': '13px' }}>
+                    NEM wallet name: {(this.state.profile && this.state.profile.nem_wlt_name) ? this.state.profile.nem_wlt_name : ''}
+                    <br />
+                    NEM address: {this.state.nem_address}
+                </p>
+            </FormGroup>
+        } else {
+            NEM_wlt_formgroup = <FormGroup controlId='control-form-title'>
+                <h4>NEM Account</h4>
+                {/* <p id="NEM_wlt_subtext" style={{ 'margin': '-6px 0 12px 0', 'fontSize': '13px', 'fontStyle': 'italic' }}>Only standard (i.e. password/brain) wallets are supported.</p> */}
+
+                <p id="NEM_wlt_name_address" style={{ 'fontSize': '13px' }}>
+                    NEM wallet name: { (this.state.profile && this.state.profile.nem_wlt_name) ? this.state.profile.nem_wlt_name : ''}
+                    <br />
+                    NEM address: {this.state.nem_address}
+
+                    <br />
+                    <br />
+                    To change your NEM account:
+                </p>
+
+                <input id="NEM_wlt_input" style={{ 'fontSize': '12px' }} type="file" accept=".wlt" onChange={this.read_NEM_wlt_file} />
+
+                <form id="NEM_password_input" style={{ 'display': 'none', 'fontSize': '14px', 'marginTop': '24px' }} onSubmit={this.handleNemPasswordSubmit}>
+                    <label>
+                        Password:&nbsp;&nbsp;
+                        <input type="text" style={{ 'fontWeight': 'normal', 'borderRadius': '3px' }} value={this.state.NEM_password} onChange={this.handleNemPasswordChange} />
+                    </label>
+
+                    <input type="submit" value="Submit" />
+                </form>
+            </FormGroup>
+        }
 
         return (
             <div style={{ maxWidth: '600px', margin: '40px 0 110px 145px' }}>
@@ -386,13 +389,13 @@ class ProfileEditor extends Component {
                     />
                 </FormGroup>
 
-                <FormGroup controlId='control-form-title'>
-                    <h4>NEM Address</h4>
-                    <FormControl type='text'
-                        defaultValue={this.state.nem_address}
-                        onChange={this.handleNemAddressChange}
-                    />
-                </FormGroup>
+                {/*<FormGroup controlId='control-form-title'>*/}
+                    {/*<h4>NEM Address</h4>*/}
+                    {/*<FormControl type='text'*/}
+                        {/*defaultValue={this.state.nem_address}*/}
+                        {/*// onChange={this.handleNemAddressChange}*/}
+                    {/*/>*/}
+                {/*</FormGroup>*/}
 
                 {/* <FormGroup controlId='control-form-title'>
                             <h4>ETH Address</h4>
@@ -402,7 +405,7 @@ class ProfileEditor extends Component {
                             />
                         </FormGroup> */}
 
-                {/*{NEM_wlt_formgroup}*/}
+                {NEM_wlt_formgroup}
 
                 {/*<div style={{ height: '25px' }}></div>*/}
 
