@@ -10,7 +10,7 @@ export const withPayloadJson = (method) => (url, {queryParams, payload, authToke
             data: payload,
             headers: {
                 // 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${authToken}`,
+                ...(authToken && {'Authorization': `Bearer ${authToken}`}),
                 ...headers
             },
         }

@@ -24,6 +24,7 @@ import Footer from '../footer/Footer.component';
 Networking
 */
 import axios from 'axios';
+import {isEmpty} from "lodash";
 
 
 /**
@@ -45,22 +46,21 @@ class Profile extends Component {
                 email: 'email@domain.co',
                 picture: ''
             }
-        }
+        };
     }
 
     componentWillMount() {
-        if (typeof this.props.match.params.userId === 'undefined') {
-            this.setState({
-                ...this.state,
-                reader: false
-            });
-        } else {
-            this.loadProfileData();
-        }
+        // if (typeof this.props.match.params.userId === 'undefined') {
+        //     this.setState({
+        //         ...this.state,
+        //         reader: false
+        //     });
+        // } else {
+        //     this.loadProfileData();
+        // }
     }
 
     loadProfileData = () => {
-        console.log('1231');
         this.setState({ ...this.state, fetching: true, hasError: false });
 
         const accountURL = "https://marketplacedb.qchain.co/account?select=email,name,picture&role=eq." + this.props.match.params.userId;
@@ -88,6 +88,11 @@ class Profile extends Component {
             })
     }
 
+    getData = () => {
+        const { profile } = this.props;
+        console.log(profile);
+    };
+
     componentDidMount() {
         document.title = "Qchain - Profile";
         // window.scrollTo(0, 0);
@@ -110,11 +115,7 @@ class Profile extends Component {
         }
     }
 
-    getAvatarSrc = () => {
-        return this.state.reader
-            ? this.state.profile.picture
-            : this.props.profile.avatar_url
-    }
+    getAvatarSrc = (profile) => isEmpty(profile.avatar_url) ? profile.picture : profile.avatar_url;
 
     getNickname = () => {
         return this.state.reader
@@ -129,14 +130,11 @@ class Profile extends Component {
     }
 
     getVerified = () => {
-        return this.state.reader
-            ? false
-            : true
-    }
-
+        return this.state.reader ? false : true
+    };
 
     render() {
-        const { allApis, modeFilter } = this.props;
+        const { allApis, profile } = this.props;
 
         // let nem_address_field;
 
@@ -146,41 +144,43 @@ class Profile extends Component {
         //     nem_address_field = <em>{this.props.profile.nem_address}</em>
         // }
 
+
         return (
-        <div className='profile-container'>
+            <div className='profile-container'>
+                <div className="profile-header-timeline"/>
+                <div className='profile-header'>
+                    <Media style={mediaStyle}>
+                        <Media.Left align='middle'>
+                            <img src={this.getAvatarSrc(profile)} style={{ marginRight: '1vw' }} width='120' height='120' alt='user-avatar' />
+                        </Media.Left>
+                        <Media.Body>
+                            <Media.Heading style={mediaHeadingStyle}>
+                                <p style={{ float: 'left' }}>{this.getNickname()}</p>
+                                <br />
+                            </Media.Heading>
 
-            <div className='profile-header'>
-                <Media style={mediaStyle}>
-                    <Media.Left align='middle'>
-                        <img src={this.getAvatarSrc()} style={{ marginRight: '1vw' }} width='120' height='120' alt='user-avatar' />
-                    </Media.Left>
-                    <Media.Body>
-                        <Media.Heading style={mediaHeadingStyle}>
-                            <p style={{ float: 'left' }}>{this.getNickname()}</p>
+                            {this.getEmail()}
                             <br />
-                        </Media.Heading>
+                            {
+                                (this.props.currencyFilter === 'EQC'
+                                    ? 'ETH address: ' + this.props.profile.eth_address
+                                    : 'NEM address: ' + this.props.profile.nem_address
+                                )
+                            }
+                        </Media.Body>
 
-                        {this.getEmail()}
-                        <br />
-                        {
-                            (this.props.currencyFilter === 'EQC'
-                                ? 'ETH address: ' + this.props.profile.eth_address
-                                : 'NEM address: ' + this.props.profile.nem_address
-                            )
-                        }
-                    </Media.Body>
-
-                    <ProfileEditor auth={this.props.auth} />
-                </Media>
+                        { profile.role && <ProfileEditor {...{auth: this.props.auth, profile}} />}
+                    </Media>
+                </div>
             </div>
-
-        </div>
         )
     }
 }
 
 const mediaStyle = {
-    marginTop: '235px',
+    // marginTop: '235px',
+    position: 'relative',
+    top: '-65px',
     marginLeft: '10vw',
     fontSize: '14px',
 }

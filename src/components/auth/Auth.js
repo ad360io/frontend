@@ -12,6 +12,10 @@ import axios from 'axios';
 Actions
 */
 import { setCurrency, setMode } from '../../actions/HeaderActions';
+import {getJson} from "../../common/api/method/get-json";
+import {isEmpty} from "lodash";
+import {postJson} from "../../common/api/method/post-json";
+import {patchJson} from "../../common/api/method/patch-json";
 
 
 /**
@@ -30,7 +34,7 @@ export default class Auth {
         this.scheduleRenewal = this.scheduleRenewal.bind(this);
         this.getAccessToken = this.getAccessToken.bind(this);
         this.getProfile = this.getProfile.bind(this);
-        this.handleProfileOnAuthenticated = this.handleProfileOnAuthenticated.bind(this);
+        // this.handleProfileOnAuthenticated = this.handleProfileOnAuthenticated.bind(this);
         this.dispatchProfile = this.dispatchProfile.bind(this);
         // this.updateUserMetadata = this.updateUserMetadata.bind(this);
         this.patchUserMetadata = this.patchUserMetadata.bind(this);
@@ -67,7 +71,6 @@ export default class Auth {
     setSession(authResult, propsHistory) {
         // Set the time that the Access Token will expire at
         let expiresAt = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
-        console.log(authResult.idTokenPayload);
         localStorage.setItem('access_token', authResult.accessToken);
         localStorage.setItem('id_token', authResult.idToken);
         localStorage.setItem('expires_at', expiresAt);
@@ -75,7 +78,7 @@ export default class Auth {
         localStorage.setItem('role', authResult.idTokenPayload.app_metadata.role);
 
         // Push auth0 profile info to redux
-        this.handleProfileOnAuthenticated(authResult.accessToken);
+        this.handleProfileOnAuthenticated(authResult.idToken);
 
         // Redirect to /dashboard after authenticated.
         propsHistory.replace('/dashboard');
@@ -147,16 +150,23 @@ export default class Auth {
         });
     }
 
-    handleProfileOnAuthenticated(accessToken) {
+    handleProfileOnAuthenticated = (authorizationToken) => {
         this.getProfile((err, profile) => {
             if (profile) {
-                console.log('00000');
-                console.log(profile);
-                console.log('-----');
+                let headers = { Authorization: `Bearer ${authorizationToken}`};
+                getJson(`https://marketplacedb.qchain.co/account?role=eq.${profile.app_metadata.role}`, {headers})
+                    .then((resp) => {
+                        let p = resp.data[0];
+                        if(isEmpty(p.nem_address)) {
+                            patchJson(`https://marketplacedb.qchain.co/account?role=eq.${profile.app_metadata.role}`,
+                                { payload: {nem_address: profile['https://auth.qchain.co/user_metadata'].nem_address}, headers})
+                        }
 
-                this.dispatchProfile(profile,
-                    profile['https://auth.qchain.co/user_metadata']
-                );
+                        this.dispatchProfile(profile, {
+                            ...profile['https://auth.qchain.co/user_metadata'],
+                            nem_address: p.nem_address
+                        });
+                    });
             }
             if (err) console.log(err)
         })
@@ -173,6 +183,7 @@ export default class Auth {
         if (typeof user_metadata === 'undefined') {
             // Declare placeholding fields for UI
             let value = {
+                role: profile.role,
                 name: profile.name,
                 email: profile.email,
                 nickname: profile.nickname,
@@ -182,7 +193,8 @@ export default class Auth {
                 currency: 'XQC',
                 mode: 'Advertiser',
                 email_verified: false
-            }
+            };
+
             this.store.dispatch({
                 type: 'SET_PROFILE',
                 value
@@ -214,6 +226,7 @@ export default class Auth {
 
             // Group profile related values and dispatch using SET_PROFILE.
             let value = {
+                role: profile.role,
                 name,
                 email,
                 nickname,
@@ -221,11 +234,12 @@ export default class Auth {
                 nem_address,
                 eth_address,
                 email_verified: profile.email_verified
-            }
+            };
+
             this.store.dispatch({
                 type: 'SET_PROFILE',
                 value
-            })
+            });
 
             // Dispatch currency and mode separately since they are not directly related to profile
             this.store.dispatch(setCurrency(currency));
@@ -267,7 +281,8 @@ export default class Auth {
                         const payload = {
                             name: newMetadata.nickname,
                             email: newMetadata.email,
-                            picture: newMetadata.picture
+                            picture: newMetadata.picture,
+                            nem_address: newMetadata.nem_address
                         };
 
                         axios.patch(nameURL, payload, config)

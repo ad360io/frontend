@@ -36,8 +36,8 @@ class Header extends Component {
 
     componentWillMount() {
         if (this.props.profile.name === 'User Name') {
-            const { handleProfileOnAuthenticated, getAccessToken } = this.props.auth;
-            handleProfileOnAuthenticated(getAccessToken());
+            const { handleProfileOnAuthenticated, getAuthorizationToken } = this.props.auth;
+            handleProfileOnAuthenticated(getAuthorizationToken());
         }
     }
 

@@ -30,6 +30,8 @@ import nem from 'nem-sdk';
 /**
  * Profile Editor Component
  */
+
+//TODO: refactor
 class ProfileEditor extends Component {
 
     constructor(props) {
@@ -52,22 +54,22 @@ class ProfileEditor extends Component {
         }
 
         // this.handleHideModal = this.handleHideModal.bind(this);
-        this.handleShowModal = this.handleShowModal.bind(this);
-        // this.handleConfirmEdit = this.handleConfirmEdit.bind(this);
-        this.handleNicknameChange = this.handleNicknameChange.bind(this);
-        this.handleEmailChange = this.handleEmailChange.bind(this);
-        this.handleAvatarUrlChange = this.handleAvatarUrlChange.bind(this);
-        this.handleNemAddressChange = this.handleNemAddressChange.bind(this);
-        this.handleEthAddressChange = this.handleEthAddressChange.bind(this);
-
+        // this.handleShowModal = this.handleShowModal.bind(this);
+        // // this.handleConfirmEdit = this.handleConfirmEdit.bind(this);
+        // this.handleNicknameChange = this.handleNicknameChange.bind(this);
+        // this.handleEmailChange = this.handleEmailChange.bind(this);
+        // this.handleAvatarUrlChange = this.handleAvatarUrlChange.bind(this);
+        // this.handleNemAddressChange = this.handleNemAddressChange.bind(this);
         // this.handleEthAddressChange = this.handleEthAddressChange.bind(this);
-
-        this.read_NEM_wlt_file = this.read_NEM_wlt_file.bind(this);
-        this.NEM_wlt_base64_txt = null;
-        this.NEM_wlt_JSON = null;
-
-        this.handleNemPasswordChange = this.handleNemPasswordChange.bind(this);
-        this.handleNemPasswordSubmit = this.handleNemPasswordSubmit.bind(this);
+        //
+        // // this.handleEthAddressChange = this.handleEthAddressChange.bind(this);
+        //
+        // this.read_NEM_wlt_file = this.read_NEM_wlt_file.bind(this);
+        // this.NEM_wlt_base64_txt = null;
+        // this.NEM_wlt_JSON = null;
+        //
+        // this.handleNemPasswordChange = this.handleNemPasswordChange.bind(this);
+        // this.handleNemPasswordSubmit = this.handleNemPasswordSubmit.bind(this);
 
         this.NEM_priv_key = null;
         // this.handleNemPkEncChange = this.handleNemPkEncChange.bind(this);
@@ -98,7 +100,7 @@ class ProfileEditor extends Component {
 
     componentWillMount() {
         this.setState({
-            profile: this.props.auth.userProfile.user_metadata,
+            // profile: this.props.auth.userProfile.user_metadata,
 
             name: this.props.name,
             nickname: this.props.nickname,
@@ -154,19 +156,19 @@ class ProfileEditor extends Component {
         // this.handleHideModal();
     }
 
-    handleNicknameChange(e) {
+    handleNicknameChange = (e) => {
         this.setState({ ...this.state, nickname: e.target.value });
     }
 
-    handleEmailChange(e) {
+    handleEmailChange = (e) => {
         this.setState({ ...this.state, email: e.target.value });
     }
 
-    handleAvatarUrlChange(e) {
+    handleAvatarUrlChange = (e) => {
         this.setState({ ...this.state, avatar_url: e.target.value });
     }
 
-    handleNemAddressChange(e) {
+    handleNemAddressChange = (e) => {
         this.setState({ ...this.state, nem_address: e.target.value });
     }
 
@@ -305,101 +307,94 @@ class ProfileEditor extends Component {
     }
 
     render() {
-        let NEM_wlt_formgroup;
-
-        // if (this.state.nem_pk_enc === 'undefined' || this.state.nem_pk_enc === '') {
-        if (this.state.nem_address === 'undefined' || this.state.nem_address === '') {
-            NEM_wlt_formgroup = <FormGroup controlId='control-form-title'>
-                <h4>NEM Account</h4>
-                {/* <p id="NEM_wlt_subtext" style={{ 'margin': '-6px 0 12px 0', 'fontSize': '13px', 'fontStyle': 'italic' }}>Only standard (i.e. password/brain) wallets are supported.</p> */}
-
-                <input id="NEM_wlt_input" style={{ 'fontSize': '12px' }} type="file" accept=".wlt" onChange={this.read_NEM_wlt_file} />
-
-                <form id="NEM_password_input" style={{ 'display': 'none', 'fontSize': '14px', 'marginTop': '24px' }} onSubmit={this.handleNemPasswordSubmit}>
-                    <label>
-                        Password:&nbsp;&nbsp;
-                        <input type="text" style={{ 'fontWeight': 'normal', 'borderRadius': '3px' }} value={this.state.NEM_password} onChange={this.handleNemPasswordChange} />
-                    </label>
-
-                    <input type="submit" value="Submit" />
-                </form>
-
-                <p id="NEM_wlt_name_address" style={{ 'display': 'none', 'fontSize': '13px' }}>
-                    NEM wallet name: {this.state.nem_wlt_name}
-                    <br />
-                    NEM address: {this.state.nem_address}
-                </p>
-            </FormGroup>
-        } else {
-            NEM_wlt_formgroup = <FormGroup controlId='control-form-title'>
-                <h4>NEM Account</h4>
-                {/* <p id="NEM_wlt_subtext" style={{ 'margin': '-6px 0 12px 0', 'fontSize': '13px', 'fontStyle': 'italic' }}>Only standard (i.e. password/brain) wallets are supported.</p> */}
-
-                <p id="NEM_wlt_name_address" style={{ 'fontSize': '13px' }}>
-                    NEM wallet name: {this.state.profile.nem_wlt_name}
-                    <br />
-                    NEM address: {this.state.nem_address}
-
-                    <br />
-                    <br />
-                    To change your NEM account:
-                </p>
-
-                <input id="NEM_wlt_input" style={{ 'fontSize': '12px' }} type="file" accept=".wlt" onChange={this.read_NEM_wlt_file} />
-
-                <form id="NEM_password_input" style={{ 'display': 'none', 'fontSize': '14px', 'marginTop': '24px' }} onSubmit={this.handleNemPasswordSubmit}>
-                    <label>
-                        Password:&nbsp;&nbsp;
-                        <input type="text" style={{ 'fontWeight': 'normal', 'borderRadius': '3px' }} value={this.state.NEM_password} onChange={this.handleNemPasswordChange} />
-                    </label>
-
-                    <input type="submit" value="Submit" />
-                </form>
-            </FormGroup>
-        }
+        // let NEM_wlt_formgroup;
+        //
+        // // if (this.state.nem_pk_enc === 'undefined' || this.state.nem_pk_enc === '') {
+        // if (this.state.nem_address === 'undefined' || this.state.nem_address === '') {
+        //     NEM_wlt_formgroup = <FormGroup controlId='control-form-title'>
+        //         <h4>NEM Account</h4>
+        //         {/* <p id="NEM_wlt_subtext" style={{ 'margin': '-6px 0 12px 0', 'fontSize': '13px', 'fontStyle': 'italic' }}>Only standard (i.e. password/brain) wallets are supported.</p> */}
+        //
+        //         <input id="NEM_wlt_input" style={{ 'fontSize': '12px' }} type="file" accept=".wlt" onChange={this.read_NEM_wlt_file} />
+        //
+        //         <form id="NEM_password_input" style={{ 'display': 'none', 'fontSize': '14px', 'marginTop': '24px' }} onSubmit={this.handleNemPasswordSubmit}>
+        //             <label>
+        //                 Password:&nbsp;&nbsp;
+        //                 <input type="text" style={{ 'fontWeight': 'normal', 'borderRadius': '3px' }} value={this.state.NEM_password} onChange={this.handleNemPasswordChange} />
+        //             </label>
+        //
+        //             <input type="submit" value="Submit" />
+        //         </form>
+        //
+        //         <p id="NEM_wlt_name_address" style={{ 'display': 'none', 'fontSize': '13px' }}>
+        //             NEM wallet name: {this.state.nem_wlt_name}
+        //             <br />
+        //             NEM address: {this.state.nem_address}
+        //         </p>
+        //     </FormGroup>
+        // } else {
+        //     NEM_wlt_formgroup = <FormGroup controlId='control-form-title'>
+        //         <h4>NEM Account</h4>
+        //         {/* <p id="NEM_wlt_subtext" style={{ 'margin': '-6px 0 12px 0', 'fontSize': '13px', 'fontStyle': 'italic' }}>Only standard (i.e. password/brain) wallets are supported.</p> */}
+        //
+        //         <p id="NEM_wlt_name_address" style={{ 'fontSize': '13px' }}>
+        //             NEM wallet name: {this.state.profile.nem_wlt_name}
+        //             <br />
+        //             NEM address: {this.state.nem_address}
+        //
+        //             <br />
+        //             <br />
+        //             To change your NEM account:
+        //         </p>
+        //
+        //         <input id="NEM_wlt_input" style={{ 'fontSize': '12px' }} type="file" accept=".wlt" onChange={this.read_NEM_wlt_file} />
+        //
+        //         <form id="NEM_password_input" style={{ 'display': 'none', 'fontSize': '14px', 'marginTop': '24px' }} onSubmit={this.handleNemPasswordSubmit}>
+        //             <label>
+        //                 Password:&nbsp;&nbsp;
+        //                 <input type="text" style={{ 'fontWeight': 'normal', 'borderRadius': '3px' }} value={this.state.NEM_password} onChange={this.handleNemPasswordChange} />
+        //             </label>
+        //
+        //             <input type="submit" value="Submit" />
+        //         </form>
+        //     </FormGroup>
+        // }
 
         return (
             <div style={{ maxWidth: '600px', margin: '40px 0 110px 145px' }}>
-{/*                 <i className="fas fa-pen-square profile-editor-icon" onClick={this.handleShowModal}></i> */}
-{/*                 <Modal show={this.state.show} onHide={this.handleHideModal}> */}
-{/*                     <Modal.Header closeButton> */}
-{/*                         <Modal.Title>Edit Profile</Modal.Title> */}
-{/*                     </Modal.Header> */}
-{/*                     <Modal.Body> */}
+                <FormGroup controlId='control-form-title'>
+                    <h4>Preferred Nickname</h4>
+                    <FormControl type='text'
+                                 defaultValue={this.state.nickname}
+                                 onChange={this.handleNicknameChange}
+                    />
+                </FormGroup>
 
-                        <FormGroup controlId='control-form-title'>
-                            <h4>Preferred Nickname</h4>
-                            <FormControl type='text'
-                                defaultValue={this.state.nickname}
-                                onChange={this.handleNicknameChange}
-                            />
-                        </FormGroup>
+                <FormGroup controlId='control-form-title'>
+                    <h4>Email</h4>
+                    <FormControl type='text'
+                                 defaultValue={this.state.email}
+                                 onChange={this.handleEmailChange}
+                    />
+                </FormGroup>
 
-                        <FormGroup controlId='control-form-title'>
-                            <h4>Email</h4>
-                            <FormControl type='text'
-                                defaultValue={this.state.email}
-                                onChange={this.handleEmailChange}
-                            />
-                        </FormGroup>
+                <FormGroup controlId='control-form-title'>
+                    <h4>Profile Picture URL</h4>
+                    <FormControl type='text'
+                                 defaultValue={this.state.avatar_url}
+                                 onChange={this.handleAvatarUrlChange}
+                    />
+                </FormGroup>
 
-                        <FormGroup controlId='control-form-title'>
-                            <h4>Profile Picture URL</h4>
-                            <FormControl type='text'
-                                defaultValue={this.state.avatar_url}
-                                onChange={this.handleAvatarUrlChange}
-                            />
-                        </FormGroup>
+                <FormGroup controlId='control-form-title'>
+                    <h4>NEM Address</h4>
+                    <FormControl type='text'
+                        defaultValue={this.state.nem_address}
+                        onChange={this.handleNemAddressChange}
+                    />
+                </FormGroup>
 
-                        {/* <FormGroup controlId='control-form-title'>
-                            <h4>NEM Address</h4>
-                            <FormControl type='text'
-                                defaultValue={this.state.nem_address}
-                                onChange={this.handleNemAddressChange}
-                            />
-                        </FormGroup> */}
-
-                        {/* <FormGroup controlId='control-form-title'>
+                {/* <FormGroup controlId='control-form-title'>
                             <h4>ETH Address</h4>
                             <FormControl type='text'
                                 defaultValue={this.state.eth_addressa}
@@ -407,32 +402,27 @@ class ProfileEditor extends Component {
                             />
                         </FormGroup> */}
 
-                        {NEM_wlt_formgroup}
+                {/*{NEM_wlt_formgroup}*/}
 
-                        <div style={{ height: '25px' }}></div>
+                {/*<div style={{ height: '25px' }}></div>*/}
 
-                        {this.state.updated_success && (
-                            <Alert bsStyle="success">
-                                <p style={{'fontSize': '13px' }}>
-                                    Profile updated successfully. Redirecting to the login page...
-                                </p>
-                            </Alert>
-                        )}
-{/*                     </Modal.Body> */}
+                {this.state.updated_success && (
+                    <Alert bsStyle="success">
+                        <p style={{'fontSize': '13px'}}>
+                            Profile updated successfully. Redirecting to the login page...
+                        </p>
+                    </Alert>
+                )}
 
-                    {! this.state.updated_success && (
-                        <Alert bsStyle="danger">
-                            <p style={{ marginBottom: '10px', 'fontSize': '13px' }}>
-                                Any changes to the profile require you to log in again to take effect.
-                            </p>
+                {!this.state.updated_success && (
+                    <Alert bsStyle="danger">
+                        <p style={{marginBottom: '10px', 'fontSize': '13px'}}>
+                            Any changes to the profile require you to log in again to take effect.
+                        </p>
 
-                            <Button bsStyle="danger" onClick={this.handleConfirmEdit}>Save</Button>
-{/*                             <Button style={{ marginLeft: '10px' }} onClick={this.handleHideModal}>Cancel</Button> */}
-                        </Alert>
-                    )}
-
-
-{/*                 </Modal> */}
+                        <Button bsStyle="danger" onClick={this.handleConfirmEdit}>Save</Button>
+                    </Alert>
+                )}
             </div>
         );
     }
