@@ -22,7 +22,7 @@ export class PendingContract extends React.Component {
 
     render () {
         const { pendingContract, selectedItem } = this.state;
-        const { allApis } = this.props;
+        const { allApis, currencyFilter } = this.props;
 
         if(pendingContract == null) return <LoadingPanel/>;
 
@@ -54,7 +54,9 @@ export class PendingContract extends React.Component {
                                 </tr>
                                 </thead>
                                 <tbody>
-                                { pendingContract.map((contract, i) => (
+                                { pendingContract
+                                    .filter((c) => c.currency === currencyFilter)
+                                    .map((contract, i) => (
                                     <tr
                                         key={'contracttr' + i}
                                         onClick={() => {

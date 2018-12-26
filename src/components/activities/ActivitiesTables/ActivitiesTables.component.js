@@ -53,7 +53,7 @@ class ActivitiesTables extends Component {
     }
 
     render() {
-        const { allApis, modeFilter, history } = this.props;
+        const { allApis, modeFilter, history, currencyFilter } = this.props;
         const { activeIdx } = this.state;
 
         let list = [
@@ -84,7 +84,7 @@ class ActivitiesTables extends Component {
             },
             {
                 title: "Pending Contracts",
-                render: () => <PendingContract/>,
+                render: () => <PendingContract {...{currencyFilter}}/>,
                 condition: true
             },
             {
