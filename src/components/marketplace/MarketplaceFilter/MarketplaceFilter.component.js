@@ -223,7 +223,7 @@ const styles = theme => ({
     drawerPaper: {
         width: 300,
         marginTop: 64,
-        height: `calc(100% - 64px - 73px)`
+        height: `calc(100%)`
     }
 });
 
