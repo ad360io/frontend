@@ -56,14 +56,5 @@
         "cross-env": "^5.1.5",
         "follow-redirects": "^1.4.1",
         "jest": "^22.4.3"
-    },
-    "proxy": {
-        "/api/db": {
-            "target": "https://d9aubk6q99.execute-api.us-east-1.amazonaws.com/production/db/fake/db",
-            "pathRewrite": {
-                "^/api/db": ""
-            },
-            "changeOrigin": true
-        }
     }
 }

@@ -67,7 +67,7 @@ class ActiveContract extends Component {
 
         let queryParams = orderBy ? { order: `${orderBy.value}.${orderBy.asc ? `asc` : `desc`}`} : {};
 
-        let resp = await getJson(`/my_active_contract_view`, {queryParams});
+        let resp = await getJson(`/my_pending_contract_view`, {queryParams});
 
         this.setState({activeContract: resp.data});
 
@@ -103,9 +103,11 @@ class ActiveContract extends Component {
 
         if( activeContract == null ) return <LoadingPanel/>;
 
+        let filteredActiveContract = activeContract.filter((a) => a.status !== "Pending");
+
         return <div className='active-listing-container'>
             <div className='table-responsive' style={{ height: '100%', margin: '2% 0 2% 0', minHeight: '320px' }}>
-                { (activeContract.length === 0)
+                { (filteredActiveContract.length === 0)
                     ? (<p style={{ textAlign: 'center' }}>You currently have no active contracts.</p>)
                     : (<table className='table table-bordered mb-0'>
                         <thead className='thead-default'>
@@ -130,7 +132,7 @@ class ActiveContract extends Component {
                             </tr>
                         </thead>
                         <tbody>
-                        { activeContract.map((contract, i) => (
+                        { filteredActiveContract.map((contract, i) => (
                             <tr key={'contracttr' + i}>
                                 <td>{contract.name}</td>
                                 <td>{contract.advertiser_name}</td>

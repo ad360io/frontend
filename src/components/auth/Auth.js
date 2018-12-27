@@ -142,6 +142,7 @@ export default class Auth {
 
     getProfile(cb) {
         let accessToken = this.getAccessToken();
+
         this.auth0.client.userInfo(accessToken, (err, profile) => {
             if (profile) {
                 this.userProfile = profile;
@@ -153,20 +154,20 @@ export default class Auth {
     handleProfileOnAuthenticated = (authorizationToken) => {
         this.getProfile((err, profile) => {
             if (profile) {
-                // let headers = { Authorization: `Bearer ${authorizationToken}`};
-                // getJson(`https://marketplacedb.qchain.co/account?role=eq.${profile.app_metadata.role}`, {headers})
-                //     .then((resp) => {
-                //         let p = resp.data[0];
-                //         if(isEmpty(p.nem_address)) {
-                //             patchJson(`https://marketplacedb.qchain.co/account?role=eq.${profile.app_metadata.role}`,
-                //                 { payload: {nem_address: profile['https://auth.qchain.co/user_metadata'].nem_address}, headers})
-                //         }
-                //
-                //         this.dispatchProfile(profile, {
-                //             ...profile['https://auth.qchain.co/user_metadata'],
-                //             // nem_address: p.nem_address
-                //         });
-                //     });
+                let headers = { Authorization: `Bearer ${authorizationToken}`};
+                getJson(`https://marketplacedb.qchain.co/publisher?role=eq.${profile.app_metadata.role}`, {headers})
+                    .then((resp) => {
+                        if(isEmpty(resp.data)) {
+                            postJson(`https://marketplacedb.qchain.co/publisher`, {
+                                payload: {
+                                    name: profile.nickname,
+                                    role: profile.app_metadata.role,
+                                    nem_address: profile['https://auth.qchain.co/user_metadata'].nem_address
+                                }, headers}
+                            );
+                        }
+                    })
+                ;
 
                 this.dispatchProfile(profile, {
                     ...profile['https://auth.qchain.co/user_metadata'],

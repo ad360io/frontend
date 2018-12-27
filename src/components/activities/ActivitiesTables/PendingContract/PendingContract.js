@@ -15,12 +15,7 @@ export class PendingContract extends React.Component {
 
     getPendingContract = async () => {
         const { allApis: { getJson }} = this.props;
-
-        // let r1 = await getJson(`/my_pending_contract_view`, { queryParams: {status: `eq.Pending`}});
-        // console.log(r1);
-
-        let resp = await getJson(`/contract`, { queryParams: { status: `eq.Pending`}});
-        // let resp = await getJson(`/my_pending_contract_view`);
+        let resp = await getJson(`/my_pending_contract_view`);
 
         this.setState({pendingContract: resp.data});
     };
