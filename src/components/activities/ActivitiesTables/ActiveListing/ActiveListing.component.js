@@ -8,6 +8,8 @@ import './ActiveListing.component.css';
 import {contentspaceListingApi} from "../../../../common/api/services/contentspace-listing-api";
 import {LoadingPanel} from "../../../../common/components/LoadingPanel";
 import isEqual from "lodash/isEqual";
+import {OfferDialogConfirmation, offerDialogConfirmationService} from "../OfferList/OfferDialogConfirmation";
+import {Button} from "react-bootstrap";
 
 /**
  * ActiveListing Component
@@ -69,13 +71,20 @@ class ActiveListing extends Component {
         this.setState({activeListing: resp.data});
     };
 
+    deleteActiveListing = async (listing) => {
+        const { allApis: {patchJson, delJson} } = this.props;
+
+        await patchJson(`/listing`, { queryParams: {id: `eq.${listing.id}`}, payload: { is_active: false } });
+
+        //TODO: delete listing
+        // await delJson(`/listing`, { queryParams: {id: `eq.${listing.id}`} });
+    };
+
     render() {
         const {activeListing} = this.state;
         const { history } = this.props;
 
         if(activeListing == null) return <LoadingPanel/>;
-
-        console.log(activeListing);
 
         return (
             <div className='active-listing-container'>
@@ -94,6 +103,8 @@ class ActiveListing extends Component {
                                     <th
                                         className='active-listing-th'
                                         onClick={() => this.toggleSort('medium')}>Medium</th>
+                                    <th
+                                        className='active-listing-th'>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -102,6 +113,26 @@ class ActiveListing extends Component {
                                     <td style={{ color: '#3366BB', cursor: 'pointer' }} onClick={() => history.push(`/listing/${listing.id}`)}>{listing.name}</td>
                                     <td>{listing.ad_format}</td>
                                     <td>{listing.medium}</td>
+                                    <td>
+                                        <Button
+                                            bsStyle='danger'
+                                            onClick={() => {
+                                                // this.handleDeclineOffer()
+                                                offerDialogConfirmationService.openModal({
+                                                    open: true,
+                                                    options: {
+                                                        title: "Confirmation",
+                                                        content: "Are you sure to delete this active listing?",
+                                                        btnTitle: "Delete",
+                                                        btnAction: () => this.deleteActiveListing(listing),
+                                                        btnType: "danger"
+                                                    }
+                                                });
+                                            }}
+                                        >
+                                            Delete
+                                        </Button>
+                                    </td>
                                 </tr>
                             ))}
                             </tbody>
@@ -109,6 +140,8 @@ class ActiveListing extends Component {
                         )
                     }
                 </div>
+
+                <OfferDialogConfirmation/>
             </div>
         )
     }

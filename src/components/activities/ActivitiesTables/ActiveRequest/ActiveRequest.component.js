@@ -7,6 +7,8 @@ import axios from 'axios';
 import './ActiveRequest.component.css';
 import {LoadingPanel} from "../../../../common/components/LoadingPanel";
 import isEqual from "lodash/isEqual";
+import {Button} from "react-bootstrap";
+import {OfferDialogConfirmation, offerDialogConfirmationService} from "../OfferList/OfferDialogConfirmation";
 
 /**
  * ActiveRequest Component
@@ -104,7 +106,17 @@ class ActiveRequest extends Component {
             })
 
         */
-    }
+    };
+
+    deleteActiveRequest = async (listing) => {
+        const { allApis: {patchJson, delJson} } = this.props;
+
+        await patchJson(`/listing`, { queryParams: {id: `eq.${listing.id}`}, payload: { is_active: false } });
+
+        //TODO: delete listing
+        // await delJson(`/listing`, { queryParams: {id: `eq.${listing.id}`} });
+    };
+
 
     render() {
         const {activeListing} = this.state;
@@ -129,6 +141,8 @@ class ActiveRequest extends Component {
                                 <th
                                     className='active-request-th'
                                     onClick={() => this.toggleSort('medium')}>Medium</th>
+                                <th
+                                    className='active-request-th'>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -137,6 +151,26 @@ class ActiveRequest extends Component {
                                 <td style={{ color: '#3366BB', cursor: 'pointer' }} onClick={() => history.push(`/listing/${listing.id}`)}>{listing.name}</td>
                                 <td>{listing.ad_format}</td>
                                 <td>{listing.medium}</td>
+                                <td>
+                                    <Button
+                                        bsStyle='danger'
+                                        onClick={() => {
+                                            // this.handleDeclineOffer()
+                                            offerDialogConfirmationService.openModal({
+                                                open: true,
+                                                options: {
+                                                    title: "Confirmation",
+                                                    content: "Are you sure to decline this request listing?",
+                                                    btnTitle: "Delete",
+                                                    btnAction: () => this.deleteActiveRequest(listing),
+                                                    btnType: "danger"
+                                                }
+                                            });
+                                        }}
+                                    >
+                                        Delete
+                                    </Button>
+                                </td>
                             </tr>
                         ))
                         }
@@ -145,6 +179,8 @@ class ActiveRequest extends Component {
                 )
                 }
             </div>
+
+            <OfferDialogConfirmation/>
         </div>
     }
 }
