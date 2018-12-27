@@ -22,7 +22,7 @@ export class PendingContract extends React.Component {
 
     render () {
         const { pendingContract, selectedItem } = this.state;
-        const { allApis, currencyFilter } = this.props;
+        const { allApis, currencyFilter, profile } = this.props;
 
         if(pendingContract == null) return <LoadingPanel/>;
 
@@ -85,7 +85,8 @@ export class PendingContract extends React.Component {
                         {...{
                             selectedItem,
                             afterClose: () => this.setState({selectedItem: null}),
-                            allApis
+                            allApis,
+                            profile
                         }}
                     />
                 )}

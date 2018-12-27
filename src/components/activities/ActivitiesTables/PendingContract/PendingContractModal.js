@@ -4,6 +4,7 @@ import {css} from 'emotion';
 import {Button, ControlLabel, Modal} from "react-bootstrap";
 import { FormGroup, FormControl } from 'react-bootstrap';
 import {getJson} from "../../../../common/api/method/get-json";
+import moment from "moment";
 
 import nem from 'nem-sdk';
 
@@ -20,12 +21,25 @@ export class PendingContractModal extends React.Component {
 
             txn_status: '',
             txn_error: false,
+            publisherInfo: null,
 
             open: false
         }
 
         this.endpoint = nem.model.objects.create('endpoint')(nem.model.nodes.defaultMainnet, nem.model.nodes.defaultPort);
+
+
     }
+
+    componentDidMount() {
+        this.getPublisher();
+    }
+
+    getPublisher = async () => {
+        const { allApis: {getJson}, selectedItem } = this.props;
+        let resp = await getJson(`/publisher?role=eq.${selectedItem.publisher}`);
+        this.setState({publisherInfo: resp.data[0]})
+    };
 
     handleNemPasswordChange = (event) => {
         this.setState({nem_password: event.target.value});
@@ -111,6 +125,27 @@ export class PendingContractModal extends React.Component {
         return parseFloat(totalFee.toString().slice(0,8));
     };
 
+    afterSendTransaction = async (tx_hash) => {
+        // TODO: set Contract status to Active
+        // TODO: set Invoice as paid
+        // TODO: save Transaction Hash to Invoice
+        // TODO: set Date Paid on Invoice
+
+        const { allApis: { patchJson }, selectedItem} = this.props;
+
+        await patchJson(`/contract`, { queryParams: { number: `eq.${selectedItem.number}`}, payload: { status: "Active"}});
+
+        const payload = {
+            tx_hash: tx_hash,
+            paid: true,
+            date_paid: moment().format("YYYY-MM-DDThh:mm:00")
+        };
+
+        await patchJson(`/invoice`, { queryParams: { contract: `eq.${selectedItem.number}`}, payload });
+
+        console.log('update invoice');
+    };
+
     sendTxn = () => {
         this.setState({txn_error: false});
         this.setState({txn_status: ''});
@@ -124,7 +159,7 @@ export class PendingContractModal extends React.Component {
 
         // TODO: replace the hardcoded key 'U2FsdGVkX1853sPFsyqB+B/EaXVllaaZcRqJ02KkoUXPbd3lutbpNZSDqMdRD+KRk1plLW4Y7xnMK5lCK4ctmxVyGHc948rVZJ8p8K1mEwMRNXXFL/THEHq+4SIOOPVq' with nem_pk_enc from Auth0 metadata
         try {
-            nem_pk = nem.crypto.js.AES.decrypt('U2FsdGVkX1853sPFsyqB+B/EaXVllaaZcRqJ02KkoUXPbd3lutbpNZSDqMdRD+KRk1plLW4Y7xnMK5lCK4ctmxVyGHc948rVZJ8p8K1mEwMRNXXFL/THEHq+4SIOOPVq', this.state.nem_password).toString(nem.crypto.js.enc.Utf8);
+            nem_pk = nem.crypto.js.AES.decrypt(this.props.profile.nem_pk_enc, this.state.nem_password).toString(nem.crypto.js.enc.Utf8);
         } catch(err) {
             console.log(err);
             nem_pk = '';
@@ -146,7 +181,7 @@ export class PendingContractModal extends React.Component {
         let txnRecipient;
 
         try {
-            txnRecipient = nem.model.address.clean('NDH77F-N3SWBC-7TJJ7T-3BNM2Z-KH2MJ7-RXIGUP-VDK4');
+            txnRecipient = nem.model.address.clean(this.state.publisherInfo.nem_address);
         } catch(err) {
             console.log(err);
             this.setState({txn_error: true});
@@ -223,35 +258,33 @@ export class PendingContractModal extends React.Component {
 
 
         nem.model.transactions.send(common, transactionEntity, this.endpoint).then(
-            function(res){
+            (res) => {
+                console.log(res);
+
                 if (res.code === 1) {
-                    self.setState({txn_error: 'testing'});
+                    this.setState({txn_error: 'testing'});
                                                                 // this is not adding a line break
-                    self.setState({txn_status: 'Payment sent successfully!\nTxn Hash: ' + res.transactionHash.data});
+                    this.setState({txn_status: 'Payment sent successfully!\nTxn Hash: ' + res.transactionHash.data});
+                    this.afterSendTransaction(res.transactionHash.data);
+
                 } else if (res.code >= 2) {
-                    self.setState({txn_error: true});
-                    self.setState({txn_status: 'Error: ' + res.message});
+                    this.setState({txn_error: true});
+                    this.setState({txn_status: 'Error: ' + res.message});
                 } else if (res.code === 0) {
-                    self.setState({txn_error: true});
-                    self.setState({txn_status: 'Cannot send payment. Please refresh and try again.'});
+                    this.setState({txn_error: true});
+                    this.setState({txn_status: 'Cannot send payment. Please refresh and try again.'});
                 }
             }
         );
 
         if (! this.state.txn_error) {
-            // TODO: set Contract status to Active
-            // TODO: set Invoice as paid
-            // TODO: save Transaction Hash to Invoice
-            // TODO: set Date Paid on Invoice
             // console.log('SUCCESSFUL XQC TXN');
         }
     };
 
     render () {
-        const { open } = this.state;
-        const { selectedItem, afterClose } = this.props;
-
-        // console.log(selectedItem);
+        const { open, publisherInfo } = this.state;
+        const { selectedItem, afterClose, profile } = this.props;
 
         return (
             <Modal
@@ -264,7 +297,8 @@ export class PendingContractModal extends React.Component {
                 <Modal.Body>
                     <p style={{ 'fontSize': '15px' }}>
                         {/* TODO: replace $RECIPIENT_ACCOUNT.nem_address with Publisher's NEM address from Postgres */}
-                        You’re about to send {selectedItem.payout_cap} {selectedItem.currency} to {selectedItem.publisher_name} ($RECIPIENT_ACCOUNT.nem_address) for {selectedItem.name}.
+                        You’re about to send {selectedItem.payout_cap} {selectedItem.currency} to {selectedItem.publisher_name}
+                        ({!publisherInfo ? `Loading...` : publisherInfo.nem_address}) for {selectedItem.name}.
                     </p>
 
                     <p id="txn_fee_text" style={{ 'fontSize': '13px' }}>

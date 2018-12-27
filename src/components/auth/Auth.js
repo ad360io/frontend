@@ -171,7 +171,6 @@ export default class Auth {
 
                 this.dispatchProfile(profile, {
                     ...profile['https://auth.qchain.co/user_metadata'],
-                    // nem_address: p.nem_address
                 });
             }
             if (err) console.log(err)
@@ -239,7 +238,8 @@ export default class Auth {
                 avatar_url,
                 nem_address,
                 eth_address,
-                email_verified: profile.email_verified
+                email_verified: profile.email_verified,
+                nem_pk_enc: user_metadata.nem_pk_enc
             };
 
             this.store.dispatch({
