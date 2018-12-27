@@ -50,57 +50,56 @@ class ProfileEditor extends Component {
 
             eth_address: this.props.eth_address,
 
+            nem_account_changed: false,
+
             updated_success: false
         }
 
         // this.handleHideModal = this.handleHideModal.bind(this);
         // this.handleShowModal = this.handleShowModal.bind(this);
-        // // this.handleConfirmEdit = this.handleConfirmEdit.bind(this);
+        // this.handleConfirmEdit = this.handleConfirmEdit.bind(this);
         // this.handleNicknameChange = this.handleNicknameChange.bind(this);
         // this.handleEmailChange = this.handleEmailChange.bind(this);
         // this.handleAvatarUrlChange = this.handleAvatarUrlChange.bind(this);
         // this.handleNemAddressChange = this.handleNemAddressChange.bind(this);
         // this.handleEthAddressChange = this.handleEthAddressChange.bind(this);
-        //
-        // // this.handleEthAddressChange = this.handleEthAddressChange.bind(this);
-        //
-        // this.read_NEM_wlt_file = this.read_NEM_wlt_file.bind(this);
-        // this.NEM_wlt_base64_txt = null;
-        // this.NEM_wlt_JSON = null;
-        //
+
+        this.read_NEM_wlt_file = this.read_NEM_wlt_file.bind(this);
+        this.NEM_wlt_base64_txt = null;
+        this.NEM_wlt_JSON = null;
+
         // this.handleNemPasswordChange = this.handleNemPasswordChange.bind(this);
         // this.handleNemPasswordSubmit = this.handleNemPasswordSubmit.bind(this);
 
-        this.NEM_priv_key = null;
         // this.handleNemPkEncChange = this.handleNemPkEncChange.bind(this);
 
 
 
         /* CONFIG */
-        this.mainnet_NIS = 'http://san.nem.ninja';
-        this.testnet_NIS = 'http://192.3.61.243';
+        // this.mainnet_NIS = 'http://san.nem.ninja';
+        // this.testnet_NIS = 'http://192.3.61.243';
 
-        this.NEM_port = 7890;
+        // this.NEM_port = 7890;
 
-        this.NEM_mainnet_networkId = 104;
-        this.NEM_testnet_networkId = -104;
+        // this.NEM_mainnet_networkId = 104;
+        // this.NEM_testnet_networkId = -104;
 
-        this.NEM_node_URI = this.mainnet_NIS;
+        // this.NEM_node_URI = this.mainnet_NIS;
         // this.NEM_node_URI = this.testnet_NIS;
 
-        this.NEM_networkId = nem.model.network.data.mainnet.id;
+        // this.NEM_networkId = nem.model.network.data.mainnet.id;
         // this.NEM_networkId = nem.model.network.data.testnet.id;
 
 
         /* Create connection to NIS supernode */
-        this.endpoint = nem.model.objects.create('endpoint')(this.NEM_node_URI, this.NEM_port);
+        // this.endpoint = nem.model.objects.create('endpoint')(this.NEM_node_URI, this.NEM_port);
 
-        console.log(this.endpoint);
+        // console.log(this.endpoint);
     }
 
     componentWillMount() {
         this.setState({
-            // profile: this.props.auth.userProfile.user_metadata,
+            profile: this.props.auth.userProfile.user_metadata,
 
             name: this.props.name,
             nickname: this.props.nickname,
@@ -108,6 +107,9 @@ class ProfileEditor extends Component {
             avatar_url: this.props.avatar_url,
             show: true,
             nem_address: this.props.nem_address,
+            // nem_wlt_name: this.props.nem_wlt_name,
+            nem_wlt_name: this.props.auth.userProfile.user_metadata.nem_wlt_name,
+
             eth_address: this.props.eth_address,
         });
     }
@@ -147,6 +149,7 @@ class ProfileEditor extends Component {
             eth_address: this.state.eth_address,
         };
 
+        // TODO: if (this.state.nem_account_changed === true) <then update Postgres with new {this.state.nem_address}}>
 
         updateUserMetadata(newMetadata).then(() => {
             this.setState({updated_success: true}, () => {
@@ -177,9 +180,9 @@ class ProfileEditor extends Component {
     }
 
     read_NEM_wlt_file(e) {
-        var input = e.target.files[0];
+        let input = e.target.files[0];
 
-        var reader = new FileReader();
+        let reader = new FileReader();
 
         const self = this;
 
@@ -192,7 +195,7 @@ class ProfileEditor extends Component {
 
 
             // // decode Base64 .wlt text to word array
-            var word_array = nem.crypto.js.enc.Base64.parse(self.NEM_wlt_base64_txt);
+            let word_array = nem.crypto.js.enc.Base64.parse(self.NEM_wlt_base64_txt);
 
             // // convert word array to UTF8 string, i.e. stringified JSON, then parse to JSON array
             self.NEM_wlt_JSON = JSON.parse(nem.crypto.js.enc.Utf8.stringify(word_array));
@@ -220,7 +223,7 @@ class ProfileEditor extends Component {
             console.log(JSON.stringify(self.NEM_wlt_JSON));
 
 
-            var NEM_password_input = document.getElementById('NEM_password_input');
+            let NEM_password_input = document.getElementById('NEM_password_input');
             NEM_password_input.style.display = 'initial';
 
         };
@@ -229,45 +232,45 @@ class ProfileEditor extends Component {
     }
 
 
-    handleNemPasswordChange(event) {
+    handleNemPasswordChange = (event) => {
         this.setState({NEM_password: event.target.value});
     }
 
-    handleNemPasswordSubmit(event) {
+    handleNemPasswordSubmit = (event) => {
         event.preventDefault();
 
         // console.log('asdf ' + this.state.NEM_password + ' 123');
 
         // create variable to store password/private key object
-        var common = nem.model.objects.create('common')(this.state.NEM_password, '');
+        let common = nem.model.objects.create('common')(this.state.NEM_password, '');
 
         // console.log(common);
 
         // select primary account of wallet
-        var walletAccount = this.NEM_wlt_JSON.accounts[0];
+        let walletAccount = this.NEM_wlt_JSON.accounts[0];
 
         // decrypt wallet account to `common` variable
         nem.crypto.helpers.passwordToPrivatekey(common, walletAccount, walletAccount.algo);
 
         // get private key
-        var privateKey = common.privateKey;
+        let privateKey = common.privateKey;
 
         // console.log(privateKey);
 
         // create key pair
-        var keyPair = nem.crypto.keyPair.create(privateKey);
+        let keyPair = nem.crypto.keyPair.create(privateKey);
 
         // get public key
-        var publicKey = keyPair.publicKey.toString();
+        let publicKey = keyPair.publicKey.toString();
 
         // convert public key to address, validate
-        var address = nem.model.address.toAddress(publicKey, this.NEM_networkId);  // networkId = 104,-104,96 main,test,mijin
-        var isValid = nem.model.address.isValid(address);
-        var isFromNetwork = nem.model.address.isFromNetwork(address, this.NEM_networkId);
+        let address = nem.model.address.toAddress(publicKey, nem.model.network.data.mainnet.id);  // networkId = 104,-104,96 main,test,mijin
+        let isValid = nem.model.address.isValid(address);
+        let isFromNetwork = nem.model.address.isFromNetwork(address, nem.model.network.data.mainnet.id);
 
-        var i;
-        var len;
-        var address_ = [];
+        let i;
+        let len;
+        let address_ = [];
 
         for (i = 0, len = address.length; i < len; i += 6) {
             address_.push(address.substr(i, 6));
@@ -279,26 +282,29 @@ class ProfileEditor extends Component {
 
         if (isValid && isFromNetwork) {
             this.setState({nem_address: address});
+            this.setState({nem_wlt_name: this.state.nem_wlt_name});
+
+            this.setState({nem_account_changed: true});
 
             // console.log('asdf');
             // console.log(this.state.nem_address);
 
             // AES encrypt private key with wallet password
-            var nem_pk_enc = nem.crypto.js.AES.encrypt(common.privateKey, this.state.NEM_password).toString();
+            let nem_pk_enc = nem.crypto.js.AES.encrypt(common.privateKey, this.state.NEM_password).toString();
             this.setState({nem_pk_enc: nem_pk_enc});
 
             // console.log(this.state.nem_pk_enc);
 
-            var NEM_wlt_input = document.getElementById('NEM_wlt_input');
+            let NEM_wlt_input = document.getElementById('NEM_wlt_input');
             NEM_wlt_input.style.display = 'none';
 
-            var NEM_password_input = document.getElementById('NEM_password_input');
+            let NEM_password_input = document.getElementById('NEM_password_input');
             NEM_password_input.style.display = 'none';
 
-            // var NEM_wlt_subtext = document.getElementById('NEM_wlt_subtext');
+            // let NEM_wlt_subtext = document.getElementById('NEM_wlt_subtext');
             // NEM_wlt_subtext.style.display = 'none';
 
-            var NEM_wlt_name_address = document.getElementById('NEM_wlt_name_address');
+            let NEM_wlt_name_address = document.getElementById('NEM_wlt_name_address');
             NEM_wlt_name_address.style.display = 'initial';
 
         } else {
@@ -330,7 +336,7 @@ class ProfileEditor extends Component {
                 </form>
 
                 <p id="NEM_wlt_name_address" style={{ 'display': 'none', 'fontSize': '13px' }}>
-                    NEM wallet name: {(this.state.profile && this.state.profile.nem_wlt_name) ? this.state.profile.nem_wlt_name : ''}
+                    NEM wallet name: {this.state.nem_wlt_name}
                     <br />
                     NEM address: {this.state.nem_address}
                 </p>
@@ -341,12 +347,15 @@ class ProfileEditor extends Component {
                 {/* <p id="NEM_wlt_subtext" style={{ 'margin': '-6px 0 12px 0', 'fontSize': '13px', 'fontStyle': 'italic' }}>Only standard (i.e. password/brain) wallets are supported.</p> */}
 
                 <p id="NEM_wlt_name_address" style={{ 'fontSize': '13px' }}>
-                    NEM wallet name: { (this.state.profile && this.state.profile.nem_wlt_name) ? this.state.profile.nem_wlt_name : ''}
+                    NEM wallet name: {this.state.nem_wlt_name}
                     <br />
                     NEM address: {this.state.nem_address}
 
                     <br />
                     <br />
+                </p>
+
+                <p style={{ 'fontSize': '13px' }}>
                     To change your NEM account:
                 </p>
 
