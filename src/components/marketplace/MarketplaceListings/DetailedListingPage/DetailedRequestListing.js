@@ -60,7 +60,7 @@ export class DetailedRequestListing extends React.Component {
                             title={`Advertiser`}
                         />
                         <CardContent>
-                            <p>$PUBLISHER_NAME</p>
+                            <p>{item.advertiser_name}</p>
                         </CardContent>
                     </Card>
                     <div className='detailed-listing-action-section'>

@@ -198,7 +198,7 @@ export class DetailedContentSpaceListing extends React.Component {
                             title={`Publisher`}
                         />
                         <CardContent>
-                            <p>$PUBLISHER_NAME</p>
+                            <p>{item.publisher_name}</p>
                         </CardContent>
                     </Card>
                     <div className='detailed-listing-action-section'>

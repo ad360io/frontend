@@ -77,7 +77,9 @@ class DetailedListingPage extends Component {
 
         const { allApis: {getJson} } = this.props;
 
-        let resp = await marketplaceApi(getJson, { queryParams: {id: `eq.${this.props.match.params.id}`}});
+        let resp = await getJson(`/detailed_listing_view`, { queryParams: {id: `eq.${this.props.match.params.id}`}});
+
+        // let resp = await marketplaceApi(getJson, { queryParams: {id: `eq.${this.props.match.params.id}`}});
 
         this.setState({ detailedItem: resp.data[0]});
     };

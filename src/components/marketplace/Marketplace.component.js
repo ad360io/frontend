@@ -71,6 +71,7 @@ class Marketplace extends Component {
             ),
             currency: `eq.${currencyFilter}`,
             price: `lte.${budget * 1000}`,
+            isactive: `is.true`
         }
     };
 
@@ -85,7 +86,7 @@ class Marketplace extends Component {
             Range: `${pageSize * (currentPageNum - 1)}-${(pageSize * currentPageNum) - 1}`
         };
 
-        let resp = await marketplaceApi(getJson, {queryParams, headers});
+        let resp = await getJson(`/detailed_listing_view`, {queryParams, headers});
 
         let total = +resp.headers['content-range'].split('/')[1];
 
