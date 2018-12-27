@@ -196,10 +196,12 @@ class OfferRenderer extends Component {
         let startDate = new Date(offer.start_date);
         let endDate = new Date(offer.end_date);
 
+
+
         const payload = {
             name: offer.topic,
             advertiser: localStorage.getItem('role'),
-            publisher: offer.owner,
+            publisher: offer.sender,
             start_date: offer.start_date,
             end_date: offer.end_date,
             currency: offer.currency,
@@ -209,10 +211,15 @@ class OfferRenderer extends Component {
             status: "Pending"
         };
 
-        let resp = await contractApi(postJson, {payload});
+        try {
+            await contractApi(postJson, {payload})
+            this.patchListing();
+            this.deleteOffer();
+        } catch (e) {
 
-        this.patchListing();
-        this.deleteOffer();
+        }
+
+
         // this.makePayment();
     };
 
@@ -227,7 +234,6 @@ class OfferRenderer extends Component {
 
     deleteOffer = async () => {
         const { allApis: { delJson }, offer, onRemoveOffer } = this.props;
-
         let resp = await delJson(`/offer`, { queryParams: { id: `eq.${offer.id}` } });
 
         if(resp) {
@@ -262,6 +268,8 @@ class OfferRenderer extends Component {
     };
 
     render() {
+        console.log(this.props.offer);
+
         return (
             <Fragment>
 

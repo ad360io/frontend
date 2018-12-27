@@ -74,7 +74,7 @@ class ActiveListing extends Component {
     deleteActiveListing = async (listing) => {
         const { allApis: {patchJson, delJson} } = this.props;
 
-        await patchJson(`/listing`, { queryParams: {id: `eq.${listing.id}`}, payload: { is_active: false } });
+        await patchJson(`/listing`, { queryParams: {id: `eq.${listing.id}`}, payload: { isactive: false } });
 
         //TODO: delete listing
         // await delJson(`/listing`, { queryParams: {id: `eq.${listing.id}`} });

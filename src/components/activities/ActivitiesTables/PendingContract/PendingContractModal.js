@@ -2,6 +2,7 @@ import React from "react";
 import {css} from 'emotion';
 import {Button, ControlLabel, Modal} from "react-bootstrap";
 import { FormGroup, FormControl } from 'react-bootstrap';
+import {getJson} from "../../../../common/api/method/get-json";
 
 export class PendingContractModal extends React.Component {
     constructor(props) {
@@ -17,6 +18,10 @@ export class PendingContractModal extends React.Component {
 
     submit = async () => {
         const { allApis: { postJson }} = this.props;
+
+        getJson(`https://nis.qchain.co/heartbeat`).then((resp) => {
+            console.log(resp);
+        });
 
         this.toggle();
         return await true;
