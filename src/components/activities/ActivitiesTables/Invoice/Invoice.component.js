@@ -96,6 +96,10 @@ class Invoice extends Component {
                                     <th
                                         className='invoice-th'
                                         onClick={() => {}}>Due Date</th>
+                                  <th
+                                        className='invoice-th'
+                                        onClick={() => {}}>Transaction Hash
+                                  </th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -114,6 +118,7 @@ class Invoice extends Component {
                                             <td>{invoice.amount} {invoice.currency}</td>
                                             <td>{invoice.paid ? `Paid` : `Unpaid`}</td>
                                             <td>{invoice.due_date.split('T')[0]}</td>
+                                            <td>{invoice.tx_hash}</td>
                                         </tr>
                                     ))
                                 }
