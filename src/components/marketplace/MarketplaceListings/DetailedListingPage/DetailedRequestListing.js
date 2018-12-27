@@ -7,10 +7,12 @@ import {Cancel} from "@material-ui/icons";
 
 import DetailedImageSlider from "./DetailedImageSlider/DetailedImageSlider.component";
 import MakeOfferSection from "./MakeOfferSection/MakeOfferSection.component";
+import Button from "@material-ui/core/Button";
+import Tooltip from '@material-ui/core/Tooltip';
 
 export class DetailedRequestListing extends React.Component {
     render() {
-        const { item, decideImage, pathToOwnerProfile, allApis, onBack, modeFilter } = this.props;
+        const { item, decideImage, pathToOwnerProfile, allApis, onBack, modeFilter, isOwner } = this.props;
 
         return (
             <div className='detailed-listing-renderer'>
@@ -40,6 +42,7 @@ export class DetailedRequestListing extends React.Component {
                     <Divider />
 
                     <CardContent className='listing-details-text'>
+
                         <div className='details-text'>
                             <p>Ad Format: {item.ad_format} {item.classtype}</p>
 
@@ -48,7 +51,7 @@ export class DetailedRequestListing extends React.Component {
                             <p>Ask Date: {item.date_added.slice(0, 10)}</p>
                         </div>
 
-                        <MakeOfferSection listing={item} {...{ allApis, modeFilter }} />
+                        <MakeOfferSection listing={item} {...{ allApis, modeFilter, isOwner }} />
 
                         <div className='details-text' style={{ marginTop: '24px' }}>{item.description}</div>
                     </CardContent>

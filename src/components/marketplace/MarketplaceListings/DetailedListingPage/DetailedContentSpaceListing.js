@@ -5,7 +5,7 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardHeader from "@material-ui/core/CardHeader";
 import Divider from '@material-ui/core/Divider';
-import {Alert} from "react-bootstrap";
+import {Alert, OverlayTrigger, Tooltip} from "react-bootstrap";
 
 import DetailedImageSlider from "./DetailedImageSlider/DetailedImageSlider.component";
 import {walletApi} from "../../../../common/api/services/wallet-api";
@@ -15,6 +15,7 @@ import {marketplaceApi} from "../../../../common/api/services/marketplace-api";
 import {invoiceApi} from "../../../../common/api/services/invoice-api";
 import {Cancel} from "@material-ui/icons";
 import {walletState} from "../../../../common/wallet-state";
+import {makeOfferModalService} from "./MakeOfferSection/MakeOfferSectionModal";
 
 export class DetailedContentSpaceListing extends React.Component {
 
@@ -120,7 +121,7 @@ export class DetailedContentSpaceListing extends React.Component {
     };
 
     render () {
-        const { item, decideImage, bought, processing, issue, emailVerified, pathToOwnerProfile, onBack, modeFilter } = this.props;
+        const { item, decideImage, bought, processing, issue, emailVerified, pathToOwnerProfile, onBack, modeFilter, isOwner } = this.props;
 
         let payoutCap = this.getPayoutCap();
 
@@ -172,18 +173,24 @@ export class DetailedContentSpaceListing extends React.Component {
                                         { (payoutCap.days > 1) && (<span> for {payoutCap.days} days</span>) }
                                     </div>
                                     <div className='buy-btn-section'>
-                                        <Button className='buy-button'
-                                                onClick={() => this.buyItem()}
-                                                variant='outlined'
-                                                color='primary'
-                                                disabled={processing || issue.length > 0 || emailVerified === false || modeFilter !== "Advertiser"}
-                                        >
-                                            {
-                                                (issue.length > 0)
-                                                    ? issue
-                                                    : 'Buy It Now!'
-                                            }
-                                        </Button>
+                                        { isOwner ? (
+                                            <OverlayTrigger placement="top" overlay={<Tooltip id="buy-it">This is your own listing.</Tooltip>}>
+                                                <Button className='buy-button' variant='outlined'>Buy It Now!</Button>
+                                            </OverlayTrigger>
+                                        ) : (
+                                            <Button className='buy-button'
+                                                    onClick={() => this.buyItem()}
+                                                    variant='outlined'
+                                                    color='primary'
+                                                    disabled={processing || issue.length > 0 || emailVerified === false || modeFilter !== "Advertiser"}
+                                            >
+                                                {
+                                                    (issue.length > 0)
+                                                        ? issue
+                                                        : 'Buy It Now!'
+                                                }
+                                            </Button>
+                                        )}
                                     </div>
                                 </div>
                         }

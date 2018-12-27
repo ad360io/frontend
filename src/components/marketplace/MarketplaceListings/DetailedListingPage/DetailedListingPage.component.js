@@ -94,7 +94,7 @@ class DetailedListingPage extends Component {
         // make a request to get detailed listing info using ID
         // parse info onto the page
 
-        const { allApis, modeFilter } = this.props;
+        const { allApis, modeFilter, profile } = this.props;
         const { detailedItem } = this.state;
 
         if( detailedItem == null ) return <div/>;
@@ -108,6 +108,7 @@ class DetailedListingPage extends Component {
                         item={detailedItem}
                         decideImage={this.decideImage}
                         pathToOwnerProfile={this.handlePathToOwnerProfile}
+                        isOwner={profile.role === detailedItem.owner}
                     />
                 </div>
             )
@@ -126,6 +127,7 @@ class DetailedListingPage extends Component {
                     issue={this.state.actionInfo}
                     emailVerified={this.props.email_verified}
                     pathToOwnerProfile={this.handlePathToOwnerProfile}
+                    isOwner={profile.role === detailedItem.owner}
                 />
             </div>
         );
@@ -172,7 +174,8 @@ class DetailedListingPage extends Component {
 const mapStateToProps = (state) => {
     return {
         modeFilter: state.MenuBarFilterReducer.modeFilter,
-        email_verified: state.ProfileReducer.profile.email_verified
+        email_verified: state.ProfileReducer.profile.email_verified,
+        profile: state.ProfileReducer.profile
     }
 };
 

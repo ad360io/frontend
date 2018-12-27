@@ -363,7 +363,7 @@ const mapDispatchToProps = (dispatch) => {
     return {}
 }
 
-function LinkWithTooltip({ tooltip_body, children }) {
+export function LinkWithTooltip({ tooltip_body, children }) {
     return (
         <OverlayTrigger placement="bottom" overlay={<Tooltip id="NEM or ETH address">{tooltip_body}</Tooltip>}>
             {children}
