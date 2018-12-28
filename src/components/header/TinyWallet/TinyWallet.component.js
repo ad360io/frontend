@@ -164,15 +164,8 @@ class TinyWallet extends FComponent {
     getBalance = async (address) => {
         if (this.props.currencyFilter === 'XQC') {
             // const { allApis: { getJson } } = this.props;
-            let walletUrl = `https://nis.qchain.co/account/mosaic/owned`;
+            walletState.setState(await getWalletBalance(address));
 
-            let resp = await getJson(walletUrl, { queryParams: { address: address.split('-').join('')}, fromBaseUrl: false});
-
-            if(resp.data) {
-                let item = resp.data.data.find(i => i.mosaicId.namespaceId === 'qchain' && i.mosaicId.name === 'xqc');
-                let balance = (item && item.quantity) ? item.quantity : 0;
-                walletState.setState(balance);
-            }
         } else if (this.props.currencyFilter === 'EQC') {
 
         } else {
@@ -350,6 +343,17 @@ class TinyWallet extends FComponent {
         );
     }
 }
+
+export let getWalletBalance = async (address) => {
+    let walletUrl = `https://nis.qchain.co/account/mosaic/owned`;
+
+    let resp = await getJson(walletUrl, { queryParams: { address: address.split('-').join('')}, fromBaseUrl: false});
+
+    if(resp.data) {
+        let item = resp.data.data.find(i => i.mosaicId.namespaceId === 'qchain' && i.mosaicId.name === 'xqc');
+        return await ( (item && item.quantity) ? item.quantity : 0 );
+    }
+};
 
 const WalletBalanceRenderer = ({ balance }) => (
     <div className='tiny-currency-item'>

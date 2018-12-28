@@ -120,7 +120,7 @@ class DetailedListingPage extends Component {
         return (
             <div className='detailed-listing-container'>
                 <DetailedContentSpaceListing
-                    {...{allApis, modeFilter}}
+                    {...{allApis, modeFilter, profile}}
                     item={detailedItem}
                     onBack={() => this.props.history.push(`/marketplace`)}
 

@@ -16,6 +16,7 @@ import {invoiceApi} from "../../../../common/api/services/invoice-api";
 import {Cancel} from "@material-ui/icons";
 import {walletState} from "../../../../common/wallet-state";
 import {makeOfferModalService} from "./MakeOfferSection/MakeOfferSectionModal";
+import {getWalletBalance} from "../../../header/TinyWallet/TinyWallet.component";
 
 export class DetailedContentSpaceListing extends React.Component {
 
@@ -34,7 +35,7 @@ export class DetailedContentSpaceListing extends React.Component {
             let newBalance = _walletBalance - (item.price * DateUtils.dateDiffInDays(startDate, endDate));
 
             if(newBalance >= 0) {
-                this.makeContract(newBalance);
+                this.makeContract();
             } else {
                 this.setState({
                     issue: ''
@@ -43,7 +44,7 @@ export class DetailedContentSpaceListing extends React.Component {
         }
     };
 
-    makeContract = async (newBalance) => {
+    makeContract = async () => {
         const { allApis : { postJson }, item } = this.props;
 
         let startDate = new Date(item.date_added);
@@ -65,7 +66,7 @@ export class DetailedContentSpaceListing extends React.Component {
         let resp = await contractApi(postJson, {payload});
 
         this.inactivateListing();
-        this.makePayment(newBalance);
+        this.makePayment();
         this.getContract();
     };
 
@@ -77,11 +78,9 @@ export class DetailedContentSpaceListing extends React.Component {
         );
     };
 
-    makePayment = async (newBalance) => {
-        walletState.setState(newBalance);
-
-        // const { allApis : { patchJson }, item } = this.props;
-        // return await walletApi(patchJson, { payload : { [`${item.currency.toLowerCase()}_balance`] :  newBalance} })
+    makePayment = async () => {
+        const { profile } = this.props;
+        walletState.setState(await getWalletBalance(profile.nem_address));
     };
 
     getContract = async () => {
