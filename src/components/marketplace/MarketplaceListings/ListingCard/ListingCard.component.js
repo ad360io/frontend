@@ -286,7 +286,7 @@ const ListingCardRenderer = ({
                                  title,
                                  placeholderImage,
                                  description,
-                                 date_added,
+                                 dateAdded,
                                  id,
                              }) => (
     <Card className='listing-card-container noselect'
@@ -296,7 +296,7 @@ const ListingCardRenderer = ({
         <div className='price-tag'>{priceTag}</div>
 
         <div className='listing-date'>
-            Listed on {date_added.slice(0, 10)}
+            Listed on {dateAdded.slice(0, 10)}
         </div>
 
 
