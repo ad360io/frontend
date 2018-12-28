@@ -77,7 +77,7 @@ class MarketplaceFilter extends Component {
     }
 
     decideTitle() {
-        if (this.props.modeFilter === 'Advertiser') return 'Available Content Listings';
+        if (this.props.modeFilter === 'Advertiser') return 'Sort Content Listings';
         else return 'Content Requests'
     }
 
