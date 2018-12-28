@@ -48,7 +48,7 @@ class Dashboard extends Component {
     }
 
     componentDidMount() {
-        document.title = "Qchain - Dashboard";
+        document.title = "Qchain - Analytics";
         window.scrollTo(0, 0)
 
         // Register data loading every 10 minutes.
