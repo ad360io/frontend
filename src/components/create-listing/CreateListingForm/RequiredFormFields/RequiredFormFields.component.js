@@ -117,12 +117,12 @@ class RequiredFormField extends React.Component {
                             modeFilter === 'Advertiser'
                                 ? "Content Description"
                                 : "Listing Description"
-                        } (280 characters max)
+                        } (1024 characters max)
 
                     </p>
                     <FormControl componentClass='textarea'
                                  value={description}
-                                 maxLength={280}
+                                 maxLength={1024}
                                  rows={8}
                                  style={{resize: 'vertical'}}
                                  onChange={(e) => this.setState({description: e.target.value})}
