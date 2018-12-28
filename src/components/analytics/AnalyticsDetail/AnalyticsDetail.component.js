@@ -1,13 +1,16 @@
 import React from 'react';
-import './DashboardDetail.component.css';
-import { connect } from 'react-redux';
 import SearchInput from 'react-search-input';
+import { connect } from 'react-redux';
 import { Divider } from '@material-ui/core';
 import { createFilter } from 'react-search-input';
+
 import DashboardLineChart from '../DashboardCharts/DashboardLineChart/DashboardLineChart.component';
 import PirateBird from '../../../assets/images/pirate-bird-vector-clipart.png';
 
-class DashboardDetail extends React.Component {
+import './AnalyticsDetail.component.css';
+
+
+class AnalyticsDetail extends React.Component {
 
     render() {
         const KEYS_TO_FILTER = ['name', 'publisher_name', 'advertiser_name'];
@@ -103,4 +106,4 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(DashboardDetail);
+)(AnalyticsDetail);

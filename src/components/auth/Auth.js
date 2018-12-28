@@ -80,9 +80,9 @@ export default class Auth {
         // Push auth0 profile info to redux
         this.handleProfileOnAuthenticated(authResult.idToken);
 
-        // Redirect to /dashboard after authenticated.
-        propsHistory.replace('/dashboard');
-        propsHistory.push('/dashboard');
+        // Redirect to /analytics after authenticated.
+        propsHistory.replace('/analytics');
+        propsHistory.push('/analytics');
         this.scheduleRenewal();
     }
 

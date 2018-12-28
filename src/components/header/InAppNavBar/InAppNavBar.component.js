@@ -18,7 +18,7 @@ const InAppNavBarII = ({ modeFilter, width }) => (
     (width > 768)
         ? <div className='navbar-container' style={{ marginRight: '-10px' }}>
             <div className='in-app-nav-item-flex'>
-                <NavLink exact activeClassName='selected-nav-item' className='in-app-nav-item noselect' to='/dashboard'>
+                <NavLink exact activeClassName='selected-nav-item' className='in-app-nav-item noselect' to='/analytics'>
                     <i className='nav-item-icon fas fa-home fa-sm'></i>
                     <span className='nav-label'>Analytics</span>
                 </NavLink>

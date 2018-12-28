@@ -11,7 +11,7 @@
     padding-right: 0px;
 }
 
-.dashboard-left {
+/*.dashboard-left {
     margin-top: 2%;
     width: 100vw;
     padding: 0px;
@@ -22,7 +22,7 @@
 .dashboard-right {
     margin-top: 2%;
     padding: 0px;
-}
+}*/
 
 .progress-renderer {
     margin-top: 130px;
@@ -43,7 +43,7 @@
 MEDIUM SCREEN
 */
 
-@media only screen and (min-width: 768px) {
+/*@media only screen and (min-width: 768px) {
     .dashboard-left {
         margin-top: 2%;
         width: 280px;
@@ -54,16 +54,16 @@ MEDIUM SCREEN
     .dashboard-right {
         margin-right: 5px;
     }
-}
+}*/
 
 
 /*
 BIG SCREEN
 */
 
-@media only screen and (min-width: 1300px) {
+/*@media only screen and (min-width: 1300px) {
     .dashboard-left {
         margin-left: 10vw;
         margin-right: 2%;
     }
-}
+}*/

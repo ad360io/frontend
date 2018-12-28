@@ -1,15 +1,18 @@
 .dashboard-detail-container {
-    margin-left: 135px;
     animation-name: fade-in;
     animation-duration: 0.8s;
     animation-fill-mode: forwards;
+    /*background-color: blue;*/
+    width: 95%;
+    margin: auto;
 }
 
 .dashboard-detail-search-input {
-    padding: 5px;
+    padding: 5px 3% 5px 3%;
     height: 50px;
     position: relative;
     margin-bottom: 8px;
+    /*background-color: green;*/
 }
 
 .detail-stat-flex-container {
@@ -17,7 +20,7 @@
     flex-direction: column;
     justify-content: space-between;
     margin-left: 10px;
-    width: calc(100% - 135px);
+    /*background-color: purple;*/
 }
 
 .empty-stat-container {
@@ -176,10 +179,9 @@
 
 @media only screen and (min-width: 768px) {
     .dashboard-detail-container {
-        margin-left: 250px;
     }
     .dashboard-detail-search-input > input {
-        width: 90%;
+        width: 100%;
     }
     .detail-stat-title {
         padding-left: 4vw;
@@ -189,7 +191,6 @@
         flex-direction: row;
         justify-content: space-between;
         margin-left: 10px;
-        width: calc(100% - 250px);
     }
     .detail-stat-info {
         margin-left: 2vw;
