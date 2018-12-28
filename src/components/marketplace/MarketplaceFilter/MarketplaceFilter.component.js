@@ -116,19 +116,6 @@ class MarketplaceFilter extends Component {
                         paper: classes.drawerPaper,
                     }}
                 >
-                    {/*
-
-                <Paper
-                    style={{
-                        height: 64,
-                        width: 300,
-                        margin: 0,
-                        display: 'inline-block',
-                    }}
-                />
-
-                */}
-
 
                     <h4 className='filter-title'>{this.decideTitle()} Listings</h4>
                     <AdFormatFilter {...{filters, onChange}} />
@@ -160,7 +147,7 @@ class MarketplaceFilter extends Component {
                     <div>
                         <h4 className='filter-title' style={{ textAlign: 'left', marginLeft: '25px' }}>Sort By:</h4>
                         <SortingSelector
-                            dropup={this.props.width <= 768}
+                            dropdown={this.props.width <= 768}
                             {...{
                                 filters,
                                 onChange: (sortingType) => onChange({...filters, sortingType})
@@ -169,21 +156,6 @@ class MarketplaceFilter extends Component {
                         />
                         <FilterDivider />
                     </div>
-
-
-
-                    {/*
-                <Paper
-                    style={{-
-                        height: 69,
-                        width: 300,
-                        margin: 0,
-                        display: 'inline-block',
-                    }}
-                />
-
-                */}
-
 
                 </Drawer>
             </div>
@@ -221,9 +193,10 @@ const mapDispatchToFilterProps = (dispatch) => {
 
 const styles = theme => ({
     drawerPaper: {
-        width: 300,
-        marginTop: 64,
-        height: `calc(100%)`
+        width: '300px',
+        overflowX: 'hidden',
+        marginTop: '64px',
+        height: 'calc(100% - 73px - 64px)',
     }
 });
 

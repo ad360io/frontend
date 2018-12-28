@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Button from '@material-ui/core/Button';
 import {Alert, OverlayTrigger, Tooltip} from 'react-bootstrap';
-import 'react-day-picker/lib/style.css'
+import 'react-day-picker/lib/style.css';
 import './MakeOfferSection.component.css';
 import {makeOfferModalService, MakeOfferSectionModal} from "./MakeOfferSectionModal";
 import {LinkWithTooltip} from "../../../../header/TinyWallet/TinyWallet.component";

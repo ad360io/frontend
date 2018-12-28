@@ -263,7 +263,6 @@ export class PendingContractModal extends React.Component {
 
                 if (res.code === 1) {
                     this.setState({txn_error: 'testing'});
-                                                                // this is not adding a line break
                     this.setState({txn_status: 'Payment sent successfully!\nTxn Hash: ' + res.transactionHash.data});
                     this.afterSendTransaction(res.transactionHash.data);
 
@@ -297,8 +296,8 @@ export class PendingContractModal extends React.Component {
                 <Modal.Body>
                     <p style={{ 'fontSize': '15px' }}>
                         {/* TODO: replace $RECIPIENT_ACCOUNT.nem_address with Publisher's NEM address from Postgres */}
-                        You’re about to send {selectedItem.payout_cap} {selectedItem.currency} to {selectedItem.publisher_name}
-                        ({!publisherInfo ? `Loading...` : publisherInfo.nem_address}) for {selectedItem.name}.
+                        You’re about to send {selectedItem.payout_cap} {selectedItem.currency} to {selectedItem.publisher_name} (
+                        {!publisherInfo ? `Loading...` : publisherInfo.nem_address}) for {selectedItem.name}.
                     </p>
 
                     <p id="txn_fee_text" style={{ 'fontSize': '13px' }}>

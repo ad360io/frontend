@@ -66,6 +66,7 @@ class Invoice extends Component {
         if( invoices == null ) return <LoadingPanel/>;
 
         console.log(invoices);
+        // console.log(invoice);
 
         return (
             <div className='active-listing-container'>
@@ -96,10 +97,10 @@ class Invoice extends Component {
                                     <th
                                         className='invoice-th'
                                         onClick={() => {}}>Due Date</th>
-                                  <th
+                                    <th
                                         className='invoice-th'
                                         onClick={() => {}}>Transaction Hash
-                                  </th>
+                                    </th>
                                 </tr>
                                 </thead>
                                 <tbody>

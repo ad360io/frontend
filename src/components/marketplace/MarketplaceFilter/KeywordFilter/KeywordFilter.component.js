@@ -23,19 +23,16 @@ class KeywordFilter extends React.Component {
 
         return (
             <div className={keywordFilterCss}>
-                <div className="input-icon">
-                    <i className="material-icons">search</i>
-                    <input
-                        type="text"
-                        value={value}
-                        onChange={(e) => this.setState({value: e.target.value})}
-                    />
-                </div>
+                <input
+                    type="text"
+                    value={value}
+                    onChange={(e) => this.setState({value: e.target.value})}
+                />
                 <button
                     className="search-btn"
                     onClick={() => onChange(value)}
                 >
-                    Search
+                    <i className="material-icons">search</i>
                 </button>
             </div>
         )

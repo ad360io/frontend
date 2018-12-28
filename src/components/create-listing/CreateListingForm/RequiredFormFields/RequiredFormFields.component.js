@@ -90,14 +90,14 @@ class RequiredFormField extends React.Component {
                 { modeFilter !== 'Advertiser' && (
                     <FormGroup controlId='control-form-price' >
                         <p className='control-label'>
-                            Price per time unit (day/week/month/year)
+                            Price per time unit
                         </p>
                         <FormControl
                             value={price}
                             type='number' min='1' step='1' onChange={(e) => this.setState({price: e.target.value})}
-                            style={{width: '50%', float: 'left'}}
+                            style={{width: '49%', float: 'left'}}
                         />
-                        <FormControl componentClass='select' style={{width: '50%'}} required>
+                        <FormControl componentClass='select' style={{width: '49%', float: 'right'}} required>
                             <option value='day'>per day</option>
                             <option value='week'>per week</option>
                             <option value='month'>per month</option>
@@ -106,13 +106,16 @@ class RequiredFormField extends React.Component {
                     </FormGroup>
                 )}
 
+                <br /><br />
+
                 <FormGroup controlId='control-form-pitch'>
                     <p className='control-label'>
                         {
                             modeFilter === 'Advertiser'
                                 ? "Content Description"
                                 : "Listing Description"
-                        }
+                        } (280 characters max)
+
                     </p>
                     <FormControl componentClass='textarea'
                                  value={description}
