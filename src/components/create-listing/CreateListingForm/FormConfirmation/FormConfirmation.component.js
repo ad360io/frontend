@@ -24,11 +24,11 @@ const AdvertiserFormConfirmation = ({ fields }) => (
         <table className='table table-bordered mb-0'>
             <tbody className='tbody-default'>
                 <tr>
-                    <td>Marketing Type </td>
+                    <td>Content Type</td>
                     <td>{fields.adFormat}</td>
                 </tr>
                 <tr>
-                    <td>Marketing Medium </td>
+                    <td>Content Medium </td>
                     <td>{fields.medium}</td>
                 </tr>
                 <tr>
@@ -49,11 +49,11 @@ const PublisherFormConfirmation = ({ fields, currencyFilter }) => (
         <table className='table table-bordered mb-0'>
             <tbody className='tbody-default'>
                 <tr>
-                    <td>Marketing Type </td>
+                    <td>Content Type </td>
                     <td>{fields.adFormat}</td>
                 </tr>
                 <tr>
-                    <td>Marketing Medium </td>
+                    <td>Content Medium </td>
                     <td>{fields.medium}</td>
                 </tr>
                 <tr>
