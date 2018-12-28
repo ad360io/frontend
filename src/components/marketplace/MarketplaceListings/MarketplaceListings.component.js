@@ -35,7 +35,7 @@ class MarketplaceListings extends Component {
      * @param {Number} listingSize size of the listing array after filtering
      */
     getTitle = (listingSize) => {
-        const listingType = (this.props.modeFilter === 'Advertiser' ? 'Content Spaces' : 'Content Requests');
+        const listingType = (this.props.modeFilter === 'Advertiser' ? 'Content Listings' : 'Content Requests');
         const isEmpty = (listingSize > 0 ? '' : 'No ')
         return isEmpty + listingType + ' Available';
     }
