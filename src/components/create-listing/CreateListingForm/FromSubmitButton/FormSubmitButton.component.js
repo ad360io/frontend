@@ -62,7 +62,7 @@ class FormSubmitButton extends Component {
                 name: this.props.publisherForm.topic,
                 description: this.props.publisherForm.description,
                 medium: this.props.publisherForm.medium,
-                date_added: this.props.publisherForm.dateFrom,
+                date_added: new Date().toISOString().slice(0, 10),
                 expiration_date: this.props.publisherForm.dateTo,
                 url: null,
                 price: this.props.publisherForm.price,
