@@ -41,7 +41,7 @@ export class AdFormatSelection extends React.Component {
 
         let list = {
             'Branded Content':   ['Written Piece', 'Audio Piece', 'Video Piece', 'Email', 'Webinar', 'Other'],
-            'Influencer Post':   ['Tweet', 'Instagram', 'Twitch', 'Youtube', 'Facebook', 'Twitter', 'NicoNico', 'Other'],
+            'Influencer Post':   ['Tweet', 'Instagram', 'Twitch', 'Youtube', 'Facebook', 'Twitter', 'Youku', 'Other'],
             'Sponsorship':       ['Event', 'Individual', 'Website', 'Artistic Creation', 'Email Newsletter', 'Other'],
             'Patron Journalism': ['Written Piece', 'Audio Piece', 'Video Piece', 'Other'],
         };
