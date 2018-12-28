@@ -116,7 +116,7 @@ class CreateListing extends Component {
                         {...{
                             modeFilter, currencyFilter,
                             success, loading,
-                            title: modeFilter === 'Advertiser' ? 'Request Content Space Availability' : 'Create Content Space Listings',
+                            title: modeFilter === 'Advertiser' ? 'Request Content' : 'Create Content Request Listings',
                             steps: this.steps,
                             onCreate: this.createListing,
                             onReset: () => this.setState({success: false, newListing: {}})
