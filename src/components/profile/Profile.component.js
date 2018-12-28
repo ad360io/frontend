@@ -169,7 +169,7 @@ class Profile extends Component {
                             }
                         </Media.Body>
 
-                        { profile.role && <ProfileEditor {...{auth: this.props.auth, profile}} />}
+                        { profile.role && <ProfileEditor {...{auth: this.props.auth, profile, allApis}} />}
                     </Media>
                 </div>
             </div>

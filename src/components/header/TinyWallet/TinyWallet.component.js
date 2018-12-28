@@ -169,7 +169,8 @@ class TinyWallet extends FComponent {
             let resp = await getJson(walletUrl, { queryParams: { address: address.split('-').join('')}, fromBaseUrl: false});
 
             if(resp.data) {
-                let balance = resp.data.data.find(i => i.mosaicId.namespaceId === 'qchain' && i.mosaicId.name === 'xqc').quantity;
+                let item = resp.data.data.find(i => i.mosaicId.namespaceId === 'qchain' && i.mosaicId.name === 'xqc');
+                let balance = (item && item.quantity) ? item.quantity : 0;
                 walletState.setState(balance);
             }
         } else if (this.props.currencyFilter === 'EQC') {
@@ -340,7 +341,7 @@ class TinyWallet extends FComponent {
 
                     {(this.props.profile.nem_address
                         ? <WalletBalanceRenderer
-                            balance={!_walletBalance ? `Loading...` : `${formatNumberAbbr(_walletBalance, this.props.currencyFilter)} ${this.props.currencyFilter}`} />
+                            balance={_walletBalance == null ? `Loading...` : `${formatNumberAbbr(_walletBalance, this.props.currencyFilter)} ${this.props.currencyFilter}`} />
                         : <a href="/profile" style={{ color: '#AF1F00' }}>Set up NEM wallet</a>
                     )}
                 </div>

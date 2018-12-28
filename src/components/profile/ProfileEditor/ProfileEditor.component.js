@@ -235,7 +235,18 @@ class ProfileEditor extends Component {
 
     handleNemPasswordChange = (event) => {
         this.setState({NEM_password: event.target.value});
-    }
+    };
+
+    handleChangeWallet = async ({ nem_address ,nem_pk_enc }) => {
+        const { allApis: { patchJson }, profile, auth: { updateUserMeta }} = this.props;
+
+        await patchJson(`/account`, {
+            queryParams: { role: `eq.${profile.role}`},
+            payload: { nem_address }
+        });
+
+        updateUserMeta({ nem_address ,nem_pk_enc });
+    };
 
     handleNemPasswordSubmit = (event) => {
         event.preventDefault();
@@ -289,17 +300,20 @@ class ProfileEditor extends Component {
         console.log(address);
 
         if (isValid && isFromNetwork) {
-            this.setState({nem_address: address});
-            this.setState({nem_wlt_name: this.state.nem_wlt_name});
-
-            this.setState({nem_account_changed: true});
+            // this.setState({nem_address: address});
+            // this.setState({nem_wlt_name: this.state.nem_wlt_name});
+            //
+            // this.setState({nem_account_changed: true});
 
             // console.log('asdf');
             // console.log(this.state.nem_address);
 
             // AES encrypt private key with wallet password
             let nem_pk_enc = nem.crypto.js.AES.encrypt(common.privateKey, this.state.NEM_password).toString();
-            this.setState({nem_pk_enc: nem_pk_enc});
+
+            let values = { nem_address: address, nem_pk_enc };
+
+            this.setState(values, () => this.handleChangeWallet(values));
 
             // console.log(this.state.nem_pk_enc);
 
@@ -318,7 +332,7 @@ class ProfileEditor extends Component {
         } else {
             alert('This wallet file does not contain a valid NEM account. Please try another wallet file.');
         }
-    }
+    };
 
     render() {
         // console.log(this.state);
@@ -466,10 +480,10 @@ const mapStateToProps = (state) => {
         nem_address: state.ProfileReducer.profile.nem_address,
         nem_wlt_name: state.ProfileReducer.profile.nem_wlt_name,
         nem_pk_enc: state.ProfileReducer.profile.nem_pk_enc,
-
         eth_address: state.ProfileReducer.profile.eth_address,
+        profile: state.ProfileReducer.profile
     }
-}
+};
 
 const mapDispatchToProps = (dispatch) => {
     return {}

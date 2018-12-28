@@ -253,19 +253,39 @@ export default class Auth {
         }
     }
 
+    updateUserMeta = (meta_data) => {
+        let myIdToken = localStorage.getItem('id_token');
+        let auth0Manager = new auth0.Management({
+            domain: 'qchain.auth0.com',
+            token: myIdToken,
+            _sendTelemetry: false,
+        });
+
+        let userId = localStorage.getItem('user_id');
+
+        auth0Manager.patchUserMetadata(userId, meta_data, ( err, profile) => {
+            if(err) {
+                console.log(err);
+            }
+            // console.log(profile);
+            this.dispatchProfile(profile, profile.user_metadata);
+        })
+    };
     /**
      * Provide a user_metadata object to be updated into auth0 scope ( THIS CALL SIGNS USER OUT AFTER UPDATE )
      * This method is used on ProfileEditor component.
      * @param {Object} newMetadata object with already declared fields will update values, undeclared fields will be appended.
      */
+    //TODO: refactor updateUserMetadata and combine with updateUserMeta
     updateUserMetadata = (newMetadata) => {
+        //TODO: refactor instance Management
         // Instantiate Auth0 Management API endpoint
         let myIdToken = localStorage.getItem('id_token');
         let auth0Manager = new auth0.Management({
             domain: 'qchain.auth0.com',
             token: myIdToken,
             _sendTelemetry: false,
-        })
+        });
 
         // Target user by using user_id, and each users should only have their own user_id and not others'.
         let myUserId = localStorage.getItem('user_id');
