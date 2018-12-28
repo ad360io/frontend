@@ -21,6 +21,7 @@ import default_ph from '../../../../assets/images/pug_face.jpg';
 import {marketplaceApi} from "../../../../common/api/services/marketplace-api";
 import {DetailedRequestListing} from "./DetailedRequestListing";
 import {DetailedContentSpaceListing} from "./DetailedContentSpaceListing";
+import {isEmpty} from "lodash";
 
 
 class DetailedListingPage extends Component {
@@ -74,20 +75,22 @@ class DetailedListingPage extends Component {
 
     loadDetail = async () => {
         // call on start load to get data
-
-        const { allApis: {getJson} } = this.props;
+        const { allApis: {getJson}, history } = this.props;
 
         let resp = await getJson(`/detailed_listing_view`, { queryParams: {id: `eq.${this.props.match.params.id}`}});
 
-        // let resp = await marketplaceApi(getJson, { queryParams: {id: `eq.${this.props.match.params.id}`}});
-
-        this.setState({ detailedItem: resp.data[0]});
+        // let r1 = await marketplaceApi(getJson, { queryParams: {id: `eq.${this.props.match.params.id}`}});
+        if(isEmpty(resp.data[0])) {
+            history.push(`/marketplace`);
+        } else {
+            this.setState({ detailedItem: resp.data[0]});
+        }
     };
 
     //Split into other component
     handlePathToOwnerProfile = () => {
-        this.props.history.push('/q/' + this.state.listing.owner)
-    }
+        this.props.history.push('/q/' + this.state.listing.owner);
+    };
 
     render() {
         // console.log(this.props.match.params.id)
