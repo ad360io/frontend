@@ -79,7 +79,7 @@ class ActivitiesTables extends Component {
             },
             {
                 title: "Pending Contracts",
-                render: () => <PendingContract {...{currencyFilter}}/>,
+                render: () => <PendingContract {...{currencyFilter, modeFilter}}/>,
                 condition: true
             },
             {
