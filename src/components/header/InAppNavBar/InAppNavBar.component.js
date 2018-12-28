@@ -20,7 +20,7 @@ const InAppNavBarII = ({ modeFilter, width }) => (
             <div className='in-app-nav-item-flex'>
                 <NavLink exact activeClassName='selected-nav-item' className='in-app-nav-item noselect' to='/dashboard'>
                     <i className='nav-item-icon fas fa-home fa-sm'></i>
-                    <span className='nav-label'>Dashboard</span>
+                    <span className='nav-label'>Analytics</span>
                 </NavLink>
             </div>
             <div className='in-app-nav-item-flex'>
