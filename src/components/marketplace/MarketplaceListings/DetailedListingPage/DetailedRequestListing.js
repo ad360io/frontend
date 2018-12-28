@@ -9,6 +9,7 @@ import DetailedImageSlider from "./DetailedImageSlider/DetailedImageSlider.compo
 import MakeOfferSection from "./MakeOfferSection/MakeOfferSection.component";
 import Button from "@material-ui/core/Button";
 import Tooltip from '@material-ui/core/Tooltip';
+import {isEmpty} from "lodash";
 
 export class DetailedRequestListing extends React.Component {
     render() {
@@ -63,7 +64,7 @@ export class DetailedRequestListing extends React.Component {
                             title={`Advertiser`}
                         />
                         <CardContent>
-                            <p>{item.advertiser_name}</p>
+                            <p>!isEmpty(item.advertiser_nickname) ? item.advertiser_nickname : item.advertiser_name</p>
                         </CardContent>
                     </Card>
                     <div className='detailed-listing-action-section'>

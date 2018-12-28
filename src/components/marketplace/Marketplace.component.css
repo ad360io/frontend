@@ -8,7 +8,7 @@
     z-index: 2;
     background-color: #f2f5f7;
 
-    height: calc(100vh - 73px - 65px);
+    min-height: calc(100vh - 73px - 65px);
     margin-top: -20px;
 }
 

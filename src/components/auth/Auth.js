@@ -305,10 +305,10 @@ export default class Auth {
                             headers: { Authorization: "Bearer " + localStorage.getItem('id_token') }
                         };
                         const payload = {
-                            name: newMetadata.nickname,
+                            nickname: newMetadata.nickname,
+                            name: newMetadata.name,
                             email: newMetadata.email,
                             picture: newMetadata.picture,
-                            // nem_address: newMetadata.nem_address
                         };
 
                         axios.patch(nameURL, payload, config)

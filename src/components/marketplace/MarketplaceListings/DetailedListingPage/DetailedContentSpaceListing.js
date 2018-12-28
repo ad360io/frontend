@@ -17,6 +17,7 @@ import {Cancel} from "@material-ui/icons";
 import {walletState} from "../../../../common/wallet-state";
 import {makeOfferModalService} from "./MakeOfferSection/MakeOfferSectionModal";
 import {getWalletBalance} from "../../../header/TinyWallet/TinyWallet.component";
+import {isEmpty} from "lodash";
 
 export class DetailedContentSpaceListing extends React.Component {
 
@@ -205,7 +206,7 @@ export class DetailedContentSpaceListing extends React.Component {
                             title={`Publisher`}
                         />
                         <CardContent>
-                            <p>{item.publisher_name}</p>
+                            <p>{!isEmpty(item.publisher_nickname) ? item.publisher_nickname : item.publisher_name}</p>
                         </CardContent>
                     </Card>
                     <div className='detailed-listing-action-section'>
