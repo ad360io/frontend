@@ -45,9 +45,9 @@ export class DetailedRequestListing extends React.Component {
                     <CardContent className='listing-details-text'>
 
                         <div className='details-text'>
-                            <p>Ad Format: {item.ad_format} {item.classtype}</p>
+                            <p>Content Format: {item.ad_format} {item.classtype}</p>
 
-                            <p>Marketing Medium: {item.medium}</p>
+                            <p>Content Medium: {item.medium}</p>
 
                             <p>Ask Date: {item.date_added.slice(0, 10)}</p>
                         </div>
