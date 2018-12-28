@@ -87,7 +87,12 @@ export class PendingContract extends React.Component {
                         ref={(elem) => this.contractModal = elem}
                         {...{
                             selectedItem,
-                            afterClose: () => this.setState({selectedItem: null}),
+                            afterClose: (success) => {
+                                if(success) {
+                                    this.getPendingContract()
+                                }
+                                this.setState({selectedItem: null})
+                            },
                             allApis,
                             profile
                         }}
