@@ -105,7 +105,7 @@ class AdFormatSelect extends Component {
     render() {
         const adFormatStringList = ['Branded Content', 'Influencer Post', 'Sponsorship', 'Patron Journalism'];
         return <div>
-            <p className='ad-format-selector-title'>Select Ad Format</p>
+            <p className='ad-format-selector-title'>Select Content Format</p>
             <SelectButtonGroup stringList={this.getMediumStringList()} />
             <ButtonGroup style={{ marginBottom: '25px' }} justified >
                 {
