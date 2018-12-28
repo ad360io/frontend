@@ -313,10 +313,15 @@ class TinyWallet extends FComponent {
             <LinkWithTooltip
                 tooltip_body={
                     (this.props.currencyFilter === 'EQC'
-                        ? <span><strong>ETH address:</strong> {this.props.eth_address}</span>
-                        : <span><strong>NEM address:</strong> {this.props.profile.nem_address}</span>
-                        // : <span><strong>NEM address:</strong> {JSON.stringify(this.props.profile)}</span>
-                        // : <span><strong>NEM address:</strong> {this.props.nem_address}</span>
+                        ? (this.props.eth_address
+                            ? <span><strong>ETH address:</strong> {this.props.eth_address}</span>
+                            : <span>You need to set up a NEM wallet before you can view your EQC balance.</span>
+                          )
+
+                        : (this.props.profile.nem_address
+                            ? <span><strong>NEM address:</strong> {this.props.profile.nem_address}</span>
+                            : <span>You need to set up a NEM wallet before you can view your XQC balance.</span>
+                          )
                     )
                 }
             >
@@ -333,9 +338,11 @@ class TinyWallet extends FComponent {
                     } */}
                     {/*this.props.currencyFilter === 'EQC' ? this.state.eqc_balance : this.get_XQC_balance(this.props.profile.nem_address)*/}
 
-                    <WalletBalanceRenderer
-                        balance={!_walletBalance ? `Loading...` : `${formatNumberAbbr(_walletBalance, this.props.currencyFilter)} ${this.props.currencyFilter}`}/>
-
+                    {(this.props.profile.nem_address
+                        ? <WalletBalanceRenderer
+                            balance={!_walletBalance ? `Loading...` : `${formatNumberAbbr(_walletBalance, this.props.currencyFilter)} ${this.props.currencyFilter}`} />
+                        : <a href="/profile" style={{ color: '#AF1F00' }}>Set up NEM wallet</a>
+                    )}
                 </div>
 
             </LinkWithTooltip>
