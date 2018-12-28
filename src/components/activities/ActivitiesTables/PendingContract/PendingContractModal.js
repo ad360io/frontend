@@ -143,7 +143,8 @@ export class PendingContractModal extends React.Component {
 
         await patchJson(`/invoice`, { queryParams: { contract: `eq.${selectedItem.number}`}, payload });
 
-        console.log('update invoice');
+        //turn off modal
+        this.toggle();
     };
 
     sendTxn = () => {
@@ -282,13 +283,13 @@ export class PendingContractModal extends React.Component {
     };
 
     render () {
-        const { open, publisherInfo } = this.state;
-        const { selectedItem, afterClose, profile } = this.props;
+        const { open, publisherInfo, txn_error } = this.state;
+        const { selectedItem, afterClose } = this.props;
 
         return (
             <Modal
                 show={open}
-                onHide={() => {afterClose()}}
+                onHide={() => afterClose(!txn_error)}
             >
                 <Modal.Header closeButton>
                     <Modal.Title>Pending Contract Payment Confirmation</Modal.Title>
