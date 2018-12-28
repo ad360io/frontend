@@ -222,10 +222,11 @@ class ProfileEditor extends Component {
 
             console.log(JSON.stringify(self.NEM_wlt_JSON));
 
+            let NEM_pk_error_message = document.getElementById('NEM_pk_error_message');
+            NEM_pk_error_message.style.display = 'none';
 
             let NEM_password_input = document.getElementById('NEM_password_input');
             NEM_password_input.style.display = 'initial';
-
         };
 
         reader.readAsText(input);
@@ -238,8 +239,6 @@ class ProfileEditor extends Component {
 
     handleNemPasswordSubmit = (event) => {
         event.preventDefault();
-
-        // console.log('asdf ' + this.state.NEM_password + ' 123');
 
         // create variable to store password/private key object
         let common = nem.model.objects.create('common')(this.state.NEM_password, '');
@@ -256,6 +255,15 @@ class ProfileEditor extends Component {
         let privateKey = common.privateKey;
 
         // console.log(privateKey);
+
+        let NEM_pk_error_message = document.getElementById('NEM_pk_error_message');
+
+        if (! privateKey) {
+            NEM_pk_error_message.style.display = 'initial';
+            return;
+        } else {
+            NEM_pk_error_message.style.display = 'none';
+        }
 
         // create key pair
         let keyPair = nem.crypto.keyPair.create(privateKey);
@@ -313,8 +321,7 @@ class ProfileEditor extends Component {
     }
 
     render() {
-        console.log(this.state);
-
+        // console.log(this.state);
 
         let NEM_wlt_formgroup;
         //
@@ -340,6 +347,10 @@ class ProfileEditor extends Component {
                     <br />
                     NEM address: {this.state.nem_address}
                 </p>
+
+                <p id="NEM_pk_error_message" style={{ 'display': 'none', 'fontSize': '13px', marginLeft: '12px' }}>
+                    Incorrect password
+                </p>
             </FormGroup>
         } else {
             NEM_wlt_formgroup = <FormGroup controlId='control-form-title'>
@@ -355,13 +366,19 @@ class ProfileEditor extends Component {
                     <br />
                 </p>
 
+                <p id="NEM_pk_error_message" style={{ 'display': 'none', 'fontSize': '13px', marginLeft: '12px' }}>
+                    Incorrect password
+                </p>
+
                 <p style={{ 'fontSize': '13px' }}>
                     To change your NEM account:
                 </p>
 
                 <input id="NEM_wlt_input" style={{ 'fontSize': '12px' }} type="file" accept=".wlt" onChange={this.read_NEM_wlt_file} />
 
-                <form id="NEM_password_input" style={{ 'display': 'none', 'fontSize': '14px', 'marginTop': '24px' }} onSubmit={this.handleNemPasswordSubmit}>
+                <br />
+
+                <form id="NEM_password_input" style={{ 'display': 'none', 'fontSize': '14px', margin: '6px 0 0 12px' }} onSubmit={this.handleNemPasswordSubmit}>
                     <label>
                         Password:&nbsp;&nbsp;
                         <input type="text" style={{ 'fontWeight': 'normal', 'borderRadius': '3px' }} value={this.state.NEM_password} onChange={this.handleNemPasswordChange} />
