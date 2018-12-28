@@ -30,7 +30,7 @@ export class PendingContract extends React.Component {
             <div className='active-listing-container'>
                 <div className='table-responsive' style={{ height: '100%', margin: '2% 0 2% 0', minHeight: '320px' }}>
                     { (pendingContract.length === 0)
-                        ? (<p style={{ textAlign: 'center' }}>There is currently no inactive contract...</p>)
+                        ? (<p style={{ textAlign: 'center' }}>You currently have no pending contracts.</p>)
                         : (<table className='table table-bordered mb-0'>
                                 <thead className='thead-default'>
                                 <tr>
@@ -50,7 +50,7 @@ export class PendingContract extends React.Component {
                                         >End Date</th>
                                     <th
                                         className='inactive-contract-th'
-                                        >Payout Cap</th>
+                                        >Total Payment</th>
                                 </tr>
                                 </thead>
                                 <tbody>
