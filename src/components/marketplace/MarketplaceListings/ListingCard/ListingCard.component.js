@@ -296,7 +296,7 @@ const ListingCardRenderer = ({
         <div className='price-tag'>{priceTag}</div>
 
         <div className='listing-date'>
-            Posted on {dateAdded.slice(0, 10)}
+            Listed on {dateAdded.slice(0, 10)}
         </div>
 
 
