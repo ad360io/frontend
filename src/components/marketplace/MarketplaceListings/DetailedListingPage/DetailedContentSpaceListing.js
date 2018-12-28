@@ -100,7 +100,8 @@ export class DetailedContentSpaceListing extends React.Component {
             currency: contract.currency,
             amount: Number.parseFloat(contract.payout_cap),
             due_date: contract.end_date,
-            tx_hash: 'somehash'
+            tx_hash: 'somehash',
+            paid: false
         };
 
         let resp = await invoiceApi(postJson, {payload});

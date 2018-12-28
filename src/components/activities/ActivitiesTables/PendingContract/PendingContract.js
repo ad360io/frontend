@@ -22,7 +22,7 @@ export class PendingContract extends React.Component {
 
     render () {
         const { pendingContract, selectedItem } = this.state;
-        const { allApis, currencyFilter, profile } = this.props;
+        const { allApis, currencyFilter, profile, modeFilter } = this.props;
 
         if(pendingContract == null) return <LoadingPanel/>;
 
@@ -60,9 +60,12 @@ export class PendingContract extends React.Component {
                                     <tr
                                         key={'contracttr' + i}
                                         onClick={() => {
-                                            this.setState({selectedItem: contract},
-                                                () => this.contractModal.toggle()
+                                            modeFilter === "Advertiser" && (
+                                                this.setState({selectedItem: contract},
+                                                    () => this.contractModal.toggle()
+                                                )
                                             )
+
                                         }}
                                     >
                                         <td style={{ color: '#3366BB', cursor: 'pointer' }}>{contract.name}</td>

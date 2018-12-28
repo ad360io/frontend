@@ -196,8 +196,6 @@ class OfferRenderer extends Component {
         let startDate = new Date(offer.start_date);
         let endDate = new Date(offer.end_date);
 
-
-
         const payload = {
             name: offer.topic,
             advertiser: localStorage.getItem('role'),
