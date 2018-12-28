@@ -85,8 +85,8 @@ class CreateListingForm extends Component {
     }
     decideFormTitle = () => {
         return (this.props.modeFilter === 'Advertiser'
-            ? 'Request Content Space Availability'
-            : 'Create Content Space Listings'
+            ? 'Request Content'
+            : 'Create Content Listing'
         );
     }
 
