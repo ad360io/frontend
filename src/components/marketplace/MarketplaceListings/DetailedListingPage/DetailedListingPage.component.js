@@ -107,7 +107,7 @@ class DetailedListingPage extends Component {
                 <div className='detailed-listing-container'>
                     <DetailedRequestListing
                         {...{allApis, modeFilter}}
-                        onBack={() => this.props.history.push(`/marketplace`)}
+                        onBack={() => this.props.history.goBack()}
                         item={detailedItem}
                         decideImage={this.decideImage}
                         pathToOwnerProfile={this.handlePathToOwnerProfile}
@@ -122,7 +122,7 @@ class DetailedListingPage extends Component {
                 <DetailedContentSpaceListing
                     {...{allApis, modeFilter, profile}}
                     item={detailedItem}
-                    onBack={() => this.props.history.push(`/marketplace`)}
+                    onBack={() => this.props.history.goBack()}
 
                     decideImage={this.decideImage}
                     bought={this.state.bought}
