@@ -77,8 +77,8 @@ class MarketplaceFilter extends Component {
     }
 
     decideTitle() {
-        if (this.props.modeFilter === 'Advertiser') return 'Content Spaces';
-        else return 'Content'
+        if (this.props.modeFilter === 'Advertiser') return 'Content Space Listings';
+        else return 'Content Requests'
     }
 
     decideHidden() {
@@ -121,7 +121,7 @@ class MarketplaceFilter extends Component {
                         <p className='filter-heading'>Filter</p>
                     </div>
 
-                    <h4 className='filter-title'>{this.decideTitle()} Listings</h4>
+                    <h4 className='filter-title'>{this.decideTitle()}</h4>
                     <AdFormatFilter {...{filters, onChange}} />
 
                     <br />

@@ -6,9 +6,9 @@
 .marketplace-title-container {
     background-color: #fefefe;
     height: 60px;
-    padding-left: 25px; /*3vw;*/
+    padding-left: 25px; /*1.5vw;*/
     margin: 19px 0 18px 0;
-    border-left: 1px solid rgba(0, 0, 0, 0.12);
+    /*border-left: 1px solid rgba(0, 0, 0, 0.12);*/
     border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 }
 
