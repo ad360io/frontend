@@ -18,7 +18,6 @@ class AnalyticsDetail extends React.Component {
 
         return <div className='dashboard-detail-container'>
             {/* <p className='search-input-label'>Filter Through Contracts: </p> */}
-            <p className='search-input-label'></p>
             <SearchInput className='dashboard-detail-search-input' onChange={this.props.onKeywordChange} />
 
             {
@@ -42,7 +41,6 @@ const NoData = () => (
 const DetailStat = ({ stat, contracts }) => (
     <div className='detail-stat'>
 
-        <Divider />
         {
             contracts.map((contract, i) => {
                 return (<div key={'dashboard-detail' + i}>
@@ -64,7 +62,6 @@ const DetailStat = ({ stat, contracts }) => (
                             <DashboardLineChart contractTitle={`${contract.name} ${stat}s`} dataset={getRandomDataset(100, 230)} />
                         </div>
                     </div>
-                    <Divider />
                 </div>)
             })
         }

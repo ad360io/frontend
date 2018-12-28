@@ -50,12 +50,15 @@ class MarketplaceListings extends Component {
 
         return (
             <div className='marketplace-listings-container'>
-                <h3 className='marketplace-title'>{this.getTitle(total)}</h3>
+                <div className='marketplace-title-container'>
+                    <p className='marketplace-title'>{this.getTitle(total)}</p>
+                </div>
+
                 { listing.map((listing, i) => (
                     <ListingCard key={'listingCard' + i} listing={listing} modeFilter={this.props.modeFilter} />
                 ))}
 
-                <div style={{ textAlign: 'left', marginLeft: '5vw' }}>
+                <div style={{ textAlign: 'center' }}>
                     <Pagination className='listing-pages' bsStyle='small'>
                         { Array(pages).fill(1).map((_, i) => (
                             <Pagination.Item

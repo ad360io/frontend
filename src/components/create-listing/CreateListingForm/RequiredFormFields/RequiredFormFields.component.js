@@ -107,7 +107,9 @@ class RequiredFormField extends React.Component {
                     </FormGroup>
                 )}
 
-                <br /><br />
+                { modeFilter !== 'Advertiser' && (
+                    <div style={{height: '30px'}}></div>
+                )}
 
                 <FormGroup controlId='control-form-pitch'>
                     <p className='control-label'>

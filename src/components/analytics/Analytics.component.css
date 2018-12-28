@@ -2,7 +2,9 @@
     animation-name: fade-in;
     animation-duration: 0.8s;
     animation-fill-mode: forwards;
-    margin-top: 64px;
+    background-color: #f2f5f7;
+    padding-top: 5px;
+    padding-bottom: 24px;
 }
 
 .dashboard-grid {

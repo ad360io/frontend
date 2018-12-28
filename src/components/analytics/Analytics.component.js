@@ -79,7 +79,7 @@ class Analytics extends Component {
 
 const DashboardRenderer = ({ modeFilter, currencyFilter }) => (
     <div className='dashboard-container'>
-        <Alert className='dashboard-alert' bsStyle='info'>New dashboard in progress.</Alert>
+        {/* <Alert className='dashboard-alert' bsStyle='info'>New dashboard in progress.</Alert> */}
         {/* <DashboardNavigation modeFilter={modeFilter} /> */}
         <AnalyticsDetail />
     </div>

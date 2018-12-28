@@ -117,9 +117,14 @@ class MarketplaceFilter extends Component {
                     }}
                 >
 
+                    <div className='filter-heading-container'>
+                        <p className='filter-heading'>Filter</p>
+                    </div>
+
                     <h4 className='filter-title'>{this.decideTitle()} Listings</h4>
                     <AdFormatFilter {...{filters, onChange}} />
-                    <FilterDivider />
+
+                    <br />
 
                     <div>
                         <h4 className='filter-title'>Keyword Search</h4>
@@ -129,23 +134,24 @@ class MarketplaceFilter extends Component {
                             }}
                             // onChange={this.props.onKeywordChange}
                         />
-                        <FilterDivider />
                     </div>
 
+                    <br /><br />
 
                     <div>
-                        <h4 className='filter-title'>Max Purchase:</h4>
+                        <h4 className='filter-title'>Max Purchase</h4>
                         <PurchaseRangeSelector
                             {...{
                                 filters,
                                 onChange: (budget) => onChange({...filters, budget})
                             }}
                         />
-                        <FilterDivider />
                     </div>
 
+                    <br />
+
                     <div>
-                        <h4 className='filter-title' style={{ textAlign: 'left', marginLeft: '25px' }}>Sort By:</h4>
+                        <h4 className='filter-title' style={{ textAlign: 'left', marginLeft: '25px' }}>Sort By</h4>
                         <SortingSelector
                             dropdown={this.props.width <= 768}
                             {...{
@@ -154,7 +160,6 @@ class MarketplaceFilter extends Component {
                             }}
 
                         />
-                        <FilterDivider />
                     </div>
 
                 </Drawer>

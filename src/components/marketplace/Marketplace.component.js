@@ -113,21 +113,19 @@ class Marketplace extends Component {
         } = this.state;
 
         return (
-            <div style={{ 'position': 'relative' }}>
-                <div className='marketplace-container'>
-                    <MarketplaceFilter
-                        {...{
-                            filters,
-                            onChange: (filters) => this.setState({ filters, listing: null }, () => this.getData())
-                        }}
-                    />
-                    <MarketplaceListings
-                        {...{
-                            listing, total, currentPageNum,
-                            onChangePage: (page) => this.setState({ currentPageNum: page }, () => this.getData())
-                        }}
-                    />
-                </div>
+            <div className='marketplace-container'>
+                <MarketplaceFilter
+                    {...{
+                        filters,
+                        onChange: (filters) => this.setState({ filters, listing: null }, () => this.getData())
+                    }}
+                />
+                <MarketplaceListings
+                    {...{
+                        listing, total, currentPageNum,
+                        onChangePage: (page) => this.setState({ currentPageNum: page }, () => this.getData())
+                    }}
+                />
             </div>
         )
     }

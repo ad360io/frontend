@@ -7,7 +7,7 @@ export let keywordFilterCss = css`
     input {
         width: 100%;
         color: #333;
-        background-color: #fff;
+        background-color: #fefefe;
         border-color: #ccc;
         padding: 8px;
         border-top-left-radius: 3px;
@@ -37,5 +37,6 @@ export let keywordFilterCss = css`
         border-top-right-radius: 3px;
         border-bottom-right-radius: 3px;
         padding-top: 6px;
+        background-color: #fefefe;
     }
 `;

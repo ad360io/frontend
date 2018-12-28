@@ -290,11 +290,7 @@ const ListingCardRenderer = ({
                                  id,
                              }) => (
     <Card className='listing-card-container noselect'
-          style={{
-              width: '90%',
-              // marginLeft,
-              marginRight: '2%'
-          }}
+          style={{}}
     >
         <div className='title-tag'>{title}</div>
         <div className='price-tag'>{priceTag}</div>
