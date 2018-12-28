@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 /*
 Local CSS
 */
-import './Dashboard.component.css';
+// import './Dashboard.component.css';
 
 /*
 React Bootstrap Components
@@ -33,8 +33,8 @@ import { fetch_DashboardData_Fulfilled, fetch_DashboardData_Pending, fetch_Dashb
 Custom Components
 */
 import ErrorPage from '../ErrorPage/ErrorPage.component';
-import DashboardNavigation from './DashboardNavigation/DashboardNavigation.component';
-import DashboardDetail from './DashboardDetail/DashboardDetail.component';
+import DashboardNavigation from '../analytics/___DashboardNavigation/DashboardNavigation.component';
+// import DashboardDetail from './DashboardDetail/DashboardDetail.component';
 import Footer from '../footer/Footer.component';
 
 /**
@@ -81,7 +81,7 @@ const DashboardRenderer = ({ modeFilter, currencyFilter }) => (
     <div className='dashboard-container'>
         <Alert className='dashboard-alert' bsStyle='info'>Analytics and data tracking are a work in progress.</Alert>
         <DashboardNavigation modeFilter={modeFilter} />
-        <DashboardDetail />
+        {/*<DashboardDetail />*/}
 
         {/*<Footer />*/}
     </div>

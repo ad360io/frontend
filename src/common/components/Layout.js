@@ -13,6 +13,7 @@ let appLayout = css`
 
     .app-content {
         flex: 1;
+        margin-top: 65px;
         margin-bottom: 73px;
     }
 

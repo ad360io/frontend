@@ -79,6 +79,9 @@ class Marketplace extends Component {
         const { allApis : {getJson} } = this.props;
         const { currentPageNum } = this.state;
 
+        let r1 = await getJson(`/account`);
+        console.log(r1);
+
         let queryParams = this.getParamQuery();
 
         let headers = {
