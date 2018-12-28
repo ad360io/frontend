@@ -11,7 +11,7 @@
     position: relative;
     left: -100vw;
     animation-name: listings-slide-in-from-left;
-    animation-duration: 0.8s;
+    animation-duration: 0.3s;
     animation-fill-mode: forwards;
     text-align: 'left';
     font-size: 14px;
