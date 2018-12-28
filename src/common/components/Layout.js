@@ -14,7 +14,7 @@ let appLayout = css`
     .app-content {
         flex: 1;
         margin-top: 65px;
-        margin-bottom: 73px;
+        // margin-bottom: 73px;
     }
 
     .app-footer {
