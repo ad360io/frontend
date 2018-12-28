@@ -98,6 +98,7 @@ class RequiredFormField extends React.Component {
                             style={{width: '49%', float: 'left'}}
                         />
                         <FormControl componentClass='select' style={{width: '49%', float: 'right'}} required>
+                            <option value='one-time'>one time</option>
                             <option value='day'>per day</option>
                             <option value='week'>per week</option>
                             <option value='month'>per month</option>
