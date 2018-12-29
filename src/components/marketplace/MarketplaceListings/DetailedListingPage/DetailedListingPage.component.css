@@ -2,6 +2,7 @@
     /*margin-top: 64px;*/
     height: 100%;
     font-size: 30px;
+    background-color: #f2f5f7;
 }
 
 .detailed-listing-renderer {
@@ -58,7 +59,7 @@
 }
 
 .buy-section {
-    background: #ececec;
+    background-color: #54CC7C;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -78,6 +79,7 @@
 
 .buy-button {
     width: 100%;
+    background-color: #fefefe;
 }
 
 .listing-details-text {

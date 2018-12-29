@@ -90,19 +90,19 @@ class RequiredFormField extends React.Component {
                 { modeFilter !== 'Advertiser' && (
                     <FormGroup controlId='control-form-price' >
                         <p className='control-label'>
-                            Price per Time Unit
+                            Price
                         </p>
                         <FormControl
                             value={price}
                             type='number' min='1' step='1' onChange={(e) => this.setState({price: e.target.value})}
                             style={{width: '49%', float: 'left'}}
                         />
-                        <FormControl componentClass='select' style={{width: '49%', float: 'right'}} required>
-                            {/* <option value='one-time'>one time</option> */}
+                        <FormControl componentClass='select' style={{width: '49%', float: 'right', display: 'none'}} required>
+                            <option value='one-time'>one time</option>
                             <option value='day'>per day</option>
-                            <option value='week'>per week</option>
-                            <option value='month'>per month</option>
-                            <option value='year'>per year</option>
+                            {/* <option value='week'>per week</option> */}
+                            {/* <option value='month'>per month</option> */}
+                            {/* <option value='year'>per year</option> */}
                         </FormControl>
                     </FormGroup>
                 )}

@@ -174,10 +174,11 @@ export class DetailedContentSpaceListing extends React.Component {
                                 ? <Alert bsStyle='success'>Congratulations! You've bought this listing!</Alert>
                                 : <div className='buy-section'>
                                     <div className='price-section'>
-                                        <span>Price: {item.price} {item.currency} per day</span>
+                                        {/* <span>Price: {item.price} {item.currency} per day</span>
                                         <br/>
                                         <span><strong>Total</strong>: {payoutCap.amount} {item.currency}</span>
-                                        { (payoutCap.days > 1) && (<span> for {payoutCap.days} days</span>) }
+                                        { (payoutCap.days > 1) && (<span> for {payoutCap.days} days</span>) } */}
+                                        <span><strong>Price</strong>: {payoutCap.amount} {item.currency}</span>
                                     </div>
                                     <div className='buy-btn-section'>
                                         { isOwner ? (

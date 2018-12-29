@@ -203,7 +203,9 @@ class OfferRenderer extends Component {
             start_date: offer.start_date,
             end_date: offer.end_date,
             currency: offer.currency,
-            payout_cap: offer.price * DateUtils.dateDiffInDays(startDate, endDate),
+            // TODO: calculate payout_cap depending on either one time payment or price/day
+            payout_cap: offer.price,
+            // payout_cap: offer.price * DateUtils.dateDiffInDays(startDate, endDate),
             contentlisting: offer.listing_id,
             contentspacelisting: null,
             status: "Pending"
@@ -249,8 +251,9 @@ class OfferRenderer extends Component {
                 <strong>Start Date</strong> {this.props.offer.start_date} <br />
                 <strong>End Date</strong> {this.props.offer.end_date} <br />
                 <Divider />
-                <strong>Pricing</strong> {this.props.offer.price} {this.props.offer.currency} per day<br />
-                <strong>Total</strong> {this.props.offer.price * dateDiffInDays(startDate, endDate)} {this.props.offer.currency}
+                {/* <strong>Pricing</strong> {this.props.offer.price} {this.props.offer.currency} per day<br /> */}
+                {/* <strong>Total</strong> {this.props.offer.price * dateDiffInDays(startDate, endDate)} {this.props.offer.currency} */}
+                <strong>Price</strong> {this.props.offer.price * dateDiffInDays(startDate, endDate)} {this.props.offer.currency}
                 <Divider />
                 <strong>Message</strong><br />
                 {this.props.offer.message}
