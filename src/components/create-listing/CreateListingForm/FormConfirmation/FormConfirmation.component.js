@@ -49,23 +49,23 @@ const PublisherFormConfirmation = ({ fields, currencyFilter }) => (
         <table className='table table-bordered mb-0'>
             <tbody className='tbody-default'>
                 <tr>
-                    <td>Content Type </td>
+                    <td>Content Format</td>
                     <td>{fields.adFormat}</td>
                 </tr>
                 <tr>
-                    <td>Content Medium </td>
+                    <td>Content Medium</td>
                     <td>{fields.medium}</td>
                 </tr>
                 <tr>
-                    <td>Description </td>
+                    <td>Description</td>
                     <td>{fields.description}</td>
                 </tr>
                 <tr>
-                    <td>Content Topic </td>
+                    <td>Content Topic</td>
                     <td>{fields.topic}</td>
                 </tr>
                 <tr>
-                    <td>Image URL </td>
+                    <td>Image URL</td>
                     <td>{fields.imgFile}</td>
                 </tr>
                 <tr>
@@ -73,7 +73,7 @@ const PublisherFormConfirmation = ({ fields, currencyFilter }) => (
                     <td><strong>{fields.price} {currencyFilter}</strong> {fields.timeUnit}</td>
                 </tr>
                 <tr>
-                    <td>Promotion Duration </td>
+                    <td>Promotion Duration</td>
                     <td><div style={{ width: '50px', float: 'left' }}><strong>From:</strong></div> {fields.dateFrom.toString()}
                         <br />
                         <div style={{ width: '50px', float: 'left' }}><strong>To:</strong></div> {fields.dateTo.toString()}
