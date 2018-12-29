@@ -115,7 +115,7 @@ class Invoice extends Component {
                                         >
                                             {invoice.listing_title}
                                         </td>
-                                        {isPublisher ? (<td>{invoice.publisher_name}</td>) : (<td>{invoice.advertiser_name}</td>)}
+                                        {isPublisher ? (<td>{invoice.advertiser_name}</td>) : (<td>{invoice.publisher_name}</td>)}
                                         <td>{invoice.amount} {invoice.currency}</td>
                                         <td>{invoice.date_paid ? invoice.date_paid.split('T')[0] : ''}</td>
                                         {!isPayment &&  <td>{invoice.due_date.split('T')[0]}</td>}
