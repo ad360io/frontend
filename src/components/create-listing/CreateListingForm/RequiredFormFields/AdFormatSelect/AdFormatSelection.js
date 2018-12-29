@@ -6,7 +6,7 @@ export class AdFormatSelection extends React.Component {
 
     renderMediumList = (list, mediumFormat, onChange) => (
         <div>
-            <p className='ad-format-selector-title'>Select Medium</p>
+            <p className='ad-format-selector-title'>Medium</p>
             <ButtonGroup justified >
                 { list.slice(0, list.length / 2).map((item, index) => (
                     <Button
@@ -48,7 +48,7 @@ export class AdFormatSelection extends React.Component {
 
         return (
              <div>
-                <div className='ad-format-selector-title'>Select Content Type</div>
+                <div className='ad-format-selector-title'>Content Space Type</div>
                 {/*<SelectButtonGroup stringList={this.getMediumStringList()} />*/}
                 <ButtonGroup style={{ marginBottom: '25px' }} justified >
                     {

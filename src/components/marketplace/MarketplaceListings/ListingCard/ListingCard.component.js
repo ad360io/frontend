@@ -188,8 +188,10 @@ class ListingCard extends Component {
 
     render() {
         return <NavLink to={'/listing/' + this.props.listing.id}>
-            {this.props.viewModeFilter === 'Grid'
-                ? <GridCardRenderer
+            {/* TODO: duplicates below very sloppy; refactor */}
+
+            {this.props.viewModeFilter === 'Grid' &&
+                <GridCardRenderer
                     width={this.decideCardWidth()}
                     marginLeft={this.decideMarginLeft()}
                     contactInfo={this.decideContactInfo()}
@@ -200,7 +202,23 @@ class ListingCard extends Component {
                     id={this.props.listing.id}
                     dateAdded={this.props.listing.date_added}
                 />
-                : <ListingCardRenderer
+            }
+
+            {(this.props.viewModeFilter !== 'Grid' && this.props.modeFilter === 'Advertiser') &&
+                <ListingCardRenderer_Adv
+                    marginLeft={this.decideMarginLeft()}
+                    contactInfo={this.decideContactInfo()}
+                    priceTag={this.decidePriceTag()}
+                    title={this.decideTitleDisplayText()}
+                    placeholderImage={this.decidePlaceholderImage()}
+                    description={this.decideDescription()}
+                    dateAdded={this.props.listing.date_added}
+                    id={this.props.listing.id}
+                />
+            }
+
+            {(this.props.viewModeFilter !== 'Grid' && this.props.modeFilter !== 'Advertiser') &&
+                <ListingCardRenderer_Pub
                     marginLeft={this.decideMarginLeft()}
                     contactInfo={this.decideContactInfo()}
                     priceTag={this.decidePriceTag()}
@@ -279,7 +297,9 @@ const GridCardRenderer = ({
     </Card>
 );
 
-const ListingCardRenderer = ({
+
+// TODO: duplicates below very sloppy; refactor
+const ListingCardRenderer_Adv = ({
                                  marginLeft,
                                  contactInfo,
                                  priceTag,
@@ -297,6 +317,40 @@ const ListingCardRenderer = ({
 
         <div className='listing-date'>
             Listed on {dateAdded.slice(0, 10)}
+        </div>
+
+
+        {/*<div*/}
+            {/*title={title}*/}
+            {/*subtitle={'Posted on: ' + dateAdded.slice(0, 10)}*/}
+            {/*className='listing-card-title'*/}
+            {/*style={{paddingBottom: '0px'}}*/}
+        {/*/>*/}
+        <img src={placeholderImage} className='listing-img' alt='listing-img'/>
+        <CardContent className='listing-msg-container'>
+            <span className="listing-msg">{description}</span>
+        </CardContent>
+    </Card>
+)
+
+const ListingCardRenderer_Pub = ({
+                                 marginLeft,
+                                 contactInfo,
+                                 priceTag,
+                                 title,
+                                 placeholderImage,
+                                 description,
+                                 dateAdded,
+                                 id,
+                             }) => (
+    <Card className='listing-card-container noselect'
+          style={{}}
+    >
+        <div className='title-tag'>{title}</div>
+        <div className='price-tag'>{priceTag}</div>
+
+        <div className='listing-date'>
+            Start Date: {dateAdded.slice(0, 10)}
         </div>
 
 

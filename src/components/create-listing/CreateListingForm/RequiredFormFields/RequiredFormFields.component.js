@@ -36,7 +36,7 @@ class RequiredFormField extends React.Component {
         };
 
         getRequiredData = this.getData;
-    };
+    }
 
     valid = () => {
         for (let key in this.state) {
@@ -60,7 +60,7 @@ class RequiredFormField extends React.Component {
                 { modeFilter !== 'Advertiser' && (
                     <FormGroup>
                         <p className='control-label'>
-                            Select Promotion Duration
+                            Promotion Duration
                         </p>
                         <AvailabilityPicker
                             {...{
@@ -90,7 +90,7 @@ class RequiredFormField extends React.Component {
                 { modeFilter !== 'Advertiser' && (
                     <FormGroup controlId='control-form-price' >
                         <p className='control-label'>
-                            Price per time unit
+                            Price per Time Unit
                         </p>
                         <FormControl
                             value={price}
@@ -98,7 +98,7 @@ class RequiredFormField extends React.Component {
                             style={{width: '49%', float: 'left'}}
                         />
                         <FormControl componentClass='select' style={{width: '49%', float: 'right'}} required>
-                            <option value='one-time'>one time</option>
+                            {/* <option value='one-time'>one time</option> */}
                             <option value='day'>per day</option>
                             <option value='week'>per week</option>
                             <option value='month'>per month</option>

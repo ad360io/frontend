@@ -30,8 +30,8 @@ export class DetailedRequestListing extends React.Component {
                     <div className='detailed-listing-action-section'>
                         {/* <a className='detailed-listing-action'>Save this listing</a>
                         <Divider /> */}
-                        <a className='detailed-listing-action'>Add to watch list</a>
-                        <Divider />
+                        {/* <a className='detailed-listing-action'>Add to watch list</a>
+                        <Divider /> */}
                     </div>
                 </div>
 
@@ -64,14 +64,14 @@ export class DetailedRequestListing extends React.Component {
                             title={`Advertiser`}
                         />
                         <CardContent>
-                            <p>!isEmpty(item.advertiser_nickname) ? item.advertiser_nickname : item.advertiser_name</p>
+                            <p>{!isEmpty(item.advertiser_nickname) ? item.advertiser_nickname : item.advertiser_name}</p>
                         </CardContent>
                     </Card>
                     <div className='detailed-listing-action-section'>
-                        <a className='detailed-listing-action'>Add advertiser to favorites</a>
-                        <Divider />
-                        <a className='detailed-listing-action'>Contact this advertiser</a>
-                        <Divider />
+                        {/* <a className='detailed-listing-action'>Add advertiser to favorites</a>
+                        <Divider /> */}
+                        {/* <a className='detailed-listing-action'>Contact this advertiser</a>
+                        <Divider /> */}
                     </div>
                 </div>
             </div>

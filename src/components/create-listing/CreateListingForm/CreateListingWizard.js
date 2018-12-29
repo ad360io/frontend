@@ -81,8 +81,12 @@ class CreateListingWizard extends React.Component {
         const { classes, steps, success, loading, onReset, title, modeFilter, currencyFilter} = this.props;
 
         return (
-            <div className={classes.root + ' create-listing-form-container'}>
+            <div className={classes.root + ' create-listing-form-container'} style={{marginTop: '-50px'}}>
+
+                <br /><br />
+
                 <h2 className='create-listing-form-title'>{title}</h2>
+
                 <Stepper activeStep={ success ? steps.length : steps.indexOf(activeStep)} orientation="vertical">
                     {steps.map((step, index) => (
                         <Step key={index}>

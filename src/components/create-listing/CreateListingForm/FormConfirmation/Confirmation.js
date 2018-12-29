@@ -12,7 +12,7 @@ export class Confirmation extends React.Component {
                 <table className='table table-bordered mb-0'>
                     <tbody className='tbody-default'>
                         <tr>
-                            <td>Marketing Type </td>
+                            <td>Content Type </td>
                             <td>{adFormat}</td>
                         </tr>
                         <tr>

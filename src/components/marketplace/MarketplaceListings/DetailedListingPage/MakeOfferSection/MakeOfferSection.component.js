@@ -53,7 +53,7 @@ class MakeOfferSection extends Component {
                     <div className='buy-section'>
                         { isOwner ? (
                             <OverlayTrigger placement="top" overlay={<Tooltip id="offer">This is your own listing.</Tooltip>}>
-                                <Button className='buy-button' variant='outlined'>Make Offer</Button>
+                                <Button className='buy-button' variant='outlined'>Make an Offer</Button>
                             </OverlayTrigger>
                         ) : (
                             <Button

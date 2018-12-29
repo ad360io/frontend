@@ -6,36 +6,55 @@ import React from 'react';
 Local CSS
 */
 import './KeywordFilter.component.css';
-import { keywordFilterCss } from "./KeywordFilter.style";
 
 
 class KeywordFilter extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            value: ''
+            searchKeyword: ''
         }
     }
 
+    // onChangeKeywordEntry = (e) => {
+    //     this.setState({searchKeyword: e.target.value});
+    // }
+
     render() {
-        let { value } = this.state;
-        let { onChange } = this.props;
+        let { searchKeyword } = this.state;
+        const { onChange } = this.props;
+
+        // return (
+        //     <form className="keyword-search-box" onSubmit={onChange}>
+        //         <input
+        //             type="text"
+        //             value={searchKeyword}
+        //             onChange={this.onChangeKeywordEntry}
+        //         />
+        //         <button
+        //             className="search-btn"
+        //             type="submit"
+        //         >
+        //             <i className="material-icons">search</i>
+        //         </button>
+        //     </form>
+        // );
 
         return (
-            <div className={keywordFilterCss}>
+            <div className="keyword-search-box">
                 <input
                     type="text"
-                    value={value}
-                    onChange={(e) => this.setState({value: e.target.value})}
+                    value={searchKeyword}
+                    onChange={(e) => this.setState({searchKeyword: e.target.value})}
                 />
                 <button
                     className="search-btn"
-                    onClick={() => onChange(value)}
+                    onClick={() => onChange(searchKeyword)}
                 >
                     <i className="material-icons">search</i>
                 </button>
             </div>
-        )
+        );
     }
 }
 

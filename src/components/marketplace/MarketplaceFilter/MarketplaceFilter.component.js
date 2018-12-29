@@ -138,17 +138,22 @@ class MarketplaceFilter extends Component {
 
                     <br /><br />
 
-                    <div>
-                        <h4 className='filter-title'>Max Purchase</h4>
-                        <PurchaseRangeSelector
-                            {...{
-                                filters,
-                                onChange: (budget) => onChange({...filters, budget})
-                            }}
-                        />
-                    </div>
 
-                    <br />
+                    {/* Only show Max Purchase/Price slider for Advertisers until Price is added for Request listings */}
+                    { this.props.modeFilter === 'Advertiser' && (
+                        <div>
+                            <h4 className='filter-title'>Max Purchase</h4>
+                            <PurchaseRangeSelector
+                                {...{
+                                    filters,
+                                    onChange: (budget) => onChange({...filters, budget})
+                                }}
+                            />
+
+                            <br />
+                        </div>
+                    )}
+
 
                     <div>
                         <h4 className='filter-title' style={{ textAlign: 'left', marginLeft: '25px' }}>Sort By</h4>

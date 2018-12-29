@@ -42,7 +42,13 @@ export class DetailedContentSpaceListing extends React.Component {
                     issue: ''
                 })
             }
+        } else {
+            alert('You need to set up your wallet before you can buy listings.');
         }
+
+        // if(_walletBalance) {
+        //     this.makeContract();
+        // }
     };
 
     makeContract = async () => {
@@ -142,8 +148,8 @@ export class DetailedContentSpaceListing extends React.Component {
                     <div className='detailed-listing-action-section'>
                         {/* <a className='detailed-listing-action'>Save this listing</a>
                         <Divider /> */}
-                        <a className='detailed-listing-action'>Add to watch list</a>
-                        <Divider />
+                        {/* <a className='detailed-listing-action'>Add to watch list</a>
+                        <Divider /> */}
                     </div>
                 </div>
 
@@ -210,10 +216,10 @@ export class DetailedContentSpaceListing extends React.Component {
                         </CardContent>
                     </Card>
                     <div className='detailed-listing-action-section'>
-                        <a className='detailed-listing-action'>Add publisher to favorites</a>
-                        <Divider />
-                        <a className='detailed-listing-action'>Contact this publisher</a>
-                        <Divider />
+                        {/* <a className='detailed-listing-action'>Add publisher to favorites</a>
+                        <Divider /> */}
+                        {/* <a className='detailed-listing-action'>Contact this publisher</a>
+                        <Divider /> */}
                     </div>
                 </div>
             </div>
