@@ -49,7 +49,7 @@ const PublisherFormConfirmation = ({ fields, currencyFilter }) => (
         <table className='table table-bordered mb-0'>
             <tbody className='tbody-default'>
                 <tr>
-                    <td>Content Format</td>
+                    <td>Content Type</td>
                     <td>{fields.adFormat}</td>
                 </tr>
                 <tr>
