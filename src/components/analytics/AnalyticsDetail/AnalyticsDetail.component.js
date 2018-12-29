@@ -57,18 +57,18 @@ const DetailStat = ({ stat, contracts, this_ }) => (
                                     <h4 className='detail-stat-title'>{contract.name}</h4>
 
                                     <h5 className='today-label'>Start Date</h5>
-                                    <h2 className='today-number'>{contract.start_date.split('T')[0]}</h2>
+                                    <h3 className='today-number'>{contract.start_date.split('T')[0]}</h3>
                                     <h6 className='today-stat-label'>&nbsp;</h6>
 
                                     <h5 className='week-label'>End Date</h5>
-                                    <h2 className='week-number'>{contract.end_date.split('T')[0]}</h2>
+                                    <h3 className='week-number'>{contract.end_date.split('T')[0]}</h3>
                                     <h6 className='week-stat-label'>&nbsp;</h6>
 
                                     <h5 className='advertiser-label'>Advertiser</h5>
-                                    <h5 className='advertiser-name'>{contract.advertiser_name}</h5>
+                                    <h4 className='advertiser-name'>{contract.advertiser_name}</h4>
 
                                     <h5 className='publisher-label'>Publisher</h5>
-                                    <h5 className='publisher-name'>{contract.publisher_name}</h5>
+                                    <h4 className='publisher-name'>{contract.publisher_name}</h4>
                                 </div>
 
                                 {/* <div className='detail-stat-chart'>
@@ -79,7 +79,7 @@ const DetailStat = ({ stat, contracts, this_ }) => (
                                     <h4 className='detail-stat-title'>&nbsp;</h4>
 
                                     <h5 className='today-label'>Revenue</h5>
-                                    <h2 className='today-number'>{contract.payout_cap}</h2>
+                                    <h2 className='today-number'>{contract.payout_cap} <span style={{fontSize: '24px'}}>{contract.currency}</span></h2>
                                     <h6 className='today-stat-label'>&nbsp;</h6>
 
                                     <h5 className='week-label'>&nbsp;</h5>

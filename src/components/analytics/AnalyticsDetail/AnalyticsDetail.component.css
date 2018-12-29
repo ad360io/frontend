@@ -142,7 +142,6 @@
     margin: 0;
     color: rgb(56, 0, 56);
     padding-bottom: 32px;
-    font-size: 16px;
 }
 
 .publisher-name {
@@ -151,7 +150,6 @@
     grid-area: pubname;
     justify-self: start;
     margin: 0;
-    font-size: 16px;
 }
 
 .detail-stat-info {
