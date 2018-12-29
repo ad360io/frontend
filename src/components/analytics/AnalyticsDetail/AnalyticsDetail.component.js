@@ -47,26 +47,50 @@ const DetailStat = ({ stat, contracts, this_ }) => (
                 if (this_.props.profile.name === contract.advertiser_name || this_.props.profile.name === contract.publisher_name || this_.props.profile.nickname === contract.advertiser_name || this_.props.profile.nickname === contract.publisher_name) {
 
                     this_.num_matching_current_user += 1;
-                    console.log(this_.num_matching_current_user);
+
+                    console.log(contract);
 
                     return (
                         <div key={'dashboard-detail' + i}>
                             <div className='detail-stat-flex-container' >
                                 <div className='detail-stat-info'>
                                     <h4 className='detail-stat-title'>{contract.name}</h4>
-                                    <h5 className='today-label'>Today</h5>
-                                    <h2 className='today-number'>{getRandomInt(0, 100)}</h2>
-                                    <h6 className='today-stat-label'>{stat.toUpperCase().slice(0, 3) + '\'s'}</h6>
-                                    <h5 className='week-label'>This Week</h5>
-                                    <h2 className='week-number'>{getRandomInt(101, 2000)}</h2>
-                                    <h6 className='week-stat-label'>{stat.toUpperCase().slice(0, 3) + '\'s'}</h6>
-                                    <h5 className='advertiser-label'>Adv.</h5>
+
+                                    <h5 className='today-label'>Start Date</h5>
+                                    <h2 className='today-number'>{contract.start_date.split('T')[0]}</h2>
+                                    <h6 className='today-stat-label'>&nbsp;</h6>
+
+                                    <h5 className='week-label'>End Date</h5>
+                                    <h2 className='week-number'>{contract.end_date.split('T')[0]}</h2>
+                                    <h6 className='week-stat-label'>&nbsp;</h6>
+
+                                    <h5 className='advertiser-label'>Advertiser</h5>
                                     <h5 className='advertiser-name'>{contract.advertiser_name}</h5>
-                                    <h5 className='publisher-label'>Pub.</h5>
+
+                                    <h5 className='publisher-label'>Publisher</h5>
                                     <h5 className='publisher-name'>{contract.publisher_name}</h5>
                                 </div>
-                                <div className='detail-stat-chart'>
+
+                                {/* <div className='detail-stat-chart'>
                                     <DashboardLineChart contractTitle={`${contract.name} ${stat}s`} dataset={getRandomDataset(100, 230)} />
+                                </div> */}
+
+                                <div className='detail-stat-info'>
+                                    <h4 className='detail-stat-title'>&nbsp;</h4>
+
+                                    <h5 className='today-label'>Revenue</h5>
+                                    <h2 className='today-number'>{contract.payout_cap}</h2>
+                                    <h6 className='today-stat-label'>&nbsp;</h6>
+
+                                    <h5 className='week-label'>&nbsp;</h5>
+                                    <h2 className='week-number'>&nbsp;</h2>
+                                    <h6 className='week-stat-label'>&nbsp;</h6>
+
+                                    <h5 className='advertiser-label'>&nbsp;</h5>
+                                    <h5 className='advertiser-name'>&nbsp;</h5>
+
+                                    <h5 className='publisher-label'>&nbsp;</h5>
+                                    <h5 className='publisher-name'>&nbsp;</h5>
                                 </div>
                             </div>
                         </div>

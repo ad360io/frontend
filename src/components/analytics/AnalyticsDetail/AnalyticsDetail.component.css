@@ -76,6 +76,7 @@
     padding-top: 32px;
     margin: 0;
     padding-bottom: 12px;
+    overflow: visible;
 }
 
 .today-label {
@@ -141,6 +142,7 @@
     margin: 0;
     color: rgb(56, 0, 56);
     padding-bottom: 32px;
+    font-size: 16px;
 }
 
 .publisher-name {
@@ -149,15 +151,17 @@
     grid-area: pubname;
     justify-self: start;
     margin: 0;
+    font-size: 16px;
 }
 
 .detail-stat-info {
     margin-left: 10vw;
     display: grid;
-    grid-template-columns: 2vw 80px 80px 80px 80px;
+    grid-template-columns: 2vw 120px 120px 120px 120px;
     grid-template-rows: 19px, 19px, 19px, 19px, 19px, 19px, 19px;
     justify-items: stretch;
     grid-template-areas: ". title title title title" ". today today week week" ". tonum tonum wnum wnum" ". tonum tonum wnum wnum" ". .  stat  .  stat2" ". advlb advlb publb publb" ". advname advname pubname pubname";
+    /*overflow: visible;*/
 }
 
 .dashboard-detail-empty {
