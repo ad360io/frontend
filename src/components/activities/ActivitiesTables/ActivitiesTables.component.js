@@ -93,7 +93,7 @@ class ActivitiesTables extends Component {
                 condition: modeFilter === "Advertiser"
             },
             {
-                title: "Payments",
+                title: "Invoices",
                 render: () => <Invoice isPublisher isPayment/>,
                 condition: modeFilter !== "Advertiser"
             },

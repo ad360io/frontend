@@ -96,6 +96,7 @@ class OfferList extends Component {
                             <thead className='thead-default'>
                             <tr>
                                 <th>Offer Detail</th>
+                                <th>Status</th>
                                 <th style={{ width: '25%', textAlign: 'center' }}>Action</th>
                             </tr>
                             </thead>
@@ -283,6 +284,9 @@ class OfferRenderer extends Component {
                             <a style={{cursor: 'pointer'}}> {this.props.offer.topic} ({this.props.offer.currency})
                                 - {this.props.offer.sender_name}</a>
                         </OverlayTrigger>
+                    </td>
+                    <td>
+                        <div>Sent offers in waiting.</div>
                     </td>
                     <td style={{textAlign: 'center'}}>
                         {

@@ -54,7 +54,7 @@ class Invoice extends Component {
 
         let queryParams = orderBy ? { order: `${orderBy.value}.${orderBy.asc ? `asc` : `desc`}`} : {};
 
-        let resp = await getJson(`/my_invoices`, { queryParams });
+        let resp = await getJson(`/my_invoices1`, { queryParams });
 
         this.setState({invoices: resp.data});
     };
@@ -66,6 +66,7 @@ class Invoice extends Component {
         if( invoices == null ) return <LoadingPanel/>;
 
         let filterInvoices = invoices
+            .filter((inv) => isPublisher ? inv.contentlisting !== null : inv.contentlisting == null)
             .filter((inv) => inv.paid)
             .filter((inv) => (new Date(inv.due_date).getTime() - new Date().getTime()) > 0);
 
@@ -73,7 +74,7 @@ class Invoice extends Component {
             <div className='active-listing-container'>
                 <div className='table-responsive' style={{ height: '100%', margin: '2% 0 2% 0', minHeight: '320px' }}>
                     {(filterInvoices.length === 0)
-                        ? (<p style={{ textAlign: 'center' }}>You currently have no {isPayment ? `payments` : `filterInvoices`}.</p>)
+                        ? (<p style={{ textAlign: 'center' }}>You currently have no invoices.</p>)
                         : (<table className='table table-bordered mb-0'>
                             <thead className='thead-default'>
                             <tr>
@@ -115,7 +116,7 @@ class Invoice extends Component {
                                         >
                                             {invoice.listing_title}
                                         </td>
-                                        {isPublisher ? (<td>{invoice.publisher_name}</td>) : (<td>{invoice.advertiser_name}</td>)}
+                                        {isPublisher ? (<td>{invoice.advertiser_name}</td>) : (<td>{invoice.publisher_name}</td>)}
                                         <td>{invoice.amount} {invoice.currency}</td>
                                         <td>{invoice.date_paid ? invoice.date_paid.split('T')[0] : ''}</td>
                                         {!isPayment &&  <td>{invoice.due_date.split('T')[0]}</td>}
