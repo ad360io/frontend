@@ -94,7 +94,7 @@ class RequiredFormField extends React.Component {
                         </p>
                         <FormControl
                             value={price}
-                            type='number' min='1' max='100000' step='1' onChange={(e) => this.setState({price: e.target.value})}
+                            type='number' min='1' step='1' onChange={(e) => this.setState({price: e.target.value})}
                             style={{width: '49%', float: 'left'}}
                         />
                         <FormControl componentClass='select' style={{width: '49%', float: 'right', display: 'none'}} required>

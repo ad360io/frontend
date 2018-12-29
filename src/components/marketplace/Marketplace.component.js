@@ -1,21 +1,15 @@
 /*
 Core Libs
 */
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import isEmpty from 'lodash/isEmpty';
 import './Marketplace.component.css';
-
 /*
 Children Components
 */
 import MarketplaceFilter from './MarketplaceFilter/MarketplaceFilter.component';
 import MarketplaceListings from './MarketplaceListings/MarketplaceListings.component';
-import Footer from '../footer/Footer.component';
-
-import {marketplaceApi} from "../../common/api/services/marketplace-api";
-
-
 /**
  * Marketplace Component
  *      displays accurate listings base on filters
@@ -70,7 +64,7 @@ class Marketplace extends Component {
                 }
             ),
             currency: `eq.${currencyFilter}`,
-            price: `lte.${budget * 1000}`,
+            // price: `lte.${budget * 1000}`,
             isactive: `is.true`
         }
     };
@@ -78,9 +72,6 @@ class Marketplace extends Component {
     getData = async() => {
         const { allApis : {getJson} } = this.props;
         const { currentPageNum } = this.state;
-
-        let r1 = await getJson(`/account`);
-        console.log(r1);
 
         let queryParams = this.getParamQuery();
 
