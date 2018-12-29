@@ -61,6 +61,7 @@ class MakeOfferSection extends Component {
                                 className='buy-button'
                                 variant='outlined'
                                 color='primary'
+                                style={{backgroundColor: '#fefefe'}}
                                 disabled={modeFilter !== "Publisher"}
                             >
                                 Make Offer

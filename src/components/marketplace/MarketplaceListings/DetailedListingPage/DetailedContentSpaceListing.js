@@ -33,7 +33,8 @@ export class DetailedContentSpaceListing extends React.Component {
         let endDate = new Date(item.expiration_date);
 
         if(_walletBalance) {
-            let newBalance = _walletBalance - (item.price * DateUtils.dateDiffInDays(startDate, endDate));
+            // let newBalance = _walletBalance - (item.price * DateUtils.dateDiffInDays(startDate, endDate));
+            let newBalance = _walletBalance - (item.price);
 
             if(newBalance >= 0) {
                 this.makeContract();
@@ -64,7 +65,8 @@ export class DetailedContentSpaceListing extends React.Component {
             start_date: item.date_added,
             end_date: item.expiration_date,
             currency: item.currency,
-            payout_cap: item.price * DateUtils.dateDiffInDays(startDate, endDate),
+            // payout_cap: item.price * DateUtils.dateDiffInDays(startDate, endDate),
+            payout_cap: item.price,
             contentspacelisting: item.id,
             contentlisting: null,
             status: "Pending"
@@ -122,7 +124,8 @@ export class DetailedContentSpaceListing extends React.Component {
         let endDate = new Date(item.expiration_date);
 
         return {
-            amount: item.price * DateUtils.dateDiffInDays(startDate, endDate),
+            // amount: item.price * DateUtils.dateDiffInDays(startDate, endDate),
+            amount: item.price,
             days: DateUtils.dateDiffInDays(startDate, endDate)
         };
     };
@@ -183,13 +186,14 @@ export class DetailedContentSpaceListing extends React.Component {
                                     <div className='buy-btn-section'>
                                         { isOwner ? (
                                             <OverlayTrigger placement="top" overlay={<Tooltip id="buy-it">This is your own listing.</Tooltip>}>
-                                                <Button className='buy-button' variant='outlined'>Buy It Now!</Button>
+                                                <Button className='buy-button' variant='outlined' style={{backgroundColor: '#fefefe'}}>Buy It Now!</Button>
                                             </OverlayTrigger>
                                         ) : (
                                             <Button className='buy-button'
                                                     onClick={() => this.buyItem()}
                                                     variant='outlined'
                                                     color='primary'
+                                                    style={{backgroundColor: '#fefefe'}}
                                                     disabled={processing || issue.length > 0 || emailVerified === false || modeFilter !== "Advertiser"}
                                             >
                                                 {

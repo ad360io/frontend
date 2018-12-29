@@ -253,7 +253,7 @@ class OfferRenderer extends Component {
                 <Divider />
                 {/* <strong>Pricing</strong> {this.props.offer.price} {this.props.offer.currency} per day<br /> */}
                 {/* <strong>Total</strong> {this.props.offer.price * dateDiffInDays(startDate, endDate)} {this.props.offer.currency} */}
-                <strong>Price</strong> {this.props.offer.price * dateDiffInDays(startDate, endDate)} {this.props.offer.currency}
+                <strong>Price</strong> {this.props.offer.price} {this.props.offer.currency}
                 <Divider />
                 <strong>Message</strong><br />
                 {this.props.offer.message}
