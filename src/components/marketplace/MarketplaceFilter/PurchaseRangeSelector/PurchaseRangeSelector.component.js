@@ -42,7 +42,7 @@ class PurchaseRangeSelector extends React.Component {
                         onDragEnd={() => onChange(value)}
                         value={value}
                         min={0.1}
-                        max={10}
+                        max={100}
                         step={0.1}/>
                 <div className='budget-value'> {(value * 1000).toLocaleString()} {currencyFilter}</div>
             </div>
