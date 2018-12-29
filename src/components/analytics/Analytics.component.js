@@ -102,7 +102,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    const TestServerURL = "https://marketplacedb.qchain.co/active_contract_view";
+    const TestServerURL = "https://marketplacedb.qchain.co/my_active_contract_view";
     return {
         onStartLoadData: () => {
             const config = {
