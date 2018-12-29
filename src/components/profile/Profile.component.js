@@ -145,6 +145,7 @@ class Profile extends Component {
         // }
 
 
+
         return (
             <div className='profile-container'>
                 <div className="profile-header-timeline"/>
