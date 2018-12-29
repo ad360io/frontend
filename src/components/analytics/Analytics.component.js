@@ -96,7 +96,8 @@ const mapStateToProps = (state) => {
         modeFilter: state.MenuBarFilterReducer.modeFilter,
         currencyFilter: state.MenuBarFilterReducer.currencyFilter,
         fetched: state.DashboardDataReducer.fetched,
-        hasError: state.DashboardDataReducer.hasError
+        hasError: state.DashboardDataReducer.hasError,
+        profile: state.ProfileReducer.profile,
     }
 }
 

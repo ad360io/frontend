@@ -10,7 +10,7 @@ export class MakeOfferSectionModal extends React.Component {
         super(props);
         this.state = {
             isShow: false,
-            offerAmount: -1,
+            offerAmount: 1,
             offerMessage: '',
             offerDateRange: {
                 from: undefined,

@@ -23,7 +23,7 @@ class AnalyticsDetail extends React.Component {
             {
                 (filteredContracts.length === 0
                     ? <NoData />
-                    : <DetailStat stat={this.props.activeStat} contracts={filteredContracts} />
+                    : <DetailStat stat={this.props.activeStat} contracts={filteredContracts} this_={this} />
                 )
             }
         </div>
@@ -32,37 +32,48 @@ class AnalyticsDetail extends React.Component {
 
 const NoData = () => (
     <div className='empty-stat-container'>
-        <p>You do not have any active contracts that match the filter.</p>
         <img className='dashboard-detail-empty' src={PirateBird} width='200' alt='dashboard empty state' />
-        <p>Where's your contracts?<br /> Move your fingertip and start working!</p>
+        <p>You do not have any active contracts that match the filter.</p>
     </div>
 )
 
-const DetailStat = ({ stat, contracts }) => (
+const DetailStat = ({ stat, contracts, this_ }) => (
     <div className='detail-stat'>
 
         {
             contracts.map((contract, i) => {
-                return (<div key={'dashboard-detail' + i}>
-                    <div className='detail-stat-flex-container' >
-                        <div className='detail-stat-info'>
-                            <h4 className='detail-stat-title'>{contract.name}</h4>
-                            <h5 className='today-label'>Today</h5>
-                            <h2 className='today-number'>{getRandomInt(0, 100)}</h2>
-                            <h6 className='today-stat-label'>{stat.toUpperCase().slice(0, 3) + '\'s'}</h6>
-                            <h5 className='week-label'>This Week</h5>
-                            <h2 className='week-number'>{getRandomInt(101, 2000)}</h2>
-                            <h6 className='week-stat-label'>{stat.toUpperCase().slice(0, 3) + '\'s'}</h6>
-                            <h5 className='advertiser-label'>Adv.</h5>
-                            <h5 className='advertiser-name'>{contract.advertiser_name}</h5>
-                            <h5 className='publisher-label'>Pub.</h5>
-                            <h5 className='publisher-name'>{contract.publisher_name}</h5>
+                if (this_.props.profile.name === contract.advertiser_name || this_.props.profile.name === contract.publisher_name || this_.props.profile.nickname === contract.advertiser_name || this_.props.profile.nickname === contract.publisher_name) {
+
+                    return (
+                        <div key={'dashboard-detail' + i}>
+                            <div className='detail-stat-flex-container' >
+                                <div className='detail-stat-info'>
+                                    <h4 className='detail-stat-title'>{contract.name}</h4>
+                                    <h5 className='today-label'>Today</h5>
+                                    <h2 className='today-number'>{getRandomInt(0, 100)}</h2>
+                                    <h6 className='today-stat-label'>{stat.toUpperCase().slice(0, 3) + '\'s'}</h6>
+                                    <h5 className='week-label'>This Week</h5>
+                                    <h2 className='week-number'>{getRandomInt(101, 2000)}</h2>
+                                    <h6 className='week-stat-label'>{stat.toUpperCase().slice(0, 3) + '\'s'}</h6>
+                                    <h5 className='advertiser-label'>Adv.</h5>
+                                    <h5 className='advertiser-name'>{contract.advertiser_name}</h5>
+                                    <h5 className='publisher-label'>Pub.</h5>
+                                    <h5 className='publisher-name'>{contract.publisher_name}</h5>
+                                </div>
+                                <div className='detail-stat-chart'>
+                                    <DashboardLineChart contractTitle={`${contract.name} ${stat}s`} dataset={getRandomDataset(100, 230)} />
+                                </div>
+                            </div>
                         </div>
-                        <div className='detail-stat-chart'>
-                            <DashboardLineChart contractTitle={`${contract.name} ${stat}s`} dataset={getRandomDataset(100, 230)} />
+                    )
+                } else {
+                    return (
+                        <div>
+                            <img className='dashboard-detail-empty' src={PirateBird} width='200' alt='dashboard empty state' />
+                            <p>You don't have any contracts yet.</p>
                         </div>
-                    </div>
-                </div>)
+                    )
+                }
             })
         }
 
@@ -85,7 +96,8 @@ const mapStateToProps = (state) => {
     return {
         activeStat: state.DashboardFilterReducer.activeStat,
         db: state.DashboardDataReducer.db,
-        keywordFilter: state.DashboardFilterReducer.keyword
+        keywordFilter: state.DashboardFilterReducer.keyword,
+        profile: state.ProfileReducer.profile
     }
 }
 
