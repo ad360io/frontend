@@ -17,15 +17,18 @@ import './AvailabilityPicker.component.css';
 
 
 class AvailabilityPicker extends Component {
-
-
     static defaultProps = {
         numberOfMonths: 2
     };
 
     render() {
         const { from, to, onChange } = this.props;
-        const modifiers = { start: from, end: to };
+
+        const modifiers = {
+            after: new Date(),
+            disabled: { before: new Date() } ,
+            start: from, end: to
+        };
 
         return (
             <div className="date-range-container" style={{padding: '0 20%'}}>
@@ -34,7 +37,11 @@ class AvailabilityPicker extends Component {
                     numberOfMonths={this.props.numberOfMonths}
                     selectedDays={[from, { from, to }]}
                     modifiers={modifiers}
-                    onDayClick={(day) => onChange(DateUtils.addDayToRange(day, this.props))}
+                    fromMonth={new Date()}
+                    onDayClick={(day, { disabled }) => {
+                        if(disabled) return;
+                        onChange(DateUtils.addDayToRange(day, this.props));
+                    }}
                 />
 
                 <p className='selected-range-label' style={{display: 'none'}}>

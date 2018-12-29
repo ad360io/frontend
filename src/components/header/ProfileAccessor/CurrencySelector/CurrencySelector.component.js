@@ -19,18 +19,20 @@ import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 
 class CurrencySelector extends React.Component {
-    handleCurrencyClick = (currency) => {
-        const { patchUserMetadata } = this.props.auth;
-        let newUserMetadata = { currency };
-        patchUserMetadata(newUserMetadata, this.props.history);
-    }
+    // handleCurrencyClick = (currency) => {
+    //     const { patchUserMetadata } = this.props.auth;
+    //     let newUserMetadata = { currency };
+    //     patchUserMetadata(newUserMetadata, this.props.history);
+    // }
 
     render() {
+        const { onChangeCurrency } = this.props;
+
         return (
             <ButtonGroup bsSize='small' className='currency-selector'>
                 <Button
                     active={this.props.currencyFilter === 'XQC'}
-                    onClick={() => this.handleCurrencyClick('XQC')}
+                    onClick={() => onChangeCurrency('XQC')}
                     style={{ width: 65 }}
                 >
                     XQC
@@ -72,7 +74,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onClick: (currency) => {
+        onChangeCurrency: (currency) => {
             dispatch(setCurrency(currency))
         },
     }

@@ -18,32 +18,19 @@ import { setMode } from '../../../../actions/HeaderActions';
 
 
 class ModeSelector extends React.Component {
-
-    handleModeClick = (mode) => {
-        const { patchUserMetadata } = this.props.auth;
-        let newMetadata = { mode };
-        patchUserMetadata(newMetadata, this.props.history);
-
-        // if (window.location.pathname.split('/')[1] !== 'listing') {
-        //     window.location.reload();
-        // } else {
-        //     window.location.pathname = '/marketplace';
-        // }
-    }
-
     render() {
-
+        const { onModeClick } = this.props;
         return <ButtonGroup bsSize='small' className='mode-selector'>
             <Button
                 active={this.props.modeFilter === 'Advertiser'}
-                onClick={() => this.handleModeClick('Advertiser')}
+                onClick={() => onModeClick('Advertiser')}
                 style={{ width: 98 }}
             >
                 an advertiser
             </Button>
             <Button
                 active={this.props.modeFilter === 'Publisher'}
-                onClick={() => this.handleModeClick('Publisher')}
+                onClick={() => onModeClick('Publisher')}
                 style={{ width: 98 }}
             >
                 a publisher

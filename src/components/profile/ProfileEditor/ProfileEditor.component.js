@@ -149,8 +149,6 @@ class ProfileEditor extends Component {
             eth_address: this.state.eth_address,
         };
 
-        // TODO: if (this.state.nem_account_changed === true) <then update Postgres with new {this.state.nem_address}}>
-
         updateUserMetadata(newMetadata).then(() => {
             this.setState({updated_success: true}, () => {
                 setTimeout(() => this.handleHideModal(), 2 * 1000)
