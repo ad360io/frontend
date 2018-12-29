@@ -350,7 +350,7 @@ class ProfileEditor extends Component {
                 <form id="NEM_password_input" style={{ 'display': 'none', 'fontSize': '14px', 'marginTop': '24px' }} onSubmit={this.handleNemPasswordSubmit}>
                     <label>
                         Password:&nbsp;&nbsp;
-                        <input type="text" style={{ 'fontWeight': 'normal', 'borderRadius': '3px' }} value={this.state.NEM_password} onChange={this.handleNemPasswordChange} />
+                        <input type="password" style={{ 'fontWeight': 'normal', 'borderRadius': '3px' }} value={this.state.NEM_password} onChange={this.handleNemPasswordChange} />
                     </label>
 
                     <input type="submit" value="Submit" />
