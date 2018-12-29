@@ -115,6 +115,9 @@ class ActiveRequest extends Component {
 
         //TODO: delete listing
         // await delJson(`/listing`, { queryParams: {id: `eq.${listing.id}`} });
+
+        // quick fix to reload page after deleting a listing to refresh the view
+        window.location.reload();
     };
 
 
