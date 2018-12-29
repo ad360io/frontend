@@ -78,7 +78,7 @@ class CreateListingWizard extends React.Component {
 
     render () {
         const { activeStep, formInfo } = this.state;
-        const { classes, steps, success, loading, onReset, title, modeFilter, currencyFilter} = this.props;
+        const { classes, steps, success, error, loading, onReset, title, modeFilter, currencyFilter} = this.props;
 
         return (
             <div className={classes.root + ' create-listing-form-container'} style={{marginTop: '-50px'}}>
@@ -151,10 +151,10 @@ class CreateListingWizard extends React.Component {
 
                 {success && (
                     <Fragment>
-                        <Alert bsStyle='success'>Congratulations! Your listing is successfully created.</Alert>
+                        <Alert bsStyle='success'>Congratulations! Your listing is {!error ? `successfully` : `failed` } created.</Alert>
 
                         <div>
-                            Are you ready to create another listing?
+                            {!error? `Are you ready to create another listing?` : `Are you want to try create another listing again?`}
                             <Button
                                 variant='outlined'
                                 onClick={() => this.setState({ activeStep: steps[0]}, () => onReset())}

@@ -16,6 +16,7 @@ import OptionalFormFields from "./CreateListingForm/OptionalFormFields/OptionalF
 import FormConfirmation from './CreateListingForm/FormConfirmation/FormConfirmation.component';
 import {Confirmation} from "./CreateListingForm/FormConfirmation/Confirmation";
 import {connect} from "react-redux";
+import {NotificationService} from "../../common/notification-service";
 /**
  * Create Listing Component
  */
@@ -66,6 +67,7 @@ class CreateListing extends Component {
         let expirationDate = new Date();  // today
         let numberOfDaysToAdd = 14;       // number of days to delay expiration
         // For advertisers requests, make the listing expire in 2 weeks (14 days) from current day.
+
         expirationDate.setDate(expirationDate.getDate() + numberOfDaysToAdd);
 
         let payload = {
@@ -99,22 +101,26 @@ class CreateListing extends Component {
         this.setState(({loading: true}));
 
         let resp = await postJson(`/listing`, {payload});
+        if(!resp.error) {
+            NotificationService.openNotification('success', {message: 'Successfully Created!'})
+        } else {
+            NotificationService.openNotification('error', {message: 'Failed Created!'})
+        }
 
-        this.setState(({success: true, loading: false}))
+        this.setState(({success: true, error: !!resp.error, loading: false}));
     };
 
     render() {
-        const { success, loading } = this.state;
+        const { success, loading, error } = this.state;
         const { modeFilter, currencyFilter } = this.props;
 
         return (
             <div style={{ 'position': 'relative' }}>
                 <div className='create-container'>
                     {/*<CreateListingForm />*/}
-
                     <CreateListingWizard
                         {...{
-                            modeFilter, currencyFilter,
+                            modeFilter, currencyFilter, error,
                             success, loading,
                             title: modeFilter === 'Advertiser' ? 'Request Content' : 'Create Content Listing',
                             steps: this.steps,
