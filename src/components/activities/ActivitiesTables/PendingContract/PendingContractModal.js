@@ -26,7 +26,7 @@ export class PendingContractModal extends React.Component {
             open: false
         }
 
-        this.endpoint = nem.model.objects.create('endpoint')('https://nis.qchain.co', nem.model.nodes.defaultPort);
+        this.endpoint = nem.model.objects.create('endpoint')('https://nis.qchain.co', 443);
 
 
     }
