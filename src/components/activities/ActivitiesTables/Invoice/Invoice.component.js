@@ -65,65 +65,66 @@ class Invoice extends Component {
 
         if( invoices == null ) return <LoadingPanel/>;
 
+        let filterInvoices = invoices
+            .filter((inv) => inv.paid)
+            .filter((inv) => (new Date(inv.due_date).getTime() - new Date().getTime()) > 0);
+
         return (
             <div className='active-listing-container'>
                 <div className='table-responsive' style={{ height: '100%', margin: '2% 0 2% 0', minHeight: '320px' }}>
-                    {(invoices.length === 0)
-                        ? (<p style={{ textAlign: 'center' }}>You currently have no invoicess.</p>)
-                        :(<table className='table table-bordered mb-0'>
-                                <thead className='thead-default'>
-                                <tr>
+                    {(filterInvoices.length === 0)
+                        ? (<p style={{ textAlign: 'center' }}>You currently have no {isPayment ? `payments` : `filterInvoices`}.</p>)
+                        : (<table className='table table-bordered mb-0'>
+                            <thead className='thead-default'>
+                            <tr>
+                                <th
+                                    className='invoice-th'
+                                    onClick={() => this.toggleSort('listing_title')}>Listing Title</th>
+                                { isPublisher ? (
                                     <th
                                         className='invoice-th'
-                                        onClick={() => this.toggleSort('listing_title')}>Listing Title</th>
-                                    { isPublisher ? (
-                                        <th
-                                            className='invoice-th'
-                                            onClick={() => this.toggleSort('advertiser_name')}>Advertiser</th>
-                                    ): (
-                                        <th
-                                            className='invoice-th'
-                                            onClick={() => this.toggleSort('publisher_name')}>Publisher</th>
-                                    )}
+                                        onClick={() => this.toggleSort('advertiser_name')}>Advertiser</th>
+                                ): (
                                     <th
                                         className='invoice-th'
-                                        onClick={() => this.toggleSort('amount')}>Amount</th>
+                                        onClick={() => this.toggleSort('publisher_name')}>Publisher</th>
+                                )}
+                                <th
+                                    className='invoice-th'
+                                    onClick={() => this.toggleSort('amount')}>Amount</th>
+                                <th
+                                    className='invoice-th'
+                                    onClick={() => {}}>Date Paid</th>
+                                { !isPayment && (
                                     <th
                                         className='invoice-th'
-                                        onClick={() => {}}>Date Paid</th>
-                                    { !isPayment && (
-                                        <th
-                                            className='invoice-th'
-                                            onClick={() => {}}>Due Date</th>
-                                    )}
-                                    <th
-                                        className='invoice-th'
-                                        onClick={() => {}}>Transaction Hash
-                                    </th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                { invoices
-                                    .filter((inv) => inv.paid)
-                                    .filter((inv) => (new Date(inv.due_date).getTime() - new Date().getTime()) > 0)
-                                    .map((invoice, i) => (
-                                        <tr key={'invoices' + i}>
-                                            <td
-                                                onClick={() => invoiceModal.openModal(invoice)}
-                                                style={{ color: '#3366BB', cursor: 'pointer' }}
-                                            >
-                                                {invoice.listing_title}
-                                            </td>
-                                            {isPublisher ? (<td>{invoice.publisher_name}</td>) : (<td>{invoice.advertiser_name}</td>)}
-                                            <td>{invoice.amount} {invoice.currency}</td>
-                                            <td>{invoice.date_paid ? invoice.date_paid.split('T')[0] : ''}</td>
-                                            {!isPayment &&  <td>{invoice.due_date.split('T')[0]}</td>}
-                                            <td>{invoice.tx_hash}</td>
-                                        </tr>
-                                    ))
-                                }
-                                </tbody>
-                            </table>
+                                        onClick={() => {}}>Due Date</th>
+                                )}
+                                <th
+                                    className='invoice-th'
+                                    onClick={() => {}}>Transaction Hash
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            { filterInvoices.map((invoice, i) => (
+                                    <tr key={'invoices' + i}>
+                                        <td
+                                            onClick={() => invoiceModal.openModal(invoice)}
+                                            style={{ color: '#3366BB', cursor: 'pointer' }}
+                                        >
+                                            {invoice.listing_title}
+                                        </td>
+                                        {isPublisher ? (<td>{invoice.publisher_name}</td>) : (<td>{invoice.advertiser_name}</td>)}
+                                        <td>{invoice.amount} {invoice.currency}</td>
+                                        <td>{invoice.date_paid ? invoice.date_paid.split('T')[0] : ''}</td>
+                                        {!isPayment &&  <td>{invoice.due_date.split('T')[0]}</td>}
+                                        <td>{invoice.tx_hash}</td>
+                                    </tr>
+                                ))
+                            }
+                            </tbody>
+                        </table>
                         )
                     }
                 </div>
