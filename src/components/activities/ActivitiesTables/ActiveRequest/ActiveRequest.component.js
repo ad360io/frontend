@@ -137,7 +137,7 @@ class ActiveRequest extends Component {
                                     onClick={() => this.toggleSort('name')}>Content Listing Title</th>
                                 <th
                                     className='active-request-th'
-                                    onClick={() => this.toggleSort('ad_format')}>Content Format</th>
+                                    onClick={() => this.toggleSort('ad_format')}>Content Type</th>
                                 <th
                                     className='active-request-th'
                                     onClick={() => this.toggleSort('medium')}>Medium</th>
