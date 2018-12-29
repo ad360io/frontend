@@ -45,7 +45,7 @@ export class DetailedRequestListing extends React.Component {
                     <CardContent className='listing-details-text'>
 
                         <div className='details-text'>
-                            <p>Content Format: {item.ad_format} {item.classtype}</p>
+                            <p>Content Type: {item.ad_format} {item.classtype}</p>
 
                             <p>Content Medium: {item.medium}</p>
 

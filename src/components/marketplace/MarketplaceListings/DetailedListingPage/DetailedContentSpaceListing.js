@@ -162,9 +162,9 @@ export class DetailedContentSpaceListing extends React.Component {
 
                     <CardContent className='listing-details-text'>
                         <div className='details-text'>
-                            <p>Ad Format: {item.ad_format} {item.classtype}</p>
+                            <p>Content Type: {item.ad_format} {item.classtype}</p>
 
-                            <p>Marketing Medium: {item.medium}</p>
+                            <p>Content Medium: {item.medium}</p>
 
                             <p>Promotion Duration: {item.date_added.slice(0, 10)} to {item.expiration_date}</p>
                         </div>

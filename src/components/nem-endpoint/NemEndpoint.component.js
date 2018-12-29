@@ -79,7 +79,7 @@ class NemEndpoint extends Component {
 
 
     // decideTitle(listingSize) {
-    //     const listingType = (this.props.modeFilter === 'Advertiser' ? 'Content Spaces' : 'Contents');
+    //     const listingType = (this.props.modeFilter === 'Advertiser' ? 'Content Listings' : 'Contents');
     //     const isEmpty = (listingSize > 0 ? '' : 'No ')
     //     return isEmpty + listingType + ' Available';
     // }

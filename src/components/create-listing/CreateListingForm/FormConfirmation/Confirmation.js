@@ -16,7 +16,7 @@ export class Confirmation extends React.Component {
                             <td>{adFormat}</td>
                         </tr>
                         <tr>
-                            <td>Marketing Medium </td>
+                            <td>Content Medium </td>
                             <td>{mediumFormat}</td>
                         </tr>
                         <tr>

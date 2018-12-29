@@ -244,7 +244,7 @@ class OfferRenderer extends Component {
         let endDate = new Date(this.props.offer.end_date);
         return (
             <Popover title={this.props.offer.sender_name + ' sent you an offer!'} id={'popover' + this.props.offer.id}>
-                <strong>Ad Format</strong> {this.props.offer.ad_format} <br />
+                <strong>Content Type</strong> {this.props.offer.ad_format} <br />
                 <Divider />
                 <strong>Start Date</strong> {this.props.offer.start_date} <br />
                 <strong>End Date</strong> {this.props.offer.end_date} <br />

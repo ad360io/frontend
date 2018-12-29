@@ -107,7 +107,7 @@ class CreateListingWizard extends React.Component {
                                 <Functionize
                                     refState={(formInfo) => this.setState({formInfo})}
                                     render={({valid}) => (
-                                        <div className={classes.actionsContainer}>
+                                        <div className={classes.actionsContainer} style={{marginLeft: '2%'}}>
                                             {valid && (
                                                 <div>
                                                     { steps.indexOf(activeStep) !== 0 && (
@@ -134,7 +134,6 @@ class CreateListingWizard extends React.Component {
                                             {!valid && steps.indexOf(activeStep) === 0 && (
                                                 <Alert
                                                     bsStyle='danger'
-                                                    style={{marginLeft: '2%'}}
                                                 >
                                                     All information above is required to proceed to next step!
                                                 </Alert>

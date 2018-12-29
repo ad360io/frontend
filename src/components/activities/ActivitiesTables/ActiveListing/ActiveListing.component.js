@@ -96,10 +96,10 @@ class ActiveListing extends Component {
                                 <tr>
                                     <th
                                         className='active-listing-th'
-                                        onClick={() => this.toggleSort('name')}>Content Space Title</th>
+                                        onClick={() => this.toggleSort('name')}>Content Listings Title</th>
                                     <th
                                         className='active-listing-th'
-                                        onClick={() => this.toggleSort('ad_format')}>Ad Format</th>
+                                        onClick={() => this.toggleSort('ad_format')}>Content Type</th>
                                     <th
                                         className='active-listing-th'
                                         onClick={() => this.toggleSort('medium')}>Medium</th>
