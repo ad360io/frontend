@@ -55,9 +55,6 @@ export class DetailedContentSpaceListing extends React.Component {
     makeContract = async () => {
         const { allApis : { postJson }, item } = this.props;
 
-        let startDate = new Date(item.date_added);
-        let endDate = new Date(item.expiration_date);
-
         const payload = {
             name: item.name,
             advertiser: localStorage.getItem('role'),
@@ -107,14 +104,12 @@ export class DetailedContentSpaceListing extends React.Component {
             contract: contract.number,
             currency: contract.currency,
             amount: Number.parseFloat(contract.payout_cap),
-            due_date: contract.end_date,
+            due_date: contract.start_date,
             tx_hash: 'somehash',
             paid: false
         };
 
         let resp = await invoiceApi(postJson, {payload});
-
-        console.log('create invoice');
     };
 
     getPayoutCap = () => {
