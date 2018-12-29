@@ -48,7 +48,7 @@ export class AdFormatSelection extends React.Component {
 
         return (
              <div>
-                <div className='ad-format-selector-title'>Select Ad Format</div>
+                <div className='ad-format-selector-title'>Select Content Type</div>
                 {/*<SelectButtonGroup stringList={this.getMediumStringList()} />*/}
                 <ButtonGroup style={{ marginBottom: '25px' }} justified >
                     {
