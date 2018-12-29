@@ -159,12 +159,12 @@ class Profile extends Component {
                                 <br />
                             </Media.Heading>
 
-                            {this.getEmail()}
+                            {this.props.profile.email}
                             <br />
                             {
                                 (this.props.currencyFilter === 'EQC'
-                                    ? 'ETH address: ' + this.props.profile.eth_address
-                                    : 'NEM address: ' + this.props.profile.nem_address
+                                    ? (this.props.profile.eth_address && 'ETH address: ' + this.props.profile.eth_address)
+                                    : (this.props.profile.nem_address && 'NEM address: ' + this.props.profile.nem_address)
                                 )
                             }
                         </Media.Body>
