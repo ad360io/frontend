@@ -33,7 +33,7 @@ class Marketplace extends Component {
             total: 0,
             currentPageNum: 1,
             filters: {
-                budget: 7.5,
+                budget: 10.001,
                 adFormatFilter: 'Show All',
                 mediumFilter: '',
                 sortingType: 'Date Added',
