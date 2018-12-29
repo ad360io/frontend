@@ -16,6 +16,8 @@ class AnalyticsDetail extends React.Component {
         const KEYS_TO_FILTER = ['name', 'publisher_name', 'advertiser_name'];
         const filteredContracts = this.props.db.filter(createFilter(this.props.keywordFilter, KEYS_TO_FILTER));
 
+        this.num_matching_current_user = 0;
+
         return <div className='dashboard-detail-container'>
             {/* <p className='search-input-label'>Filter Through Contracts: </p> */}
             <SearchInput className='dashboard-detail-search-input' onChange={this.props.onKeywordChange} />
@@ -44,6 +46,9 @@ const DetailStat = ({ stat, contracts, this_ }) => (
             contracts.map((contract, i) => {
                 if (this_.props.profile.name === contract.advertiser_name || this_.props.profile.name === contract.publisher_name || this_.props.profile.nickname === contract.advertiser_name || this_.props.profile.nickname === contract.publisher_name) {
 
+                    this_.num_matching_current_user += 1;
+                    console.log(this_.num_matching_current_user);
+
                     return (
                         <div key={'dashboard-detail' + i}>
                             <div className='detail-stat-flex-container' >
@@ -66,16 +71,16 @@ const DetailStat = ({ stat, contracts, this_ }) => (
                             </div>
                         </div>
                     )
-                } else {
-                    return (
-                        <div>
-                            <img className='dashboard-detail-empty' src={PirateBird} width='200' alt='dashboard empty state' />
-                            <p>You don't have any contracts yet.</p>
-                        </div>
-                    )
                 }
             })
         }
+
+        {this_.num_matching_current_user === 0 && (
+            <div className='empty-stat-container'>
+                <img className='dashboard-detail-empty' src={PirateBird} width='200' alt='dashboard empty state' />
+                <p>You don't have any contracts yet.</p>
+            </div>
+        )}
 
     </div>
 )
