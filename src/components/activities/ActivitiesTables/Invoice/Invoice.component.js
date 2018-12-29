@@ -82,12 +82,16 @@ class Invoice extends Component {
                                     onClick={() => this.toggleSort('listing_title')}>Listing Title</th>
                                 { isPublisher ? (
                                     <th
+                                        // className='invoice-th'
+                                        // onClick={() => this.toggleSort('advertiser_name')}>Advertiser</th>
                                         className='invoice-th'
-                                        onClick={() => this.toggleSort('advertiser_name')}>Advertiser</th>
+                                        onClick={() => this.toggleSort('publisher_name')}>Publisher</th>
                                 ): (
                                     <th
                                         className='invoice-th'
-                                        onClick={() => this.toggleSort('publisher_name')}>Publisher</th>
+                                        onClick={() => this.toggleSort('advertiser_name')}>Advertiser</th>                                    
+                                        // className='invoice-th'
+                                        // onClick={() => this.toggleSort('publisher_name')}>Publisher</th>
                                 )}
                                 <th
                                     className='invoice-th'
