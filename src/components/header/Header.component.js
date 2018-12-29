@@ -48,6 +48,7 @@ class Header extends Component {
                     <img src='https://qchain.co/img/core/qchain_logo2018_icon.png' style={{ width: '45px', float: 'left', marginTop: '13px' }} alt='logo' />
                     <img src='https://qchain.co/img/core/qchainText2018UNBOLD.png' style={{ width: '90px', marginTop: '23px' }} alt='logo text' />
                 </a>
+                <div className="mode">{this.props.modeFilter}</div>
                 <InAppNavBar {...this.props} />
                 <div className='menu-flex-for-profile-accessor'>
                     <ProfileAccessor history={this.props.history} profile={this.props.profile} onLogout={this.handleLogout} auth={this.props.auth} />
