@@ -60,7 +60,7 @@ class Loader extends React.Component {
     loader = () => {
         const {auth} = this.props;
         let token = auth && auth.getAuthorizationToken ? auth.getAuthorizationToken() : null;
-        this.allApis = createAsyncHandling(token, () => console.log('error+++'))
+        this.allApis = createAsyncHandling(token, () => auth.logout())
     };
 
     render() {

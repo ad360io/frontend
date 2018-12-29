@@ -248,8 +248,8 @@ export default class Auth {
             });
 
             // Dispatch currency and mode separately since they are not directly related to profile
-            this.store.dispatch(setCurrency(currency));
-            this.store.dispatch(setMode(mode));
+            // this.store.dispatch(setCurrency(currency));
+            // this.store.dispatch(setMode(mode));
         }
     }
 

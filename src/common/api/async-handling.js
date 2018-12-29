@@ -36,7 +36,12 @@ export const createAsyncHandling = (authToken, onUnauthorized) => {
 
             return method(`${baseUrl}${url}`, {queryParams, payload, authToken, headers})
                 .then(jsonResp)
-                .catch((e) => Promise.resolve({error: true, message: e}));
+                .catch((e) => {
+                    if(e.response.status === 401) {
+                        onUnauthorized();
+                    }
+                    return Promise.resolve({error: true, message: e})
+                });
         },
     );
 };

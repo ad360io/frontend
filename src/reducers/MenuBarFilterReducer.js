@@ -2,7 +2,7 @@
 const defaultState = {
     currencyFilter: 'XQC',
     modeFilter: 'Advertiser'
-}
+};
 
 /**
  * MenuBar Filter Reducer

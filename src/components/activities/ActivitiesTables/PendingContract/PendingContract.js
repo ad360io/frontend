@@ -88,6 +88,7 @@ export class PendingContract extends React.Component {
                         {...{
                             selectedItem,
                             afterClose: (success) => {
+                                console.log('success');
                                 if(success) {
                                     this.getPendingContract()
                                 }

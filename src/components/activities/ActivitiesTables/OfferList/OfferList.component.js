@@ -23,6 +23,7 @@ import {
     offerDialogConfirmationService
 } from "./OfferDialogConfirmation";
 import {walletState} from "../../../../common/wallet-state";
+import {NotificationService} from "../../../../common/notification-service";
 
 
 /**
@@ -76,8 +77,8 @@ class OfferList extends Component {
 
         */
 
-        this.setState({nem_address: this.props.nem_address});
-        this.setState({eth_address: this.props.eth_address});
+        // this.setState({nem_address: this.props.nem_address});
+        // this.setState({eth_address: this.props.eth_address});
     };
 
     render() {
@@ -212,14 +213,12 @@ class OfferRenderer extends Component {
         };
 
         try {
-            await contractApi(postJson, {payload})
+            await contractApi(postJson, {payload});
             this.patchListing();
-            this.deleteOffer();
+            this.deleteOffer({isShowNoti: false});
         } catch (e) {
 
         }
-
-
         // this.makePayment();
     };
 
@@ -229,15 +228,22 @@ class OfferRenderer extends Component {
     };
 
     handleDeclineOffer() {
-        this.deleteOffer();
+        this.deleteOffer({isShowNoti: true});
     }
 
-    deleteOffer = async () => {
+    deleteOffer = async ({isShowNoti}) => {
         const { allApis: { delJson }, offer, onRemoveOffer } = this.props;
         let resp = await delJson(`/offer`, { queryParams: { id: `eq.${offer.id}` } });
 
-        if(resp) {
+        if(!resp.error) {
+            if(isShowNoti) {
+                NotificationService.openNotification('success', {message: "Delete Successfully!"})
+            }
             onRemoveOffer(offer.id)
+        } else {
+            if(isShowNoti) {
+                NotificationService.openNotification('error', {message: "Delete Failed!"})
+            }
         }
     };
 
@@ -269,11 +275,8 @@ class OfferRenderer extends Component {
     };
 
     render() {
-        console.log(this.props.offer);
-
         return (
             <Fragment>
-
                 <tr className='offer-renderer-tr'>
                     <td style={{paddingTop: '16px'}}>
                         <OverlayTrigger trigger={['hover', 'focus']} placement='right' overlay={this.getInfoPopover()}>
@@ -302,7 +305,6 @@ class OfferRenderer extends Component {
                                                 <Button
                                                     bsStyle='danger'
                                                     onClick={() => {
-                                                        // this.handleDeclineOffer()
                                                         offerDialogConfirmationService.openModal({
                                                             open: true,
                                                             options: {
