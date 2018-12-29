@@ -37,7 +37,7 @@ export class PendingContractModal extends React.Component {
 
     getPublisher = async () => {
         const { allApis: {getJson}, selectedItem } = this.props;
-        let resp = await getJson(`/publisher?role=eq.${selectedItem.publisher}`);
+        let resp = await getJson(`/account?role=eq.${selectedItem.publisher}`);
         this.setState({publisherInfo: resp.data[0]})
     };
 
