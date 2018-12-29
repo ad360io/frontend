@@ -14,7 +14,9 @@ class AnalyticsDetail extends React.Component {
 
     render() {
         const KEYS_TO_FILTER = ['name', 'publisher_name', 'advertiser_name'];
-        const filteredContracts = this.props.db.filter(createFilter(this.props.keywordFilter, KEYS_TO_FILTER));
+        const filteredContracts = this.props.db
+            .filter((item) => this.props.modeFilter === "Advertiser" ? item.contentlisting == null : item.contentlisting != null)
+            .filter(createFilter(this.props.keywordFilter, KEYS_TO_FILTER));
 
         this.num_matching_current_user = 0;
 
@@ -25,7 +27,12 @@ class AnalyticsDetail extends React.Component {
             {
                 (filteredContracts.length === 0
                     ? <NoData />
-                    : <DetailStat stat={this.props.activeStat} contracts={filteredContracts} this_={this} />
+                    : <DetailStat
+                            stat={this.props.activeStat}
+                            modeFilter={this.props.modeFilter}
+                            contracts={filteredContracts}
+                            this_={this}
+                        />
                 )
             }
         </div>
@@ -39,16 +46,13 @@ const NoData = () => (
     </div>
 )
 
-const DetailStat = ({ stat, contracts, this_ }) => (
+const DetailStat = ({ stat, contracts, modeFilter, this_ }) => (
     <div className='detail-stat'>
-
         {
             contracts.map((contract, i) => {
                 if (this_.props.profile.name === contract.advertiser_name || this_.props.profile.name === contract.publisher_name || this_.props.profile.nickname === contract.advertiser_name || this_.props.profile.nickname === contract.publisher_name) {
 
                     this_.num_matching_current_user += 1;
-
-                    console.log(contract);
 
                     return (
                         <div key={'dashboard-detail' + i}>
@@ -78,7 +82,7 @@ const DetailStat = ({ stat, contracts, this_ }) => (
                                 <div className='detail-stat-info'>
                                     <h4 className='detail-stat-title'>&nbsp;</h4>
 
-                                    <h5 className='today-label'>Revenue</h5>
+                                    <h5 className='today-label'>{modeFilter === "Advertiser" ? `Spend` : `Revenue`}</h5>
                                     <h2 className='today-number'>{contract.payout_cap} <span style={{fontSize: '24px'}}>{contract.currency}</span></h2>
                                     <h6 className='today-stat-label'>&nbsp;</h6>
 
