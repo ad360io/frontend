@@ -84,10 +84,11 @@ class RequiredFormField extends React.Component {
 
                 <FormGroup controlId='control-form-topic'>
                     <p className='control-label'>
-                        Content Topic
+                        Content Topic (80 characters max)
                     </p>
                     <FormControl
                         type='text'
+                        maxLength={80}
                         onChange={(e) => this.setState({topic: e.target.value})}
                         required
                         value={topic}
