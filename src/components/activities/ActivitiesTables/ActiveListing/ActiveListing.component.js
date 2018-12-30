@@ -107,6 +107,9 @@ class ActiveListing extends Component {
                                         className='active-listing-th'
                                         onClick={() => this.toggleSort('medium')}>Medium</th>
                                     <th
+                                        className='active-listing-th'
+                                        >Quantity</th>
+                                    <th
                                         className='active-listing-th'>Action</th>
                                 </tr>
                             </thead>
@@ -116,6 +119,7 @@ class ActiveListing extends Component {
                                     <td style={{ color: '#3366BB', cursor: 'pointer' }} onClick={() => history.push(`/listing/${listing.id}`)}>{listing.name}</td>
                                     <td>{listing.ad_format}</td>
                                     <td>{listing.medium}</td>
+                                    <td>{listing.quantity}</td>
                                     <td>
                                         <Button
                                             bsStyle='danger'
