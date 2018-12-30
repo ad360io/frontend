@@ -23,11 +23,13 @@ class RequiredFormField extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            ...(props.modeFilter !== 'Advertiser' && {
+            ...(props.modeFilter !== 'Advertiser' ? {
                 from: props.newListing.from || null,
                 to: props.newListing.to || null,
                 price: props.newListing.price || '',
                 quantity: props.newListing.quantity || ''
+            } : {
+                pay: props.newListing.pay || null
             }),
 
             adFormat: props.newListing.adFormat || null,
@@ -44,7 +46,7 @@ class RequiredFormField extends React.Component {
 
         let stateFieldValidate = this.props.modeFilter !== 'Advertiser' ?
             this.state :
-            { adFormat, mediumFormat, description, topic }
+            { adFormat, mediumFormat, description, topic, pay }
         ;
 
         for (let key in stateFieldValidate) {
@@ -58,7 +60,7 @@ class RequiredFormField extends React.Component {
 
     render() {
         let { modeFilter = 'Advertiser', formInfo } = this.props;
-        let { from, to, adFormat, mediumFormat, price, description, topic, quantity } = this.state;
+        let { from, to, adFormat, mediumFormat, price, description, topic, quantity, pay } = this.state;
 
         formInfo && formInfo({valid: this.valid()});
 
@@ -96,6 +98,19 @@ class RequiredFormField extends React.Component {
                     />
                 </FormGroup>
 
+                { modeFilter === 'Advertiser' && (
+                    <FormGroup>
+                        <div className="control-label">
+                            Pay
+                        </div>
+                        <FormControl
+                            value={pay}
+                            type='number' min='1' onChange={(e) => this.setState({pay: e.target.value})}
+                            style={{width: '49%'}}
+                        />
+                    </FormGroup>
+                )}
+
                 { modeFilter !== 'Advertiser' && (
                     <Fragment>
                         <FormGroup controlId='control-form-price' >
@@ -105,7 +120,7 @@ class RequiredFormField extends React.Component {
                             <FormControl
                                 value={price}
                                 type='number' min='1' step='1' onChange={(e) => this.setState({price: e.target.value})}
-                                style={{width: '49%', float: 'left'}}
+                                style={{width: '49%'}}
                             />
                             <FormControl componentClass='select' style={{width: '49%', float: 'right', display: 'none'}} required>
                                 <option value='one-time'>one time</option>
@@ -116,8 +131,6 @@ class RequiredFormField extends React.Component {
                             </FormControl>
                         </FormGroup>
 
-                        <div style={{height: '30px'}}></div>
-
                         <FormGroup>
                             <p className='control-label'>
                                 Availabilities
@@ -125,11 +138,9 @@ class RequiredFormField extends React.Component {
                             <FormControl
                                 value={quantity}
                                 type='number' min='1' onChange={(e) => this.setState({quantity: e.target.value})}
-                                style={{width: '49%', float: 'left'}}
+                                style={{width: '49%'}}
                             />
                         </FormGroup>
-
-                        <div style={{height: '30px'}}></div>
                     </Fragment>
                 )}
 
