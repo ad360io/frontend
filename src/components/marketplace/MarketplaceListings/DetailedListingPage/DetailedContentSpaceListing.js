@@ -78,9 +78,15 @@ export class DetailedContentSpaceListing extends React.Component {
 
     inactivateListing = async () => {
         const { allApis : { patchJson }, item } = this.props;
+
+        let isInactive = item.quantity == null || (item.quantity && item.quantity - 1 < 1);
+
         return await marketplaceApi(
             patchJson,
-            { queryParams: { id: `eq.${item.id}` }, payload: { isactive: false }}
+            { queryParams: { id: `eq.${item.id}` }, payload: {
+                isactive: !isInactive,
+                ...(item.quantity && item.quantity > 0 && {quantity: item.quantity - 1})
+            }}
         );
     };
 
@@ -165,6 +171,8 @@ export class DetailedContentSpaceListing extends React.Component {
                             <p>Content Medium: {item.medium}</p>
 
                             <p>Promotion Duration: {item.date_added.slice(0, 10)} to {item.expiration_date}</p>
+
+                            {item.quantity && <p>Availabilities: {item.quantity}</p>}
                         </div>
 
                         {
@@ -189,7 +197,10 @@ export class DetailedContentSpaceListing extends React.Component {
                                                     variant='outlined'
                                                     color='primary'
                                                     style={{backgroundColor: '#fefefe'}}
-                                                    disabled={processing || issue.length > 0 || emailVerified === false || modeFilter !== "Advertiser"}
+                                                    disabled={
+                                                        processing || issue.length > 0 || emailVerified === false || modeFilter !== "Advertiser" ||
+                                                        (item.quantity && (item.quantity > 0))
+                                                    }
                                             >
                                                 {
                                                     (issue.length > 0)

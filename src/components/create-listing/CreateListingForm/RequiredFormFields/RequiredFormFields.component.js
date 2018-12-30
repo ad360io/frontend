@@ -1,7 +1,7 @@
 /*
 Core Libs
 */
-import React from 'react';
+import React, {Fragment} from 'react';
 import { connect } from 'react-redux';
 
 /*
@@ -27,6 +27,7 @@ class RequiredFormField extends React.Component {
                 from: props.newListing.from || null,
                 to: props.newListing.to || null,
                 price: props.newListing.price || '',
+                quantity: props.newListing.quantity || ''
             }),
 
             adFormat: props.newListing.adFormat || null,
@@ -57,7 +58,7 @@ class RequiredFormField extends React.Component {
 
     render() {
         let { modeFilter = 'Advertiser', formInfo } = this.props;
-        let { from, to, adFormat, mediumFormat, price, description, topic } = this.state;
+        let { from, to, adFormat, mediumFormat, price, description, topic, quantity } = this.state;
 
         formInfo && formInfo({valid: this.valid()});
 
@@ -96,27 +97,40 @@ class RequiredFormField extends React.Component {
                 </FormGroup>
 
                 { modeFilter !== 'Advertiser' && (
-                    <FormGroup controlId='control-form-price' >
-                        <p className='control-label'>
-                            Price
-                        </p>
-                        <FormControl
-                            value={price}
-                            type='number' min='1' step='1' onChange={(e) => this.setState({price: e.target.value})}
-                            style={{width: '49%', float: 'left'}}
-                        />
-                        <FormControl componentClass='select' style={{width: '49%', float: 'right', display: 'none'}} required>
-                            <option value='one-time'>one time</option>
-                            <option value='day'>per day</option>
-                            {/* <option value='week'>per week</option> */}
-                            {/* <option value='month'>per month</option> */}
-                            {/* <option value='year'>per year</option> */}
-                        </FormControl>
-                    </FormGroup>
-                )}
+                    <Fragment>
+                        <FormGroup controlId='control-form-price' >
+                            <p className='control-label'>
+                                Price
+                            </p>
+                            <FormControl
+                                value={price}
+                                type='number' min='1' step='1' onChange={(e) => this.setState({price: e.target.value})}
+                                style={{width: '49%', float: 'left'}}
+                            />
+                            <FormControl componentClass='select' style={{width: '49%', float: 'right', display: 'none'}} required>
+                                <option value='one-time'>one time</option>
+                                <option value='day'>per day</option>
+                                {/* <option value='week'>per week</option> */}
+                                {/* <option value='month'>per month</option> */}
+                                {/* <option value='year'>per year</option> */}
+                            </FormControl>
+                        </FormGroup>
 
-                { modeFilter !== 'Advertiser' && (
-                    <div style={{height: '30px'}}></div>
+                        <div style={{height: '30px'}}></div>
+
+                        <FormGroup>
+                            <p className='control-label'>
+                                Availabilities
+                            </p>
+                            <FormControl
+                                value={quantity}
+                                type='number' min='1' onChange={(e) => this.setState({quantity: e.target.value})}
+                                style={{width: '49%', float: 'left'}}
+                            />
+                        </FormGroup>
+
+                        <div style={{height: '30px'}}></div>
+                    </Fragment>
                 )}
 
                 <FormGroup controlId='control-form-pitch'>

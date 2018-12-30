@@ -49,7 +49,7 @@ class Analytics extends Component {
 
     componentDidMount() {
         document.title = "Qchain - Analytics";
-        window.scrollTo(0, 0)
+        window.scrollTo(0, 0);
 
         // Register data loading every 10 minutes.
         const tenMinutes = 1000 * 60 * 10;

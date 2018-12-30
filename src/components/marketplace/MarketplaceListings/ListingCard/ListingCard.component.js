@@ -214,6 +214,7 @@ class ListingCard extends Component {
                     description={this.decideDescription()}
                     dateAdded={this.props.listing.date_added}
                     id={this.props.listing.id}
+                    quantity={this.props.listing.quantity}
                 />
             }
 
@@ -299,16 +300,9 @@ const GridCardRenderer = ({
 
 
 // TODO: duplicates below very sloppy; refactor
-const ListingCardRenderer_Adv = ({
-                                 marginLeft,
-                                 contactInfo,
-                                 priceTag,
-                                 title,
-                                 placeholderImage,
-                                 description,
-                                 dateAdded,
-                                 id,
-                             }) => (
+const ListingCardRenderer_Adv = (
+        { marginLeft, contactInfo, priceTag, title, placeholderImage, description, dateAdded, id, quantity}
+    ) => (
     <Card className='listing-card-container noselect'
           style={{}}
     >
@@ -319,6 +313,9 @@ const ListingCardRenderer_Adv = ({
             Listed on {dateAdded.slice(0, 10)}
         </div>
 
+        {quantity && (
+            <div className='listing-date'>Availabilities: {quantity}</div>
+        )}
 
         {/*<div*/}
             {/*title={title}*/}

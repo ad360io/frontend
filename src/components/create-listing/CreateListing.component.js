@@ -88,6 +88,7 @@ class CreateListing extends Component {
                 owner: localStorage.getItem('role'),
                 isactive: true,
             } : {
+                quantity: newListing.quantity,
                 date_added: newListing.from,
                 expiration_date: newListing.to,
                 price: newListing.price,

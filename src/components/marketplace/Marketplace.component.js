@@ -80,11 +80,16 @@ class Marketplace extends Component {
             Range: `${pageSize * (currentPageNum - 1)}-${(pageSize * currentPageNum) - 1}`
         };
 
-        let resp = await getJson(`/detailed_listing_view`, {queryParams, headers});
+        try {
+            let resp = await getJson(`/detailed_listing_view`, {queryParams, headers});
+            if(!resp.error) {
+                let total = +resp.headers['content-range'].split('/')[1];
+                this.setState({listing: resp.data, total})
+            }
+        } catch(e) {
+            console.log(e);
+        }
 
-        let total = +resp.headers['content-range'].split('/')[1];
-
-        this.setState({listing: resp.data, total})
     };
 
     componentDidMount() {
