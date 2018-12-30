@@ -54,7 +54,7 @@ class Invoice extends Component {
 
         let queryParams = orderBy ? { order: `${orderBy.value}.${orderBy.asc ? `asc` : `desc`}`} : {};
 
-        let resp = await getJson(`/my_invoices1`, { queryParams });
+        let resp = await getJson(`/my_invoices`, { queryParams });
 
         this.setState({invoices: resp.data});
     };

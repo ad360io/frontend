@@ -42,7 +42,7 @@ class RequiredFormField extends React.Component {
     }
 
     valid = () => {
-        const { adFormat, mediumFormat, description, topic } = this.state;
+        const { adFormat, mediumFormat, description, topic, pay } = this.state;
 
         let stateFieldValidate = this.props.modeFilter !== 'Advertiser' ?
             this.state :
