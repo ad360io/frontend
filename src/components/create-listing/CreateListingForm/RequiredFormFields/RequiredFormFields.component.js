@@ -16,6 +16,8 @@ import AvailabilityPicker from './AvailabilityPicker/AvailabilityPicker.componen
 import AdFormatSelect from './AdFormatSelect/AdFormatSelect.component';
 import {AdFormatSelection} from "./AdFormatSelect/AdFormatSelection";
 import {isEmpty} from "lodash";
+import Slider from "@material-ui/lab/Slider";
+import "./RequiredFormFields.component.css";
 
 export let getRequiredData;
 
@@ -99,16 +101,34 @@ class RequiredFormField extends React.Component {
                 </FormGroup>
 
                 { modeFilter === 'Advertiser' && (
-                    <FormGroup>
-                        <div className="control-label">
-                            Pay
-                        </div>
-                        <FormControl
-                            value={pay}
-                            type='number' min='1' onChange={(e) => this.setState({pay: e.target.value})}
-                            style={{width: '49%'}}
-                        />
-                    </FormGroup>
+                    <Fragment>
+                        <FormGroup>
+                            <div className="control-label">
+                                Pay
+                            </div>
+                            <FormControl
+                                value={pay}
+                                type='number' min='1' onChange={(e) => this.setState({pay: e.target.value})}
+                                style={{width: '49%'}}
+                            />
+                        </FormGroup>
+
+                        <FormGroup>
+                            <div className="control-label">
+                                Payment Due
+                            </div>
+                            <div className="form-range-slider">
+                                <Slider className='range-slider'
+                                        onChange={(e, value) => console.log(e, value)}
+                                        onDragEnd={() => {}}
+                                        min={10}
+                                        max={100}
+                                        step={10}
+                                />
+                            </div>
+                        </FormGroup>
+                    </Fragment>
+
                 )}
 
                 { modeFilter !== 'Advertiser' && (
