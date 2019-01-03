@@ -113,6 +113,7 @@ class RequiredFormField extends React.Component {
                             />
                         </FormGroup>
 
+                        {/*
                         <FormGroup>
                             <div className="control-label">
                                 Payment Due
@@ -127,6 +128,8 @@ class RequiredFormField extends React.Component {
                                 />
                             </div>
                         </FormGroup>
+                        */}
+
                     </Fragment>
 
                 )}
