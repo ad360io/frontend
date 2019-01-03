@@ -74,7 +74,7 @@ class Invoice extends Component {
             <div className='active-listing-container'>
                 <div className='table-responsive' style={{ height: '100%', margin: '2% 0 2% 0', minHeight: '320px' }}>
                     {(filterInvoices.length === 0)
-                        ? (<p style={{ textAlign: 'center' }}>You currently have no invoices.</p>)
+                        ? (<p style={{ textAlign: 'center' }}>You currently have no {isPayment ? `funds received` : `payments`}.</p>)
                         : (<table className='table table-bordered mb-0'>
                             <thead className='thead-default'>
                             <tr>
