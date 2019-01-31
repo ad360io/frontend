@@ -25,19 +25,18 @@ export default class Auth {
 
     constructor(store) {
         this.store = store;
-        this.login = this.login.bind(this);
-        this.handleAuthentication = this.handleAuthentication.bind(this);
-        this.setSession = this.setSession.bind(this);
-        this.logout = this.logout.bind(this);
-        this.isAuthenticated = this.isAuthenticated.bind(this);
-        this.renewToken = this.renewToken.bind(this);
-        this.scheduleRenewal = this.scheduleRenewal.bind(this);
-        this.getAccessToken = this.getAccessToken.bind(this);
-        this.getProfile = this.getProfile.bind(this);
-        // this.handleProfileOnAuthenticated = this.handleProfileOnAuthenticated.bind(this);
-        this.dispatchProfile = this.dispatchProfile.bind(this);
-        // this.updateUserMetadata = this.updateUserMetadata.bind(this);
-        this.patchUserMetadata = this.patchUserMetadata.bind(this);
+        // this.handleAuthentication = this.handleAuthentication.bind(this);
+        // this.setSession = this.setSession.bind(this);
+        // this.logout = this.logout.bind(this);
+        // this.isAuthenticated = this.isAuthenticated.bind(this);
+        // this.renewToken = this.renewToken.bind(this);
+        // this.scheduleRenewal = this.scheduleRenewal.bind(this);
+        // this.getAccessToken = this.getAccessToken.bind(this);
+        // this.getProfile = this.getProfile.bind(this);
+        // // this.handleProfileOnAuthenticated = this.handleProfileOnAuthenticated.bind(this);
+        // this.dispatchProfile = this.dispatchProfile.bind(this);
+        // // this.updateUserMetadata = this.updateUserMetadata.bind(this);
+        // this.patchUserMetadata = this.patchUserMetadata.bind(this);
 
         this.scheduleRenewal();
     }
@@ -53,11 +52,11 @@ export default class Auth {
         scope: 'openid email profile role'
     });
 
-    login() {
+    login = () => {
         this.auth0.authorize();
-    }
+    };
 
-    handleAuthentication(propsHistory) {
+    handleAuthentication = (propsHistory) => {
         this.auth0.parseHash((err, authResult) => {
             if (authResult && authResult.accessToken && authResult.idToken) {
                 this.setSession(authResult, propsHistory);
@@ -66,9 +65,9 @@ export default class Auth {
                 console.log(err);
             }
         });
-    }
+    };
 
-    setSession(authResult, propsHistory) {
+    setSession = (authResult, propsHistory) => {
         // Set the time that the Access Token will expire at
         let expiresAt = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
         localStorage.setItem('access_token', authResult.accessToken);
@@ -81,29 +80,32 @@ export default class Auth {
         this.handleProfileOnAuthenticated(authResult.idToken);
 
         // Redirect to /analytics after authenticated.
-        propsHistory.replace('/analytics');
+        // propsHistory.replace('/analytics');
         propsHistory.push('/analytics');
         this.scheduleRenewal();
     }
 
-    logout() {
+    logout = () => {
         // Clear info from local storage
         localStorage.removeItem('access_token');
         localStorage.removeItem('id_token');
         localStorage.removeItem('expires_at');
         localStorage.removeItem('role');
+
         window.location.reload();
-        clearTimeout(this.tokenRenewalTimeout);
+        if(this.tokenRenewalTimeout) {
+            clearTimeout(this.tokenRenewalTimeout);
+        }
     }
 
-    isAuthenticated() {
+    isAuthenticated = () => {
         // Check whether the current time is past the
         // Access Token's expiry time
         let expiresAt = JSON.parse(localStorage.getItem('expires_at'));
         return new Date().getTime() < expiresAt;
     }
 
-    renewToken() {
+    renewToken = () => {
         this.auth0.checkSession({}, (err, result) => {
             if (err) {
                 console.log(err);
@@ -114,7 +116,7 @@ export default class Auth {
         );
     }
 
-    scheduleRenewal() {
+    scheduleRenewal = () => {
         const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
         const delay = expiresAt - Date.now();
         if (delay > 0) {
@@ -124,7 +126,7 @@ export default class Auth {
         }
     }
 
-    getAccessToken() {
+    getAccessToken = () => {
         const accessToken = localStorage.getItem('access_token');
         if (!accessToken) {
             throw new Error('No Access Token found');
@@ -140,7 +142,7 @@ export default class Auth {
         return token;
     };
 
-    getProfile(cb) {
+    getProfile = (cb) => {
         let accessToken = this.getAccessToken();
 
         this.auth0.client.userInfo(accessToken, (err, profile) => {
@@ -180,7 +182,7 @@ export default class Auth {
      * @param {Object} profile       Served from getProfile method
      * @param {Object} user_metadata Served from profile object's user_metadata field
      */
-    dispatchProfile(profile, user_metadata) {
+    dispatchProfile = (profile, user_metadata) => {
 
         // For some reasons, there are cases where user created on auth0 doesn't have user_metadata field
         if (typeof user_metadata === 'undefined') {
@@ -331,7 +333,7 @@ export default class Auth {
      * @param {*} newMetadata new user_metadata object to be updated in auth0 scope.
      * @param {*} history     history from BrowserRouter to update access / id token to avoid relogging in.
      */
-    patchUserMetadata(newMetadata, history) {
+    patchUserMetadata = (newMetadata, history) => {
         let idToken = localStorage.getItem('id_token');
         let auth0Manager = new auth0.Management({
             domain: 'qchain.auth0.com',
