@@ -31,7 +31,7 @@ class CreateListing extends Component {
     }
 
     componentDidMount() {
-        document.title = "Qchain - Create";
+        document.title = "BrandLedger - Create";
         // window.scrollTo(0, 0);
     }
 

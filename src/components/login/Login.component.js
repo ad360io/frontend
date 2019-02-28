@@ -9,7 +9,7 @@ import React, { Component } from 'react';
 class Login extends Component {
 
     componentDidMount() {
-        document.title = "Qchain - Login";
+        document.title = "BrandLedger - Login";
         this.props.auth.login();
     }
 

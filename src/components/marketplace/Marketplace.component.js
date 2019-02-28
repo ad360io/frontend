@@ -93,7 +93,7 @@ class Marketplace extends Component {
     };
 
     componentDidMount() {
-        document.title = "Qchain - Marketplace";
+        document.title = "BrandLedger - Marketplace";
     }
 
     componentDidUpdate(prevProps) {

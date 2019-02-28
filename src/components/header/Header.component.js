@@ -43,12 +43,11 @@ class Header extends Component {
 
     render() {
         return (
-            <div className='header-container'>
+            <div className='header-container' style={{ paddingLeft: '54px' }}>
                 <a href='/analytics' className='logo-redirect'>
-                    <img src='https://qchain.co/img/core/qchain_logo2018_icon.png' style={{ width: '45px', float: 'left', marginTop: '13px' }} alt='logo' />
-                    <img src='https://qchain.co/img/core/qchainText2018UNBOLD.png' style={{ width: '90px', marginTop: '23px' }} alt='logo text' />
+                    <img src='../../../../assets/images/BrandLedger_logo_navbar.png' style={{ width: '180px', float: 'left', marginTop: '18px', marginRight: '48px' }} alt='logo' />
                 </a>
-                <div className="mode">{this.props.modeFilter}</div>
+                <div className="mode">Mode: {this.props.modeFilter}</div>
                 <InAppNavBar {...this.props} />
                 <div className='menu-flex-for-profile-accessor'>
                     <ProfileAccessor history={this.props.history} profile={this.props.profile} onLogout={this.handleLogout} auth={this.props.auth} />

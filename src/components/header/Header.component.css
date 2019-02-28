@@ -46,7 +46,7 @@ MEDIUM SCREEN
 
 @media only screen and (min-width: 768px) {
     .header-container {
-        grid-template-columns: 25px 140px 10px 60px auto 350px 32px 137px 12px 64px 32px;
+        grid-template-columns: 25px 140px 10px 150px auto 350px 32px 137px 12px 64px 32px;
         grid-template-areas: ". logo . mode . nav-items . wallet . profile . ";
     }
 }

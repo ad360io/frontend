@@ -227,7 +227,7 @@ export class PendingContractModal extends React.Component {
 
         let common = nem.model.objects.create('common')(this.state.nem_password, nem_pk);
 
-        let txnMessage = 'Qchain Marketplace payment for contract "' + selectedItem.name + '" (#' + selectedItem.number +') from ' + selectedItem.start_date.slice(0, 10) + ' to ' + selectedItem.end_date.slice(0, 10) + '.';
+        let txnMessage = 'BrandLedger Marketplace payment for contract "' + selectedItem.name + '" (#' + selectedItem.number +') from ' + selectedItem.start_date.slice(0, 10) + ' to ' + selectedItem.end_date.slice(0, 10) + '.';
 
         let transferTransaction = nem.model.objects.create('transferTransaction')(txnRecipient, 1, txnMessage);
 

@@ -1,13 +1,13 @@
-# Qchain - Frontend
+# BrandLedger - Frontend
 
 Common create-react-app documentations are generated. Any additional configuration that is helpful for future development and maintaince should be appended to appropriate sections. <br>
 
-Changes and additions should be recorded in [Change Log](#Change-Log) for future references. 
+Changes and additions should be recorded in [Change Log](#Change-Log) for future references.
 
 ## Change Log
 - 5/21/2018: added [Purposes](#purposes)
 - 5/21/2018: added [`npm run deploy`](#npm-run-deploy) description
-- 5/16/2018: added StyleGuide.md 
+- 5/16/2018: added StyleGuide.md
 
 ## Documentation
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
@@ -119,7 +119,7 @@ You can find the most recent version of this guide [here](https://github.com/fac
 ## Purposes
 
 - Purpose of this documentation:
-  - Help developers transition and understand the development decisions and conventions for Qchain.
+  - Help developers transition and understand the development decisions and conventions for BrandLedger.
 - Purpose of each major components in the app:
   - Header: Smoothly transition user into desired mode and currency.
   - Dashboard: Analyze user data and provide inspiration.
@@ -214,7 +214,7 @@ See the section about [deployment](#deployment) for more information.
 
 ### `npm run deploy`
 
-Deploy the application to Qchain's Github pages, using gh-pages module. <br>
+Deploy the application to BrandLedger's Github pages, using gh-pages module. <br>
 Scripts are set up in package.json file. This module creates a branch called gh-pages that serves the static build files. <br>
 
 **Note: gh-pages automatically builds and publishes, but does not include a custom domain file. Therefore, remember to configure custom domain after every deploy**
@@ -331,7 +331,7 @@ In the WebStorm menu `Run` select `Edit Configurations...`. Then click `+` and s
 
 Start your app by running `npm start`, then press `^D` on macOS or `F9` on Windows and Linux or click the green debug icon to start debugging in WebStorm.
 
-The same way you can debug your application in IntelliJ IDEA Ultimate, PhpStorm, PyCharm Pro, and RubyMine. 
+The same way you can debug your application in IntelliJ IDEA Ultimate, PhpStorm, PyCharm Pro, and RubyMine.
 
 ## Formatting Code Automatically
 
@@ -1706,7 +1706,7 @@ Use the following [`launch.json`](https://code.visualstudio.com/docs/editor/debu
       "name": "Debug CRA Tests",
       "type": "node",
       "request": "launch",
-      "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/react-scripts",      
+      "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/react-scripts",
       "args": [
         "test",
         "--runInBand",
@@ -2020,7 +2020,7 @@ If you’re using [Apache HTTP Server](https://httpd.apache.org/), you need to c
     RewriteRule ^ index.html [QSA,L]
 ```
 
-It will get copied to the `build` folder when you run `npm run build`. 
+It will get copied to the `build` folder when you run `npm run build`.
 
 If you’re using [Apache Tomcat](http://tomcat.apache.org/), you need to follow [this Stack Overflow answer](https://stackoverflow.com/a/41249464/4878474).
 
@@ -2460,7 +2460,7 @@ To resolve this:
 1. Open an issue on the dependency's issue tracker and ask that the package be published pre-compiled.
   * Note: Create React App can consume both CommonJS and ES modules. For Node.js compatibility, it is recommended that the main entry point is CommonJS. However, they can optionally provide an ES module entry point with the `module` field in `package.json`. Note that **even if a library provides an ES Modules version, it should still precompile other ES6 features to ES5 if it intends to support older browsers**.
 
-2. Fork the package and publish a corrected version yourself. 
+2. Fork the package and publish a corrected version yourself.
 
 3. If the dependency is small enough, copy it to your `src/` folder and treat it as application code.
 

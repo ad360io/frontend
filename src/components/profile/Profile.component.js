@@ -94,7 +94,7 @@ class Profile extends Component {
     };
 
     componentDidMount() {
-        document.title = "Qchain - Profile";
+        document.title = "BrandLedger - Profile";
         // window.scrollTo(0, 0);
     }
 

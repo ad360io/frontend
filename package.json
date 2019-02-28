@@ -1,8 +1,8 @@
 {
-    "name": "qchain-frontend",
+    "name": "brandledger-frontend",
     "version": "0.1.0",
     "private": true,
-    "homepage": "https://beta-dev.qchain.co/",
+    "homepage": "https://marketplace.brandledger.tech/",
     "dependencies": {
         "@material-ui/core": "^1.5.1",
         "@material-ui/icons": "^2.0.1",
